@@ -75,7 +75,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
      * Método que efetua a impressão de todas as views geradas
      */
     private void printViews() {
-        File viewDir = new File("src/main/java/br/com/rpgruler/main/view");
+        File viewDir = new File("src/main/java/br/com/odcontroler/main/view");
         printChild(viewDir);
     }
 

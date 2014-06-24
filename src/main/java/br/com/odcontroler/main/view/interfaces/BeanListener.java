@@ -14,7 +14,7 @@ public interface BeanListener<T> {
      *
      * @param evt <code>BeanEvent</code> Evento
      * @throws java.lang.Exception Exceção
-     * @see br.com.rpgruler.main.view.View#commit()
+     * @see br.com.odcontroler.main.view.View#commit()
      */
     void commit(BeanEvent evt) throws Exception;
 
@@ -23,7 +23,7 @@ public interface BeanListener<T> {
      *
      * @param evt <code>BeanEvent</code> Evento
      * @throws java.lang.Exception Exceção
-     * @see br.com.rpgruler.main.view.View#process()
+     * @see br.com.odcontroler.main.view.View#process()
      */
     void process(BeanEvent evt) throws Exception;
 
@@ -32,7 +32,7 @@ public interface BeanListener<T> {
      *
      * @param evt <code>BeanEvent</code> Evento
      * @throws java.lang.Exception Exceção
-     * @see br.com.rpgruler.main.view.View#clear()
+     * @see br.com.odcontroler.main.view.View#clear()
      */
     void clear(BeanEvent evt) throws Exception;
 
@@ -41,7 +41,7 @@ public interface BeanListener<T> {
      *
      * @param evt <code>BeanEvent</code> Evento
      * @throws java.lang.Exception Exceção
-     * @see br.com.rpgruler.main.view.View#load()
+     * @see br.com.odcontroler.main.view.View#load()
      */
     void load(BeanEvent evt) throws Exception;
 

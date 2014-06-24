@@ -27,10 +27,10 @@ import javax.swing.SwingUtilities;
  *
  * @author kaciano
  * @version 1.0
- * @see br.com.rpgruler.data.db.dao.MenuDAO
- * @see br.com.rpgruler.data.db.dao.MenuItemDAO
- * @see br.com.rpgruler.data.entity.Menu
- * @see br.com.rpgruler.data.entity.MenuItem
+ * @see br.com.odcontroler.data.db.dao.MenuDAO
+ * @see br.com.odcontroler.data.db.dao.MenuItemDAO
+ * @see br.com.odcontroler.data.entity.Menu
+ * @see br.com.odcontroler.data.entity.MenuItem
  */
 public class MenuBuilder {
 

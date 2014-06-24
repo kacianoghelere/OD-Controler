@@ -71,7 +71,7 @@ public interface ViewListener<T> {
      * Metodo padrão para salvar
      *
      * @see
-     * br.com.rpgruler.main.view.bean.ViewBean#commit(br.com.rpgruler.main.object.BeanEvent)
+     * br.com.odcontroler.main.view.bean.ViewBean#commit(br.com.odcontroler.main.object.BeanEvent)
      */
     void commit();
 
@@ -79,7 +79,7 @@ public interface ViewListener<T> {
      * Metodo padrão para processar os dados
      *
      * @see
-     * br.com.rpgruler.main.view.bean.ViewBean#process(br.com.rpgruler.main.object.BeanEvent)
+     * br.com.odcontroler.main.view.bean.ViewBean#process(br.com.odcontroler.main.object.BeanEvent)
      */
     void process();
 
@@ -87,7 +87,7 @@ public interface ViewListener<T> {
      * Metodo padrão para limpar a tela
      *
      * @see
-     * br.com.rpgruler.main.view.bean.ViewBean#clear(br.com.rpgruler.main.object.BeanEvent)
+     * br.com.odcontroler.main.view.bean.ViewBean#clear(br.com.odcontroler.main.object.BeanEvent)
      */
     void clear();
 
@@ -95,7 +95,7 @@ public interface ViewListener<T> {
      * Metodo padrão para carregar a tela
      *
      * @see
-     * br.com.rpgruler.main.view.bean.ViewBean#load(br.com.rpgruler.main.object.BeanEvent)
+     * br.com.odcontroler.main.view.bean.ViewBean#load(br.com.odcontroler.main.object.BeanEvent)
      */
     void load();
 

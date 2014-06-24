@@ -18,7 +18,7 @@ public class ViewBean<T> implements BeanListener<T> {
      * Cria nova instancia de DefaultViewBean
      *
      * @param view <code>DefaultView</code> View do bean
-     * @see br.com.rpgruler.main.view.View
+     * @see br.com.odcontroler.main.view.View
      */
     public ViewBean(T view) {
         this.view = view;
