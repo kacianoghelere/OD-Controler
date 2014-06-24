@@ -1,4 +1,4 @@
-RpgRuler
-========
+OD-Controler
+============
 
-Simulador de propriedades para aventuras de Rpg
+Software de controle para Old Dragon RPG
