@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="RpgRuler" id="Project9230002" database="HSql" >
+    <comment>Banco de dados para o RpgRuler</comment>
+    <schema name="PUBLIC" catalogname="PUBLIC" schemaname="PUBLIC" defo="y" >
+        <table name="CHAR_CLASS" >
+            <column name="ID" type="integer" length="32" decimal="0" jt="4" mandatory="y" />
+            <column name="BONUS_HP" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="BONUS_STR" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="BONUS_DEX" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="BONUS_RES" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="BONUS_WIS" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="BONUS_LUC" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="ID_PERK" type="integer" jt="4" />
+            <index name="PK_CHAR_CLASS" unique="PRIMARY_KEY" >
+                <column name="ID" />
+            </index>
+            <index name="SYS_IDX_PK_CHAR_CLASS_3_10353" unique="UNIQUE" >
+                <column name="ID_PERK" />
+            </index>
+            <fk name="FK_CHAR_CLASS" to_schema="PUBLIC" to_table="PLAYER_CHAR" >
+                <fk_column name="ID" pk="ID_CLASS" />
+            </fk>
+        </table>
+        <table name="CHAR_RACE" >
+            <column name="ID" type="integer" length="32" decimal="0" jt="4" mandatory="y" />
+            <column name="BONUS_HP" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="BONUS_STR" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="BONUS_DEX" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="BONUS_RES" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="BONUS_WIS" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="BONUS_LUC" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="ID_PERK" type="integer" jt="4" />
+            <index name="PK_CHAR_CLASS_1" unique="PRIMARY_KEY" >
+                <column name="ID" />
+            </index>
+            <index name="SYS_IDX_PK_CHAR_RACE_10335" unique="UNIQUE" >
+                <column name="ID_PERK" />
+            </index>
+            <fk name="FK_CHAR_RACE" to_schema="PUBLIC" to_table="PLAYER_CHAR" >
+                <fk_column name="ID" pk="ID_RACE" />
+            </fk>
+        </table>
+        <table name="EFFECT" generator_rows="100" >
+            <column name="ID" type="integer" length="32" decimal="0" jt="4" mandatory="y" />
+            <column name="TITLE" type="varchar" length="64" jt="12" />
+            <column name="EFFECT_TYPE" type="varchar" length="1" jt="12" mandatory="y" >
+                <defo>&#039;+&#039;</defo>
+            </column>
+            <column name="PROPORTION" type="decimal" length="128" decimal="0" jt="3" mandatory="y" >
+                <defo>0</defo>
+            </column>
+            <index name="PK_EFFECT" unique="PRIMARY_KEY" >
+                <column name="ID" />
+            </index>
+            <fk name="FK_EFFECT_EXPERTISE" to_schema="PUBLIC" to_table="EXPERTISE" >
+                <fk_column name="ID" pk="ID_EFFECT" />
+            </fk>
+            <fk name="FK_EFFECT_STATUS" to_schema="PUBLIC" to_table="STATUS" >
+                <fk_column name="ID" pk="ID_EFFECT" />
+            </fk>
+            <fk name="FK_EFFECT_PERK_TYPE" to_schema="PUBLIC" to_table="PERK_TYPE" >
+                <fk_column name="ID" pk="ID_EFFECT" />
+            </fk>
+        </table>
+        <table name="ELEMENT" >
+            <column name="ID" type="integer" length="32" decimal="0" jt="4" mandatory="y" />
+            <column name="TITLE" type="varchar" length="64" jt="12" />
+            <column name="ICON" type="varchar" length="128" jt="12" />
+            <index name="PK_ELEMENT" unique="PRIMARY_KEY" >
+                <column name="ID" />
+            </index>
+        </table>
+        <table name="ENEMY_CLASS" >
+            <column name="ID" type="integer" length="32" decimal="0" jt="4" mandatory="y" />
+            <column name="BONUS_HP" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="BONUS_STR" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="BONUS_DEX" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="BONUS_RES" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="BONUS_WIS" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="BONUS_LUC" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <index name="PK_CHAR_CLASS_0" unique="PRIMARY_KEY" >
+                <column name="ID" />
+            </index>
+        </table>
+        <table name="ENEMY_RACE" >
+            <column name="ID" type="integer" length="32" decimal="0" jt="4" mandatory="y" />
+            <column name="BONUS_HP" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="BONUS_STR" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="BONUS_DEX" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="BONUS_RES" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="BONUS_WIS" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="BONUS_LUC" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <index name="PK_CHAR_CLASS_2" unique="PRIMARY_KEY" >
+                <column name="ID" />
+            </index>
+        </table>
+        <table name="EXPERTISE" >
+            <comment>Pericias dos personagens		</comment>
+            <column name="ID" type="integer" length="32" decimal="0" jt="4" mandatory="y" />
+            <column name="TITLE" type="varchar" length="64" jt="12" />
+            <column name="ID_EFFECT" type="integer" jt="4" />
+            <index name="PK_EXPERTISE" unique="PRIMARY_KEY" >
+                <column name="ID" />
+            </index>
+            <index name="SYS_IDX_PK_EXPERTISE_0_10142" unique="UNIQUE" >
+                <column name="ID_EFFECT" />
+            </index>
+        </table>
+        <table name="PERK" >
+            <column name="ID" type="integer" length="32" decimal="0" jt="4" mandatory="y" />
+            <column name="TITLE" type="varchar" length="64" jt="12" />
+            <column name="DESCRIPTION" type="varchar" length="255" jt="12" />
+            <column name="INHERITED" type="boolean" jt="16" >
+                <defo>TRUE</defo>
+            </column>
+            <column name="ID_TYPE" type="integer" jt="4" />
+            <index name="PK_PERK" unique="PRIMARY_KEY" >
+                <column name="ID" />
+            </index>
+            <fk name="FK_PERK" to_schema="PUBLIC" to_table="CHAR_RACE" >
+                <fk_column name="ID" pk="ID_PERK" />
+            </fk>
+            <fk name="FK_PERK_0" to_schema="PUBLIC" to_table="CHAR_CLASS" >
+                <fk_column name="ID" pk="ID_PERK" />
+            </fk>
+        </table>
+        <table name="PERK_TYPE" >
+            <column name="ID" type="integer" length="32" decimal="0" jt="4" mandatory="y" />
+            <column name="TITLE" type="integer" jt="4" />
+            <column name="ID_EFFECT" type="integer" jt="4" />
+            <index name="PK_PERK_TYPE" unique="PRIMARY_KEY" >
+                <column name="ID" />
+            </index>
+            <index name="SYS_IDX_PK_PERK_TYPE_0_10157" unique="UNIQUE" >
+                <column name="ID_EFFECT" />
+            </index>
+        </table>
+        <table name="PLAYER_CHAR" >
+            <column name="ID" type="integer" length="32" decimal="0" jt="4" mandatory="y" />
+            <column name="CHAR_NAME" type="varchar" length="100" jt="12" />
+            <column name="PLAYER_NAME" type="varchar" length="100" jt="12" />
+            <column name="AGE" type="integer" jt="4" />
+            <column name="SEX" type="varchar" length="1" jt="12" mandatory="y" >
+                <defo>&#039;M&#039;</defo>
+            </column>
+            <column name="HEIGHT" type="smallint" jt="5" />
+            <column name="WEIGTH" type="smallint" jt="5" />
+            <column name="ID_CLASS" type="integer" jt="4" />
+            <column name="ID_RACE" type="integer" jt="4" />
+            <index name="PK_PLAYER_CHAR" unique="PRIMARY_KEY" >
+                <column name="ID" />
+            </index>
+            <index name="SYS_IDX_PK_PLAYER_CHAR_1_10274" unique="UNIQUE" >
+                <column name="ID_CLASS" />
+            </index>
+            <index name="SYS_IDX_PK_PLAYER_CHAR_2_10301" unique="UNIQUE" >
+                <column name="ID_RACE" />
+            </index>
+            <fk name="FK_PLAYER_CHAR" to_schema="PUBLIC" to_table="PLAYER_CHAR_INFO" >
+                <fk_column name="ID" pk="ID_PLAYER_CHAR" />
+            </fk>
+        </table>
+        <table name="PLAYER_CHAR_INFO" >
+            <column name="ID" type="integer" length="32" decimal="0" jt="4" mandatory="y" />
+            <column name="ID_PLAYER_CHAR" type="integer" jt="4" />
+            <column name="STRENGTH" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="DEXTERITY" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="RESISTANCE" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="WISDOM" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="LUCKY" type="double" jt="8" mandatory="y" >
+                <defo>0.0E0</defo>
+            </column>
+            <column name="LEVEL" type="integer" jt="4" />
+            <column name="ID_ACTIVE" type="boolean" jt="16" >
+                <defo>TRUE</defo>
+            </column>
+            <index name="PK_PLAYER_CHAR_0" unique="PRIMARY_KEY" >
+                <column name="ID" />
+            </index>
+            <index name="SYS_IDX_PK_PLAYER_CHAR_INFO_10171" unique="UNIQUE" >
+                <column name="ID_PLAYER_CHAR" />
+            </index>
+        </table>
+        <table name="STATUS" >
+            <column name="ID" type="integer" length="32" decimal="0" jt="4" mandatory="y" />
+            <column name="TITLE" type="varchar" length="64" jt="12" />
+            <column name="ICON" type="varchar" length="128" jt="12" />
+            <column name="ID_EFFECT" type="integer" jt="4" />
+            <index name="PK_STATUS" unique="PRIMARY_KEY" >
+                <column name="ID" />
+            </index>
+            <index name="SYS_IDX_PK_STATUS_0_10150" unique="UNIQUE" >
+                <column name="ID_EFFECT" />
+            </index>
+        </table>
+    </schema>
+    <schema name="RPGRULER" schemaname="RPGRULER" defo="y" />
+    <connector name="HSql" database="HSql" driver_class="org.hsqldb.jdbc.JDBCDriver" driver_jar="hsqldb.jar" host="localhost" port="9001" instance="/home/kaciano/.RPG/rpgdb.properties" schema_mapping="" />
+    <layout id="Layout9230004" name="RpgRuler" joined_routing="y" show_column_type="y" show_relation_columns="y" >
+        <entity schema="PUBLIC" name="EXPERTISE" color="b2cdf7" x="540" y="510" />
+        <entity schema="PUBLIC" name="EFFECT" color="f7b4b2" x="300" y="510" />
+        <entity schema="PUBLIC" name="STATUS" color="b2cdf7" x="735" y="510" />
+        <entity schema="PUBLIC" name="PLAYER_CHAR_INFO" color="0db801" x="540" y="270" />
+        <entity schema="PUBLIC" name="PERK_TYPE" color="b2cdf7" x="345" y="360" />
+        <entity schema="PUBLIC" name="PLAYER_CHAR" color="b2cdf7" x="45" y="510" />
+        <entity schema="PUBLIC" name="ENEMY_CLASS" color="b2cdf7" x="540" y="675" />
+        <entity schema="PUBLIC" name="ENEMY_RACE" color="b2cdf7" x="90" y="300" />
+        <entity schema="PUBLIC" name="ELEMENT" color="b2cdf7" x="300" y="675" />
+        <entity schema="PUBLIC" name="CHAR_CLASS" color="b2cdf7" x="930" y="510" />
+        <entity schema="PUBLIC" name="PERK" color="b2cdf7" x="930" y="330" />
+        <entity schema="PUBLIC" name="CHAR_RACE" color="b2cdf7" x="540" y="45" />
+        <script name="FK_EFFECT_PERK_TYPE" id="SQL1403648" confirmed="y" >
+            <string><![CDATA[SELECT * 
+FROM
+	PUBLIC.PERK_TYPE E
+	INNER JOIN PUBLIC.EFFECT T ON ( T.ID = E.ID ) ;]]></string>
+        </script>
+        <browser id="Browse2886230" name="EFFECT" >
+            <browse_table schema="PUBLIC" entity="EFFECT" x="10" y="10" width="455" height="350" record_view="y" />
+        </browser>
+        <browser id="Browse2846746" name="PERK_TYPE" >
+            <browse_table schema="PUBLIC" entity="PERK_TYPE" x="10" y="10" width="455" height="350" />
+        </browser>
+    </layout>
+</project>
