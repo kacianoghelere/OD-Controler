@@ -23,6 +23,17 @@ public class AttrRange {
     }
 
     /**
+     * Cria nova instancia de AttrRange
+     *
+     * @param range <code>String</code> Valor em String da faixa
+     */
+    public AttrRange(String range) {
+        String[] split = range.split("-");
+        this.initRange = Integer.parseInt(split[0]);
+        this.endRange = Integer.parseInt(split[1]);
+    }
+
+    /**
      * Verifica se o valor recebido está na faixa
      *
      * @param value <code>int</code> Valor verificado

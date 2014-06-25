@@ -1,6 +1,7 @@
 package br.com.odcontroler.datatables.intel;
 
 import br.com.odcontroler.data.entity.AttrRange;
+import java.util.Arrays;
 
 /**
  * Objeto de dados para preenchimento da tabela de modificadores de inteligencia
@@ -12,8 +13,8 @@ public class IntData {
 
     private AttrRange range;
     private int languages;
-    private Double learnMagic;
-    private int[] aditMagics = new int[9];
+    private int learnMagic;
+    private int[] additSpells = new int[9];
 
     /**
      * Cria nova instancia de IntData
@@ -27,12 +28,26 @@ public class IntData {
      *
      * @param range <code>AttrRange</code> Faixa de valores
      * @param languages <code>int</code> Idiomas adicionais
-     * @param learnMagic <code>Double</code> Porcentagem de aprender magica
+     * @param learnMagic <code>int</code> Porcentagem de aprender magica
      */
-    public IntData(AttrRange range, int languages, Double learnMagic) {
+    public IntData(AttrRange range, int languages, int learnMagic) {
         this.range = range;
         this.languages = languages;
         this.learnMagic = learnMagic;
+    }
+    /**
+     * Cria nova instancia de IntData
+     *
+     * @param range <code>AttrRange</code> Faixa de valores
+     * @param languages <code>int</code> Idiomas adicionais
+     * @param learnMagic <code>int</code> Porcentagem de aprender magica
+     * @param aditMagics <code>int[]</code> Magias adicionais
+     */
+    public IntData(AttrRange range, int languages, int learnMagic, int[] aditMagics) {
+        this.range = range;
+        this.languages = languages;
+        this.learnMagic = learnMagic;
+        this.additSpells = aditMagics;
     }
 
     /**
@@ -41,12 +56,21 @@ public class IntData {
      * @param init <code>int</code> Inicio da faixa
      * @param end <code>int</code> Fim da faixa
      * @param languages <code>int</code> Idiomas adicionais
-     * @param learnMagic <code>Double</code> Porcentagem de aprender magica
+     * @param learnMagic <code>int</code> Porcentagem de aprender magica
      */
-    public IntData(int init, int end, int languages, Double learnMagic) {
+    public IntData(int init, int end, int languages, int learnMagic) {
         this.range = new AttrRange(init, end);
         this.languages = languages;
         this.learnMagic = learnMagic;
+    }
+
+    @Override
+    public String toString() {
+        return "IntData{"
+                + range + ", "
+                + "languages: " + languages + ", "
+                + "learnMagic: " + learnMagic + ", "
+                + "additSpells: " + Arrays.toString(additSpells) + '}';
     }
 
     /**
@@ -88,18 +112,18 @@ public class IntData {
     /**
      * Retorna a porcentagem de aprender magica
      *
-     * @return <code>Double</code> Porcentagem de aprender magica
+     * @return <code>int</code> Porcentagem de aprender magica
      */
-    public Double getLearnMagic() {
+    public int getLearnMagic() {
         return learnMagic;
     }
 
     /**
      * Modifica a porcentagem de aprender magica
      *
-     * @param learnMagic <code>Double</code> Porcentagem de aprender magica
+     * @param learnMagic <code>int</code> Porcentagem de aprender magica
      */
-    public void setLearnMagic(Double learnMagic) {
+    public void setLearnMagic(int learnMagic) {
         this.learnMagic = learnMagic;
     }
 
@@ -108,17 +132,17 @@ public class IntData {
      *
      * @return <code>int[]</code> Magias adicionais
      */
-    public int[] getAditMagics() {
-        return aditMagics;
+    public int[] getAdditSpells() {
+        return additSpells;
     }
 
     /**
      * Modifica as magias adicionais
      *
-     * @param aditMagics <code>int[]</code> Magias adicionais
+     * @param additSpells <code>int[]</code> Magias adicionais
      */
-    public void setAditMagics(int[] aditMagics) {
-        this.aditMagics = aditMagics;
+    public void setAdditSpells(int[] additSpells) {
+        this.additSpells = additSpells;
     }
 
 }

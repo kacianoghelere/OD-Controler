@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class StrValues {
 
-    private List<StrData> strValues;
+    private final List<StrData> strValues;
 
     /**
      * Cria nova instancia de StrValues
