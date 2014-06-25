@@ -33,9 +33,9 @@ public enum AttrEnum implements Attr {
      */
     CAR(6L, "Carisma", "CAR");
 
-    private Long id;
-    private String title;
-    private String shortTitle;
+    private final Long id;
+    private final String title;
+    private final String shortTitle;
 
     /**
      * Cria nova instancia de AttrEnumeration
