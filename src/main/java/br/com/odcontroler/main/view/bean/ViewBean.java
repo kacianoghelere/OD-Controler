@@ -1,7 +1,9 @@
 package br.com.odcontroler.main.view.bean;
 
 import br.com.odcontroler.main.object.BeanEvent;
+import br.com.odcontroler.main.view.View;
 import br.com.odcontroler.main.view.interfaces.BeanListener;
+import java.util.logging.Logger;
 
 /**
  * Bean padrão para implementação de ViewBeans
@@ -12,6 +14,7 @@ import br.com.odcontroler.main.view.interfaces.BeanListener;
  */
 public class ViewBean<T> implements BeanListener<T> {
 
+    protected static final Logger LOG = Logger.getLogger(View.class.getName());
     private final T view;
 
     /**

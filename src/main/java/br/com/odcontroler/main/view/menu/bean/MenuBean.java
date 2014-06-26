@@ -21,7 +21,7 @@ import javax.swing.ImageIcon;
  */
 public class MenuBean extends ViewBean<MenuView> {
 
-    private MenuDAO dao;
+    private final MenuDAO dao;
 
     /**
      * Cria nova instancia de MenuBean

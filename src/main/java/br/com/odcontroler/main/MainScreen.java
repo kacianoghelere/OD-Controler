@@ -30,6 +30,7 @@ import javax.swing.JMenu;
  */
 public class MainScreen extends javax.swing.JFrame implements Main {
 
+    protected static final Logger LOG = Logger.getLogger(MainScreen.class.getName());
     private final String ICON = "/dices/d12-icon.png";
     private MainListener listener;
     private Injector injector;
@@ -67,7 +68,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
             builder.setRoot(jMRoot);
             builder.build();
         } catch (ClassNotFoundException | InstantiationException ex) {
-            Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.log(Level.SEVERE, null, ex);
         }
     }
 
@@ -566,7 +567,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     }//GEN-LAST:event_jMIViewsActionPerformed
 
     private void gTViewKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTViewKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {    
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             boolean searchView = listener.searchView(gTView.getText());
             if (searchView) {
                 printTypedMsg("View sendo carregada!", MainScreen.INFORMATIVE_MSG);

@@ -26,6 +26,7 @@ import javax.swing.JInternalFrame;
  */
 public class MainScreenBean implements MainListener {
 
+    protected static final Logger LOG = Logger.getLogger(MainScreenBean.class.getName());
     private View actualView;
     private MainScreen screen;
     private Map<String, MenuItem> viewMap;
@@ -128,7 +129,7 @@ public class MainScreenBean implements MainListener {
                     insertView(newView);
                     found = true;
                 } catch (ClassNotFoundException | InstantiationException ex) {
-                    Logger.getLogger(MainScreenBean.class.getName()).log(Level.SEVERE, null, ex);
+                    LOG.log(Level.SEVERE, null, ex);
                 }
                 break;
             }
@@ -153,8 +154,7 @@ public class MainScreenBean implements MainListener {
                         JInternalFrame jif = (JInternalFrame) c;
                         jif.setSelected(false);
                     } catch (PropertyVetoException ex) {
-                        Logger.getLogger(MainScreenBean.class.getName())
-                                .log(Level.SEVERE, null, ex);
+                        LOG.log(Level.SEVERE, null, ex);
                     }
                 }
             }
@@ -165,7 +165,7 @@ public class MainScreenBean implements MainListener {
                 screen.getDesktop().setSelectedFrame(view);
                 view.setSelected(true);
             } catch (PropertyVetoException ex) {
-                Logger.getLogger(MainScreenBean.class.getName()).log(Level.SEVERE, null, ex);
+                LOG.log(Level.SEVERE, null, ex);
             }
         } else {
             screen.printTypedMsg("View já carregada!", Main.INFORMATIVE_MSG);

@@ -19,7 +19,6 @@ import br.com.odcontroler.main.view.menu.model.MenuModel;
 import br.com.odcontroler.main.view.object.ViewParameter;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JMenu;
 import javax.swing.SwingUtilities;
@@ -100,8 +99,7 @@ public class MenuView extends View implements TableSource<Menu>, TableView {
                     model.remove(gTable.getSelectedRows());
                 }
             } catch (NumberFormatException e) {
-                Logger.getLogger(MenuView.class.getName())
-                        .log(Level.SEVERE, null, e);
+                LOG.log(Level.SEVERE, null, e);
             }
         }
     }
@@ -122,7 +120,7 @@ public class MenuView extends View implements TableSource<Menu>, TableView {
     }
 
     @Override
-    public BeanListener getBean() {
+    public MenuBean getBean() {
         return this.bean;
     }
 
