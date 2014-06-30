@@ -17,6 +17,7 @@ import com.google.inject.Injector;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -179,34 +180,91 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     }
 
     /**
+     * <html>
      * Imprime uma mensagem na barra de mensagens <br><br>
-     * Tipo de mensagem : Variavel utilizada<br>
-     * Mensagem de questionamento : MainScreen.QUESTION_ICON<br>
-     * Mensagem informativa : MainScreen.INFORMATIVE_ICON<br>
-     * Mensagem de aviso : MainScreen.WARNING_ICON<br>
-     * Mensagem de erro : MainScreen.ERROR_ICON<br>
-     * Mensagem de sucesso : MainScreen.SUCCESS_ICON<br>
+     * <table border="1">
+     * <thead>
+     * <tr>
+     * <th>Tipo de mensagem</th>
+     * <th>Variavel</th>
+     * </tr>
+     * </thead>
+     * <tbody>
+     * <tr>
+     * <td>Mensagem informativa</td>
+     * <td>MainScreen.QUESTION_ICON</td>
+     * </tr>
+     * <tr>
+     * <td>Mensagem de questionamento</td>
+     * <td>MainScreen.INFORMATIVE_ICON</td>
+     * </tr>
+     * <tr>
+     * <td>Mensagem de aviso</td>
+     * <td>MainScreen.WARNING_ICON</td>
+     * </tr>
+     * <tr>
+     * <td>Mensagem de erro</td>
+     * <td>MainScreen.ERROR_ICON</td>
+     * </tr>
+     * <tr>
+     * <td>Mensagem de sucesso</td>
+     * <td>MainScreen.SUCCESS_ICON</td>
+     * </tr>
+     * </tbody>
+     * </table>
      *
      * @param text {@code String} Texto à ser impresso
      * @param icon {@code String} Icone de tipo para a mensagem
+     * </html>
      */
     private void printMsg(String text, String icon) {
         ImageIcon ic = new javax.swing.ImageIcon(getClass().getResource(icon));
         this.jLMsgs.setText(text);
         this.jLMsgs.setIcon(ic);
+        try {
+            getListener().appendLog(text);
+        } catch (IOException ex) {
+            LOG.log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
+     * <html>
      * Imprime uma mensagem na barra de mensagens<br><br>
-     * Tipo de mensagem : Mensagem<br>
-     * Mensagem informativa : 1 <br>
-     * Mensagem de questionamento : 2<br>
-     * Mensagem de aviso : 3<br>
-     * Mensagem de erro : 4<br>
-     * Mensagem de sucesso : 5<br>
+     * <table border="1">
+     * <thead>
+     * <tr>
+     * <th>Tipo de mensagem</th>
+     * <th>Mensagem</th>
+     * </tr>
+     * </thead>
+     * <tbody>
+     * <tr>
+     * <td>Mensagem informativa</td>
+     * <td>1</td>
+     * </tr>
+     * <tr>
+     * <td>Mensagem de questionamento</td>
+     * <td>2</td>
+     * </tr>
+     * <tr>
+     * <td>Mensagem de aviso</td>
+     * <td>3</td>
+     * </tr>
+     * <tr>
+     * <td>Mensagem de erro</td>
+     * <td>4</td>
+     * </tr>
+     * <tr>
+     * <td>Mensagem de sucesso</td>
+     * <td>5</td>
+     * </tr>
+     * </tbody>
+     * </table>
      *
      * @param text {@code String} Texto à ser impresso
      * @param type {@code int} Tipo da mensagem
+     * </html>
      */
     @Intercept
     public void printTypedMsg(String text, int type) {

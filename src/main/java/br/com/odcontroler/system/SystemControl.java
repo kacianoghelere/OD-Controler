@@ -6,6 +6,7 @@ import br.com.gmp.utils.system.SystemProperties;
 import br.com.odcontroler.main.MainScreen;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import java.io.File;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,6 +31,11 @@ public class SystemControl {
                 + "\nUsuário: " + SystemProperties.USER_NAME.toUpperCase()
                 + "\nPasta principal: " + SystemProperties.USER_HOME
                 + "\n-------------------------------------------------\n");
+        File dir = new File("logs");
+        if (!dir.exists()) {
+            dir.mkdir();
+            System.out.println("Diretório de logs criado em " + dir.getPath());
+        }
     }
 
     /**

@@ -16,6 +16,7 @@ import br.com.odcontroler.main.view.interfaces.ViewListener;
 import br.com.odcontroler.main.view.object.ViewParameter;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractAction;
@@ -216,6 +217,11 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     protected void throwException(ViewException ex) {
         LOG.log(Level.SEVERE, null, ex);
         this.showMessage(ex.getView() + ":" + ex.getMessage(), MainScreen.ERROR_MSG);
+        try {
+            mainScreen.getListener().appendLog(ex.getMessage());
+        } catch (IOException ex1) {
+            LOG.log(Level.SEVERE, null, ex1);
+        }        
     }
 
     /**

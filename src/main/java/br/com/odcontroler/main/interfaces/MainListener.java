@@ -4,6 +4,7 @@ import br.com.odcontroler.data.entity.MenuItem;
 import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.View;
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -95,4 +96,12 @@ public interface MainListener {
      * @return {@code Boolean} A view foi encontrada?
      */
     Boolean searchView(String prefix);
+
+    /**
+     * Adiciona o texto recebido no Log atual
+     *
+     * @param logData {@code String} Texto à ser adicionado
+     * @throws java.io.IOException Exceção de I/O
+     */
+    void appendLog(String logData) throws IOException;
 }

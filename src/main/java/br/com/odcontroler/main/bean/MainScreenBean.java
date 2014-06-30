@@ -1,6 +1,7 @@
 package br.com.odcontroler.main.bean;
 
 import br.com.gmp.utils.annotations.Intercept;
+import br.com.gmp.utils.date.DateUtil;
 import br.com.gmp.utils.reflection.ObjectInstance;
 import br.com.gmp.utils.reflection.ReflectionUtil;
 import br.com.odcontroler.data.entity.MenuItem;
@@ -12,6 +13,9 @@ import br.com.odcontroler.main.view.View;
 import br.com.odcontroler.main.view.object.ViewParameter;
 import java.awt.Component;
 import java.beans.PropertyVetoException;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -30,6 +34,8 @@ public class MainScreenBean implements MainListener {
     private View actualView;
     private MainScreen screen;
     private Map<String, MenuItem> viewMap;
+    private File dir;
+    private File log;
 
     /**
      * Cria nova instancia de MainScreenBean
@@ -37,6 +43,11 @@ public class MainScreenBean implements MainListener {
     public MainScreenBean() {
         this.screen = null;
         this.initialize();
+        try {
+            startLog();
+        } catch (IOException ex) {
+            LOG.log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -190,6 +201,32 @@ public class MainScreenBean implements MainListener {
             }
         }
         return indesktop;
+    }
+
+    /**
+     * Inicia as pastas e o arquivo de log
+     *
+     * @throws IOException Exceção de I/O
+     */
+    private void startLog() throws IOException {
+        String dirName = new DateUtil().getFormattedDate(DateUtil.NOW, DateUtil.DATE);
+        dir = new File("logs/" + dirName);
+        if (!dir.exists()) {
+            dir.mkdir();
+        }
+        String logName = new DateUtil().getFormattedDate(DateUtil.NOW, DateUtil.TXTDATE);
+        log = new File(dir.getPath() + "/" + logName + ".log");
+        if (!log.exists()) {
+            log.createNewFile();
+            appendLog(logName);
+        }
+    }
+
+    @Override
+    public void appendLog(String logData) throws IOException {
+        try (FileWriter fw = new FileWriter(this.log, true)) {
+            fw.write(logData + "\n");
+        }
     }
 
     /**
