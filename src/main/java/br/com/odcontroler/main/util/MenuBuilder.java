@@ -38,6 +38,8 @@ public class MenuBuilder {
     private JMenu root;
     private MenuDAO menuDAO;
     private MenuItemDAO viewDAO;
+    private ReflectionUtil reflect = new ReflectionUtil();
+    private Logger LOG = Logger.getLogger(MenuBuilder.class.getName());
 
     /**
      * Cria nova instancia de MenuBuilder
@@ -129,10 +131,13 @@ public class MenuBuilder {
      * @param menu {@code Menu} Menu à ser inserido
      */
     private void recursiveMenus(JMenu parent, Menu menu) {
+        JMenu jmenu = null;
+        String sub = null;
+        Long menuid = null;
         for (Component comp : parent.getMenuComponents()) {
-            JMenu jmenu = (JMenu) comp;
-            String sub = jmenu.getText().split("-")[0].trim().substring(1);
-            Long menuid = Long.parseLong(sub);
+            jmenu = (JMenu) comp;
+            sub = jmenu.getText().split("-")[0].trim().substring(1);
+            menuid = Long.parseLong(sub);
             if (menu.getParent().equals(menuid)) {
                 System.out.println("(INFO) Inserindo em: " + jmenu.getText());
                 insertMenu(jmenu, menu);
@@ -172,10 +177,13 @@ public class MenuBuilder {
      * @throws java.lang.InstantiationException Exceção de instanciamento
      */
     public void recursiveItems(JMenu jmenu, MenuItem item, boolean execute) throws ClassNotFoundException, InstantiationException {
+        JMenu menu = null;
+        String prefix = null;
+        Long menuid = null;
         for (Component comp : jmenu.getMenuComponents()) {
-            JMenu menu = (JMenu) comp;
-            String prefix = menu.getText().split("-")[0].trim().substring(1);
-            Long menuid = Long.parseLong(prefix);
+            menu = (JMenu) comp;
+            prefix = menu.getText().split("-")[0].trim().substring(1);
+            menuid = Long.parseLong(prefix);
             if (item.getMenu().equals(menuid)) {
                 insertItem(menu, item, execute);
                 break;
@@ -227,11 +235,10 @@ public class MenuBuilder {
         item.setText(view.toString());
         item.setIcon(new ImageIcon(getClass().getResource(view.getIcon())));
         if (execute) {
-            final ReflectionUtil reflect = new ReflectionUtil();
-            Class<?> objClass = Class.forName(view.getViewClass());
-            Class<?>[] argTypes = new Class[]{MainScreen.class};
-            Object[] arguments = new Object[]{mainScreen};
-            final ObjectInstance inst = new ObjectInstance(objClass, argTypes, arguments);
+            final ObjectInstance instance;
+            instance = new ObjectInstance(Class.forName(view.getViewClass()),
+                    new Class[]{MainScreen.class},
+                    new Object[]{mainScreen});
             Map<String, MenuItem> viewMap = mainScreen.getListener().getViewMap();
             viewMap.put(view.toString().split("-")[0].trim(), view);
             item.addActionListener(new ActionListener() {
@@ -239,10 +246,12 @@ public class MenuBuilder {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
-                        View newView = (View) reflect.newInstance(inst);
+                        View newView = (View) reflect.newInstance(instance);
+                        newView.setTitle(view.toString());
                         mainScreen.getListener().insertView(newView);
                     } catch (InstantiationException ex) {
-                        Logger.getLogger(MenuBuilder.class.getName()).log(Level.SEVERE, null, ex);
+                        LOG.log(Level.SEVERE,
+                                "Instantiation Exception on #generateItem", ex);
                     }
                 }
             });

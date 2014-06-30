@@ -10,6 +10,7 @@ import br.com.odcontroler.main.actions.CommitAction;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.util.Description;
 import br.com.odcontroler.main.view.dialog.DescriptionDialog;
+import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.interfaces.BeanListener;
 import br.com.odcontroler.main.view.interfaces.ViewListener;
 import br.com.odcontroler.main.view.object.ViewParameter;
@@ -87,8 +88,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     /**
      * Modifica os controles da view
      *
-     * @param param {@code ViewParameter} Parametro para carregamento de
-     * views
+     * @param param {@code ViewParameter} Parametro para carregamento de views
      */
     public void setControls(ViewParameter param) {
         this.canSave = param.isSave();
@@ -132,76 +132,6 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
         DescriptionDialog desc = new DescriptionDialog(this, getDescription().format());
     }
 
-    /**
-     * Classe privada para uso da descrição
-     */
-    private class DescribeAction extends AbstractAction {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            try {
-                describe();
-            } catch (Exception ex) {
-                throwException(ex);
-            }
-        }
-
-    }
-
-    /**
-     * Instrução padrão para retorno de parametros da View
-     *
-     * @return {@code Object} Parametro
-     */
-    public Object getParameter() {
-        return parameter;
-    }
-
-    /**
-     * Instrução padrão para modificar parametros da View
-     *
-     * @param parameter {@code Object} Parametro
-     */
-    public void setParameter(Object parameter) {
-        this.parameter = parameter;
-    }
-
-    /**
-     * Retorna a descrição da tela
-     *
-     * @return {@code Description} Descrição da tela
-     */
-    public Description getDescription() {
-        return description;
-    }
-
-    /**
-     * Modifica a descrição da tela
-     *
-     * @param description {@code Description} Descrição da tela
-     */
-    public void setDescription(Description description) {
-        this.description = description;
-    }
-
-    /**
-     * Retorna a sigla da View
-     *
-     * @return {@code String} Sigla da View
-     */
-    public String getAlias() {
-        return alias;
-    }
-
-    /**
-     * Modifica a sigla da View
-     *
-     * @param alias {@code String} Sigla da View
-     */
-    public void setAlias(String alias) {
-        this.alias = alias;
-    }
-
     @Override
     public void commit() {
         try {
@@ -212,12 +142,12 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
                         getBean().commit(new BeanEvent(View.this, null));
                         showMessage("Dados salvos.", MainScreen.SUCCESS_MSG);
                     } catch (Exception ex) {
-                        throwException(ex);
+                        throwException(new ViewException(View.this, "Commit error", ex));
                     }
                 }
             }.start();
         } catch (Exception ex) {
-            throwException(ex);
+            throwException(new ViewException(this, "Commit error", ex));
         }
     }
 
@@ -231,12 +161,12 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
                         getBean().process(new BeanEvent(View.this, null));
                         showMessage("Dados processados.", MainScreen.INFORMATIVE_MSG);
                     } catch (Exception ex) {
-                        throwException(ex);
+                        throwException(new ViewException(View.this, "Process error", ex));
                     }
                 }
             }.start();
         } catch (Exception ex) {
-            throwException(ex);
+            throwException(new ViewException(this, "Process error", ex));
         }
     }
 
@@ -250,12 +180,12 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
                         getBean().clear(new BeanEvent(View.this, null));
                         showMessage("Dados preenchidos removidos.", MainScreen.INFORMATIVE_MSG);
                     } catch (Exception ex) {
-                        throwException(ex);
+                        throwException(new ViewException(View.this, "Clear error", ex));
                     }
                 }
             }.start();
         } catch (Exception ex) {
-            throwException(ex);
+            throwException(new ViewException(View.this, "Clear error", ex));
         }
     }
 
@@ -269,23 +199,49 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
                         getBean().load(new BeanEvent(View.this, null));
                         showMessage("Dados carregados.", MainScreen.INFORMATIVE_MSG);
                     } catch (Exception ex) {
-                        throwException(ex);
+                        throwException(new ViewException(View.this, "Load error", ex));
                     }
                 }
             }.start();
         } catch (Exception ex) {
-            throwException(ex);
+            throwException(new ViewException(View.this, "Load error", ex));
         }
     }
 
     /**
      * Método padronizado para lançar exceções
      *
-     * @param ex {@code Exception} Exceção a ser lançada
+     * @param ex {@code ViewException} Exceção a ser lançada
      */
-    protected void throwException(Exception ex) {
+    protected void throwException(ViewException ex) {
         LOG.log(Level.SEVERE, null, ex);
-        this.showMessage(ex.getMessage(), MainScreen.ERROR_MSG);
+        this.showMessage(ex.getView() + ":" + ex.getMessage(), MainScreen.ERROR_MSG);
+    }
+
+    /**
+     * Classe privada para uso da descrição
+     */
+    private class DescribeAction extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                describe();
+            } catch (Exception ex) {
+                throwException(new ViewException(View.this, "Action error", ex));
+            }
+        }
+
+    }
+
+    /**
+     * Modifica o titulo da View aplicando a sigla juntamente ao titulo
+     *
+     * @param alias {@code String} Sigla da View
+     * @param title {@code String} Titulo da View
+     */
+    public void setTitle(String alias, String title) {
+        super.setTitle(alias + " - " + title);
     }
 
     @Override
@@ -347,7 +303,61 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     }
 
     /**
+     * Instrução padrão para retorno de parametros da View
      *
+     * @return {@code Object} Parametro
+     */
+    public Object getParameter() {
+        return parameter;
+    }
+
+    /**
+     * Instrução padrão para modificar parametros da View
+     *
+     * @param parameter {@code Object} Parametro
+     */
+    public void setParameter(Object parameter) {
+        this.parameter = parameter;
+    }
+
+    /**
+     * Retorna a descrição da tela
+     *
+     * @return {@code Description} Descrição da tela
+     */
+    public Description getDescription() {
+        return description;
+    }
+
+    /**
+     * Modifica a descrição da tela
+     *
+     * @param description {@code Description} Descrição da tela
+     */
+    public void setDescription(Description description) {
+        this.description = description;
+    }
+
+    /**
+     * Retorna a sigla da View
+     *
+     * @return {@code String} Sigla da View
+     */
+    public String getAlias() {
+        return alias;
+    }
+
+    /**
+     * Modifica a sigla da View
+     *
+     * @param alias {@code String} Sigla da View
+     */
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
+    /**
+     * Informações geradas automaticamente
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
