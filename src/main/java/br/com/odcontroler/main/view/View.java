@@ -369,9 +369,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setMinimumSize(new java.awt.Dimension(498, 394));
         setName(""); // NOI18N
-        setPreferredSize(new java.awt.Dimension(498, 394));
         setVisible(true);
     }// </editor-fold>//GEN-END:initComponents
 
