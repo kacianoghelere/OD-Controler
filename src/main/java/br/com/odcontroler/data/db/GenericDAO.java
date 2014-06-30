@@ -43,7 +43,7 @@ public class GenericDAO<T> implements DAO<T> {
     /**
      * Retorna a conexão com o banco de dados para buscas externas
      *
-     * @return <code>ObjectContainer</code> Conexão com o banco
+     * @return {@code ObjectContainer} Conexão com o banco
      */
     @Override
     public ObjectContainer getClient() {
@@ -53,7 +53,7 @@ public class GenericDAO<T> implements DAO<T> {
     /**
      * Busca todos os dados da entidade
      *
-     * @return <code>T</code> Entidade
+     * @return {@code T} Entidade
      */
     @Override
     public List<T> getList() {
@@ -74,7 +74,7 @@ public class GenericDAO<T> implements DAO<T> {
     /**
      * Insere a entidade no banco de dados
      *
-     * @param entity <code>T</code> Entidade
+     * @param entity {@code T} Entidade
      */
     @Override
     public void insert(T entity) {
@@ -87,7 +87,7 @@ public class GenericDAO<T> implements DAO<T> {
     /**
      * Insere as entidades no banco de dados
      *
-     * @param entities <code>List(T)</code> Entidades
+     * @param entities {@code List(T)} Entidades
      */
     @Override
     public void insertAll(List<T> entities) {
@@ -102,7 +102,7 @@ public class GenericDAO<T> implements DAO<T> {
     /**
      * Atualiza a entidade
      *
-     * @param entity <code>T</code> Entidade
+     * @param entity {@code T} Entidade
      * @throws java.lang.IllegalAccessException Acesso ilegal
      */
     @Override
@@ -118,7 +118,7 @@ public class GenericDAO<T> implements DAO<T> {
     /**
      * Deleta todos os objetos da lista
      *
-     * @param entities <code>List(T)</code> Lista a ser deletada
+     * @param entities {@code List(T)} Lista a ser deletada
      */
     @Override
     public void deleteAll(List<T> entities) {
@@ -148,7 +148,7 @@ public class GenericDAO<T> implements DAO<T> {
     /**
      * Deleta a entidade
      *
-     * @param entity <code>T</code> Entidade
+     * @param entity {@code T} Entidade
      */
     @Override
     public void delete(T entity) {
@@ -162,7 +162,7 @@ public class GenericDAO<T> implements DAO<T> {
     /**
      * Deleta todos os registros anteriores e insere os registros da lista
      *
-     * @param entities <code>List(T)</code> Lista dos novos registros
+     * @param entities {@code List(T)} Lista dos novos registros
      */
     @Override
     public void replaceAll(List<T> entities) {
@@ -173,8 +173,8 @@ public class GenericDAO<T> implements DAO<T> {
     /**
      * Retorna a entidade a partir do ID
      *
-     * @param id <code>Integer</code> ID
-     * @return <code>T</code> Entidade
+     * @param id {@code Integer} ID
+     * @return {@code T} Entidade
      */
     @Override
     public T queryByID(int id) {
@@ -199,9 +199,9 @@ public class GenericDAO<T> implements DAO<T> {
     /**
      * Efetua a busca com base no campo informado
      *
-     * @param field <code>String</code> Campo a ser verificado
-     * @param value <code>Object</code> Valor da busca
-     * @return <code>List(T)</code> Lista contendo o resultado
+     * @param field {@code String} Campo a ser verificado
+     * @param value {@code Object} Valor da busca
+     * @return {@code List(T)} Lista contendo o resultado
      */
     @Override
     public List<T> queryByField(String field, Object value) {
@@ -223,7 +223,7 @@ public class GenericDAO<T> implements DAO<T> {
     /**
      * Retorna a classe do objeto que aplica o DAO
      *
-     * @return <code>Class(?)</code> Classe do DAO
+     * @return {@code Class(?)} Classe do DAO
      */
     @Override
     public Class<T> getObjClass() {
@@ -233,7 +233,7 @@ public class GenericDAO<T> implements DAO<T> {
     /**
      * Modifica a classe do objeto que aplica o DAO
      *
-     * @param oClass <code>Class(?)</code> Classe do DAO
+     * @param oClass {@code Class(?)} Classe do DAO
      */
     @Override
     public void setObjClass(Class<T> oClass) {
@@ -243,7 +243,7 @@ public class GenericDAO<T> implements DAO<T> {
     /**
      * Retorna o prefixo da base de dados (Caminho do arquivo)
      *
-     * @return <code>String</code> Prefixo da base de dados
+     * @return {@code String} Prefixo da base de dados
      */
     @Override
     public String getDir() {
@@ -253,7 +253,7 @@ public class GenericDAO<T> implements DAO<T> {
     /**
      * Modifica o prefixo da base de dados (Caminho do arquivo)
      *
-     * @param dir <code>String</code> Prefixo da base de dados
+     * @param dir {@code String} Prefixo da base de dados
      */
     public void setDir(String dir) {
         this.dir = dir;
@@ -262,7 +262,7 @@ public class GenericDAO<T> implements DAO<T> {
     /**
      * Retorna o nome da base de dados
      *
-     * @return <code>String</code> Nome da base de dados
+     * @return {@code String} Nome da base de dados
      */
     @Override
     public String getDatabase() {
@@ -272,7 +272,7 @@ public class GenericDAO<T> implements DAO<T> {
     /**
      * Modifica o nome da base de dados
      *
-     * @param database <code>String</code> Nome da base de dados
+     * @param database {@code String} Nome da base de dados
      */
     @Override
     public void setDatabase(String database) {
@@ -282,7 +282,7 @@ public class GenericDAO<T> implements DAO<T> {
     /**
      * Retorna o sufixo da base de dados (Extensão do arquivo)
      *
-     * @return <code>String</code> sufixo da base de dados (Extensão do arquivo)
+     * @return {@code String} sufixo da base de dados (Extensão do arquivo)
      */
     @Override
     public String getSufix() {
@@ -292,7 +292,7 @@ public class GenericDAO<T> implements DAO<T> {
     /**
      * Modifica o sufixo da base de dados (Extensão do arquivo)
      *
-     * @param sufix <code>String</code> Sufixo da base de dados (Extensão do
+     * @param sufix {@code String} Sufixo da base de dados (Extensão do
      * arquivo)
      */
     public void setSufix(String sufix) {

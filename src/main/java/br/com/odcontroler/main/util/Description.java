@@ -62,12 +62,12 @@ public class Description {
     /**
      * Cria nova instancia de Description
      *
-     * @param title <code>String</code> Texto do titulo
-     * @param description <code>String</code> Texto da descrição
-     * @param save <code>String</code> Texto da função de salvar
-     * @param procces <code>String</code> Texto da função de processar
-     * @param clear <code>String</code> Texto da função de limpar
-     * @param load <code>String</code> Texto da função de carregar
+     * @param title {@code String} Texto do titulo
+     * @param description {@code String} Texto da descrição
+     * @param save {@code String} Texto da função de salvar
+     * @param procces {@code String} Texto da função de processar
+     * @param clear {@code String} Texto da função de limpar
+     * @param load {@code String} Texto da função de carregar
      */
     private Description(String title, String description, String save, String procces, String clear, String load) {
         this.title = title;
@@ -81,7 +81,7 @@ public class Description {
     /**
      * Retorna a descrição formatada da view
      *
-     * @return <code>String</code> Descrição formatada da view
+     * @return {@code String} Descrição formatada da view
      */
     public String format() {
         return String.format(base, title, description, save, procces, clear, load);
@@ -104,12 +104,12 @@ public class Description {
         /**
          * Cria nova instancia de Builder
          *
-         * @param title <code>String</code> Texto do titulo
-         * @param description <code>String</code> Texto da descrição
-         * @param save <code>String</code> Texto da função de salvar
-         * @param procces <code>String</code> Texto da função de processar
-         * @param clear <code>String</code> Texto da função de limpar
-         * @param load <code>String</code> Texto da função de carregar
+         * @param title {@code String} Texto do titulo
+         * @param description {@code String} Texto da descrição
+         * @param save {@code String} Texto da função de salvar
+         * @param procces {@code String} Texto da função de processar
+         * @param clear {@code String} Texto da função de limpar
+         * @param load {@code String} Texto da função de carregar
          */
         public Builder(String title, String description, String save, String procces, String clear, String load) {
             this.description = new Description(title, description, save, procces, clear, load);
@@ -118,7 +118,7 @@ public class Description {
         /**
          * Retorna a descrição construida
          *
-         * @return <code>Description</code> Descrição construida
+         * @return {@code Description} Descrição construida
          */
         public Description apply() {
             return this.description;
@@ -127,8 +127,8 @@ public class Description {
         /**
          * Modifica o Texto do titulo
          *
-         * @param title <code>String</code> Texto do titulo
-         * @return <code>Builder</code> Construtor de descrição
+         * @param title {@code String} Texto do titulo
+         * @return {@code Builder} Construtor de descrição
          */
         public Builder setTitle(String title) {
             this.description.setTitle(title);
@@ -138,8 +138,8 @@ public class Description {
         /**
          * Modifica o Texto da descrição
          *
-         * @param description <code>String</code> Texto da descrição
-         * @return <code>Builder</code> Construtor de descrição
+         * @param description {@code String} Texto da descrição
+         * @return {@code Builder} Construtor de descrição
          */
         public Builder setDescription(String description) {
             this.description.setDescription(description);
@@ -149,8 +149,8 @@ public class Description {
         /**
          * Modifica o Texto da função de salvar
          *
-         * @param save <code>String</code> Texto da função de salvar
-         * @return <code>Builder</code> Construtor de descrição
+         * @param save {@code String} Texto da função de salvar
+         * @return {@code Builder} Construtor de descrição
          */
         public Builder setSave(String save) {
             this.description.setSave(save);
@@ -160,8 +160,8 @@ public class Description {
         /**
          * Modifica o Texto da função de processar
          *
-         * @param procces <code>String</code> Texto da função de processar
-         * @return <code>Builder</code> Construtor de descrição
+         * @param procces {@code String} Texto da função de processar
+         * @return {@code Builder} Construtor de descrição
          */
         public Builder setProcces(String procces) {
             this.description.setProcces(procces);
@@ -171,8 +171,8 @@ public class Description {
         /**
          * Modifica o Texto da função de limpar
          *
-         * @param clear <code>String</code> Texto da função de limpar
-         * @return <code>Builder</code> Construtor de descrição
+         * @param clear {@code String} Texto da função de limpar
+         * @return {@code Builder} Construtor de descrição
          */
         public Builder setClear(String clear) {
             this.description.setClear(clear);
@@ -182,8 +182,8 @@ public class Description {
         /**
          * Modifica o Texto da função de carregar
          *
-         * @param load <code>String</code> Texto da função de carregar
-         * @return <code>Builder</code> Construtor de descrição
+         * @param load {@code String} Texto da função de carregar
+         * @return {@code Builder} Construtor de descrição
          */
         public Builder setLoad(String load) {
             this.description.setLoad(load);
@@ -194,7 +194,7 @@ public class Description {
     /**
      * Retorna o Texto do titulo
      *
-     * @return <code>String</code> Texto do titulo
+     * @return {@code String} Texto do titulo
      */
     public String getTitle() {
         return title;
@@ -203,8 +203,8 @@ public class Description {
     /**
      * Modifica o Texto do titulo
      *
-     * @param title <code>String</code> Texto do titulo
-     * @return <code>Description</code> Construtor de descrição
+     * @param title {@code String} Texto do titulo
+     * @return {@code Description} Construtor de descrição
      */
     private Description setTitle(String title) {
         this.title = title;
@@ -214,7 +214,7 @@ public class Description {
     /**
      * Retorna o Texto da descrição
      *
-     * @return <code>String</code> Texto da descrição
+     * @return {@code String} Texto da descrição
      */
     public String getDescription() {
         return description;
@@ -223,8 +223,8 @@ public class Description {
     /**
      * Modifica o Texto da descrição
      *
-     * @param description <code>String</code> Texto da descrição
-     * @return <code>Description</code> Construtor de descrição
+     * @param description {@code String} Texto da descrição
+     * @return {@code Description} Construtor de descrição
      */
     private Description setDescription(String description) {
         this.description = description;
@@ -234,7 +234,7 @@ public class Description {
     /**
      * Retorna o Texto da função de salvar
      *
-     * @return <code>String</code> Texto da função de salvar
+     * @return {@code String} Texto da função de salvar
      */
     public String getSave() {
         return save;
@@ -243,8 +243,8 @@ public class Description {
     /**
      * Modifica o Texto da função de salvar
      *
-     * @param save <code>String</code> Texto da função de salvar
-     * @return <code>Description</code> Construtor de descrição
+     * @param save {@code String} Texto da função de salvar
+     * @return {@code Description} Construtor de descrição
      */
     private Description setSave(String save) {
         this.save = save;
@@ -254,7 +254,7 @@ public class Description {
     /**
      * Retorna o Texto da função de processar
      *
-     * @return <code>String</code> Texto da função de processar
+     * @return {@code String} Texto da função de processar
      */
     public String getProcces() {
         return procces;
@@ -263,8 +263,8 @@ public class Description {
     /**
      * Modifica o Texto da função de processar
      *
-     * @param procces <code>String</code> Texto da função de processar
-     * @return <code>Description</code> Construtor de descrição
+     * @param procces {@code String} Texto da função de processar
+     * @return {@code Description} Construtor de descrição
      */
     private Description setProcces(String procces) {
         this.procces = procces;
@@ -274,7 +274,7 @@ public class Description {
     /**
      * Retorna o Texto da função de limpar
      *
-     * @return <code>String</code> Texto da função de limpar
+     * @return {@code String} Texto da função de limpar
      */
     public String getClear() {
         return clear;
@@ -283,8 +283,8 @@ public class Description {
     /**
      * Modifica o Texto da função de limpar
      *
-     * @param clear <code>String</code> Texto da função de limpar
-     * @return <code>Description</code> Construtor de descrição
+     * @param clear {@code String} Texto da função de limpar
+     * @return {@code Description} Construtor de descrição
      */
     private Description setClear(String clear) {
         this.clear = clear;
@@ -294,7 +294,7 @@ public class Description {
     /**
      * Retorna o Texto da função de carregar
      *
-     * @return <code>String</code> Texto da função de carregar
+     * @return {@code String} Texto da função de carregar
      */
     public String getLoad() {
         return load;
@@ -303,8 +303,8 @@ public class Description {
     /**
      * Modifica o Texto da função de carregar
      *
-     * @param load <code>String</code> Texto da função de carregar
-     * @return <code>Description</code> Construtor de descrição
+     * @param load {@code String} Texto da função de carregar
+     * @return {@code Description} Construtor de descrição
      */
     private Description setLoad(String load) {
         this.load = load;

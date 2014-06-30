@@ -26,7 +26,7 @@ public class MenuBean extends ViewBean<MenuView> {
     /**
      * Cria nova instancia de MenuBean
      *
-     * @param view <code>MenuView</code> Tela
+     * @param view {@code MenuView} Tela
      */
     public MenuBean(MenuView view) {
         super(view);
@@ -64,7 +64,7 @@ public class MenuBean extends ViewBean<MenuView> {
     /**
      * Constroi um objeto do tipo Menu
      *
-     * @return <code>Menu</code> Menu gerado
+     * @return {@code Menu} Menu gerado
      */
     private Menu buildNew(String title, String icon, Long parent) {
         Menu menu = new Menu();
@@ -78,7 +78,7 @@ public class MenuBean extends ViewBean<MenuView> {
     /**
      * Adiciona novo item na tabela
      *
-     * @param evt <code>BeanEvent</code> Evento do Bean
+     * @param evt {@code BeanEvent} Evento do Bean
      */
     @Override
     public void add(BeanEvent evt) {
@@ -96,7 +96,7 @@ public class MenuBean extends ViewBean<MenuView> {
     /**
      * Retorna o próximo ID da lista
      *
-     * @return <code>Long</code> Próximo ID
+     * @return {@code Long} Próximo ID
      */
     public Long getNextID() {
         Long id = (long) 0;
@@ -111,7 +111,7 @@ public class MenuBean extends ViewBean<MenuView> {
     /**
      * Retorna um array com os icones possiveis para menus
      *
-     * @return <code>ImageIcon[]</code> Array de iconess
+     * @return {@code ImageIcon[]} Array de iconess
      */
     private ImageIcon[] getMenuIcons() {
         List<ImageIcon> icons = new ArrayList<>();
@@ -124,7 +124,7 @@ public class MenuBean extends ViewBean<MenuView> {
     /**
      * Retorna os nomes dos icones
      *
-     * @return <code>String[]</code> Nomes dos icones
+     * @return {@code String[]} Nomes dos icones
      */
     private String[] getIcons() {
         String path = "/MenuIcons/";
@@ -141,7 +141,7 @@ public class MenuBean extends ViewBean<MenuView> {
     /**
      * Retorna lista de menus superiores
      *
-     * @return <code>List(Menu)</code>
+     * @return {@code List(Menu)}
      */
     private List<Menu> getParentMenus() {
         List<Menu> parents = new ArrayList<>();

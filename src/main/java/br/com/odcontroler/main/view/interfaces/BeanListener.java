@@ -12,7 +12,7 @@ public interface BeanListener<T> {
     /**
      * Metodo padrão para salvar
      *
-     * @param evt <code>BeanEvent</code> Evento
+     * @param evt {@code BeanEvent} Evento
      * @throws java.lang.Exception Exceção
      * @see br.com.odcontroler.main.view.View#commit()
      */
@@ -21,7 +21,7 @@ public interface BeanListener<T> {
     /**
      * Metodo padrão para processar os dados
      *
-     * @param evt <code>BeanEvent</code> Evento
+     * @param evt {@code BeanEvent} Evento
      * @throws java.lang.Exception Exceção
      * @see br.com.odcontroler.main.view.View#process()
      */
@@ -30,7 +30,7 @@ public interface BeanListener<T> {
     /**
      * Metodo padrão para limpar a tela
      *
-     * @param evt <code>BeanEvent</code> Evento
+     * @param evt {@code BeanEvent} Evento
      * @throws java.lang.Exception Exceção
      * @see br.com.odcontroler.main.view.View#clear()
      */
@@ -39,7 +39,7 @@ public interface BeanListener<T> {
     /**
      * Metodo padrão para carregar a tela
      *
-     * @param evt <code>BeanEvent</code> Evento
+     * @param evt {@code BeanEvent} Evento
      * @throws java.lang.Exception Exceção
      * @see br.com.odcontroler.main.view.View#load()
      */
@@ -48,7 +48,7 @@ public interface BeanListener<T> {
     /**
      * Retorna a view do bean
      *
-     * @return <code>T</code> View do bean
+     * @return {@code T} View do bean
      */
     T getView();
 }

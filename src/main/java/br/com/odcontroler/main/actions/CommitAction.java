@@ -13,7 +13,7 @@ public class CommitAction extends FrameAction {
     /**
      * Cria nova instancia de SaveAction
      *
-     * @param view <code>View</code> da ação
+     * @param view {@code View} da ação
      */
     public CommitAction(View view) {
         super("save", view);

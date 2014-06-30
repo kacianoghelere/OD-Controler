@@ -15,7 +15,7 @@ public class QueryBuilder {
     /**
      * Cria nova instancia do construtor de querys
      *
-     * @param query <code>Query</code> Query a ser manipulada
+     * @param query {@code Query} Query a ser manipulada
      */
     public QueryBuilder(Query query) {
         this.query = query;
@@ -24,8 +24,8 @@ public class QueryBuilder {
     /**
      * Restringe a busca à um campo especifico
      *
-     * @param field <code>String</code> Campo a ser restringido
-     * @return <code>QueryBuilder</code> Construtor de querys
+     * @param field {@code String} Campo a ser restringido
+     * @return {@code QueryBuilder} Construtor de querys
      */
     public QueryBuilder descend(String field) {
         this.query.descend(field);
@@ -35,8 +35,8 @@ public class QueryBuilder {
     /**
      * Restringe a busca à um valor especifico
      *
-     * @param field <code>Object</code> Valor a ser restringido
-     * @return <code>QueryBuilder</code> Construtor de querys
+     * @param field {@code Object} Valor a ser restringido
+     * @return {@code QueryBuilder} Construtor de querys
      */
     public QueryBuilder constrain(Object field) {
         this.query.constrain(field);
@@ -46,9 +46,9 @@ public class QueryBuilder {
     /**
      * Restringe a busca à um campo especifico com um valor especifico
      *
-     * @param field <code>String</code> Campo a ser restringido
-     * @param value <code>Object</code> Valor a ser restringido
-     * @return <code>QueryBuilder</code> Construtor de querys
+     * @param field {@code String} Campo a ser restringido
+     * @param value {@code Object} Valor a ser restringido
+     * @return {@code QueryBuilder} Construtor de querys
      */
     public QueryBuilder searchFor(String field, Object value) {
         query.descend(field).constrain(value);
@@ -58,7 +58,7 @@ public class QueryBuilder {
     /**
      * Ordena os resultados de forma crescente
      *
-     * @return <code>QueryBuilder</code> Construtor de querys
+     * @return {@code QueryBuilder} Construtor de querys
      */
     public QueryBuilder orderAscending() {
         query.orderAscending();
@@ -68,7 +68,7 @@ public class QueryBuilder {
     /**
      * Ordena os resultados de forma decrescente
      *
-     * @return <code>QueryBuilder</code> Construtor de querys
+     * @return {@code QueryBuilder} Construtor de querys
      */
     public QueryBuilder orderDescending() {
         query.orderDescending();
@@ -78,7 +78,7 @@ public class QueryBuilder {
     /**
      * Retorna a query construida
      *
-     * @return <code>Query</code> Query construida
+     * @return {@code Query} Query construida
      */
     public Query ready() {
         return query;
@@ -87,7 +87,7 @@ public class QueryBuilder {
     /**
      * Retorna a criteria utilizada no builder
      *
-     * @return <code>Query</code> Query construida
+     * @return {@code Query} Query construida
      */
     public Query getQuery() {
         return query;
@@ -96,7 +96,7 @@ public class QueryBuilder {
     /**
      * Modifica a criteria utilizada no builder
      *
-     * @param query <code>Query</code> Query utilizada
+     * @param query {@code Query} Query utilizada
      */
     public void setQuery(Query query) {
         this.query = query;

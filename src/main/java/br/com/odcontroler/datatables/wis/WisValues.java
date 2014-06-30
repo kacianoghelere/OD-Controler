@@ -49,7 +49,7 @@ public class WisValues {
     /**
      * Retorna as faixas do atributo
      *
-     * @return <code>List(WisData)</code> Lista de faixas
+     * @return {@code List(WisData)} Lista de faixas
      */
     public List<WisData> getWisValues() {
         return wisValues;

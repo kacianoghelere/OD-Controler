@@ -20,8 +20,8 @@ public enum Coin {
     /**
      * Cria nova instancia de Coin
      *
-     * @param description <code>String</code> descrição da moeda
-     * @param value <code>Valor da moeda</code>
+     * @param description {@code String} descrição da moeda
+     * @param value {@code Valor da moeda}
      */
     private Coin(String description, Integer value) {
         this.description = description;
@@ -31,7 +31,7 @@ public enum Coin {
     /**
      * Retorna a descrição da moeda
      *
-     * @return <code>String</code> Descrição da moeda
+     * @return {@code String} Descrição da moeda
      */
     public String getDescription() {
         return description;
@@ -40,7 +40,7 @@ public enum Coin {
     /**
      * Retorna o valor da moeda
      *
-     * @return <code>Integer</code> Valor da moeda
+     * @return {@code Integer} Valor da moeda
      */
     public Integer getValue() {
         return value;

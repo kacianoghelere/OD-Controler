@@ -13,7 +13,7 @@ public class ClearAction extends FrameAction {
     /**
      * Cria nova instancia de ClearAction
      *
-     * @param view <code>View</code> da ação
+     * @param view {@code View} da ação
      */
     public ClearAction(View view) {
         super("clear", view);

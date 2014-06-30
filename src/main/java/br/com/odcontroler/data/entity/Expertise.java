@@ -39,11 +39,11 @@ public class Expertise implements Serializable {
     /**
      * Cria nova instancia de Expertise
      *
-     * @param id <code>Long</code> ID da perícia
-     * @param title <code>String</code> Titulo da perícia
-     * @param type <code>ExpertiseType</code> Tipo de perícia
-     * @param attribute <code>Attribute</code> Atributo chave
-     * @param value <code>Integer</code> Valor da perícia
+     * @param id {@code Long} ID da perícia
+     * @param title {@code String} Titulo da perícia
+     * @param type {@code ExpertiseType} Tipo de perícia
+     * @param attribute {@code Attribute} Atributo chave
+     * @param value {@code Integer} Valor da perícia
      */
     public Expertise(Long id, String title, ExpertiseType type, Attribute attribute, Integer value) {
         this.id = id;
@@ -56,7 +56,7 @@ public class Expertise implements Serializable {
     /**
      * Retorna o ID da perícia
      *
-     * @return <code>Long</code> ID da perícia
+     * @return {@code Long} ID da perícia
      */
     public Long getId() {
         return id;
@@ -65,7 +65,7 @@ public class Expertise implements Serializable {
     /**
      * Modifica o ID da perícia
      *
-     * @param id <code>Long</code> ID da perícia
+     * @param id {@code Long} ID da perícia
      */
     public void setId(Long id) {
         this.id = id;
@@ -74,7 +74,7 @@ public class Expertise implements Serializable {
     /**
      * Retorna o titulo da perícia
      *
-     * @return <code>String</code> Titulo da perícia
+     * @return {@code String} Titulo da perícia
      */
     public String getTitle() {
         return title;
@@ -83,7 +83,7 @@ public class Expertise implements Serializable {
     /**
      * Modifica o titulo da perícia
      *
-     * @param title <code>String</code> Titulo da perícia
+     * @param title {@code String} Titulo da perícia
      */
     public void setTitle(String title) {
         this.title = title;
@@ -92,7 +92,7 @@ public class Expertise implements Serializable {
     /**
      * Retorna o tipo de perícia
      *
-     * @return <code>ExpertiseType</code> Tipo de perícia
+     * @return {@code ExpertiseType} Tipo de perícia
      */
     public ExpertiseType getType() {
         return type;
@@ -101,7 +101,7 @@ public class Expertise implements Serializable {
     /**
      * Modifica o tipo de perícia
      *
-     * @param type <code>ExpertiseType</code> Tipo de perícia
+     * @param type {@code ExpertiseType} Tipo de perícia
      */
     public void setType(ExpertiseType type) {
         this.type = type;
@@ -110,7 +110,7 @@ public class Expertise implements Serializable {
     /**
      * Retorna o atributo chave
      *
-     * @return <code>Attribute</code> Atributo chave
+     * @return {@code Attribute} Atributo chave
      */
     public Attribute getAttribute() {
         return attribute;
@@ -119,7 +119,7 @@ public class Expertise implements Serializable {
     /**
      * Modifica o atributo chave
      *
-     * @param attribute <code>Attribute</code> Atributo chave
+     * @param attribute {@code Attribute} Atributo chave
      */
     public void setAttribute(Attribute attribute) {
         this.attribute = attribute;
@@ -128,7 +128,7 @@ public class Expertise implements Serializable {
     /**
      * Retorna o valor da perícia
      *
-     * @return <code>Integer</code> Valor da perícia
+     * @return {@code Integer} Valor da perícia
      */
     public Integer getValue() {
         return value;
@@ -137,7 +137,7 @@ public class Expertise implements Serializable {
     /**
      * Modifica o valor da perícia
      *
-     * @param value <code>Integer</code> Valor da perícia
+     * @param value {@code Integer} Valor da perícia
      */
     public void setValue(Integer value) {
         this.value = value;

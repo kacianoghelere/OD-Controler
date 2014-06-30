@@ -15,8 +15,8 @@ public class DescriptionDialog extends GDialog {
     /**
      * Cria nova instancia de DescriptionDialog
      *
-     * @param view <code>View</code> View à ser descrita
-     * @param description <code>String</code> Descrição
+     * @param view {@code View} View à ser descrita
+     * @param description {@code String} Descrição
      */
     public DescriptionDialog(View view, String description) {
         super(view.getMainScreen(), true);
@@ -36,7 +36,7 @@ public class DescriptionDialog extends GDialog {
     /**
      * Modifica a descrição
      *
-     * @param description <code>String</code> Descrição
+     * @param description {@code String} Descrição
      */
     public void setDescription(String description) {
         this.description = description;

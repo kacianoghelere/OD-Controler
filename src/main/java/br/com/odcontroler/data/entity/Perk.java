@@ -38,11 +38,11 @@ public class Perk {
     /**
      * Cria nova instancia de Perk
      *
-     * @param id <code>Long</code> Código
-     * @param title <code>String</code> Titulo
-     * @param description <code>String</code> Descrição
-     * @param inherited <code>Boolean</code> Herdavel?
-     * @param type <code>PerkType</code> Tipo do perk
+     * @param id {@code Long} Código
+     * @param title {@code String} Titulo
+     * @param description {@code String} Descrição
+     * @param inherited {@code Boolean} Herdavel?
+     * @param type {@code PerkType} Tipo do perk
      */
     public Perk(Long id, String title, String description, Boolean inherited, PerkType type) {
         this.id = id;
@@ -55,7 +55,7 @@ public class Perk {
     /**
      * Retorna o ID do Perk
      *
-     * @return <code>Long</code>
+     * @return {@code Long}
      */
     public Long getId() {
         return id;
@@ -64,7 +64,7 @@ public class Perk {
     /**
      * Modifica o ID do Perk
      *
-     * @param id <code>Long</code>
+     * @param id {@code Long}
      */
     public void setId(Long id) {
         this.id = id;
@@ -73,7 +73,7 @@ public class Perk {
     /**
      * Retorna o titulo do Perk
      *
-     * @return <code>String</code>
+     * @return {@code String}
      */
     public String getTitle() {
         return title;
@@ -82,7 +82,7 @@ public class Perk {
     /**
      * Modifica o titulo do Perk
      *
-     * @param title <code>String</code>
+     * @param title {@code String}
      */
     public void setTitle(String title) {
         this.title = title;
@@ -91,7 +91,7 @@ public class Perk {
     /**
      * Retorna a descrição do Perk
      *
-     * @return <code>String</code>
+     * @return {@code String}
      */
     public String getDescription() {
         return description;
@@ -100,7 +100,7 @@ public class Perk {
     /**
      * Modifica a descrição do Perk
      *
-     * @param description <code>String</code>
+     * @param description {@code String}
      */
     public void setDescription(String description) {
         this.description = description;
@@ -109,7 +109,7 @@ public class Perk {
     /**
      * O Perk é herdavel?
      *
-     * @return <code>Boolean</code> Herdavel?
+     * @return {@code Boolean} Herdavel?
      */
     public Boolean isInherited() {
         return inherited;
@@ -118,7 +118,7 @@ public class Perk {
     /**
      * Modifica o status de herdavel do Perk
      *
-     * @param inherited <code>Boolean</code> Herdavel?
+     * @param inherited {@code Boolean} Herdavel?
      */
     public void setInherited(Boolean inherited) {
         this.inherited = inherited;
@@ -127,7 +127,7 @@ public class Perk {
     /**
      * Retorna o tipo do Perk
      *
-     * @return <code>PerkType</code>
+     * @return {@code PerkType}
      */
     public PerkType getType() {
         return type;
@@ -136,7 +136,7 @@ public class Perk {
     /**
      * Modifica o tipo do Perk
      *
-     * @param type <code>PerkType</code>
+     * @param type {@code PerkType}
      */
     public void setType(PerkType type) {
         this.type = type;

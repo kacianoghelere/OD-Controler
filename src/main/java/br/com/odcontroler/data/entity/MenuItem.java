@@ -35,11 +35,11 @@ public class MenuItem implements Comparable<MenuItem> {
     /**
      * Cria nova instancia de Menu
      *
-     * @param id <code>Long</code> ID do MenuView
-     * @param parent <code>Long</code> ID do menu
-     * @param viewClass <code>String</code> Classe do MenuView
-     * @param title <code>String</code> Titulo do MenuView
-     * @param icon <code>String</code> Icone do MenuViewMenuView
+     * @param id {@code Long} ID do MenuView
+     * @param parent {@code Long} ID do menu
+     * @param viewClass {@code String} Classe do MenuView
+     * @param title {@code String} Titulo do MenuView
+     * @param icon {@code String} Icone do MenuViewMenuView
      */
     public MenuItem(Long id, Long parent, String viewClass, String title, String icon) {
         this.id = id;
@@ -93,7 +93,7 @@ public class MenuItem implements Comparable<MenuItem> {
     /**
      * Retorna o ID do MenuItem
      *
-     * @return <code>Long</code> ID do MenuItem
+     * @return {@code Long} ID do MenuItem
      */
     public Long getId() {
         return id;
@@ -102,7 +102,7 @@ public class MenuItem implements Comparable<MenuItem> {
     /**
      * Modifica o ID do MenuItem
      *
-     * @param id <code>Long</code> ID do MenuItem
+     * @param id {@code Long} ID do MenuItem
      */
     public void setId(Long id) {
         this.id = id;
@@ -111,7 +111,7 @@ public class MenuItem implements Comparable<MenuItem> {
     /**
      * Retorna o ID do menu pai
      *
-     * @return <code>Long</code> ID do menu pai
+     * @return {@code Long} ID do menu pai
      */
     public Long getMenu() {
         return menu;
@@ -120,7 +120,7 @@ public class MenuItem implements Comparable<MenuItem> {
     /**
      * Modifica o ID do menu pai
      *
-     * @param menu <code>Long</code> ID do menu pai
+     * @param menu {@code Long} ID do menu pai
      */
     public void setMenu(Long menu) {
         this.menu = menu;
@@ -129,7 +129,7 @@ public class MenuItem implements Comparable<MenuItem> {
     /**
      * Retorna a classe do MenuItem
      *
-     * @return <code>String</code> Classe do MenuItem
+     * @return {@code String} Classe do MenuItem
      */
     public String getViewClass() {
         return viewClass;
@@ -138,7 +138,7 @@ public class MenuItem implements Comparable<MenuItem> {
     /**
      * Retorna a classe do MenuItem
      *
-     * @param viewClass <code>String</code> Classe do MenuItem
+     * @param viewClass {@code String} Classe do MenuItem
      */
     public void setViewClass(String viewClass) {
         this.viewClass = viewClass;
@@ -147,7 +147,7 @@ public class MenuItem implements Comparable<MenuItem> {
     /**
      * Retorna o titulo do MenuItem
      *
-     * @return <code>String</code> Titulo do MenuItem
+     * @return {@code String} Titulo do MenuItem
      */
     public String getTitle() {
         return title;
@@ -156,7 +156,7 @@ public class MenuItem implements Comparable<MenuItem> {
     /**
      * Modifica o titulo do MenuItem
      *
-     * @param title <code>String</code> Titulo do MenuItem
+     * @param title {@code String} Titulo do MenuItem
      */
     public void setTitle(String title) {
         this.title = title;
@@ -165,7 +165,7 @@ public class MenuItem implements Comparable<MenuItem> {
     /**
      * Retorna o icone do MenuItem
      *
-     * @return <code>String</code> Icone do MenuItem
+     * @return {@code String} Icone do MenuItem
      */
     public String getIcon() {
         return icon;
@@ -174,7 +174,7 @@ public class MenuItem implements Comparable<MenuItem> {
     /**
      * Modifica o icone do MenuItem
      *
-     * @param icon <code>String</code> Icone do MenuItem
+     * @param icon {@code String} Icone do MenuItem
      */
     public void setIcon(String icon) {
         this.icon = icon;

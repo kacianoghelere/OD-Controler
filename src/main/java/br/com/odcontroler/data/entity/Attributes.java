@@ -58,12 +58,12 @@ public class Attributes {
     /**
      * Constroi nova instancia de Attributes
      *
-     * @param str <code>Integer</code> Força
-     * @param dex <code>Integer</code> Destreza
-     * @param con <code>Integer</code> Constituição
-     * @param intel <code>Integer</code> Inteligencia
-     * @param wis <code>Integer</code> Sabedoria
-     * @param charm <code>Integer</code> Carisma
+     * @param str {@code Integer} Força
+     * @param dex {@code Integer} Destreza
+     * @param con {@code Integer} Constituição
+     * @param intel {@code Integer} Inteligencia
+     * @param wis {@code Integer} Sabedoria
+     * @param charm {@code Integer} Carisma
      */
     public Attributes(Integer str, Integer dex, Integer con, Integer intel, Integer wis, Integer charm) {
         this.strength = new Attribute((long) 1, "Força", "FOR", str);
@@ -83,18 +83,18 @@ public class Attributes {
     /**
      * Constroi nova instancia de Attributes
      *
-     * @param str <code>Integer</code> Força
-     * @param dex <code>Integer</code> Destreza
-     * @param con <code>Integer</code> Constituição
-     * @param intel <code>Integer</code> Inteligencia
-     * @param wis <code>Integer</code> Sabedoria
-     * @param charm <code>Integer</code> Carisma
-     * @param hp <code>Integer</code> Pontos de vida
-     * @param atk <code>Integer</code> Ataque
-     * @param def <code>Integer</code> Defesa
-     * @param eva <code>Integer</code> Evasão
-     * @param lvl <code>Integer</code> Nível
-     * @param exp <code>Integer</code> Experiencia
+     * @param str {@code Integer} Força
+     * @param dex {@code Integer} Destreza
+     * @param con {@code Integer} Constituição
+     * @param intel {@code Integer} Inteligencia
+     * @param wis {@code Integer} Sabedoria
+     * @param charm {@code Integer} Carisma
+     * @param hp {@code Integer} Pontos de vida
+     * @param atk {@code Integer} Ataque
+     * @param def {@code Integer} Defesa
+     * @param eva {@code Integer} Evasão
+     * @param lvl {@code Integer} Nível
+     * @param exp {@code Integer} Experiencia
      */
     public Attributes(Integer str, Integer dex, Integer con, Integer intel, Integer wis, Integer charm, Integer hp, Integer atk, Integer def, Integer eva, Integer lvl, Integer exp) {
         this.strength = new Attribute((long) 1, "Força", "FOR", str);
@@ -123,7 +123,7 @@ public class Attributes {
     /**
      * Retorna os principais atributos usados
      *
-     * @return <code>List(Attribute)</code> Principais atributos
+     * @return {@code List(Attribute)} Principais atributos
      */
     public List<Attribute> getMainAttributes() {
         List<Attribute> list = new ArrayList<>();
@@ -139,7 +139,7 @@ public class Attributes {
     /**
      * Retorna os atributos usados
      *
-     * @return <code>List(Attribute)</code> Atributos
+     * @return {@code List(Attribute)} Atributos
      */
     public List<Attribute> getAttributes() {
         List<Attribute> list = new ArrayList<>();
@@ -161,7 +161,7 @@ public class Attributes {
     /**
      * Retorna a Força
      *
-     * @return <code>Integer</code> Força
+     * @return {@code Integer} Força
      */
     public Integer getStrength() {
         return strength.getValue();
@@ -170,7 +170,7 @@ public class Attributes {
     /**
      * Modifica a Força
      *
-     * @param strength <code>Integer</code> Força
+     * @param strength {@code Integer} Força
      */
     public void setStrength(Integer strength) {
         this.strength.setValue(strength);
@@ -179,7 +179,7 @@ public class Attributes {
     /**
      * Retorna a Destreza
      *
-     * @return <code>Integer</code> Destreza
+     * @return {@code Integer} Destreza
      */
     public Integer getDexterity() {
         return dexterity.getValue();
@@ -188,7 +188,7 @@ public class Attributes {
     /**
      * Modifica a Destreza
      *
-     * @param dexterity <code>Integer</code> Destreza
+     * @param dexterity {@code Integer} Destreza
      */
     public void setDexterity(Integer dexterity) {
         this.dexterity.setValue(dexterity);
@@ -197,7 +197,7 @@ public class Attributes {
     /**
      * Retorna a Constituição
      *
-     * @return <code>Integer</code> Constituição
+     * @return {@code Integer} Constituição
      */
     public Integer getConstitution() {
         return constitution.getValue();
@@ -206,7 +206,7 @@ public class Attributes {
     /**
      * Modifica a Constituição
      *
-     * @param constitution <code>Integer</code> Constituição
+     * @param constitution {@code Integer} Constituição
      */
     public void setConstitution(Integer constitution) {
         this.constitution.setValue(constitution);
@@ -215,7 +215,7 @@ public class Attributes {
     /**
      * Retorna a Inteligencia
      *
-     * @return <code>Integer</code> Inteligencia
+     * @return {@code Integer} Inteligencia
      */
     public Integer getIntelligence() {
         return intelligence.getValue();
@@ -224,7 +224,7 @@ public class Attributes {
     /**
      * Modifica a Inteligencia
      *
-     * @param intelligence <code>Integer</code> Inteligencia
+     * @param intelligence {@code Integer} Inteligencia
      */
     public void setIntelligence(Integer intelligence) {
         this.intelligence.setValue(intelligence);
@@ -233,7 +233,7 @@ public class Attributes {
     /**
      * Retorna a Sabedoria
      *
-     * @return <code>Integer</code> Sabedoria
+     * @return {@code Integer} Sabedoria
      */
     public Integer getWisdom() {
         return wisdom.getValue();
@@ -242,7 +242,7 @@ public class Attributes {
     /**
      * Modifica a Sabedoria
      *
-     * @param wisdom <code>Integer</code> Sabedoria
+     * @param wisdom {@code Integer} Sabedoria
      */
     public void setWisdom(Integer wisdom) {
         this.wisdom.setValue(wisdom);
@@ -251,7 +251,7 @@ public class Attributes {
     /**
      * Retorna o Carisma
      *
-     * @return <code>Integer</code> Carisma
+     * @return {@code Integer} Carisma
      */
     public Integer getCharisma() {
         return charisma.getValue();
@@ -260,7 +260,7 @@ public class Attributes {
     /**
      * Modifica o Carisma
      *
-     * @param charisma <code>Integer</code> Carisma
+     * @param charisma {@code Integer} Carisma
      */
     public void setCharisma(Integer charisma) {
         this.charisma.setValue(charisma);
@@ -269,7 +269,7 @@ public class Attributes {
     /**
      * Retorna os Pontos de vida
      *
-     * @return <code>Integer</code> Pontos de vida
+     * @return {@code Integer} Pontos de vida
      */
     public Integer getHealth() {
         return health.getValue();
@@ -278,7 +278,7 @@ public class Attributes {
     /**
      * Modifica os Pontos de vida
      *
-     * @param health <code>Integer</code> Pontos de vida
+     * @param health {@code Integer} Pontos de vida
      */
     public void setHealth(Integer health) {
         this.health.setValue(health);
@@ -287,7 +287,7 @@ public class Attributes {
     /**
      * Retorna o Ataque
      *
-     * @return <code>Integer</code> Ataque
+     * @return {@code Integer} Ataque
      */
     public Integer getAttack() {
         return attack.getValue();
@@ -296,7 +296,7 @@ public class Attributes {
     /**
      * Modifica o Ataque
      *
-     * @param attack <code>Integer</code> Ataque
+     * @param attack {@code Integer} Ataque
      */
     public void setAttack(Integer attack) {
         this.attack.setValue(attack);
@@ -305,7 +305,7 @@ public class Attributes {
     /**
      * Retorna a defesa
      *
-     * @return <code>Integer</code> Defesa
+     * @return {@code Integer} Defesa
      */
     public Integer getDefense() {
         return defense.getValue();
@@ -314,7 +314,7 @@ public class Attributes {
     /**
      * Modifica a defesa
      *
-     * @param defense <code>Integer</code> Defesa
+     * @param defense {@code Integer} Defesa
      */
     public void setDefense(Integer defense) {
         this.defense.setValue(defense);
@@ -323,7 +323,7 @@ public class Attributes {
     /**
      * Retorna a Evasão
      *
-     * @return <code>Integer</code> Evasão
+     * @return {@code Integer} Evasão
      */
     public Integer getEvasion() {
         return evasion.getValue();
@@ -332,7 +332,7 @@ public class Attributes {
     /**
      * Modifica a Evasão
      *
-     * @param evasion <code>Integer</code> Evasão
+     * @param evasion {@code Integer} Evasão
      */
     public void setEvasion(Integer evasion) {
         this.evasion.setValue(evasion);
@@ -341,7 +341,7 @@ public class Attributes {
     /**
      * Retorna o nível
      *
-     * @return <code>Integer</code> Nível
+     * @return {@code Integer} Nível
      */
     public Integer getLevel() {
         return level.getValue();
@@ -350,7 +350,7 @@ public class Attributes {
     /**
      * Modifica o nível
      *
-     * @param level <code>Integer</code> Nível
+     * @param level {@code Integer} Nível
      */
     public void setLevel(Integer level) {
         this.level.setValue(level);
@@ -359,7 +359,7 @@ public class Attributes {
     /**
      * Retorna o experiencia
      *
-     * @return <code>Integer</code> Experiencia
+     * @return {@code Integer} Experiencia
      */
     public Integer getExperience() {
         return experience.getValue();
@@ -368,7 +368,7 @@ public class Attributes {
     /**
      * Modifica o experiencia
      *
-     * @param experience <code>Integer</code> Experiencia
+     * @param experience {@code Integer} Experiencia
      */
     public void setExperience(Integer experience) {
         this.experience.setValue(experience);

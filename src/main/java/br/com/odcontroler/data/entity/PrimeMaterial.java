@@ -34,10 +34,10 @@ public class PrimeMaterial {
     /**
      * Cria nova instancia de PrimeMaterial
      *
-     * @param id <code>Long</code> Código do material
-     * @param name <code>String</code> Nome do material
-     * @param weight <code>Double</code> Peso do material
-     * @param materialClass <code>Integer</code> Classificação do material
+     * @param id {@code Long} Código do material
+     * @param name {@code String} Nome do material
+     * @param weight {@code Double} Peso do material
+     * @param materialClass {@code Integer} Classificação do material
      */
     public PrimeMaterial(Long id, String name, Double weight, Integer materialClass) {
         this.id = id;
@@ -57,7 +57,7 @@ public class PrimeMaterial {
     /**
      * Retorna o Código do material
      *
-     * @return <code>Long</code> Código do material
+     * @return {@code Long} Código do material
      */
     public Long getId() {
         return id;
@@ -66,7 +66,7 @@ public class PrimeMaterial {
     /**
      * Modifica o Código do material
      *
-     * @param id <code>Long</code> Código do material
+     * @param id {@code Long} Código do material
      */
     public void setId(Long id) {
         this.id = id;
@@ -75,7 +75,7 @@ public class PrimeMaterial {
     /**
      * Retorna o Nome do material
      *
-     * @return <code>String</code> Nome do material
+     * @return {@code String} Nome do material
      */
     public String getName() {
         return name;
@@ -84,7 +84,7 @@ public class PrimeMaterial {
     /**
      * Modifica o Nome do material
      *
-     * @param name <code>String</code> Nome do material
+     * @param name {@code String} Nome do material
      */
     public void setName(String name) {
         this.name = name;
@@ -93,7 +93,7 @@ public class PrimeMaterial {
     /**
      * Retorna o Peso do material
      *
-     * @return <code>Double</code> Peso do material
+     * @return {@code Double} Peso do material
      */
     public Double getWeight() {
         return weight;
@@ -102,7 +102,7 @@ public class PrimeMaterial {
     /**
      * Modifica o Peso do material
      *
-     * @param weight <code>Double</code> Peso do material
+     * @param weight {@code Double} Peso do material
      */
     public void setWeight(Double weight) {
         this.weight = weight;
@@ -111,7 +111,7 @@ public class PrimeMaterial {
     /**
      * Retorna a Classificação do material
      *
-     * @return <code>Integer</code> Classificação do material
+     * @return {@code Integer} Classificação do material
      */
     public Integer getMaterialClass() {
         return materialClass;
@@ -120,7 +120,7 @@ public class PrimeMaterial {
     /**
      * Modifica a Classificação do material
      *
-     * @param materialClass <code>Integer</code> Classificação do material
+     * @param materialClass {@code Integer} Classificação do material
      */
     public void setMaterialClass(Integer materialClass) {
         this.materialClass = materialClass;
@@ -129,7 +129,7 @@ public class PrimeMaterial {
     /**
      * Retorna a Resistencia do material
      *
-     * @return <code>Double</code> Resistencia do material
+     * @return {@code Double} Resistencia do material
      */
     public Double getResistence() {
         resistence = (weight * materialClass);
@@ -139,7 +139,7 @@ public class PrimeMaterial {
     /**
      * Modifica a Resistencia do material
      *
-     * @param resistence <code>Double</code> Resistencia do material
+     * @param resistence {@code Double} Resistencia do material
      */
     public void setResistence(Double resistence) {
         this.resistence = resistence;

@@ -40,9 +40,9 @@ public enum AttrEnum implements Attr {
     /**
      * Cria nova instancia de AttrEnumeration
      *
-     * @param id <code>Long</code> ID do atributo
-     * @param title <code>String</code> Titulo do atributo
-     * @param shortTitle <code>String</code> Abreviatura do atributo
+     * @param id {@code Long} ID do atributo
+     * @param title {@code String} Titulo do atributo
+     * @param shortTitle {@code String} Abreviatura do atributo
      */
     private AttrEnum(Long id, String title, String shortTitle) {
         this.id = id;

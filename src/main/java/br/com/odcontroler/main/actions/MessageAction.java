@@ -17,8 +17,8 @@ public class MessageAction extends AbstractAction {
     /**
      * Cria nova instancia de MessageAction
      *
-     * @param name <code>String</code> Nome da ação
-     * @param msg <code>String</code> Texto da mensagem
+     * @param name {@code String} Nome da ação
+     * @param msg {@code String} Texto da mensagem
      */
     public MessageAction(String name, String msg) {
         System.out.println("Ação " + name + " invocada.");

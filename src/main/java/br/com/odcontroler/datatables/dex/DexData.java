@@ -25,12 +25,12 @@ public class DexData {
     /**
      * Cria nova instancia de DexData
      *
-     * @param range <code>AttrRange</code> Faixa de valores
-     * @param ajust <code>int</code> Ajuste de ataque, CA e proteção
-     * @param traps <code>int</code> Localizar e desarmar armadilhas
-     * @param silenceLockpick <code>int</code> Mover-se em silencio e abrir
+     * @param range {@code AttrRange} Faixa de valores
+     * @param ajust {@code int} Ajuste de ataque, CA e proteção
+     * @param traps {@code int} Localizar e desarmar armadilhas
+     * @param silenceLockpick {@code int} Mover-se em silencio e abrir
      * fechaduras
-     * @param hidePickpocket <code>int</code> Esconder-se nas sombras e pungar
+     * @param hidePickpocket {@code int} Esconder-se nas sombras e pungar
      */
     public DexData(AttrRange range, int ajust, int traps, int silenceLockpick, int hidePickpocket) {
         this.range = range;
@@ -43,13 +43,13 @@ public class DexData {
     /**
      * Cria nova instancia de DexData
      *
-     * @param init <code>int</code> Inicio da faixa de valores
-     * @param end <code>int</code> Fim da faixa de valores
-     * @param ajust <code>int</code> Ajuste de ataque, CA e proteção
-     * @param traps <code>int</code> Localizar e desarmar armadilhas
-     * @param silenceLockpick <code>int</code> Mover-se em silencio e abrir
+     * @param init {@code int} Inicio da faixa de valores
+     * @param end {@code int} Fim da faixa de valores
+     * @param ajust {@code int} Ajuste de ataque, CA e proteção
+     * @param traps {@code int} Localizar e desarmar armadilhas
+     * @param silenceLockpick {@code int} Mover-se em silencio e abrir
      * fechaduras
-     * @param hidePickpocket <code>int</code> Esconder-se nas sombras e pungar
+     * @param hidePickpocket {@code int} Esconder-se nas sombras e pungar
      */
     public DexData(int init, int end, int ajust, int traps, int silenceLockpick, int hidePickpocket) {
         this.range = new AttrRange(init, end);
@@ -62,12 +62,12 @@ public class DexData {
     /**
      * Cria nova instancia de DexData
      *
-     * @param range <code>String</code> Faixa de valores
-     * @param ajust <code>int</code> Ajuste de ataque, CA e proteção
-     * @param traps <code>int</code> Localizar e desarmar armadilhas
-     * @param silenceLockpick <code>int</code> Mover-se em silencio e abrir
+     * @param range {@code String} Faixa de valores
+     * @param ajust {@code int} Ajuste de ataque, CA e proteção
+     * @param traps {@code int} Localizar e desarmar armadilhas
+     * @param silenceLockpick {@code int} Mover-se em silencio e abrir
      * fechaduras
-     * @param hidePickpocket <code>int</code> Esconder-se nas sombras e pungar
+     * @param hidePickpocket {@code int} Esconder-se nas sombras e pungar
      */
     public DexData(String range, int ajust, int traps, int silenceLockpick, int hidePickpocket) {
         this.range = new AttrRange(range);
@@ -89,7 +89,7 @@ public class DexData {
     /**
      * Retorna a Faixa de valores
      *
-     * @return <code>AttrRange</code> Faixa de valores
+     * @return {@code AttrRange} Faixa de valores
      */
     public AttrRange getRange() {
         return range;
@@ -98,7 +98,7 @@ public class DexData {
     /**
      * Modifica a Faixa de valores
      *
-     * @param range <code>AttrRange</code> Faixa de valores
+     * @param range {@code AttrRange} Faixa de valores
      */
     public void setRange(AttrRange range) {
         this.range = range;
@@ -107,7 +107,7 @@ public class DexData {
     /**
      * Retorna o Ajuste de ataque, CA e proteção
      *
-     * @return <code>int</code> Ajuste de ataque, CA e proteção
+     * @return {@code int} Ajuste de ataque, CA e proteção
      */
     public int getAjust() {
         return ajust;
@@ -116,7 +116,7 @@ public class DexData {
     /**
      * Modifica o Ajuste de ataque, CA e proteção
      *
-     * @param ajust <code>int</code> Ajuste de ataque, CA e proteção
+     * @param ajust {@code int} Ajuste de ataque, CA e proteção
      */
     public void setAjust(int ajust) {
         this.ajust = ajust;
@@ -125,7 +125,7 @@ public class DexData {
     /**
      * Retorna Localizar e desarmar armadilhas
      *
-     * @return <code>int</code> Localizar e desarmar armadilhas
+     * @return {@code int} Localizar e desarmar armadilhas
      */
     public int getTraps() {
         return traps;
@@ -134,7 +134,7 @@ public class DexData {
     /**
      * Modifica Localizar e desarmar armadilhas
      *
-     * @param traps <code>int</code> Localizar e desarmar armadilhas
+     * @param traps {@code int} Localizar e desarmar armadilhas
      */
     public void setTraps(int traps) {
         this.traps = traps;
@@ -143,7 +143,7 @@ public class DexData {
     /**
      * Retorna Mover-se em silencio e abrir fechaduras
      *
-     * @return <code>int</code> Mover-se em silencio e abrir fechaduras
+     * @return {@code int} Mover-se em silencio e abrir fechaduras
      */
     public int getSilenceLockpick() {
         return silenceLockpick;
@@ -152,7 +152,7 @@ public class DexData {
     /**
      * Modifica Mover-se em silencio e abrir fechaduras
      *
-     * @param silenceLockpick <code>int</code> Mover-se em silencio e abrir
+     * @param silenceLockpick {@code int} Mover-se em silencio e abrir
      * fechaduras
      */
     public void setSilenceLockpick(int silenceLockpick) {
@@ -162,7 +162,7 @@ public class DexData {
     /**
      * Retorna Esconder-se nas sombras e pungar
      *
-     * @return <code>int</code> Esconder-se nas sombras e pungar
+     * @return {@code int} Esconder-se nas sombras e pungar
      */
     public int getHidePickpocket() {
         return hidePickpocket;
@@ -171,7 +171,7 @@ public class DexData {
     /**
      * Modifica Esconder-se nas sombras e pungar
      *
-     * @param hidePickpocket <code>int</code> Esconder-se nas sombras e pungar
+     * @param hidePickpocket {@code int} Esconder-se nas sombras e pungar
      */
     public void setHidePickpocket(int hidePickpocket) {
         this.hidePickpocket = hidePickpocket;

@@ -24,10 +24,10 @@ public class Attribute {
     /**
      * Cria nova instancia de Attribute
      *
-     * @param id <code>Long</code> ID do atributo
-     * @param name <code>String</code> Nome do atributo
-     * @param alias <code>String</code> Sigla do atributo
-     * @param value <code>Integer</code> Valor do atributo
+     * @param id {@code Long} ID do atributo
+     * @param name {@code String} Nome do atributo
+     * @param alias {@code String} Sigla do atributo
+     * @param value {@code Integer} Valor do atributo
      */
     public Attribute(Long id, String name, String alias, Integer value) {
         this.id = id;
@@ -39,7 +39,7 @@ public class Attribute {
     /**
      * Retorna o ID do atributo
      *
-     * @return <code>Long</code> ID do atributo
+     * @return {@code Long} ID do atributo
      */
     public Long getId() {
         return id;
@@ -48,7 +48,7 @@ public class Attribute {
     /**
      * Modifica o ID do atributo
      *
-     * @param id <code>Long</code> ID do atributo
+     * @param id {@code Long} ID do atributo
      */
     public void setId(Long id) {
         this.id = id;
@@ -57,7 +57,7 @@ public class Attribute {
     /**
      * Retorna o Nome do atributo
      *
-     * @return <code>String</code> Nome do atributo
+     * @return {@code String} Nome do atributo
      */
     public String getName() {
         return name;
@@ -66,7 +66,7 @@ public class Attribute {
     /**
      * Modifica o Nome do atributo
      *
-     * @param name <code>String</code> Nome do atributo
+     * @param name {@code String} Nome do atributo
      */
     public void setName(String name) {
         this.name = name;
@@ -75,7 +75,7 @@ public class Attribute {
     /**
      * Retorna a Sigla do atributo
      *
-     * @return <code>String</code> Sigla do atributo
+     * @return {@code String} Sigla do atributo
      */
     public String getAlias() {
         return alias;
@@ -84,7 +84,7 @@ public class Attribute {
     /**
      * Modifica a Sigla do atributo
      *
-     * @param alias <code>String</code> Sigla do atributo
+     * @param alias {@code String} Sigla do atributo
      */
     public void setAlias(String alias) {
         this.alias = alias;
@@ -93,7 +93,7 @@ public class Attribute {
     /**
      * Retorna o Valor do atributo
      *
-     * @return <code>Integer</code> Valor do atributo
+     * @return {@code Integer} Valor do atributo
      */
     public Integer getValue() {
         return value;
@@ -102,7 +102,7 @@ public class Attribute {
     /**
      * Modifica o Valor do atributo
      *
-     * @param value <code>Integer</code> Valor do atributo
+     * @param value {@code Integer} Valor do atributo
      */
     public void setValue(Integer value) {
         this.value = value;

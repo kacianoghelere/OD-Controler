@@ -11,21 +11,21 @@ public interface Attr {
     /**
      * Retorna o ID do atributo
      *
-     * @return <code>Long</code> ID do atributo
+     * @return {@code Long} ID do atributo
      */
     Long getId();
 
     /**
      * Retorna o titulo do atributo
      *
-     * @return <code>String</code> Titulo do atributo
+     * @return {@code String} Titulo do atributo
      */
     String getTitle();
 
     /**
      * Retorna a abreviatura do atributo
      *
-     * @return <code>String</code> Abreviatura do atributo
+     * @return {@code String} Abreviatura do atributo
      */
     String getShortTitle();
 }

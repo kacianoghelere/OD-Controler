@@ -51,7 +51,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     /**
      * Cria nova instancia de DefaultView
      *
-     * @param mainScreen <code>MainScreen</code> Tela principal
+     * @param mainScreen {@code MainScreen} Tela principal
      */
     public View(MainScreen mainScreen) {
         this.mainScreen = mainScreen;
@@ -87,7 +87,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     /**
      * Modifica os controles da view
      *
-     * @param param <code>ViewParameter</code> Parametro para carregamento de
+     * @param param {@code ViewParameter} Parametro para carregamento de
      * views
      */
     public void setControls(ViewParameter param) {
@@ -114,9 +114,9 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     /**
      * Adiciona as ações especificas de cada tecla
      *
-     * @param name <b><code>String</code></b> Nome da ação
-     * @param keycode <b><code>KeyEvent</code></b> Código da tecla
-     * @param action <b><code>Action</code></b> Ação da tecla
+     * @param name {@code String} Nome da ação
+     * @param keycode {@code KeyEvent} Código da tecla
+     * @param action {@code Action} Ação da tecla
      */
     private void addKeyInput(String name, int keycode, Action action) {
         this.getRootPane().getActionMap().put(name, action);
@@ -151,7 +151,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     /**
      * Instrução padrão para retorno de parametros da View
      *
-     * @return <code>Object</code> Parametro
+     * @return {@code Object} Parametro
      */
     public Object getParameter() {
         return parameter;
@@ -160,7 +160,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     /**
      * Instrução padrão para modificar parametros da View
      *
-     * @param parameter <code>Object</code> Parametro
+     * @param parameter {@code Object} Parametro
      */
     public void setParameter(Object parameter) {
         this.parameter = parameter;
@@ -169,7 +169,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     /**
      * Retorna a descrição da tela
      *
-     * @return <code>Description</code> Descrição da tela
+     * @return {@code Description} Descrição da tela
      */
     public Description getDescription() {
         return description;
@@ -178,7 +178,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     /**
      * Modifica a descrição da tela
      *
-     * @param description <code>Description</code> Descrição da tela
+     * @param description {@code Description} Descrição da tela
      */
     public void setDescription(Description description) {
         this.description = description;
@@ -187,15 +187,16 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     /**
      * Retorna a sigla da View
      *
-     * @return Sigla da View
+     * @return {@code String} Sigla da View
      */
     public String getAlias() {
         return alias;
     }
 
     /**
+     * Modifica a sigla da View
      *
-     * @param alias Sigla da View
+     * @param alias {@code String} Sigla da View
      */
     public void setAlias(String alias) {
         this.alias = alias;
@@ -280,7 +281,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     /**
      * Método padronizado para lançar exceções
      *
-     * @param ex <code>Exception</code> Exceção a ser lançada
+     * @param ex {@code Exception} Exceção a ser lançada
      */
     protected void throwException(Exception ex) {
         LOG.log(Level.SEVERE, null, ex);

@@ -50,8 +50,8 @@ public class MenuBuilder {
     /**
      * Cria nova instancia de MenuBuilder
      *
-     * @param mainScreen <code>MainScreen</code> Tela principal
-     * @param root <code>JMenu</code> Menu raiz
+     * @param mainScreen {@code MainScreen} Tela principal
+     * @param root {@code JMenu} Menu raiz
      */
     public MenuBuilder(MainScreen mainScreen, JMenu root) {
         this.mainScreen = mainScreen;
@@ -76,9 +76,9 @@ public class MenuBuilder {
     /**
      * Inicia a construção do menu
      *
-     * @param menus <code>List(Menu)</code> Listas de Menus
-     * @param items <code>List(MenuItem)</code> Listas de MenuItems
-     * @param execute <code>boolean</code> O item deve executar a função?
+     * @param menus {@code List(Menu)} Listas de Menus
+     * @param items {@code List(MenuItem)} Listas de MenuItems
+     * @param execute {@code boolean} O item deve executar a função?
      * @throws java.lang.ClassNotFoundException Exceção de classe desconhecida
      * @throws java.lang.InstantiationException Exceção de instanciamento
      */
@@ -96,7 +96,7 @@ public class MenuBuilder {
     /**
      * Inicia a construção do menu
      *
-     * @param menus <code>List(Menu)</code> Listas de menus
+     * @param menus {@code List(Menu)} Listas de menus
      */
     public void buildMenu(List<Menu> menus) {
         root.removeAll();
@@ -114,8 +114,8 @@ public class MenuBuilder {
     /**
      * Insere um novo menu no menu pai
      *
-     * @param parent <code>JMenu</code> Menu pai
-     * @param menu <code>Menu</code> Menu à ser inserido
+     * @param parent {@code JMenu} Menu pai
+     * @param menu {@code Menu} Menu à ser inserido
      */
     private void insertMenu(JMenu parent, Menu menu) {
         JMenu jmenu = generateMenu(menu);
@@ -125,8 +125,8 @@ public class MenuBuilder {
     /**
      * Insere os menus recursivamente
      *
-     * @param parent <code>JMenu</code> Menu pai
-     * @param menu <code>Menu</code> Menu à ser inserido
+     * @param parent {@code JMenu} Menu pai
+     * @param menu {@code Menu} Menu à ser inserido
      */
     private void recursiveMenus(JMenu parent, Menu menu) {
         for (Component comp : parent.getMenuComponents()) {
@@ -146,8 +146,8 @@ public class MenuBuilder {
     /**
      * Constroi os itens nos menus
      *
-     * @param items <code>List(MenuItem)</code> Listas de MenuItems
-     * @param execute <code>boolean</code> O item deve executar a função?
+     * @param items {@code List(MenuItem)} Listas de MenuItems
+     * @param execute {@code boolean} O item deve executar a função?
      * @throws java.lang.ClassNotFoundException Exceção de classe desconhecida
      * @throws java.lang.InstantiationException Exceção de instanciamento
      */
@@ -165,9 +165,9 @@ public class MenuBuilder {
     /**
      * Constroi os itens recursivamente nos menus
      *
-     * @param jmenu <code>JMenu</code> Menu de base
-     * @param item <code>MenuItem</code> Item a ser inserido
-     * @param execute <code>boolean</code> O item deve executar a função?
+     * @param jmenu {@code JMenu} Menu de base
+     * @param item {@code MenuItem} Item a ser inserido
+     * @param execute {@code boolean} O item deve executar a função?
      * @throws java.lang.ClassNotFoundException Exceção de classe desconhecida
      * @throws java.lang.InstantiationException Exceção de instanciamento
      */
@@ -188,9 +188,9 @@ public class MenuBuilder {
     /**
      * Insere o item no Menu
      *
-     * @param menu <code>JMenu</code> Menu de base
-     * @param item <code>List(MenuView)</code> Lista de Views
-     * @param execute <code>boolean</code> O item deve executar a função?
+     * @param menu {@code JMenu} Menu de base
+     * @param item {@code List(MenuView)} Lista de Views
+     * @param execute {@code boolean} O item deve executar a função?
      * @throws java.lang.ClassNotFoundException Exceção de classe não encontrada
      * @throws java.lang.InstantiationException Exceção de instanciamento
      */
@@ -202,8 +202,8 @@ public class MenuBuilder {
     /**
      * Retorna um JMenu construido a partir de um Menu
      *
-     * @param menu <code>Menu</code> Objeto de Menu
-     * @return <code>JMenu</code> JMenu gerado
+     * @param menu {@code Menu} Objeto de Menu
+     * @return {@code JMenu} JMenu gerado
      */
     public JMenu generateMenu(Menu menu) {
         JMenu jmenu = new JMenu();
@@ -216,9 +216,9 @@ public class MenuBuilder {
     /**
      * Retorna um JMenuItem construido a partir de um MenuItem
      *
-     * @param view <code>MenuItem</code> Objeto da View
-     * @param execute <code>boolean</code> O item deve executar a função?
-     * @return <code>JMenuItem</code> Item criado
+     * @param view {@code MenuItem} Objeto da View
+     * @param execute {@code boolean} O item deve executar a função?
+     * @return {@code JMenuItem} Item criado
      * @throws ClassNotFoundException Exceção de classe não encontrada
      * @throws java.lang.InstantiationException Exceção de instanciamento
      */
@@ -253,7 +253,7 @@ public class MenuBuilder {
     /**
      * Retorna a tela principal
      *
-     * @return <code>MainScreen</code> Tela principal
+     * @return {@code MainScreen} Tela principal
      */
     public MainScreen getMainScreen() {
         return mainScreen;
@@ -262,7 +262,7 @@ public class MenuBuilder {
     /**
      * Modifica a tela principal
      *
-     * @param mainScreen <code>MainScreen</code> Tela principal
+     * @param mainScreen {@code MainScreen} Tela principal
      */
     public void setMainScreen(MainScreen mainScreen) {
         this.mainScreen = mainScreen;
@@ -271,7 +271,7 @@ public class MenuBuilder {
     /**
      * Retorna o menu raiz
      *
-     * @return <code>JMenu</code> Menu raiz
+     * @return {@code JMenu} Menu raiz
      */
     public JMenu getRoot() {
         return root;
@@ -280,7 +280,7 @@ public class MenuBuilder {
     /**
      * Modifica o menu raiz
      *
-     * @param root <code>JMenu</code> Menu raiz
+     * @param root {@code JMenu} Menu raiz
      */
     public void setRoot(JMenu root) {
         this.root = root;

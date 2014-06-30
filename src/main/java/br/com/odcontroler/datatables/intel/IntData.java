@@ -26,9 +26,9 @@ public class IntData {
     /**
      * Cria nova instancia de IntData
      *
-     * @param range <code>AttrRange</code> Faixa de valores
-     * @param languages <code>int</code> Idiomas adicionais
-     * @param learnMagic <code>int</code> Porcentagem de aprender magica
+     * @param range {@code AttrRange} Faixa de valores
+     * @param languages {@code int} Idiomas adicionais
+     * @param learnMagic {@code int} Porcentagem de aprender magica
      */
     public IntData(AttrRange range, int languages, int learnMagic) {
         this.range = range;
@@ -38,10 +38,10 @@ public class IntData {
     /**
      * Cria nova instancia de IntData
      *
-     * @param range <code>AttrRange</code> Faixa de valores
-     * @param languages <code>int</code> Idiomas adicionais
-     * @param learnMagic <code>int</code> Porcentagem de aprender magica
-     * @param aditMagics <code>int[]</code> Magias adicionais
+     * @param range {@code AttrRange} Faixa de valores
+     * @param languages {@code int} Idiomas adicionais
+     * @param learnMagic {@code int} Porcentagem de aprender magica
+     * @param aditMagics {@code int[]} Magias adicionais
      */
     public IntData(AttrRange range, int languages, int learnMagic, int[] aditMagics) {
         this.range = range;
@@ -53,10 +53,10 @@ public class IntData {
     /**
      * Cria nova instancia de IntData
      *
-     * @param init <code>int</code> Inicio da faixa
-     * @param end <code>int</code> Fim da faixa
-     * @param languages <code>int</code> Idiomas adicionais
-     * @param learnMagic <code>int</code> Porcentagem de aprender magica
+     * @param init {@code int} Inicio da faixa
+     * @param end {@code int} Fim da faixa
+     * @param languages {@code int} Idiomas adicionais
+     * @param learnMagic {@code int} Porcentagem de aprender magica
      */
     public IntData(int init, int end, int languages, int learnMagic) {
         this.range = new AttrRange(init, end);
@@ -76,7 +76,7 @@ public class IntData {
     /**
      * Retorna a faixa de valores do atributo
      *
-     * @return <code>AttrRange</code> Faixa de valores do atributo
+     * @return {@code AttrRange} Faixa de valores do atributo
      */
     public AttrRange getRange() {
         return range;
@@ -85,7 +85,7 @@ public class IntData {
     /**
      * Modifica a faixa de valores do atributo
      *
-     * @param range <code>AttrRange</code> Faixa de valores do atributo
+     * @param range {@code AttrRange} Faixa de valores do atributo
      */
     public void setRange(AttrRange range) {
         this.range = range;
@@ -94,7 +94,7 @@ public class IntData {
     /**
      * Retorna os idiomas adicionais
      *
-     * @return <code>int</code> Idiomas adicionais
+     * @return {@code int} Idiomas adicionais
      */
     public int getLanguages() {
         return languages;
@@ -103,7 +103,7 @@ public class IntData {
     /**
      * Modifica os idiomas adicionais
      *
-     * @param languages <code>int</code> Idiomas adicionais
+     * @param languages {@code int} Idiomas adicionais
      */
     public void setLanguages(int languages) {
         this.languages = languages;
@@ -112,7 +112,7 @@ public class IntData {
     /**
      * Retorna a porcentagem de aprender magica
      *
-     * @return <code>int</code> Porcentagem de aprender magica
+     * @return {@code int} Porcentagem de aprender magica
      */
     public int getLearnMagic() {
         return learnMagic;
@@ -121,7 +121,7 @@ public class IntData {
     /**
      * Modifica a porcentagem de aprender magica
      *
-     * @param learnMagic <code>int</code> Porcentagem de aprender magica
+     * @param learnMagic {@code int} Porcentagem de aprender magica
      */
     public void setLearnMagic(int learnMagic) {
         this.learnMagic = learnMagic;
@@ -130,7 +130,7 @@ public class IntData {
     /**
      * Retorna as magias adicionais
      *
-     * @return <code>int[]</code> Magias adicionais
+     * @return {@code int[]} Magias adicionais
      */
     public int[] getAdditSpells() {
         return additSpells;
@@ -139,7 +139,7 @@ public class IntData {
     /**
      * Modifica as magias adicionais
      *
-     * @param additSpells <code>int[]</code> Magias adicionais
+     * @param additSpells {@code int[]} Magias adicionais
      */
     public void setAdditSpells(int[] additSpells) {
         this.additSpells = additSpells;

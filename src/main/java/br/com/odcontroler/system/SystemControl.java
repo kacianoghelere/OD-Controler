@@ -35,7 +35,7 @@ public class SystemControl {
     /**
      * Carrega a tela principal
      *
-     * @return <code>SystemControl</code>
+     * @return {@code SystemControl}
      */
     @Intercept
     public SystemControl loadScreen() {

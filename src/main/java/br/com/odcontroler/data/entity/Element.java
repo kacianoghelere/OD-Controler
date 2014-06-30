@@ -38,9 +38,9 @@ public class Element {
     /**
      * Cria nova instancia de Element
      *
-     * @param id <code>Long</code> ID do elemento
-     * @param title <code>String</code> Titulo do elemento
-     * @param symbol <code>String</code> Simbolo do elemento
+     * @param id {@code Long} ID do elemento
+     * @param title {@code String} Titulo do elemento
+     * @param symbol {@code String} Simbolo do elemento
      */
     public Element(Long id, String title, String symbol) {
         this.id = id;
@@ -51,11 +51,11 @@ public class Element {
     /**
      * Cria nova instancia de Element
      *
-     * @param id <code>Long</code> ID do elemento
-     * @param title <code>String</code> Titulo do elemento
-     * @param symbol <code>String</code> Simbolo do elemento
-     * @param bonus <code>Element</code> Elemento de ganho
-     * @param weakness <code>Element</code> Elemento de perda
+     * @param id {@code Long} ID do elemento
+     * @param title {@code String} Titulo do elemento
+     * @param symbol {@code String} Simbolo do elemento
+     * @param bonus {@code Element} Elemento de ganho
+     * @param weakness {@code Element} Elemento de perda
      */
     public Element(Long id, String title, String symbol, Element bonus, Element weakness) {
         this.id = id;
@@ -68,7 +68,7 @@ public class Element {
     /**
      * Retorna o ID do elemento
      *
-     * @return <code>Long</code> ID do elemento
+     * @return {@code Long} ID do elemento
      */
     public Long getId() {
         return id;
@@ -77,7 +77,7 @@ public class Element {
     /**
      * Modifica o ID do elemento
      *
-     * @param id <code>Long</code> ID do elemento
+     * @param id {@code Long} ID do elemento
      */
     public void setId(Long id) {
         this.id = id;
@@ -86,7 +86,7 @@ public class Element {
     /**
      * Retorna o Titulo do elemento
      *
-     * @return <code>String</code> Titulo do elemento
+     * @return {@code String} Titulo do elemento
      */
     public String getTitle() {
         return title;
@@ -95,7 +95,7 @@ public class Element {
     /**
      * Modifica o Titulo do elemento
      *
-     * @param title <code>String</code> Titulo do elemento
+     * @param title {@code String} Titulo do elemento
      */
     public void setTitle(String title) {
         this.title = title;
@@ -104,7 +104,7 @@ public class Element {
     /**
      * Retorna o Simbolo do elemento
      *
-     * @return <code>String</code> Simbolo do elemento
+     * @return {@code String} Simbolo do elemento
      */
     public String getSymbol() {
         return symbol;
@@ -113,7 +113,7 @@ public class Element {
     /**
      * Modifica o Simbolo do elemento
      *
-     * @param symbol <code>String</code> Simbolo do elemento
+     * @param symbol {@code String} Simbolo do elemento
      */
     public void setSymbol(String symbol) {
         this.symbol = symbol;
@@ -122,7 +122,7 @@ public class Element {
     /**
      * Retorna o Elemento de ganho
      *
-     * @return <code>Element</code> Elemento de ganho
+     * @return {@code Element} Elemento de ganho
      */
     public Element getBonus() {
         return bonus;
@@ -131,7 +131,7 @@ public class Element {
     /**
      * Modifica o Elemento de ganho
      *
-     * @param bonus <code>Element</code> Elemento de ganho
+     * @param bonus {@code Element} Elemento de ganho
      */
     public void setBonus(Element bonus) {
         this.bonus = bonus;
@@ -140,7 +140,7 @@ public class Element {
     /**
      * Retorna o Elemento de perda
      *
-     * @return <code>Element</code> Elemento de perda
+     * @return {@code Element} Elemento de perda
      */
     public Element getWeakness() {
         return weakness;
@@ -149,7 +149,7 @@ public class Element {
     /**
      * Modifica o Elemento de perda
      *
-     * @param weakness <code>Element</code> Elemento de perda
+     * @param weakness {@code Element} Elemento de perda
      */
     public void setWeakness(Element weakness) {
         this.weakness = weakness;

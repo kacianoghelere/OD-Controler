@@ -14,56 +14,56 @@ public interface ViewListener<T> {
     /**
      * Retorna se a View pode salvar
      *
-     * @return <code>Boolean</code> Pode salvar
+     * @return {@code Boolean} Pode salvar
      */
     Boolean canCommit();
 
     /**
      * Retorna se a View pode processar
      *
-     * @return <code>Boolean</code> Pode processar
+     * @return {@code Boolean} Pode processar
      */
     Boolean canProcces();
 
     /**
      * Retorna se a View pode limpar
      *
-     * @return <code>Boolean</code> Pode limpar
+     * @return {@code Boolean} Pode limpar
      */
     Boolean canClear();
 
     /**
      * Retorna se a View pode carregar
      *
-     * @return <code>Boolean</code> Pode carregar
+     * @return {@code Boolean} Pode carregar
      */
     Boolean canLoad();
 
     /**
      * Modifica a permissão para salvar
      *
-     * @param save <code>Boolean</code> Pode salvar
+     * @param save {@code Boolean} Pode salvar
      */
     void setCommit(boolean save);
 
     /**
      * Modifica a permissão para processar
      *
-     * @param process <code>Boolean</code> Pode processar
+     * @param process {@code Boolean} Pode processar
      */
     void setProcces(boolean process);
 
     /**
      * Modifica a permissão para limpar
      *
-     * @param clear <code>Boolean</code> Pode limpar
+     * @param clear {@code Boolean} Pode limpar
      */
     void setClear(boolean clear);
 
     /**
      * Modifica a permissão para carregar
      *
-     * @param load <code>Boolean</code> Pode carregar
+     * @param load {@code Boolean} Pode carregar
      */
     void setLoad(boolean load);
 
@@ -103,30 +103,30 @@ public interface ViewListener<T> {
      * Retorna o Bean da View
      *
      * @param <T> Tipo de Retorno
-     * @return <code>BeanListener</code>
+     * @return {@code BeanListener}
      */
     <T> BeanListener getBean();
 
     /**
      * Retorna a tela principal
      *
-     * @return <code>MainScreen</code>
+     * @return {@code MainScreen}
      */
     MainScreen getMainScreen();
 
     /**
      * Mostra nova mensagem na barra de aplicações
      *
-     * @param msg <code>String</code> Mensagem
-     * @param type <code>int</code> Tipo da mensagem
+     * @param msg {@code String} Mensagem
+     * @param type {@code int} Tipo da mensagem
      */
     void showMessage(String msg, int type);
 
     /**
      * Mostra balão de mensagem com 5 segundos de duração
      *
-     * @param component <code>JComponent</code> Componente que terá a mensagem
-     * @param text <code>String</code> Mensagem
+     * @param component {@code JComponent} Componente que terá a mensagem
+     * @param text {@code String} Mensagem
      */
     void showBalloon(JComponent component, String text);
 

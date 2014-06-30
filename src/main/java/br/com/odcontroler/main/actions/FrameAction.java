@@ -28,7 +28,7 @@ public abstract class FrameAction extends AbstractAction {
     /**
      * Retorna o Nome da ação
      *
-     * @return <code>String</code> Nome da ação
+     * @return {@code String} Nome da ação
      */
     public String getName() {
         return name;
@@ -37,7 +37,7 @@ public abstract class FrameAction extends AbstractAction {
     /**
      * Modifica o Nome da ação
      *
-     * @param name <code>String</code> Nome da ação
+     * @param name {@code String} Nome da ação
      */
     public void setName(String name) {
         this.name = name;
@@ -46,7 +46,7 @@ public abstract class FrameAction extends AbstractAction {
     /**
      * Retorna o View
      *
-     * @return <code>View</code> View da ação
+     * @return {@code View} View da ação
      */
     public View getView() {
         return mainScreen;
@@ -55,7 +55,7 @@ public abstract class FrameAction extends AbstractAction {
     /**
      * Modifica o View
      *
-     * @param mainScreen <code>View</code> View da ação
+     * @param mainScreen {@code View} View da ação
      */
     public void setView(View mainScreen) {
         this.mainScreen = mainScreen;

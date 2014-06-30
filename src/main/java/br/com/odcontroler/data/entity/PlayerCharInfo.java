@@ -35,10 +35,10 @@ public class PlayerCharInfo implements Serializable {
     /**
      * Cria nova instancia de PlayerCharInfo
      *
-     * @param id <code>Long</code> ID do Info
-     * @param charLevel <code>Long</code> Nivel do personagem
-     * @param attributes <code>Attributes</code> Atributos principais
-     * @param playerChar <code>PlayerChar</code> Personagem
+     * @param id {@code Long} ID do Info
+     * @param charLevel {@code Long} Nivel do personagem
+     * @param attributes {@code Attributes} Atributos principais
+     * @param playerChar {@code PlayerChar} Personagem
      */
     public PlayerCharInfo(Long id, Long charLevel, Attributes attributes, PlayerChar playerChar) {
         this.id = id;
@@ -50,7 +50,7 @@ public class PlayerCharInfo implements Serializable {
 
     /**
      *
-     * @return <code>Long</code> ID do Info
+     * @return {@code Long} ID do Info
      */
     public Long getId() {
         return id;
@@ -58,7 +58,7 @@ public class PlayerCharInfo implements Serializable {
 
     /**
      *
-     * @param id <code>Long</code> ID do Info
+     * @param id {@code Long} ID do Info
      */
     public void setId(Long id) {
         this.id = id;
@@ -66,7 +66,7 @@ public class PlayerCharInfo implements Serializable {
 
     /**
      *
-     * @return <code>Long</code> Nivel do personagem
+     * @return {@code Long} Nivel do personagem
      */
     public Long getCharLevel() {
         return charLevel;
@@ -74,7 +74,7 @@ public class PlayerCharInfo implements Serializable {
 
     /**
      *
-     * @param charLevel <code>Long</code> Nivel do personagem
+     * @param charLevel {@code Long} Nivel do personagem
      */
     public void setCharLevel(Long charLevel) {
         this.charLevel = charLevel;
@@ -82,7 +82,7 @@ public class PlayerCharInfo implements Serializable {
 
     /**
      *
-     * @return <code>Attributes</code> Atributos principais
+     * @return {@code Attributes} Atributos principais
      */
     public Attributes getAttributes() {
         return attributes;
@@ -90,7 +90,7 @@ public class PlayerCharInfo implements Serializable {
 
     /**
      *
-     * @param attributes <code>Attributes</code> Atributos principais
+     * @param attributes {@code Attributes} Atributos principais
      */
     public void setAttributes(Attributes attributes) {
         this.attributes = attributes;
@@ -98,7 +98,7 @@ public class PlayerCharInfo implements Serializable {
 
     /**
      *
-     * @return <code>PlayerChar</code> Personagem
+     * @return {@code PlayerChar} Personagem
      */
     public PlayerChar getPlayerChar() {
         return playerChar;
@@ -106,7 +106,7 @@ public class PlayerCharInfo implements Serializable {
 
     /**
      *
-     * @param playerChar <code>PlayerChar</code> Personagem
+     * @param playerChar {@code PlayerChar} Personagem
      */
     public void setPlayerChar(PlayerChar playerChar) {
         this.playerChar = playerChar;
@@ -114,7 +114,7 @@ public class PlayerCharInfo implements Serializable {
 
     /**
      *
-     * @return <code>Boolean</code> Info ativo?
+     * @return {@code Boolean} Info ativo?
      */
     public Boolean isActive() {
         return active;
@@ -122,7 +122,7 @@ public class PlayerCharInfo implements Serializable {
 
     /**
      *
-     * @param active <code>Boolean</code> Info ativo?
+     * @param active {@code Boolean} Info ativo?
      */
     public void setActive(Boolean active) {
         this.active = active;

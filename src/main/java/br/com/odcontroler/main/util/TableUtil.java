@@ -23,9 +23,9 @@ public class TableUtil {
     /**
      * Cria nova instancia de TableUtil
      *
-     * @param view <code>View</code> View da tabela
-     * @param table <code>GTable</code>
-     * @param model <code>GTableModel</code>
+     * @param view {@code View} View da tabela
+     * @param table {@code GTable}
+     * @param model {@code GTableModel}
      */
     public TableUtil(View view, GTable table, GTableModel model) {
         this.view = view;
@@ -36,7 +36,7 @@ public class TableUtil {
     /**
      * Cria nova instancia de TableUtil
      *
-     * @param hasTable <code>HasTable</code>
+     * @param hasTable {@code HasTable}
      */
     public TableUtil(TableView hasTable) {
         this.view = (View) hasTable;
@@ -47,7 +47,7 @@ public class TableUtil {
     /**
      * Remove os itens selecionados da tabela
      *
-     * @param evt <code>BeanEvent</code> Evento
+     * @param evt {@code BeanEvent} Evento
      */
     public void remove(BeanEvent evt) {
         String text = "Deseja remover os itens selecionados?";

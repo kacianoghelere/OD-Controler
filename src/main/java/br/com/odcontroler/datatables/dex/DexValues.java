@@ -48,7 +48,7 @@ public class DexValues {
     /**
      * Retorna a lista de valores para destreza
      *
-     * @return <code>List(DexData)</code> Lista de valores para destreza
+     * @return {@code List(DexData)} Lista de valores para destreza
      */
     public List<DexData> getDexValues() {
         return dexValues;

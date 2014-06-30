@@ -28,8 +28,8 @@ public class UseType extends Type {
     /**
      * Cria nova instancia de WearType
      *
-     * @param id <code>Long</code> Código do tipo
-     * @param typeName <code>String</code> Titulo do tipo
+     * @param id {@code Long} Código do tipo
+     * @param typeName {@code String} Titulo do tipo
      */
     public UseType(Long id, String typeName) {
         this.id = id;
@@ -67,7 +67,7 @@ public class UseType extends Type {
     /**
      * Retorna o Código do tipo
      *
-     * @return <code>Long</code> Código do tipo
+     * @return {@code Long} Código do tipo
      */
     public Long getId() {
         return id;
@@ -76,7 +76,7 @@ public class UseType extends Type {
     /**
      * Modifica o Código do tipo
      *
-     * @param id <code>Long</code> Código do tipo
+     * @param id {@code Long} Código do tipo
      */
     public void setId(Long id) {
         this.id = id;
@@ -85,7 +85,7 @@ public class UseType extends Type {
     /**
      * Retorna o Titulo do tipo
      *
-     * @return <code>String</code> Titulo do tipo
+     * @return {@code String} Titulo do tipo
      */
     public String getTitle() {
         return title;
@@ -94,7 +94,7 @@ public class UseType extends Type {
     /**
      * Modifica o Titulo do tipo
      *
-     * @param title <code>String</code> Titulo do tipo
+     * @param title {@code String} Titulo do tipo
      */
     public void setTitle(String title) {
         this.title = title;

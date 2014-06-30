@@ -21,10 +21,10 @@ public class ViewParameter {
     /**
      * Cria nova instancia de ViewParameter
      *
-     * @param save <code>boolean</code> Pode salvar?
-     * @param procces <code>boolean</code> Pode processar?
-     * @param clear <code>boolean</code> Pode limpar?
-     * @param load <code>boolean</code> Pode carregar?
+     * @param save {@code boolean} Pode salvar?
+     * @param procces {@code boolean} Pode processar?
+     * @param clear {@code boolean} Pode limpar?
+     * @param load {@code boolean} Pode carregar?
      */
     public ViewParameter(boolean save, boolean procces, boolean clear, boolean load) {
         this.canSave = save;
@@ -45,7 +45,7 @@ public class ViewParameter {
     /**
      * Retorna se pode salvar
      *
-     * @return <code>boolean</code> Pode salvar?
+     * @return {@code boolean} Pode salvar?
      */
     public Boolean isSave() {
         return canSave;
@@ -54,7 +54,7 @@ public class ViewParameter {
     /**
      * Modifica se pode salvar
      *
-     * @param canSave <code>boolean</code> Pode salvar?
+     * @param canSave {@code boolean} Pode salvar?
      */
     public void setSave(Boolean canSave) {
         this.canSave = canSave;
@@ -63,7 +63,7 @@ public class ViewParameter {
     /**
      * Retorna se pode processar
      *
-     * @return <code>boolean</code> Pode processar?
+     * @return {@code boolean} Pode processar?
      */
     public Boolean isProcess() {
         return canProcess;
@@ -72,7 +72,7 @@ public class ViewParameter {
     /**
      * Modifica se pode processar
      *
-     * @param canProcces <code>boolean</code> Pode processar?
+     * @param canProcces {@code boolean} Pode processar?
      */
     public void setProcess(Boolean canProcces) {
         this.canProcess = canProcces;
@@ -81,7 +81,7 @@ public class ViewParameter {
     /**
      * Retorna se pode limpar
      *
-     * @return <code>boolean</code> Pode limpar?
+     * @return {@code boolean} Pode limpar?
      */
     public Boolean isClear() {
         return canClear;
@@ -90,7 +90,7 @@ public class ViewParameter {
     /**
      * Modifica se pode limpar
      *
-     * @param canClear <code>boolean</code> Pode limpar?
+     * @param canClear {@code boolean} Pode limpar?
      */
     public void setClear(Boolean canClear) {
         this.canClear = canClear;
@@ -99,7 +99,7 @@ public class ViewParameter {
     /**
      * Retorna se pode carregar
      *
-     * @return <code>boolean</code> Pode carregar?
+     * @return {@code boolean} Pode carregar?
      */
     public Boolean isLoad() {
         return canLoad;
@@ -108,7 +108,7 @@ public class ViewParameter {
     /**
      * Modifica se pode carregar
      *
-     * @param canLoad <code>boolean</code> Pode carregar?
+     * @param canLoad {@code boolean} Pode carregar?
      */
     public void setLoad(Boolean canLoad) {
         this.canLoad = canLoad;

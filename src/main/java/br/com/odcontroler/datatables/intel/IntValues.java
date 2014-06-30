@@ -49,7 +49,7 @@ public class IntValues {
     /**
      * Retorna a lista de valores para inteligencia
      *
-     * @return <code>List(IntData)</code> Lista de valores para inteligencia
+     * @return {@code List(IntData)} Lista de valores para inteligencia
      */
     public List<IntData> getIntValues() {
         return intValues;

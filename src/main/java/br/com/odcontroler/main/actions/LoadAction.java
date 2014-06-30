@@ -13,7 +13,7 @@ public class LoadAction extends FrameAction {
     /**
      * Cria nova instancia de LoadAction
      *
-     * @param view <code>View</code> da ação
+     * @param view {@code View} da ação
      */
     public LoadAction(View view) {
         super("load", view);

@@ -56,14 +56,14 @@ public class Armor implements Serializable {
     /**
      * Cria nova instancia de Armor
      *
-     * @param id <code>Long</code> ID da armadura
-     * @param name <code>String</code> Nome da armadura
-     * @param description <code>String</code> Descrição da armadura
-     * @param type <code>ArmorType</code> Tipo da armadura
-     * @param price <code>Double</code> Preço da armadura
-     * @param material1 <code>PrimeMaterial</code> Material 1
-     * @param material2 <code>PrimeMaterial</code> Material 2
-     * @param attributes <code>Attributes</code> Atributos da armadura
+     * @param id {@code Long} ID da armadura
+     * @param name {@code String} Nome da armadura
+     * @param description {@code String} Descrição da armadura
+     * @param type {@code ArmorType} Tipo da armadura
+     * @param price {@code Double} Preço da armadura
+     * @param material1 {@code PrimeMaterial} Material 1
+     * @param material2 {@code PrimeMaterial} Material 2
+     * @param attributes {@code Attributes} Atributos da armadura
      */
     public Armor(Long id, String name, String description, ArmorType type, Double price, PrimeMaterial material1, PrimeMaterial material2, Attributes attributes) {
         this.id = id;
@@ -91,7 +91,7 @@ public class Armor implements Serializable {
     /**
      * Retorna o ID da armadura
      *
-     * @return <code>Long</code> ID da armadura
+     * @return {@code Long} ID da armadura
      */
     public Long getId() {
         return id;
@@ -100,7 +100,7 @@ public class Armor implements Serializable {
     /**
      * Modifica o ID da armadura
      *
-     * @param id <code>Long</code> ID da armadura
+     * @param id {@code Long} ID da armadura
      */
     public void setId(Long id) {
         this.id = id;
@@ -109,7 +109,7 @@ public class Armor implements Serializable {
     /**
      * Retorna o Nome da armadura
      *
-     * @return <code>String</code> Nome da armadura
+     * @return {@code String} Nome da armadura
      */
     public String getName() {
         return name;
@@ -118,7 +118,7 @@ public class Armor implements Serializable {
     /**
      * Modifica o Nome da armadura
      *
-     * @param name <code>String</code> Nome da armadura
+     * @param name {@code String} Nome da armadura
      */
     public void setName(String name) {
         this.name = name;
@@ -127,7 +127,7 @@ public class Armor implements Serializable {
     /**
      * Retorna a Descrição da armadura
      *
-     * @return <code>String</code> Descrição da armadura
+     * @return {@code String} Descrição da armadura
      */
     public String getDescription() {
         return description;
@@ -136,7 +136,7 @@ public class Armor implements Serializable {
     /**
      * Modifica a Descrição da armadura
      *
-     * @param description <code>String</code> Descrição da armadura
+     * @param description {@code String} Descrição da armadura
      */
     public void setDescription(String description) {
         this.description = description;
@@ -145,7 +145,7 @@ public class Armor implements Serializable {
     /**
      * Retorna o Tipo da armadura
      *
-     * @return <code>ArmorType</code> Tipo da armadura
+     * @return {@code ArmorType} Tipo da armadura
      */
     public ArmorType getType() {
         return type;
@@ -154,7 +154,7 @@ public class Armor implements Serializable {
     /**
      * Modifica o Tipo da armadura
      *
-     * @param type <code>ArmorType</code> Tipo da armadura
+     * @param type {@code ArmorType} Tipo da armadura
      */
     public void setType(ArmorType type) {
         this.type = type;
@@ -163,7 +163,7 @@ public class Armor implements Serializable {
     /**
      * Retorna a Resistencia da armadura
      *
-     * @return <code>Double</code> Resistencia da armadura
+     * @return {@code Double} Resistencia da armadura
      */
     public Double getResistence() {
         return resistence;
@@ -172,7 +172,7 @@ public class Armor implements Serializable {
     /**
      * Modifica a Resistencia da armadura
      *
-     * @param resistence <code>Double</code> Resistencia da armadura
+     * @param resistence {@code Double} Resistencia da armadura
      */
     public void setResistence(Double resistence) {
         this.resistence = resistence;
@@ -181,7 +181,7 @@ public class Armor implements Serializable {
     /**
      * Retorna o preço da armadura
      *
-     * @return <code>Double</code> Preço da armadura
+     * @return {@code Double} Preço da armadura
      */
     public Double getPrice() {
         return price;
@@ -190,7 +190,7 @@ public class Armor implements Serializable {
     /**
      * Modifica o preço da armadura
      *
-     * @param price <code>Double</code> Preço da armadura
+     * @param price {@code Double} Preço da armadura
      */
     public void setPrice(Double price) {
         this.price = price;
@@ -199,7 +199,7 @@ public class Armor implements Serializable {
     /**
      * Retorna o Material 1
      *
-     * @return <code>PrimeMaterial</code> Material 1
+     * @return {@code PrimeMaterial} Material 1
      */
     public PrimeMaterial getMaterial1() {
         return material1;
@@ -208,7 +208,7 @@ public class Armor implements Serializable {
     /**
      * Modifica o Material 1
      *
-     * @param material1 <code>PrimeMaterial</code> Material 1
+     * @param material1 {@code PrimeMaterial} Material 1
      */
     public void setMaterial1(PrimeMaterial material1) {
         this.material1 = material1;
@@ -217,7 +217,7 @@ public class Armor implements Serializable {
     /**
      * Retorna o Material 2
      *
-     * @return <code>PrimeMaterial</code> Material 2
+     * @return {@code PrimeMaterial} Material 2
      */
     public PrimeMaterial getMaterial2() {
         return material2;
@@ -226,7 +226,7 @@ public class Armor implements Serializable {
     /**
      * Modifica o Material 2
      *
-     * @param material2 <code>PrimeMaterial</code> Material 2
+     * @param material2 {@code PrimeMaterial} Material 2
      */
     public void setMaterial2(PrimeMaterial material2) {
         this.material2 = material2;
@@ -235,7 +235,7 @@ public class Armor implements Serializable {
     /**
      * Retorna os atributos
      *
-     * @return <code>Attributes</code> Atributos
+     * @return {@code Attributes} Atributos
      */
     public Attributes getAttributes() {
         return attributes;
@@ -244,7 +244,7 @@ public class Armor implements Serializable {
     /**
      * Modifica os atributos
      *
-     * @param attributes <code>Attributes</code> Atributos
+     * @param attributes {@code Attributes} Atributos
      */
     public void setAttributes(Attributes attributes) {
         this.attributes = attributes;
@@ -253,7 +253,7 @@ public class Armor implements Serializable {
     /**
      * Modifica as restrições
      *
-     * @return <code>List(Restriction)</code> Restrições
+     * @return {@code List(Restriction)} Restrições
      */
     public List<Restriction> getRestriction() {
         return restriction;
@@ -262,7 +262,7 @@ public class Armor implements Serializable {
     /**
      * Retorna as restrições
      *
-     * @param restriction <code>List(Restriction)</code> Restrições
+     * @param restriction {@code List(Restriction)} Restrições
      */
     public void setRestriction(List<Restriction> restriction) {
         this.restriction = restriction;
@@ -271,7 +271,7 @@ public class Armor implements Serializable {
     /**
      * Modifica os efeitos
      *
-     * @return <code>List(Effect)</code> Efeitos
+     * @return {@code List(Effect)} Efeitos
      */
     public List<Effect> getEffects() {
         return effects;
@@ -280,7 +280,7 @@ public class Armor implements Serializable {
     /**
      * Retorna os efeitos
      *
-     * @param effects <code>List(Effect)</code> Efeitos
+     * @param effects {@code List(Effect)} Efeitos
      */
     public void setEffects(List<Effect> effects) {
         this.effects = effects;

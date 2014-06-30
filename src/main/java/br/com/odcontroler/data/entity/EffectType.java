@@ -30,8 +30,8 @@ public class EffectType extends Type {
     /**
      * Cria nova instancia de EffectType
      *
-     * @param id <code>Long</code> Código do tipo
-     * @param title <code>String</code> Titulo do tipo
+     * @param id {@code Long} Código do tipo
+     * @param title {@code String} Titulo do tipo
      */
     public EffectType(Long id, String title) {
         this.id = id;
@@ -41,7 +41,7 @@ public class EffectType extends Type {
     /**
      * Retorna o ID do EffectType
      *
-     * @return <code>Long</code> ID do EffectType
+     * @return {@code Long} ID do EffectType
      */
     public Long getId() {
         return id;
@@ -50,7 +50,7 @@ public class EffectType extends Type {
     /**
      * Modifica o ID do EffectType
      *
-     * @param id <code>Long</code> ID do EffectType
+     * @param id {@code Long} ID do EffectType
      */
     public void setId(Long id) {
         this.id = id;
@@ -59,7 +59,7 @@ public class EffectType extends Type {
     /**
      * Retorna o titulo do EffectType
      *
-     * @return <code>String</code> Titulo do EffectType
+     * @return {@code String} Titulo do EffectType
      */
     public String getTitle() {
         return title;
@@ -68,7 +68,7 @@ public class EffectType extends Type {
     /**
      * Modifica o titulo do EffectType
      *
-     * @param title <code>String</code> Titulo do EffectType
+     * @param title {@code String} Titulo do EffectType
      */
     public void setTitle(String title) {
         this.title = title;

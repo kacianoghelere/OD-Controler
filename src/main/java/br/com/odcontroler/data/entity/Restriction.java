@@ -30,9 +30,9 @@ public class Restriction {
     /**
      * Cria nova instancia de Restriction
      *
-     * @param id <code>Long</code> ID da restrições
-     * @param type <code>RestrictionType</code> Tipo da Restrição
-     * @param value <code>Integer</code> Valor da Restrição
+     * @param id {@code Long} ID da restrições
+     * @param type {@code RestrictionType} Tipo da Restrição
+     * @param value {@code Integer} Valor da Restrição
      */
     public Restriction(Long id, RestrictionType type, Integer value) {
         this.id = id;
@@ -43,8 +43,8 @@ public class Restriction {
     /**
      * Cria nova instancia de Restriction
      *
-     * @param type <code>RestrictionType</code> Tipo da Restrição
-     * @param value <code>Integer</code> Valor da Restrição
+     * @param type {@code RestrictionType} Tipo da Restrição
+     * @param value {@code Integer} Valor da Restrição
      */
     public Restriction(RestrictionType type, Integer value) {
         this.type = type;
@@ -54,7 +54,7 @@ public class Restriction {
     /**
      * Retorna o ID da restrições
      *
-     * @return <code>Long</code> ID da restrições
+     * @return {@code Long} ID da restrições
      */
     public Long getId() {
         return id;
@@ -63,7 +63,7 @@ public class Restriction {
     /**
      * Modifica o ID da restrições
      *
-     * @param id <code>Long</code> ID da restrições
+     * @param id {@code Long} ID da restrições
      */
     public void setId(Long id) {
         this.id = id;
@@ -72,7 +72,7 @@ public class Restriction {
     /**
      * Retorna o Tipo da Restrição
      *
-     * @return <code>RestrictionType</code> Tipo da Restrição
+     * @return {@code RestrictionType} Tipo da Restrição
      */
     public RestrictionType getType() {
         return type;
@@ -81,7 +81,7 @@ public class Restriction {
     /**
      * Modifica o Tipo da Restrição
      *
-     * @param type <code>RestrictionType</code> Tipo da Restrição
+     * @param type {@code RestrictionType} Tipo da Restrição
      */
     public void setType(RestrictionType type) {
         this.type = type;
@@ -90,7 +90,7 @@ public class Restriction {
     /**
      * Retorna o Valor da Restrição
      *
-     * @return <code>Integer</code> Valor da Restrição
+     * @return {@code Integer} Valor da Restrição
      */
     public Integer getValue() {
         return value;
@@ -99,7 +99,7 @@ public class Restriction {
     /**
      * Modifica o Valor da Restrição
      *
-     * @param value <code>Integer</code> Valor da Restrição
+     * @param value {@code Integer} Valor da Restrição
      */
     public void setValue(Integer value) {
         this.value = value;

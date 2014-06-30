@@ -83,7 +83,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     /**
      * Imprime as pastas e arquivos dentro do diretório indicado
      *
-     * @param dir <code>File</code> Diretório
+     * @param dir {@code File} Diretório
      */
     private void printChild(File dir) {
         for (File file : dir.listFiles()) {
@@ -121,7 +121,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     /**
      * Retorna o listener
      *
-     * @return <code>MainListener</code> Listener do frame principal
+     * @return {@code MainListener} Listener do frame principal
      */
     public MainListener getListener() {
         return listener;
@@ -130,7 +130,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     /**
      * Modifica o listener
      *
-     * @param listener <code>MainListener</code> Listener do frame principal
+     * @param listener {@code MainListener} Listener do frame principal
      */
     public void setListener(MainListener listener) {
         this.listener = listener;
@@ -139,7 +139,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     /**
      * Retorno o desktop
      *
-     * @return <code>JDesktopPane</code>
+     * @return {@code JDesktopPane}
      */
     public JDesktopPane getDesktop() {
         return desktop;
@@ -148,7 +148,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     /**
      * Modifica o desktop
      *
-     * @param desktop <code>JDesktopPane</code>
+     * @param desktop {@code JDesktopPane}
      */
     public void setDesktop(JDesktopPane desktop) {
         this.desktop = desktop;
@@ -157,7 +157,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     /**
      * Modifica os controles de acordo com a View ativa
      *
-     * @param controls <code>boolean[]</code> Array com as opções de controle
+     * @param controls {@code boolean[]} Array com as opções de controle
      */
     public void setControls(Boolean... controls) {
         this.jBSave.setEnabled(controls[0]);
@@ -169,7 +169,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     /**
      * Modifica os controles de acordo com a View ativa
      *
-     * @param param <code>ViewParameter</code> Parametros das opções de controle
+     * @param param {@code ViewParameter} Parametros das opções de controle
      */
     public void setControls(ViewParameter param) {
         this.jBSave.setEnabled(param.isSave());
@@ -187,8 +187,8 @@ public class MainScreen extends javax.swing.JFrame implements Main {
      * Mensagem de erro : MainScreen.ERROR_ICON<br>
      * Mensagem de sucesso : MainScreen.SUCCESS_ICON<br>
      *
-     * @param text <code>String</code> Texto à ser impresso
-     * @param icon <code>String</code> Icone de tipo para a mensagem
+     * @param text {@code String} Texto à ser impresso
+     * @param icon {@code String} Icone de tipo para a mensagem
      */
     private void printMsg(String text, String icon) {
         ImageIcon ic = new javax.swing.ImageIcon(getClass().getResource(icon));
@@ -205,8 +205,8 @@ public class MainScreen extends javax.swing.JFrame implements Main {
      * Mensagem de erro : 4<br>
      * Mensagem de sucesso : 5<br>
      *
-     * @param text <code>String</code> Texto à ser impresso
-     * @param type <code>int</code> Tipo da mensagem
+     * @param text {@code String} Texto à ser impresso
+     * @param type {@code int} Tipo da mensagem
      */
     @Intercept
     public void printTypedMsg(String text, int type) {
@@ -257,7 +257,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     /**
      * Retorna o menu raiz
      *
-     * @return <code>JMenu</code> Menu raiz
+     * @return {@code JMenu} Menu raiz
      */
     public JMenu getRoot() {
         return jMRoot;

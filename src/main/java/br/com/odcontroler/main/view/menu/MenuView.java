@@ -45,7 +45,7 @@ public class MenuView extends View implements TableSource<Menu>, TableView {
     /**
      * Cria nova instancia de MenuView
      *
-     * @param mainScreen <code>MainScreen</code>
+     * @param mainScreen {@code MainScreen}
      */
     public MenuView(MainScreen mainScreen) {
         super(mainScreen);
@@ -140,7 +140,7 @@ public class MenuView extends View implements TableSource<Menu>, TableView {
     /**
      * Modelo da combobox de menus superiores
      *
-     * @return <code>GComboBoxModel(Menu)</code>
+     * @return {@code GComboBoxModel(Menu)}
      */
     public GComboBoxModel<Menu> getParentModel() {
         return parentModel;
@@ -149,7 +149,7 @@ public class MenuView extends View implements TableSource<Menu>, TableView {
     /**
      * Modelo da combobox de icones
      *
-     * @return <code>GComboBoxModel(ImageIcon)</code>
+     * @return {@code GComboBoxModel(ImageIcon)}
      */
     public GComboBoxModel<ImageIcon> getIconModel() {
         return iconModel;
@@ -158,7 +158,7 @@ public class MenuView extends View implements TableSource<Menu>, TableView {
     /**
      * Retorna o menu de pré-visualização
      *
-     * @return <code>JMenu</code> Menu de pré-visualização
+     * @return {@code JMenu} Menu de pré-visualização
      */
     public JMenu getRoot() {
         return this.jMVisualization;

@@ -30,8 +30,8 @@ public class PerkType extends Type {
     /**
      * Cria nova instancia de PerkType
      *
-     * @param id <code>Long</code> Código do tipo
-     * @param title <code>String</code> Nome do tipo
+     * @param id {@code Long} Código do tipo
+     * @param title {@code String} Nome do tipo
      */
     public PerkType(Long id, String title) {
         this.id = id;
@@ -41,7 +41,7 @@ public class PerkType extends Type {
     /**
      * Retorna o ID do PerkType
      *
-     * @return <code>Long</code> ID do PerkType
+     * @return {@code Long} ID do PerkType
      */
     public Long getId() {
         return id;
@@ -50,7 +50,7 @@ public class PerkType extends Type {
     /**
      * Modifica o ID do PerkType
      *
-     * @param id <code>Long</code> ID do PerkType
+     * @param id {@code Long} ID do PerkType
      */
     public void setId(Long id) {
         this.id = id;
@@ -59,7 +59,7 @@ public class PerkType extends Type {
     /**
      * Retorna o titulo do PerkType
      *
-     * @return <code>String</code> Titulo do PerkType
+     * @return {@code String} Titulo do PerkType
      */
     public String getTitle() {
         return title;
@@ -68,7 +68,7 @@ public class PerkType extends Type {
     /**
      * Modifica o titulo do PerkType
      *
-     * @param title <code>String</code> Titulo do PerkType
+     * @param title {@code String} Titulo do PerkType
      */
     public void setTitle(String title) {
         this.title = title;

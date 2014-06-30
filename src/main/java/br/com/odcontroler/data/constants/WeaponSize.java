@@ -30,7 +30,7 @@ public enum WeaponSize {
     /**
      * Cria nova instancia de WeaponSize
      *
-     * @param size <code>String</code> Tamanho
+     * @param size {@code String} Tamanho
      */
     private WeaponSize(String size) {
         this.size = size;

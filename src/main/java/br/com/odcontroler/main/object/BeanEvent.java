@@ -17,7 +17,7 @@ public class BeanEvent {
     /**
      * Cria nova instancia de BeanEvent
      *
-     * @param wrapper <code>ViewWrapper</code> Objeto de transporte
+     * @param wrapper {@code ViewWrapper} Objeto de transporte
      */
     public BeanEvent(ObjectWrapper wrapper) {
         this.viewWrapper = wrapper;
@@ -26,8 +26,8 @@ public class BeanEvent {
     /**
      * Cria nova instancia de BeanEvent
      *
-     * @param frame <code>Object</code> Tela que carregou o evento
-     * @param value <code>Object</code> Objeto transportado
+     * @param frame {@code Object} Tela que carregou o evento
+     * @param value {@code Object} Objeto transportado
      */
     public BeanEvent(Object frame, Object value) {
         this.frame = frame;
@@ -37,7 +37,7 @@ public class BeanEvent {
     /**
      * Retorna o frame
      *
-     * @return <code>Object</code> Frame
+     * @return {@code Object} Frame
      */
     public Object getFrame() {
         return frame;
@@ -46,7 +46,7 @@ public class BeanEvent {
     /**
      * Modifica o frame
      *
-     * @param frame <code>Object</code> Frame
+     * @param frame {@code Object} Frame
      */
     public void setFrame(Object frame) {
         this.frame = frame;
@@ -55,7 +55,7 @@ public class BeanEvent {
     /**
      * Retorna o valor transportado
      *
-     * @return <code>Object</code> Valor transportado
+     * @return {@code Object} Valor transportado
      */
     public Object getValue() {
         return value;
@@ -64,7 +64,7 @@ public class BeanEvent {
     /**
      * Modifica o valor transportado
      *
-     * @param value <code>Object</code> Valor transportado
+     * @param value {@code Object} Valor transportado
      */
     public void setValue(Object value) {
         this.value = value;
@@ -73,7 +73,7 @@ public class BeanEvent {
     /**
      * Retorna o objeto de transporte
      *
-     * @return <code>ObjectWrapper</code> Objeto de transporte
+     * @return {@code ObjectWrapper} Objeto de transporte
      */
     public ObjectWrapper getWrapper() {
         return viewWrapper;
@@ -82,7 +82,7 @@ public class BeanEvent {
     /**
      * Modifica o objeto de transporte
      *
-     * @param viewWrapper <code>ObjectWrapper</code> Objeto de transporte
+     * @param viewWrapper {@code ObjectWrapper} Objeto de transporte
      */
     public void setViewWrapper(ObjectWrapper viewWrapper) {
         this.viewWrapper = viewWrapper;

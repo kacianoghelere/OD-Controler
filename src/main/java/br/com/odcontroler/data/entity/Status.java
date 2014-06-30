@@ -33,10 +33,10 @@ public class Status {
     /**
      * Cria nova instancia de Status
      *
-     * @param id <code>Long</code> ID do Status
-     * @param title <code>String</code> Titulo do Status
-     * @param duration <code>Integer</code> Duração do Status
-     * @param idEffect <code>Effect</code> Efeito do Status
+     * @param id {@code Long} ID do Status
+     * @param title {@code String} Titulo do Status
+     * @param duration {@code Integer} Duração do Status
+     * @param idEffect {@code Effect} Efeito do Status
      */
     public Status(Long id, String title, Integer duration, Effect idEffect) {
         this.id = id;
@@ -48,7 +48,7 @@ public class Status {
     /**
      * Retorna o ID
      *
-     * @return <code>Long</code> ID do Status
+     * @return {@code Long} ID do Status
      */
     public Long getId() {
         return id;
@@ -57,7 +57,7 @@ public class Status {
     /**
      * Modifica o ID
      *
-     * @param id <code>Long</code> ID do Status
+     * @param id {@code Long} ID do Status
      */
     public void setId(Long id) {
         this.id = id;
@@ -66,7 +66,7 @@ public class Status {
     /**
      * Retorna o Titulo
      *
-     * @return <code>String</code> Titulo do Status
+     * @return {@code String} Titulo do Status
      */
     public String getTitle() {
         return title;
@@ -75,7 +75,7 @@ public class Status {
     /**
      * Modifica o Titulo
      *
-     * @param title <code>String</code> Titulo do Status
+     * @param title {@code String} Titulo do Status
      */
     public void setTitle(String title) {
         this.title = title;
@@ -84,7 +84,7 @@ public class Status {
     /**
      * Retorna a Duração do Status
      *
-     * @return <code>Integer</code> Duração do Status
+     * @return {@code Integer} Duração do Status
      */
     public Integer getDuration() {
         return duration;
@@ -93,7 +93,7 @@ public class Status {
     /**
      * Modifica a Duração do Status
      *
-     * @param duration <code>Integer</code> Duração do Status
+     * @param duration {@code Integer} Duração do Status
      */
     public void setDuration(Integer duration) {
         this.duration = duration;
@@ -102,7 +102,7 @@ public class Status {
     /**
      * Retorna o Efeito do Status
      *
-     * @return <code>Effect</code> Efeito do Status
+     * @return {@code Effect} Efeito do Status
      */
     public Effect getIdEffect() {
         return idEffect;
@@ -111,7 +111,7 @@ public class Status {
     /**
      * Modifica o Efeito do Status
      *
-     * @param idEffect <code>Effect</code> Efeito do Status
+     * @param idEffect {@code Effect} Efeito do Status
      */
     public void setIdEffect(Effect idEffect) {
         this.idEffect = idEffect;

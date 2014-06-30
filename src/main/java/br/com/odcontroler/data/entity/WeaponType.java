@@ -51,13 +51,13 @@ public class WeaponType extends Type {
     /**
      * Cria nova instancia de WeaponType
      *
-     * @param id <code>Long</code> Código do tipo de arma
-     * @param typeName <code>String</code> Titulo do tipo de arma
-     * @param damageBase <code>Double</code> Dano base do tipo
-     * @param category <code>Integer</code> Classificação do tipo
-     * @param wearType <code>WearType</code> Tipo de porte
-     * @param materialAmount1 <code>Double</code> Qtd. do material 1
-     * @param materialAmount2 <code>Double</code> Qtd. do material 2
+     * @param id {@code Long} Código do tipo de arma
+     * @param typeName {@code String} Titulo do tipo de arma
+     * @param damageBase {@code Double} Dano base do tipo
+     * @param category {@code Integer} Classificação do tipo
+     * @param wearType {@code WearType} Tipo de porte
+     * @param materialAmount1 {@code Double} Qtd. do material 1
+     * @param materialAmount2 {@code Double} Qtd. do material 2
      */
     public WeaponType(Long id, String typeName, Double damageBase, Integer category, UseType wearType, Double materialAmount1, Double materialAmount2) {
         this.id = id;
@@ -71,15 +71,15 @@ public class WeaponType extends Type {
 
     /**
      *
-     * @param id <code>Long</code> Código do tipo de arma
-     * @param typeName <code>String</code> Titulo do tipo de arma
-     * @param damageBase <code>Double</code> Dano base do tipo
-     * @param range <code>Integer</code> Alcance da arma
-     * @param size <code>WeaponSize</code> Tamanho da arma
-     * @param category <code>Integer</code> Classificação do tipo
-     * @param wearType <code>WearType</code> Tipo de porte
-     * @param materialAmount1 <code>Double</code> Qtd. do material 1
-     * @param materialAmount2 <code>Double</code> Qtd. do material 2
+     * @param id {@code Long} Código do tipo de arma
+     * @param typeName {@code String} Titulo do tipo de arma
+     * @param damageBase {@code Double} Dano base do tipo
+     * @param range {@code Integer} Alcance da arma
+     * @param size {@code WeaponSize} Tamanho da arma
+     * @param category {@code Integer} Classificação do tipo
+     * @param wearType {@code WearType} Tipo de porte
+     * @param materialAmount1 {@code Double} Qtd. do material 1
+     * @param materialAmount2 {@code Double} Qtd. do material 2
      */
     public WeaponType(Long id, String typeName, Double damageBase, Integer range, WeaponSize size, Integer category, UseType wearType, Double materialAmount1, Double materialAmount2) {
         this.id = id;
@@ -95,16 +95,16 @@ public class WeaponType extends Type {
 
     /**
      *
-     * @param id <code>Long</code> Código do tipo de arma
-     * @param title <code>String</code> Titulo do tipo de arma
-     * @param damageBase <code>Double</code> Dano base do tipo
-     * @param range <code>Integer</code> Alcance da arma
-     * @param damageType <code>DamageType</code> Tipo de dano
-     * @param size <code>WeaponSize</code> Tamanho da arma
-     * @param category <code>Integer</code> Classificação do tipo
-     * @param wearType <code>WearType</code> Tipo de porte
-     * @param materialAmount1 <code>Double</code> Qtd. do material 1
-     * @param materialAmount2 <code>Double</code> Qtd. do material 2
+     * @param id {@code Long} Código do tipo de arma
+     * @param title {@code String} Titulo do tipo de arma
+     * @param damageBase {@code Double} Dano base do tipo
+     * @param range {@code Integer} Alcance da arma
+     * @param damageType {@code DamageType} Tipo de dano
+     * @param size {@code WeaponSize} Tamanho da arma
+     * @param category {@code Integer} Classificação do tipo
+     * @param wearType {@code WearType} Tipo de porte
+     * @param materialAmount1 {@code Double} Qtd. do material 1
+     * @param materialAmount2 {@code Double} Qtd. do material 2
      */
     public WeaponType(Long id, String title, Double damageBase, Integer range, DamageType damageType, WeaponSize size, Integer category, UseType wearType, Double materialAmount1, Double materialAmount2) {
         this.id = id;
@@ -122,7 +122,7 @@ public class WeaponType extends Type {
     /**
      * Retorna o Código do tipo de arma
      *
-     * @return <code>Long</code> Código do tipo de arma
+     * @return {@code Long} Código do tipo de arma
      */
     @Override
     public Long getId() {
@@ -132,7 +132,7 @@ public class WeaponType extends Type {
     /**
      * Modifica o Código do tipo de arma
      *
-     * @param id <code>Long</code> Código do tipo de arma
+     * @param id {@code Long} Código do tipo de arma
      */
     @Override
     public void setId(Long id) {
@@ -142,7 +142,7 @@ public class WeaponType extends Type {
     /**
      * Retorna o Titulo do tipo de arma
      *
-     * @return <code>String</code> Titulo do tipo de arma
+     * @return {@code String} Titulo do tipo de arma
      */
     @Override
     public String getTitle() {
@@ -152,7 +152,7 @@ public class WeaponType extends Type {
     /**
      * Modifica o Titulo do tipo de arma
      *
-     * @param title <code>String</code> Titulo do tipo de arma
+     * @param title {@code String} Titulo do tipo de arma
      */
     @Override
     public void setTitle(String title) {
@@ -162,7 +162,7 @@ public class WeaponType extends Type {
     /**
      * Retorna a Qtd. do material 1
      *
-     * @return <code>Double</code> Qtd. do material 1
+     * @return {@code Double} Qtd. do material 1
      */
     public Double getMaterialAmount1() {
         return materialAmount1;
@@ -171,7 +171,7 @@ public class WeaponType extends Type {
     /**
      * Modifica a Qtd. do material 1
      *
-     * @param amount1 <code>Double</code> Qtd. do material 1
+     * @param amount1 {@code Double} Qtd. do material 1
      */
     public void setMaterialAmount1(Double amount1) {
         this.materialAmount1 = amount1;
@@ -180,7 +180,7 @@ public class WeaponType extends Type {
     /**
      * Retorna a Qtd. do material 2
      *
-     * @return <code>Double</code> Qtd. do material 2
+     * @return {@code Double} Qtd. do material 2
      */
     public Double getMaterialAmount2() {
         return materialAmount2;
@@ -189,7 +189,7 @@ public class WeaponType extends Type {
     /**
      * Modifica a Qtd. do material 2
      *
-     * @param amount2 <code>Double</code> Qtd. do material 2
+     * @param amount2 {@code Double} Qtd. do material 2
      */
     public void setMaterialAmount2(Double amount2) {
         this.materialAmount2 = amount2;
@@ -198,7 +198,7 @@ public class WeaponType extends Type {
     /**
      * Retorna o Dano base do tipo
      *
-     * @return <code>Double</code> Dano base do tipo
+     * @return {@code Double} Dano base do tipo
      */
     public Double getDamageBase() {
         return damageBase;
@@ -207,7 +207,7 @@ public class WeaponType extends Type {
     /**
      * Modificao tipo de Dano
      *
-     * @param damageBase <code>DamageType</code> Tipo de dano
+     * @param damageBase {@code DamageType} Tipo de dano
      */
     public void setDamageBase(Double damageBase) {
         this.damageBase = damageBase;
@@ -216,7 +216,7 @@ public class WeaponType extends Type {
     /**
      * Retorna o Dano base do tipo
      *
-     * @return <code>Double</code> Dano base do tipo
+     * @return {@code Double} Dano base do tipo
      */
     public DamageType getDamageType() {
         return damageType;
@@ -225,7 +225,7 @@ public class WeaponType extends Type {
     /**
      * Modifica o tipo de Dano
      *
-     * @param damageType <code>DamageType</code> Tipo de dano
+     * @param damageType {@code DamageType} Tipo de dano
      */
     public void setDamageType(DamageType damageType) {
         this.damageType = damageType;
@@ -234,7 +234,7 @@ public class WeaponType extends Type {
     /**
      * Retorna o alcance da arma
      *
-     * @return <code>Integer</code> Alcance da arma
+     * @return {@code Integer} Alcance da arma
      */
     public Integer getRange() {
         return range;
@@ -243,7 +243,7 @@ public class WeaponType extends Type {
     /**
      * Modifica o alcance da arma
      *
-     * @param range <code>Integer</code> Alcance da arma
+     * @param range {@code Integer} Alcance da arma
      */
     public void setRange(Integer range) {
         this.range = range;
@@ -252,7 +252,7 @@ public class WeaponType extends Type {
     /**
      * Retorna o tamanho da arma
      *
-     * @return <code>WeaponSize</code> Tamanho da arma
+     * @return {@code WeaponSize} Tamanho da arma
      */
     public WeaponSize getSize() {
         return size;
@@ -261,7 +261,7 @@ public class WeaponType extends Type {
     /**
      * Modifica o tamanho da arma
      *
-     * @param size <code>WeaponSize</code> Tamanho da arma
+     * @param size {@code WeaponSize} Tamanho da arma
      */
     public void setSize(WeaponSize size) {
         this.size = size;
@@ -270,7 +270,7 @@ public class WeaponType extends Type {
     /**
      * Retorna a Classificação do tipo
      *
-     * @return <code>Integer</code> Classificação do tipo
+     * @return {@code Integer} Classificação do tipo
      */
     public Integer getCategory() {
         return category;
@@ -279,7 +279,7 @@ public class WeaponType extends Type {
     /**
      * Modifica a Classificação do tipo
      *
-     * @param category <code>Integer</code> Classificação do tipo
+     * @param category {@code Integer} Classificação do tipo
      */
     public void setCategory(Integer category) {
         this.category = category;
@@ -288,7 +288,7 @@ public class WeaponType extends Type {
     /**
      * Retorna o Tipo de porte
      *
-     * @return <code>WearType</code> Tipo de porte
+     * @return {@code WearType} Tipo de porte
      */
     public UseType getWearType() {
         return wearType;
@@ -297,7 +297,7 @@ public class WeaponType extends Type {
     /**
      * Modifica o Tipo de porte
      *
-     * @param wearType <code>WearType</code> Tipo de porte
+     * @param wearType {@code WearType} Tipo de porte
      */
     public void setUseType(UseType wearType) {
         this.wearType = wearType;

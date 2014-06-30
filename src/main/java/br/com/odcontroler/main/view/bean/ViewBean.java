@@ -20,7 +20,7 @@ public class ViewBean<T> implements BeanListener<T> {
     /**
      * Cria nova instancia de DefaultViewBean
      *
-     * @param view <code>DefaultView</code> View do bean
+     * @param view {@code DefaultView} View do bean
      * @see br.com.odcontroler.main.view.View
      */
     public ViewBean(T view) {
@@ -50,7 +50,7 @@ public class ViewBean<T> implements BeanListener<T> {
     /**
      * Método para adição de conteúdos
      *
-     * @param evt <code>BeanEvent</code> Evento do Bean
+     * @param evt {@code BeanEvent} Evento do Bean
      * @throws java.lang.Exception Propagação de exceção
      */
     public void add(BeanEvent evt) throws Exception {
@@ -60,7 +60,7 @@ public class ViewBean<T> implements BeanListener<T> {
     /**
      * Método para edição de conteúdos
      *
-     * @param evt <code>BeanEvent</code> Evento do Bean
+     * @param evt {@code BeanEvent} Evento do Bean
      * @throws java.lang.Exception Propagação de exceção
      */
     public void edit(BeanEvent evt) throws Exception {
@@ -70,7 +70,7 @@ public class ViewBean<T> implements BeanListener<T> {
     /**
      * Método para construção de conteúdos
      *
-     * @param evt <code>BeanEvent</code> Evento do Bean
+     * @param evt {@code BeanEvent} Evento do Bean
      * @throws java.lang.Exception Propagação de exceção
      */
     public void build(BeanEvent evt) throws Exception {

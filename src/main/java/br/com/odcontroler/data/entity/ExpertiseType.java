@@ -30,8 +30,8 @@ public class ExpertiseType extends Type {
     /**
      * Cria nova instancia de ExpertiseType
      *
-     * @param id <code>Long</code> Código do tipo
-     * @param title <code>String</code> Nome do tipo
+     * @param id {@code Long} Código do tipo
+     * @param title {@code String} Nome do tipo
      */
     public ExpertiseType(Long id, String title) {
         this.id = id;
@@ -41,7 +41,7 @@ public class ExpertiseType extends Type {
     /**
      * Retorna o ID do ExpertiseType
      *
-     * @return <code>Long</code> ID do ExpertiseType
+     * @return {@code Long} ID do ExpertiseType
      */
     public Long getId() {
         return id;
@@ -50,7 +50,7 @@ public class ExpertiseType extends Type {
     /**
      * Modifica o ID do ExpertiseType
      *
-     * @param id <code>Long</code> ID do ExpertiseType
+     * @param id {@code Long} ID do ExpertiseType
      */
     public void setId(Long id) {
         this.id = id;
@@ -59,7 +59,7 @@ public class ExpertiseType extends Type {
     /**
      * Retorna o titulo do ExpertiseType
      *
-     * @return <code>String</code> Titulo do ExpertiseType
+     * @return {@code String} Titulo do ExpertiseType
      */
     public String getTitle() {
         return title;
@@ -68,7 +68,7 @@ public class ExpertiseType extends Type {
     /**
      * Modifica o titulo do ExpertiseType
      *
-     * @param title <code>String</code> Titulo do ExpertiseType
+     * @param title {@code String} Titulo do ExpertiseType
      */
     public void setTitle(String title) {
         this.title = title;

@@ -52,14 +52,14 @@ public class Weapon {
     /**
      * Cria nova instancia de Weapon
      *
-     * @param id <code>Long</code> ID da arma
-     * @param name <code>String</code> Nome da arma
-     * @param description <code>String</code> Descrição da arma
-     * @param damage <code>Double</code> Dano da arma
-     * @param price <code>Double</code> Preço da arma
-     * @param type <code>WeaponType</code> Tipo de arma
-     * @param material1 <code>PrimeMaterial</code> Quantidade do material 1
-     * @param material2 <code>PrimeMaterial</code> Quantidade do material 2
+     * @param id {@code Long} ID da arma
+     * @param name {@code String} Nome da arma
+     * @param description {@code String} Descrição da arma
+     * @param damage {@code Double} Dano da arma
+     * @param price {@code Double} Preço da arma
+     * @param type {@code WeaponType} Tipo de arma
+     * @param material1 {@code PrimeMaterial} Quantidade do material 1
+     * @param material2 {@code PrimeMaterial} Quantidade do material 2
      */
     public Weapon(Long id, String name, String description, Double damage, Double price, WeaponType type, PrimeMaterial material1, PrimeMaterial material2) {
         this.id = id;
@@ -130,7 +130,7 @@ public class Weapon {
     /**
      * Retorna o ID da arma
      *
-     * @return <code>Long</code> ID da arma
+     * @return {@code Long} ID da arma
      */
     public Long getId() {
         return id;
@@ -139,7 +139,7 @@ public class Weapon {
     /**
      * Modifica o ID da arma
      *
-     * @param id <code>Long</code> ID da arma
+     * @param id {@code Long} ID da arma
      */
     public void setId(Long id) {
         this.id = id;
@@ -148,7 +148,7 @@ public class Weapon {
     /**
      * Retorna o Nome da arma
      *
-     * @return <code>String</code> Nome da arma
+     * @return {@code String} Nome da arma
      */
     public String getName() {
         return name;
@@ -157,7 +157,7 @@ public class Weapon {
     /**
      * Modifica o Nome da arma
      *
-     * @param name <code>String</code> Nome da arma
+     * @param name {@code String} Nome da arma
      */
     public void setName(String name) {
         this.name = name;
@@ -166,7 +166,7 @@ public class Weapon {
     /**
      * Retorna a Descrição da arma
      *
-     * @return <code>String</code> Descrição da arma
+     * @return {@code String} Descrição da arma
      */
     public String getDescription() {
         return description;
@@ -175,7 +175,7 @@ public class Weapon {
     /**
      * Modifica a Descrição da arma
      *
-     * @param description <code>String</code> Descrição da arma
+     * @param description {@code String} Descrição da arma
      */
     public void setDescription(String description) {
         this.description = description;
@@ -184,7 +184,7 @@ public class Weapon {
     /**
      * Retorna o Tipo da arma
      *
-     * @return <code>WeaponType</code> Tipo da arma
+     * @return {@code WeaponType} Tipo da arma
      */
     public WeaponType getType() {
         return type;
@@ -193,7 +193,7 @@ public class Weapon {
     /**
      * Modifica o Tipo da arma
      *
-     * @param type <code>WeaponType</code> Tipo da arma
+     * @param type {@code WeaponType} Tipo da arma
      */
     public void setType(WeaponType type) {
         this.type = type;
@@ -202,7 +202,7 @@ public class Weapon {
     /**
      * Retorna a Resistencia da arma
      *
-     * @return <code>Double</code> Resistencia da arma
+     * @return {@code Double} Resistencia da arma
      */
     public Double getDamage() {
         return damage;
@@ -211,7 +211,7 @@ public class Weapon {
     /**
      * Modifica a Resistencia da arma
      *
-     * @param damage <code>Double</code> Resistencia da arma
+     * @param damage {@code Double} Resistencia da arma
      */
     public void setDamage(Double damage) {
         this.damage = damage;
@@ -220,7 +220,7 @@ public class Weapon {
     /**
      * Retorna o preço da arma
      *
-     * @return <code>Double</code> Preço da arma
+     * @return {@code Double} Preço da arma
      */
     public Double getPrice() {
         return price;
@@ -229,7 +229,7 @@ public class Weapon {
     /**
      * Modifica o preço da arma
      *
-     * @param price <code>Double</code> Preço da arma
+     * @param price {@code Double} Preço da arma
      */
     public void setPrice(Double price) {
         this.price = price;
@@ -238,7 +238,7 @@ public class Weapon {
     /**
      * Retorna o Material 1
      *
-     * @return <code>PrimeMaterial</code> Material 1
+     * @return {@code PrimeMaterial} Material 1
      */
     public PrimeMaterial getMaterial1() {
         return material1;
@@ -247,7 +247,7 @@ public class Weapon {
     /**
      * Modifica o Material 1
      *
-     * @param material1 <code>PrimeMaterial</code> Material 1
+     * @param material1 {@code PrimeMaterial} Material 1
      */
     public void setMaterial1(PrimeMaterial material1) {
         this.material1 = material1;
@@ -256,7 +256,7 @@ public class Weapon {
     /**
      * Retorna o Material 2
      *
-     * @return <code>PrimeMaterial</code> Material 2
+     * @return {@code PrimeMaterial} Material 2
      */
     public PrimeMaterial getMaterial2() {
         return material2;
@@ -265,7 +265,7 @@ public class Weapon {
     /**
      * Modifica o Material 2
      *
-     * @param material2 <code>PrimeMaterial</code> Material 2
+     * @param material2 {@code PrimeMaterial} Material 2
      */
     public void setMaterial2(PrimeMaterial material2) {
         this.material2 = material2;
@@ -274,7 +274,7 @@ public class Weapon {
     /**
      * Modifica as restrições
      *
-     * @return <code>List(Restriction)</code> Restrições
+     * @return {@code List(Restriction)} Restrições
      */
     public List<Restriction> getRestriction() {
         return restriction;
@@ -283,7 +283,7 @@ public class Weapon {
     /**
      * Retorna as restrições
      *
-     * @param restriction <code>List(Restriction)</code> Restrições
+     * @param restriction {@code List(Restriction)} Restrições
      */
     public void setRestriction(List<Restriction> restriction) {
         this.restriction = restriction;
@@ -292,7 +292,7 @@ public class Weapon {
     /**
      * Modifica os efeitos
      *
-     * @return <code>List(Effect)</code> Efeitos
+     * @return {@code List(Effect)} Efeitos
      */
     public List<Effect> getEffects() {
         return effects;
@@ -301,7 +301,7 @@ public class Weapon {
     /**
      * Retorna os efeitos
      *
-     * @param effects <code>List(Effect)</code> Efeitos
+     * @param effects {@code List(Effect)} Efeitos
      */
     public void setEffects(List<Effect> effects) {
         this.effects = effects;

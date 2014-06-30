@@ -39,10 +39,10 @@ public class ArmorType extends Type {
     /**
      * Cria nova instancia de ArmorType
      *
-     * @param id <code>Long</code> Código do tipo
-     * @param typeName <code>String</code> Nome do tipo
-     * @param materialAmount1 <code>Double</code> Quantidade do material 1
-     * @param materialAmount2 <code>Double</code> Quantidade do material 2
+     * @param id {@code Long} Código do tipo
+     * @param typeName {@code String} Nome do tipo
+     * @param materialAmount1 {@code Double} Quantidade do material 1
+     * @param materialAmount2 {@code Double} Quantidade do material 2
      */
     public ArmorType(Long id, String typeName, Double materialAmount1, Double materialAmount2) {
         this.id = id;
@@ -55,7 +55,7 @@ public class ArmorType extends Type {
     /**
      * Retorna o Código do tipo
      *
-     * @return <code>Long</code> Código do tipo
+     * @return {@code Long} Código do tipo
      */
     @Override
     public Long getId() {
@@ -65,7 +65,7 @@ public class ArmorType extends Type {
     /**
      * Modifica o Código do tipo
      *
-     * @param id <code>Long</code> Código do tipo
+     * @param id {@code Long} Código do tipo
      */
     @Override
     public void setId(Long id) {
@@ -75,7 +75,7 @@ public class ArmorType extends Type {
     /**
      * Retorna o Nome do tipo
      *
-     * @return <code>String</code> Nome do tipo
+     * @return {@code String} Nome do tipo
      */
     @Override
     public String getTitle() {
@@ -85,7 +85,7 @@ public class ArmorType extends Type {
     /**
      * Modifica o Nome do tipo
      *
-     * @param title <code>String</code> Nome do tipo
+     * @param title {@code String} Nome do tipo
      */
     @Override
     public void setTitle(String title) {
@@ -95,7 +95,7 @@ public class ArmorType extends Type {
     /**
      * Retorna a Resistencia base
      *
-     * @return <code>Double</code> Resistencia base
+     * @return {@code Double} Resistencia base
      */
     public Double getBase() {
         return base;
@@ -104,7 +104,7 @@ public class ArmorType extends Type {
     /**
      * Modifica a Resistencia base
      *
-     * @param base <code>Double</code> Resistencia base
+     * @param base {@code Double} Resistencia base
      */
     public void setBase(Double base) {
         this.base = base;
@@ -113,7 +113,7 @@ public class ArmorType extends Type {
     /**
      * Retorna a Quantidade do material 1
      *
-     * @return <code>Double</code> Quantidade do material 1
+     * @return {@code Double} Quantidade do material 1
      */
     public Double getMaterialAmount1() {
         return materialAmount1;
@@ -122,7 +122,7 @@ public class ArmorType extends Type {
     /**
      * Modifica a Quantidade do material 1
      *
-     * @param amount1 <code>Double</code> Quantidade do material 1
+     * @param amount1 {@code Double} Quantidade do material 1
      */
     public void setMaterialAmount1(Double amount1) {
         this.materialAmount1 = amount1;
@@ -131,7 +131,7 @@ public class ArmorType extends Type {
     /**
      * Retorna a Quantidade do material 2
      *
-     * @return <code>Double</code> Quantidade do material 2
+     * @return {@code Double} Quantidade do material 2
      */
     public Double getMaterialAmount2() {
         return materialAmount2;
@@ -140,7 +140,7 @@ public class ArmorType extends Type {
     /**
      * Modifica a Quantidade do material 2
      *
-     * @param amount2 <code>Double</code> Quantidade do material 2
+     * @param amount2 {@code Double} Quantidade do material 2
      */
     public void setMaterialAmount2(Double amount2) {
         this.materialAmount2 = amount2;

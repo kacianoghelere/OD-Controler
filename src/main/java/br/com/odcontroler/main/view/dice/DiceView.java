@@ -23,7 +23,7 @@ public class DiceView extends View {
     /**
      * Creates new form DiceView
      *
-     * @param screen <code>MainScreen</code> Tela principal
+     * @param screen {@code MainScreen} Tela principal
      */
     public DiceView(MainScreen screen) {
         super(screen);
@@ -95,8 +95,8 @@ public class DiceView extends View {
     /**
      * Metodo para simular a jogada de dados
      *
-     * @param type <code>int</code> Tipo de dado
-     * @return <code>String</code> Valor do dado
+     * @param type {@code int} Tipo de dado
+     * @return {@code String} Valor do dado
      */
     private String throwDice(int type) {
         return String.valueOf(DiceTool.throwDice(type));

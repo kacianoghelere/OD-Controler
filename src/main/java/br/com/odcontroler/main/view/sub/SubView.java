@@ -16,7 +16,7 @@ public class SubView extends View {
     /**
      * Cria nova instancia de SubView
      *
-     * @param parent <code>View</code> Tela pai
+     * @param parent {@code View} Tela pai
      */
     public SubView(View parent) {
         super(parent.getMainScreen());
@@ -39,7 +39,7 @@ public class SubView extends View {
     /**
      * Retorna a view pai
      *
-     * @return <code>View</code> Tela pai
+     * @return {@code View} Tela pai
      */
     public View getParentView() {
         return parentView;
@@ -48,7 +48,7 @@ public class SubView extends View {
     /**
      * Modifica a view pai
      *
-     * @param parentView <code>View</code> Tela pai
+     * @param parentView {@code View} Tela pai
      */
     public void setParentView(View parentView) {
         this.parentView = parentView;

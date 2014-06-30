@@ -27,8 +27,8 @@ public class WeaponSize {
     /**
      * Cria nova instancia de WeaponSize
      *
-     * @param id <code>Long</code> Código do tipo
-     * @param title <code>String</code> Titulo do tipo
+     * @param id {@code Long} Código do tipo
+     * @param title {@code String} Titulo do tipo
      */
     public WeaponSize(Long id, String title) {
         this.id = id;
@@ -38,7 +38,7 @@ public class WeaponSize {
     /**
      * Retorna o código
      *
-     * @return <code>Long</code> Código do tipo
+     * @return {@code Long} Código do tipo
      */
     public Long getId() {
         return id;
@@ -47,7 +47,7 @@ public class WeaponSize {
     /**
      * Modifica o código
      *
-     * @param id <code>Long</code> Código do tipo
+     * @param id {@code Long} Código do tipo
      */
     public void setId(Long id) {
         this.id = id;
@@ -56,7 +56,7 @@ public class WeaponSize {
     /**
      * Retorna o titulo
      *
-     * @return <code>String</code> Titulo do tipo
+     * @return {@code String} Titulo do tipo
      */
     public String getTitle() {
         return title;
@@ -65,7 +65,7 @@ public class WeaponSize {
     /**
      * Modifica o titulo
      *
-     * @param title <code>String</code> Titulo do tipo
+     * @param title {@code String} Titulo do tipo
      */
     public void setTitle(String title) {
         this.title = title;

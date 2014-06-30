@@ -23,9 +23,9 @@ public class WisData {
     /**
      * Cria nova instancia de WisData
      *
-     * @param init <code>int</code> Inicio da faixa
-     * @param end <code>int</code> Fim da faixa
-     * @param ajust <code>int</code> Ajuste de proteção
+     * @param init {@code int} Inicio da faixa
+     * @param end {@code int} Fim da faixa
+     * @param ajust {@code int} Ajuste de proteção
      */
     public WisData(int init, int end, int ajust) {
         this.range = new AttrRange(init, end);
@@ -35,9 +35,9 @@ public class WisData {
     /**
      * Cria nova instancia de WisData
      *
-     * @param range <code>AttrRange</code> Faixa de valores do atributo
-     * @param ajust <code>int</code> Ajuste de proteção
-     * @param additSpells <code>int[]</code> Magias adicionais
+     * @param range {@code AttrRange} Faixa de valores do atributo
+     * @param ajust {@code int} Ajuste de proteção
+     * @param additSpells {@code int[]} Magias adicionais
      */
     public WisData(AttrRange range, int ajust, int[] additSpells) {
         this.range = range;
@@ -48,10 +48,10 @@ public class WisData {
     /**
      * Cria nova instancia de WisData
      *
-     * @param init <code>int</code> Inicio da faixa
-     * @param end <code>int</code> Fim da faixa
-     * @param ajust <code>int</code> Ajuste de proteção
-     * @param additSpells <code>int[]</code> Magias adicionais
+     * @param init {@code int} Inicio da faixa
+     * @param end {@code int} Fim da faixa
+     * @param ajust {@code int} Ajuste de proteção
+     * @param additSpells {@code int[]} Magias adicionais
      */
     public WisData(int init, int end, int ajust, int[] additSpells) {
         this.range = new AttrRange(init, end);
@@ -62,7 +62,7 @@ public class WisData {
     /**
      * Retorna a faixa de valores do atributo
      *
-     * @return <code>AttrRange</code> Faixa de valores do atributo
+     * @return {@code AttrRange} Faixa de valores do atributo
      */
     public AttrRange getRange() {
         return range;
@@ -71,7 +71,7 @@ public class WisData {
     /**
      * Modifica a faixa de valores do atributo
      *
-     * @param range <code>AttrRange</code> Faixa de valores do atributo
+     * @param range {@code AttrRange} Faixa de valores do atributo
      */
     public void setRange(AttrRange range) {
         this.range = range;
@@ -80,7 +80,7 @@ public class WisData {
     /**
      * Retorna o ajuste de proteção
      *
-     * @return <code>int</code> Ajuste de proteção
+     * @return {@code int} Ajuste de proteção
      */
     public int getAjust() {
         return ajust;
@@ -89,7 +89,7 @@ public class WisData {
     /**
      * Modifica o ajuste de proteção
      *
-     * @param ajust <code>int</code> Ajuste de proteção
+     * @param ajust {@code int} Ajuste de proteção
      */
     public void setAjust(int ajust) {
         this.ajust = ajust;
@@ -98,7 +98,7 @@ public class WisData {
     /**
      * Retorna as magias adicionais
      *
-     * @return <code>int[]</code> Magias adicionais
+     * @return {@code int[]} Magias adicionais
      */
     public int[] getAdditSpells() {
         return additSpells;
@@ -107,7 +107,7 @@ public class WisData {
     /**
      * Modifica as magias adicionais
      *
-     * @param additSpells <code>int[]</code> Magias adicionais
+     * @param additSpells {@code int[]} Magias adicionais
      */
     public void setAdditSpells(int[] additSpells) {
         this.additSpells = additSpells;

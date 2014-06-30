@@ -31,14 +31,14 @@ public interface TableView {
     /**
      * Retorna a tabela
      *
-     * @return <code>GTable</code>
+     * @return {@code GTable}
      */
     GTable getTable();
 
     /**
      * Retorna o modelo da tabela
      *
-     * @return <code>GTableModel</code>
+     * @return {@code GTableModel}
      */
     GTableModel getModel();
 }

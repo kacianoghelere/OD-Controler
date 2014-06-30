@@ -30,7 +30,7 @@ public class EntityMap {
     /**
      * Retorna o mapa de arquivos de dados
      *
-     * @return <code>Map(Class(?), String)</code> Mapa de arquivos de dados
+     * @return {@code Map(Class(?), String)} Mapa de arquivos de dados
      */
     public Map<Class<?>, String> getMap() {
         Map<Class<?>, String> map = new HashMap<>();

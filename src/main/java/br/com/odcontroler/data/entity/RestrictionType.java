@@ -28,8 +28,8 @@ public class RestrictionType extends Type {
     /**
      * Cria nova instancia de RestrictionType
      *
-     * @param id <code>Long</code> Código do tipo
-     * @param title <code>String</code> Titulo do tipo
+     * @param id {@code Long} Código do tipo
+     * @param title {@code String} Titulo do tipo
      */
     public RestrictionType(Long id, String title) {
         this.id = id;
@@ -39,9 +39,9 @@ public class RestrictionType extends Type {
     /**
      * Cria nova instancia de RestrictionType
      *
-     * @param id <code>Long</code> Código do tipo
-     * @param title <code>String</code> Titulo do tipo
-     * @param attribute <code>Attribute</code> Atributo da Restrição
+     * @param id {@code Long} Código do tipo
+     * @param title {@code String} Titulo do tipo
+     * @param attribute {@code Attribute} Atributo da Restrição
      */
     public RestrictionType(Long id, String title, Attribute attribute) {
         this.id = id;
@@ -52,7 +52,7 @@ public class RestrictionType extends Type {
     /**
      * Retorna o código
      *
-     * @return <code>Long</code> Código do tipo
+     * @return {@code Long} Código do tipo
      */
     public Long getId() {
         return id;
@@ -61,7 +61,7 @@ public class RestrictionType extends Type {
     /**
      * Modifica o código
      *
-     * @param id <code>Long</code> Código do tipo
+     * @param id {@code Long} Código do tipo
      */
     public void setId(Long id) {
         this.id = id;
@@ -70,7 +70,7 @@ public class RestrictionType extends Type {
     /**
      * Retorna o titulo
      *
-     * @return <code>String</code> Titulo do tipo
+     * @return {@code String} Titulo do tipo
      */
     public String getTitle() {
         return title;
@@ -79,7 +79,7 @@ public class RestrictionType extends Type {
     /**
      * Retorna o atributo da Restrição
      *
-     * @return <code>Attribute</code> Atributo da Restrição
+     * @return {@code Attribute} Atributo da Restrição
      */
     public Attribute getAttribute() {
         return attribute;
@@ -88,7 +88,7 @@ public class RestrictionType extends Type {
     /**
      * Modifica o atributo da Restrição
      *
-     * @param attribute <code>Attribute</code> Atributo da Restrição
+     * @param attribute {@code Attribute} Atributo da Restrição
      */
     public void setAttribute(Attribute attribute) {
         this.attribute = attribute;
@@ -97,7 +97,7 @@ public class RestrictionType extends Type {
     /**
      * Modifica o titulo
      *
-     * @param title <code>String</code> Titulo do tipo
+     * @param title {@code String} Titulo do tipo
      */
     public void setTitle(String title) {
         this.title = title;

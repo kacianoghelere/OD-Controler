@@ -49,15 +49,15 @@ public class PlayerChar {
     /**
      * Cria nova instancia de PlayerChar
      *
-     * @param id <code>Long</code> ID do personagem
-     * @param charName <code>String</code> Nome do personagem
-     * @param playerName <code>String</code> Nome do jogador
-     * @param age <code>Integer</code> Idade do personagem
-     * @param sex <code>Character</code> Sexo do personagem
-     * @param height <code>Double</code> Altura do personagem
-     * @param weight <code>Integer</code> Peso do personagem
-     * @param charClass <code>CharClass</code> Classe do personagem
-     * @param charRace <code>CharRace</code> Raça do personagem
+     * @param id {@code Long} ID do personagem
+     * @param charName {@code String} Nome do personagem
+     * @param playerName {@code String} Nome do jogador
+     * @param age {@code Integer} Idade do personagem
+     * @param sex {@code Character} Sexo do personagem
+     * @param height {@code Double} Altura do personagem
+     * @param weight {@code Integer} Peso do personagem
+     * @param charClass {@code CharClass} Classe do personagem
+     * @param charRace {@code CharRace} Raça do personagem
      */
     public PlayerChar(Long id, String charName, String playerName, Integer age, Character sex, Double height, Integer weight, CharClass charClass, CharRace charRace) {
         this.id = id;
@@ -72,7 +72,7 @@ public class PlayerChar {
     /**
      * Retorna o ID do personagem
      *
-     * @return <code>Long</code> ID do personagem
+     * @return {@code Long} ID do personagem
      */
     public Long getId() {
         return id;
@@ -81,7 +81,7 @@ public class PlayerChar {
     /**
      * Modifica o ID do personagem
      *
-     * @param id <code>Long</code> ID do personagem
+     * @param id {@code Long} ID do personagem
      */
     public void setId(Long id) {
         this.id = id;
@@ -90,7 +90,7 @@ public class PlayerChar {
     /**
      * Retorna o Nome do personagem
      *
-     * @return <code>String</code> Nome do personagem
+     * @return {@code String} Nome do personagem
      */
     public String getName() {
         return name;
@@ -99,7 +99,7 @@ public class PlayerChar {
     /**
      * Modifica o Nome do personagem
      *
-     * @param name <code>String</code> Nome do personagem
+     * @param name {@code String} Nome do personagem
      */
     public void setName(String name) {
         this.name = name;
@@ -108,7 +108,7 @@ public class PlayerChar {
     /**
      * Retorna o Nome do jogador
      *
-     * @return <code>String</code> Nome do jogador
+     * @return {@code String} Nome do jogador
      */
     public String getPlayer() {
         return player;
@@ -117,7 +117,7 @@ public class PlayerChar {
     /**
      * Modifica o Nome do jogador
      *
-     * @param player <code>String</code> Nome do jogador
+     * @param player {@code String} Nome do jogador
      */
     public void setPlayer(String player) {
         this.player = player;
@@ -126,7 +126,7 @@ public class PlayerChar {
     /**
      * Retorna a Idade do personagem
      *
-     * @return <code>Integer</code> Idade do personagem
+     * @return {@code Integer} Idade do personagem
      */
     public Integer getAge() {
         return age;
@@ -135,7 +135,7 @@ public class PlayerChar {
     /**
      * Modifica a Idade do personagem
      *
-     * @param age <code>Integer</code> Idade do personagem
+     * @param age {@code Integer} Idade do personagem
      */
     public void setAge(Integer age) {
         this.age = age;
@@ -144,7 +144,7 @@ public class PlayerChar {
     /**
      * Retorna o Sexo do personagem
      *
-     * @return <code>Character</code> Sexo do personagem
+     * @return {@code Character} Sexo do personagem
      */
     public Character getSex() {
         return sex;
@@ -153,7 +153,7 @@ public class PlayerChar {
     /**
      * Modifica o Sexo do personagem
      *
-     * @param sex <code>Character</code> Sexo do personagem
+     * @param sex {@code Character} Sexo do personagem
      */
     public void setSex(Character sex) {
         this.sex = sex;
@@ -162,7 +162,7 @@ public class PlayerChar {
     /**
      * Retorna a Altura do personagem
      *
-     * @return <code>Double</code> Altura do personagem
+     * @return {@code Double} Altura do personagem
      */
     public Double getHeight() {
         return height;
@@ -171,7 +171,7 @@ public class PlayerChar {
     /**
      * Modifica a Altura do personagem
      *
-     * @param height <code>Double</code> Altura do personagem
+     * @param height {@code Double} Altura do personagem
      */
     public void setHeight(Double height) {
         this.height = height;
@@ -180,7 +180,7 @@ public class PlayerChar {
     /**
      * Retorna o Peso do personagem
      *
-     * @return <code>Integer</code> Peso do personagem
+     * @return {@code Integer} Peso do personagem
      */
     public Integer getWeight() {
         return weight;
@@ -189,7 +189,7 @@ public class PlayerChar {
     /**
      * Modifica o Peso do personagem
      *
-     * @param weight <code>Integer</code> Peso do personagem
+     * @param weight {@code Integer} Peso do personagem
      */
     public void setWeight(Integer weight) {
         this.weight = weight;
@@ -198,7 +198,7 @@ public class PlayerChar {
     /**
      * Retorna os Infos do personagem
      *
-     * @return <code>Collection(PlayerCharInfo)</code> Infos do personagem
+     * @return {@code Collection(PlayerCharInfo)} Infos do personagem
      */
     public Collection<PlayerCharInfo> getPlayerCharInfoCollection() {
         return playerCharInfoCollection;
@@ -207,7 +207,7 @@ public class PlayerChar {
     /**
      * Modifica os Infos do personagem
      *
-     * @param playerCharInfoCollection <code>Collection(PlayerCharInfo)</code>
+     * @param playerCharInfoCollection {@code Collection(PlayerCharInfo)}
      * Infos do personagem
      */
     public void setPlayerCharInfoCollection(Collection<PlayerCharInfo> playerCharInfoCollection) {
@@ -217,7 +217,7 @@ public class PlayerChar {
     /**
      * Retorna a Classe do personagem
      *
-     * @return <code>CharClass</code> Classe do personagem
+     * @return {@code CharClass} Classe do personagem
      */
     public CharClass getCharClass() {
         return charClass;
@@ -226,7 +226,7 @@ public class PlayerChar {
     /**
      * Modifica a Classe do personagem
      *
-     * @param charClass <code>CharClass</code> Classe do personagem
+     * @param charClass {@code CharClass} Classe do personagem
      */
     public void setCharClass(CharClass charClass) {
         this.charClass = charClass;
@@ -235,7 +235,7 @@ public class PlayerChar {
     /**
      * Retorna a Raça do personagem
      *
-     * @return <code>CharClass</code> Raça do personagem
+     * @return {@code CharClass} Raça do personagem
      */
     public CharRace getCharRace() {
         return charRace;
@@ -244,7 +244,7 @@ public class PlayerChar {
     /**
      * Modifica a Raça do personagem
      *
-     * @param charRace <code>CharClass</code> Raça do personagem
+     * @param charRace {@code CharClass} Raça do personagem
      */
     public void setCharRace(CharRace charRace) {
         this.charRace = charRace;
@@ -253,7 +253,7 @@ public class PlayerChar {
     /**
      * Retorna as Perícias do personagem
      *
-     * @return <code>Collection(Expertise)</code> Perícias do personagem
+     * @return {@code Collection(Expertise)} Perícias do personagem
      */
     public Collection<Expertise> getExpertiseCollection() {
         return expertiseCollection;
@@ -262,7 +262,7 @@ public class PlayerChar {
     /**
      * Modifica as Perícias do personagem
      *
-     * @param expertiseCollection <code>Collection(Expertise)</code> Perícias do
+     * @param expertiseCollection {@code Collection(Expertise)} Perícias do
      * personagem
      */
     public void setExpertiseCollection(Collection<Expertise> expertiseCollection) {

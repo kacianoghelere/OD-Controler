@@ -23,8 +23,8 @@ public class StrData {
     /**
      * Cria nova instancia de StrData
      *
-     * @param range <code>AttrRange</code> Faixa de valores do atributo
-     * @param ajust <code>int</code> Ajuste
+     * @param range {@code AttrRange} Faixa de valores do atributo
+     * @param ajust {@code int} Ajuste
      */
     public StrData(AttrRange range, int ajust) {
         this.range = range;
@@ -34,9 +34,9 @@ public class StrData {
     /**
      * Cria nova instancia de StrData
      *
-     * @param init <code>int</code> Inicio da faixa de valores
-     * @param end <code>int</code> Fim da faixa de valores
-     * @param ajust <code>int</code> Ajuste
+     * @param init {@code int} Inicio da faixa de valores
+     * @param end {@code int} Fim da faixa de valores
+     * @param ajust {@code int} Ajuste
      */
     public StrData(int init, int end, int ajust) {
         this.range = new AttrRange(init, end);
@@ -74,7 +74,7 @@ public class StrData {
     /**
      * Retorna a faixa de valores do atributo
      *
-     * @return <code>AttrRange</code> Faixa de valores do atributo
+     * @return {@code AttrRange} Faixa de valores do atributo
      */
     public AttrRange getRange() {
         return range;
@@ -83,7 +83,7 @@ public class StrData {
     /**
      * Modifica a faixa de valores do atributo
      *
-     * @param range <code>AttrRange</code> Faixa de valores do atributo
+     * @param range {@code AttrRange} Faixa de valores do atributo
      */
     public void setRange(AttrRange range) {
         this.range = range;
@@ -92,7 +92,7 @@ public class StrData {
     /**
      * Retorna o ajuste do atributo
      *
-     * @return <code>int</code> Ajuste
+     * @return {@code int} Ajuste
      */
     public int getAjust() {
         return ajust;
@@ -101,7 +101,7 @@ public class StrData {
     /**
      * Modifica o ajuste do atributo
      *
-     * @param ajust <code>int</code> Ajuste
+     * @param ajust {@code int} Ajuste
      */
     public void setAjust(int ajust) {
         this.ajust = ajust;

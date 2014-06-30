@@ -30,8 +30,8 @@ public class DamageType extends Type {
     /**
      * Cria nova instancia de DamageType
      *
-     * @param id <code>Long</code> Código do tipo
-     * @param title <code>String</code> Titulo do tipo
+     * @param id {@code Long} Código do tipo
+     * @param title {@code String} Titulo do tipo
      */
     public DamageType(Long id, String title) {
         this.id = id;
@@ -41,7 +41,7 @@ public class DamageType extends Type {
     /**
      * Retorna o ID do EffectType
      *
-     * @return <code>Long</code> ID do DamageType
+     * @return {@code Long} ID do DamageType
      */
     @Override
     public Long getId() {
@@ -51,7 +51,7 @@ public class DamageType extends Type {
     /**
      * Modifica o ID do EffectType
      *
-     * @param id <code>Long</code> ID do DamageType
+     * @param id {@code Long} ID do DamageType
      */
     @Override
     public void setId(Long id) {
@@ -61,7 +61,7 @@ public class DamageType extends Type {
     /**
      * Retorna o titulo do EffectType
      *
-     * @return <code>String</code> Titulo do DamageType
+     * @return {@code String} Titulo do DamageType
      */
     @Override
     public String getTitle() {
@@ -71,7 +71,7 @@ public class DamageType extends Type {
     /**
      * Modifica o titulo do EffectType
      *
-     * @param title <code>String</code> Titulo do DamageType
+     * @param title {@code String} Titulo do DamageType
      */
     @Override
     public void setTitle(String title) {

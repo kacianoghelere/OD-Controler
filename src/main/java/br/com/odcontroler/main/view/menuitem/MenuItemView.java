@@ -45,7 +45,7 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
     /**
      * Cria nova instancia de MenuItemView
      *
-     * @param mainScreen <code>MainScreen</code> Tela principal
+     * @param mainScreen {@code MainScreen} Tela principal
      */
     public MenuItemView(MainScreen mainScreen) {
         super(mainScreen);
@@ -129,7 +129,7 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
     /**
      * Retorna o modelo dos ícones
      *
-     * @return <code>GComboBoxModel(ImageIcon)</code> Modelo dos ícones
+     * @return {@code GComboBoxModel(ImageIcon)} Modelo dos ícones
      */
     public GComboBoxModel<ImageIcon> getIconModel() {
         return this.iconModel;
@@ -138,7 +138,7 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
     /**
      * Retorna o modelo dos menus
      *
-     * @return <code>GComboBoxModel(Menu)</code> Modelo dos menus
+     * @return {@code GComboBoxModel(Menu)} Modelo dos menus
      */
     public GComboBoxModel<Menu> getParentModel() {
         return this.parentModel;

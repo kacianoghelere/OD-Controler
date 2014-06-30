@@ -30,7 +30,7 @@ public class StrValues {
     /**
      * Retorna as faixas do atributo
      *
-     * @return <code>List(StrData)</code> Lista de faixas
+     * @return {@code List(StrData)} Lista de faixas
      */
     public List<StrData> getValues() {
         return this.strValues;

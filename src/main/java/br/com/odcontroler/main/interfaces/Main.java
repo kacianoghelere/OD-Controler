@@ -62,28 +62,28 @@ public interface Main {
     /**
      * Metodo padrão para salvar
      *
-     * @param evt <code>ActionEvent</code>
+     * @param evt {@code ActionEvent}
      */
     void commit(ActionEvent evt);
 
     /**
      * Metodo padrão para processar os dados
      *
-     * @param evt <code>ActionEvent</code>
+     * @param evt {@code ActionEvent}
      */
     void process(ActionEvent evt);
 
     /**
      * Metodo padrão para limpar a tela
      *
-     * @param evt <code>ActionEvent</code>
+     * @param evt {@code ActionEvent}
      */
     void clear(ActionEvent evt);
 
     /**
      * Metodo padrão para carregar a tela
      *
-     * @param evt <code>ActionEvent</code>
+     * @param evt {@code ActionEvent}
      */
     void load(ActionEvent evt);
 }

@@ -33,7 +33,7 @@ public class CharClass implements Serializable {
     /**
      * Cria nova instancia de CharClass
      *
-     * @param id <code>Long</code> ID da classe
+     * @param id {@code Long} ID da classe
      */
     public CharClass(Long id) {
         this.id = id;

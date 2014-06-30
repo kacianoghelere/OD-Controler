@@ -14,8 +14,8 @@ public class AttrRange {
     /**
      * Cria nova instancia de AttrRange
      *
-     * @param initRange <code>int</code> Inicio da faixa
-     * @param endRange <code>int</code> Fim da faixa
+     * @param initRange {@code int} Inicio da faixa
+     * @param endRange {@code int} Fim da faixa
      */
     public AttrRange(int initRange, int endRange) {
         this.initRange = initRange;
@@ -25,7 +25,7 @@ public class AttrRange {
     /**
      * Cria nova instancia de AttrRange
      *
-     * @param range <code>String</code> Valor em String da faixa
+     * @param range {@code String} Valor em String da faixa
      */
     public AttrRange(String range) {
         String[] split = range.split("-");
@@ -36,8 +36,8 @@ public class AttrRange {
     /**
      * Verifica se o valor recebido está na faixa
      *
-     * @param value <code>int</code> Valor verificado
-     * @return <code>Boolean</code> Está na faixa?
+     * @param value {@code int} Valor verificado
+     * @return {@code Boolean} Está na faixa?
      */
     public Boolean isBetween(int value) {
         return value >= initRange && value <= endRange;
@@ -74,7 +74,7 @@ public class AttrRange {
     /**
      * Retorna o inicio da faixa de pontos do atributo
      *
-     * @return <code>int</code> Inicio da faixa
+     * @return {@code int} Inicio da faixa
      */
     public int getInitRange() {
         return initRange;
@@ -83,7 +83,7 @@ public class AttrRange {
     /**
      * Modifica o inicio da faixa de pontos do atributo
      *
-     * @param initRange <code>int</code> Inicio da faixa
+     * @param initRange {@code int} Inicio da faixa
      */
     public void setInitRange(int initRange) {
         this.initRange = initRange;
@@ -92,7 +92,7 @@ public class AttrRange {
     /**
      * Retorna o fim da faixa de pontos do atributo
      *
-     * @return <code>int</code> Fim da faixa
+     * @return {@code int} Fim da faixa
      */
     public int getEndRange() {
         return endRange;
@@ -101,7 +101,7 @@ public class AttrRange {
     /**
      * Modifica o fim da faixa de pontos do atributo
      *
-     * @param endRange <code>int</code> Fim da faixa
+     * @param endRange {@code int} Fim da faixa
      */
     public void setEndRange(int endRange) {
         this.endRange = endRange;

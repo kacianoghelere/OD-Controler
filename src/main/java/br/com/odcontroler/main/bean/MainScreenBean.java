@@ -42,7 +42,7 @@ public class MainScreenBean implements MainListener {
     /**
      * Cria nova instancia de MainScreenBean
      *
-     * @param mainScreen <code>MainScreen</code>
+     * @param mainScreen {@code MainScreen} Tela Principal
      */
     public MainScreenBean(MainScreen mainScreen) {
         this.screen = mainScreen;
@@ -62,7 +62,7 @@ public class MainScreenBean implements MainListener {
         if (getActualView() != null && getActualView().canCommit()) {
             getActualView().commit();
         } else if (!getActualView().canCommit()) {
-            screen.printTypedMsg("Esta View nao pode salvar!", MainScreen.WARNING_MSG);
+            screen.printTypedMsg("Esta View não pode salvar!", MainScreen.WARNING_MSG);
         }
     }
 
@@ -72,7 +72,7 @@ public class MainScreenBean implements MainListener {
         if (getActualView() != null && getActualView().canProcces()) {
             getActualView().process();
         } else if (!getActualView().canProcces()) {
-            screen.printTypedMsg("Esta View nao pode processar!", MainScreen.WARNING_MSG);
+            screen.printTypedMsg("Esta View não pode processar!", MainScreen.WARNING_MSG);
         }
     }
 
@@ -82,7 +82,7 @@ public class MainScreenBean implements MainListener {
         if (getActualView() != null && getActualView().canClear()) {
             getActualView().clear();
         } else if (!getActualView().canClear()) {
-            screen.printTypedMsg("Esta View nao pode limpar!", MainScreen.WARNING_MSG);
+            screen.printTypedMsg("Esta View não pode limpar!", MainScreen.WARNING_MSG);
         }
     }
 
@@ -92,7 +92,7 @@ public class MainScreenBean implements MainListener {
         if (getActualView() != null && getActualView().canLoad()) {
             getActualView().load();
         } else if (!getActualView().canLoad()) {
-            screen.printTypedMsg("Esta View nao pode carregar!", MainScreen.WARNING_MSG);
+            screen.printTypedMsg("Esta View não pode carregar!", MainScreen.WARNING_MSG);
         }
     }
 
@@ -175,8 +175,8 @@ public class MainScreenBean implements MainListener {
     /**
      * Verifica se a View já está na tela
      *
-     * @param view View
-     * @return Boolean Está na tela?
+     * @param view {@code JInternalFrame} View
+     * @return Boolean {@code Boolean} Está na tela?
      */
     private Boolean isOnDesktop(JInternalFrame view) {
         boolean indesktop = false;
@@ -203,7 +203,7 @@ public class MainScreenBean implements MainListener {
     /**
      * Retorna a tela principal
      *
-     * @return <code>MainScreen</code> Tela principal
+     * @return {@code MainScreen} Tela principal
      */
     @Override
     public MainScreen getScreen() {
@@ -213,7 +213,7 @@ public class MainScreenBean implements MainListener {
     /**
      * Modifica a tela principal
      *
-     * @param screen <code>MainScreen</code> Tela principal
+     * @param screen {@code MainScreen} Tela principal
      */
     @Override
     public void setScreen(MainScreen screen) {

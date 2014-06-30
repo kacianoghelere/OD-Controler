@@ -13,7 +13,7 @@ public class ProccessAction extends FrameAction {
     /**
      * Cria nova instancia de ProccessAction
      *
-     * @param view <code>View</code> da ação
+     * @param view {@code View} da ação
      */
     public ProccessAction(View view) {
         super("proccess", view);

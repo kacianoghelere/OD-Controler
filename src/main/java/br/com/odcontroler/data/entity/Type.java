@@ -29,8 +29,8 @@ public abstract class Type {
     /**
      * Cria nova instancia de Type
      *
-     * @param id <code>Long</code> Código do tipo
-     * @param title <code>String</code> Titulo do tipo
+     * @param id {@code Long} Código do tipo
+     * @param title {@code String} Titulo do tipo
      */
     public Type(Long id, String title) {
         this.id = id;
@@ -40,28 +40,28 @@ public abstract class Type {
     /**
      * Retorna o ID do EffectType
      *
-     * @return <code>Long</code> ID do Type
+     * @return {@code Long} ID do Type
      */
     public abstract Long getId();
 
     /**
      * Modifica o ID do EffectType
      *
-     * @param id <code>Long</code> ID do Type
+     * @param id {@code Long} ID do Type
      */
     public abstract void setId(Long id);
 
     /**
      * Retorna o titulo do EffectType
      *
-     * @return <code>String</code> Titulo do Type
+     * @return {@code String} Titulo do Type
      */
     public abstract String getTitle();
 
     /**
      * Modifica o titulo do EffectType
      *
-     * @param title <code>String</code> Titulo do Type
+     * @param title {@code String} Titulo do Type
      */
     public abstract void setTitle(String title);
 
