@@ -1,6 +1,7 @@
-package br.com.odcontroler.datatables.wis;
+package br.com.odcontroler.datatables.wisdom;
 
 import br.com.odcontroler.data.entity.AttrRange;
+import br.com.odcontroler.datatables.AttrData;
 
 /**
  * Objeto de dados para preenchimento da tabela de modificadores de sabedoria
@@ -8,7 +9,7 @@ import br.com.odcontroler.data.entity.AttrRange;
  * @author kaciano
  * @version 1.0
  */
-public class WisData {
+public class WisdomData implements AttrData {
 
     private AttrRange range;
     private int ajust;
@@ -17,7 +18,7 @@ public class WisData {
     /**
      * Cria nova instancia de WisData
      */
-    public WisData() {
+    public WisdomData() {
     }
 
     /**
@@ -27,7 +28,7 @@ public class WisData {
      * @param end {@code int} Fim da faixa
      * @param ajust {@code int} Ajuste de proteção
      */
-    public WisData(int init, int end, int ajust) {
+    public WisdomData(int init, int end, int ajust) {
         this.range = new AttrRange(init, end);
         this.ajust = ajust;
     }
@@ -39,8 +40,21 @@ public class WisData {
      * @param ajust {@code int} Ajuste de proteção
      * @param additSpells {@code int[]} Magias adicionais
      */
-    public WisData(AttrRange range, int ajust, int[] additSpells) {
+    public WisdomData(AttrRange range, int ajust, int[] additSpells) {
         this.range = range;
+        this.ajust = ajust;
+        this.additSpells = additSpells;
+    }
+
+    /**
+     * Cria nova instancia de WisData
+     *
+     * @param range {@code String} Faixa de valores do atributo
+     * @param ajust {@code int} Ajuste de proteção
+     * @param additSpells {@code int[]} Magias adicionais
+     */
+    public WisdomData(String range, int ajust, int[] additSpells) {
+        this.range = new AttrRange(range);
         this.ajust = ajust;
         this.additSpells = additSpells;
     }
@@ -53,7 +67,7 @@ public class WisData {
      * @param ajust {@code int} Ajuste de proteção
      * @param additSpells {@code int[]} Magias adicionais
      */
-    public WisData(int init, int end, int ajust, int[] additSpells) {
+    public WisdomData(int init, int end, int ajust, int[] additSpells) {
         this.range = new AttrRange(init, end);
         this.ajust = ajust;
         this.additSpells = additSpells;
@@ -64,6 +78,7 @@ public class WisData {
      *
      * @return {@code AttrRange} Faixa de valores do atributo
      */
+    @Override
     public AttrRange getRange() {
         return range;
     }

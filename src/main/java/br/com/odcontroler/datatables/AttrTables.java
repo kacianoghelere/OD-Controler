@@ -7,5 +7,5 @@ package br.com.odcontroler.datatables;
  * @version 1.0
  */
 public class AttrTables {
-
+    
 }

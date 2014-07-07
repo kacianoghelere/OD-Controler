@@ -1,4 +1,4 @@
-package br.com.odcontroler.datatables.str;
+package br.com.odcontroler.datatables.strength;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,19 +9,19 @@ import java.util.List;
  * @author kaciano
  * @version 1.0
  */
-public class StrValues {
+public class StrengthValues {
 
-    private final List<StrData> strValues;
+    private final List<StrengthData> strValues;
 
     /**
      * Cria nova instancia de StrValues
      */
-    public StrValues() {
+    public StrengthValues() {
         strValues = new ArrayList<>();
         int modifier = -5;
         int init = 0, end = 1;
         for (int i = 0; i < 25; i++) {
-            strValues.add(new StrData(init, end, modifier++));
+            strValues.add(new StrengthData(init, end, modifier++));
             init = ++end;
             end++;
         }
@@ -32,7 +32,7 @@ public class StrValues {
      *
      * @return {@code List(StrData)} Lista de faixas
      */
-    public List<StrData> getValues() {
+    public List<StrengthData> getValues() {
         return this.strValues;
     }
 

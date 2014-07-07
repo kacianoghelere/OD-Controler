@@ -45,9 +45,9 @@ public class AttrRange {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 37 * hash + this.initRange;
-        hash = 37 * hash + this.endRange;
+        int hash = 5;
+        hash = 97 * hash + this.initRange;
+        hash = 97 * hash + this.endRange;
         return hash;
     }
 

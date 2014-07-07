@@ -1,6 +1,7 @@
-package br.com.odcontroler.datatables.dex;
+package br.com.odcontroler.datatables.dexterity;
 
 import br.com.odcontroler.data.entity.AttrRange;
+import br.com.odcontroler.datatables.AttrData;
 
 /**
  * Objeto de dados para preenchimento da tabela de modificadores de destreza
@@ -8,7 +9,7 @@ import br.com.odcontroler.data.entity.AttrRange;
  * @author kaciano
  * @version 1.0
  */
-public class DexData {
+public class DexData implements AttrData {
 
     private AttrRange range;
     private int ajust;
@@ -91,6 +92,7 @@ public class DexData {
      *
      * @return {@code AttrRange} Faixa de valores
      */
+    @Override
     public AttrRange getRange() {
         return range;
     }

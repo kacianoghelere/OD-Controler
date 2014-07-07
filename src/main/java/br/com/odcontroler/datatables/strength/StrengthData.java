@@ -1,6 +1,7 @@
-package br.com.odcontroler.datatables.str;
+package br.com.odcontroler.datatables.strength;
 
 import br.com.odcontroler.data.entity.AttrRange;
+import br.com.odcontroler.datatables.AttrData;
 import java.util.Objects;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Objects;
  * @author kaciano
  * @version 1.0
  */
-public class StrData {
+public class StrengthData implements AttrData {
 
     private AttrRange range;
     private int ajust;
@@ -17,7 +18,7 @@ public class StrData {
     /**
      * Cria nova instancia de StrData
      */
-    public StrData() {
+    public StrengthData() {
     }
 
     /**
@@ -26,7 +27,7 @@ public class StrData {
      * @param range {@code AttrRange} Faixa de valores do atributo
      * @param ajust {@code int} Ajuste
      */
-    public StrData(AttrRange range, int ajust) {
+    public StrengthData(AttrRange range, int ajust) {
         this.range = range;
         this.ajust = ajust;
     }
@@ -38,7 +39,7 @@ public class StrData {
      * @param end {@code int} Fim da faixa de valores
      * @param ajust {@code int} Ajuste
      */
-    public StrData(int init, int end, int ajust) {
+    public StrengthData(int init, int end, int ajust) {
         this.range = new AttrRange(init, end);
         this.ajust = ajust;
     }
@@ -64,7 +65,7 @@ public class StrData {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final StrData other = (StrData) obj;
+        final StrengthData other = (StrengthData) obj;
         if (!Objects.equals(this.range, other.range)) {
             return false;
         }
@@ -76,6 +77,7 @@ public class StrData {
      *
      * @return {@code AttrRange} Faixa de valores do atributo
      */
+    @Override
     public AttrRange getRange() {
         return range;
     }

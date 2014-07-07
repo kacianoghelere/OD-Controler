@@ -1,6 +1,7 @@
-package br.com.odcontroler.datatables.intel;
+package br.com.odcontroler.datatables.intelligence;
 
 import br.com.odcontroler.data.entity.AttrRange;
+import br.com.odcontroler.datatables.AttrData;
 import java.util.Arrays;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Arrays;
  * @author kaciano
  * @version 1.0
  */
-public class IntData {
+public class IntelData implements AttrData {
 
     private AttrRange range;
     private int languages;
@@ -19,7 +20,7 @@ public class IntData {
     /**
      * Cria nova instancia de IntData
      */
-    public IntData() {
+    public IntelData() {
 
     }
 
@@ -30,11 +31,12 @@ public class IntData {
      * @param languages {@code int} Idiomas adicionais
      * @param learnMagic {@code int} Porcentagem de aprender magica
      */
-    public IntData(AttrRange range, int languages, int learnMagic) {
+    public IntelData(AttrRange range, int languages, int learnMagic) {
         this.range = range;
         this.languages = languages;
         this.learnMagic = learnMagic;
     }
+
     /**
      * Cria nova instancia de IntData
      *
@@ -43,7 +45,7 @@ public class IntData {
      * @param learnMagic {@code int} Porcentagem de aprender magica
      * @param aditMagics {@code int[]} Magias adicionais
      */
-    public IntData(AttrRange range, int languages, int learnMagic, int[] aditMagics) {
+    public IntelData(AttrRange range, int languages, int learnMagic, int[] aditMagics) {
         this.range = range;
         this.languages = languages;
         this.learnMagic = learnMagic;
@@ -58,7 +60,7 @@ public class IntData {
      * @param languages {@code int} Idiomas adicionais
      * @param learnMagic {@code int} Porcentagem de aprender magica
      */
-    public IntData(int init, int end, int languages, int learnMagic) {
+    public IntelData(int init, int end, int languages, int learnMagic) {
         this.range = new AttrRange(init, end);
         this.languages = languages;
         this.learnMagic = learnMagic;
@@ -78,6 +80,7 @@ public class IntData {
      *
      * @return {@code AttrRange} Faixa de valores do atributo
      */
+    @Override
     public AttrRange getRange() {
         return range;
     }

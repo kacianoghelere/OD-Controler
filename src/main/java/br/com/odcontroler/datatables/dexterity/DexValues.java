@@ -1,4 +1,4 @@
-package br.com.odcontroler.datatables.dex;
+package br.com.odcontroler.datatables.dexterity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class DexValues {
 
-    private List<DexData> dexValues;
+    private final List<DexData> dexValues;
 
     /**
      * Cria nova instancia de DexValues
