@@ -50,7 +50,7 @@ public class DexValues {
      *
      * @return {@code List(DexData)} Lista de valores para destreza
      */
-    public List<DexData> getDexValues() {
+    public List<DexData> getValues() {
         return dexValues;
     }
 

@@ -51,7 +51,7 @@ public class WisdomValues {
      *
      * @return {@code List(WisData)} Lista de faixas
      */
-    public List<WisdomData> getWisValues() {
+    public List<WisdomData> getValues() {
         return wisValues;
     }
 

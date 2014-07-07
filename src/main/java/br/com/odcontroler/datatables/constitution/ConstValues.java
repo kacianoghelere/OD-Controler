@@ -50,7 +50,7 @@ public class ConstValues {
      *
      * @return {@code List(ConData)} Lista de valores para constituição
      */
-    public List<ConstData> getDexValues() {
+    public List<ConstData> getValues() {
         return conValues;
     }
 }

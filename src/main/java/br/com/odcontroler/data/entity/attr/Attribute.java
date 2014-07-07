@@ -6,9 +6,23 @@ package br.com.odcontroler.data.entity.attr;
  * @author kaciano
  * @version 1.0
  */
-public enum AttrEnum implements Attr {
+public enum Attribute implements Attr {
 
     /**
+     * Atributo Força
+     *//**
+     * Atributo Força
+     *//**
+     * Atributo Força
+     *//**
+     * Atributo Força
+     *//**
+     * Atributo Força
+     *//**
+     * Atributo Força
+     *//**
+     * Atributo Força
+     *//**
      * Atributo Força
      */
     STR(1L, "Força", "FOR"),
@@ -19,7 +33,7 @@ public enum AttrEnum implements Attr {
     /**
      * Atributo Constituição
      */
-    CON(3L, "Constituição", "CON"),
+    CONS(3L, "Constituição", "CON"),
     /**
      * Atributo Inteligência
      */
@@ -31,7 +45,7 @@ public enum AttrEnum implements Attr {
     /**
      * Atributo Carisma
      */
-    CAR(6L, "Carisma", "CAR");
+    CHAR(6L, "Carisma", "CAR");
 
     private final Long id;
     private final String title;
@@ -44,7 +58,7 @@ public enum AttrEnum implements Attr {
      * @param title {@code String} Titulo do atributo
      * @param shortTitle {@code String} Abreviatura do atributo
      */
-    private AttrEnum(Long id, String title, String shortTitle) {
+    private Attribute(Long id, String title, String shortTitle) {
         this.id = id;
         this.title = title;
         this.shortTitle = shortTitle;

@@ -51,12 +51,12 @@ public class IntelValues {
      *
      * @return {@code List(IntData)} Lista de valores para inteligencia
      */
-    public List<IntelData> getIntValues() {
+    public List<IntelData> getValues() {
         return intValues;
     }
 
     public static void main(String[] args) {
-        List<IntelData> intValues = new IntelValues().getIntValues();
+        List<IntelData> intValues = new IntelValues().getValues();
         for (IntelData data : intValues) {
             System.out.println(data);
         }
