@@ -26,8 +26,8 @@ public class Weapon {
     @Editable
     @ColumnName(name = "Descrição")
     private String description;
-    @ColumnName(name = "Dano")    
-    private Double damage;    
+    @ColumnName(name = "Dano")
+    private String damage;
     @ColumnName(name = "Preço")
     private Double price;
     @ColumnName(name = "Tipo")
@@ -55,32 +55,23 @@ public class Weapon {
      * @param id {@code Long} ID da arma
      * @param name {@code String} Nome da arma
      * @param description {@code String} Descrição da arma
-     * @param damage {@code Double} Dano da arma
+     * @param damage {@code String} Dano da arma
      * @param price {@code Double} Preço da arma
      * @param type {@code WeaponType} Tipo de arma
      * @param material1 {@code PrimeMaterial} Quantidade do material 1
      * @param material2 {@code PrimeMaterial} Quantidade do material 2
      */
-    public Weapon(Long id, String name, String description, Double damage, Double price, WeaponType type, PrimeMaterial material1, PrimeMaterial material2) {
+    public Weapon(Long id, String name, String description, String damage, Double price, WeaponType type, PrimeMaterial material1, PrimeMaterial material2) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.damage = (double) 0;
+        this.damage = "";
         this.price = price;
         this.type = type;
         this.material1 = material1;
         this.material2 = material2;
         this.restriction = new ArrayList<>();
         this.effects = new ArrayList<>();
-    }
-
-    /**
-     * Calcula o dano da arma
-     */
-    public void calcDamage() {
-        this.damage = ((material1.getResistence() * type.getMaterialAmount1())
-                + (material2.getResistence() * type.getMaterialAmount2())
-                + type.getDamageBase());
     }
 
     @Override
@@ -202,18 +193,18 @@ public class Weapon {
     /**
      * Retorna a Resistencia da arma
      *
-     * @return {@code Double} Resistencia da arma
+     * @return {@code String} Resistencia da arma
      */
-    public Double getDamage() {
+    public String getDamage() {
         return damage;
     }
 
     /**
      * Modifica a Resistencia da arma
      *
-     * @param damage {@code Double} Resistencia da arma
+     * @param damage {@code String} Resistencia da arma
      */
-    public void setDamage(Double damage) {
+    public void setDamage(String damage) {
         this.damage = damage;
     }
 
