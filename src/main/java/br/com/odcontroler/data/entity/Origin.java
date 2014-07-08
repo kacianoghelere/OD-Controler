@@ -21,6 +21,9 @@ public class Origin {
     @Editable
     @ColumnName(name = "Nome")
     private String name;
+    @Editable
+    @ColumnName(name = "Bônus")
+    private Integer bonus;
 
     /**
      * Cria nova instancia de Origin
@@ -92,4 +95,23 @@ public class Origin {
     public void setName(String name) {
         this.name = name;
     }
+
+    /**
+     * Retorna o bônus da origem
+     *
+     * @return {@code Integer} Bônus da origem
+     */
+    public Integer getBonus() {
+        return bonus;
+    }
+
+    /**
+     * Modifica o bônus da origem
+     *
+     * @param bonus {@code Integer} Bônus da origem
+     */
+    public void setBonus(Integer bonus) {
+        this.bonus = bonus;
+    }
+
 }
