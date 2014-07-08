@@ -7,7 +7,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
     <schema name="public" protected="true" fill-color="#e1e1e1" sql-disabled="true">
     </schema>
 
-    <database name="RpgRuler">
+    <database name="odcontroler">
     </database>
 
     <table name="element">
