@@ -23,6 +23,8 @@ public class Weapon {
     @Editable
     @ColumnName(name = "Nome")
     private String name;
+    @ColumnName(name = "Origem")
+    private Origin origin;
     @Editable
     @ColumnName(name = "Descrição")
     private String description;
@@ -61,7 +63,9 @@ public class Weapon {
      * @param material1 {@code PrimeMaterial} Quantidade do material 1
      * @param material2 {@code PrimeMaterial} Quantidade do material 2
      */
-    public Weapon(Long id, String name, String description, String damage, Double price, WeaponType type, PrimeMaterial material1, PrimeMaterial material2) {
+    public Weapon(Long id, String name, String description, String damage,
+            Double price, WeaponType type, PrimeMaterial material1,
+            PrimeMaterial material2) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -82,12 +86,9 @@ public class Weapon {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.id);
-        hash = 97 * hash + Objects.hashCode(this.name);
-        hash = 97 * hash + Objects.hashCode(this.price);
-        hash = 97 * hash + Objects.hashCode(this.type);
-        hash = 97 * hash + Objects.hashCode(this.material1);
-        hash = 97 * hash + Objects.hashCode(this.material2);
+        hash = 43 * hash + Objects.hashCode(this.id);
+        hash = 43 * hash + Objects.hashCode(this.origin);
+        hash = 43 * hash + Objects.hashCode(this.type);
         return hash;
     }
 
@@ -103,19 +104,10 @@ public class Weapon {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.name, other.name)) {
+        if (!Objects.equals(this.origin, other.origin)) {
             return false;
         }
-        if (!Objects.equals(this.price, other.price)) {
-            return false;
-        }
-        if (!Objects.equals(this.type, other.type)) {
-            return false;
-        }
-        if (!Objects.equals(this.material1, other.material1)) {
-            return false;
-        }
-        return Objects.equals(this.material2, other.material2);
+        return Objects.equals(this.type, other.type);
     }
 
     /**
@@ -152,6 +144,24 @@ public class Weapon {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * Retorna o Origem da arma
+     *
+     * @return {@code Origin} Origem da arma
+     */
+    public Origin getOrigin() {
+        return origin;
+    }
+
+    /**
+     * Modifica o Origem da arma
+     *
+     * @param origin {@code Origin} Origem da arma
+     */
+    public void setOrigin(Origin origin) {
+        this.origin = origin;
     }
 
     /**
