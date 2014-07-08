@@ -10,20 +10,6 @@ public enum Attribute implements Attr {
 
     /**
      * Atributo Força
-     *//**
-     * Atributo Força
-     *//**
-     * Atributo Força
-     *//**
-     * Atributo Força
-     *//**
-     * Atributo Força
-     *//**
-     * Atributo Força
-     *//**
-     * Atributo Força
-     *//**
-     * Atributo Força
      */
     STR(1L, "Força", "FOR"),
     /**
