@@ -1,0 +1,157 @@
+package br.com.odcontroler.main.view.origin;
+
+import br.com.gmp.comps.table.GTable;
+import br.com.gmp.comps.table.interfaces.TableSource;
+import br.com.gmp.utils.object.ObjectWrapper;
+import br.com.odcontroler.data.entity.Origin;
+import br.com.odcontroler.main.MainScreen;
+import br.com.odcontroler.main.object.BeanEvent;
+import br.com.odcontroler.main.util.TableUtil;
+import br.com.odcontroler.main.view.View;
+import br.com.odcontroler.main.view.interfaces.TableView;
+import br.com.odcontroler.main.view.origin.bean.OriginBean;
+import br.com.odcontroler.main.view.origin.model.OriginModel;
+import java.util.List;
+
+/**
+ * Tela de controle para origem de itens
+ *
+ * @author kaciano
+ * @version 1.0
+ */
+public class OriginView extends View implements TableView, TableSource<Origin> {
+
+    private OriginBean bean;
+    private OriginModel model;
+    private TableUtil tableUtil;
+
+    /**
+     * Cria nova instancia de OriginView
+     *
+     * @param mainScreen {@code MainScreen} Tela principal
+     */
+    public OriginView(MainScreen mainScreen) {
+        super(mainScreen);
+        initialize();
+    }
+
+    /**
+     * Método de inicialização
+     */
+    private void initialize() {
+        initComponents();
+        this.model = new OriginModel();
+        this.gTable.setModel(model);
+        this.tableUtil = new TableUtil(this);
+    }
+
+    @Override
+    public OriginBean getBean() {
+        return bean;
+    }
+
+    @Override
+    public void add() throws Exception {
+        ObjectWrapper ow = new ObjectWrapper(this)
+                .addValue("name", gTName.getText())
+                .addValue("bonus", jSpnBonus.getValue());
+        bean.add(new BeanEvent(ow));
+    }
+
+    @Override
+    public void remove() {
+        tableUtil.remove(null);
+    }
+
+    @Override
+    public void edit() {
+
+    }
+
+    @Override
+    public GTable getTable() {
+        return gTable;
+    }
+
+    @Override
+    public OriginModel getModel() {
+        return model;
+    }
+
+    @Override
+    public List<Origin> getTableData() {
+        return bean.getDao().getList();
+    }
+
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jSP = new javax.swing.JScrollPane();
+        gTable = new br.com.gmp.comps.table.GTable();
+        jLName = new javax.swing.JLabel();
+        gTName = new br.com.gmp.comps.textfield.GTextField();
+        jLBonus = new javax.swing.JLabel();
+        jSpnBonus = new javax.swing.JSpinner();
+
+        setIconifiable(true);
+        setTitle("Origens");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1245_.png"))); // NOI18N
+        setMaximumSize(new java.awt.Dimension(500, 300));
+        setMinimumSize(new java.awt.Dimension(500, 300));
+        setPreferredSize(new java.awt.Dimension(500, 300));
+
+        jSP.setViewportView(gTable);
+
+        jLName.setText("Nome:");
+
+        jLBonus.setText("Bônus:");
+
+        jSpnBonus.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSP, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(gTName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLBonus)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSpnBonus, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLName)
+                    .addComponent(gTName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLBonus)
+                    .addComponent(jSpnBonus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSP, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gTName, jSpnBonus});
+
+    }// </editor-fold>//GEN-END:initComponents
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private br.com.gmp.comps.textfield.GTextField gTName;
+    private br.com.gmp.comps.table.GTable gTable;
+    private javax.swing.JLabel jLBonus;
+    private javax.swing.JLabel jLName;
+    private javax.swing.JScrollPane jSP;
+    private javax.swing.JSpinner jSpnBonus;
+    // End of variables declaration//GEN-END:variables
+}

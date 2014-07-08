@@ -12,7 +12,6 @@ import br.com.odcontroler.data.entity.Menu;
 import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.View;
-import br.com.odcontroler.main.view.interfaces.BeanListener;
 import br.com.odcontroler.main.view.interfaces.TableView;
 import br.com.odcontroler.main.view.menu.bean.MenuBean;
 import br.com.odcontroler.main.view.menu.model.MenuModel;

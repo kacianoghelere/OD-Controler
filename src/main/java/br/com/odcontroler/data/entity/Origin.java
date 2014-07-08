@@ -30,10 +30,12 @@ public class Origin {
      *
      * @param id {@code Long} ID da origem
      * @param name {@code String} Nome da origem
+     * @param bonus {@code Integer} Bonus da origem
      */
-    public Origin(Long id, String name) {
+    public Origin(Long id, String name, Integer bonus) {
         this.id = id;
         this.name = name;
+        this.bonus = bonus;
     }
 
     @Override
