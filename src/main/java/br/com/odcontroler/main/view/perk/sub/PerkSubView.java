@@ -27,7 +27,7 @@ public class PerkSubView extends SubView {
      * Cria nova instancia de PerkSubView
      *
      * @param perks {@code PerkView} Tela de Perks
-     * @param perk {@code Perk} Perk a ser editado     
+     * @param perk {@code Perk} Perk a ser editado
      */
     public PerkSubView(PerkView perks, Perk perk) {
         super(perks);
@@ -80,10 +80,10 @@ public class PerkSubView extends SubView {
      * @return {@code Perk} Perk em edição
      */
     public Perk getPerk() {
-        try {            
+        try {
             if (gTTitle.validateComponent()) {
                 if (gCBType.validateComponent()) {
-                    if (gTADesc.validateComponent()) {                        
+                    if (gTADesc.validateComponent()) {
                         perk.setId(gTID.getLong());
                         perk.setTitle(gTTitle.getText());
                         perk.setInherited(jChInherited.isSelected());

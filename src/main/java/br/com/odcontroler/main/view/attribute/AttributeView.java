@@ -59,7 +59,6 @@ public class AttributeView extends View {
         getContentPane().add(jTPAttributes, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPT1_1;
     private javax.swing.JPanel jPT1_2;

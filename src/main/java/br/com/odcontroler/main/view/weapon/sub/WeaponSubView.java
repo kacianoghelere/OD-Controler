@@ -81,7 +81,6 @@ public class WeaponSubView extends SubView {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPAttributes;
     private javax.swing.JPanel jPBasics;

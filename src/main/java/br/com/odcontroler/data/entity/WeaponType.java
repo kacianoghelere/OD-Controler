@@ -21,26 +21,14 @@ public class WeaponType extends Type {
     @ColumnName(name = "Nome")
     private String title;
     @Editable
-    @ColumnName(name = "Dano base")
-    private Double damageBase;
-    @Editable
     @ColumnName(name = "Alcance")
     private Integer range;
     @ColumnName(name = "Tipo de dano")
     private DamageType damageType;
     @ColumnName(name = "Tamanho")
     private WeaponSize size;
-    @Editable
-    @ColumnName(name = "Categoria")
-    private Integer category;
     @ColumnName(name = "Porte")
     private UseType wearType;
-    @Editable
-    @ColumnName(name = "Qtd. 1")
-    private Double materialAmount1;
-    @Editable
-    @ColumnName(name = "Qtd. 2")
-    private Double materialAmount2;
 
     /**
      * Cria nova instancia de WeaponType
@@ -53,70 +41,50 @@ public class WeaponType extends Type {
      *
      * @param id {@code Long} Código do tipo de arma
      * @param typeName {@code String} Titulo do tipo de arma
-     * @param damageBase {@code Double} Dano base do tipo
-     * @param category {@code Integer} Classificação do tipo
      * @param wearType {@code WearType} Tipo de porte
-     * @param materialAmount1 {@code Double} Qtd. do material 1
-     * @param materialAmount2 {@code Double} Qtd. do material 2
      */
-    public WeaponType(Long id, String typeName, Double damageBase, Integer category, UseType wearType, Double materialAmount1, Double materialAmount2) {
+    public WeaponType(Long id, String typeName, UseType wearType) {
         this.id = id;
         this.title = typeName;
-        this.damageBase = damageBase;
-        this.category = category;
         this.wearType = wearType;
-        this.materialAmount1 = materialAmount1;
-        this.materialAmount2 = materialAmount2;
     }
 
     /**
+     * Cria nova instancia de WeaponType
      *
      * @param id {@code Long} Código do tipo de arma
      * @param typeName {@code String} Titulo do tipo de arma
-     * @param damageBase {@code Double} Dano base do tipo
      * @param range {@code Integer} Alcance da arma
      * @param size {@code WeaponSize} Tamanho da arma
-     * @param category {@code Integer} Classificação do tipo
      * @param wearType {@code WearType} Tipo de porte
-     * @param materialAmount1 {@code Double} Qtd. do material 1
-     * @param materialAmount2 {@code Double} Qtd. do material 2
      */
-    public WeaponType(Long id, String typeName, Double damageBase, Integer range, WeaponSize size, Integer category, UseType wearType, Double materialAmount1, Double materialAmount2) {
+    public WeaponType(Long id, String typeName, Integer range, WeaponSize size,
+            UseType wearType) {
         this.id = id;
         this.title = typeName;
-        this.damageBase = damageBase;
         this.range = range;
         this.size = size;
-        this.category = category;
         this.wearType = wearType;
-        this.materialAmount1 = materialAmount1;
-        this.materialAmount2 = materialAmount2;
     }
 
     /**
+     * Cria nova instancia de WeaponType
      *
      * @param id {@code Long} Código do tipo de arma
      * @param title {@code String} Titulo do tipo de arma
-     * @param damageBase {@code Double} Dano base do tipo
      * @param range {@code Integer} Alcance da arma
      * @param damageType {@code DamageType} Tipo de dano
      * @param size {@code WeaponSize} Tamanho da arma
-     * @param category {@code Integer} Classificação do tipo
      * @param wearType {@code WearType} Tipo de porte
-     * @param materialAmount1 {@code Double} Qtd. do material 1
-     * @param materialAmount2 {@code Double} Qtd. do material 2
      */
-    public WeaponType(Long id, String title, Double damageBase, Integer range, DamageType damageType, WeaponSize size, Integer category, UseType wearType, Double materialAmount1, Double materialAmount2) {
+    public WeaponType(Long id, String title, Integer range,
+            DamageType damageType, WeaponSize size, UseType wearType) {
         this.id = id;
         this.title = title;
-        this.damageBase = damageBase;
         this.range = range;
         this.damageType = damageType;
         this.size = size;
-        this.category = category;
         this.wearType = wearType;
-        this.materialAmount1 = materialAmount1;
-        this.materialAmount2 = materialAmount2;
     }
 
     /**
@@ -157,60 +125,6 @@ public class WeaponType extends Type {
     @Override
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    /**
-     * Retorna a Qtd. do material 1
-     *
-     * @return {@code Double} Qtd. do material 1
-     */
-    public Double getMaterialAmount1() {
-        return materialAmount1;
-    }
-
-    /**
-     * Modifica a Qtd. do material 1
-     *
-     * @param amount1 {@code Double} Qtd. do material 1
-     */
-    public void setMaterialAmount1(Double amount1) {
-        this.materialAmount1 = amount1;
-    }
-
-    /**
-     * Retorna a Qtd. do material 2
-     *
-     * @return {@code Double} Qtd. do material 2
-     */
-    public Double getMaterialAmount2() {
-        return materialAmount2;
-    }
-
-    /**
-     * Modifica a Qtd. do material 2
-     *
-     * @param amount2 {@code Double} Qtd. do material 2
-     */
-    public void setMaterialAmount2(Double amount2) {
-        this.materialAmount2 = amount2;
-    }
-
-    /**
-     * Retorna o Dano base do tipo
-     *
-     * @return {@code Double} Dano base do tipo
-     */
-    public Double getDamageBase() {
-        return damageBase;
-    }
-
-    /**
-     * Modificao tipo de Dano
-     *
-     * @param damageBase {@code DamageType} Tipo de dano
-     */
-    public void setDamageBase(Double damageBase) {
-        this.damageBase = damageBase;
     }
 
     /**
@@ -268,24 +182,6 @@ public class WeaponType extends Type {
     }
 
     /**
-     * Retorna a Classificação do tipo
-     *
-     * @return {@code Integer} Classificação do tipo
-     */
-    public Integer getCategory() {
-        return category;
-    }
-
-    /**
-     * Modifica a Classificação do tipo
-     *
-     * @param category {@code Integer} Classificação do tipo
-     */
-    public void setCategory(Integer category) {
-        this.category = category;
-    }
-
-    /**
      * Retorna o Tipo de porte
      *
      * @return {@code WearType} Tipo de porte
@@ -308,8 +204,6 @@ public class WeaponType extends Type {
         int hash = 7;
         hash = 29 * hash + Objects.hashCode(this.id);
         hash = 29 * hash + Objects.hashCode(this.title);
-        hash = 29 * hash + Objects.hashCode(this.damageBase);
-        hash = 29 * hash + Objects.hashCode(this.category);
         hash = 29 * hash + Objects.hashCode(this.wearType);
         return hash;
     }
@@ -327,12 +221,6 @@ public class WeaponType extends Type {
             return false;
         }
         if (!Objects.equals(this.title, other.title)) {
-            return false;
-        }
-        if (!Objects.equals(this.damageBase, other.damageBase)) {
-            return false;
-        }
-        if (!Objects.equals(this.category, other.category)) {
             return false;
         }
         return Objects.equals(this.wearType, other.wearType);

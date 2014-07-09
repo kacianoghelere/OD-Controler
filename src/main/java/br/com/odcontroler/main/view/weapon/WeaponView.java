@@ -190,7 +190,6 @@ public class WeaponView extends View implements TableView, TableSource<Weapon> {
         add();
     }//GEN-LAST:event_jBAddActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.table.GTable gTable;
     private javax.swing.JButton jBAdd;

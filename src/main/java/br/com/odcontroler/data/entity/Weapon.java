@@ -28,16 +28,16 @@ public class Weapon {
     @Editable
     @ColumnName(name = "Descrição")
     private String description;
+    @ColumnName(name = "Iniciativa")
+    private Integer initiative;
     @ColumnName(name = "Dano")
-    private String damage;
+    private Integer damage;
     @ColumnName(name = "Preço")
-    private Double price;
+    private Integer price;
     @ColumnName(name = "Tipo")
     private WeaponType type;
-    @ColumnName(name = "Material 1")
-    private PrimeMaterial material1;
-    @ColumnName(name = "Material 2")
-    private PrimeMaterial material2;
+    @ColumnName(name = "Material")
+    private PrimeMaterial material;
     @Ignore
     @ColumnName(name = "Restrições")
     private List<Restriction> restriction;
@@ -56,24 +56,26 @@ public class Weapon {
      *
      * @param id {@code Long} ID da arma
      * @param name {@code String} Nome da arma
+     * @param origin {@code Origin} Origem da arma
      * @param description {@code String} Descrição da arma
+     * @param initiative {@code Integer} Classificação do tipo
      * @param damage {@code String} Dano da arma
-     * @param price {@code Double} Preço da arma
+     * @param price {@code Integer} Preço da arma
      * @param type {@code WeaponType} Tipo de arma
-     * @param material1 {@code PrimeMaterial} Quantidade do material 1
-     * @param material2 {@code PrimeMaterial} Quantidade do material 2
+     * @param material {@code PrimeMaterial} Quantidade do material 1
      */
-    public Weapon(Long id, String name, String description, String damage,
-            Double price, WeaponType type, PrimeMaterial material1,
-            PrimeMaterial material2) {
+    public Weapon(Long id, String name, Origin origin, String description,
+            Integer initiative, String damage, Integer price, WeaponType type,
+            PrimeMaterial material) {
         this.id = id;
         this.name = name;
+        this.origin = origin;
         this.description = description;
-        this.damage = "";
+        this.initiative = initiative;
+        this.damage = 0;
         this.price = price;
         this.type = type;
-        this.material1 = material1;
-        this.material2 = material2;
+        this.material = material;
         this.restriction = new ArrayList<>();
         this.effects = new ArrayList<>();
     }
@@ -203,73 +205,55 @@ public class Weapon {
     /**
      * Retorna a Resistencia da arma
      *
-     * @return {@code String} Resistencia da arma
+     * @return {@code Integer} Resistencia da arma
      */
-    public String getDamage() {
+    public Integer getDamage() {
         return damage;
     }
 
     /**
      * Modifica a Resistencia da arma
      *
-     * @param damage {@code String} Resistencia da arma
+     * @param damage {@code Integer} Resistencia da arma
      */
-    public void setDamage(String damage) {
+    public void setDamage(Integer damage) {
         this.damage = damage;
     }
 
     /**
      * Retorna o preço da arma
      *
-     * @return {@code Double} Preço da arma
+     * @return {@code Integer} Preço da arma
      */
-    public Double getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
     /**
      * Modifica o preço da arma
      *
-     * @param price {@code Double} Preço da arma
+     * @param price {@code Integer} Preço da arma
      */
-    public void setPrice(Double price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
     /**
-     * Retorna o Material 1
+     * Retorna o Material
      *
-     * @return {@code PrimeMaterial} Material 1
+     * @return {@code PrimeMaterial} Material
      */
-    public PrimeMaterial getMaterial1() {
-        return material1;
+    public PrimeMaterial getMaterial() {
+        return material;
     }
 
     /**
-     * Modifica o Material 1
+     * Modifica o Material
      *
-     * @param material1 {@code PrimeMaterial} Material 1
+     * @param material {@code PrimeMaterial} Material
      */
-    public void setMaterial1(PrimeMaterial material1) {
-        this.material1 = material1;
-    }
-
-    /**
-     * Retorna o Material 2
-     *
-     * @return {@code PrimeMaterial} Material 2
-     */
-    public PrimeMaterial getMaterial2() {
-        return material2;
-    }
-
-    /**
-     * Modifica o Material 2
-     *
-     * @param material2 {@code PrimeMaterial} Material 2
-     */
-    public void setMaterial2(PrimeMaterial material2) {
-        this.material2 = material2;
+    public void setMaterial(PrimeMaterial material) {
+        this.material = material;
     }
 
     /**
@@ -307,4 +291,23 @@ public class Weapon {
     public void setEffects(List<Effect> effects) {
         this.effects = effects;
     }
+
+    /**
+     * Retorna a Classificação do tipo
+     *
+     * @return {@code Integer} Classificação do tipo
+     */
+    public Integer getInitiative() {
+        return initiative;
+    }
+
+    /**
+     * Modifica a Classificação do tipo
+     *
+     * @param initiative {@code Integer} Classificação do tipo
+     */
+    public void setInitiative(Integer initiative) {
+        this.initiative = initiative;
+    }
+
 }

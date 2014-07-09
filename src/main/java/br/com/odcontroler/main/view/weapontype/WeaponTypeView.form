@@ -43,46 +43,21 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jLTitle" linkSize="3" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="jLWear" linkSize="3" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLRange" linkSize="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="gTTitle" max="32767" attributes="0"/>
+                              <Component id="gCBUse" pref="145" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jLBaseDmg" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLSize" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="nTBaseDmg" max="32767" attributes="0"/>
+                              <Component id="gCBSize" pref="145" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLRange" linkSize="3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jSpRange" min="-2" pref="95" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="jSpRange" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLQtd1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Component id="jSpQtd1" max="32767" attributes="0"/>
-                                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLQtd2" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="gCBUse" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLSize" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Component id="gCBSize" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLCategory" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Component id="jSpinCategory" pref="50" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Component id="jSpQtd2" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="gTTitle" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jScrollPane1" max="32767" attributes="0"/>
@@ -104,35 +79,24 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLTitle" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="gTTitle" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="nTBaseDmg" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                  <Component id="jLBaseDmg" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLWear" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="gCBUse" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLCategory" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jSpinCategory" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                   <Component id="gCBSize" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLSize" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jSpQtd2" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLQtd1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jSpQtd1" linkSize="2" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                  <Component id="jLQtd2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jSpRange" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                   <Component id="jLRange" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jBAdd" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBRemove" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="205" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="248" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -168,55 +132,12 @@
     </Component>
     <Component class="br.com.gmp.comps.textfield.GTextField" name="gTTitle">
     </Component>
-    <Component class="javax.swing.JSpinner" name="jSpQtd2">
-      <Properties>
-        <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-          <SpinnerModel initial="0.0" maximum="100.0" minimum="0.0" numberType="java.lang.Double" stepSize="0.5" type="number"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLQtd2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Qtd. Material 2:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JSpinner" name="jSpQtd1">
-      <Properties>
-        <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-          <SpinnerModel initial="0.0" maximum="100.0" minimum="0.0" numberType="java.lang.Double" stepSize="0.5" type="number"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLQtd1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Qtd. Material 1:"/>
-      </Properties>
-    </Component>
-    <Component class="br.com.gmp.comps.textfield.NumericTextField" name="nTBaseDmg">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLBaseDmg">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Dano base:"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLWear">
       <Properties>
         <Property name="text" type="java.lang.String" value="Porte:"/>
       </Properties>
     </Component>
     <Component class="br.com.gmp.comps.combobox.GComboBox" name="gCBUse">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLCategory">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Categoria:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JSpinner" name="jSpinCategory">
-      <Properties>
-        <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-          <SpinnerModel initial="1" maximum="100" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
-        </Property>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jBAdd">
       <Properties>

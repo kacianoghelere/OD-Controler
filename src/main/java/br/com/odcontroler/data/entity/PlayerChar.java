@@ -207,8 +207,8 @@ public class PlayerChar {
     /**
      * Modifica os Infos do personagem
      *
-     * @param playerCharInfoCollection {@code Collection(PlayerCharInfo)}
-     * Infos do personagem
+     * @param playerCharInfoCollection {@code Collection(PlayerCharInfo)} Infos
+     * do personagem
      */
     public void setPlayerCharInfoCollection(Collection<PlayerCharInfo> playerCharInfoCollection) {
         this.playerCharInfoCollection = playerCharInfoCollection;

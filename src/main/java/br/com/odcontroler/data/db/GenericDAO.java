@@ -292,8 +292,7 @@ public class GenericDAO<T> implements DAO<T> {
     /**
      * Modifica o sufixo da base de dados (Extensão do arquivo)
      *
-     * @param sufix {@code String} Sufixo da base de dados (Extensão do
-     * arquivo)
+     * @param sufix {@code String} Sufixo da base de dados (Extensão do arquivo)
      */
     public void setSufix(String sufix) {
         this.sufix = sufix;

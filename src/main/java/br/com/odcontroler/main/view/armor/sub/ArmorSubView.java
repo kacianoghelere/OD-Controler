@@ -124,8 +124,7 @@ public class ArmorSubView extends SubView {
                 this.gTName.setText(this.armor.getName());
                 this.gTADesc.setText(this.armor.getDescription());
                 this.gCBType.setSelectedItem(this.armor.getType());
-                this.gCBMat1.setSelectedItem(this.armor.getMaterial1());
-                this.gCBMat2.setSelectedItem(this.armor.getMaterial2());
+                this.gCBMat1.setSelectedItem(this.armor.getMaterial());
                 this.jSpinPrice.setValue(this.armor.getPrice());
                 if (this.armor.getRestriction() != null) {
                     this.restModel.setData(this.armor.getRestriction());
@@ -176,18 +175,15 @@ public class ArmorSubView extends SubView {
         this.armor.setDescription(gTADesc.getText());
         this.armor.setPrice((Double) jSpinPrice.getValue());
         this.armor.setType(armorTypeModel.getSelectedItem());
-        this.armor.setMaterial1(materialModel1.getSelectedItem());
-        this.armor.setMaterial2(materialModel2.getSelectedItem());
+        this.armor.setMaterial(materialModel1.getSelectedItem());
         this.armor.setEffects(effectModel.getData());
         this.armor.setRestriction(restModel.getData());
-        this.armor.calcResistence();
     }
 
     /**
      * Valida se os campos estão todos preenchidos corretamente
      *
-     * @return {@code boolean} Os campos estão todos preenchidos
-     * corretamente?
+     * @return {@code boolean} Os campos estão todos preenchidos corretamente?
      */
     private boolean validateFields() {
         if (gTName.validateComponent()) {
@@ -777,7 +773,6 @@ public class ArmorSubView extends SubView {
     private void gCBRestKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gCBRestKeyReleased
         addRestriction();
     }//GEN-LAST:event_gCBRestKeyReleased
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLStr;

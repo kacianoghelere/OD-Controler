@@ -50,7 +50,7 @@ public class ArmorTypeBean extends ViewBean<ArmorTypeView> {
             type.setTitle((String) vw.getValue("title"));
             type.setMaterialAmount1((Double) vw.getValue("qtd1"));
             type.setMaterialAmount2((Double) vw.getValue("qtd2"));
-            type.setBase((Double) vw.getValue("resbase"));
+            type.setBase((Integer) vw.getValue("resbase"));
             getView().getModel().add(type);
         } catch (Exception ex) {
             Logger.getLogger(ArmorTypeBean.class.getName()).log(Level.SEVERE, null, ex);

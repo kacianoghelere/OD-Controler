@@ -140,7 +140,6 @@ public class EffectDialog extends GDialog {
         }
     }//GEN-LAST:event_jBSaveActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.combobox.GComboBox gCBEffect;
     private javax.swing.JButton jBCancel;

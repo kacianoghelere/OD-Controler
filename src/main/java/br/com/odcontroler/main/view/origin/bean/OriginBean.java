@@ -26,7 +26,7 @@ public class OriginBean extends ViewBean<OriginView> {
     public OriginBean(OriginView view) {
         super(view);
         this.dao = new OriginDAO();
-        this.tableUtil = new TableUtil(getView());        
+        this.tableUtil = new TableUtil(getView());
     }
 
     @Override

@@ -99,7 +99,6 @@ public class DescriptionDialog extends GDialog {
         this.dispose();
     }//GEN-LAST:event_jBExitActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBExit;
     private javax.swing.JLabel jLDescription;

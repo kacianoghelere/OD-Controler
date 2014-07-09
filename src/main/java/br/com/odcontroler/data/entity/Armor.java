@@ -24,19 +24,19 @@ public class Armor implements Serializable {
     @Editable
     @ColumnName(name = "Nome")
     private String name;
+    @ColumnName(name = "Origem")
+    private Origin origin;
     @Editable
     @ColumnName(name = "Descrição")
     private String description;
     @ColumnName(name = "Tipo de armadura")
     private ArmorType type;
-    @ColumnName(name = "Resistencia")
-    private Double resistence;
+    @ColumnName(name = "CA")
+    private String armorClass;
     @ColumnName(name = "Preço")
     private Double price;
-    @ColumnName(name = "Material 1")
-    private PrimeMaterial material1;
-    @ColumnName(name = "Material 2")
-    private PrimeMaterial material2;
+    @ColumnName(name = "Material")
+    private PrimeMaterial material;
     @Ignore
     @ColumnName(name = "Atributos")
     private Attributes attributes;
@@ -61,31 +61,48 @@ public class Armor implements Serializable {
      * @param description {@code String} Descrição da armadura
      * @param type {@code ArmorType} Tipo da armadura
      * @param price {@code Double} Preço da armadura
-     * @param material1 {@code PrimeMaterial} Material 1
-     * @param material2 {@code PrimeMaterial} Material 2
+     * @param material {@code PrimeMaterial} Material
      * @param attributes {@code Attributes} Atributos da armadura
      */
-    public Armor(Long id, String name, String description, ArmorType type, Double price, PrimeMaterial material1, PrimeMaterial material2, Attributes attributes) {
+    public Armor(Long id, String name, String description,
+            ArmorType type, Double price, PrimeMaterial material,
+            Attributes attributes) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.type = type;
         this.price = price;
-        this.material1 = material1;
-        this.material2 = material2;
+        this.material = material;
         this.attributes = attributes;
         this.effects = new ArrayList<>();
         this.restriction = new ArrayList<>();
     }
 
     /**
-     * Calcula a resistencia da armadura com base nos materiais e na resistencia
-     * basica
+     * Cria nova instancia de Armor
+     *
+     * @param id {@code Long} ID da armadura
+     * @param name {@code String} Nome da armadura
+     * @param origin {@code Origin} Origem da armadura
+     * @param description {@code String} Descrição da armadura
+     * @param type {@code ArmorType} Tipo da armadura
+     * @param price {@code Double} Preço da armadura
+     * @param material {@code PrimeMaterial} Material 1
+     * @param attributes {@code Attributes} Atributos da armadura
      */
-    public void calcResistence() {
-        this.resistence = ((material1.getResistence() * type.getMaterialAmount1())
-                + (material2.getResistence() * type.getMaterialAmount2())
-                + type.getBase());
+    public Armor(Long id, String name, Origin origin, String description,
+            ArmorType type, Double price, PrimeMaterial material,
+            Attributes attributes) {
+        this.id = id;
+        this.name = name;
+        this.origin = origin;
+        this.description = description;
+        this.type = type;
+        this.price = price;
+        this.material = material;
+        this.attributes = attributes;
+        this.effects = new ArrayList<>();
+        this.restriction = new ArrayList<>();
     }
 
     /**
@@ -122,6 +139,24 @@ public class Armor implements Serializable {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * Retorna o Origem da armadura
+     *
+     * @return {@code Origin} Origem da armadura
+     */
+    public Origin getOrigin() {
+        return origin;
+    }
+
+    /**
+     * Modifica o Origem da armadura
+     *
+     * @param origin {@code Origin} Origem da armadura
+     */
+    public void setOrigin(Origin origin) {
+        this.origin = origin;
     }
 
     /**
@@ -163,19 +198,19 @@ public class Armor implements Serializable {
     /**
      * Retorna a Resistencia da armadura
      *
-     * @return {@code Double} Resistencia da armadura
+     * @return {@code String} Resistencia da armadura
      */
-    public Double getResistence() {
-        return resistence;
+    public String getArmorClass() {
+        return armorClass;
     }
 
     /**
      * Modifica a Resistencia da armadura
      *
-     * @param resistence {@code Double} Resistencia da armadura
+     * @param armorClass {@code String} Resistencia da armadura
      */
-    public void setResistence(Double resistence) {
-        this.resistence = resistence;
+    public void setArmorClass(String armorClass) {
+        this.armorClass = armorClass;
     }
 
     /**
@@ -197,39 +232,21 @@ public class Armor implements Serializable {
     }
 
     /**
-     * Retorna o Material 1
+     * Retorna o Material
      *
-     * @return {@code PrimeMaterial} Material 1
+     * @return {@code PrimeMaterial} Material
      */
-    public PrimeMaterial getMaterial1() {
-        return material1;
+    public PrimeMaterial getMaterial() {
+        return material;
     }
 
     /**
-     * Modifica o Material 1
+     * Modifica o Material
      *
-     * @param material1 {@code PrimeMaterial} Material 1
+     * @param material {@code PrimeMaterial} Material
      */
-    public void setMaterial1(PrimeMaterial material1) {
-        this.material1 = material1;
-    }
-
-    /**
-     * Retorna o Material 2
-     *
-     * @return {@code PrimeMaterial} Material 2
-     */
-    public PrimeMaterial getMaterial2() {
-        return material2;
-    }
-
-    /**
-     * Modifica o Material 2
-     *
-     * @param material2 {@code PrimeMaterial} Material 2
-     */
-    public void setMaterial2(PrimeMaterial material2) {
-        this.material2 = material2;
+    public void setMaterial(PrimeMaterial material) {
+        this.material = material;
     }
 
     /**
@@ -292,8 +309,7 @@ public class Armor implements Serializable {
         hash = 53 * hash + Objects.hashCode(this.id);
         hash = 53 * hash + Objects.hashCode(this.name);
         hash = 53 * hash + Objects.hashCode(this.type);
-        hash = 53 * hash + Objects.hashCode(this.material1);
-        hash = 53 * hash + Objects.hashCode(this.material2);
+        hash = 53 * hash + Objects.hashCode(this.material);
         return hash;
     }
 
@@ -315,10 +331,7 @@ public class Armor implements Serializable {
         if (!Objects.equals(this.type, other.type)) {
             return false;
         }
-        if (!Objects.equals(this.material1, other.material1)) {
-            return false;
-        }
-        return Objects.equals(this.material2, other.material2);
+        return Objects.equals(this.material, other.material);
     }
 
     @Override

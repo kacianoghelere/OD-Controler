@@ -15,7 +15,7 @@ import java.util.Objects;
 public class Perk {
 
     @NotCopiable
-    @Ignore    
+    @Ignore
     @ColumnName(name = "Código")
     private Long id;
     @Editable

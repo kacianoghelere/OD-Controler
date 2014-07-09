@@ -76,7 +76,7 @@ public class ArmorTypeView extends View implements TableSource<ArmorType>, Table
                         .addValue("title", gTTitle.getText())
                         .addValue("qtd1", (Double) jSpQtd1.getValue())
                         .addValue("qtd2", (Double) jSpQtd2.getValue())
-                        .addValue("resbase", nTResBase.getDouble());
+                        .addValue("resbase", nTResBase.getInteger());
                 bean.add(new BeanEvent(vw));
             }
         } catch (NumberFormatException e) {

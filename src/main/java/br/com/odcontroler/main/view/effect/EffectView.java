@@ -244,7 +244,6 @@ public class EffectView extends br.com.odcontroler.main.view.View implements Tab
         }
     }//GEN-LAST:event_jBRemoveActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.combobox.GComboBox gCBType;
     private br.com.gmp.comps.textfield.GTextField gTTitle;

@@ -2,7 +2,6 @@ package br.com.odcontroler.main.object;
 
 import br.com.gmp.utils.object.ObjectWrapper;
 
-
 /**
  * Evento de transporte de dados
  *
@@ -12,7 +11,7 @@ public class BeanEvent {
 
     private Object frame;
     private Object value;
-    private ObjectWrapper viewWrapper;    
+    private ObjectWrapper viewWrapper;
 
     /**
      * Cria nova instancia de BeanEvent

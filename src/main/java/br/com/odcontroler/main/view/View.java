@@ -221,7 +221,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
             mainScreen.getListener().appendLog(ex.getMessage());
         } catch (IOException ex1) {
             LOG.log(Level.SEVERE, null, ex1);
-        }        
+        }
     }
 
     /**

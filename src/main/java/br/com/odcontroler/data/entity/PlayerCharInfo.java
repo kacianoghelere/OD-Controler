@@ -163,8 +163,6 @@ public class PlayerCharInfo implements Serializable {
         return Objects.equals(this.active, other.active);
     }
 
-
-
     @Override
     public String toString() {
         return id + " - " + playerChar.getName() + " - " + charLevel;

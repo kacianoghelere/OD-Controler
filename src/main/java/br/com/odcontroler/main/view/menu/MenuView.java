@@ -311,7 +311,6 @@ public class MenuView extends View implements TableSource<Menu>, TableView {
         remove();
     }//GEN-LAST:event_jBRemoveActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.combobox.GComboBox gCBIcon;
     private br.com.gmp.comps.combobox.GComboBox gCBParent;

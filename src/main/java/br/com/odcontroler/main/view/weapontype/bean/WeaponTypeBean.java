@@ -48,11 +48,7 @@ public class WeaponTypeBean extends ViewBean<WeaponTypeView> {
         WeaponType type = new WeaponType();
         type.setId(nextID);
         type.setTitle((String) ow.getValue("title"));
-        type.setCategory((Integer) ow.getValue("category"));
-        type.setDamageBase((Double) ow.getValue("basedmg"));
         type.setUseType((UseType) ow.getValue("use"));
-        type.setMaterialAmount1((Double) ow.getValue("qtd1"));
-        type.setMaterialAmount2((Double) ow.getValue("qtd2"));
         type.setSize((WeaponSize) ow.getValue("size"));
         type.setRange((Integer) ow.getValue("range"));
         getView().getModel().add(type);
@@ -61,7 +57,7 @@ public class WeaponTypeBean extends ViewBean<WeaponTypeView> {
     /**
      * Procura pelo próximo ID
      *
-     * @return {@code Integer} Próximo ID
+     * @return {@code Long} Próximo ID
      */
     private Long getNextID() {
         Long id = (long) 0;

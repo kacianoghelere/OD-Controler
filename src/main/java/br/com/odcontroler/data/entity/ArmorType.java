@@ -22,7 +22,7 @@ public class ArmorType extends Type {
     private String title;
     @Editable
     @ColumnName(name = "Base")
-    private Double base;
+    private Integer base;
     @Editable
     @ColumnName(name = "Quantidade 1")
     private Double materialAmount1;
@@ -47,7 +47,7 @@ public class ArmorType extends Type {
     public ArmorType(Long id, String typeName, Double materialAmount1, Double materialAmount2) {
         this.id = id;
         this.title = typeName;
-        this.base = (double) 0;
+        this.base = 0;
         this.materialAmount1 = materialAmount1;
         this.materialAmount2 = materialAmount2;
     }
@@ -95,18 +95,18 @@ public class ArmorType extends Type {
     /**
      * Retorna a Resistencia base
      *
-     * @return {@code Double} Resistencia base
+     * @return {@code Integer} Resistencia base
      */
-    public Double getBase() {
+    public Integer getBase() {
         return base;
     }
 
     /**
      * Modifica a Resistencia base
      *
-     * @param base {@code Double} Resistencia base
+     * @param base {@code Integer} Resistencia base
      */
-    public void setBase(Double base) {
+    public void setBase(Integer base) {
         this.base = base;
     }
 

@@ -9,6 +9,7 @@ import java.util.Objects;
 
 /**
  * Entidade das classes de personagem
+ *
  * @author kaciano
  */
 public class CharClass implements Serializable {

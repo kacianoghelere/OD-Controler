@@ -272,7 +272,6 @@ public class ExpertiseView extends View implements TableView, TableSource<Expert
         remove();
     }//GEN-LAST:event_jBRemoveActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.combobox.GComboBox gCBAttribute;
     private br.com.gmp.comps.combobox.GComboBox gCBType;

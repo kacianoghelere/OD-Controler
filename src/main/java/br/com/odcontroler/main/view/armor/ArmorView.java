@@ -234,7 +234,6 @@ public class ArmorView extends View<ArmorBean> implements TableView, TableSource
         }
     }//GEN-LAST:event_gTableMouseClicked
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.table.GTable gTable;
     private javax.swing.JButton jBAdd;

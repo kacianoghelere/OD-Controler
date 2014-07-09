@@ -9,5 +9,5 @@ import br.com.odcontroler.data.entity.WeaponType;
  * @author kaciano
  */
 public class WeaponTypeModel extends GTableModel<WeaponType> {
-    
+
 }

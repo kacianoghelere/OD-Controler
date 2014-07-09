@@ -20,7 +20,7 @@ public class CommitAction extends FrameAction {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {        
+    public void actionPerformed(ActionEvent e) {
         getView().getMainScreen().commit(null);
     }
 

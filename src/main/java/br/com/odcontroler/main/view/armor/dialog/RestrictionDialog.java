@@ -176,7 +176,6 @@ public class RestrictionDialog extends GDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_nTValueActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.combobox.GComboBox gCBType;
     private javax.swing.JButton jBCancel;

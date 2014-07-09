@@ -217,7 +217,6 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
         }
     }//GEN-LAST:event_gTableMouseClicked
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.textfield.GTextField gTName;
     private br.com.gmp.comps.textfield.GTextField gTVariation;
