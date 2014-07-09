@@ -29,10 +29,10 @@ public class Armor implements Serializable {
     @Editable
     @ColumnName(name = "Descrição")
     private String description;
-    @ColumnName(name = "Tipo de armadura")
+    @ColumnName(name = "Tipo")
     private ArmorType type;
     @ColumnName(name = "CA")
-    private String armorClass;
+    private Integer armorClass;
     @ColumnName(name = "Preço")
     private Double price;
     @ColumnName(name = "Material")
@@ -198,18 +198,18 @@ public class Armor implements Serializable {
     /**
      * Retorna a Resistencia da armadura
      *
-     * @return {@code String} Resistencia da armadura
+     * @return {@code Integer} Resistencia da armadura
      */
-    public String getArmorClass() {
+    public Integer getArmorClass() {
         return armorClass;
     }
 
     /**
      * Modifica a Resistencia da armadura
      *
-     * @param armorClass {@code String} Resistencia da armadura
+     * @param armorClass {@code Integer} Resistencia da armadura
      */
-    public void setArmorClass(String armorClass) {
+    public void setArmorClass(Integer armorClass) {
         this.armorClass = armorClass;
     }
 
