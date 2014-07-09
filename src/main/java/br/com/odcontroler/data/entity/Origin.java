@@ -2,7 +2,6 @@ package br.com.odcontroler.data.entity;
 
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
-import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
 import java.util.Objects;
 
@@ -22,6 +21,9 @@ public class Origin {
     @ColumnName(name = "Nome")
     private String name;
     @Editable
+    @ColumnName(name = "Variação")
+    private String variation;
+    @Editable
     @ColumnName(name = "Bônus")
     private Integer bonus;
 
@@ -30,9 +32,10 @@ public class Origin {
      *
      * @param id {@code Long} ID da origem
      * @param name {@code String} Nome da origem
+     * @param variation {@code String} Variação do nome da origem
      * @param bonus {@code Integer} Bonus da origem
      */
-    public Origin(Long id, String name, Integer bonus) {
+    public Origin(Long id, String name, String variation, Integer bonus) {
         this.id = id;
         this.name = name;
         this.bonus = bonus;
@@ -96,6 +99,24 @@ public class Origin {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * Retorna a variação do nome da origem
+     *
+     * @return {@code String} Variação do nome da origem
+     */
+    public String getVariation() {
+        return variation;
+    }
+
+    /**
+     * Modifica a variação do nome da origem
+     *
+     * @param variation {@code String} Variação do nome da origem
+     */
+    public void setVariation(String variation) {
+        this.variation = variation;
     }
 
     /**

@@ -39,8 +39,9 @@ public class OriginBean extends ViewBean<OriginView> {
         Long nextID = getNextID();
         ObjectWrapper ow = evt.getWrapper();
         String name = (String) ow.getValue("name");
+        String variation = (String) ow.getValue("variation");
         Integer bonus = (Integer) ow.getValue("bonus");
-        getView().getModel().add(new Origin(nextID, name, bonus));
+        getView().getModel().add(new Origin(nextID, name, variation, bonus));
     }
 
     @Override

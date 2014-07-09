@@ -61,6 +61,7 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
     public void add() throws Exception {
         ObjectWrapper ow = new ObjectWrapper(this)
                 .addValue("name", gTName.getText())
+                .addValue("variation", gTVariation.getText())
                 .addValue("bonus", jSpnBonus.getValue());
         this.bean.add(new BeanEvent(ow));
     }
@@ -106,6 +107,8 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
         gTName = new br.com.gmp.comps.textfield.GTextField();
         jLBonus = new javax.swing.JLabel();
         jSpnBonus = new javax.swing.JSpinner();
+        jLVariation = new javax.swing.JLabel();
+        gTVariation = new br.com.gmp.comps.textfield.GTextField();
 
         setIconifiable(true);
         setTitle("Origens");
@@ -141,6 +144,8 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
 
         jSpnBonus.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
 
+        jLVariation.setText("Variação");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -152,7 +157,11 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(gTName, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(gTName, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLVariation)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(gTVariation, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLBonus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -160,8 +169,7 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jBRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -173,7 +181,9 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
                         .addComponent(jLName)
                         .addComponent(gTName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLBonus)
-                        .addComponent(jSpnBonus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSpnBonus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLVariation)
+                        .addComponent(gTVariation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jBAdd)
                     .addComponent(jBRemove))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -210,11 +220,13 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.textfield.GTextField gTName;
+    private br.com.gmp.comps.textfield.GTextField gTVariation;
     private br.com.gmp.comps.table.GTable gTable;
     private javax.swing.JButton jBAdd;
     private javax.swing.JButton jBRemove;
     private javax.swing.JLabel jLBonus;
     private javax.swing.JLabel jLName;
+    private javax.swing.JLabel jLVariation;
     private javax.swing.JScrollPane jSP;
     private javax.swing.JSpinner jSpnBonus;
     // End of variables declaration//GEN-END:variables

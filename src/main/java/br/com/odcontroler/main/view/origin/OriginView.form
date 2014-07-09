@@ -35,14 +35,18 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jSP" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="jLName" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="gTName" min="-2" pref="225" max="-2" attributes="0"/>
+                      <Component id="gTName" min="-2" pref="166" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLVariation" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="gTVariation" pref="151" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLBonus" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -51,7 +55,6 @@
                       <Component id="jBAdd" min="-2" pref="29" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jBRemove" min="-2" pref="29" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -68,6 +71,8 @@
                       <Component id="gTName" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLBonus" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jSpnBonus" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLVariation" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="gTVariation" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jBAdd" min="-2" max="-2" attributes="0"/>
                   <Component id="jBRemove" min="-2" max="-2" attributes="0"/>
@@ -132,6 +137,13 @@
           <SpinnerModel initial="0" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLVariation">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Varia&#xe7;&#xe3;o"/>
+      </Properties>
+    </Component>
+    <Component class="br.com.gmp.comps.textfield.GTextField" name="gTVariation">
     </Component>
   </SubComponents>
 </Form>
