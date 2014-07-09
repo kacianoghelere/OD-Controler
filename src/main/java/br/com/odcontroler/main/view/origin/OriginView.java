@@ -8,10 +8,14 @@ import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.util.TableUtil;
 import br.com.odcontroler.main.view.View;
+import br.com.odcontroler.main.view.annotation.ViewData;
+import br.com.odcontroler.main.view.enums.ViewType;
 import br.com.odcontroler.main.view.interfaces.TableView;
 import br.com.odcontroler.main.view.origin.bean.OriginBean;
 import br.com.odcontroler.main.view.origin.model.OriginModel;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Tela de controle para origem de itens
@@ -19,6 +23,7 @@ import java.util.List;
  * @author kaciano
  * @version 1.0
  */
+@ViewData(name = "Origem de itens", type = ViewType.CRUD)
 public class OriginView extends View implements TableView, TableSource<Origin> {
 
     private OriginBean bean;
@@ -39,10 +44,12 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
      * Método de inicialização
      */
     private void initialize() {
-        initComponents();
+        this.initComponents();
+        this.setSize(500, 300);
         this.model = new OriginModel();
         this.gTable.setModel(model);
         this.tableUtil = new TableUtil(this);
+        this.bean = new OriginBean(this);
     }
 
     @Override
@@ -55,17 +62,21 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
         ObjectWrapper ow = new ObjectWrapper(this)
                 .addValue("name", gTName.getText())
                 .addValue("bonus", jSpnBonus.getValue());
-        bean.add(new BeanEvent(ow));
+        this.bean.add(new BeanEvent(ow));
     }
 
     @Override
-    public void remove() {
-        tableUtil.remove(null);
+    public void remove() throws Exception {
+        bean.remove(null);
     }
 
     @Override
     public void edit() {
-
+        if (gTable.getSelectedObjects() != null) {
+            Origin origin = model.getObject(gTable.getSelectedRow());
+            gTName.setText(origin.getName());
+            jSpnBonus.setValue(origin.getBonus());
+        }
     }
 
     @Override
@@ -87,6 +98,8 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jBRemove = new javax.swing.JButton();
+        jBAdd = new javax.swing.JButton();
         jSP = new javax.swing.JScrollPane();
         gTable = new br.com.gmp.comps.table.GTable();
         jLName = new javax.swing.JLabel();
@@ -101,6 +114,25 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
         setMinimumSize(new java.awt.Dimension(500, 300));
         setPreferredSize(new java.awt.Dimension(500, 300));
 
+        jBRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/off.png"))); // NOI18N
+        jBRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRemoveActionPerformed(evt);
+            }
+        });
+
+        jBAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/new.png"))); // NOI18N
+        jBAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAddActionPerformed(evt);
+            }
+        });
+
+        gTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gTableMouseClicked(evt);
+            }
+        });
         jSP.setViewportView(gTable);
 
         jLName.setText("Nome:");
@@ -116,26 +148,34 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSP, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
+                    .addComponent(jSP)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(gTName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(gTName, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLBonus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpnBonus, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jSpnBonus, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLName)
-                    .addComponent(gTName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLBonus)
-                    .addComponent(jSpnBonus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLName)
+                        .addComponent(gTName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLBonus)
+                        .addComponent(jSpnBonus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jBAdd)
+                    .addComponent(jBRemove))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSP, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
                 .addContainerGap())
@@ -145,10 +185,34 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
 
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jBRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoveActionPerformed
+        try {
+            remove();
+        } catch (Exception ex) {
+            Logger.getLogger(OriginView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jBRemoveActionPerformed
+
+    private void jBAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddActionPerformed
+        try {
+            add();
+        } catch (Exception ex) {
+            Logger.getLogger(OriginView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jBAddActionPerformed
+
+    private void gTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gTableMouseClicked
+        if (evt.getClickCount() == 2) {
+            edit();
+        }
+    }//GEN-LAST:event_gTableMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.textfield.GTextField gTName;
     private br.com.gmp.comps.table.GTable gTable;
+    private javax.swing.JButton jBAdd;
+    private javax.swing.JButton jBRemove;
     private javax.swing.JLabel jLBonus;
     private javax.swing.JLabel jLName;
     private javax.swing.JScrollPane jSP;

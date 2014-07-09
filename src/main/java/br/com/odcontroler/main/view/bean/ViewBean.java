@@ -68,6 +68,16 @@ public class ViewBean<T> implements BeanListener<T> {
     }
 
     /**
+     * Método para remoção de conteúdos
+     *
+     * @param evt {@code BeanEvent} Evento do Bean
+     * @throws java.lang.Exception Propagação de exceção
+     */
+    public void remove(BeanEvent evt) throws Exception {
+        System.out.println("Remove not implemented yet.");
+    }
+
+    /**
      * Método para construção de conteúdos
      *
      * @param evt {@code BeanEvent} Evento do Bean

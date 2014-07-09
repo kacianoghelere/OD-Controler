@@ -23,7 +23,7 @@ public class MaterialsBean extends ViewBean<MaterialsView> {
     /**
      * Cria nova instancia de MaterialsBean
      *
-     * @param view <code>MaterialsView</code> View do Bean
+     * @param view {@code MaterialsView} View do Bean
      */
     public MaterialsBean(MaterialsView view) {
         super(view);
@@ -40,7 +40,7 @@ public class MaterialsBean extends ViewBean<MaterialsView> {
     /**
      * Adiciona novo material na lista da tabela
      *
-     * @param evt <code>BeanEvent</code> Evento do bean
+     * @param evt {@code BeanEvent} Evento do bean
      */
     @Override
     public void add(BeanEvent evt) {
@@ -61,7 +61,7 @@ public class MaterialsBean extends ViewBean<MaterialsView> {
     /**
      * Procura pelo próximo ID
      *
-     * @return <code>Integer</code> Próximo ID
+     * @return {@code Integer} Próximo ID
      */
     private Long getNextID() {
         Long id = (long) 0;

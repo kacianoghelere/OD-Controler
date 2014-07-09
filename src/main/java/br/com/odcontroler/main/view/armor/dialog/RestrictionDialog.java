@@ -21,9 +21,9 @@ public class RestrictionDialog extends GDialog {
     /**
      * Cria nova instancia de RestrictionDialog
      *
-     * @param dialog <code>ArmorSubView</code>
-     * @param restriction <code>Restriction</code> Restrição
-     * @param modal <code>boolean</code> Modal?
+     * @param dialog {@code ArmorSubView}
+     * @param restriction {@code Restriction} Restrição
+     * @param modal {@code boolean} Modal?
      */
     public RestrictionDialog(ArmorSubView dialog, Restriction restriction, boolean modal) {
         super(dialog, modal);
@@ -35,7 +35,7 @@ public class RestrictionDialog extends GDialog {
     /**
      * Método de inicialização
      *
-     * @param restriction <code>Restriction</code> Restrição
+     * @param restriction {@code Restriction} Restrição
      */
     private void initialize(Restriction restriction) {
         setSize(275, 150);
@@ -50,7 +50,7 @@ public class RestrictionDialog extends GDialog {
     /**
      * Retorna a Restriction que está sendo manipulada
      *
-     * @return <code>Restriction</code> Restrição
+     * @return {@code Restriction} Restrição
      */
     public Restriction getRestriction() {
         if (restriction == null) {
@@ -64,7 +64,7 @@ public class RestrictionDialog extends GDialog {
     /**
      * Modifica a Restriction que está sendo manipulada
      *
-     * @param restriction <code>Restriction</code> Restrição
+     * @param restriction {@code Restriction} Restrição
      */
     public void setRestriction(Restriction restriction) {
         try {

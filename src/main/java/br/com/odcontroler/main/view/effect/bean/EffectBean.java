@@ -22,7 +22,7 @@ public class EffectBean extends ViewBean<EffectView> {
     /**
      * Cria nova instancia de ViewBean
      *
-     * @param view <code>EffectView</code> Tela de efeitos
+     * @param view {@code EffectView} Tela de efeitos
      */
     public EffectBean(EffectView view) {
         super(view);
@@ -49,7 +49,7 @@ public class EffectBean extends ViewBean<EffectView> {
     /**
      * Procura pelo próximo ID
      *
-     * @return <code>Integer</code> Próximo ID
+     * @return {@code Integer} Próximo ID
      */
     private Long getNextID() {
         Long id = (long) 0;

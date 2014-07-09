@@ -45,6 +45,15 @@ public class TableUtil {
     }
 
     /**
+     * Adiciona os itens na tabela
+     *
+     * @param evt {@code BeanEvent} Evento
+     */
+    public void add(BeanEvent evt) {
+        model.add(evt.getValue());
+    }
+
+    /**
      * Remove os itens selecionados da tabela
      *
      * @param evt {@code BeanEvent} Evento

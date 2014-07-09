@@ -19,7 +19,7 @@ public class PerkBean extends ViewBean<PerkView> {
     /**
      * Cria nova instancia de PerkBean
      *
-     * @param view <code>PerkView</code> View do Bean
+     * @param view {@code PerkView} View do Bean
      */
     public PerkBean(PerkView view) {
         super(view);
@@ -52,7 +52,7 @@ public class PerkBean extends ViewBean<PerkView> {
     /**
      * Retorna o próximo ID da lista
      *
-     * @return <code>Long</code> Próximo ID
+     * @return {@code Long} Próximo ID
      */
     public Long getNextID() {
         Long id = (long) 0;

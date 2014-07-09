@@ -21,7 +21,7 @@ public class ArmorTypeBean extends ViewBean<ArmorTypeView> {
     /**
      * Cria nova instancia de ArmorTypeBean
      *
-     * @param view <code>ArmorTypeView</code> View do Bean
+     * @param view {@code ArmorTypeView} View do Bean
      */
     public ArmorTypeBean(ArmorTypeView view) {
         super(view);
@@ -38,7 +38,7 @@ public class ArmorTypeBean extends ViewBean<ArmorTypeView> {
     /**
      * Adiciona novo ArmorType na tabela
      *
-     * @param evt <code>BeanEvent</code> Evento do bean
+     * @param evt {@code BeanEvent} Evento do bean
      */
     @Override
     public void add(BeanEvent evt) {
@@ -60,7 +60,7 @@ public class ArmorTypeBean extends ViewBean<ArmorTypeView> {
     /**
      * Remove um ArmorType na tabela
      *
-     * @param evt <code>BeanEvent</code> Evento do bean
+     * @param evt {@code BeanEvent} Evento do bean
      */
     public void remove(BeanEvent evt) {
         getView().getModel().remove((ArmorType[]) evt.getValue());
@@ -69,7 +69,7 @@ public class ArmorTypeBean extends ViewBean<ArmorTypeView> {
     /**
      * Procura pelo próximo ID
      *
-     * @return <code>Integer</code> Próximo ID
+     * @return {@code Integer} Próximo ID
      */
     private Long getNextID() {
         Long id = (long) 0;

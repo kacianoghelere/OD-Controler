@@ -16,6 +16,7 @@ import br.com.odcontroler.data.entity.Menu;
 import br.com.odcontroler.data.entity.PrimeMaterial;
 import br.com.odcontroler.data.entity.Armor;
 import br.com.odcontroler.data.entity.Effect;
+import br.com.odcontroler.data.entity.Origin;
 import br.com.odcontroler.data.entity.WeaponSize;
 import java.util.HashMap;
 import java.util.Map;
@@ -51,6 +52,7 @@ public class EntityMap {
         map.put(Armor.class, "ArmorDB");
         map.put(Expertise.class, "ExpertiseDB");
         map.put(ExpertiseType.class, "ExpertiseTypeDB");
+        map.put(Origin.class, "OriginDB");
         return map;
     }
 

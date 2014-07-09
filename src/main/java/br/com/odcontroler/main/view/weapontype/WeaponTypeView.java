@@ -37,7 +37,7 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
     /**
      * Cria nova instancia de WeaponTypeView
      *
-     * @param mainScreen <code>MainScreen</code> Tela principal
+     * @param mainScreen {@code MainScreen} Tela principal
      */
     public WeaponTypeView(MainScreen mainScreen) {
         super(mainScreen);
@@ -123,7 +123,7 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
     /**
      * Retorna o modelo dos UseTypes
      *
-     * @return <code>UseType</code> Modelo dos UseTypes
+     * @return {@code UseType} Modelo dos UseTypes
      */
     public GComboBoxModel<UseType> getUseModel() {
         return useModel;
@@ -132,7 +132,7 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
     /**
      * Retorna o modelo dos WeaponSizes
      *
-     * @return <code>WeaponSize</code> Modelo dos WeaponSizes
+     * @return {@code WeaponSize} Modelo dos WeaponSizes
      */
     public GComboBoxModel<WeaponSize> getSizeModel() {
         return sizeModel;

@@ -23,7 +23,7 @@ public class WeaponTypeBean extends ViewBean<WeaponTypeView> {
     /**
      * Cria nova instancia de WeaponTypeBean
      *
-     * @param view <code>WeaponTypeView</code> View do Bean
+     * @param view {@code WeaponTypeView} View do Bean
      */
     public WeaponTypeBean(WeaponTypeView view) {
         super(view);
@@ -61,7 +61,7 @@ public class WeaponTypeBean extends ViewBean<WeaponTypeView> {
     /**
      * Procura pelo próximo ID
      *
-     * @return <code>Integer</code> Próximo ID
+     * @return {@code Integer} Próximo ID
      */
     private Long getNextID() {
         Long id = (long) 0;

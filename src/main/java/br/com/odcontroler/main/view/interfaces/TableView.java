@@ -20,8 +20,10 @@ public interface TableView {
 
     /**
      * Remove um item na tabela
+     *
+     * @throws java.lang.Exception Exceção lançada
      */
-    void remove();
+    void remove() throws Exception;
 
     /**
      * Inicia edição de um item na tabela

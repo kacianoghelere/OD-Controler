@@ -33,7 +33,7 @@ public class MaterialsView extends View implements TableSource<PrimeMaterial>, T
     /**
      * Cria nova instancia de MaterialsView
      *
-     * @param mainScreen <code>MainScreen</code> Tela principal
+     * @param mainScreen {@code MainScreen} Tela principal
      */
     public MaterialsView(MainScreen mainScreen) {
         super(mainScreen);
@@ -60,7 +60,7 @@ public class MaterialsView extends View implements TableSource<PrimeMaterial>, T
     /**
      * Modifica o modelo da tabela de materiais
      *
-     * @param model <code>MaterialsModel</code> Modelo da tabela de materiais
+     * @param model {@code MaterialsModel} Modelo da tabela de materiais
      */
     public void setModel(MaterialsModel model) {
         this.model = model;

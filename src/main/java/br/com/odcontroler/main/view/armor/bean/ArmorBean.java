@@ -26,7 +26,7 @@ public class ArmorBean extends ViewBean<ArmorView> {
     /**
      * Cria nova instancia de ArmorBean
      *
-     * @param view <code>ArmorView</code> Tela de armaduras
+     * @param view {@code ArmorView} Tela de armaduras
      */
     public ArmorBean(ArmorView view) {
         super(view);
@@ -66,7 +66,7 @@ public class ArmorBean extends ViewBean<ArmorView> {
     /**
      * Retorna o DAO de controle dos tipos de armadura
      *
-     * @return <code>ArmorTypeDAO</code> DAO de ArmorType
+     * @return {@code ArmorTypeDAO} DAO de ArmorType
      */
     public ArmorTypeDAO getArmorTypeDAO() {
         return armorTypeDAO;
@@ -75,7 +75,7 @@ public class ArmorBean extends ViewBean<ArmorView> {
     /**
      * Retorna o DAO de controle das matérias primas
      *
-     * @return <code>MaterialsDAO</code> DAO de PrimeMaterial
+     * @return {@code MaterialsDAO} DAO de PrimeMaterial
      */
     public MaterialsDAO getMaterialsDAO() {
         return materialsDAO;
@@ -84,7 +84,7 @@ public class ArmorBean extends ViewBean<ArmorView> {
     /**
      * Retorna o DAO de controle dos tipos de restrições
      *
-     * @return <code>RestrictionTypeDAO</code> DAO de RestrictionType
+     * @return {@code RestrictionTypeDAO} DAO de RestrictionType
      */
     public RestrictionTypeDAO getRestDAO() {
         return restDAO;
@@ -93,7 +93,7 @@ public class ArmorBean extends ViewBean<ArmorView> {
     /**
      * Procura pelo próximo ID
      *
-     * @return <code>Integer</code> Próximo ID
+     * @return {@code Integer} Próximo ID
      */
     public Long getNextID() {
         Long id = (long) 0;

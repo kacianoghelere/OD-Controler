@@ -46,7 +46,7 @@ public class ElementView extends View implements TableSource<Element>, TableView
     /**
      * Cria nova instancia de ElementView
      *
-     * @param screen <code>MainScreen</code> Tela principal
+     * @param screen {@code MainScreen} Tela principal
      */
     public ElementView(MainScreen screen) {
         super(screen);

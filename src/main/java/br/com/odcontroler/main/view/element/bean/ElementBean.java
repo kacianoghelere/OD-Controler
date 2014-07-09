@@ -26,7 +26,7 @@ public class ElementBean extends ViewBean<ElementView> {
     /**
      * Cria nova instancia de ElementBean
      *
-     * @param elementView <code>ElementView</code> View
+     * @param elementView {@code ElementView} View
      */
     public ElementBean(ElementView elementView) {
         super(elementView);
@@ -66,10 +66,10 @@ public class ElementBean extends ViewBean<ElementView> {
     /**
      * Adiciona novo elemento na tabela
      *
-     * @param title <code>String[]</code> Nome do elemento
-     * @param symbol <code>int</code> Index do simbolo
-     * @param bonus <code>Element</code> Bonûs
-     * @param weak <code>Element</code> Fraqueza
+     * @param title {@code String[]} Nome do elemento
+     * @param symbol {@code int} Index do simbolo
+     * @param bonus {@code Element} Bonûs
+     * @param weak {@code Element} Fraqueza
      */
     public void add(String title, int symbol, Element bonus, Element weak) {
         Long id = getNextID();
@@ -82,7 +82,7 @@ public class ElementBean extends ViewBean<ElementView> {
     /**
      * Retorna os caminhos para os icones de elementos
      *
-     * @return <code>String[]</code> Caminhos
+     * @return {@code String[]} Caminhos
      */
     public String[] getImagePaths() {
         return new String[]{"/RpgIcons/fire.png",
@@ -97,7 +97,7 @@ public class ElementBean extends ViewBean<ElementView> {
     /**
      * Retorna o array de ImageIcons contendo os simbolos dos elementos
      *
-     * @return <code>ImageIcon[]</code> Simbolos
+     * @return {@code ImageIcon[]} Simbolos
      */
     public ImageIcon[] getElementsIcons() {
         ImageIcon[] icons = new ImageIcon[getImagePaths().length];
@@ -111,7 +111,7 @@ public class ElementBean extends ViewBean<ElementView> {
     /**
      * Retorna o próximo ID dos elementos
      *
-     * @return <code>Long</code> Próximo ID
+     * @return {@code Long} Próximo ID
      */
     public Long getNextID() {
         Long id = (long) 0;
@@ -127,7 +127,7 @@ public class ElementBean extends ViewBean<ElementView> {
      * Retorna uma lista de elementos padrão para evitar ter de carregar toda
      * santa vez...
      *
-     * @return <code>List(Element)</code> Lista de elementos
+     * @return {@code List(Element)} Lista de elementos
      */
     public List<Element> getDefaultElements() {
         List<Element> elements = new ArrayList<>();

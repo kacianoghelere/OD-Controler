@@ -20,9 +20,9 @@ public class EffectDialog extends GDialog {
     /**
      * Cria nova instancia de EffectDialog
      *
-     * @param dialog <code>ArmorSubView</code> Tela de edição de armaduras
-     * @param effect <code>Effect</code> Efeito da caixa de dialogo
-     * @param modal <code>boolean</code> Modal?
+     * @param dialog {@code ArmorSubView} Tela de edição de armaduras
+     * @param effect {@code Effect} Efeito da caixa de dialogo
+     * @param modal {@code boolean} Modal?
      */
     public EffectDialog(ArmorSubView dialog, Effect effect, boolean modal) {
         super(dialog, modal);
@@ -45,7 +45,7 @@ public class EffectDialog extends GDialog {
     /**
      * Retorna o efeito da caixa de dialogo
      *
-     * @return <code>Effect</code> Efeito da caixa de dialogo
+     * @return {@code Effect} Efeito da caixa de dialogo
      */
     public Effect getEffect() {
         try {
@@ -59,7 +59,7 @@ public class EffectDialog extends GDialog {
     /**
      * Modifica o efeito da caixa de dialogo
      *
-     * @param effect <code>Effect</code> Efeito da caixa de dialogo
+     * @param effect {@code Effect} Efeito da caixa de dialogo
      */
     public void setEffect(Effect effect) {
         if (effect != null) {

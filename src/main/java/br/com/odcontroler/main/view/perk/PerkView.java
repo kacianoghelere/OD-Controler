@@ -31,7 +31,7 @@ public class PerkView extends View implements TableSource<Perk>, TableView {
     /**
      * Cria nova instancia de PerkView
      *
-     * @param screen <code>MainScreen</code> Tela principal
+     * @param screen {@code MainScreen} Tela principal
      */
     public PerkView(MainScreen screen) {
         super(screen);

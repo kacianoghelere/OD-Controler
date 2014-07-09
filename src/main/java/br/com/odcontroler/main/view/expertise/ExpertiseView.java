@@ -37,7 +37,7 @@ public class ExpertiseView extends View implements TableView, TableSource<Expert
     /**
      * Cria nova instancia de ExpertiseView
      *
-     * @param mainScreen <code>MainScreen</code> Tela principal
+     * @param mainScreen {@code MainScreen} Tela principal
      */
     public ExpertiseView(MainScreen mainScreen) {
         super(mainScreen);
@@ -127,7 +127,7 @@ public class ExpertiseView extends View implements TableView, TableSource<Expert
     /**
      * Retorna o modelo dos atributos
      *
-     * @return <code>GComboBoxModel(Attribute)</code> Modelo dos atributos
+     * @return {@code GComboBoxModel(Attribute)} Modelo dos atributos
      */
     public GComboBoxModel<Attribute> getAttrModel() {
         return attrModel;
@@ -136,7 +136,7 @@ public class ExpertiseView extends View implements TableView, TableSource<Expert
     /**
      * Retorna o modelo dos tipos
      *
-     * @return <code>GComboBoxModel(ExpertiseType)</code> Modelo dos tipos
+     * @return {@code GComboBoxModel(ExpertiseType)} Modelo dos tipos
      */
     public GComboBoxModel<ExpertiseType> getTypeModel() {
         return typeModel;

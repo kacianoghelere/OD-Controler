@@ -27,7 +27,7 @@ public class WeaponView extends View implements TableView, TableSource<Weapon> {
     /**
      * Cria nova instancia de WeaponView
      *
-     * @param mainScreen <code>MainScreen</code> Tela principal
+     * @param mainScreen {@code MainScreen} Tela principal
      */
     public WeaponView(MainScreen mainScreen) {
         super(mainScreen);

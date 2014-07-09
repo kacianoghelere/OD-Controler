@@ -4,6 +4,7 @@ import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.odcontroler.data.db.dao.OriginDAO;
 import br.com.odcontroler.data.entity.Origin;
 import br.com.odcontroler.main.object.BeanEvent;
+import br.com.odcontroler.main.util.TableUtil;
 import br.com.odcontroler.main.view.bean.ViewBean;
 import br.com.odcontroler.main.view.origin.OriginView;
 
@@ -15,6 +16,7 @@ import br.com.odcontroler.main.view.origin.OriginView;
 public class OriginBean extends ViewBean<OriginView> {
 
     private final OriginDAO dao;
+    private TableUtil tableUtil;
 
     /**
      * Cria nova instancia de OriginBean
@@ -24,6 +26,12 @@ public class OriginBean extends ViewBean<OriginView> {
     public OriginBean(OriginView view) {
         super(view);
         this.dao = new OriginDAO();
+        this.tableUtil = new TableUtil(getView());        
+    }
+
+    @Override
+    public void commit(BeanEvent evt) throws Exception {
+        this.dao.replaceAll(getView().getModel().getData());
     }
 
     @Override
@@ -33,6 +41,11 @@ public class OriginBean extends ViewBean<OriginView> {
         String name = (String) ow.getValue("name");
         Integer bonus = (Integer) ow.getValue("bonus");
         getView().getModel().add(new Origin(nextID, name, bonus));
+    }
+
+    @Override
+    public void remove(BeanEvent evt) throws Exception {
+        tableUtil.remove(evt);
     }
 
     /**
@@ -47,7 +60,7 @@ public class OriginBean extends ViewBean<OriginView> {
     /**
      * Procura pelo próximo ID
      *
-     * @return <code>Integer</code> Próximo ID
+     * @return {@code Integer} Próximo ID
      */
     private Long getNextID() {
         Long id = (long) 0;

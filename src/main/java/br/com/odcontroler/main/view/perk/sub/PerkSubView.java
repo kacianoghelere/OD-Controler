@@ -26,8 +26,8 @@ public class PerkSubView extends SubView {
     /**
      * Cria nova instancia de PerkSubView
      *
-     * @param perks <code>PerkView</code> Tela de Perks
-     * @param perk <code>Perk</code> Perk a ser editado     
+     * @param perks {@code PerkView} Tela de Perks
+     * @param perk {@code Perk} Perk a ser editado     
      */
     public PerkSubView(PerkView perks, Perk perk) {
         super(perks);
@@ -50,7 +50,7 @@ public class PerkSubView extends SubView {
     /**
      * Constroi os dados do Perk na tela caso ele exista
      *
-     * @param perk <code>Perk</code> Perk a ser editado
+     * @param perk {@code Perk} Perk a ser editado
      */
     public void setPerk(Perk perk) {
         try {
@@ -77,7 +77,7 @@ public class PerkSubView extends SubView {
     /**
      * Retorna o Perk que está em edição
      *
-     * @return <code>Perk</code> Perk em edição
+     * @return {@code Perk} Perk em edição
      */
     public Perk getPerk() {
         try {            

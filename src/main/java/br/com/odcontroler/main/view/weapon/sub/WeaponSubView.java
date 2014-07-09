@@ -14,7 +14,7 @@ public class WeaponSubView extends SubView {
     /**
      * Cria nova instancia de WeaponSubView
      *
-     * @param parent <code>WeaponView</code> Tela das armas
+     * @param parent {@code WeaponView} Tela das armas
      */
     public WeaponSubView(WeaponView parent) {
         super(parent);

@@ -34,7 +34,7 @@ public class EffectView extends br.com.odcontroler.main.view.View implements Tab
     /**
      * Cria nova instancia de EffectView
      *
-     * @param mainScreen <code>MainScreen</code> Tela principal
+     * @param mainScreen {@code MainScreen} Tela principal
      */
     public EffectView(MainScreen mainScreen) {
         super(mainScreen);
@@ -112,7 +112,7 @@ public class EffectView extends br.com.odcontroler.main.view.View implements Tab
     /**
      * Retorna o modelo dos tipos de efeitos
      *
-     * @return <code>GComboBoxModel(EffectType)</code> Modelo dos tipos
+     * @return {@code GComboBoxModel(EffectType)} Modelo dos tipos
      */
     public GComboBoxModel<EffectType> getTypeModel() {
         return this.typeModel;

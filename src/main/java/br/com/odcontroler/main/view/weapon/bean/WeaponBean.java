@@ -17,7 +17,7 @@ public class WeaponBean extends ViewBean<WeaponView> {
     /**
      * Cria nova instancia de WeaponBean
      *
-     * @param view <code>WeaponView</code> View do bean
+     * @param view {@code WeaponView} View do bean
      */
     public WeaponBean(WeaponView view) {
         super(view);

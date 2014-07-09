@@ -31,7 +31,7 @@ public class ArmorView extends View<ArmorBean> implements TableView, TableSource
     /**
      * Cria nova instancia de ArmorView
      *
-     * @param mainScreen <code>MainScreen</code> Tela principal
+     * @param mainScreen {@code MainScreen} Tela principal
      */
     public ArmorView(MainScreen mainScreen) {
         super(mainScreen);

@@ -14,7 +14,7 @@ import java.util.Objects;
  */
 public class Origin {
 
-    @Ignore
+    //@Ignore
     @NotCopiable
     @ColumnName(name = "Código")
     private Long id;

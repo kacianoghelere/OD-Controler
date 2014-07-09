@@ -42,8 +42,8 @@ public class ArmorSubView extends SubView {
     /**
      * Cria nova instancia de ArmorSubView
      *
-     * @param view <code>ArmorView</code> Tela das Armaduras
-     * @param armor <code>Armor</code> Armadura
+     * @param view {@code ArmorView} Tela das Armaduras
+     * @param armor {@code Armor} Armadura
      */
     public ArmorSubView(ArmorView view, Armor armor) {
         super(view);
@@ -54,7 +54,7 @@ public class ArmorSubView extends SubView {
     /**
      * Método de inicialização
      *
-     * @param armor <code>Armor</code> Armadura
+     * @param armor {@code Armor} Armadura
      */
     private void initialize(Armor armor) {
         setSize(680, 545);
@@ -106,7 +106,7 @@ public class ArmorSubView extends SubView {
     /**
      * Retorna a armadura que está sendo editada
      *
-     * @return <code>Armor</code> Armadura
+     * @return {@code Armor} Armadura
      */
     public Armor getArmor() {
         return armor;
@@ -115,7 +115,7 @@ public class ArmorSubView extends SubView {
     /**
      * Modifica a armadura que está sendo editada
      *
-     * @param armor <code>Armor</code> Armadura
+     * @param armor {@code Armor} Armadura
      */
     public void setArmor(Armor armor) {
         try {
@@ -186,7 +186,7 @@ public class ArmorSubView extends SubView {
     /**
      * Valida se os campos estão todos preenchidos corretamente
      *
-     * @return <code>boolean</code> Os campos estão todos preenchidos
+     * @return {@code boolean} Os campos estão todos preenchidos
      * corretamente?
      */
     private boolean validateFields() {
@@ -229,7 +229,7 @@ public class ArmorSubView extends SubView {
     /**
      * Retorna o Modelo das restrições
      *
-     * @return <code>RestrictionModel</code> Modelo das restrições
+     * @return {@code RestrictionModel} Modelo das restrições
      */
     public RestrictionModel getRestModel() {
         return restModel;
@@ -238,7 +238,7 @@ public class ArmorSubView extends SubView {
     /**
      * Retorna o Modelo dos efeitos de armaduras
      *
-     * @return <code>ArmorEffectModel</code> Modelo dos efeitos de armaduras
+     * @return {@code ArmorEffectModel} Modelo dos efeitos de armaduras
      */
     public ArmorEffectModel getEffectModel() {
         return effectModel;
@@ -247,7 +247,7 @@ public class ArmorSubView extends SubView {
     /**
      * Retorna o Modelo dos Tipos de armaduras
      *
-     * @return <code>GComboBoxModel(ArmorType)</code> Tipos de armaduras
+     * @return {@code GComboBoxModel(ArmorType)} Tipos de armaduras
      */
     public GComboBoxModel<ArmorType> getArmorTypeModel() {
         return armorTypeModel;
@@ -256,7 +256,7 @@ public class ArmorSubView extends SubView {
     /**
      * Retorna o Modelo dos Materiais 1
      *
-     * @return <code>GComboBoxModel(PrimeMaterial)</code> Materiais 1
+     * @return {@code GComboBoxModel(PrimeMaterial)} Materiais 1
      */
     public GComboBoxModel<PrimeMaterial> getMaterialModel1() {
         return materialModel1;
@@ -265,7 +265,7 @@ public class ArmorSubView extends SubView {
     /**
      * Retorna o Modelo dos Materiais 2
      *
-     * @return <code>GComboBoxModel(PrimeMaterial)</code> Materiais 2
+     * @return {@code GComboBoxModel(PrimeMaterial)} Materiais 2
      */
     public GComboBoxModel<PrimeMaterial> getMaterialModel2() {
         return materialModel2;
@@ -274,7 +274,7 @@ public class ArmorSubView extends SubView {
     /**
      * Retorna o ArmorView
      *
-     * @return <code>ArmorView</code>
+     * @return {@code ArmorView}
      */
     public ArmorView getView() {
         return view;

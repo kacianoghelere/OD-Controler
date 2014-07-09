@@ -32,7 +32,7 @@ public class ArmorTypeView extends View implements TableSource<ArmorType>, Table
     /**
      * Cria nova instancia de ArmorTypeView
      *
-     * @param mainScreen <code>MainScreen</code> Tela principal
+     * @param mainScreen {@code MainScreen} Tela principal
      */
     public ArmorTypeView(MainScreen mainScreen) {
         super(mainScreen);
@@ -59,7 +59,7 @@ public class ArmorTypeView extends View implements TableSource<ArmorType>, Table
     /**
      * Modifica o modelo de tabela
      *
-     * @param model <code>ArmorTypeModel</code>
+     * @param model {@code ArmorTypeModel}
      */
     public void setModel(ArmorTypeModel model) {
         this.model = model;

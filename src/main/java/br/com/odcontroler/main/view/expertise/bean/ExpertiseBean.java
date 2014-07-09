@@ -26,7 +26,7 @@ public class ExpertiseBean extends ViewBean<ExpertiseView> {
     /**
      * Cria nova instancia de ExpertiseBean
      *
-     * @param view <code>ExpertiseView</code> View do Bean
+     * @param view {@code ExpertiseView} View do Bean
      */
     public ExpertiseBean(ExpertiseView view) {
         super(view);
@@ -60,7 +60,7 @@ public class ExpertiseBean extends ViewBean<ExpertiseView> {
     /**
      * Retorna o próximo ID da lista
      *
-     * @return <code>Long</code> Próximo ID
+     * @return {@code Long} Próximo ID
      */
     public Long getNextID() {
         Long id = (long) 0;
