@@ -35,14 +35,16 @@ public class Weapon {
     @Editable
     @ColumnName(name = "Dano")
     private String damage;
+    @Editable
+    @ColumnName(name = "Peso")
+    private Double weight;    
+    @Editable
     @ColumnName(name = "Preço")
     private Integer price;
     @ColumnName(name = "Tipo")
     private WeaponType type;
     @ColumnName(name = "Material")
     private PrimeMaterial material;
-    @ColumnName(name = "Peso")
-    private Double weight;
 
     /**
      * Cria nova instancia de Weapon

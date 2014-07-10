@@ -3,7 +3,7 @@ package br.com.odcontroler.data.db.map;
 import br.com.odcontroler.data.entity.Element;
 import br.com.odcontroler.data.entity.RestrictionType;
 import br.com.odcontroler.data.entity.Weapon;
-import br.com.odcontroler.data.entity.UseType;
+import br.com.odcontroler.data.enums.UseType;
 import br.com.odcontroler.data.entity.PerkType;
 import br.com.odcontroler.data.entity.Expertise;
 import br.com.odcontroler.data.entity.EffectType;
@@ -17,7 +17,7 @@ import br.com.odcontroler.data.entity.PrimeMaterial;
 import br.com.odcontroler.data.entity.Armor;
 import br.com.odcontroler.data.entity.Effect;
 import br.com.odcontroler.data.entity.Origin;
-import br.com.odcontroler.data.entity.WeaponSize;
+import br.com.odcontroler.data.enums.Size;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,7 +46,7 @@ public class EntityMap {
         map.put(Perk.class, "PerkDB");
         map.put(PerkType.class, "PerkTypeDB");
         map.put(WeaponType.class, "WeaponTypeDB");
-        map.put(WeaponSize.class, "WeaponSizeDB");
+        map.put(Size.class, "WeaponSizeDB");
         map.put(Weapon.class, "WeaponDB");
         map.put(RestrictionType.class, "RestrictionTypeDB");
         map.put(Armor.class, "ArmorDB");

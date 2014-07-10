@@ -11,6 +11,7 @@ import br.com.odcontroler.main.view.View;
 import br.com.odcontroler.main.view.annotation.ViewData;
 import br.com.odcontroler.main.view.enums.ViewType;
 import br.com.odcontroler.main.view.interfaces.TableView;
+import br.com.odcontroler.main.view.object.ViewParameter;
 import br.com.odcontroler.main.view.origin.bean.OriginBean;
 import br.com.odcontroler.main.view.origin.model.OriginModel;
 import java.util.List;
@@ -46,6 +47,7 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
     private void initialize() {
         this.initComponents();
         this.setSize(500, 300);
+        this.setControls(new ViewParameter(true, false, false, false));        
         this.model = new OriginModel();
         this.gTable.setModel(model);
         this.tableUtil = new TableUtil(this);

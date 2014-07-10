@@ -9,13 +9,6 @@ package br.com.odcontroler.data.entity.attr;
 public interface Attr {
 
     /**
-     * Retorna o ID do atributo
-     *
-     * @return {@code Long} ID do atributo
-     */
-    Long getId();
-
-    /**
      * Retorna o titulo do atributo
      *
      * @return {@code String} Titulo do atributo

@@ -35,40 +35,50 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLTitle" linkSize="3" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLWear" linkSize="3" alignment="1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="gCBUse" pref="145" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLTitle" linkSize="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLWear" linkSize="3" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jLSize" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="gCBSize" pref="145" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLRange" linkSize="3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jSpRange" min="-2" pref="95" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="gTTitle" min="-2" pref="188" max="-2" attributes="0"/>
+                                  <Component id="gCBUse" min="-2" pref="188" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Component id="gTTitle" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="jLAtkType" linkSize="3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="gCBAtkType" min="-2" pref="188" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLDmgType" linkSize="3" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLSize" linkSize="3" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLRange" linkSize="3" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="nTRange" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jBAdd" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jBRemove" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="gCBDmgType" alignment="0" min="-2" pref="221" max="-2" attributes="0"/>
+                          <Component id="gCBSize" alignment="1" min="-2" pref="221" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="jScrollPane1" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jBAdd" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jBRemove" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -78,24 +88,32 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLTitle" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="gTTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="gTTitle" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLDmgType" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="gCBDmgType" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLWear" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="gCBUse" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="gCBSize" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="gCBUse" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="gCBSize" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLSize" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jSpRange" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                  <Component id="jLRange" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jBAdd" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jBRemove" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jBAdd" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jBRemove" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                      <Component id="nTRange" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLAtkType" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="gCBAtkType" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLRange" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="248" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="246" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -144,7 +162,6 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/ComponentIcons/controlers/new.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Adicionar"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBAddActionPerformed"/>
@@ -155,7 +172,6 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/ComponentIcons/controlers/off.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Remover"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBRemoveActionPerformed"/>
@@ -173,12 +189,21 @@
         <Property name="text" type="java.lang.String" value="Alcance:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JSpinner" name="jSpRange">
+    <Component class="br.com.gmp.comps.textfield.numeric.GNumericField" name="nTRange">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLDmgType">
       <Properties>
-        <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-          <SpinnerModel initial="1" maximum="150" minimum="1" numberType="java.lang.Integer" stepSize="5" type="number"/>
-        </Property>
+        <Property name="text" type="java.lang.String" value="Tipo de dano:"/>
       </Properties>
+    </Component>
+    <Component class="br.com.gmp.comps.combobox.GComboBox" name="gCBDmgType">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLAtkType">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ataque:"/>
+      </Properties>
+    </Component>
+    <Component class="br.com.gmp.comps.combobox.GComboBox" name="gCBAtkType">
     </Component>
   </SubComponents>
 </Form>

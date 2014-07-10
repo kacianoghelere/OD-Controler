@@ -24,18 +24,6 @@ public class Attributes {
     private Attribute wisdom;
     @ColumnName(name = "CHA")
     private Attribute charisma;
-    @ColumnName(name = "HP")
-    private Attribute health;
-    @ColumnName(name = "ATK")
-    private Attribute attack;
-    @ColumnName(name = "DEF")
-    private Attribute defense;
-    @ColumnName(name = "EVA")
-    private Attribute evasion;
-    @ColumnName(name = "NVL")
-    private Attribute level;
-    @ColumnName(name = "EXP")
-    private Attribute experience;
 
     /**
      * Constroi nova instancia de Attributes
@@ -47,12 +35,6 @@ public class Attributes {
         this.intelligence = new Attribute((long) 4, "Inteligencia", "INT", 0);
         this.wisdom = new Attribute((long) 5, "Sabedoria", "SAB", 0);
         this.charisma = new Attribute((long) 6, "Carisma", "CAR", 0);
-        this.health = new Attribute((long) 7, "Saúde", "HP", 0);
-        this.attack = new Attribute((long) 8, "Ataque", "ATK", 0);
-        this.defense = new Attribute((long) 9, "Defesa", "DEF", 0);
-        this.evasion = new Attribute((long) 10, "Evasão", "EVA", 0);
-        this.level = new Attribute((long) 11, "Nível", "NVL", 1);
-        this.experience = new Attribute((long) 12, "Experiência", "EXP", 0);
     }
 
     /**
@@ -72,68 +54,15 @@ public class Attributes {
         this.intelligence = new Attribute((long) 4, "Inteligencia", "INT", intel);
         this.wisdom = new Attribute((long) 5, "Sabedoria", "SAB", wis);
         this.charisma = new Attribute((long) 6, "Carisma", "CAR", charm);
-        this.health = new Attribute((long) 7, "Saúde", "HP", 0);
-        this.attack = new Attribute((long) 8, "Ataque", "ATK", 0);
-        this.defense = new Attribute((long) 9, "Defesa", "DEF", 0);
-        this.evasion = new Attribute((long) 10, "Evsão", "EVA", 0);
-        this.level = new Attribute((long) 11, "Nível", "NVL", 1);
-        this.experience = new Attribute((long) 12, "Experiência", "EXP", 0);
-    }
-
-    /**
-     * Constroi nova instancia de Attributes
-     *
-     * @param str {@code Integer} Força
-     * @param dex {@code Integer} Destreza
-     * @param con {@code Integer} Constituição
-     * @param intel {@code Integer} Inteligencia
-     * @param wis {@code Integer} Sabedoria
-     * @param charm {@code Integer} Carisma
-     * @param hp {@code Integer} Pontos de vida
-     * @param atk {@code Integer} Ataque
-     * @param def {@code Integer} Defesa
-     * @param eva {@code Integer} Evasão
-     * @param lvl {@code Integer} Nível
-     * @param exp {@code Integer} Experiencia
-     */
-    public Attributes(Integer str, Integer dex, Integer con, Integer intel, Integer wis, Integer charm, Integer hp, Integer atk, Integer def, Integer eva, Integer lvl, Integer exp) {
-        this.strength = new Attribute((long) 1, "Força", "FOR", str);
-        this.dexterity = new Attribute((long) 2, "Destreza", "DEX", dex);
-        this.constitution = new Attribute((long) 3, "Constituição", "CON", con);
-        this.intelligence = new Attribute((long) 4, "Inteligencia", "INT", intel);
-        this.wisdom = new Attribute((long) 5, "Sabedoria", "SAB", wis);
-        this.charisma = new Attribute((long) 6, "Carisma", "CAR", charm);
-        this.health = new Attribute((long) 7, "Saúde", "HP", hp);
-        this.attack = new Attribute((long) 8, "Ataque", "ATK", atk);
-        this.defense = new Attribute((long) 9, "Defesa", "DEF", def);
-        this.evasion = new Attribute((long) 10, "Evsão", "EVA", eva);
-        this.level = new Attribute((long) 11, "Nível", "NVL", lvl);
-        this.experience = new Attribute((long) 12, "Experiência", "EXP", exp);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (Attribute attr : getAttributes()) {
+        for (Attribute attr : getValues()) {
             sb.append((attr.getAlias() + ": " + attr.getValue() + "\n"));
         }
         return sb.toString();
-    }
-
-    /**
-     * Retorna os principais atributos usados
-     *
-     * @return {@code List(Attribute)} Principais atributos
-     */
-    public List<Attribute> getMainAttributes() {
-        List<Attribute> list = new ArrayList<>();
-        list.add(strength);
-        list.add(dexterity);
-        list.add(constitution);
-        list.add(intelligence);
-        list.add(wisdom);
-        list.add(charisma);
-        return list;
     }
 
     /**
@@ -141,7 +70,7 @@ public class Attributes {
      *
      * @return {@code List(Attribute)} Atributos
      */
-    public List<Attribute> getAttributes() {
+    public List<Attribute> getValues() {
         List<Attribute> list = new ArrayList<>();
         list.add(strength);
         list.add(dexterity);
@@ -149,12 +78,6 @@ public class Attributes {
         list.add(intelligence);
         list.add(wisdom);
         list.add(charisma);
-        list.add(health);
-        list.add(attack);
-        list.add(defense);
-        list.add(evasion);
-        list.add(level);
-        list.add(experience);
         return list;
     }
 
@@ -266,112 +189,5 @@ public class Attributes {
         this.charisma.setValue(charisma);
     }
 
-    /**
-     * Retorna os Pontos de vida
-     *
-     * @return {@code Integer} Pontos de vida
-     */
-    public Integer getHealth() {
-        return health.getValue();
-    }
-
-    /**
-     * Modifica os Pontos de vida
-     *
-     * @param health {@code Integer} Pontos de vida
-     */
-    public void setHealth(Integer health) {
-        this.health.setValue(health);
-    }
-
-    /**
-     * Retorna o Ataque
-     *
-     * @return {@code Integer} Ataque
-     */
-    public Integer getAttack() {
-        return attack.getValue();
-    }
-
-    /**
-     * Modifica o Ataque
-     *
-     * @param attack {@code Integer} Ataque
-     */
-    public void setAttack(Integer attack) {
-        this.attack.setValue(attack);
-    }
-
-    /**
-     * Retorna a defesa
-     *
-     * @return {@code Integer} Defesa
-     */
-    public Integer getDefense() {
-        return defense.getValue();
-    }
-
-    /**
-     * Modifica a defesa
-     *
-     * @param defense {@code Integer} Defesa
-     */
-    public void setDefense(Integer defense) {
-        this.defense.setValue(defense);
-    }
-
-    /**
-     * Retorna a Evasão
-     *
-     * @return {@code Integer} Evasão
-     */
-    public Integer getEvasion() {
-        return evasion.getValue();
-    }
-
-    /**
-     * Modifica a Evasão
-     *
-     * @param evasion {@code Integer} Evasão
-     */
-    public void setEvasion(Integer evasion) {
-        this.evasion.setValue(evasion);
-    }
-
-    /**
-     * Retorna o nível
-     *
-     * @return {@code Integer} Nível
-     */
-    public Integer getLevel() {
-        return level.getValue();
-    }
-
-    /**
-     * Modifica o nível
-     *
-     * @param level {@code Integer} Nível
-     */
-    public void setLevel(Integer level) {
-        this.level.setValue(level);
-    }
-
-    /**
-     * Retorna o experiencia
-     *
-     * @return {@code Integer} Experiencia
-     */
-    public Integer getExperience() {
-        return experience.getValue();
-    }
-
-    /**
-     * Modifica o experiencia
-     *
-     * @param experience {@code Integer} Experiencia
-     */
-    public void setExperience(Integer experience) {
-        this.experience.setValue(experience);
-    }
-
+  
 }

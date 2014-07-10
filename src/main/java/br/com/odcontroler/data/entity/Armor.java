@@ -1,5 +1,6 @@
 package br.com.odcontroler.data.entity;
 
+import br.com.odcontroler.data.enums.Align;
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;

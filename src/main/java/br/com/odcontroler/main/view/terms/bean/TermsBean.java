@@ -13,7 +13,7 @@ import br.com.odcontroler.data.entity.EffectType;
 import br.com.odcontroler.data.entity.ExpertiseType;
 import br.com.odcontroler.data.entity.PerkType;
 import br.com.odcontroler.data.entity.RestrictionType;
-import br.com.odcontroler.data.entity.UseType;
+import br.com.odcontroler.data.enums.UseType;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.bean.ViewBean;
 import br.com.odcontroler.main.view.terms.TermsView;
@@ -28,12 +28,10 @@ import br.com.odcontroler.main.view.terms.TermsView;
  */
 public class TermsBean extends ViewBean<TermsView> {
 
-    private final UseTypeDAO useTypeDao;
     private final EffectTypeDAO effectTypeDAO;
     private final PerkTypeDAO perkTypeDao;
     private final RestrictionTypeDAO restDao;
     private final ExpertiseTypeDAO expDAO;
-    private final WeaponSizeDAO sizeDAO;
     private final ArmorTypeDAO armorDAO;
 
     /**
@@ -43,18 +41,15 @@ public class TermsBean extends ViewBean<TermsView> {
      */
     public TermsBean(TermsView view) {
         super(view);
-        this.useTypeDao = new UseTypeDAO();
         this.effectTypeDAO = new EffectTypeDAO();
         this.perkTypeDao = new PerkTypeDAO();
         this.restDao = new RestrictionTypeDAO();
         this.expDAO = new ExpertiseTypeDAO();
-        this.sizeDAO = new WeaponSizeDAO();
         this.armorDAO = new ArmorTypeDAO();
     }
 
     @Override
     public void commit(BeanEvent evt) throws Exception {
-        useTypeDao.replaceAll(getView().getUseModel().getData());
         effectTypeDAO.replaceAll(getView().getEfModel().getData());
         perkTypeDao.replaceAll(getView().getPerkModel().getData());
         restDao.replaceAll(getView().getRestModel().getData());
@@ -64,23 +59,11 @@ public class TermsBean extends ViewBean<TermsView> {
 
     @Override
     public void load(BeanEvent evt) throws Exception {
-        getView().getUseModel().setData(useTypeDao.getList());
         getView().getEfModel().setData(effectTypeDAO.getList());
         getView().getPerkModel().setData(perkTypeDao.getList());
         getView().getRestModel().setData(restDao.getList());
         getView().getExpModel().setData(expDAO.getList());
         getView().getArmorModel().setData(armorDAO.getList());
-    }
-
-    /**
-     * Adiciona novo elemento na lista de UseTypes
-     *
-     * @param evt {@code BeanEvent} Evento do Bean
-     */
-    public void addUseTp(BeanEvent evt) {
-        Long nextId = getNextUseID();
-        UseType type = new UseType(nextId, (String) evt.getValue());
-        getView().getUseModel().add(type);
     }
 
     /**
@@ -147,21 +130,6 @@ public class TermsBean extends ViewBean<TermsView> {
         Long nextId = getNextArmorTpID();
         ArmorType type = new ArmorType(nextId, (String) evt.getValue());
         getView().getArmorModel().add(type);
-    }
-
-    /**
-     * Retorna o próximo ID dos UseTypes
-     *
-     * @return {@code Long} Próximo ID para UseType
-     */
-    public Long getNextUseID() {
-        Long id = (long) 0;
-        for (UseType type : getView().getUseModel().getData()) {
-            if (type.getId() > id) {
-                id = type.getId();
-            }
-        }
-        return (id + 1);
     }
 
     /**

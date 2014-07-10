@@ -1,5 +1,9 @@
 package br.com.odcontroler.data.entity;
 
+import br.com.odcontroler.data.enums.DamageType;
+import br.com.odcontroler.data.enums.UseType;
+import br.com.odcontroler.data.enums.AttackType;
+import br.com.odcontroler.data.enums.Size;
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
@@ -23,12 +27,14 @@ public class WeaponType extends Type {
     @Editable
     @ColumnName(name = "Alcance")
     private Integer range;
-    @ColumnName(name = "Tipo de dano")
+    @ColumnName(name = "Tipo de Dano")
     private DamageType damageType;
     @ColumnName(name = "Tamanho")
-    private WeaponSize size;
+    private Size size;
     @ColumnName(name = "Porte")
-    private UseType wearType;
+    private UseType useType;
+    @ColumnName(name = "Tipo de Ataque")
+    private AttackType attackType;
 
     /**
      * Cria nova instancia de WeaponType
@@ -40,51 +46,23 @@ public class WeaponType extends Type {
      * Cria nova instancia de WeaponType
      *
      * @param id {@code Long} Código do tipo de arma
-     * @param typeName {@code String} Titulo do tipo de arma
-     * @param wearType {@code WearType} Tipo de porte
-     */
-    public WeaponType(Long id, String typeName, UseType wearType) {
-        this.id = id;
-        this.title = typeName;
-        this.wearType = wearType;
-    }
-
-    /**
-     * Cria nova instancia de WeaponType
-     *
-     * @param id {@code Long} Código do tipo de arma
-     * @param typeName {@code String} Titulo do tipo de arma
-     * @param range {@code Integer} Alcance da arma
-     * @param size {@code WeaponSize} Tamanho da arma
-     * @param wearType {@code WearType} Tipo de porte
-     */
-    public WeaponType(Long id, String typeName, Integer range, WeaponSize size,
-            UseType wearType) {
-        this.id = id;
-        this.title = typeName;
-        this.range = range;
-        this.size = size;
-        this.wearType = wearType;
-    }
-
-    /**
-     * Cria nova instancia de WeaponType
-     *
-     * @param id {@code Long} Código do tipo de arma
      * @param title {@code String} Titulo do tipo de arma
      * @param range {@code Integer} Alcance da arma
-     * @param damageType {@code DamageType} Tipo de dano
+     * @param dmgType {@code DamageType} Tipo de dano
      * @param size {@code WeaponSize} Tamanho da arma
-     * @param wearType {@code WearType} Tipo de porte
+     * @param useType {@code WearType} Tipo de porte
+     * @param attackType {@code AttackType} Tipo de ataque
      */
-    public WeaponType(Long id, String title, Integer range,
-            DamageType damageType, WeaponSize size, UseType wearType) {
+    public WeaponType(Long id, String title, Integer range, DamageType dmgType,
+            Size size, UseType useType, AttackType attackType) {
+        super(id, title);
         this.id = id;
         this.title = title;
         this.range = range;
-        this.damageType = damageType;
+        this.damageType = dmgType;
         this.size = size;
-        this.wearType = wearType;
+        this.useType = useType;
+        this.attackType = attackType;
     }
 
     /**
@@ -168,7 +146,7 @@ public class WeaponType extends Type {
      *
      * @return {@code WeaponSize} Tamanho da arma
      */
-    public WeaponSize getSize() {
+    public Size getSize() {
         return size;
     }
 
@@ -177,7 +155,7 @@ public class WeaponType extends Type {
      *
      * @param size {@code WeaponSize} Tamanho da arma
      */
-    public void setSize(WeaponSize size) {
+    public void setSize(Size size) {
         this.size = size;
     }
 
@@ -186,8 +164,8 @@ public class WeaponType extends Type {
      *
      * @return {@code WearType} Tipo de porte
      */
-    public UseType getWearType() {
-        return wearType;
+    public UseType getUseType() {
+        return useType;
     }
 
     /**
@@ -196,7 +174,25 @@ public class WeaponType extends Type {
      * @param wearType {@code WearType} Tipo de porte
      */
     public void setUseType(UseType wearType) {
-        this.wearType = wearType;
+        this.useType = wearType;
+    }
+
+    /**
+     * Retorna o tipo de ataque
+     *
+     * @return {@code AttackType} Tipo de ataque
+     */
+    public AttackType getAttackType() {
+        return attackType;
+    }
+
+    /**
+     * Modifica o tipo de ataque
+     *
+     * @param attackType {@code AttackType} Tipo de ataque
+     */
+    public void setAttackType(AttackType attackType) {
+        this.attackType = attackType;
     }
 
     @Override
@@ -204,7 +200,7 @@ public class WeaponType extends Type {
         int hash = 7;
         hash = 29 * hash + Objects.hashCode(this.id);
         hash = 29 * hash + Objects.hashCode(this.title);
-        hash = 29 * hash + Objects.hashCode(this.wearType);
+        hash = 29 * hash + Objects.hashCode(this.useType);
         return hash;
     }
 
@@ -223,7 +219,7 @@ public class WeaponType extends Type {
         if (!Objects.equals(this.title, other.title)) {
             return false;
         }
-        return Objects.equals(this.wearType, other.wearType);
+        return Objects.equals(this.useType, other.useType);
     }
 
     @Override

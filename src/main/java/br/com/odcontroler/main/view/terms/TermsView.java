@@ -9,8 +9,8 @@ import br.com.odcontroler.data.entity.EffectType;
 import br.com.odcontroler.data.entity.ExpertiseType;
 import br.com.odcontroler.data.entity.PerkType;
 import br.com.odcontroler.data.entity.RestrictionType;
-import br.com.odcontroler.data.entity.UseType;
-import br.com.odcontroler.data.entity.WeaponSize;
+import br.com.odcontroler.data.enums.UseType;
+import br.com.odcontroler.data.enums.Size;
 import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.View;
@@ -31,7 +31,6 @@ import java.util.logging.Level;
 public class TermsView extends View {
 
     private TermsBean bean;
-    private GListModel<UseType> useModel;
     private GListModel<EffectType> efModel;
     private GListModel<PerkType> perkModel;
     private GListModel<RestrictionType> restModel;
@@ -56,15 +55,13 @@ public class TermsView extends View {
         initComponents();
         this.setSize(375, 327);
         this.setControls(new ViewParameter(true, false, false, true));
-        this.useModel = new GListModel<>();
         this.efModel = new GListModel<>();
         this.perkModel = new GListModel<>();
         this.restModel = new GListModel<>();
         this.armorModel = new GListModel<>();
-        this.attrModel = new GComboBoxModel<>(new Attributes().getAttributes());
+        this.attrModel = new GComboBoxModel<>(new Attributes().getValues());
         this.expModel = new GListModel<>();
         this.bean = new TermsBean(this);
-        this.gLtUseTp.setModel(useModel);
         this.gLtEffectTp.setModel(efModel);
         this.gLtPerkTp.setModel(perkModel);
         this.gLtRestTp.setModel(restModel);
@@ -75,30 +72,6 @@ public class TermsView extends View {
             this.bean.load(null);
         } catch (Exception ex) {
             LOGGER.log(Level.SEVERE, null, ex);
-        }
-    }
-
-    /**
-     * Adiciona novo elemento na lista de tipos de uso para armas
-     *
-     * @param evt {@code KeyEvent} Evento do teclado
-     */
-    private void addUseType(KeyEvent evt) {
-        if (gTUseTp.validateComponent()) {
-            bean.addUseTp(new BeanEvent(this, gTUseTp.getText()));
-            gTUseTp.clear();
-        }
-    }
-
-    /**
-     * Remove o UseType selecionado
-     *
-     * @param evt {@code KeyEvent} Evento do teclado
-     */
-    private void removeUseType(KeyEvent evt) {
-        if (gLtUseTp.getModel().getSize() > 0 && gLtUseTp.getSelectedIndex() >= 0) {
-            UseType wt = useModel.getElementAt(gLtUseTp.getSelectedIndex());
-            useModel.remove(wt);
         }
     }
 
@@ -222,16 +195,7 @@ public class TermsView extends View {
             armorModel.remove(type);
         }
     }
-
-    /**
-     * Retorna o modelo de lista dos WearTypes
-     *
-     * @return {@code GListModel(WearType)}
-     */
-    public GListModel<UseType> getUseModel() {
-        return this.useModel;
-    }
-
+    
     /**
      * Retorna o modelo de lista dos EffectTypes
      *
@@ -299,10 +263,6 @@ public class TermsView extends View {
     private void initComponents() {
 
         jTabbedPane = new javax.swing.JTabbedPane();
-        jPUseTypes = new javax.swing.JPanel();
-        gTUseTp = new br.com.gmp.comps.textfield.GTextField();
-        jSPUses = new javax.swing.JScrollPane();
-        gLtUseTp = new br.com.gmp.comps.list.GList();
         jPRestrictTypes = new javax.swing.JPanel();
         jSPRestrict = new javax.swing.JScrollPane();
         gLtRestTp = new br.com.gmp.comps.list.GList();
@@ -333,49 +293,6 @@ public class TermsView extends View {
         setPreferredSize(new java.awt.Dimension(375, 327));
 
         jTabbedPane.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-
-        jPUseTypes.setBorder(javax.swing.BorderFactory.createTitledBorder("Usos de armas"));
-
-        gTUseTp.setPlaceholder("Tipos de uso");
-        gTUseTp.setMaximumSize(new java.awt.Dimension(150, 2147483647));
-        gTUseTp.setMinimumSize(new java.awt.Dimension(150, 28));
-        gTUseTp.setNextFocusableComponent(gTEffectTp);
-        gTUseTp.setPreferredSize(new java.awt.Dimension(150, 28));
-        gTUseTp.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                gTUseTpKeyReleased(evt);
-            }
-        });
-
-        gLtUseTp.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                gLtUseTpKeyReleased(evt);
-            }
-        });
-        jSPUses.setViewportView(gLtUseTp);
-
-        javax.swing.GroupLayout jPUseTypesLayout = new javax.swing.GroupLayout(jPUseTypes);
-        jPUseTypes.setLayout(jPUseTypesLayout);
-        jPUseTypesLayout.setHorizontalGroup(
-            jPUseTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPUseTypesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPUseTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(gTUseTp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSPUses, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE))
-                .addGap(14, 14, 14))
-        );
-        jPUseTypesLayout.setVerticalGroup(
-            jPUseTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPUseTypesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSPUses, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(gTUseTp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        jTabbedPane.addTab("Uso de armas", jPUseTypes);
 
         jPRestrictTypes.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Restrições"));
 
@@ -423,7 +340,6 @@ public class TermsView extends View {
         gTPerkTp.setPlaceholder("Tipos de vantagens");
         gTPerkTp.setMaximumSize(new java.awt.Dimension(150, 2147483647));
         gTPerkTp.setMinimumSize(new java.awt.Dimension(150, 28));
-        gTPerkTp.setNextFocusableComponent(gTUseTp);
         gTPerkTp.setPreferredSize(new java.awt.Dimension(150, 28));
         gTPerkTp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -509,7 +425,6 @@ public class TermsView extends View {
         gTExpertiseTp.setPlaceholder("Tipos de perícias");
         gTExpertiseTp.setMaximumSize(new java.awt.Dimension(150, 2147483647));
         gTExpertiseTp.setMinimumSize(new java.awt.Dimension(150, 28));
-        gTExpertiseTp.setNextFocusableComponent(gTUseTp);
         gTExpertiseTp.setPreferredSize(new java.awt.Dimension(150, 28));
         gTExpertiseTp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -552,7 +467,6 @@ public class TermsView extends View {
         gTArmorTp.setPlaceholder("Tipos de perícias");
         gTArmorTp.setMaximumSize(new java.awt.Dimension(150, 2147483647));
         gTArmorTp.setMinimumSize(new java.awt.Dimension(150, 28));
-        gTArmorTp.setNextFocusableComponent(gTUseTp);
         gTArmorTp.setPreferredSize(new java.awt.Dimension(150, 28));
         gTArmorTp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -602,16 +516,6 @@ public class TermsView extends View {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void gTUseTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTUseTpKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            try {
-                addUseType(evt);
-            } catch (Exception ex) {
-                LOGGER.log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_gTUseTpKeyReleased
-
     private void gTEffectTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTEffectTpKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
@@ -631,16 +535,6 @@ public class TermsView extends View {
             }
         }
     }//GEN-LAST:event_gTPerkTpKeyReleased
-
-    private void gLtUseTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gLtUseTpKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
-            try {
-                removeUseType(evt);
-            } catch (Exception ex) {
-                LOGGER.log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_gLtUseTpKeyReleased
 
     private void gLtEffectTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gLtEffectTpKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
@@ -729,24 +623,20 @@ public class TermsView extends View {
     private br.com.gmp.comps.list.GList gLtExpTp;
     private br.com.gmp.comps.list.GList gLtPerkTp;
     private br.com.gmp.comps.list.GList gLtRestTp;
-    private br.com.gmp.comps.list.GList gLtUseTp;
     private br.com.gmp.comps.textfield.GTextField gTArmorTp;
     private br.com.gmp.comps.textfield.GTextField gTEffectTp;
     private br.com.gmp.comps.textfield.GTextField gTExpertiseTp;
     private br.com.gmp.comps.textfield.GTextField gTPerkTp;
-    private br.com.gmp.comps.textfield.GTextField gTUseTp;
     private javax.swing.JPanel jPArmorTypes;
     private javax.swing.JPanel jPEffects;
     private javax.swing.JPanel jPExpertiseTypes;
     private javax.swing.JPanel jPPerkTypes;
     private javax.swing.JPanel jPRestrictTypes;
-    private javax.swing.JPanel jPUseTypes;
     private javax.swing.JScrollPane jSPArmorTp;
     private javax.swing.JScrollPane jSPEffect;
     private javax.swing.JScrollPane jSPExpertise;
     private javax.swing.JScrollPane jSPPerk;
     private javax.swing.JScrollPane jSPRestrict;
-    private javax.swing.JScrollPane jSPUses;
     private javax.swing.JTabbedPane jTabbedPane;
     // End of variables declaration//GEN-END:variables
 }

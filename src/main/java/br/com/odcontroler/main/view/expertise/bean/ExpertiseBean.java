@@ -41,7 +41,7 @@ public class ExpertiseBean extends ViewBean<ExpertiseView> {
 
     @Override
     public void load(BeanEvent evt) throws Exception {
-        getView().getAttrModel().setData(new Attributes().getMainAttributes());
+        getView().getAttrModel().setData(new Attributes().getValues());
         getView().getTypeModel().setData(typeDAO.getList());
         SwingUtilities.updateComponentTreeUI(getView());
     }

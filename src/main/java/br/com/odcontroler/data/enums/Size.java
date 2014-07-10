@@ -1,16 +1,16 @@
-package br.com.odcontroler.data.entity;
+package br.com.odcontroler.data.enums;
 
 import br.com.gmp.utils.annotations.ColumnName;
 
 /**
- * Objeto de tamanho de armas
+ * Enumerador de tamanhos
  *
  * @author kaciano
  * @version 1.0
  * @author kaciano
  * @version 1.1
  */
-public enum WeaponSize {
+public enum Size {
 
     /**
      * Tamanho pequeno
@@ -29,11 +29,11 @@ public enum WeaponSize {
     private String name;
 
     /**
-     * Cria nova instancia de WeaponSize
+     * Cria nova instancia de Size
      *
      * @param name {@code String} Nome do tamanho
      */
-    private WeaponSize(String name) {
+    private Size(String name) {
         this.name = name;
     }
 

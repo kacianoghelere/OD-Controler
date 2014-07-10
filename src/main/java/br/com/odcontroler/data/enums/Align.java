@@ -1,4 +1,4 @@
-package br.com.odcontroler.data.entity;
+package br.com.odcontroler.data.enums;
 
 /**
  * Enumerador de Alinhamentos/Tendencias

@@ -11,48 +11,45 @@ public enum Attribute implements Attr {
     /**
      * Atributo Força
      */
-    STR(1L, "Força", "FOR"),
+    STR("Força", "FOR"),
     /**
      * Atributo Destreza
      */
-    DEX(2L, "Destreza", "DES"),
+    DEX("Destreza", "DES"),
     /**
      * Atributo Constituição
      */
-    CONS(3L, "Constituição", "CON"),
+    CONS("Constituição", "CON"),
     /**
      * Atributo Inteligência
      */
-    INT(4L, "Inteligência", "INT"),
+    INT("Inteligência", "INT"),
     /**
      * Atributo Sabedoria
      */
-    WIS(5L, "Sabedoria", "SAB"),
+    WIS("Sabedoria", "SAB"),
     /**
      * Atributo Carisma
      */
-    CHAR(6L, "Carisma", "CAR");
+    CHAR("Carisma", "CAR");
 
-    private final Long id;
     private final String title;
     private final String shortTitle;
 
     /**
      * Cria nova instancia de AttrEnumeration
      *
-     * @param id {@code Long} ID do atributo
      * @param title {@code String} Titulo do atributo
      * @param shortTitle {@code String} Abreviatura do atributo
      */
-    private Attribute(Long id, String title, String shortTitle) {
-        this.id = id;
+    private Attribute(String title, String shortTitle) {
         this.title = title;
         this.shortTitle = shortTitle;
     }
 
     @Override
-    public Long getId() {
-        return id;
+    public String toString() {
+        return shortTitle;
     }
 
     @Override
