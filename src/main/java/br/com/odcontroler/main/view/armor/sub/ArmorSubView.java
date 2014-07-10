@@ -1,6 +1,7 @@
 package br.com.odcontroler.main.view.armor.sub;
 
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
+import br.com.gmp.utils.image.ImageUtil;
 import br.com.odcontroler.data.entity.Align;
 import br.com.odcontroler.data.entity.Armor;
 import br.com.odcontroler.data.entity.ArmorType;
@@ -67,16 +68,17 @@ public class ArmorSubView extends SubView {
         this.alignModel = new GComboBoxModel<>(Align.values());
         this.gCBAlign.setGModel(alignModel);
         //----------------------------------------------------------------------
-        JMenuItem jMIGen = new JMenuItem("Gerar nome", new ImageIcon(getClass()
+        JMenuItem gen;
+        gen = new JMenuItem("Gerar nome", new ImageIcon(getClass()
                 .getResource("/ComponentIcons/controlers/settings.png")));
-        jMIGen.addActionListener(new ActionListener() {
+        gen.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 autoName();
             }
         });
-        this.gTName.getComponentPopupMenu().add(jMIGen);
+        this.gTName.getComponentPopupMenu().add(gen);
         //----------------------------------------------------------------------
         this.setArmor(armor);
         this.setVisible(true);
