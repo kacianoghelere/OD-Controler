@@ -163,16 +163,10 @@ public class ArmorSubView extends SubView {
      * @since 1.0
      */
     private boolean validateFields() {
-        if (gTName.validateComponent()) {
-            if (gCBType.validateComponent()) {
-                if (gCBMaterial.validateComponent()) {
-                    if (gCBOrigin.validateComponent()) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
+        return gTName.validateComponent()
+                && gCBType.validateComponent()
+                && gCBMaterial.validateComponent()
+                && (jSpinCA.getValue() != null && ((Integer) jSpinCA.getValue()) == 0);
     }
 
     /**
@@ -371,7 +365,7 @@ public class ArmorSubView extends SubView {
         jLPrice.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLPrice.setText("Preço:");
 
-        jSpinPrice.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(0.5d)));
+        jSpinPrice.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 0.5d));
         jSpinPrice.setMaximumSize(new java.awt.Dimension(40, 26));
 
         javax.swing.GroupLayout jPModifiersLayout = new javax.swing.GroupLayout(jPModifiers);
@@ -464,8 +458,10 @@ public class ArmorSubView extends SubView {
             buildArmor();
             try {
                 view.getBean().add(new BeanEvent(view, armor));
+
             } catch (Exception ex) {
-                Logger.getLogger(ArmorSubView.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ArmorSubView.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
             this.dispose();
         }
