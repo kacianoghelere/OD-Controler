@@ -96,7 +96,7 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
                     model.remove(gTable.getSelectedRows());
                 }
             } catch (NumberFormatException e) {
-                LOG.log(Level.SEVERE, null, e);
+                LOGGER.log(Level.SEVERE, null, e);
             }
         }
     }
@@ -281,7 +281,7 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
         try {
             add();
         } catch (Exception ex) {
-            LOG.log(Level.SEVERE, null, ex);
+            LOGGER.log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jBAddActionPerformed
 

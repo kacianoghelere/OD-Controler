@@ -38,12 +38,6 @@ public class Weapon {
     private WeaponType type;
     @ColumnName(name = "Material")
     private PrimeMaterial material;
-    @Ignore
-    @ColumnName(name = "Restrições")
-    private List<Restriction> restriction;
-    @Ignore
-    @ColumnName(name = "Efeitos")
-    private List<Effect> effects;
 
     /**
      * Cria nova instancia de Weapon
@@ -76,8 +70,6 @@ public class Weapon {
         this.price = price;
         this.type = type;
         this.material = material;
-        this.restriction = new ArrayList<>();
-        this.effects = new ArrayList<>();
     }
 
     @Override
@@ -254,42 +246,6 @@ public class Weapon {
      */
     public void setMaterial(PrimeMaterial material) {
         this.material = material;
-    }
-
-    /**
-     * Modifica as restrições
-     *
-     * @return {@code List(Restriction)} Restrições
-     */
-    public List<Restriction> getRestriction() {
-        return restriction;
-    }
-
-    /**
-     * Retorna as restrições
-     *
-     * @param restriction {@code List(Restriction)} Restrições
-     */
-    public void setRestriction(List<Restriction> restriction) {
-        this.restriction = restriction;
-    }
-
-    /**
-     * Modifica os efeitos
-     *
-     * @return {@code List(Effect)} Efeitos
-     */
-    public List<Effect> getEffects() {
-        return effects;
-    }
-
-    /**
-     * Retorna os efeitos
-     *
-     * @param effects {@code List(Effect)} Efeitos
-     */
-    public void setEffects(List<Effect> effects) {
-        this.effects = effects;
     }
 
     /**

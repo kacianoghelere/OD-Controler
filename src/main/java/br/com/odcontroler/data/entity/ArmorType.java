@@ -20,15 +20,6 @@ public class ArmorType extends Type {
     @Editable
     @ColumnName(name = "Nome")
     private String title;
-    @Editable
-    @ColumnName(name = "Base")
-    private Integer base;
-    @Editable
-    @ColumnName(name = "Quantidade 1")
-    private Double materialAmount1;
-    @Editable
-    @ColumnName(name = "Quantidade 2")
-    private Double materialAmount2;
 
     /**
      * Cria nova instancia de ArmorType
@@ -41,15 +32,10 @@ public class ArmorType extends Type {
      *
      * @param id {@code Long} Código do tipo
      * @param typeName {@code String} Nome do tipo
-     * @param materialAmount1 {@code Double} Quantidade do material 1
-     * @param materialAmount2 {@code Double} Quantidade do material 2
      */
-    public ArmorType(Long id, String typeName, Double materialAmount1, Double materialAmount2) {
+    public ArmorType(Long id, String typeName) {
         this.id = id;
         this.title = typeName;
-        this.base = 0;
-        this.materialAmount1 = materialAmount1;
-        this.materialAmount2 = materialAmount2;
     }
 
     /**
@@ -92,67 +78,11 @@ public class ArmorType extends Type {
         this.title = title;
     }
 
-    /**
-     * Retorna a Resistencia base
-     *
-     * @return {@code Integer} Resistencia base
-     */
-    public Integer getBase() {
-        return base;
-    }
-
-    /**
-     * Modifica a Resistencia base
-     *
-     * @param base {@code Integer} Resistencia base
-     */
-    public void setBase(Integer base) {
-        this.base = base;
-    }
-
-    /**
-     * Retorna a Quantidade do material 1
-     *
-     * @return {@code Double} Quantidade do material 1
-     */
-    public Double getMaterialAmount1() {
-        return materialAmount1;
-    }
-
-    /**
-     * Modifica a Quantidade do material 1
-     *
-     * @param amount1 {@code Double} Quantidade do material 1
-     */
-    public void setMaterialAmount1(Double amount1) {
-        this.materialAmount1 = amount1;
-    }
-
-    /**
-     * Retorna a Quantidade do material 2
-     *
-     * @return {@code Double} Quantidade do material 2
-     */
-    public Double getMaterialAmount2() {
-        return materialAmount2;
-    }
-
-    /**
-     * Modifica a Quantidade do material 2
-     *
-     * @param amount2 {@code Double} Quantidade do material 2
-     */
-    public void setMaterialAmount2(Double amount2) {
-        this.materialAmount2 = amount2;
-    }
-
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 89 * hash + Objects.hashCode(this.id);
         hash = 89 * hash + Objects.hashCode(this.title);
-        hash = 89 * hash + Objects.hashCode(this.materialAmount1);
-        hash = 89 * hash + Objects.hashCode(this.materialAmount2);
         return hash;
     }
 
@@ -168,13 +98,7 @@ public class ArmorType extends Type {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.title, other.title)) {
-            return false;
-        }
-        if (!Objects.equals(this.materialAmount1, other.materialAmount1)) {
-            return false;
-        }
-        return Objects.equals(this.materialAmount2, other.materialAmount2);
+        return Objects.equals(this.title, other.title);
     }
 
     @Override

@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  */
 public class ViewBean<T> implements BeanListener<T> {
 
-    protected static final Logger LOG = Logger.getLogger(View.class.getName());
+    protected static final Logger LOGGER = Logger.getLogger(View.class.getName());
     private final T view;
 
     /**

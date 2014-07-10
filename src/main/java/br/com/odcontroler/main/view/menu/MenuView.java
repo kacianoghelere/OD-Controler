@@ -98,7 +98,7 @@ public class MenuView extends View implements TableSource<Menu>, TableView {
                     model.remove(gTable.getSelectedRows());
                 }
             } catch (NumberFormatException e) {
-                LOG.log(Level.SEVERE, null, e);
+                LOGGER.log(Level.SEVERE, null, e);
             }
         }
     }

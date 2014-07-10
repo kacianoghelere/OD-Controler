@@ -3,7 +3,7 @@ package br.com.odcontroler.main.view.armor.bean;
 import br.com.odcontroler.data.db.dao.ArmorDAO;
 import br.com.odcontroler.data.db.dao.ArmorTypeDAO;
 import br.com.odcontroler.data.db.dao.MaterialsDAO;
-import br.com.odcontroler.data.db.dao.RestrictionTypeDAO;
+import br.com.odcontroler.data.db.dao.OriginDAO;
 import br.com.odcontroler.data.entity.Armor;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.armor.ArmorView;
@@ -18,10 +18,10 @@ import br.com.odcontroler.main.view.bean.ViewBean;
  */
 public class ArmorBean extends ViewBean<ArmorView> {
 
-    private ArmorTypeDAO armorTypeDAO;
-    private MaterialsDAO materialsDAO;
-    private ArmorDAO armorDAO;
-    private RestrictionTypeDAO restDAO;
+    private final ArmorTypeDAO armorTypeDAO;
+    private final MaterialsDAO materialsDAO;
+    private final OriginDAO originDAO;
+    private final ArmorDAO armorDAO;
 
     /**
      * Cria nova instancia de ArmorBean
@@ -33,7 +33,7 @@ public class ArmorBean extends ViewBean<ArmorView> {
         this.armorTypeDAO = new ArmorTypeDAO();
         this.materialsDAO = new MaterialsDAO();
         this.armorDAO = new ArmorDAO();
-        this.restDAO = new RestrictionTypeDAO();
+        this.originDAO = new OriginDAO();
     }
 
     @Override
@@ -82,12 +82,12 @@ public class ArmorBean extends ViewBean<ArmorView> {
     }
 
     /**
-     * Retorna o DAO de controle dos tipos de restrições
+     * Retorna o DAO de controle dos tipos de origem
      *
-     * @return {@code RestrictionTypeDAO} DAO de RestrictionType
+     * @return {@code OriginDAO} DAO de Origin
      */
-    public RestrictionTypeDAO getRestDAO() {
-        return restDAO;
+    public OriginDAO getOriginDAO() {
+        return originDAO;
     }
 
     /**

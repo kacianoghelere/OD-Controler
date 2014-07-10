@@ -5,8 +5,6 @@ import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -31,21 +29,19 @@ public class Armor implements Serializable {
     private String description;
     @ColumnName(name = "Tipo")
     private ArmorType type;
+    @Editable
     @ColumnName(name = "CA")
     private Integer armorClass;
+    @Editable
+    @ColumnName(name = "Red. Movimento")
+    private Integer movReduction;
+    @Editable
     @ColumnName(name = "Preço")
     private Double price;
     @ColumnName(name = "Material")
     private PrimeMaterial material;
-    @Ignore
-    @ColumnName(name = "Atributos")
-    private Attributes attributes;
-    @Ignore
-    @ColumnName(name = "Restrições")
-    private List<Restriction> restriction;
-    @Ignore
-    @ColumnName(name = "Efeitos")
-    private List<Effect> effects;
+    @ColumnName(name = "Alinhamento")
+    private Align align;
 
     /**
      * Cria nova instancia de Armor
@@ -58,51 +54,28 @@ public class Armor implements Serializable {
      *
      * @param id {@code Long} ID da armadura
      * @param name {@code String} Nome da armadura
-     * @param description {@code String} Descrição da armadura
-     * @param type {@code ArmorType} Tipo da armadura
-     * @param price {@code Double} Preço da armadura
-     * @param material {@code PrimeMaterial} Material
-     * @param attributes {@code Attributes} Atributos da armadura
-     */
-    public Armor(Long id, String name, String description,
-            ArmorType type, Double price, PrimeMaterial material,
-            Attributes attributes) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.type = type;
-        this.price = price;
-        this.material = material;
-        this.attributes = attributes;
-        this.effects = new ArrayList<>();
-        this.restriction = new ArrayList<>();
-    }
-
-    /**
-     * Cria nova instancia de Armor
-     *
-     * @param id {@code Long} ID da armadura
-     * @param name {@code String} Nome da armadura
      * @param origin {@code Origin} Origem da armadura
      * @param description {@code String} Descrição da armadura
      * @param type {@code ArmorType} Tipo da armadura
+     * @param armorClass {@code Integer} Classe de armadura
+     * @param movReduction {@code Integer} Redução de Movimento
      * @param price {@code Double} Preço da armadura
-     * @param material {@code PrimeMaterial} Material 1
-     * @param attributes {@code Attributes} Atributos da armadura
+     * @param material {@code PrimeMaterial} Material
+     * @param align {@code Align} Alinhamento
      */
     public Armor(Long id, String name, Origin origin, String description,
-            ArmorType type, Double price, PrimeMaterial material,
-            Attributes attributes) {
+            ArmorType type, Integer armorClass, Integer movReduction,
+            Double price, PrimeMaterial material, Align align) {
         this.id = id;
         this.name = name;
         this.origin = origin;
         this.description = description;
         this.type = type;
+        this.armorClass = armorClass;
+        this.movReduction = movReduction;
         this.price = price;
         this.material = material;
-        this.attributes = attributes;
-        this.effects = new ArrayList<>();
-        this.restriction = new ArrayList<>();
+        this.align = align;
     }
 
     /**
@@ -214,6 +187,24 @@ public class Armor implements Serializable {
     }
 
     /**
+     * Retorna a a redução de movimento
+     *
+     * @return {@code Integer} Redução de movimento
+     */
+    public Integer getMovReduction() {
+        return movReduction;
+    }
+
+    /**
+     * Modifica a redução de movimento
+     *
+     * @param movReduction {@code Integer} Redução de movimento
+     */
+    public void setMovReduction(Integer movReduction) {
+        this.movReduction = movReduction;
+    }
+
+    /**
      * Retorna o preço da armadura
      *
      * @return {@code Double} Preço da armadura
@@ -250,57 +241,21 @@ public class Armor implements Serializable {
     }
 
     /**
-     * Retorna os atributos
+     * Retorna o Alinhamento
      *
-     * @return {@code Attributes} Atributos
+     * @return {@code Align} Alinhamento
      */
-    public Attributes getAttributes() {
-        return attributes;
+    public Align getAlign() {
+        return align;
     }
 
     /**
-     * Modifica os atributos
+     * Modifica o Alinhamento
      *
-     * @param attributes {@code Attributes} Atributos
+     * @param align {@code Align} Alinhamento
      */
-    public void setAttributes(Attributes attributes) {
-        this.attributes = attributes;
-    }
-
-    /**
-     * Modifica as restrições
-     *
-     * @return {@code List(Restriction)} Restrições
-     */
-    public List<Restriction> getRestriction() {
-        return restriction;
-    }
-
-    /**
-     * Retorna as restrições
-     *
-     * @param restriction {@code List(Restriction)} Restrições
-     */
-    public void setRestriction(List<Restriction> restriction) {
-        this.restriction = restriction;
-    }
-
-    /**
-     * Modifica os efeitos
-     *
-     * @return {@code List(Effect)} Efeitos
-     */
-    public List<Effect> getEffects() {
-        return effects;
-    }
-
-    /**
-     * Retorna os efeitos
-     *
-     * @param effects {@code List(Effect)} Efeitos
-     */
-    public void setEffects(List<Effect> effects) {
-        this.effects = effects;
+    public void setAlign(Align align) {
+        this.align = align;
     }
 
     @Override

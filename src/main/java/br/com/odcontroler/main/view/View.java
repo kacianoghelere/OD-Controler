@@ -36,7 +36,7 @@ import javax.swing.event.InternalFrameEvent;
  */
 public abstract class View<T> extends JInternalFrame implements ViewListener<T> {
 
-    protected static final Logger LOG = Logger.getLogger(View.class.getName());
+    protected static final Logger LOGGER = Logger.getLogger(View.class.getName());
     private final MainScreen mainScreen;
     private Boolean canSave;
     private Boolean canProcess;
@@ -215,12 +215,12 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
      * @param ex {@code ViewException} Exceção a ser lançada
      */
     protected void throwException(ViewException ex) {
-        LOG.log(Level.SEVERE, null, ex);
+        LOGGER.log(Level.SEVERE, null, ex);
         this.showMessage(ex.getView() + ":" + ex.getMessage(), MainScreen.ERROR_MSG);
         try {
             mainScreen.getListener().appendLog(ex.getMessage());
         } catch (IOException ex1) {
-            LOG.log(Level.SEVERE, null, ex1);
+            LOGGER.log(Level.SEVERE, null, ex1);
         }
     }
 
