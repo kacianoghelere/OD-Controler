@@ -1,7 +1,6 @@
 package br.com.odcontroler.main.view.armor.sub;
 
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
-import br.com.gmp.utils.image.ImageUtil;
 import br.com.odcontroler.data.entity.Align;
 import br.com.odcontroler.data.entity.Armor;
 import br.com.odcontroler.data.entity.ArmorType;
