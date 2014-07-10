@@ -4,8 +4,6 @@ import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -28,16 +26,23 @@ public class Weapon {
     @Editable
     @ColumnName(name = "Descrição")
     private String description;
+    @Editable
     @ColumnName(name = "Iniciativa")
     private Integer initiative;
+    @Editable
+    @ColumnName(name = "Alcance")
+    private Integer range;
+    @Editable
     @ColumnName(name = "Dano")
-    private Integer damage;
+    private String damage;
     @ColumnName(name = "Preço")
     private Integer price;
     @ColumnName(name = "Tipo")
     private WeaponType type;
     @ColumnName(name = "Material")
     private PrimeMaterial material;
+    @ColumnName(name = "Peso")
+    private Double weight;
 
     /**
      * Cria nova instancia de Weapon
@@ -53,23 +58,27 @@ public class Weapon {
      * @param origin {@code Origin} Origem da arma
      * @param description {@code String} Descrição da arma
      * @param initiative {@code Integer} Classificação do tipo
+     * @param range {@code Double} Alcance da arma
      * @param damage {@code String} Dano da arma
      * @param price {@code Integer} Preço da arma
      * @param type {@code WeaponType} Tipo de arma
      * @param material {@code PrimeMaterial} Quantidade do material 1
+     * @param weight {@code Double} Peso da arma
      */
     public Weapon(Long id, String name, Origin origin, String description,
-            Integer initiative, String damage, Integer price, WeaponType type,
-            PrimeMaterial material) {
+            Integer initiative, Integer range, String damage, Integer price,
+            WeaponType type, PrimeMaterial material, Double weight) {
         this.id = id;
         this.name = name;
         this.origin = origin;
         this.description = description;
         this.initiative = initiative;
-        this.damage = 0;
+        this.range = range;
+        this.damage = damage;
         this.price = price;
         this.type = type;
         this.material = material;
+        this.weight = weight;
     }
 
     @Override
@@ -195,20 +204,20 @@ public class Weapon {
     }
 
     /**
-     * Retorna a Resistencia da arma
+     * Retorna o dano da arma
      *
-     * @return {@code Integer} Resistencia da arma
+     * @return {@code String} Dano da arma
      */
-    public Integer getDamage() {
+    public String getDamage() {
         return damage;
     }
 
     /**
-     * Modifica a Resistencia da arma
+     * Modifica o dano da arma
      *
-     * @param damage {@code Integer} Resistencia da arma
+     * @param damage {@code String} Dano da arma
      */
-    public void setDamage(Integer damage) {
+    public void setDamage(String damage) {
         this.damage = damage;
     }
 
@@ -249,21 +258,57 @@ public class Weapon {
     }
 
     /**
-     * Retorna a Classificação do tipo
+     * Retorna a iniciativa da arma
      *
-     * @return {@code Integer} Classificação do tipo
+     * @return {@code Integer} Iniciativa da arma
      */
     public Integer getInitiative() {
         return initiative;
     }
 
     /**
-     * Modifica a Classificação do tipo
+     * Modifica a iniciativa da arma
      *
-     * @param initiative {@code Integer} Classificação do tipo
+     * @param initiative {@code Integer} Iniciativa da arma
      */
     public void setInitiative(Integer initiative) {
         this.initiative = initiative;
+    }
+
+    /**
+     * Retorna o peso da arma
+     *
+     * @return {@code Double} Peso da arma
+     */
+    public Double getWeight() {
+        return weight;
+    }
+
+    /**
+     * Modifica o peso da arma
+     *
+     * @param weight {@code Double} Peso da arma
+     */
+    public void setWeight(Double weight) {
+        this.weight = weight;
+    }
+
+    /**
+     * Retorna o alcance da arma
+     *
+     * @return {@code Integer} Alcance da arma
+     */
+    public Integer getRange() {
+        return range;
+    }
+
+    /**
+     * Modifica o alcance da arma
+     *
+     * @param range {@code Integer} Alcance da arma
+     */
+    public void setRange(Integer range) {
+        this.range = range;
     }
 
 }

@@ -38,7 +38,6 @@ public class TermsView extends View {
     private GListModel<ArmorType> armorModel;
     private GComboBoxModel<Attribute> attrModel;
     private GListModel<ExpertiseType> expModel;
-    private GListModel<WeaponSize> sizeModel;
 
     /**
      * Cria nova instancia de TermsView
@@ -64,7 +63,6 @@ public class TermsView extends View {
         this.armorModel = new GListModel<>();
         this.attrModel = new GComboBoxModel<>(new Attributes().getAttributes());
         this.expModel = new GListModel<>();
-        this.sizeModel = new GListModel<>();
         this.bean = new TermsBean(this);
         this.gLtUseTp.setModel(useModel);
         this.gLtEffectTp.setModel(efModel);
@@ -72,7 +70,6 @@ public class TermsView extends View {
         this.gLtRestTp.setModel(restModel);
         this.gCBAttribute.setGModel(attrModel);
         this.gLtExpTp.setModel(expModel);
-        this.gLtWeaponSize.setModel(sizeModel);
         this.gLtArmorTp.setModel(armorModel);
         try {
             this.bean.load(null);
@@ -201,39 +198,15 @@ public class TermsView extends View {
     }
 
     /**
-     * Adiciona novo elemento na lista de WeaponSizes
-     *
-     * @param evt {@code KeyEvent} Evento do teclado
-     */
-    private void addSize(KeyEvent evt) {
-        if (gTWeaponSize.validateComponent()) {
-            bean.addWeaponSize(new BeanEvent(this, gTWeaponSize.getText()));
-            gTWeaponSize.clear();
-        }
-    }
-
-    /**
-     * Remove o WeaponSize selecionado
-     *
-     * @param evt {@code KeyEvent} Evento do teclado
-     */
-    private void removeSize(KeyEvent evt) {
-        if (gLtWeaponSize.getModel().getSize() > 0 && gLtWeaponSize.getSelectedIndex() >= 0) {
-            WeaponSize size = sizeModel.getElementAt(gLtWeaponSize.getSelectedIndex());
-            sizeModel.remove(size);
-        }
-    }
-
-    /**
      * Adiciona novo elemento na lista de ArmorTypes
      *
      * @param evt {@code KeyEvent} Evento do teclado
      * @since 1.1
      */
     private void addArmorTp(KeyEvent evt) {
-        if (gTWeaponSize.validateComponent()) {
-            bean.addArmorType(new BeanEvent(this, gTWeaponSize.getText()));
-            gTWeaponSize.clear();
+        if (gTArmorTp.validateComponent()) {
+            bean.addArmorType(new BeanEvent(this, gTArmorTp.getText()));
+            gTArmorTp.clear();
         }
     }
 
@@ -244,7 +217,7 @@ public class TermsView extends View {
      * @since 1.1
      */
     private void removeArmorTp(KeyEvent evt) {
-        if (gLtWeaponSize.getModel().getSize() > 0 && gLtWeaponSize.getSelectedIndex() >= 0) {
+        if (gLtArmorTp.getModel().getSize() > 0 && gLtArmorTp.getSelectedIndex() >= 0) {
             ArmorType type = armorModel.getElementAt(gLtArmorTp.getSelectedIndex());
             armorModel.remove(type);
         }
@@ -313,15 +286,6 @@ public class TermsView extends View {
         return expModel;
     }
 
-    /**
-     * Retorna o modelo de lista dos WeaponSizes
-     *
-     * @return {@code GListModel(WeaponSize)}
-     */
-    public GListModel<WeaponSize> getSizeModel() {
-        return sizeModel;
-    }
-
     @Override
     public BeanListener getBean() {
         return bean;
@@ -343,10 +307,6 @@ public class TermsView extends View {
         jSPRestrict = new javax.swing.JScrollPane();
         gLtRestTp = new br.com.gmp.comps.list.GList();
         gCBAttribute = new br.com.gmp.comps.combobox.GComboBox();
-        jPWeaponSize = new javax.swing.JPanel();
-        gTWeaponSize = new br.com.gmp.comps.textfield.GTextField();
-        jSPWeaponSize = new javax.swing.JScrollPane();
-        gLtWeaponSize = new br.com.gmp.comps.list.GList();
         jPPerkTypes = new javax.swing.JPanel();
         gTPerkTp = new br.com.gmp.comps.textfield.GTextField();
         jSPPerk = new javax.swing.JScrollPane();
@@ -402,7 +362,7 @@ public class TermsView extends View {
                 .addContainerGap()
                 .addGroup(jPUseTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(gTUseTp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSPUses, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))
+                    .addComponent(jSPUses, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE))
                 .addGap(14, 14, 14))
         );
         jPUseTypesLayout.setVerticalGroup(
@@ -442,7 +402,7 @@ public class TermsView extends View {
             .addGroup(jPRestrictTypesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPRestrictTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSPRestrict, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                    .addComponent(jSPRestrict, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
                     .addComponent(gCBAttribute, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -457,49 +417,6 @@ public class TermsView extends View {
         );
 
         jTabbedPane.addTab("Restrições", jPRestrictTypes);
-
-        jPWeaponSize.setBorder(javax.swing.BorderFactory.createTitledBorder("Tamanho da arma"));
-
-        gTWeaponSize.setPlaceholder("Tipos de vantagens");
-        gTWeaponSize.setMaximumSize(new java.awt.Dimension(150, 2147483647));
-        gTWeaponSize.setMinimumSize(new java.awt.Dimension(150, 28));
-        gTWeaponSize.setNextFocusableComponent(gTUseTp);
-        gTWeaponSize.setPreferredSize(new java.awt.Dimension(150, 28));
-        gTWeaponSize.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                gTWeaponSizeKeyReleased(evt);
-            }
-        });
-
-        gLtWeaponSize.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                gLtWeaponSizeKeyReleased(evt);
-            }
-        });
-        jSPWeaponSize.setViewportView(gLtWeaponSize);
-
-        javax.swing.GroupLayout jPWeaponSizeLayout = new javax.swing.GroupLayout(jPWeaponSize);
-        jPWeaponSize.setLayout(jPWeaponSizeLayout);
-        jPWeaponSizeLayout.setHorizontalGroup(
-            jPWeaponSizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPWeaponSizeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPWeaponSizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(gTWeaponSize, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSPWeaponSize, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPWeaponSizeLayout.setVerticalGroup(
-            jPWeaponSizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPWeaponSizeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSPWeaponSize, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(gTWeaponSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12))
-        );
-
-        jTabbedPane.addTab("Tamanho de armas", jPWeaponSize);
 
         jPPerkTypes.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Vantagens"));
 
@@ -775,26 +692,6 @@ public class TermsView extends View {
         }
     }//GEN-LAST:event_gLtExpTpKeyReleased
 
-    private void gTWeaponSizeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTWeaponSizeKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            try {
-                addSize(evt);
-            } catch (Exception ex) {
-                LOGGER.log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_gTWeaponSizeKeyReleased
-
-    private void gLtWeaponSizeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gLtWeaponSizeKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
-            try {
-                removeSize(evt);
-            } catch (Exception ex) {
-                LOGGER.log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_gLtWeaponSizeKeyReleased
-
     private void gCBAttributeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gCBAttributeKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
@@ -833,27 +730,23 @@ public class TermsView extends View {
     private br.com.gmp.comps.list.GList gLtPerkTp;
     private br.com.gmp.comps.list.GList gLtRestTp;
     private br.com.gmp.comps.list.GList gLtUseTp;
-    private br.com.gmp.comps.list.GList gLtWeaponSize;
     private br.com.gmp.comps.textfield.GTextField gTArmorTp;
     private br.com.gmp.comps.textfield.GTextField gTEffectTp;
     private br.com.gmp.comps.textfield.GTextField gTExpertiseTp;
     private br.com.gmp.comps.textfield.GTextField gTPerkTp;
     private br.com.gmp.comps.textfield.GTextField gTUseTp;
-    private br.com.gmp.comps.textfield.GTextField gTWeaponSize;
     private javax.swing.JPanel jPArmorTypes;
     private javax.swing.JPanel jPEffects;
     private javax.swing.JPanel jPExpertiseTypes;
     private javax.swing.JPanel jPPerkTypes;
     private javax.swing.JPanel jPRestrictTypes;
     private javax.swing.JPanel jPUseTypes;
-    private javax.swing.JPanel jPWeaponSize;
     private javax.swing.JScrollPane jSPArmorTp;
     private javax.swing.JScrollPane jSPEffect;
     private javax.swing.JScrollPane jSPExpertise;
     private javax.swing.JScrollPane jSPPerk;
     private javax.swing.JScrollPane jSPRestrict;
     private javax.swing.JScrollPane jSPUses;
-    private javax.swing.JScrollPane jSPWeaponSize;
     private javax.swing.JTabbedPane jTabbedPane;
     // End of variables declaration//GEN-END:variables
 }

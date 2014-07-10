@@ -1,101 +1,63 @@
 package br.com.odcontroler.data.entity;
 
 import br.com.gmp.utils.annotations.ColumnName;
-import br.com.gmp.utils.annotations.Ignore;
-import java.util.Objects;
 
 /**
  * Objeto de tamanho de armas
  *
  * @author kaciano
  * @version 1.0
+ * @author kaciano
+ * @version 1.1
  */
-public class WeaponSize {
+public enum WeaponSize {
 
-    @Ignore
-    @ColumnName(name = "Código")
-    private Long id;
+    /**
+     * Tamanho pequeno
+     */
+    P("Pequeno"),
+    /**
+     * Tamanho Médio
+     */
+    M("Médio"),
+    /**
+     * Tamanho Grande
+     */
+    G("Grande");
+
     @ColumnName(name = "Titulo")
-    private String title;
-
-    /**
-     * Cria nova instancia de WeaponSize
-     */
-    public WeaponSize() {
-    }
+    private String name;
 
     /**
      * Cria nova instancia de WeaponSize
      *
-     * @param id {@code Long} Código do tipo
-     * @param title {@code String} Titulo do tipo
+     * @param name {@code String} Nome do tamanho
      */
-    public WeaponSize(Long id, String title) {
-        this.id = id;
-        this.title = title;
-    }
-
-    /**
-     * Retorna o código
-     *
-     * @return {@code Long} Código do tipo
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * Modifica o código
-     *
-     * @param id {@code Long} Código do tipo
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
-     * Retorna o titulo
-     *
-     * @return {@code String} Titulo do tipo
-     */
-    public String getTitle() {
-        return title;
-    }
-
-    /**
-     * Modifica o titulo
-     *
-     * @param title {@code String} Titulo do tipo
-     */
-    public void setTitle(String title) {
-        this.title = title;
+    private WeaponSize(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
-        return title;
+        return name;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.id);
-        hash = 97 * hash + Objects.hashCode(this.title);
-        return hash;
+    /**
+     * Retorna o Nome do tamanho
+     *
+     * @return {@code String} Nome do tamanho
+     */
+    public String getName() {
+        return name;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final WeaponSize other = (WeaponSize) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return Objects.equals(this.title, other.title);
+    /**
+     * Modifica o Nome do tamanho
+     *
+     * @param name {@code String} Nome do tamanho
+     */
+    public void setName(String name) {
+        this.name = name;
     }
+
 }

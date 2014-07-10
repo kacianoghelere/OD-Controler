@@ -14,7 +14,6 @@ import br.com.odcontroler.data.entity.ExpertiseType;
 import br.com.odcontroler.data.entity.PerkType;
 import br.com.odcontroler.data.entity.RestrictionType;
 import br.com.odcontroler.data.entity.UseType;
-import br.com.odcontroler.data.entity.WeaponSize;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.bean.ViewBean;
 import br.com.odcontroler.main.view.terms.TermsView;
@@ -60,7 +59,6 @@ public class TermsBean extends ViewBean<TermsView> {
         perkTypeDao.replaceAll(getView().getPerkModel().getData());
         restDao.replaceAll(getView().getRestModel().getData());
         expDAO.replaceAll(getView().getExpModel().getData());
-        sizeDAO.replaceAll(getView().getSizeModel().getData());
         armorDAO.replaceAll(getView().getArmorModel().getData());
     }
 
@@ -71,7 +69,6 @@ public class TermsBean extends ViewBean<TermsView> {
         getView().getPerkModel().setData(perkTypeDao.getList());
         getView().getRestModel().setData(restDao.getList());
         getView().getExpModel().setData(expDAO.getList());
-        getView().getSizeModel().setData(sizeDAO.getList());
         getView().getArmorModel().setData(armorDAO.getList());
     }
 
@@ -141,24 +138,13 @@ public class TermsBean extends ViewBean<TermsView> {
     }
 
     /**
-     * Adiciona novo elemento na lista de WeaponSizes
-     *
-     * @param evt {@code BeanEvent} Evento do Bean
-     */
-    public void addWeaponSize(BeanEvent evt) {
-        Long nextId = getNextSizeID();
-        WeaponSize size = new WeaponSize(nextId, (String) evt.getValue());
-        getView().getSizeModel().add(size);
-    }
-
-    /**
      * Adiciona novo elemento na lista de ArmorTypes
      *
      * @param evt {@code BeanEvent} Evento do Bean
      * @since 1.1
      */
     public void addArmorType(BeanEvent evt) {
-        Long nextId = getNextSizeID();
+        Long nextId = getNextArmorTpID();
         ArmorType type = new ArmorType(nextId, (String) evt.getValue());
         getView().getArmorModel().add(type);
     }
@@ -239,27 +225,12 @@ public class TermsBean extends ViewBean<TermsView> {
     }
 
     /**
-     * Retorna o próximo ID dos WeaponSizes
-     *
-     * @return {@code Long} Próximo ID para WeaponSize
-     */
-    public Long getNextSizeID() {
-        Long id = (long) 0;
-        for (WeaponSize type : getView().getSizeModel().getData()) {
-            if (type.getId() > id) {
-                id = type.getId();
-            }
-        }
-        return (id + 1);
-    }
-
-    /**
      * Retorna o próximo ID dos ArmorTypes
      *
      * @return {@code Long} Próximo ID para ArmorType
      * @since 1.1
      */
-    public Long getArmorTpID() {
+    public Long getNextArmorTpID() {
         Long id = (long) 0;
         for (ArmorType type : getView().getArmorModel().getData()) {
             if (type.getId() > id) {
