@@ -5,7 +5,7 @@ import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.odcontroler.data.db.dao.ExpertiseDAO;
-import br.com.odcontroler.data.entity.Attribute;
+import br.com.odcontroler.data.entity.attr.Attribute;
 import br.com.odcontroler.data.entity.Expertise;
 import br.com.odcontroler.data.entity.ExpertiseType;
 import br.com.odcontroler.main.MainScreen;

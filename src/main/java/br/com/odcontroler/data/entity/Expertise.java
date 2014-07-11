@@ -25,10 +25,10 @@ public class Expertise implements Serializable {
     @ColumnName(name = "Tipo")
     private ExpertiseType type;
     @ColumnName(name = "Atributo chave")
-    private Attribute attribute;
+    private br.com.odcontroler.data.entity.attr.Attribute attribute;
     @Editable
-    @ColumnName(name = "Valor")
-    private Integer value;
+    @ColumnName(name = "Modificador")
+    private Integer mod;
 
     /**
      * Cria nova instancia de Expertise
@@ -45,12 +45,12 @@ public class Expertise implements Serializable {
      * @param attribute {@code Attribute} Atributo chave
      * @param value {@code Integer} Valor da perícia
      */
-    public Expertise(Long id, String title, ExpertiseType type, Attribute attribute, Integer value) {
+    public Expertise(Long id, String title, ExpertiseType type, br.com.odcontroler.data.entity.attr.Attribute attribute, Integer value) {
         this.id = id;
         this.title = title;
         this.type = type;
         this.attribute = attribute;
-        this.value = value;
+        this.mod = value;
     }
 
     /**
@@ -110,37 +110,37 @@ public class Expertise implements Serializable {
     /**
      * Retorna o atributo chave
      *
-     * @return {@code Attribute} Atributo chave
+     * @return {@code br.com.odcontroler.data.entity.attr.Attribute} Atributo chave
      */
-    public Attribute getAttribute() {
+    public br.com.odcontroler.data.entity.attr.Attribute getAttribute() {
         return attribute;
     }
 
     /**
      * Modifica o atributo chave
      *
-     * @param attribute {@code Attribute} Atributo chave
+     * @param attribute {@code br.com.odcontroler.data.entity.attr.Attribute} Atributo chave
      */
-    public void setAttribute(Attribute attribute) {
+    public void setAttribute(br.com.odcontroler.data.entity.attr.Attribute attribute) {
         this.attribute = attribute;
     }
 
     /**
-     * Retorna o valor da perícia
+     * Retorna o modificador da perícia
      *
      * @return {@code Integer} Valor da perícia
      */
-    public Integer getValue() {
-        return value;
+    public Integer getMod() {
+        return mod;
     }
 
     /**
-     * Modifica o valor da perícia
+     * Modifica o modificador da perícia
      *
      * @param value {@code Integer} Valor da perícia
      */
-    public void setValue(Integer value) {
-        this.value = value;
+    public void setMod(Integer value) {
+        this.mod = value;
     }
 
     @Override
@@ -172,7 +172,7 @@ public class Expertise implements Serializable {
 
     @Override
     public String toString() {
-        return title + "(" + value + ")";
+        return title + "(" + mod + ")";
     }
 
 }

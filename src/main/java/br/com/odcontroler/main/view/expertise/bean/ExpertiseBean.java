@@ -3,10 +3,9 @@ package br.com.odcontroler.main.view.expertise.bean;
 import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.odcontroler.data.db.dao.ExpertiseDAO;
 import br.com.odcontroler.data.db.dao.ExpertiseTypeDAO;
-import br.com.odcontroler.data.entity.Attribute;
 import br.com.odcontroler.data.entity.Expertise;
 import br.com.odcontroler.data.entity.ExpertiseType;
-import br.com.odcontroler.data.entity.Attributes;
+import br.com.odcontroler.data.entity.attr.Attribute;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.bean.ViewBean;
 import br.com.odcontroler.main.view.expertise.ExpertiseView;
@@ -41,7 +40,7 @@ public class ExpertiseBean extends ViewBean<ExpertiseView> {
 
     @Override
     public void load(BeanEvent evt) throws Exception {
-        getView().getAttrModel().setData(new Attributes().getValues());
+        getView().getAttrModel().setData(Attribute.values());
         getView().getTypeModel().setData(typeDAO.getList());
         SwingUtilities.updateComponentTreeUI(getView());
     }

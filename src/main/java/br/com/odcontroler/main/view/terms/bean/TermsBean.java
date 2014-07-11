@@ -4,16 +4,10 @@ import br.com.odcontroler.data.db.dao.ArmorTypeDAO;
 import br.com.odcontroler.data.db.dao.EffectTypeDAO;
 import br.com.odcontroler.data.db.dao.ExpertiseTypeDAO;
 import br.com.odcontroler.data.db.dao.PerkTypeDAO;
-import br.com.odcontroler.data.db.dao.RestrictionTypeDAO;
-import br.com.odcontroler.data.db.dao.UseTypeDAO;
-import br.com.odcontroler.data.db.dao.WeaponSizeDAO;
 import br.com.odcontroler.data.entity.ArmorType;
-import br.com.odcontroler.data.entity.Attribute;
 import br.com.odcontroler.data.entity.EffectType;
 import br.com.odcontroler.data.entity.ExpertiseType;
 import br.com.odcontroler.data.entity.PerkType;
-import br.com.odcontroler.data.entity.RestrictionType;
-import br.com.odcontroler.data.enums.UseType;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.bean.ViewBean;
 import br.com.odcontroler.main.view.terms.TermsView;
@@ -30,7 +24,6 @@ public class TermsBean extends ViewBean<TermsView> {
 
     private final EffectTypeDAO effectTypeDAO;
     private final PerkTypeDAO perkTypeDao;
-    private final RestrictionTypeDAO restDao;
     private final ExpertiseTypeDAO expDAO;
     private final ArmorTypeDAO armorDAO;
 
@@ -43,7 +36,6 @@ public class TermsBean extends ViewBean<TermsView> {
         super(view);
         this.effectTypeDAO = new EffectTypeDAO();
         this.perkTypeDao = new PerkTypeDAO();
-        this.restDao = new RestrictionTypeDAO();
         this.expDAO = new ExpertiseTypeDAO();
         this.armorDAO = new ArmorTypeDAO();
     }
@@ -52,7 +44,6 @@ public class TermsBean extends ViewBean<TermsView> {
     public void commit(BeanEvent evt) throws Exception {
         effectTypeDAO.replaceAll(getView().getEfModel().getData());
         perkTypeDao.replaceAll(getView().getPerkModel().getData());
-        restDao.replaceAll(getView().getRestModel().getData());
         expDAO.replaceAll(getView().getExpModel().getData());
         armorDAO.replaceAll(getView().getArmorModel().getData());
     }
@@ -61,7 +52,6 @@ public class TermsBean extends ViewBean<TermsView> {
     public void load(BeanEvent evt) throws Exception {
         getView().getEfModel().setData(effectTypeDAO.getList());
         getView().getPerkModel().setData(perkTypeDao.getList());
-        getView().getRestModel().setData(restDao.getList());
         getView().getExpModel().setData(expDAO.getList());
         getView().getArmorModel().setData(armorDAO.getList());
     }
@@ -89,33 +79,12 @@ public class TermsBean extends ViewBean<TermsView> {
     }
 
     /**
-     * Adiciona novo elemento na lista de RestrictionType
-     *
-     * @param evt {@code BeanEvent} Evento do Bean
-     */
-    public void addRestTp(BeanEvent evt) {
-        Long nextId = getNextRestID();
-        Attribute attr = (Attribute) evt.getValue();
-        RestrictionType type = new RestrictionType(nextId, attr.getName(), attr);
-        boolean contain = false;
-        for (RestrictionType tp : getView().getRestModel().getData()) {
-            if (tp.getAttribute().equals(attr)) {
-                contain = true;
-                break;
-            }
-        }
-        if (!contain) {
-            getView().getRestModel().add(type);
-        }
-    }
-
-    /**
      * Adiciona novo elemento na lista de ExpertiseTypes
      *
      * @param evt {@code BeanEvent} Evento do Bean
      */
     public void addExpTp(BeanEvent evt) {
-        Long nextId = getNextRestID();
+        Long nextId = getNextExpertiseID();
         ExpertiseType type = new ExpertiseType(nextId, (String) evt.getValue());
         getView().getExpModel().add(type);
     }
@@ -155,21 +124,6 @@ public class TermsBean extends ViewBean<TermsView> {
     public Long getNextPerkID() {
         Long id = (long) 0;
         for (PerkType type : getView().getPerkModel().getData()) {
-            if (type.getId() > id) {
-                id = type.getId();
-            }
-        }
-        return (id + 1);
-    }
-
-    /**
-     * Retorna o próximo ID dos RestrictionTypes
-     *
-     * @return {@code Long} Próximo ID para RestrictionType
-     */
-    public Long getNextRestID() {
-        Long id = (long) 0;
-        for (RestrictionType type : getView().getRestModel().getData()) {
             if (type.getId() > id) {
                 id = type.getId();
             }

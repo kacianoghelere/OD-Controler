@@ -1,16 +1,10 @@
 package br.com.odcontroler.main.view.terms;
 
-import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.gmp.comps.model.GListModel;
 import br.com.odcontroler.data.entity.ArmorType;
-import br.com.odcontroler.data.entity.Attribute;
-import br.com.odcontroler.data.entity.Attributes;
 import br.com.odcontroler.data.entity.EffectType;
 import br.com.odcontroler.data.entity.ExpertiseType;
 import br.com.odcontroler.data.entity.PerkType;
-import br.com.odcontroler.data.entity.RestrictionType;
-import br.com.odcontroler.data.enums.UseType;
-import br.com.odcontroler.data.enums.Size;
 import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.View;
@@ -33,9 +27,7 @@ public class TermsView extends View {
     private TermsBean bean;
     private GListModel<EffectType> efModel;
     private GListModel<PerkType> perkModel;
-    private GListModel<RestrictionType> restModel;
     private GListModel<ArmorType> armorModel;
-    private GComboBoxModel<Attribute> attrModel;
     private GListModel<ExpertiseType> expModel;
 
     /**
@@ -57,15 +49,11 @@ public class TermsView extends View {
         this.setControls(new ViewParameter(true, false, false, true));
         this.efModel = new GListModel<>();
         this.perkModel = new GListModel<>();
-        this.restModel = new GListModel<>();
         this.armorModel = new GListModel<>();
-        this.attrModel = new GComboBoxModel<>(new Attributes().getValues());
         this.expModel = new GListModel<>();
         this.bean = new TermsBean(this);
         this.gLtEffectTp.setModel(efModel);
         this.gLtPerkTp.setModel(perkModel);
-        this.gLtRestTp.setModel(restModel);
-        this.gCBAttribute.setGModel(attrModel);
         this.gLtExpTp.setModel(expModel);
         this.gLtArmorTp.setModel(armorModel);
         try {
@@ -128,29 +116,6 @@ public class TermsView extends View {
      *
      * @param evt {@code KeyEvent} Evento do teclado
      */
-    private void addRestType(KeyEvent evt) {
-        if (gCBAttribute.validateComponent()) {
-            bean.addRestTp(new BeanEvent(this, attrModel.getSelectedItem()));
-        }
-    }
-
-    /**
-     * Remove o RestrictionType selecionado
-     *
-     * @param evt {@code KeyEvent} Evento do teclado
-     */
-    private void removeRestType(KeyEvent evt) {
-        if (gLtRestTp.getModel().getSize() > 0 && gLtRestTp.getSelectedIndex() >= 0) {
-            RestrictionType type = restModel.getElementAt(gLtRestTp.getSelectedIndex());
-            restModel.remove(type);
-        }
-    }
-
-    /**
-     * Adiciona novo elemento na lista de PerkTypes
-     *
-     * @param evt {@code KeyEvent} Evento do teclado
-     */
     private void addExpType(KeyEvent evt) {
         if (gTExpertiseTp.validateComponent()) {
             bean.addExpTp(new BeanEvent(this, gTExpertiseTp.getText()));
@@ -195,7 +160,7 @@ public class TermsView extends View {
             armorModel.remove(type);
         }
     }
-    
+
     /**
      * Retorna o modelo de lista dos EffectTypes
      *
@@ -224,24 +189,6 @@ public class TermsView extends View {
     }
 
     /**
-     * Retorna o modelo de lista dos RestrictionTypes
-     *
-     * @return {@code GListModel(RestrictionType)}
-     */
-    public GListModel<RestrictionType> getRestModel() {
-        return restModel;
-    }
-
-    /**
-     * Retorna o modelo de atributos
-     *
-     * @return {@code GComboBoxModel(Attribute)}
-     */
-    public GComboBoxModel<Attribute> getAttrModel() {
-        return attrModel;
-    }
-
-    /**
      * Retorna o modelo de lista dos ExpertiseTypes
      *
      * @return {@code GListModel(ExpertiseType)}
@@ -263,10 +210,6 @@ public class TermsView extends View {
     private void initComponents() {
 
         jTabbedPane = new javax.swing.JTabbedPane();
-        jPRestrictTypes = new javax.swing.JPanel();
-        jSPRestrict = new javax.swing.JScrollPane();
-        gLtRestTp = new br.com.gmp.comps.list.GList();
-        gCBAttribute = new br.com.gmp.comps.combobox.GComboBox();
         jPPerkTypes = new javax.swing.JPanel();
         gTPerkTp = new br.com.gmp.comps.textfield.GTextField();
         jSPPerk = new javax.swing.JScrollPane();
@@ -293,47 +236,6 @@ public class TermsView extends View {
         setPreferredSize(new java.awt.Dimension(375, 327));
 
         jTabbedPane.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-
-        jPRestrictTypes.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Restrições"));
-
-        gLtRestTp.setAutoscrolls(false);
-        gLtRestTp.setMinimumSize(new java.awt.Dimension(50, 20));
-        gLtRestTp.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                gLtRestTpKeyReleased(evt);
-            }
-        });
-        jSPRestrict.setViewportView(gLtRestTp);
-
-        gCBAttribute.setToolTipText("");
-        gCBAttribute.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                gCBAttributeKeyPressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPRestrictTypesLayout = new javax.swing.GroupLayout(jPRestrictTypes);
-        jPRestrictTypes.setLayout(jPRestrictTypesLayout);
-        jPRestrictTypesLayout.setHorizontalGroup(
-            jPRestrictTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPRestrictTypesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPRestrictTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSPRestrict, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-                    .addComponent(gCBAttribute, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPRestrictTypesLayout.setVerticalGroup(
-            jPRestrictTypesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPRestrictTypesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSPRestrict, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(gCBAttribute, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
-        );
-
-        jTabbedPane.addTab("Restrições", jPRestrictTypes);
 
         jPPerkTypes.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Vantagens"));
 
@@ -556,16 +458,6 @@ public class TermsView extends View {
         }
     }//GEN-LAST:event_gLtPerkTpKeyReleased
 
-    private void gLtRestTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gLtRestTpKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
-            try {
-                removeRestType(evt);
-            } catch (Exception ex) {
-                LOGGER.log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_gLtRestTpKeyReleased
-
     private void gTExpertiseTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTExpertiseTpKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
@@ -585,16 +477,6 @@ public class TermsView extends View {
             }
         }
     }//GEN-LAST:event_gLtExpTpKeyReleased
-
-    private void gCBAttributeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gCBAttributeKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            try {
-                addRestType(evt);
-            } catch (Exception ex) {
-                LOGGER.log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_gCBAttributeKeyPressed
 
     private void gTArmorTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTArmorTpKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -617,12 +499,10 @@ public class TermsView extends View {
     }//GEN-LAST:event_gLtArmorTpKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private br.com.gmp.comps.combobox.GComboBox gCBAttribute;
     private br.com.gmp.comps.list.GList gLtArmorTp;
     private br.com.gmp.comps.list.GList gLtEffectTp;
     private br.com.gmp.comps.list.GList gLtExpTp;
     private br.com.gmp.comps.list.GList gLtPerkTp;
-    private br.com.gmp.comps.list.GList gLtRestTp;
     private br.com.gmp.comps.textfield.GTextField gTArmorTp;
     private br.com.gmp.comps.textfield.GTextField gTEffectTp;
     private br.com.gmp.comps.textfield.GTextField gTExpertiseTp;
@@ -631,12 +511,10 @@ public class TermsView extends View {
     private javax.swing.JPanel jPEffects;
     private javax.swing.JPanel jPExpertiseTypes;
     private javax.swing.JPanel jPPerkTypes;
-    private javax.swing.JPanel jPRestrictTypes;
     private javax.swing.JScrollPane jSPArmorTp;
     private javax.swing.JScrollPane jSPEffect;
     private javax.swing.JScrollPane jSPExpertise;
     private javax.swing.JScrollPane jSPPerk;
-    private javax.swing.JScrollPane jSPRestrict;
     private javax.swing.JTabbedPane jTabbedPane;
     // End of variables declaration//GEN-END:variables
 }

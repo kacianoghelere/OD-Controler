@@ -19,8 +19,8 @@ public class PlayerCharInfo implements Serializable {
     @ColumnName(name = "Nivel")
     private Long charLevel;
     @Ignore
-    @ColumnName(name = "Atributos")
-    private Attributes attributes;
+//    @ColumnName(name = "Atributos")
+//    private Attributes attributes;
     @ColumnName(name = "Personagem")
     private PlayerChar playerChar;
     @ColumnName(name = "Ativo")
@@ -40,13 +40,13 @@ public class PlayerCharInfo implements Serializable {
      * @param attributes {@code Attributes} Atributos principais
      * @param playerChar {@code PlayerChar} Personagem
      */
-    public PlayerCharInfo(Long id, Long charLevel, Attributes attributes, PlayerChar playerChar) {
-        this.id = id;
-        this.charLevel = charLevel;
-        this.attributes = attributes;
-        this.playerChar = playerChar;
-        this.active = true;
-    }
+//    public PlayerCharInfo(Long id, Long charLevel, Attributes attributes, PlayerChar playerChar) {
+//        this.id = id;
+//        this.charLevel = charLevel;
+//        this.attributes = attributes;
+//        this.playerChar = playerChar;
+//        this.active = true;
+//    }
 
     /**
      *
@@ -84,17 +84,17 @@ public class PlayerCharInfo implements Serializable {
      *
      * @return {@code Attributes} Atributos principais
      */
-    public Attributes getAttributes() {
-        return attributes;
-    }
+//    public Attributes getAttributes() {
+//        return attributes;
+//    }
 
     /**
      *
      * @param attributes {@code Attributes} Atributos principais
      */
-    public void setAttributes(Attributes attributes) {
-        this.attributes = attributes;
-    }
+//    public void setAttributes(Attributes attributes) {
+//        this.attributes = attributes;
+//    }
 
     /**
      *
@@ -133,7 +133,7 @@ public class PlayerCharInfo implements Serializable {
         int hash = 7;
         hash = 29 * hash + Objects.hashCode(this.id);
         hash = 29 * hash + Objects.hashCode(this.charLevel);
-        hash = 29 * hash + Objects.hashCode(this.attributes);
+//        hash = 29 * hash + Objects.hashCode(this.attributes);
         hash = 29 * hash + Objects.hashCode(this.playerChar);
         hash = 29 * hash + Objects.hashCode(this.active);
         return hash;
@@ -154,9 +154,9 @@ public class PlayerCharInfo implements Serializable {
         if (!Objects.equals(this.charLevel, other.charLevel)) {
             return false;
         }
-        if (!Objects.equals(this.attributes, other.attributes)) {
-            return false;
-        }
+//        if (!Objects.equals(this.attributes, other.attributes)) {
+//            return false;
+//        }
         if (!Objects.equals(this.playerChar, other.playerChar)) {
             return false;
         }

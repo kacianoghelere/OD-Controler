@@ -1,7 +1,6 @@
 package br.com.odcontroler.data.db.map;
 
 import br.com.odcontroler.data.entity.Element;
-import br.com.odcontroler.data.entity.RestrictionType;
 import br.com.odcontroler.data.entity.Weapon;
 import br.com.odcontroler.data.enums.UseType;
 import br.com.odcontroler.data.entity.PerkType;
@@ -48,7 +47,6 @@ public class EntityMap {
         map.put(WeaponType.class, "WeaponTypeDB");
         map.put(Size.class, "WeaponSizeDB");
         map.put(Weapon.class, "WeaponDB");
-        map.put(RestrictionType.class, "RestrictionTypeDB");
         map.put(Armor.class, "ArmorDB");
         map.put(Expertise.class, "ExpertiseDB");
         map.put(ExpertiseType.class, "ExpertiseTypeDB");
