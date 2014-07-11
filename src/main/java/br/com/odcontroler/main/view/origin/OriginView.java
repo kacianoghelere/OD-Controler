@@ -46,7 +46,7 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
      */
     private void initialize() {
         this.initComponents();
-        this.setSize(500, 300);
+        this.setSize(620, 300);
         this.setControls(new ViewParameter(true, false, false, false));        
         this.model = new OriginModel();
         this.gTable.setModel(model);
@@ -112,12 +112,13 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
         jLVariation = new javax.swing.JLabel();
         gTVariation = new br.com.gmp.comps.textfield.GTextField();
 
+        setClosable(true);
         setIconifiable(true);
         setTitle("Origens");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1245_.png"))); // NOI18N
-        setMaximumSize(new java.awt.Dimension(500, 300));
-        setMinimumSize(new java.awt.Dimension(500, 300));
-        setPreferredSize(new java.awt.Dimension(500, 300));
+        setMaximumSize(new java.awt.Dimension(620, 300));
+        setMinimumSize(new java.awt.Dimension(620, 300));
+        setPreferredSize(new java.awt.Dimension(620, 300));
 
         jBRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/off.png"))); // NOI18N
         jBRemove.addActionListener(new java.awt.event.ActionListener() {
@@ -163,7 +164,7 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLVariation)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(gTVariation, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                        .addComponent(gTVariation, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLBonus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

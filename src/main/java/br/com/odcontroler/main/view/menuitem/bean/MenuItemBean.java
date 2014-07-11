@@ -22,7 +22,7 @@ import javax.swing.ImageIcon;
  */
 public class MenuItemBean extends ViewBean<MenuItemView> {
 
-    private MenuItemDAO dao;
+    private final MenuItemDAO dao;
 
     /**
      * Cria nova instancia de MenuItemBean
@@ -39,6 +39,7 @@ public class MenuItemBean extends ViewBean<MenuItemView> {
     @Override
     public void commit(BeanEvent evt) throws Exception {
         dao.replaceAll(getView().getModel().getData());
+        getView().getMainScreen().reloadMenus();
     }
 
     /**

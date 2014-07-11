@@ -1,5 +1,6 @@
 package br.com.odcontroler.main;
 
+import br.com.gmp.comps.baloontip.src.BalloonUtil;
 import br.com.gmp.utils.annotations.Intercept;
 import br.com.gmp.utils.interceptors.InterceptorModule;
 import br.com.gmp.utils.system.SystemProperties;
@@ -55,22 +56,37 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         listener = injector.getInstance(MainScreenBean.class);
         listener.setScreen(this);
         printTypedMsg("Aplicaçao iniciada", INFORMATIVE_MSG);
-        loadRootMenu();
+        loadMenus();
         //printViews();
     }
 
     /**
      * Carrega o menu principal com as views no banco de dados
      */
-    private void loadRootMenu() {
+    private void loadMenus() {
         try {
             MenuBuilder builder = injector.getInstance(MenuBuilder.class);
             builder.setMainScreen(this);
             builder.setRoot(jMRoot);
             builder.build();
+            new BalloonUtil().showTimedBallon(jMRoot, "Menus carregados...");
         } catch (ClassNotFoundException | InstantiationException ex) {
             LOG.log(Level.SEVERE, null, ex);
         }
+    }
+
+    /**
+     * Carrega o menu principal com as views no banco de dados
+     */
+    public void reloadMenus() {
+        new Thread() {
+
+            @Override
+            public void run() {
+                loadMenus();
+            }
+
+        }.start();
     }
 
     /**
