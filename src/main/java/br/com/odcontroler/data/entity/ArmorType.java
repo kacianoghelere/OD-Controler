@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author kaciano
  */
-public class ArmorType extends Type {
+public class ArmorType implements Entity {
 
     @Ignore
     @NotCopiable
@@ -53,7 +53,6 @@ public class ArmorType extends Type {
      *
      * @param id {@code Long} Código do tipo
      */
-    @Override
     public void setId(Long id) {
         this.id = id;
     }
@@ -63,7 +62,6 @@ public class ArmorType extends Type {
      *
      * @return {@code String} Nome do tipo
      */
-    @Override
     public String getTitle() {
         return title;
     }
@@ -73,7 +71,6 @@ public class ArmorType extends Type {
      *
      * @param title {@code String} Nome do tipo
      */
-    @Override
     public void setTitle(String title) {
         this.title = title;
     }

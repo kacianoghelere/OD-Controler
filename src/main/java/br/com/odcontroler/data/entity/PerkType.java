@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author kaciano
  */
-public class PerkType extends Type {
+public class PerkType implements Entity {
 
     @NotCopiable
     @Ignore
@@ -43,6 +43,7 @@ public class PerkType extends Type {
      *
      * @return {@code Long} ID do PerkType
      */
+    @Override
     public Long getId() {
         return id;
     }

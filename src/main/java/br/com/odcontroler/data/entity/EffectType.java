@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author kaciano
  */
-public class EffectType extends Type {
+public class EffectType implements Entity {
 
     @NotCopiable
     @Ignore
@@ -43,6 +43,7 @@ public class EffectType extends Type {
      *
      * @return {@code Long} ID do EffectType
      */
+    @Override
     public Long getId() {
         return id;
     }

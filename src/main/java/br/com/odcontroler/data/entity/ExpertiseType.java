@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author kaciano
  */
-public class ExpertiseType extends Type {
+public class ExpertiseType implements Entity {
 
     @NotCopiable
     @Ignore
@@ -43,6 +43,7 @@ public class ExpertiseType extends Type {
      *
      * @return {@code Long} ID do ExpertiseType
      */
+    @Override
     public Long getId() {
         return id;
     }

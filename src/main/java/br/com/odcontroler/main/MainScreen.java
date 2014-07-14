@@ -20,7 +20,6 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JMenu;
@@ -29,10 +28,10 @@ import javax.swing.JMenu;
  * Tela principal
  *
  * @author kaciano
+ * @since 1.0
  */
 public class MainScreen extends javax.swing.JFrame implements Main {
 
-    protected static final Logger LOG = Logger.getLogger(MainScreen.class.getName());
     private final String ICON = "/dices/d12-icon.png";
     private MainListener listener;
     private Injector injector;
@@ -71,7 +70,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
             builder.build();
             new BalloonUtil().showTimedBallon(jMRoot, "Menus carregados...");
         } catch (ClassNotFoundException | InstantiationException ex) {
-            LOG.log(Level.SEVERE, null, ex);
+            LOGGER.log(Level.SEVERE, null, ex);
         }
     }
 
@@ -240,7 +239,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         try {
             getListener().appendLog(text);
         } catch (IOException ex) {
-            LOG.log(Level.SEVERE, null, ex);
+            LOGGER.log(Level.SEVERE, null, ex);
         }
     }
 

@@ -1,6 +1,7 @@
 package br.com.odcontroler.data.entity;
 
 import br.com.gmp.utils.annotations.ColumnName;
+import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
 import java.util.Objects;
@@ -9,21 +10,19 @@ import java.util.Objects;
  * Matérias primas
  *
  * @author kaciano
+ * @version 1.0
+ * @author kaciano
+ * @version 1.1
  */
-public class PrimeMaterial {
+public class PrimeMaterial implements Entity {
 
     @Ignore
     @NotCopiable
     @ColumnName(name = "Código")
     private Long id;
+    @Editable
     @ColumnName(name = "Nome")
     private String name;
-    @ColumnName(name = "Peso/Unidade")
-    private Double weight;
-    @ColumnName(name = "Classe")
-    private Integer materialClass;
-    @ColumnName(name = "Resistencia/Unidade")
-    private Double resistence;
 
     /**
      * Cria nova instancia de PrimeMaterial
@@ -36,22 +35,10 @@ public class PrimeMaterial {
      *
      * @param id {@code Long} Código do material
      * @param name {@code String} Nome do material
-     * @param weight {@code Double} Peso do material
-     * @param materialClass {@code Integer} Classificação do material
      */
-    public PrimeMaterial(Long id, String name, Double weight, Integer materialClass) {
+    public PrimeMaterial(Long id, String name) {
         this.id = id;
         this.name = name;
-        this.weight = weight;
-        this.materialClass = materialClass;
-        this.resistence = (weight * materialClass);
-    }
-
-    /**
-     * Método para calculo da resistencia
-     */
-    public void calcResistence() {
-        this.resistence = (weight * materialClass);
     }
 
     /**
@@ -59,6 +46,7 @@ public class PrimeMaterial {
      *
      * @return {@code Long} Código do material
      */
+    @Override
     public Long getId() {
         return id;
     }
@@ -90,69 +78,11 @@ public class PrimeMaterial {
         this.name = name;
     }
 
-    /**
-     * Retorna o Peso do material
-     *
-     * @return {@code Double} Peso do material
-     */
-    public Double getWeight() {
-        return weight;
-    }
-
-    /**
-     * Modifica o Peso do material
-     *
-     * @param weight {@code Double} Peso do material
-     */
-    public void setWeight(Double weight) {
-        this.weight = weight;
-    }
-
-    /**
-     * Retorna a Classificação do material
-     *
-     * @return {@code Integer} Classificação do material
-     */
-    public Integer getMaterialClass() {
-        return materialClass;
-    }
-
-    /**
-     * Modifica a Classificação do material
-     *
-     * @param materialClass {@code Integer} Classificação do material
-     */
-    public void setMaterialClass(Integer materialClass) {
-        this.materialClass = materialClass;
-    }
-
-    /**
-     * Retorna a Resistencia do material
-     *
-     * @return {@code Double} Resistencia do material
-     */
-    public Double getResistence() {
-        resistence = (weight * materialClass);
-        return resistence;
-    }
-
-    /**
-     * Modifica a Resistencia do material
-     *
-     * @param resistence {@code Double} Resistencia do material
-     */
-    public void setResistence(Double resistence) {
-        this.resistence = resistence;
-    }
-
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 23 * hash + Objects.hashCode(this.id);
         hash = 23 * hash + Objects.hashCode(this.name);
-        hash = 23 * hash + Objects.hashCode(this.weight);
-        hash = 23 * hash + Objects.hashCode(this.materialClass);
-        hash = 23 * hash + Objects.hashCode(this.resistence);
         return hash;
     }
 
@@ -168,16 +98,7 @@ public class PrimeMaterial {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.weight, other.weight)) {
-            return false;
-        }
-        if (!Objects.equals(this.materialClass, other.materialClass)) {
-            return false;
-        }
-        return Objects.equals(this.resistence, other.resistence);
+        return Objects.equals(this.name, other.name);
     }
 
     @Override
