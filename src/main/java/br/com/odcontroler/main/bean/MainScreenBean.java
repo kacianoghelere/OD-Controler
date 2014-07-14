@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 
@@ -29,8 +28,7 @@ import javax.swing.JInternalFrame;
  * @author kaciano
  */
 public class MainScreenBean implements MainListener {
-
-    protected static final Logger LOGGER = Logger.getLogger(MainScreenBean.class.getName());
+    
     private View actualView;
     private MainScreen screen;
     private Map<String, MenuItem> viewMap;
