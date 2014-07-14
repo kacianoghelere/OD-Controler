@@ -66,7 +66,7 @@ public class TermsBean extends ViewBean<TermsView> {
      * @since 1.1
      */
     public void addEffectTp(BeanEvent evt) throws Exception {
-        Long id = getNextEffectID();
+        Long id = getNext(effectDAO.getList());
         ObjectWrapper ow = evt.getWrapper();
         EffectType type = new EffectType(id, (String) ow.getValue("name"));
         view.getEffectModel().add(type);
@@ -80,7 +80,7 @@ public class TermsBean extends ViewBean<TermsView> {
      * @since 1.1
      */
     public void addPerkTp(BeanEvent evt) throws Exception {
-        Long id = getNext(objectToEntity(perkDao.getList()));
+        Long id = getNext(perkDao.getList());
         ObjectWrapper ow = evt.getWrapper();
         PerkType type = new PerkType(id, (String) ow.getValue("name"));
         view.getPerkModel().add(type);
@@ -94,7 +94,7 @@ public class TermsBean extends ViewBean<TermsView> {
      * @since 1.1
      */
     public void addExpTp(BeanEvent evt) throws Exception {
-        Long id = getNextExpertiseID();
+        Long id = getNext(expDAO.getList());
         ObjectWrapper ow = evt.getWrapper();
         ExpertiseType type = new ExpertiseType(id, (String) ow.getValue("name"));
         view.getExpModel().add(type);
@@ -108,7 +108,7 @@ public class TermsBean extends ViewBean<TermsView> {
      * @since 1.1
      */
     public void addArmorType(BeanEvent evt) throws Exception {
-        Long id = getNextArmorTpID();
+        Long id = getNext(armorDAO.getList());
         ObjectWrapper ow = evt.getWrapper();
         ArmorType type = new ArmorType(id, (String) ow.getValue("name"));
         view.getArmorModel().add(type);
@@ -122,87 +122,10 @@ public class TermsBean extends ViewBean<TermsView> {
      * @since 1.1
      */
     public void addMaterial(BeanEvent evt) throws Exception {
-        Long id = getNextMaterialID();
+        Long id = getNext(materialsDAO.getList());
         ObjectWrapper ow = evt.getWrapper();
         PrimeMaterial mat = new PrimeMaterial(id, (String) ow.getValue("name"));
         view.getMaterialModel().add(mat);
-    }
-
-    /**
-     * Retorna o próximo ID dos EffectType
-     *
-     * @return {@code Long} Próximo ID para EffectType
-     */
-    public Long getNextEffectID() {
-        Long id = (long) 0;
-        for (EffectType type : view.getEffectModel().getData()) {
-            if (type.getId() > id) {
-                id = type.getId();
-            }
-        }
-        return (id + 1);
-    }
-
-    /**
-     * Retorna o próximo ID dos PerkTypes
-     *
-     * @return {@code Long} Próximo ID para PerkType
-     */
-    public Long getNextPerkID() {
-        Long id = (long) 0;
-        for (PerkType type : view.getPerkModel().getData()) {
-            if (type.getId() > id) {
-                id = type.getId();
-            }
-        }
-        return (id + 1);
-    }
-
-    /**
-     * Retorna o próximo ID dos ExpertiseTypes
-     *
-     * @return {@code Long} Próximo ID para ExpertiseType
-     */
-    public Long getNextExpertiseID() {
-        Long id = (long) 0;
-        for (ExpertiseType type : view.getExpModel().getData()) {
-            if (type.getId() > id) {
-                id = type.getId();
-            }
-        }
-        return (id + 1);
-    }
-
-    /**
-     * Retorna o próximo ID dos ArmorTypes
-     *
-     * @return {@code Long} Próximo ID para ArmorType
-     * @since 1.1
-     */
-    public Long getNextArmorTpID() {
-        Long id = (long) 0;
-        for (ArmorType type : view.getArmorModel().getData()) {
-            if (type.getId() > id) {
-                id = type.getId();
-            }
-        }
-        return (id + 1);
-    }
-
-    /**
-     * Retorna o próximo ID dos PrimeMaterials
-     *
-     * @return {@code Long} Próximo ID para PrimeMaterial
-     * @since 1.1
-     */
-    public Long getNextMaterialID() {
-        Long id = (long) 0;
-        for (PrimeMaterial material : view.getMaterialModel().getData()) {
-            if (material.getId() > id) {
-                id = material.getId();
-            }
-        }
-        return (id + 1);
     }
 
     /**
@@ -212,9 +135,9 @@ public class TermsBean extends ViewBean<TermsView> {
      * @return {@code Long} Próximo ID da entidade
      * @since 1.1
      */
-    public Long getNext(List<Entity> list) {
+    public Long getNext(List list) {
         Long id = (long) 0;
-        for (Entity material : list) {
+        for (Entity material : objectToEntity(list)) {
             if (material.getId() > id) {
                 id = material.getId();
             }
