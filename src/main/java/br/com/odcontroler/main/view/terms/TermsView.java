@@ -61,7 +61,6 @@ public class TermsView extends View {
         this.gLtExpTp.setModel(expModel);
         this.gLtArmorTp.setModel(armorModel);
         this.gLtMaterials.setModel(materialModel);
-        System.out.println("ID do perk: ");
         try {
             this.bean.load(null);
         } catch (Exception ex) {

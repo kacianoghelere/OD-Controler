@@ -37,7 +37,6 @@ public class TermsBean extends ViewBean<TermsView> {
         this.expDAO = new ExpertiseTypeDAO();
         this.armorDAO = new ArmorTypeDAO();
         this.materialsDAO = new MaterialsDAO();
-        System.out.println("Merda");
     }
 
     @Override
@@ -66,7 +65,7 @@ public class TermsBean extends ViewBean<TermsView> {
      * @since 1.1
      */
     public void addEffectTp(BeanEvent evt) throws Exception {
-        Long id = getNext(effectDAO.getList());
+        Long id = getNext(view.getEffectModel().getData());
         ObjectWrapper ow = evt.getWrapper();
         EffectType type = new EffectType(id, (String) ow.getValue("name"));
         view.getEffectModel().add(type);
@@ -80,7 +79,7 @@ public class TermsBean extends ViewBean<TermsView> {
      * @since 1.1
      */
     public void addPerkTp(BeanEvent evt) throws Exception {
-        Long id = getNext(perkDao.getList());
+        Long id = getNext(view.getPerkModel().getData());
         ObjectWrapper ow = evt.getWrapper();
         PerkType type = new PerkType(id, (String) ow.getValue("name"));
         view.getPerkModel().add(type);
@@ -94,7 +93,7 @@ public class TermsBean extends ViewBean<TermsView> {
      * @since 1.1
      */
     public void addExpTp(BeanEvent evt) throws Exception {
-        Long id = getNext(expDAO.getList());
+        Long id = getNext(view.getExpModel().getData());
         ObjectWrapper ow = evt.getWrapper();
         ExpertiseType type = new ExpertiseType(id, (String) ow.getValue("name"));
         view.getExpModel().add(type);
@@ -108,7 +107,7 @@ public class TermsBean extends ViewBean<TermsView> {
      * @since 1.1
      */
     public void addArmorType(BeanEvent evt) throws Exception {
-        Long id = getNext(armorDAO.getList());
+        Long id = getNext(view.getArmorModel().getData());
         ObjectWrapper ow = evt.getWrapper();
         ArmorType type = new ArmorType(id, (String) ow.getValue("name"));
         view.getArmorModel().add(type);
@@ -122,7 +121,7 @@ public class TermsBean extends ViewBean<TermsView> {
      * @since 1.1
      */
     public void addMaterial(BeanEvent evt) throws Exception {
-        Long id = getNext(materialsDAO.getList());
+        Long id = getNext(view.getMaterialModel().getData());
         ObjectWrapper ow = evt.getWrapper();
         PrimeMaterial mat = new PrimeMaterial(id, (String) ow.getValue("name"));
         view.getMaterialModel().add(mat);

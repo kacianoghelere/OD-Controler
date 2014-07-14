@@ -100,7 +100,7 @@ public class ExpertiseType implements Entity {
 
     @Override
     public String toString() {
-        return title;
+        return id + " - " + title;
     }
 
 }

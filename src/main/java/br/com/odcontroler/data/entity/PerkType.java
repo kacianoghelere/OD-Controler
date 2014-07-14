@@ -100,7 +100,7 @@ public class PerkType implements Entity {
 
     @Override
     public String toString() {
-        return title;
+        return id + " - " + title;
     }
 
 }
