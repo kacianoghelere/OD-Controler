@@ -2,10 +2,12 @@ package br.com.odcontroler.main.interfaces;
 
 import br.com.odcontroler.data.entity.MenuItem;
 import br.com.odcontroler.main.MainScreen;
+import br.com.odcontroler.main.bean.MainScreenBean;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.View;
 import java.io.IOException;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * Interface do bean para a tela principal
@@ -13,6 +15,13 @@ import java.util.Map;
  * @author kaciano
  */
 public interface MainListener {
+
+    /**
+     * Acesso rápido ao logger
+     *
+     * @since 1.1
+     */
+    public static final Logger LOGGER = Logger.getLogger(MainScreenBean.class.getName());
 
     /**
      * Metodo padrão para salvar

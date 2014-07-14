@@ -30,7 +30,7 @@ import javax.swing.JInternalFrame;
  */
 public class MainScreenBean implements MainListener {
 
-    protected static final Logger LOG = Logger.getLogger(MainScreenBean.class.getName());
+    protected static final Logger LOGGER = Logger.getLogger(MainScreenBean.class.getName());
     private View actualView;
     private MainScreen screen;
     private Map<String, MenuItem> viewMap;
@@ -46,7 +46,7 @@ public class MainScreenBean implements MainListener {
         try {
             startLog();
         } catch (IOException ex) {
-            LOG.log(Level.SEVERE, null, ex);
+            LOGGER.log(Level.SEVERE, null, ex);
         }
     }
 
@@ -73,7 +73,7 @@ public class MainScreenBean implements MainListener {
         if (getActualView() != null && getActualView().canCommit()) {
             getActualView().commit();
         } else if (!getActualView().canCommit()) {
-            screen.printTypedMsg("Esta View não pode salvar!", MainScreen.WARNING_MSG);
+            screen.printTypedMsg("Esta View não pode salvar!", Main.WARNING_MSG);
         }
     }
 
@@ -83,7 +83,7 @@ public class MainScreenBean implements MainListener {
         if (getActualView() != null && getActualView().canProcces()) {
             getActualView().process();
         } else if (!getActualView().canProcces()) {
-            screen.printTypedMsg("Esta View não pode processar!", MainScreen.WARNING_MSG);
+            screen.printTypedMsg("Esta View não pode processar!", Main.WARNING_MSG);
         }
     }
 
@@ -93,7 +93,7 @@ public class MainScreenBean implements MainListener {
         if (getActualView() != null && getActualView().canClear()) {
             getActualView().clear();
         } else if (!getActualView().canClear()) {
-            screen.printTypedMsg("Esta View não pode limpar!", MainScreen.WARNING_MSG);
+            screen.printTypedMsg("Esta View não pode limpar!", Main.WARNING_MSG);
         }
     }
 
@@ -103,7 +103,7 @@ public class MainScreenBean implements MainListener {
         if (getActualView() != null && getActualView().canLoad()) {
             getActualView().load();
         } else if (!getActualView().canLoad()) {
-            screen.printTypedMsg("Esta View não pode carregar!", MainScreen.WARNING_MSG);
+            screen.printTypedMsg("Esta View não pode carregar!", Main.WARNING_MSG);
         }
     }
 
@@ -121,7 +121,8 @@ public class MainScreenBean implements MainListener {
                 this.actualView.canClear() != null ? actualView.canClear() : false,
                 this.actualView.canLoad() != null ? actualView.canLoad() : false
         ));
-        System.out.println("View ativa: " + actualView.getClass().getSimpleName());
+        String text = "View ativa: " + actualView.getClass().getSimpleName();
+        screen.printTypedMsg(text, Main.INFORMATIVE_MSG);
     }
 
     @Override
@@ -140,7 +141,7 @@ public class MainScreenBean implements MainListener {
                     insertView(newView);
                     found = true;
                 } catch (ClassNotFoundException | InstantiationException ex) {
-                    LOG.log(Level.SEVERE, null, ex);
+                    LOGGER.log(Level.SEVERE, null, ex);
                 }
                 break;
             }
@@ -165,7 +166,7 @@ public class MainScreenBean implements MainListener {
                         JInternalFrame jif = (JInternalFrame) c;
                         jif.setSelected(false);
                     } catch (PropertyVetoException ex) {
-                        LOG.log(Level.SEVERE, null, ex);
+                        LOGGER.log(Level.SEVERE, null, ex);
                     }
                 }
             }
@@ -176,7 +177,7 @@ public class MainScreenBean implements MainListener {
                 screen.getDesktop().setSelectedFrame(view);
                 view.setSelected(true);
             } catch (PropertyVetoException ex) {
-                LOG.log(Level.SEVERE, null, ex);
+                LOGGER.log(Level.SEVERE, null, ex);
             }
         } else {
             screen.printTypedMsg("View já carregada!", Main.INFORMATIVE_MSG);
