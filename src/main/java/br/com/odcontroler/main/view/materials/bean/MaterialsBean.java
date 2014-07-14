@@ -8,7 +8,6 @@ import br.com.odcontroler.main.view.materials.MaterialsView;
 import br.com.odcontroler.main.view.bean.ViewBean;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Bean para controle da tela de materiais
@@ -54,7 +53,7 @@ public class MaterialsBean extends ViewBean<MaterialsView> {
             pm.setResistence(pm.getWeight() * pm.getMaterialClass());
             getView().getModel().add(pm);
         } catch (Exception ex) {
-            Logger.getLogger(MaterialsBean.class.getName()).log(Level.SEVERE, null, ex);
+            LOGGER.log(Level.SEVERE, null, ex);
         }
     }
 

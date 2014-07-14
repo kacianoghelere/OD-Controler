@@ -17,7 +17,6 @@ import br.com.odcontroler.main.view.materials.model.MaterialsModel;
 import br.com.odcontroler.main.view.object.ViewParameter;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * View de cadastro para matérias primas
@@ -79,7 +78,7 @@ public class MaterialsView extends View implements TableSource<PrimeMaterial>, T
                 }
             }
         } catch (Exception e) {
-            Logger.getLogger(MaterialsView.class.getName()).log(Level.SEVERE, null, e);
+            LOGGER.log(Level.SEVERE, null, e);
         }
     }
 
@@ -92,8 +91,7 @@ public class MaterialsView extends View implements TableSource<PrimeMaterial>, T
                     model.remove(gTable.getSelectedRows());
                 }
             } catch (NumberFormatException e) {
-                Logger.getLogger(MaterialsView.class.getName())
-                        .log(Level.SEVERE, null, e);
+                LOGGER.log(Level.SEVERE, null, e);
             }
         }
     }
