@@ -72,7 +72,6 @@ public class ArmorView extends View<ArmorBean> implements TableView, TableSource
         getMainScreen().getListener().insertView(dialog);
         if (dialog.getArmor() != null) {
             try {
-
                 bean.add(new BeanEvent(this, dialog.getArmor()));
             } catch (IllegalArgumentException | IllegalAccessException ex) {
                 Logger.getLogger(ArmorView.class.getName()).log(Level.SEVERE, null, ex);

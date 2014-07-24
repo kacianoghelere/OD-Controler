@@ -236,7 +236,8 @@ public class MenuBuilder {
         item.setIcon(new ImageIcon(getClass().getResource(view.getIcon())));
         if (execute) {
             final ObjectInstance instance;
-            instance = new ObjectInstance(Class.forName(view.getViewClass()),
+            instance = new ObjectInstance(
+                    Class.forName(view.getViewClass().replaceAll(".java", "")),
                     new Class[]{MainScreen.class},
                     new Object[]{mainScreen});
             Map<String, MenuItem> viewMap = mainScreen.getListener().getViewMap();

@@ -19,6 +19,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -32,10 +33,13 @@ import javax.swing.JMenu;
  */
 public class MainScreen extends javax.swing.JFrame implements Main {
 
-    protected static final Logger LOG = Logger.getLogger(MainScreen.class.getName());
+    protected final Logger LOGGER = Logger.getLogger(MainScreen.class.getName());
     private final String ICON = "/dices/d12-icon.png";
+    private final String PROP = "/br/com/odcontroler/properties/od-properties.properties";
+    private final String VIEWPATH = "src/main/java/br/com/odcontroler/main/view";
     private MainListener listener;
     private Injector injector;
+    protected Properties PROPS;
 
     /**
      * Cria novo MainScreen
@@ -48,16 +52,20 @@ public class MainScreen extends javax.swing.JFrame implements Main {
      * Metodo de inicialização
      */
     private void initialize() {
+        loadProperties();
+        String name = getProperty("system.name");
+        String version = getProperty("system.version");
+        setTitle(name + " - Versão: " + version);
         setIconImage(new ImageIcon(getClass().getResource(ICON)).getImage());
         initComponents();
         setControls(new ViewParameter(false, false, false, false));
-        //setExtendedState(Frame.MAXIMIZED_BOTH);
+        setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
         injector = Guice.createInjector(new InterceptorModule());
         listener = injector.getInstance(MainScreenBean.class);
         listener.setScreen(this);
         printTypedMsg("Aplicaçao iniciada", INFORMATIVE_MSG);
         loadMenus();
-        //printViews();
+        printViews();
     }
 
     /**
@@ -71,7 +79,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
             builder.build();
             new BalloonUtil().showTimedBallon(jMRoot, "Menus carregados...");
         } catch (ClassNotFoundException | InstantiationException ex) {
-            LOG.log(Level.SEVERE, null, ex);
+            LOGGER.log(Level.SEVERE, null, ex);
         }
     }
 
@@ -93,7 +101,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
      * Método que efetua a impressão de todas as views geradas
      */
     private void printViews() {
-        File viewDir = new File("src/main/java/br/com/odcontroler/main/view");
+        File viewDir = new File(VIEWPATH);
         printChild(viewDir);
     }
 
@@ -109,9 +117,31 @@ public class MainScreen extends javax.swing.JFrame implements Main {
             }
             if (file.getPath().endsWith("View.java")
                     && !file.getPath().endsWith("SubView.java")) {
-                System.out.println(file.getPath().substring(14).replaceAll("/", "."));
+                print(file.getPath().substring(14).replaceAll("/", "."));
             }
         }
+    }
+
+    /**
+     * Retorna o arquivo de propriedades do sistema
+     */
+    private void loadProperties() {
+        try {
+            PROPS = new Properties();
+            PROPS.load(getClass().getResourceAsStream(PROP));
+        } catch (IOException ex) {
+            LOGGER.log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Retorna a propriedade da chave indicada
+     *
+     * @param key {@code String} Chave da propriedade
+     * @return {@code String} Valor da propriedade
+     */
+    public String getProperty(String key) {
+        return PROPS.getProperty(key);
     }
 
     @Override
@@ -196,6 +226,15 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     }
 
     /**
+     * Imprime o objeto no console
+     *
+     * @param object {@code Object} Objeto a ser impresso no console
+     */
+    private void print(Object object) {
+        System.out.println(object);
+    }
+
+    /**
      * <html>
      * Imprime uma mensagem na barra de mensagens <br><br>
      * <table border="1">
@@ -240,7 +279,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         try {
             getListener().appendLog(text);
         } catch (IOException ex) {
-            LOG.log(Level.SEVERE, null, ex);
+            LOGGER.log(Level.SEVERE, null, ex);
         }
     }
 
@@ -287,32 +326,27 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         switch (type) {
             case 1:
                 printMsg(text, INFORMATIVE_ICON);
-                System.out.println(SystemProperties.ANSI_BLUE
-                        + "(INFO) " + text
+                print(SystemProperties.ANSI_BLUE + "(INFO) " + text
                         + SystemProperties.ANSI_BLACK);
                 break;
             case 2:
                 printMsg(text, QUESTION_ICON);
-                System.out.println(SystemProperties.ANSI_BLUE
-                        + "(QUESTION) " + text
+                print(SystemProperties.ANSI_BLUE + "(QUESTION) " + text
                         + SystemProperties.ANSI_BLACK);
                 break;
             case 3:
                 printMsg(text, WARNING_ICON);
-                System.out.println(SystemProperties.ANSI_YELLOW
-                        + "(WARNING) " + text
+                print(SystemProperties.ANSI_YELLOW + "(WARNING) " + text
                         + SystemProperties.ANSI_BLACK);
                 break;
             case 4:
                 printMsg(text, ERROR_ICON);
-                System.out.println(SystemProperties.ANSI_RED
-                        + "(ERROR) " + text
+                print(SystemProperties.ANSI_RED + "(ERROR) " + text
                         + SystemProperties.ANSI_BLACK);
                 break;
             case 5:
                 printMsg(text, SUCCESS_ICON);
-                System.out.println(SystemProperties.ANSI_GREEN
-                        + "(SUCCESS) " + text
+                print(SystemProperties.ANSI_GREEN + "(SUCCESS) " + text
                         + SystemProperties.ANSI_BLACK);
                 break;
             default:
@@ -368,7 +402,6 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         jMRoot = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("RPG");
         setName("Form"); // NOI18N
 
         jToolBar.setFloatable(false);
