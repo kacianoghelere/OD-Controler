@@ -5,13 +5,17 @@ import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.odcontroler.data.db.dao.WeaponDAO;
 import br.com.odcontroler.data.entity.Weapon;
 import br.com.odcontroler.main.MainScreen;
+import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.util.Description;
-import br.com.odcontroler.main.util.TableUtil;
 import br.com.odcontroler.main.view.View;
 import br.com.odcontroler.main.view.interfaces.TableView;
+import br.com.odcontroler.main.view.object.ViewParameter;
 import br.com.odcontroler.main.view.weapon.bean.WeaponBean;
 import br.com.odcontroler.main.view.weapon.model.WeaponModel;
+import br.com.odcontroler.main.view.weapon.sub.WeaponSubView;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * View para cadastro e controle de armas
@@ -22,7 +26,6 @@ public class WeaponView extends View implements TableView, TableSource<Weapon> {
 
     private WeaponBean bean;
     private WeaponModel model;
-    private TableUtil tableUtil;
 
     /**
      * Cria nova instancia de WeaponView
@@ -38,25 +41,40 @@ public class WeaponView extends View implements TableView, TableSource<Weapon> {
      * Método de inicialização
      */
     private void initialize() {
-        initComponents();
+        this.setControls(new ViewParameter(true, false, true, true));
+        this.setSize(662, 481);
+        this.initComponents();
         this.model = new WeaponModel();
-        this.tableUtil = new TableUtil(this);
         this.bean = new WeaponBean(this);
     }
 
     @Override
     public void add() {
-
+        WeaponSubView dialog = new WeaponSubView(this, null);
+        getMainScreen().getListener().insertView(dialog);
+        if (dialog.getWeapon() != null) {
+            try {
+                bean.add(new BeanEvent(this, dialog.getWeapon()));
+            } catch (IllegalArgumentException | IllegalAccessException ex) {
+                LOGGER.log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                LOGGER.log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     @Override
-    public void remove() {
-
+    public void remove() throws Exception {
+        bean.remove(null);
     }
 
     @Override
     public void edit() {
-
+        try {
+            bean.edit(null);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -183,7 +201,11 @@ public class WeaponView extends View implements TableView, TableSource<Weapon> {
     }//GEN-LAST:event_jBEditActionPerformed
 
     private void jBRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoveActionPerformed
-        remove();
+        try {
+            remove();
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBRemoveActionPerformed
 
     private void jBAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddActionPerformed

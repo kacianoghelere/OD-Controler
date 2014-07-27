@@ -4,7 +4,6 @@ import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
-import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -22,12 +21,6 @@ public class Element {
     @Editable
     @ColumnName(name = "Nome")
     private String title;
-    @ColumnName(name = "Simbolo")
-    private String symbol;
-    @ColumnName(name = "Bonûs")
-    private Element bonus;
-    @ColumnName(name = "Fraqueza")
-    private Element weakness;
 
     /**
      * Cria nova instancia de Element
@@ -40,29 +33,10 @@ public class Element {
      *
      * @param id {@code Long} ID do elemento
      * @param title {@code String} Titulo do elemento
-     * @param symbol {@code String} Simbolo do elemento
      */
-    public Element(Long id, String title, String symbol) {
+    public Element(Long id, String title) {
         this.id = id;
         this.title = title;
-        this.symbol = symbol;
-    }
-
-    /**
-     * Cria nova instancia de Element
-     *
-     * @param id {@code Long} ID do elemento
-     * @param title {@code String} Titulo do elemento
-     * @param symbol {@code String} Simbolo do elemento
-     * @param bonus {@code Element} Elemento de ganho
-     * @param weakness {@code Element} Elemento de perda
-     */
-    public Element(Long id, String title, String symbol, Element bonus, Element weakness) {
-        this.id = id;
-        this.title = title;
-        this.symbol = symbol;
-        this.bonus = bonus;
-        this.weakness = weakness;
     }
 
     /**
@@ -101,68 +75,11 @@ public class Element {
         this.title = title;
     }
 
-    /**
-     * Retorna o Simbolo do elemento
-     *
-     * @return {@code String} Simbolo do elemento
-     */
-    public String getSymbol() {
-        return symbol;
-    }
-
-    /**
-     * Modifica o Simbolo do elemento
-     *
-     * @param symbol {@code String} Simbolo do elemento
-     */
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
-    }
-
-    /**
-     * Retorna o Elemento de ganho
-     *
-     * @return {@code Element} Elemento de ganho
-     */
-    public Element getBonus() {
-        return bonus;
-    }
-
-    /**
-     * Modifica o Elemento de ganho
-     *
-     * @param bonus {@code Element} Elemento de ganho
-     */
-    public void setBonus(Element bonus) {
-        this.bonus = bonus;
-    }
-
-    /**
-     * Retorna o Elemento de perda
-     *
-     * @return {@code Element} Elemento de perda
-     */
-    public Element getWeakness() {
-        return weakness;
-    }
-
-    /**
-     * Modifica o Elemento de perda
-     *
-     * @param weakness {@code Element} Elemento de perda
-     */
-    public void setWeakness(Element weakness) {
-        this.weakness = weakness;
-    }
-
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 53 * hash + Objects.hashCode(this.id);
         hash = 53 * hash + Objects.hashCode(this.title);
-        hash = 53 * hash + Objects.hashCode(this.symbol);
-        hash = 53 * hash + Objects.hashCode(this.bonus);
-        hash = 53 * hash + Objects.hashCode(this.weakness);
         return hash;
     }
 
@@ -178,16 +95,7 @@ public class Element {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.title, other.title)) {
-            return false;
-        }
-        if (!Objects.equals(this.symbol, other.symbol)) {
-            return false;
-        }
-        if (!Objects.equals(this.bonus, other.bonus)) {
-            return false;
-        }
-        return Objects.equals(this.weakness, other.weakness);
+        return Objects.equals(this.title, other.title);
     }
 
     @Override

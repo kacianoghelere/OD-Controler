@@ -101,13 +101,13 @@
             </Menu>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMRoot">
+        <Menu class="javax.swing.JMenu" name="root">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/RpgIcons/misc/slice1214_.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Informa&#xe7;&#xf5;es"/>
-            <Property name="name" type="java.lang.String" value="jMRoot" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="root" noResource="true"/>
           </Properties>
         </Menu>
       </SubComponents>

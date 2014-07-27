@@ -1,11 +1,11 @@
 package br.com.odcontroler.main.view.armor.sub;
 
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
-import br.com.odcontroler.data.enums.Align;
+import br.com.odcontroler.data.enums.Alignment;
 import br.com.odcontroler.data.entity.Armor;
 import br.com.odcontroler.data.entity.ArmorType;
 import br.com.odcontroler.data.entity.Origin;
-import br.com.odcontroler.data.entity.PrimeMaterial;
+import br.com.odcontroler.data.entity.Material;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.sub.SubView;
 import br.com.odcontroler.main.view.armor.ArmorView;
@@ -31,9 +31,9 @@ public class ArmorSubView extends SubView {
     private ArmorBean bean;
     private final ArmorView view;
     private GComboBoxModel<ArmorType> armorTypeModel;
-    private GComboBoxModel<PrimeMaterial> materialModel;
+    private GComboBoxModel<Material> materialModel;
     private GComboBoxModel<Origin> originModel;
-    private GComboBoxModel<Align> alignModel;
+    private GComboBoxModel<Alignment> alignmentModel;
 
     /**
      * Cria nova instancia de ArmorSubView
@@ -64,8 +64,8 @@ public class ArmorSubView extends SubView {
         this.gCBMaterial.setGModel(materialModel);
         this.originModel = new GComboBoxModel<>(bean.getOriginDAO().getList());
         this.gCBOrigin.setGModel(originModel);
-        this.alignModel = new GComboBoxModel<>(Align.values());
-        this.gCBAlign.setGModel(alignModel);
+        this.alignmentModel = new GComboBoxModel<>(Alignment.values());
+        this.gCBAlignment.setGModel(alignmentModel);
         //----------------------------------------------------------------------
         JMenuItem gen;
         gen = new JMenuItem("Gerar nome", new ImageIcon(getClass()
@@ -84,14 +84,14 @@ public class ArmorSubView extends SubView {
     }
 
     /**
-     * Cria o nome da armadura automaticamentes
+     * Cria o nome da armadura automaticamente
      *
      * @since 1.0
      */
     private void autoName() {
         if (gCBType.validateComponent() && gCBMaterial.validateComponent() && gCBOrigin.validateComponent()) {
             ArmorType prefix = this.armorTypeModel.getSelectedItem();
-            PrimeMaterial mat1 = this.materialModel.getSelectedItem();
+            Material mat1 = this.materialModel.getSelectedItem();
             Origin origin = this.originModel.getSelectedItem();
             this.gTName.setText(prefix.getTitle() + " " + origin.getName()
                     + " de " + mat1.getName());
@@ -122,14 +122,14 @@ public class ArmorSubView extends SubView {
                 this.gTADesc.setText(armor.getDescription());
                 this.gCBType.setSelectedItem(armor.getType());
                 this.gCBMaterial.setSelectedItem(armor.getMaterial());
-                this.gCBAlign.setSelectedItem(armor.getAlign());
+                this.gCBAlignment.setSelectedItem(armor.getAlignment());
                 this.gCBOrigin.setSelectedItem(armor.getOrigin());
                 this.jSpinPrice.setValue(armor.getPrice());
                 this.jSpinCA.setValue(armor.getArmorClass());
                 this.jSpinMov.setValue(armor.getMovReduction());
             }
         } catch (Exception e) {
-            Logger.getLogger(ArmorSubView.class.getName()).log(Level.SEVERE, null, e);
+            LOGGER.log(Level.SEVERE, null, e);
         }
     }
 
@@ -138,7 +138,7 @@ public class ArmorSubView extends SubView {
      *
      * @since 1.0
      */
-    private void buildArmor() {
+    private void build() {
         if (this.armor == null) {
             this.armor = new Armor();
         }
@@ -151,7 +151,7 @@ public class ArmorSubView extends SubView {
         this.armor.setType(armorTypeModel.getSelectedItem());
         this.armor.setMaterial(materialModel.getSelectedItem());
         this.armor.setArmorClass((Integer) jSpinCA.getValue());
-        this.armor.setAlign(alignModel.getSelectedItem());
+        this.armor.setAlignment(alignmentModel.getSelectedItem());
         this.armor.setOrigin(originModel.getSelectedItem());
         this.armor.setMovReduction((Integer) jSpinMov.getValue());
     }
@@ -184,7 +184,7 @@ public class ArmorSubView extends SubView {
      *
      * @return {@code GComboBoxModel(PrimeMaterial)} Materiais
      */
-    public GComboBoxModel<PrimeMaterial> getMaterialModel() {
+    public GComboBoxModel<Material> getMaterialModel() {
         return materialModel;
     }
 
@@ -196,6 +196,16 @@ public class ArmorSubView extends SubView {
      */
     public GComboBoxModel<Origin> getOriginModel() {
         return originModel;
+    }
+
+    /**
+     * Retorna o Modelo dos alinhamentos
+     *
+     * @return {@code GComboBoxModel(Alignment)} Modelo dos alinhamentos
+     * @since 1.1
+     */
+    public GComboBoxModel<Alignment> getAlignmentModel() {
+        return alignmentModel;
     }
 
     /**
@@ -228,7 +238,7 @@ public class ArmorSubView extends SubView {
         gCBType = new br.com.gmp.comps.combobox.GComboBox();
         jLName = new javax.swing.JLabel();
         jLAlign = new javax.swing.JLabel();
-        gCBAlign = new br.com.gmp.comps.combobox.GComboBox();
+        gCBAlignment = new br.com.gmp.comps.combobox.GComboBox();
         jSPModifiers = new javax.swing.JScrollPane();
         jPModifiers = new javax.swing.JPanel();
         jSpinMov = new javax.swing.JSpinner();
@@ -306,7 +316,7 @@ public class ArmorSubView extends SubView {
                             .addComponent(jLAlign))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(gCBAlign, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(gCBAlignment, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(gCBOrigin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(gCBMaterial, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
@@ -314,7 +324,7 @@ public class ArmorSubView extends SubView {
 
         jPBasicsLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {JLType, jLMat1, jLMat2, jLName});
 
-        jPBasicsLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {gCBAlign, gCBMaterial, gCBOrigin, gCBType, gTName});
+        jPBasicsLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {gCBAlignment, gCBMaterial, gCBOrigin, gCBType, gTName});
 
         jPBasicsLayout.setVerticalGroup(
             jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,12 +347,12 @@ public class ArmorSubView extends SubView {
                     .addComponent(jLMat2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(gCBAlign, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gCBAlignment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLAlign))
                 .addContainerGap())
         );
 
-        jPBasicsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCBAlign, gCBMaterial, gCBOrigin, gCBType, gTName});
+        jPBasicsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCBAlignment, gCBMaterial, gCBOrigin, gCBType, gTName});
 
         jTabbedPane1.addTab("Configurações basicas", new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/armor/DK/DK_0.png")), jPBasics); // NOI18N
 
@@ -455,13 +465,12 @@ public class ArmorSubView extends SubView {
 
     private void jBAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddActionPerformed
         if (validateFields()) {
-            buildArmor();
+            build();
             try {
                 view.getBean().add(new BeanEvent(view, armor));
 
             } catch (Exception ex) {
-                Logger.getLogger(ArmorSubView.class
-                        .getName()).log(Level.SEVERE, null, ex);
+                LOGGER.log(Level.SEVERE, null, ex);
             }
             this.dispose();
         }
@@ -469,7 +478,7 @@ public class ArmorSubView extends SubView {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLType;
-    private br.com.gmp.comps.combobox.GComboBox gCBAlign;
+    private br.com.gmp.comps.combobox.GComboBox gCBAlignment;
     private br.com.gmp.comps.combobox.GComboBox gCBMaterial;
     private br.com.gmp.comps.combobox.GComboBox gCBOrigin;
     private br.com.gmp.comps.combobox.GComboBox gCBType;

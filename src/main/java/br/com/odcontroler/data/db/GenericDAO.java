@@ -23,7 +23,7 @@ import java.util.List;
 public class GenericDAO<T> implements DAO<T> {
 
     private Class<T> objectClass;
-    private String dir = SystemProperties.USER_HOME + "/.config/rpg/";
+    private String dir = ".config/rpg/";
     private String database;
     private String sufix = ".yap";
 
@@ -35,7 +35,7 @@ public class GenericDAO<T> implements DAO<T> {
                 .getGenericSuperclass())).getActualTypeArguments()[0];
         File file = new File(dir);
         if (!file.exists()) {
-            file.mkdir();
+            file.mkdirs();
         }
         this.database = dir + (new EntityMap().getMap().get(objectClass)) + sufix;
     }

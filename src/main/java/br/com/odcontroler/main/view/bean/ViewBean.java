@@ -1,9 +1,11 @@
 package br.com.odcontroler.main.view.bean;
 
+import br.com.gmp.comps.cleaner.ComponentCleaner;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.View;
 import br.com.odcontroler.main.view.interfaces.BeanListener;
 import java.util.logging.Logger;
+import javax.swing.JInternalFrame;
 
 /**
  * Bean padrão para implementação de ViewBeans
@@ -39,7 +41,8 @@ public class ViewBean<T> implements BeanListener<T> {
 
     @Override
     public void clear(BeanEvent evt) throws Exception {
-        System.out.println("Clear not implemented yet.");
+        new ComponentCleaner(true).clean((JInternalFrame) view);
+        System.out.println("(INFO) Dados removidos dos campos.");
     }
 
     @Override

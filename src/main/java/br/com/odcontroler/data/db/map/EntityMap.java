@@ -12,7 +12,7 @@ import br.com.odcontroler.data.entity.MenuItem;
 import br.com.odcontroler.data.entity.ExpertiseType;
 import br.com.odcontroler.data.entity.Perk;
 import br.com.odcontroler.data.entity.Menu;
-import br.com.odcontroler.data.entity.PrimeMaterial;
+import br.com.odcontroler.data.entity.Material;
 import br.com.odcontroler.data.entity.Armor;
 import br.com.odcontroler.data.entity.Effect;
 import br.com.odcontroler.data.entity.Origin;
@@ -35,7 +35,7 @@ public class EntityMap {
     public Map<Class<?>, String> getMap() {
         Map<Class<?>, String> map = new HashMap<>();
         map.put(Element.class, "ElementDB");
-        map.put(PrimeMaterial.class, "MaterialsDB");
+        map.put(Material.class, "MaterialsDB");
         map.put(ArmorType.class, "ArmorTypeDB");
         map.put(UseType.class, "UseTypeDB");
         map.put(Effect.class, "EffectDB");

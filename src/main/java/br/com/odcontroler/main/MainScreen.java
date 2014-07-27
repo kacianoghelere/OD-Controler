@@ -75,9 +75,9 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         try {
             MenuBuilder builder = injector.getInstance(MenuBuilder.class);
             builder.setMainScreen(this);
-            builder.setRoot(jMRoot);
+            builder.setRoot(root);
             builder.build();
-            new BalloonUtil().showTimedBallon(jMRoot, "Menus carregados...");
+            new BalloonUtil().showTimedBallon(root, "Menus carregados...");
         } catch (ClassNotFoundException | InstantiationException ex) {
             LOGGER.log(Level.SEVERE, null, ex);
         }
@@ -368,7 +368,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
      * @return {@code JMenu} Menu raiz
      */
     public JMenu getRoot() {
-        return jMRoot;
+        return root;
     }
 
     /**
@@ -399,7 +399,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         jMControls = new javax.swing.JMenu();
         jMIMenus = new javax.swing.JMenuItem();
         jMIViews = new javax.swing.JMenuItem();
-        jMRoot = new javax.swing.JMenu();
+        root = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("Form"); // NOI18N
@@ -591,10 +591,10 @@ public class MainScreen extends javax.swing.JFrame implements Main {
 
         jMenuBar.add(jMOptions);
 
-        jMRoot.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1214_.png"))); // NOI18N
-        jMRoot.setText("Informações");
-        jMRoot.setName("jMRoot"); // NOI18N
-        jMenuBar.add(jMRoot);
+        root.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1214_.png"))); // NOI18N
+        root.setText("Informações");
+        root.setName("root"); // NOI18N
+        jMenuBar.add(root);
 
         setJMenuBar(jMenuBar);
 
@@ -702,11 +702,11 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     private javax.swing.JMenuItem jMISave;
     private javax.swing.JMenuItem jMIViews;
     private javax.swing.JMenu jMOptions;
-    private javax.swing.JMenu jMRoot;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar jTBMsgs;
     private javax.swing.JToolBar jTBSearch;
     private javax.swing.JToolBar jToolBar;
+    private javax.swing.JMenu root;
     // End of variables declaration//GEN-END:variables
 }

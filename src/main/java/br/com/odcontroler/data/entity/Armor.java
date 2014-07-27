@@ -1,6 +1,6 @@
 package br.com.odcontroler.data.entity;
 
-import br.com.odcontroler.data.enums.Align;
+import br.com.odcontroler.data.enums.Alignment;
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
@@ -40,9 +40,9 @@ public class Armor implements Serializable {
     @ColumnName(name = "Preço")
     private Double price;
     @ColumnName(name = "Material")
-    private PrimeMaterial material;
+    private Material material;
     @ColumnName(name = "Alinhamento")
-    private Align align;
+    private Alignment alignment;
 
     /**
      * Cria nova instancia de Armor
@@ -66,7 +66,7 @@ public class Armor implements Serializable {
      */
     public Armor(Long id, String name, Origin origin, String description,
             ArmorType type, Integer armorClass, Integer movReduction,
-            Double price, PrimeMaterial material, Align align) {
+            Double price, Material material, Alignment align) {
         this.id = id;
         this.name = name;
         this.origin = origin;
@@ -76,7 +76,7 @@ public class Armor implements Serializable {
         this.movReduction = movReduction;
         this.price = price;
         this.material = material;
-        this.align = align;
+        this.alignment = align;
     }
 
     /**
@@ -228,7 +228,7 @@ public class Armor implements Serializable {
      *
      * @return {@code PrimeMaterial} Material
      */
-    public PrimeMaterial getMaterial() {
+    public Material getMaterial() {
         return material;
     }
 
@@ -237,7 +237,7 @@ public class Armor implements Serializable {
      *
      * @param material {@code PrimeMaterial} Material
      */
-    public void setMaterial(PrimeMaterial material) {
+    public void setMaterial(Material material) {
         this.material = material;
     }
 
@@ -246,17 +246,17 @@ public class Armor implements Serializable {
      *
      * @return {@code Align} Alinhamento
      */
-    public Align getAlign() {
-        return align;
+    public Alignment getAlignment() {
+        return alignment;
     }
 
     /**
      * Modifica o Alinhamento
      *
-     * @param align {@code Align} Alinhamento
+     * @param alignment {@code Align} Alinhamento
      */
-    public void setAlign(Align align) {
-        this.align = align;
+    public void setAlignment(Alignment alignment) {
+        this.alignment = alignment;
     }
 
     @Override

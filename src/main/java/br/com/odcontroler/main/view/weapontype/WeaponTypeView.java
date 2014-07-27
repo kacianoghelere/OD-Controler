@@ -21,7 +21,6 @@ import br.com.odcontroler.main.view.weapontype.bean.WeaponTypeBean;
 import br.com.odcontroler.main.view.weapontype.model.WeaponTypeModel;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * View de cadastro para tipos de armas
@@ -54,11 +53,11 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
     private void initialize() {
         this.initComponents();
         this.setSize(647, 401);
-        this.setControls(new ViewParameter(true, false, false, false));
+        this.setControls(new ViewParameter(true, false, true, false));
         this.initComponents();
         this.model = new WeaponTypeModel();
         this.useModel = new GComboBoxModel<>(UseType.values());
-        this.sizeModel = new GComboBoxModel<>();
+        this.sizeModel = new GComboBoxModel<>(Size.values());
         this.dmgModel = new GComboBoxModel<>(DamageType.values());
         this.atkModel = new GComboBoxModel<>(AttackType.values());
         this.gTable.buildTable(this, 0, model);
@@ -71,28 +70,28 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
         try {
             this.bean.load(null);
         } catch (Exception ex) {
-            Logger.getLogger(WeaponTypeView.class.getName()).log(Level.SEVERE, null, ex);
+            LOGGER.log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     public void add() {
         try {
-            if (gTTitle.validateComponent()
+            if (gTName.validateComponent()
                     && gCBUse.validateComponent()
                     && gCBSize.validateComponent()
                     && validadeRange()) {
                 ObjectWrapper vw = new ObjectWrapper(this)
-                        .addValue("title", gTTitle.getText())
+                        .addValue("name", gTName.getText())
                         .addValue("use", useModel.getSelectedItem())
                         .addValue("size", sizeModel.getSelectedItem())
-                        .addValue("damage", sizeModel.getSelectedItem())
+                        .addValue("damage", dmgModel.getSelectedItem())
                         .addValue("range", nTRange.getInteger())
-                        .addValue("attack", nTRange.getInteger());
+                        .addValue("attack",atkModel.getSelectedItem());
                 this.bean.add(new BeanEvent(vw));
             }
         } catch (Exception ex) {
-            Logger.getLogger(WeaponTypeView.class.getName()).log(Level.SEVERE, null, ex);
+            LOGGER.log(Level.SEVERE, null, ex);
         }
     }
 
@@ -166,7 +165,7 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
         jScrollPane1 = new javax.swing.JScrollPane();
         gTable = new br.com.gmp.comps.table.GTable();
         jLTitle = new javax.swing.JLabel();
-        gTTitle = new br.com.gmp.comps.textfield.GTextField();
+        gTName = new br.com.gmp.comps.textfield.GTextField();
         jLWear = new javax.swing.JLabel();
         gCBUse = new br.com.gmp.comps.combobox.GComboBox();
         jBAdd = new javax.swing.JButton();
@@ -182,8 +181,6 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
 
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
         setTitle("Tipos de armas");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/weapons/DK/DK_4.png"))); // NOI18N
         setMinimumSize(new java.awt.Dimension(647, 401));
@@ -200,8 +197,10 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
         gTable.setOpaque(false);
         jScrollPane1.setViewportView(gTable);
 
-        jLTitle.setText("Titulo:");
+        jLTitle.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLTitle.setText("Nome:");
 
+        jLWear.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLWear.setText("Porte:");
 
         jBAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/new.png"))); // NOI18N
@@ -218,35 +217,38 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
             }
         });
 
+        jLSize.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLSize.setText("Tamanho:");
 
+        jLRange.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLRange.setText("Alcance:");
 
+        jLDmgType.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLDmgType.setText("Tipo de dano:");
 
+        jLAtkType.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLAtkType.setText("Ataque:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLAtkType, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                            .addComponent(jLWear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(gCBUse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(gCBAtkType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLTitle)
-                                    .addComponent(jLWear))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(gTTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(gCBUse, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLAtkType)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(gCBAtkType, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(gTName, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLDmgType, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -254,19 +256,18 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
                             .addComponent(jLRange, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(nTRange, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(nTRange, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jBAdd)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jBRemove))
-                            .addComponent(gCBDmgType, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(gCBSize, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1))
+                            .addComponent(gCBDmgType, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                            .addComponent(gCBSize, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE))))
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLAtkType, jLDmgType, jLRange, jLSize, jLTitle, jLWear});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLDmgType, jLRange, jLSize});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,7 +275,7 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLTitle)
-                    .addComponent(gTTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gTName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLDmgType)
                     .addComponent(gCBDmgType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -298,23 +299,23 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCBAtkType, gCBDmgType, gCBSize, gCBUse, gTTitle, nTRange});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCBAtkType, gCBDmgType, gCBSize, gCBUse, gTName, nTRange});
 
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddActionPerformed
         try {
             add();
-        } catch (Exception e) {
-            Logger.getLogger(WeaponTypeView.class.getName()).log(Level.SEVERE, null, e);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jBAddActionPerformed
 
     private void jBRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoveActionPerformed
         try {
             remove();
-        } catch (Exception e) {
-            Logger.getLogger(WeaponTypeView.class.getName()).log(Level.SEVERE, null, e);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jBRemoveActionPerformed
 
@@ -323,7 +324,7 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
     private br.com.gmp.comps.combobox.GComboBox gCBDmgType;
     private br.com.gmp.comps.combobox.GComboBox gCBSize;
     private br.com.gmp.comps.combobox.GComboBox gCBUse;
-    private br.com.gmp.comps.textfield.GTextField gTTitle;
+    private br.com.gmp.comps.textfield.GTextField gTName;
     private br.com.gmp.comps.table.GTable gTable;
     private javax.swing.JButton jBAdd;
     private javax.swing.JButton jBRemove;

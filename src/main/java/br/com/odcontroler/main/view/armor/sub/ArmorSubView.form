@@ -129,7 +129,7 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="gCBAlign" linkSize="7" min="-2" pref="304" max="-2" attributes="0"/>
+                                  <Component id="gCBAlignment" linkSize="7" min="-2" pref="304" max="-2" attributes="0"/>
                                   <Component id="gCBOrigin" linkSize="7" alignment="1" min="-2" pref="304" max="-2" attributes="0"/>
                                   <Component id="gCBMaterial" linkSize="7" alignment="1" min="-2" pref="304" max="-2" attributes="0"/>
                               </Group>
@@ -164,7 +164,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="gCBAlign" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="gCBAlignment" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLAlign" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -211,7 +211,7 @@
                 <Property name="text" type="java.lang.String" value="Alinhamento"/>
               </Properties>
             </Component>
-            <Component class="br.com.gmp.comps.combobox.GComboBox" name="gCBAlign">
+            <Component class="br.com.gmp.comps.combobox.GComboBox" name="gCBAlignment">
             </Component>
           </SubComponents>
         </Container>

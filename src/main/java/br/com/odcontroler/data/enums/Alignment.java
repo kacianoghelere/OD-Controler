@@ -5,7 +5,7 @@ package br.com.odcontroler.data.enums;
  *
  * @author kaciano
  */
-public enum Align {
+public enum Alignment {
 
     /**
      * Alinhamento de ordem
@@ -29,7 +29,7 @@ public enum Align {
      * @param id {@code Long} ID do alinhamento
      * @param name {@code String} Nome do alinhamento
      */
-    private Align(Long id, String name) {
+    private Alignment(Long id, String name) {
         this.id = id;
         this.name = name;
     }

@@ -3,7 +3,9 @@ package br.com.odcontroler.main.view.terms;
 import br.com.gmp.comps.model.GListModel;
 import br.com.odcontroler.data.entity.ArmorType;
 import br.com.odcontroler.data.entity.EffectType;
+import br.com.odcontroler.data.entity.Element;
 import br.com.odcontroler.data.entity.ExpertiseType;
+import br.com.odcontroler.data.entity.Material;
 import br.com.odcontroler.data.entity.PerkType;
 import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.object.BeanEvent;
@@ -29,6 +31,8 @@ public class TermsView extends View {
     private GListModel<PerkType> perkModel;
     private GListModel<ArmorType> armorModel;
     private GListModel<ExpertiseType> expModel;
+    private GListModel<Material> materialModel;
+    private GListModel<Element> elementModel;
 
     /**
      * Cria nova instancia de TermsView
@@ -46,16 +50,20 @@ public class TermsView extends View {
     private void initialize() {
         initComponents();
         this.setSize(375, 327);
-        this.setControls(new ViewParameter(true, false, false, true));
+        this.setControls(new ViewParameter(true, false, true, true));
         this.efModel = new GListModel<>();
         this.perkModel = new GListModel<>();
         this.armorModel = new GListModel<>();
         this.expModel = new GListModel<>();
+        this.materialModel = new GListModel<>();
+        this.elementModel = new GListModel<>();
         this.bean = new TermsBean(this);
         this.gLtEffectTp.setModel(efModel);
         this.gLtPerkTp.setModel(perkModel);
         this.gLtExpTp.setModel(expModel);
         this.gLtArmorTp.setModel(armorModel);
+        this.gLtMaterials.setModel(materialModel);
+        this.gLtElement.setModel(elementModel);
         try {
             this.bean.load(null);
         } catch (Exception ex) {
@@ -162,6 +170,58 @@ public class TermsView extends View {
     }
 
     /**
+     * Adiciona novo elemento na lista de Materials
+     *
+     * @param evt {@code KeyEvent} Evento do teclado
+     * @since 1.1
+     */
+    private void addMaterial(KeyEvent evt) {
+        if (gTMaterial.validateComponent()) {
+            bean.addMaterial(new BeanEvent(this, gTMaterial.getText()));
+            gTMaterial.clear();
+        }
+    }
+
+    /**
+     * Remove o Material selecionado
+     *
+     * @param evt {@code KeyEvent} Evento do teclado
+     * @since 1.1
+     */
+    private void removeMaterial(KeyEvent evt) {
+        if (gLtMaterials.getModel().getSize() > 0 && gLtMaterials.getSelectedIndex() >= 0) {
+            Material type = materialModel.getElementAt(gLtMaterials.getSelectedIndex());
+            materialModel.remove(type);
+        }
+    }
+
+    /**
+     * Adiciona novo elemento na lista de Elements
+     *
+     * @param evt {@code KeyEvent} Evento do teclado
+     * @since 1.1
+     */
+    private void addElement(KeyEvent evt) {
+        if (gTElement.validateComponent()) {
+            bean.addElement(new BeanEvent(this, gTElement.getText()));
+            gTElement.clear();
+        }
+    }
+
+    /**
+     * Remove o Element selecionado
+     *
+     * @param evt {@code KeyEvent} Evento do teclado
+     * @since 1.1
+     */
+    private void removeElement(KeyEvent evt) {
+        if (gLtElement.getModel().getSize() > 0 && gLtElement.getSelectedIndex() >= 0) {
+            Element type = elementModel.getElementAt(gLtElement.getSelectedIndex());
+            elementModel.remove(type);
+        }
+    }
+
+    /**
      * Retorna o modelo de lista dos EffectTypes
      *
      * @return {@code GListModel(EffectType)}
@@ -197,8 +257,26 @@ public class TermsView extends View {
         return expModel;
     }
 
+    /**
+     * Retorna o modelo de lista dos Materials
+     *
+     * @return {@code GListModel(Material)}
+     */
+    public GListModel<Material> getMaterialModel() {
+        return materialModel;
+    }
+
+    /**
+     * Retorna o modelo de lista dos Elements
+     *
+     * @return {@code GListModel(Element)}
+     */
+    public GListModel<Element> getElementModel() {
+        return elementModel;
+    }
+
     @Override
-    public BeanListener getBean() {
+    public TermsBean getBean() {
         return bean;
     }
 
@@ -226,6 +304,14 @@ public class TermsView extends View {
         gTArmorTp = new br.com.gmp.comps.textfield.GTextField();
         jSPArmorTp = new javax.swing.JScrollPane();
         gLtArmorTp = new br.com.gmp.comps.list.GList();
+        jPMaterials = new javax.swing.JPanel();
+        gTMaterial = new br.com.gmp.comps.textfield.GTextField();
+        jSPPerk1 = new javax.swing.JScrollPane();
+        gLtMaterials = new br.com.gmp.comps.list.GList();
+        jPElement = new javax.swing.JPanel();
+        gTElement = new br.com.gmp.comps.textfield.GTextField();
+        jSPPerk2 = new javax.swing.JScrollPane();
+        gLtElement = new br.com.gmp.comps.list.GList();
 
         setClosable(true);
         setIconifiable(true);
@@ -406,6 +492,90 @@ public class TermsView extends View {
 
         jTabbedPane.addTab("Tipo de armadura", jPArmorTypes);
 
+        jPMaterials.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Materiais"));
+
+        gTMaterial.setPlaceholder("Tipos de vantagens");
+        gTMaterial.setMaximumSize(new java.awt.Dimension(150, 2147483647));
+        gTMaterial.setMinimumSize(new java.awt.Dimension(150, 28));
+        gTMaterial.setPreferredSize(new java.awt.Dimension(150, 28));
+        gTMaterial.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gTMaterialKeyReleased(evt);
+            }
+        });
+
+        gLtMaterials.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gLtMaterialsKeyReleased(evt);
+            }
+        });
+        jSPPerk1.setViewportView(gLtMaterials);
+
+        javax.swing.GroupLayout jPMaterialsLayout = new javax.swing.GroupLayout(jPMaterials);
+        jPMaterials.setLayout(jPMaterialsLayout);
+        jPMaterialsLayout.setHorizontalGroup(
+            jPMaterialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPMaterialsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPMaterialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(gTMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSPPerk1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPMaterialsLayout.setVerticalGroup(
+            jPMaterialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPMaterialsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSPPerk1, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gTMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
+        );
+
+        jTabbedPane.addTab("Materiais", jPMaterials);
+
+        jPElement.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Elementos"));
+
+        gTElement.setPlaceholder("Tipos de vantagens");
+        gTElement.setMaximumSize(new java.awt.Dimension(150, 2147483647));
+        gTElement.setMinimumSize(new java.awt.Dimension(150, 28));
+        gTElement.setPreferredSize(new java.awt.Dimension(150, 28));
+        gTElement.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gTElementKeyReleased(evt);
+            }
+        });
+
+        gLtElement.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gLtElementKeyReleased(evt);
+            }
+        });
+        jSPPerk2.setViewportView(gLtElement);
+
+        javax.swing.GroupLayout jPElementLayout = new javax.swing.GroupLayout(jPElement);
+        jPElement.setLayout(jPElementLayout);
+        jPElementLayout.setHorizontalGroup(
+            jPElementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPElementLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPElementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(gTElement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSPPerk2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPElementLayout.setVerticalGroup(
+            jPElementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPElementLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSPPerk2, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gTElement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
+        );
+
+        jTabbedPane.addTab("Elementos", jPElement);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -498,23 +668,71 @@ public class TermsView extends View {
         }
     }//GEN-LAST:event_gLtArmorTpKeyReleased
 
+    private void gTMaterialKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTMaterialKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                addMaterial(evt);
+            } catch (Exception ex) {
+                LOGGER.log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_gTMaterialKeyReleased
+
+    private void gLtMaterialsKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gLtMaterialsKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
+            try {
+                removeMaterial(evt);
+            } catch (Exception ex) {
+                LOGGER.log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_gLtMaterialsKeyReleased
+
+    private void gTElementKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTElementKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                addElement(evt);
+            } catch (Exception ex) {
+                LOGGER.log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_gTElementKeyReleased
+
+    private void gLtElementKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gLtElementKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
+            try {
+                removeElement(evt);
+            } catch (Exception ex) {
+                LOGGER.log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_gLtElementKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.list.GList gLtArmorTp;
     private br.com.gmp.comps.list.GList gLtEffectTp;
+    private br.com.gmp.comps.list.GList gLtElement;
     private br.com.gmp.comps.list.GList gLtExpTp;
+    private br.com.gmp.comps.list.GList gLtMaterials;
     private br.com.gmp.comps.list.GList gLtPerkTp;
     private br.com.gmp.comps.textfield.GTextField gTArmorTp;
     private br.com.gmp.comps.textfield.GTextField gTEffectTp;
+    private br.com.gmp.comps.textfield.GTextField gTElement;
     private br.com.gmp.comps.textfield.GTextField gTExpertiseTp;
+    private br.com.gmp.comps.textfield.GTextField gTMaterial;
     private br.com.gmp.comps.textfield.GTextField gTPerkTp;
     private javax.swing.JPanel jPArmorTypes;
     private javax.swing.JPanel jPEffects;
+    private javax.swing.JPanel jPElement;
     private javax.swing.JPanel jPExpertiseTypes;
+    private javax.swing.JPanel jPMaterials;
     private javax.swing.JPanel jPPerkTypes;
     private javax.swing.JScrollPane jSPArmorTp;
     private javax.swing.JScrollPane jSPEffect;
     private javax.swing.JScrollPane jSPExpertise;
     private javax.swing.JScrollPane jSPPerk;
+    private javax.swing.JScrollPane jSPPerk1;
+    private javax.swing.JScrollPane jSPPerk2;
     private javax.swing.JTabbedPane jTabbedPane;
     // End of variables declaration//GEN-END:variables
 }

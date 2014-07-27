@@ -3,6 +3,7 @@ package br.com.odcontroler.main.view.origin;
 import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.gmp.utils.object.ObjectWrapper;
+import br.com.odcontroler.data.db.dao.OriginDAO;
 import br.com.odcontroler.data.entity.Origin;
 import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.object.BeanEvent;
@@ -47,8 +48,9 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
     private void initialize() {
         this.initComponents();
         this.setSize(620, 300);
-        this.setControls(new ViewParameter(true, false, false, false));        
+        this.setControls(new ViewParameter(true, false, true, false));        
         this.model = new OriginModel();
+        this.model.setData(new OriginDAO().getList());
         this.gTable.setModel(model);
         this.tableUtil = new TableUtil(this);
         this.bean = new OriginBean(this);
@@ -94,7 +96,7 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
 
     @Override
     public List<Origin> getTableData() {
-        return bean.getDao().getList();
+        return new OriginDAO().getList();
     }
 
     @SuppressWarnings("unchecked")

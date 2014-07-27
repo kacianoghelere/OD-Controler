@@ -4,6 +4,7 @@ import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
+import br.com.odcontroler.data.enums.Alignment;
 import java.util.Objects;
 
 /**
@@ -37,14 +38,16 @@ public class Weapon {
     private String damage;
     @Editable
     @ColumnName(name = "Peso")
-    private Double weight;    
+    private Double weight;
     @Editable
     @ColumnName(name = "Preço")
     private Integer price;
     @ColumnName(name = "Tipo")
     private WeaponType type;
     @ColumnName(name = "Material")
-    private PrimeMaterial material;
+    private Material material;
+    @ColumnName(name = "Alinhamento")
+    private Alignment alignment;
 
     /**
      * Cria nova instancia de Weapon
@@ -62,14 +65,15 @@ public class Weapon {
      * @param initiative {@code Integer} Classificação do tipo
      * @param range {@code Double} Alcance da arma
      * @param damage {@code String} Dano da arma
+     * @param weight {@code Double} Peso da arma
      * @param price {@code Integer} Preço da arma
      * @param type {@code WeaponType} Tipo de arma
-     * @param material {@code PrimeMaterial} Quantidade do material 1
-     * @param weight {@code Double} Peso da arma
+     * @param material {@code PrimeMaterial} Quantidade do material
+     * @param alignment {@code Align} Alinhamento
      */
     public Weapon(Long id, String name, Origin origin, String description,
-            Integer initiative, Integer range, String damage, Integer price,
-            WeaponType type, PrimeMaterial material, Double weight) {
+            Integer initiative, Integer range, String damage, Double weight,
+            Integer price, WeaponType type, Material material, Alignment alignment) {
         this.id = id;
         this.name = name;
         this.origin = origin;
@@ -77,10 +81,11 @@ public class Weapon {
         this.initiative = initiative;
         this.range = range;
         this.damage = damage;
+        this.weight = weight;
         this.price = price;
         this.type = type;
         this.material = material;
-        this.weight = weight;
+        this.alignment = alignment;
     }
 
     @Override
@@ -246,7 +251,7 @@ public class Weapon {
      *
      * @return {@code PrimeMaterial} Material
      */
-    public PrimeMaterial getMaterial() {
+    public Material getMaterial() {
         return material;
     }
 
@@ -255,7 +260,7 @@ public class Weapon {
      *
      * @param material {@code PrimeMaterial} Material
      */
-    public void setMaterial(PrimeMaterial material) {
+    public void setMaterial(Material material) {
         this.material = material;
     }
 
@@ -313,4 +318,21 @@ public class Weapon {
         this.range = range;
     }
 
+    /**
+     * Retorna o Alinhamento
+     *
+     * @return {@code Align} Alinhamento
+     */
+    public Alignment getAlignment() {
+        return alignment;
+    }
+
+    /**
+     * Modifica o Alinhamento
+     *
+     * @param alignment {@code Align} Alinhamento
+     */
+    public void setAlignment(Alignment alignment) {
+        this.alignment = alignment;
+    }
 }

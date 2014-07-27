@@ -5,6 +5,7 @@ import br.com.odcontroler.data.db.dao.PerkTypeDAO;
 import br.com.odcontroler.data.entity.Perk;
 import br.com.odcontroler.data.entity.PerkType;
 import br.com.odcontroler.main.object.BeanEvent;
+import br.com.odcontroler.main.view.object.ViewParameter;
 import br.com.odcontroler.main.view.sub.SubView;
 import br.com.odcontroler.main.view.perk.PerkView;
 import br.com.odcontroler.main.view.perk.bean.PerkBean;
@@ -39,6 +40,7 @@ public class PerkSubView extends SubView {
      * Método de inicialização
      */
     private void initialize(Perk perk) {
+        this.setControls(new ViewParameter(true, false, true, true));
         this.setSize(400, 236);
         this.initComponents();
         this.typeModel = new GComboBoxModel<>(new PerkTypeDAO().getList());
