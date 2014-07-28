@@ -44,6 +44,7 @@ public class WeaponView extends View implements TableView, TableSource<Weapon> {
         this.setSize(662, 481);
         this.initComponents();
         this.model = new WeaponModel();
+        this.model.setData(new WeaponDAO().getList());
         this.gTable.setModel(model);
         this.bean = new WeaponBean(this);
     }
