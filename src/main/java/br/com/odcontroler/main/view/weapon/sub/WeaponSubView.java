@@ -9,6 +9,7 @@ import br.com.odcontroler.data.entity.Origin;
 import br.com.odcontroler.data.entity.Weapon;
 import br.com.odcontroler.data.entity.WeaponType;
 import br.com.odcontroler.data.enums.Alignment;
+import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.sub.SubView;
 import br.com.odcontroler.main.view.weapon.WeaponView;
 import br.com.odcontroler.main.view.weapon.bean.WeaponBean;
@@ -26,7 +27,7 @@ import javax.swing.JMenuItem;
  */
 public class WeaponSubView extends SubView {
 
-    private final WeaponView view;
+    private WeaponView view;
     private WeaponBean bean;
     private Weapon weapon;
     private GComboBoxModel<WeaponType> typeModel;
@@ -42,17 +43,20 @@ public class WeaponSubView extends SubView {
      */
     public WeaponSubView(WeaponView parent, Weapon weapon) {
         super(parent);
-        this.setSize(385, 427);
         this.view = parent;
-        this.bean = view.getBean();
-        this.load();
-        this.initialize();
+        this.initialize(weapon);
     }
 
     /**
      * Método de inicialização
+     *
+     * @param weapon {@code WeaponView} Arma
      */
-    private void initialize() {
+    private void initialize(Weapon weapon) {
+        this.setSize(385, 427);
+        this.bean = view.getBean();
+        this.load();
+        this.setWeapon(weapon);
         this.initComponents();
         this.gCBType.setGModel(typeModel);
         this.gCBOrigin.setGModel(originModel);
@@ -93,11 +97,11 @@ public class WeaponSubView extends SubView {
                 && gCBMaterial.validateComponent()
                 && gCBOrigin.validateComponent()
                 && gCBAlignment.validateComponent()
-                && gNPrice.validateComponent()
-                && gNWeight.validateComponent()
-                && gNDmgAmt.validateComponent()
+                && (jSpnInitiative.getValue() != null && ((Integer) jSpnInitiative.getValue()) == 0)
+                && (gNDmgAmt.validateComponent() && gNDmgAmt.isZero() && gNDmgAmt.isNegative())
                 && gCBDmgDice.validateComponent()
-                && (jSpnInitiative.getValue() != null && ((Integer) jSpnInitiative.getValue()) == 0);
+                && (gNWeight.validateComponent() && gNWeight.isZero() && gNWeight.isNegative())
+                && (gNPrice.validateComponent() && gNPrice.isZero() && gNPrice.isNegative());
     }
 
     /**
@@ -115,6 +119,9 @@ public class WeaponSubView extends SubView {
         }
     }
 
+    /**
+     * Reconstroi a arma
+     */
     private void build() {
         if (weapon == null) {
             this.weapon = new Weapon();
@@ -141,7 +148,7 @@ public class WeaponSubView extends SubView {
      * @return {@code Weapon} Arma da view
      */
     public Weapon getWeapon() {
-        return weapon;
+        return this.weapon;
     }
 
     /**
@@ -471,6 +478,12 @@ public class WeaponSubView extends SubView {
     private void jBAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddActionPerformed
         if (validateFields()) {
             build();
+            try {
+                view.getBean().add(new BeanEvent(view, weapon));
+
+            } catch (Exception ex) {
+                LOGGER.log(Level.SEVERE, null, ex);
+            }
             this.dispose();
         }
     }//GEN-LAST:event_jBAddActionPerformed

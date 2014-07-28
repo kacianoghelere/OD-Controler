@@ -15,7 +15,6 @@ import br.com.odcontroler.main.view.weapon.model.WeaponModel;
 import br.com.odcontroler.main.view.weapon.sub.WeaponSubView;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * View para cadastro e controle de armas
@@ -45,6 +44,7 @@ public class WeaponView extends View implements TableView, TableSource<Weapon> {
         this.setSize(662, 481);
         this.initComponents();
         this.model = new WeaponModel();
+        this.gTable.setModel(model);
         this.bean = new WeaponBean(this);
     }
 
@@ -133,8 +133,10 @@ public class WeaponView extends View implements TableView, TableSource<Weapon> {
         jToolBar1.setRollover(true);
 
         jBAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/new.png"))); // NOI18N
+        jBAdd.setMnemonic('A');
+        jBAdd.setText("Adicionar");
         jBAdd.setFocusable(false);
-        jBAdd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBAdd.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBAdd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,8 +146,10 @@ public class WeaponView extends View implements TableView, TableSource<Weapon> {
         jToolBar1.add(jBAdd);
 
         jBRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/off.png"))); // NOI18N
+        jBRemove.setMnemonic('R');
+        jBRemove.setText("Remover");
         jBRemove.setFocusable(false);
-        jBRemove.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBRemove.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBRemove.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBRemove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,8 +159,10 @@ public class WeaponView extends View implements TableView, TableSource<Weapon> {
         jToolBar1.add(jBRemove);
 
         jBEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/menubar/menubar/edit.png"))); // NOI18N
+        jBEdit.setMnemonic('E');
+        jBEdit.setText("Editar");
         jBEdit.setFocusable(false);
-        jBEdit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBEdit.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBEdit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,6 +180,11 @@ public class WeaponView extends View implements TableView, TableSource<Weapon> {
             }
         ));
         gTable.setOpaque(false);
+        gTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(gTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -191,8 +202,8 @@ public class WeaponView extends View implements TableView, TableSource<Weapon> {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane1)
+                .addGap(15, 15, 15))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -211,6 +222,12 @@ public class WeaponView extends View implements TableView, TableSource<Weapon> {
     private void jBAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddActionPerformed
         add();
     }//GEN-LAST:event_jBAddActionPerformed
+
+    private void gTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gTableMouseClicked
+        if (evt.getClickCount() == 2) {
+            edit();
+        }
+    }//GEN-LAST:event_gTableMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.table.GTable gTable;

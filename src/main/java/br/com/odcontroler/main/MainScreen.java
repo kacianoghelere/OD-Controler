@@ -33,7 +33,7 @@ import javax.swing.JMenu;
  */
 public class MainScreen extends javax.swing.JFrame implements Main {
 
-    protected final Logger LOGGER = Logger.getLogger(MainScreen.class.getName());
+    protected static final Logger LOGGER = Logger.getLogger(MainScreen.class.getName());
     private final String ICON = "/dices/d12-icon.png";
     private final String PROP = "/br/com/odcontroler/properties/od-properties.properties";
     private final String VIEWPATH = "src/main/java/br/com/odcontroler/main/view";
@@ -93,7 +93,6 @@ public class MainScreen extends javax.swing.JFrame implements Main {
             public void run() {
                 loadMenus();
             }
-
         }.start();
     }
 
@@ -164,7 +163,6 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         listener.load(new BeanEvent(this, evt));
     }
 
-    //<editor-fold desc="Get's & Set's" defaultstate="collapsed">
     /**
      * Retorna o listener
      *
@@ -384,6 +382,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         jBClear = new javax.swing.JButton();
         jBRefresh = new javax.swing.JButton();
         jBDice = new javax.swing.JButton();
+        jBAudio = new javax.swing.JButton();
         desktop = new javax.swing.JDesktopPane();
         jTBMsgs = new javax.swing.JToolBar();
         jSeparator1 = new javax.swing.JToolBar.Separator();
@@ -472,6 +471,19 @@ public class MainScreen extends javax.swing.JFrame implements Main {
             }
         });
         jToolBar.add(jBDice);
+
+        jBAudio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/multimedia/unpause.png"))); // NOI18N
+        jBAudio.setToolTipText("Recurso de Audio");
+        jBAudio.setFocusable(false);
+        jBAudio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBAudio.setName("jBAudio"); // NOI18N
+        jBAudio.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBAudio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAudioActionPerformed(evt);
+            }
+        });
+        jToolBar.add(jBAudio);
 
         desktop.setBackground(new java.awt.Color(204, 204, 204));
         desktop.setName("desktop"); // NOI18N
@@ -685,9 +697,14 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         }
     }//GEN-LAST:event_gTViewKeyReleased
 
+    private void jBAudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAudioActionPerformed
+
+    }//GEN-LAST:event_jBAudioActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
     private br.com.gmp.comps.textfield.GTextField gTView;
+    private javax.swing.JButton jBAudio;
     private javax.swing.JButton jBClear;
     private javax.swing.JButton jBDice;
     private javax.swing.JButton jBProcess;

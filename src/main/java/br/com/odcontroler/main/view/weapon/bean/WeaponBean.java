@@ -30,6 +30,11 @@ public class WeaponBean extends ViewBean<WeaponView> {
     }
 
     @Override
+    public void commit(BeanEvent evt) throws Exception {
+        this.dao.replaceAll(getView().getModel().getData());
+    }
+
+    @Override
     public void add(BeanEvent evt) throws Exception {
         getView().getModel().add((Weapon) evt.getValue());
     }
@@ -38,7 +43,8 @@ public class WeaponBean extends ViewBean<WeaponView> {
     public void edit(BeanEvent evt) throws Exception {
         if (getView().getTable().getSelectedRowCount() > 0) {
             Integer row = (Integer) getView().getTable().getSelectedRows()[0];
-            WeaponSubView dialog = new WeaponSubView(getView(), getView().getModel().getObject(row));
+            WeaponSubView dialog;
+            dialog = new WeaponSubView(getView(), getView().getModel().getObject(row));
             getView().getMainScreen().getListener().insertView(dialog);
             if (dialog.getWeapon() != null) {
                 getView().getModel().update(row, dialog.getWeapon());
@@ -57,7 +63,7 @@ public class WeaponBean extends ViewBean<WeaponView> {
      * @return {@code Weapon} DAO das armas
      */
     public WeaponDAO getDao() {
-        return dao;
+        return this.dao;
     }
 
     /**

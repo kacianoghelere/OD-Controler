@@ -130,6 +130,7 @@ public class ArmorView extends View<ArmorBean> implements TableView, TableSource
         jToolBar1 = new javax.swing.JToolBar();
         jBAdd = new javax.swing.JButton();
         jBRemove = new javax.swing.JButton();
+        jBEdit = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -147,7 +148,7 @@ public class ArmorView extends View<ArmorBean> implements TableView, TableSource
 
             }
         ));
-        gTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        gTable.setAutoResizeMode(4);
         gTable.setAutoscrolls(false);
         gTable.setOpaque(false);
         gTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -178,8 +179,10 @@ public class ArmorView extends View<ArmorBean> implements TableView, TableSource
         jToolBar1.setRollover(true);
 
         jBAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/new.png"))); // NOI18N
+        jBAdd.setMnemonic('A');
+        jBAdd.setText("Adicionar");
         jBAdd.setFocusable(false);
-        jBAdd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBAdd.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBAdd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,8 +192,10 @@ public class ArmorView extends View<ArmorBean> implements TableView, TableSource
         jToolBar1.add(jBAdd);
 
         jBRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/off.png"))); // NOI18N
+        jBRemove.setMnemonic('R');
+        jBRemove.setText("Remover");
         jBRemove.setFocusable(false);
-        jBRemove.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBRemove.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBRemove.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBRemove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,6 +203,19 @@ public class ArmorView extends View<ArmorBean> implements TableView, TableSource
             }
         });
         jToolBar1.add(jBRemove);
+
+        jBEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/menubar/menubar/edit.png"))); // NOI18N
+        jBEdit.setMnemonic('E');
+        jBEdit.setText("Editar");
+        jBEdit.setFocusable(false);
+        jBEdit.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jBEdit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEditActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jBEdit);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -233,9 +251,14 @@ public class ArmorView extends View<ArmorBean> implements TableView, TableSource
         }
     }//GEN-LAST:event_gTableMouseClicked
 
+    private void jBEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditActionPerformed
+        edit();
+    }//GEN-LAST:event_jBEditActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.table.GTable gTable;
     private javax.swing.JButton jBAdd;
+    private javax.swing.JButton jBEdit;
     private javax.swing.JButton jBRemove;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane6;
