@@ -55,12 +55,12 @@ public class WeaponSubView extends SubView {
     private void initialize(Weapon weapon) {
         this.setSize(385, 427);
         this.bean = view.getBean();
-        this.initComponents();        
+        this.initComponents();
         this.load();
         this.gCBType.setGModel(typeModel);
         this.gCBOrigin.setGModel(originModel);
         this.gCBMaterial.setGModel(materialModel);
-        this.gCBAlignment.setGModel(alignmentModel);        
+        this.gCBAlignment.setGModel(alignmentModel);
         this.setWeapon(weapon);
         //----------------------------------------------------------------------
         JMenuItem gen;
@@ -477,14 +477,19 @@ public class WeaponSubView extends SubView {
 
     private void jBAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddActionPerformed
         if (validateFields()) {
-            build();
             try {
-                view.getBean().add(new BeanEvent(view, weapon));
-
+                if (weapon == null) {
+                    build();
+                    view.getBean().add(new BeanEvent(view, weapon));
+                } else {
+                    build();
+                    view.getBean().update(weapon);
+                }
+                this.dispose();
             } catch (Exception ex) {
                 LOGGER.log(Level.SEVERE, null, ex);
-            }
-            this.dispose();
+                this.dispose();
+            }            
         }
     }//GEN-LAST:event_jBAddActionPerformed
 

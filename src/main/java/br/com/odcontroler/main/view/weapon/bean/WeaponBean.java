@@ -54,6 +54,14 @@ public class WeaponBean extends ViewBean<WeaponView> {
     }
 
     @Override
+    public void update(Object object) throws Exception {
+        Integer row = getView().getModel().getObjectRow(object);
+        if (object != null) {
+            getView().getModel().update(row, (Weapon) object);
+        }
+    }
+
+    @Override
     public void remove(BeanEvent evt) throws Exception {
         tableUtil.remove(evt);
     }

@@ -71,6 +71,16 @@ public class ViewBean<T> implements BeanListener<T> {
     }
 
     /**
+     * Método para atualização de conteúdos
+     *
+     * @param object {@code Object} Valor à ser atualizado
+     * @throws java.lang.Exception Propagação de exceção
+     */
+    public void update(Object object) throws Exception {
+
+    }
+
+    /**
      * Método para remoção de conteúdos
      *
      * @param evt {@code BeanEvent} Evento do Bean
