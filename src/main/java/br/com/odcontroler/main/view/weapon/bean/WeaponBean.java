@@ -43,11 +43,12 @@ public class WeaponBean extends ViewBean<WeaponView> {
     public void edit(BeanEvent evt) throws Exception {
         if (getView().getTable().getSelectedRowCount() > 0) {
             Integer row = (Integer) getView().getTable().getSelectedRows()[0];
-            WeaponSubView dialog;
-            dialog = new WeaponSubView(getView(), getView().getModel().getObject(row));
-            getView().getMainScreen().getListener().insertView(dialog);
-            if (dialog.getWeapon() != null) {
-                getView().getModel().update(row, dialog.getWeapon());
+            WeaponSubView subview;
+            Weapon weapon = getView().getModel().getObject(row);
+            subview = new WeaponSubView(getView(), weapon);
+            getView().getMainScreen().getListener().insertView(subview);
+            if (subview.getWeapon() != null) {
+                getView().getModel().update(row, subview.getWeapon());
             }
         }
     }

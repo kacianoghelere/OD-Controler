@@ -55,10 +55,11 @@ public class ArmorBean extends ViewBean<ArmorView> {
     public void edit(BeanEvent evt) throws Exception {
         if (getView().getTable().getSelectedRowCount() > 0) {
             Integer row = (Integer) getView().getTable().getSelectedRows()[0];
-            ArmorSubView dialog = new ArmorSubView(getView(), getView().getModel().getObject(row));
-            getView().getMainScreen().getListener().insertView(dialog);
-            if (dialog.getArmor() != null) {
-                getView().getModel().update(row, dialog.getArmor());
+            Armor armor = getView().getModel().getObject(row);
+            ArmorSubView subview = new ArmorSubView(getView(), armor);
+            getView().getMainScreen().getListener().insertView(subview);
+            if (subview.getArmor() != null) {
+                getView().getModel().update(row, subview.getArmor());
             }
         }
     }

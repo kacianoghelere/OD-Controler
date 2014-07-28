@@ -55,13 +55,13 @@ public class WeaponSubView extends SubView {
     private void initialize(Weapon weapon) {
         this.setSize(385, 427);
         this.bean = view.getBean();
+        this.initComponents();        
         this.load();
-        this.setWeapon(weapon);
-        this.initComponents();
         this.gCBType.setGModel(typeModel);
         this.gCBOrigin.setGModel(originModel);
         this.gCBMaterial.setGModel(materialModel);
-        this.gCBAlignment.setGModel(alignmentModel);
+        this.gCBAlignment.setGModel(alignmentModel);        
+        this.setWeapon(weapon);
         //----------------------------------------------------------------------
         JMenuItem gen;
         gen = new JMenuItem("Gerar nome", new ImageIcon(getClass()
@@ -167,7 +167,7 @@ public class WeaponSubView extends SubView {
                 this.gCBType.setSelectedItem(weapon.getType());
                 this.gTADesc.setText(weapon.getDescription());
                 this.gNPrice.setInt(weapon.getPrice());
-                this.gNWeight.setDouble(weapon.getWeight());
+                this.gNWeight.setInt(weapon.getWeight().intValue());
                 this.jSpnInitiative.setValue(weapon.getInitiative());
                 this.jSpnRange.setValue(weapon.getRange());
                 String[] dmg = weapon.getDamage().split("D");
