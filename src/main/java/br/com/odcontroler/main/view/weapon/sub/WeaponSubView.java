@@ -92,16 +92,59 @@ public class WeaponSubView extends SubView {
      * @since 1.0
      */
     private boolean validateFields() {
-        return gTName.validateComponent()
-                && gCBType.validateComponent()
-                && gCBMaterial.validateComponent()
-                && gCBOrigin.validateComponent()
-                && gCBAlignment.validateComponent()
-                && (jSpnInitiative.getValue() != null && ((Integer) jSpnInitiative.getValue()) == 0)
-                && (gNDmgAmt.validateComponent() && gNDmgAmt.isZero() && gNDmgAmt.isNegative())
-                && gCBDmgDice.validateComponent()
-                && (gNWeight.validateComponent() && gNWeight.isZero() && gNWeight.isNegative())
-                && (gNPrice.validateComponent() && gNPrice.isZero() && gNPrice.isNegative());
+        //<editor-fold desc="Validação" defaultstate="collapsed">
+        if (!gTName.validateComponent()) {
+            System.out.println("Nome invalido");
+            return false;
+        }
+        if (!gCBType.validateComponent()) {
+            System.out.println("Tipo invalido");
+            return false;
+        }
+        if (!gCBMaterial.validateComponent()) {
+            System.out.println("Material invalido");
+            return false;
+        }
+        if (!gCBOrigin.validateComponent()) {
+            System.out.println("Origem invalido");
+            return false;
+        }
+        if (!gCBAlignment.validateComponent()) {
+            System.out.println("Alinhamento invalido");
+            return false;
+        }
+        if (!(jSpnInitiative.getValue() != null && ((Integer) jSpnInitiative.getValue()) != 0)) {
+            System.out.println("Iniciativa invalida");
+            return false;
+        }
+        if (!(gNDmgAmt.validateComponent() && gNDmgAmt.isZero() && gNDmgAmt.isNegative())) {
+            System.out.println("Qtd dados invalida");
+            return false;
+        }
+        if (!gCBDmgDice.validateComponent()) {
+            System.out.println("Dado invalido");
+            return false;
+        }
+        if (!(gNWeight.validateComponent() && gNWeight.isZero() && gNWeight.isNegative())) {
+            System.out.println("Peso invalido");
+            return false;
+        }
+        if (!(gNPrice.validateComponent() && gNPrice.isZero() && gNPrice.isNegative())) {
+            System.out.println("Preço invalido");
+            return false;
+        }
+        return true;
+//        return gTName.validateComponent()
+//                && gCBType.validateComponent()
+//                && gCBMaterial.validateComponent()
+//                && gCBOrigin.validateComponent()
+//                && gCBAlignment.validateComponent()
+//                && (jSpnInitiative.getValue() != null && ((Integer) jSpnInitiative.getValue()) == 0)
+//                && (gNDmgAmt.validateComponent() && gNDmgAmt.isZero() && gNDmgAmt.isNegative())
+//                && gCBDmgDice.validateComponent()
+//                && (gNWeight.validateComponent() && gNWeight.isZero() && gNWeight.isNegative())
+//                && (gNPrice.validateComponent() && gNPrice.isZero() && gNPrice.isNegative());
+        //</editor-fold>
     }
 
     /**
@@ -479,9 +522,11 @@ public class WeaponSubView extends SubView {
         if (validateFields()) {
             try {
                 if (weapon == null) {
+                    System.out.println("Criando nova arma...");
                     build();
                     view.getBean().add(new BeanEvent(view, weapon));
                 } else {
+                    System.out.println("Atualizando arma...");
                     build();
                     view.getBean().update(weapon);
                 }
@@ -489,7 +534,9 @@ public class WeaponSubView extends SubView {
             } catch (Exception ex) {
                 LOGGER.log(Level.SEVERE, null, ex);
                 this.dispose();
-            }            
+            }
+        } else {
+            System.out.println("Campos invalidos.");
         }
     }//GEN-LAST:event_jBAddActionPerformed
 

@@ -162,10 +162,27 @@ public class ArmorSubView extends SubView {
      * @since 1.0
      */
     private boolean validateFields() {
-        return gTName.validateComponent()
-                && gCBType.validateComponent()
-                && gCBMaterial.validateComponent()
-                && (jSpinCA.getValue() != null && ((Integer) jSpinCA.getValue()) == 0);
+        if (!gTName.validateComponent()) {
+            System.out.println("Nome invalido");
+            return false;
+        }
+        if (!gCBType.validateComponent()) {
+            System.out.println("Tipo invalido");
+            return false;
+        }
+        if (!gCBMaterial.validateComponent()) {
+            System.out.println("Material invalido");
+            return false;
+        }
+        if (!(jSpinCA.getValue() != null && ((Integer) jSpinCA.getValue()) != 0)) {
+            System.out.println("CA invalido");
+            return false;
+        }
+        return true;
+//        return gTName.validateComponent()
+//                && gCBType.validateComponent()
+//                && gCBMaterial.validateComponent()
+//                && (jSpinCA.getValue() != null && ((Integer) jSpinCA.getValue()) == 0);
     }
 
     /**
@@ -464,14 +481,23 @@ public class ArmorSubView extends SubView {
 
     private void jBAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddActionPerformed
         if (validateFields()) {
-            build();
             try {
-                view.getBean().add(new BeanEvent(view, armor));
-
+                if (armor == null) {
+                    System.out.println("Criando nova armadura...");
+                    build();
+                    view.getBean().add(new BeanEvent(view, armor));
+                } else {
+                    System.out.println("Atualizando armadura...");
+                    build();
+                    view.getBean().update(armor);
+                }
+                this.dispose();
             } catch (Exception ex) {
                 LOGGER.log(Level.SEVERE, null, ex);
+                this.dispose();
             }
-            this.dispose();
+        } else {
+            System.out.println("Campos invalidos.");
         }
     }//GEN-LAST:event_jBAddActionPerformed
 

@@ -52,6 +52,14 @@ public class ArmorBean extends ViewBean<ArmorView> {
     }
 
     @Override
+    public void update(Object object) throws Exception {
+        Integer row = getView().getModel().getObjectRow(object);
+        if (object != null) {
+            getView().getModel().update(row, (Armor) object);
+        }
+    }
+
+    @Override
     public void edit(BeanEvent evt) throws Exception {
         if (getView().getTable().getSelectedRowCount() > 0) {
             Integer row = (Integer) getView().getTable().getSelectedRows()[0];

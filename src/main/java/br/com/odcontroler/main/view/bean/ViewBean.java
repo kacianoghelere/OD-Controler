@@ -77,7 +77,7 @@ public class ViewBean<T> implements BeanListener<T> {
      * @throws java.lang.Exception Propagação de exceção
      */
     public void update(Object object) throws Exception {
-
+        System.out.println("Update not implemented yet.");
     }
 
     /**
