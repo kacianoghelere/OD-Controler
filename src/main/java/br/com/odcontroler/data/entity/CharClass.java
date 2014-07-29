@@ -18,15 +18,14 @@ public class CharClass implements Serializable {
     @NotCopiable
     @ColumnName(name = "Código")
     private Long id;
-    @ColumnName(name = "Titulo")
-    private String title;
-
-    @ColumnName(name = "Vantagens")
+    @ColumnName(name = "Nome")
+    private String name;
     @Ignore
-    private Collection<Perk> perkCollection;
+    @ColumnName(name = "Vantagens")
+    private Collection<Perk> perks;
 
     /**
-     *
+     * Cria nova instancia de CharClass
      */
     public CharClass() {
     }
@@ -61,7 +60,7 @@ public class CharClass implements Serializable {
 
     @Override
     public String toString() {
-        return title;
+        return name;
     }
 
 }

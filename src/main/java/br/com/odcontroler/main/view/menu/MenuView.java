@@ -74,18 +74,17 @@ public class MenuView extends View implements TableSource<Menu>, TableView {
     }
 
     @Override
-    public void add() {
-        if (gTTitle.validateComponent()) {
-            if (gCBIcon.validateComponent()) {
-                if (gCBParent.validateComponent()) {
-                    Triad<String, Integer, Long> triad;
-                    Long parent = ((Menu) gCBParent.getSelectedItem()).getId();
-                    int index = gCBIcon.getSelectedIndex();
-                    triad = new Triad(gTTitle.getText(), index, parent);
-                    ObjectWrapper ow = new ObjectWrapper(parent);
-                    bean.add(new BeanEvent(this, triad));
-                }
-            }
+    public void add() throws Exception {
+        if (gTTitle.validateComponent()
+                && gCBIcon.validateComponent()
+                && gCBParent.validateComponent()) {
+            Long parent = ((Menu) gCBParent.getSelectedItem()).getId();
+            int index = gCBIcon.getSelectedIndex();
+            ObjectWrapper ow = new ObjectWrapper(parent)
+                    .addValue("title", gTTitle.getText())
+                    .addValue("index", index)
+                    .addValue("parent", parent);
+            bean.add(new BeanEvent(this, ow));
         }
     }
 
@@ -304,7 +303,11 @@ public class MenuView extends View implements TableSource<Menu>, TableView {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddActionPerformed
-        add();
+        try {
+            add();
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBAddActionPerformed
 
     private void jBRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoveActionPerformed

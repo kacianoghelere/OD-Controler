@@ -6,6 +6,7 @@ import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.View;
 import java.io.IOException;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * Interface do bean para a tela principal
@@ -13,6 +14,11 @@ import java.util.Map;
  * @author kaciano
  */
 public interface MainListener {
+
+    /**
+     * Acesso estático aos logs
+     */
+    public static final Logger LOGGER = Logger.getLogger(MainListener.class.getName());
 
     /**
      * Metodo padrão para salvar
@@ -52,14 +58,14 @@ public interface MainListener {
      *
      * @return {@code View} View Selecionada
      */
-    View getActualView();
+    View getCurrentView();
 
     /**
      * Modifica a view selecionada
      *
      * @param view {@code View} View Selecionada
      */
-    void setActualView(View view);
+    void setCurrentView(View view);
 
     /**
      * Insere uma nova view no desktop

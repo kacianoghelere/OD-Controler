@@ -87,7 +87,7 @@ public class MenuItem implements Comparable<MenuItem> {
     @Override
     public String toString() {
         String number = new StringUtil().completeWithZeros(3, id);
-        return "V" + number + " - " + title;
+        return "VIEW" + number + " - " + title;
     }
 
     /**

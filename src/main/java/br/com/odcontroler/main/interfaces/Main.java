@@ -1,6 +1,7 @@
 package br.com.odcontroler.main.interfaces;
 
 import java.awt.event.ActionEvent;
+import java.util.logging.Logger;
 
 /**
  * Interface da tela principal
@@ -9,6 +10,10 @@ import java.awt.event.ActionEvent;
  */
 public interface Main {
 
+    /**
+     * Acesso estático aos logs
+     */
+    public static final Logger LOGGER = Logger.getLogger(Main.class.getName());
     /**
      * Tipo de mensagem para erros
      */

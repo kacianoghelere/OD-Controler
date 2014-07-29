@@ -8,6 +8,7 @@ import br.com.odcontroler.data.db.dao.MenuItemDAO;
 import br.com.odcontroler.data.entity.Menu;
 import br.com.odcontroler.data.entity.MenuItem;
 import br.com.odcontroler.main.MainScreen;
+import br.com.odcontroler.main.interfaces.Main;
 import br.com.odcontroler.main.view.View;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -36,10 +37,10 @@ public class MenuBuilder {
 
     private MainScreen mainScreen;
     private JMenu root;
-    private MenuDAO menuDAO;
-    private MenuItemDAO viewDAO;
-    private ReflectionUtil reflect = new ReflectionUtil();
-    private Logger LOG = Logger.getLogger(MenuBuilder.class.getName());
+    private final MenuDAO menuDAO;
+    private final MenuItemDAO viewDAO;
+    private final ReflectionUtil reflect = new ReflectionUtil();
+    private final Logger LOGGER = Logger.getLogger(MenuBuilder.class.getName());
 
     /**
      * Cria nova instancia de MenuBuilder
@@ -139,7 +140,8 @@ public class MenuBuilder {
             sub = jmenu.getText().split("-")[0].trim().substring(1);
             menuid = Long.parseLong(sub);
             if (menu.getParent().equals(menuid)) {
-                System.out.println("(INFO) Inserindo em: " + jmenu.getText());
+                mainScreen.printTypedMsg("Inserindo em: " + jmenu.getText(),
+                        Main.INFORMATIVE_MSG);
                 insertMenu(jmenu, menu);
                 break;
             } else {
@@ -251,7 +253,7 @@ public class MenuBuilder {
                         newView.setTitle(view.toString());
                         mainScreen.getListener().insertView(newView);
                     } catch (InstantiationException ex) {
-                        LOG.log(Level.SEVERE,
+                        LOGGER.log(Level.SEVERE,
                                 "Instantiation Exception on #generateItem", ex);
                     }
                 }

@@ -8,10 +8,25 @@ package br.com.odcontroler.data.constants;
  */
 public enum Coin {
 
+    /**
+     * Peças de prata
+     */
     PC("Peças de cobre", 1),
+    /**
+     * Peças de prata
+     */
     PP("Peças de prata", 10),
+    /**
+     * Peças de ouro
+     */
     PO("Peças de ouro", 100),
+    /**
+     * Platina
+     */
     PL("Platina", 1000),
+    /**
+     * Electrun
+     */
     EL("Electrun", 10000);
 
     private final String description;

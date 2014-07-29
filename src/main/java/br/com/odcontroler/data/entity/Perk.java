@@ -23,9 +23,6 @@ public class Perk {
     private String title;
     @ColumnName(name = "Descrição")
     private String description;
-    @Editable
-    @ColumnName(name = "Herdado")
-    private Boolean inherited;
     @ColumnName(name = "Tipo")
     private PerkType type;
 
@@ -41,14 +38,12 @@ public class Perk {
      * @param id {@code Long} Código
      * @param title {@code String} Titulo
      * @param description {@code String} Descrição
-     * @param inherited {@code Boolean} Herdavel?
      * @param type {@code PerkType} Tipo do perk
      */
-    public Perk(Long id, String title, String description, Boolean inherited, PerkType type) {
+    public Perk(Long id, String title, String description, PerkType type) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.inherited = inherited;
         this.type = type;
     }
 
@@ -107,24 +102,6 @@ public class Perk {
     }
 
     /**
-     * O Perk é herdavel?
-     *
-     * @return {@code Boolean} Herdavel?
-     */
-    public Boolean isInherited() {
-        return inherited;
-    }
-
-    /**
-     * Modifica o status de herdavel do Perk
-     *
-     * @param inherited {@code Boolean} Herdavel?
-     */
-    public void setInherited(Boolean inherited) {
-        this.inherited = inherited;
-    }
-
-    /**
      * Retorna o tipo do Perk
      *
      * @return {@code PerkType}
@@ -147,7 +124,6 @@ public class Perk {
         int hash = 7;
         hash = 71 * hash + Objects.hashCode(this.id);
         hash = 71 * hash + Objects.hashCode(this.title);
-        hash = 71 * hash + Objects.hashCode(this.inherited);
         hash = 71 * hash + Objects.hashCode(this.type);
         return hash;
     }
@@ -165,9 +141,6 @@ public class Perk {
             return false;
         }
         if (!Objects.equals(this.title, other.title)) {
-            return false;
-        }
-        if (!Objects.equals(this.inherited, other.inherited)) {
             return false;
         }
         return Objects.equals(this.type, other.type);

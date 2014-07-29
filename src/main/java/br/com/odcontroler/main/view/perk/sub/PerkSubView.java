@@ -60,8 +60,7 @@ public class PerkSubView extends SubView {
                 this.perk = perk;
                 this.gTID.setLong(this.perk.getId());
                 this.gTTitle.setText(this.perk.getTitle());
-                this.gTADesc.setText(this.perk.getDescription());
-                this.jChInherited.setSelected(this.perk.isInherited());
+                this.gTADesc.setText(this.perk.getDescription());                
                 if (typeModel.contains(this.perk.getType())) {
                     this.gCBType.setSelectedItem(this.perk.getType());
                 }
@@ -87,8 +86,7 @@ public class PerkSubView extends SubView {
                 if (gCBType.validateComponent()) {
                     if (gTADesc.validateComponent()) {
                         perk.setId(gTID.getLong());
-                        perk.setTitle(gTTitle.getText());
-                        perk.setInherited(jChInherited.isSelected());
+                        perk.setTitle(gTTitle.getText());                        
                         perk.setDescription(gTADesc.getText());
                         perk.setType(typeModel.getSelectedItem());
                         return perk;
@@ -115,7 +113,6 @@ public class PerkSubView extends SubView {
         gTADesc = new br.com.gmp.comps.textarea.GTextArea();
         jBAdd = new javax.swing.JButton();
         jBCancel = new javax.swing.JButton();
-        jChInherited = new javax.swing.JCheckBox();
         jLType = new javax.swing.JLabel();
         gCBType = new br.com.gmp.comps.combobox.GComboBox();
         gTID = new br.com.gmp.comps.textfield.GTextField();
@@ -130,8 +127,8 @@ public class PerkSubView extends SubView {
 
         gTADesc.setBorder(javax.swing.BorderFactory.createTitledBorder("Descrição"));
         gTADesc.setColumns(20);
-        gTADesc.setMaximum(255);
         gTADesc.setRows(5);
+        gTADesc.setMaximum(255);
         jScrollPane2.setViewportView(gTADesc);
 
         jBAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/new.png"))); // NOI18N
@@ -150,8 +147,6 @@ public class PerkSubView extends SubView {
             }
         });
 
-        jChInherited.setText("Herdavel");
-
         jLType.setText("Tipo:");
 
         gTID.setEnabled(false);
@@ -167,27 +162,23 @@ public class PerkSubView extends SubView {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLID)
+                            .addComponent(jLTitle))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLID)
-                                    .addComponent(jLTitle))
+                                .addComponent(gTID, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(gTID, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(gTTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
                                 .addComponent(jLType)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(gCBType, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jChInherited))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jBAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(gCBType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(3, 3, 3))
+                            .addComponent(gTTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jBAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -196,24 +187,23 @@ public class PerkSubView extends SubView {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gTID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLID))
+                    .addComponent(jLID)
+                    .addComponent(jLType)
+                    .addComponent(gCBType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gTTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLTitle))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLType)
-                    .addComponent(gCBType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jChInherited))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBAdd)
                     .addComponent(jBCancel))
                 .addContainerGap())
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCBType, gTTitle});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -236,7 +226,6 @@ public class PerkSubView extends SubView {
     private br.com.gmp.comps.textfield.GTextField gTTitle;
     private javax.swing.JButton jBAdd;
     private javax.swing.JButton jBCancel;
-    private javax.swing.JCheckBox jChInherited;
     private javax.swing.JLabel jLID;
     private javax.swing.JLabel jLTitle;
     private javax.swing.JLabel jLType;

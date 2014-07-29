@@ -122,8 +122,10 @@ public class PerkView extends View implements TableSource<Perk>, TableView {
         jToolBar.setRollover(true);
 
         jBAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/new.png"))); // NOI18N
+        jBAdd.setMnemonic('A');
+        jBAdd.setText("Adicionar");
         jBAdd.setFocusable(false);
-        jBAdd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBAdd.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBAdd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,8 +135,10 @@ public class PerkView extends View implements TableSource<Perk>, TableView {
         jToolBar.add(jBAdd);
 
         jBRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/off.png"))); // NOI18N
+        jBRemove.setMnemonic('R');
+        jBRemove.setText("Remover");
         jBRemove.setFocusable(false);
-        jBRemove.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBRemove.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBRemove.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBRemove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,8 +148,10 @@ public class PerkView extends View implements TableSource<Perk>, TableView {
         jToolBar.add(jBRemove);
 
         jBEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/menubar/menubar/edit.png"))); // NOI18N
+        jBEdit.setMnemonic('E');
+        jBEdit.setText("Editar");
         jBEdit.setFocusable(false);
-        jBEdit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBEdit.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBEdit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,8 +159,6 @@ public class PerkView extends View implements TableSource<Perk>, TableView {
             }
         });
         jToolBar.add(jBEdit);
-
-        jSP.setBorder(javax.swing.BorderFactory.createTitledBorder("Vantagens"));
 
         gTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -187,7 +191,7 @@ public class PerkView extends View implements TableSource<Perk>, TableView {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSP, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                .addComponent(jSP, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

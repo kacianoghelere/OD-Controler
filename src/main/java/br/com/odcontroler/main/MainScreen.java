@@ -21,8 +21,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JDesktopPane;
 import javax.swing.JMenu;
 
@@ -30,16 +30,18 @@ import javax.swing.JMenu;
  * Tela principal
  *
  * @author kaciano
+ * @version 1.0
+ * @author kaciano
+ * @version 1.1
  */
 public class MainScreen extends javax.swing.JFrame implements Main {
 
-    protected static final Logger LOGGER = Logger.getLogger(MainScreen.class.getName());
     private final String ICON = "/dices/d12-icon.png";
     private final String PROP = "/br/com/odcontroler/properties/od-properties.properties";
     private final String VIEWPATH = "src/main/java/br/com/odcontroler/main/view";
     private MainListener listener;
     private Injector injector;
-    protected Properties PROPS;
+    private Properties PROPS;
 
     /**
      * Cria novo MainScreen
@@ -77,10 +79,20 @@ public class MainScreen extends javax.swing.JFrame implements Main {
             builder.setMainScreen(this);
             builder.setRoot(root);
             builder.build();
-            new BalloonUtil().showTimedBallon(root, "Menus carregados...");
+            showBalloon(root, "Menus carregados...");
         } catch (ClassNotFoundException | InstantiationException ex) {
             LOGGER.log(Level.SEVERE, null, ex);
         }
+    }
+    
+    /**
+     * Mostra balão de mensagem com 5 segundos de duração
+     *
+     * @param component {@code JComponent} Componente que terá a mensagem
+     * @param text {@code String} Mensagem
+     */
+    public void showBalloon(JComponent component, String text) {
+        new BalloonUtil().showTimedBallon(component, text);
     }
 
     /**

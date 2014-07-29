@@ -24,6 +24,7 @@ public class Weapon {
     private String name;
     @ColumnName(name = "Origem")
     private Origin origin;
+    @Ignore
     @Editable
     @ColumnName(name = "Descrição")
     private String description;
@@ -36,9 +37,11 @@ public class Weapon {
     @Editable
     @ColumnName(name = "Dano")
     private String damage;
+    @Ignore
     @Editable
     @ColumnName(name = "Peso")
     private Double weight;
+    @Ignore
     @Editable
     @ColumnName(name = "Preço")
     private Integer price;

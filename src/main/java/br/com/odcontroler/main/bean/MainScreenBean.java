@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 
@@ -30,8 +29,7 @@ import javax.swing.JInternalFrame;
  */
 public class MainScreenBean implements MainListener {
 
-    protected static final Logger LOG = Logger.getLogger(MainScreenBean.class.getName());
-    private View actualView;
+    private View currentView;
     private MainScreen screen;
     private Map<String, MenuItem> viewMap;
     private File dir;
@@ -46,7 +44,7 @@ public class MainScreenBean implements MainListener {
         try {
             startLog();
         } catch (IOException ex) {
-            LOG.log(Level.SEVERE, null, ex);
+            LOGGER.log(Level.SEVERE, null, ex);
         }
     }
 
@@ -70,58 +68,58 @@ public class MainScreenBean implements MainListener {
     @Intercept
     @Override
     public void commit(BeanEvent evt) {
-        if (getActualView() != null && getActualView().canCommit()) {
-            getActualView().commit();
-        } else if (!getActualView().canCommit()) {
-            screen.printTypedMsg("Esta View não pode salvar!", MainScreen.WARNING_MSG);
+        if (getCurrentView() != null && getCurrentView().canCommit()) {
+            getCurrentView().commit();
+        } else if (!getCurrentView().canCommit()) {
+            screen.printTypedMsg("Esta View não pode salvar!", Main.WARNING_MSG);
         }
     }
 
     @Intercept
     @Override
     public void process(BeanEvent evt) {
-        if (getActualView() != null && getActualView().canProcces()) {
-            getActualView().process();
-        } else if (!getActualView().canProcces()) {
-            screen.printTypedMsg("Esta View não pode processar!", MainScreen.WARNING_MSG);
+        if (getCurrentView() != null && getCurrentView().canProcces()) {
+            getCurrentView().process();
+        } else if (!getCurrentView().canProcces()) {
+            screen.printTypedMsg("Esta View não pode processar!", Main.WARNING_MSG);
         }
     }
 
     @Intercept
     @Override
     public void clear(BeanEvent evt) {
-        if (getActualView() != null && getActualView().canClear()) {
-            getActualView().clear();
-        } else if (!getActualView().canClear()) {
-            screen.printTypedMsg("Esta View não pode limpar!", MainScreen.WARNING_MSG);
+        if (getCurrentView() != null && getCurrentView().canClear()) {
+            getCurrentView().clear();
+        } else if (!getCurrentView().canClear()) {
+            screen.printTypedMsg("Esta View não pode limpar!", Main.WARNING_MSG);
         }
     }
 
     @Intercept
     @Override
     public void load(BeanEvent evt) {
-        if (getActualView() != null && getActualView().canLoad()) {
-            getActualView().load();
-        } else if (!getActualView().canLoad()) {
-            screen.printTypedMsg("Esta View não pode carregar!", MainScreen.WARNING_MSG);
+        if (getCurrentView() != null && getCurrentView().canLoad()) {
+            getCurrentView().load();
+        } else if (!getCurrentView().canLoad()) {
+            screen.printTypedMsg("Esta View não pode carregar!", Main.WARNING_MSG);
         }
     }
 
     @Override
-    public View getActualView() {
-        return actualView;
+    public View getCurrentView() {
+        return currentView;
     }
 
     @Override
-    public void setActualView(View view) {
-        this.actualView = view;
+    public void setCurrentView(View view) {
+        this.currentView = view;
         this.screen.setControls(new ViewParameter(
-                this.actualView.canCommit() != null ? actualView.canCommit() : false,
-                this.actualView.canProcces() != null ? actualView.canProcces() : false,
-                this.actualView.canClear() != null ? actualView.canClear() : false,
-                this.actualView.canLoad() != null ? actualView.canLoad() : false
+                this.currentView.canCommit() != null ? currentView.canCommit() : false,
+                this.currentView.canProcces() != null ? currentView.canProcces() : false,
+                this.currentView.canClear() != null ? currentView.canClear() : false,
+                this.currentView.canLoad() != null ? currentView.canLoad() : false
         ));
-        System.out.println("View ativa: " + actualView.getClass().getSimpleName());
+        System.out.println("View ativa: " + currentView.getClass().getSimpleName());
     }
 
     @Override
@@ -140,7 +138,7 @@ public class MainScreenBean implements MainListener {
                     insertView(newView);
                     found = true;
                 } catch (ClassNotFoundException | InstantiationException ex) {
-                    LOG.log(Level.SEVERE, null, ex);
+                    LOGGER.log(Level.SEVERE, null, ex);
                 }
                 break;
             }
@@ -165,7 +163,7 @@ public class MainScreenBean implements MainListener {
                         JInternalFrame jif = (JInternalFrame) c;
                         jif.setSelected(false);
                     } catch (PropertyVetoException ex) {
-                        LOG.log(Level.SEVERE, null, ex);
+                        LOGGER.log(Level.SEVERE, null, ex);
                     }
                 }
             }
@@ -176,7 +174,7 @@ public class MainScreenBean implements MainListener {
                 screen.getDesktop().setSelectedFrame(view);
                 view.setSelected(true);
             } catch (PropertyVetoException ex) {
-                LOG.log(Level.SEVERE, null, ex);
+                LOGGER.log(Level.SEVERE, null, ex);
             }
         } else {
             screen.printTypedMsg("View já carregada!", Main.INFORMATIVE_MSG);

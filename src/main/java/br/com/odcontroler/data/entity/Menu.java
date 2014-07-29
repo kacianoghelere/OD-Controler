@@ -89,7 +89,7 @@ public class Menu implements Comparable<Menu> {
     @Override
     public String toString() {
         String number = new StringUtil().completeWithZeros(3, id);
-        return "M" + number + " - " + title;
+        return "MENU" + number + " - " + title;
     }
 
     /**

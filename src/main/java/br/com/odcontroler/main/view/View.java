@@ -1,6 +1,7 @@
 package br.com.odcontroler.main.view;
 
 import br.com.gmp.comps.baloontip.src.BalloonUtil;
+import br.com.gmp.comps.cleaner.ComponentCleaner;
 import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.actions.ClearAction;
 import br.com.odcontroler.main.actions.FrameAction;
@@ -36,7 +37,10 @@ import javax.swing.event.InternalFrameEvent;
  */
 public abstract class View<T> extends JInternalFrame implements ViewListener<T> {
 
-    protected static final Logger LOGGER = Logger.getLogger(View.class.getName());
+    /**
+     * Acesso aos logs
+     */
+    public static final Logger LOGGER = Logger.getLogger(View.class.getName());
     private final MainScreen mainScreen;
     private Boolean canSave;
     private Boolean canProcess;
@@ -70,7 +74,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
 
             @Override
             public void internalFrameActivated(InternalFrameEvent e) {
-                mainScreen.getListener().setActualView(View.this);
+                mainScreen.getListener().setCurrentView(View.this);
             }
 
             @Override
@@ -142,6 +146,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
                     try {
                         getBean().commit(new BeanEvent(View.this, null));
                         showMessage("Dados salvos.", MainScreen.SUCCESS_MSG);
+                        new ComponentCleaner(true).clean(View.this);
                     } catch (Exception ex) {
                         throwException(new ViewException(View.this, "Commit error", ex));
                     }
@@ -257,7 +262,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
 
     @Override
     public void showBalloon(JComponent component, String text) {
-        new BalloonUtil().showTimedBallon(component, text);
+        getMainScreen().showBalloon(component, text);
     }
 
     @Override

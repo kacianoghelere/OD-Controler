@@ -1,11 +1,11 @@
 package br.com.odcontroler.main.view.bean;
 
 import br.com.gmp.comps.cleaner.ComponentCleaner;
+import br.com.odcontroler.main.interfaces.Main;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.View;
 import br.com.odcontroler.main.view.interfaces.BeanListener;
 import java.util.logging.Logger;
-import javax.swing.JInternalFrame;
 
 /**
  * Bean padrão para implementação de ViewBeans
@@ -16,7 +16,10 @@ import javax.swing.JInternalFrame;
  */
 public class ViewBean<T> implements BeanListener<T> {
 
-    protected static final Logger LOGGER = Logger.getLogger(View.class.getName());
+    /**
+     * Acesso aos logs
+     */
+    public static final Logger LOGGER = Logger.getLogger(ViewBean.class.getName());
     private final T view;
 
     /**
@@ -41,8 +44,9 @@ public class ViewBean<T> implements BeanListener<T> {
 
     @Override
     public void clear(BeanEvent evt) throws Exception {
-        new ComponentCleaner(true).clean((JInternalFrame) view);
-        System.out.println("(INFO) Dados removidos dos campos.");
+        View v = (View) this.view;
+        new ComponentCleaner(true).clean(v);
+        v.showMessage("Dados removidos dos campos", Main.INFORMATIVE_MSG);
     }
 
     @Override

@@ -79,15 +79,14 @@ public class MenuBean extends ViewBean<MenuView> {
      * Adiciona novo item na tabela
      *
      * @param evt {@code BeanEvent} Evento do Bean
+     * @throws java.lang.Exception Propagação de exceção
      */
     @Override
-    public void add(BeanEvent evt) {
-        Triad<String, Integer, Long> triad = (Triad<String, Integer, Long>) evt.getValue();
-        String title = triad.getFirst();
-        String icon = getIcons()[triad.getSecond()];
-        Long parent = triad.getThird();
-        Menu menu = buildNew(title, icon, parent);
-        getView().getModel().add(menu);
+    public void add(BeanEvent evt) throws Exception {
+        String title = (String) evt.getWrapper().getValue("title");
+        String icon = getIcons()[(Integer) evt.getWrapper().getValue("index")];
+        Long parent = (Long) evt.getWrapper().getValue("parent");
+        getView().getModel().add(buildNew(title, icon, parent));
         getView().getParentModel().setData(getParentMenus());
         buildPreview();
         getView().refresh();
