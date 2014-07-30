@@ -157,7 +157,7 @@ public class WeaponSubView extends SubView {
             WeaponType prefix = this.typeModel.getSelectedItem();
             Material material = this.materialModel.getSelectedItem();
             Origin origin = this.originModel.getSelectedItem();
-            this.gTName.setText(prefix.getTitle() + " " + origin.getName()
+            this.gTName.setText(prefix.getName() + " " + origin.getName()
                     + " de " + material.getName());
         }
     }

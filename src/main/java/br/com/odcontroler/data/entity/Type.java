@@ -18,7 +18,7 @@ public abstract class Type {
     private Long id;
     @Editable
     @ColumnName(name = "Nome")
-    private String title;
+    private String name;
 
     /**
      * Cria nova instancia de Type
@@ -30,11 +30,11 @@ public abstract class Type {
      * Cria nova instancia de Type
      *
      * @param id {@code Long} Código do tipo
-     * @param title {@code String} Titulo do tipo
+     * @param name {@code String} Nome do tipo
      */
-    public Type(Long id, String title) {
+    public Type(Long id, String name) {
         this.id = id;
-        this.title = title;
+        this.name = name;
     }
 
     /**
@@ -52,22 +52,22 @@ public abstract class Type {
     public abstract void setId(Long id);
 
     /**
-     * Retorna o titulo do EffectType
+     * Retorna o nome do EffectType
      *
-     * @return {@code String} Titulo do Type
+     * @return {@code String} Nome do Type
      */
-    public abstract String getTitle();
+    public abstract String getName();
 
     /**
-     * Modifica o titulo do EffectType
+     * Modifica o nome do EffectType
      *
-     * @param title {@code String} Titulo do Type
+     * @param name {@code String} Nome do Type
      */
-    public abstract void setTitle(String title);
+    public abstract void setName(String name);
 
     @Override
     public String toString() {
-        return getTitle();
+        return getName();
     }
 
 }

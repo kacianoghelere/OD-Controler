@@ -10,7 +10,7 @@ import java.util.Objects;
  *
  * @author kaciano
  */
-public class Material {
+public class Material extends Type {
 
     @Ignore
     @NotCopiable
@@ -41,6 +41,7 @@ public class Material {
      *
      * @return {@code Long} Código do material
      */
+    @Override
     public Long getId() {
         return id;
     }
@@ -50,6 +51,7 @@ public class Material {
      *
      * @param id {@code Long} Código do material
      */
+    @Override
     public void setId(Long id) {
         this.id = id;
     }
@@ -59,6 +61,7 @@ public class Material {
      *
      * @return {@code String} Nome do material
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -68,6 +71,7 @@ public class Material {
      *
      * @param name {@code String} Nome do material
      */
+    @Override
     public void setName(String name) {
         this.name = name;
     }

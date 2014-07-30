@@ -4,7 +4,7 @@ import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -20,9 +20,25 @@ public class CharClass implements Serializable {
     private Long id;
     @ColumnName(name = "Nome")
     private String name;
+    @ColumnName(name = "Dado de Vida")
+    private String hpDice;
+    @ColumnName(name = "CA Bônus")
+    private Integer armorBonus;
+    @Ignore
+    @ColumnName(name = "Requerimentos")
+    private Requires requires;
+    @Ignore
+    @ColumnName(name = "Armaduras Permitidas")
+    private List<ArmorType> allowedArmors;    
+    @Ignore
+    @ColumnName(name = "Armas Permitidas")
+    private List<WeaponType> allowedWeapons;    
+    @Ignore
+    @ColumnName(name = "Itens Permitidas")
+    private List<ItemType> allowedItems;
     @Ignore
     @ColumnName(name = "Vantagens")
-    private Collection<Perk> perks;
+    private List<Perk> perks;
 
     /**
      * Cria nova instancia de CharClass
@@ -41,8 +57,9 @@ public class CharClass implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 29 * hash + Objects.hashCode(this.id);
+        int hash = 5;
+        hash = 53 * hash + Objects.hashCode(this.id);
+        hash = 53 * hash + Objects.hashCode(this.name);
         return hash;
     }
 
@@ -55,7 +72,10 @@ public class CharClass implements Serializable {
             return false;
         }
         final CharClass other = (CharClass) obj;
-        return Objects.equals(this.id, other.id);
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return Objects.equals(this.name, other.name);
     }
 
     @Override

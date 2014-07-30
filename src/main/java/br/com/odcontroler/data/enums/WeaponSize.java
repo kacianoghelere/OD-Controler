@@ -1,4 +1,4 @@
-package br.com.odcontroler.data.constants;
+package br.com.odcontroler.data.enums;
 
 /**
  * Enum para resgistro dos tamanhos de armas

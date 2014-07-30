@@ -61,7 +61,7 @@ public class EffectType extends Type {
      *
      * @return {@code String} Titulo do EffectType
      */
-    public String getTitle() {
+    public String getName() {
         return title;
     }
 
@@ -70,7 +70,7 @@ public class EffectType extends Type {
      *
      * @param title {@code String} Titulo do EffectType
      */
-    public void setTitle(String title) {
+    public void setName(String title) {
         this.title = title;
     }
 

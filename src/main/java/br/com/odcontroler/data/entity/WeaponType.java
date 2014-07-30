@@ -91,7 +91,7 @@ public class WeaponType extends Type {
      * @return {@code String} Titulo do tipo de arma
      */
     @Override
-    public String getTitle() {
+    public String getName() {
         return title;
     }
 
@@ -101,7 +101,7 @@ public class WeaponType extends Type {
      * @param title {@code String} Titulo do tipo de arma
      */
     @Override
-    public void setTitle(String title) {
+    public void setName(String title) {
         this.title = title;
     }
 

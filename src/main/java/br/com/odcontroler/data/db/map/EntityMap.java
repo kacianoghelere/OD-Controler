@@ -1,22 +1,6 @@
 package br.com.odcontroler.data.db.map;
 
-import br.com.odcontroler.data.entity.Element;
-import br.com.odcontroler.data.entity.Weapon;
-import br.com.odcontroler.data.enums.UseType;
-import br.com.odcontroler.data.entity.PerkType;
-import br.com.odcontroler.data.entity.Expertise;
-import br.com.odcontroler.data.entity.EffectType;
-import br.com.odcontroler.data.entity.ArmorType;
-import br.com.odcontroler.data.entity.WeaponType;
-import br.com.odcontroler.data.entity.MenuItem;
-import br.com.odcontroler.data.entity.ExpertiseType;
-import br.com.odcontroler.data.entity.Perk;
-import br.com.odcontroler.data.entity.Menu;
-import br.com.odcontroler.data.entity.Material;
-import br.com.odcontroler.data.entity.Armor;
-import br.com.odcontroler.data.entity.Effect;
-import br.com.odcontroler.data.entity.Origin;
-import br.com.odcontroler.data.enums.Size;
+import br.com.odcontroler.data.entity.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,7 +21,6 @@ public class EntityMap {
         map.put(Element.class, "ElementDB");
         map.put(Material.class, "MaterialsDB");
         map.put(ArmorType.class, "ArmorTypeDB");
-        map.put(UseType.class, "UseTypeDB");
         map.put(Effect.class, "EffectDB");
         map.put(EffectType.class, "EffectTypeDB");
         map.put(Menu.class, "MenuDB");
@@ -45,12 +28,12 @@ public class EntityMap {
         map.put(Perk.class, "PerkDB");
         map.put(PerkType.class, "PerkTypeDB");
         map.put(WeaponType.class, "WeaponTypeDB");
-        map.put(Size.class, "WeaponSizeDB");
         map.put(Weapon.class, "WeaponDB");
         map.put(Armor.class, "ArmorDB");
         map.put(Expertise.class, "ExpertiseDB");
         map.put(ExpertiseType.class, "ExpertiseTypeDB");
         map.put(Origin.class, "OriginDB");
+        map.put(ItemType.class, "ItemTypeDB");
         return map;
     }
 

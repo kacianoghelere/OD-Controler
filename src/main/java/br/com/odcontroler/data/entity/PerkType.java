@@ -19,7 +19,7 @@ public class PerkType extends Type {
     private Long id;
     @Editable
     @ColumnName(name = "Nome")
-    private String title;
+    private String name;
 
     /**
      * Cria nova instancia de PerkType
@@ -31,11 +31,11 @@ public class PerkType extends Type {
      * Cria nova instancia de PerkType
      *
      * @param id {@code Long} Código do tipo
-     * @param title {@code String} Nome do tipo
+     * @param name {@code String} Nome do tipo
      */
-    public PerkType(Long id, String title) {
+    public PerkType(Long id, String name) {
         this.id = id;
-        this.title = title;
+        this.name = name;
     }
 
     /**
@@ -43,6 +43,7 @@ public class PerkType extends Type {
      *
      * @return {@code Long} ID do PerkType
      */
+    @Override
     public Long getId() {
         return id;
     }
@@ -52,6 +53,7 @@ public class PerkType extends Type {
      *
      * @param id {@code Long} ID do PerkType
      */
+    @Override
     public void setId(Long id) {
         this.id = id;
     }
@@ -61,8 +63,9 @@ public class PerkType extends Type {
      *
      * @return {@code String} Titulo do PerkType
      */
-    public String getTitle() {
-        return title;
+    @Override
+    public String getName() {
+        return name;
     }
 
     /**
@@ -70,15 +73,16 @@ public class PerkType extends Type {
      *
      * @param title {@code String} Titulo do PerkType
      */
-    public void setTitle(String title) {
-        this.title = title;
+    @Override
+    public void setName(String title) {
+        this.name = title;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 23 * hash + Objects.hashCode(this.id);
-        hash = 23 * hash + Objects.hashCode(this.title);
+        hash = 23 * hash + Objects.hashCode(this.name);
         return hash;
     }
 
@@ -94,12 +98,12 @@ public class PerkType extends Type {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        return Objects.equals(this.title, other.title);
+        return Objects.equals(this.name, other.name);
     }
 
     @Override
     public String toString() {
-        return title;
+        return name;
     }
 
 }

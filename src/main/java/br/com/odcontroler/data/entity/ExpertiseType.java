@@ -61,7 +61,7 @@ public class ExpertiseType extends Type {
      *
      * @return {@code String} Titulo do ExpertiseType
      */
-    public String getTitle() {
+    public String getName() {
         return title;
     }
 
@@ -70,7 +70,7 @@ public class ExpertiseType extends Type {
      *
      * @param title {@code String} Titulo do ExpertiseType
      */
-    public void setTitle(String title) {
+    public void setName(String title) {
         this.title = title;
     }
 

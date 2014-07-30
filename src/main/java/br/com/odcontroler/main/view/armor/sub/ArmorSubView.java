@@ -92,7 +92,7 @@ public class ArmorSubView extends SubView {
             ArmorType prefix = this.armorTypeModel.getSelectedItem();
             Material mat1 = this.materialModel.getSelectedItem();
             Origin origin = this.originModel.getSelectedItem();
-            this.gTName.setText(prefix.getTitle() + " " + origin.getName()
+            this.gTName.setText(prefix.getName() + " " + origin.getName()
                     + " de " + mat1.getName());
         }
     }

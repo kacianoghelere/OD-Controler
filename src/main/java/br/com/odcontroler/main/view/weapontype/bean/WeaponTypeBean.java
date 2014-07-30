@@ -47,7 +47,7 @@ public class WeaponTypeBean extends ViewBean<WeaponTypeView> {
         ObjectWrapper ow = evt.getWrapper();
         WeaponType type = new WeaponType();
         type.setId(nextID);
-        type.setTitle((String) ow.getValue("name"));
+        type.setName((String) ow.getValue("name"));
         type.setUseType((UseType) ow.getValue("use"));
         type.setSize((Size) ow.getValue("size"));
         type.setRange((Integer) ow.getValue("range"));

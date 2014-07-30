@@ -1,4 +1,4 @@
-package br.com.odcontroler.data.constants;
+package br.com.odcontroler.data.enums;
 
 /**
  * Enum de registro de dados de moedas

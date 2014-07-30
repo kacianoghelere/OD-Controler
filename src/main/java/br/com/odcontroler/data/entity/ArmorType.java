@@ -64,7 +64,7 @@ public class ArmorType extends Type {
      * @return {@code String} Nome do tipo
      */
     @Override
-    public String getTitle() {
+    public String getName() {
         return title;
     }
 
@@ -74,7 +74,7 @@ public class ArmorType extends Type {
      * @param title {@code String} Nome do tipo
      */
     @Override
-    public void setTitle(String title) {
+    public void setName(String title) {
         this.title = title;
     }
 

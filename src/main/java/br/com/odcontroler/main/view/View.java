@@ -1,6 +1,5 @@
 package br.com.odcontroler.main.view;
 
-import br.com.gmp.comps.baloontip.src.BalloonUtil;
 import br.com.gmp.comps.cleaner.ComponentCleaner;
 import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.actions.ClearAction;

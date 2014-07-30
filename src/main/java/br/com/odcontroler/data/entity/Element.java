@@ -12,7 +12,7 @@ import java.util.Objects;
  * @author kaciano
  * @version 1.0
  */
-public class Element {
+public class Element extends Type {
 
     @Ignore
     @NotCopiable
@@ -20,7 +20,7 @@ public class Element {
     private Long id;
     @Editable
     @ColumnName(name = "Nome")
-    private String title;
+    private String name;
 
     /**
      * Cria nova instancia de Element
@@ -36,7 +36,7 @@ public class Element {
      */
     public Element(Long id, String title) {
         this.id = id;
-        this.title = title;
+        this.name = title;
     }
 
     /**
@@ -44,6 +44,7 @@ public class Element {
      *
      * @return {@code Long} ID do elemento
      */
+    @Override
     public Long getId() {
         return id;
     }
@@ -53,6 +54,7 @@ public class Element {
      *
      * @param id {@code Long} ID do elemento
      */
+    @Override
     public void setId(Long id) {
         this.id = id;
     }
@@ -62,24 +64,26 @@ public class Element {
      *
      * @return {@code String} Titulo do elemento
      */
-    public String getTitle() {
-        return title;
+    @Override
+    public String getName() {
+        return name;
     }
 
     /**
      * Modifica o Titulo do elemento
      *
-     * @param title {@code String} Titulo do elemento
+     * @param name {@code String} Titulo do elemento
      */
-    public void setTitle(String title) {
-        this.title = title;
+    @Override
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 53 * hash + Objects.hashCode(this.id);
-        hash = 53 * hash + Objects.hashCode(this.title);
+        hash = 53 * hash + Objects.hashCode(this.name);
         return hash;
     }
 
@@ -95,12 +99,12 @@ public class Element {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        return Objects.equals(this.title, other.title);
+        return Objects.equals(this.name, other.name);
     }
 
     @Override
     public String toString() {
-        return title;
+        return name;
     }
 
 }
