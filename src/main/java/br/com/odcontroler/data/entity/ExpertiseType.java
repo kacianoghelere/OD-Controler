@@ -19,7 +19,7 @@ public class ExpertiseType extends Type {
     private Long id;
     @Editable
     @ColumnName(name = "Nome")
-    private String title;
+    private String name;
 
     /**
      * Cria nova instancia de ExpertiseType
@@ -35,7 +35,7 @@ public class ExpertiseType extends Type {
      */
     public ExpertiseType(Long id, String title) {
         this.id = id;
-        this.title = title;
+        this.name = title;
     }
 
     /**
@@ -62,7 +62,7 @@ public class ExpertiseType extends Type {
      * @return {@code String} Titulo do ExpertiseType
      */
     public String getName() {
-        return title;
+        return name;
     }
 
     /**
@@ -71,14 +71,14 @@ public class ExpertiseType extends Type {
      * @param title {@code String} Titulo do ExpertiseType
      */
     public void setName(String title) {
-        this.title = title;
+        this.name = title;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 23 * hash + Objects.hashCode(this.id);
-        hash = 23 * hash + Objects.hashCode(this.title);
+        hash = 23 * hash + Objects.hashCode(this.name);
         return hash;
     }
 
@@ -94,12 +94,12 @@ public class ExpertiseType extends Type {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        return Objects.equals(this.title, other.title);
+        return Objects.equals(this.name, other.name);
     }
 
     @Override
     public String toString() {
-        return title;
+        return name;
     }
 
 }

@@ -19,7 +19,7 @@ public class EffectType extends Type {
     private Long id;
     @Editable
     @ColumnName(name = "Nome")
-    private String title;
+    private String name;
 
     /**
      * Cria nova instancia de EffectType
@@ -35,7 +35,7 @@ public class EffectType extends Type {
      */
     public EffectType(Long id, String title) {
         this.id = id;
-        this.title = title;
+        this.name = title;
     }
 
     /**
@@ -43,6 +43,7 @@ public class EffectType extends Type {
      *
      * @return {@code Long} ID do EffectType
      */
+    @Override
     public Long getId() {
         return id;
     }
@@ -52,6 +53,7 @@ public class EffectType extends Type {
      *
      * @param id {@code Long} ID do EffectType
      */
+    @Override
     public void setId(Long id) {
         this.id = id;
     }
@@ -61,8 +63,9 @@ public class EffectType extends Type {
      *
      * @return {@code String} Titulo do EffectType
      */
+    @Override
     public String getName() {
-        return title;
+        return name;
     }
 
     /**
@@ -70,15 +73,16 @@ public class EffectType extends Type {
      *
      * @param title {@code String} Titulo do EffectType
      */
+    @Override
     public void setName(String title) {
-        this.title = title;
+        this.name = title;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 23 * hash + Objects.hashCode(this.id);
-        hash = 23 * hash + Objects.hashCode(this.title);
+        hash = 23 * hash + Objects.hashCode(this.name);
         return hash;
     }
 
@@ -94,12 +98,12 @@ public class EffectType extends Type {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        return Objects.equals(this.title, other.title);
+        return Objects.equals(this.name, other.name);
     }
 
     @Override
     public String toString() {
-        return title;
+        return name;
     }
 
 }

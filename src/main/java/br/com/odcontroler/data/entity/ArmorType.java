@@ -19,7 +19,7 @@ public class ArmorType extends Type {
     private Long id;
     @Editable
     @ColumnName(name = "Nome")
-    private String title;
+    private String name;
 
     /**
      * Cria nova instancia de ArmorType
@@ -35,7 +35,7 @@ public class ArmorType extends Type {
      */
     public ArmorType(Long id, String typeName) {
         this.id = id;
-        this.title = typeName;
+        this.name = typeName;
     }
 
     /**
@@ -65,7 +65,7 @@ public class ArmorType extends Type {
      */
     @Override
     public String getName() {
-        return title;
+        return name;
     }
 
     /**
@@ -75,14 +75,14 @@ public class ArmorType extends Type {
      */
     @Override
     public void setName(String title) {
-        this.title = title;
+        this.name = title;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 89 * hash + Objects.hashCode(this.id);
-        hash = 89 * hash + Objects.hashCode(this.title);
+        hash = 89 * hash + Objects.hashCode(this.name);
         return hash;
     }
 
@@ -98,12 +98,12 @@ public class ArmorType extends Type {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        return Objects.equals(this.title, other.title);
+        return Objects.equals(this.name, other.name);
     }
 
     @Override
     public String toString() {
-        return title;
+        return name;
     }
 
 }

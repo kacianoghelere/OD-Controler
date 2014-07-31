@@ -130,4 +130,11 @@ public interface ViewListener<T> {
      */
     void showBalloon(JComponent component, String text);
 
+    /**
+     * Mostra balão na barra de mensagem com 5 segundos de duração
+     *
+     * @param text {@code String} Mensagem
+     */
+    void showMessageBalloon(String text);
+
 }

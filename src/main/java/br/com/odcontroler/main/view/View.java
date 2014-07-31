@@ -257,11 +257,17 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     @Override
     public void showMessage(String msg, int type) {
         getMainScreen().printTypedMsg(msg, type);
+        getMainScreen().showTypedBalloon(msg, type);
     }
 
     @Override
     public void showBalloon(JComponent component, String text) {
         getMainScreen().showBalloon(component, text);
+    }
+
+    @Override
+    public void showMessageBalloon(String text) {
+        getMainScreen().showBalloon(text);
     }
 
     @Override

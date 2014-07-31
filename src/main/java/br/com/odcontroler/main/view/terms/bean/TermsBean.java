@@ -6,6 +6,7 @@ import br.com.odcontroler.data.db.dao.ArmorTypeDAO;
 import br.com.odcontroler.data.db.dao.EffectTypeDAO;
 import br.com.odcontroler.data.db.dao.ElementDAO;
 import br.com.odcontroler.data.db.dao.ExpertiseTypeDAO;
+import br.com.odcontroler.data.db.dao.ItemTypeDAO;
 import br.com.odcontroler.data.db.dao.MaterialsDAO;
 import br.com.odcontroler.data.db.dao.PerkTypeDAO;
 import br.com.odcontroler.data.entity.ArmorType;
@@ -33,10 +34,11 @@ public class TermsBean extends ViewBean<TermsView> {
 
     private final EffectTypeDAO effectTypeDAO;
     private final PerkTypeDAO perkTypeDao;
-    private final ExpertiseTypeDAO expDAO;
+    private final ExpertiseTypeDAO expertiseDAO;
     private final ArmorTypeDAO armorDAO;
     private final MaterialsDAO materialsDAO;
     private final ElementDAO elementDAO;
+    private final ItemTypeDAO itemDAO;
 
     /**
      * Cria nova instancia de TermsBean
@@ -47,30 +49,33 @@ public class TermsBean extends ViewBean<TermsView> {
         super(view);
         this.effectTypeDAO = new EffectTypeDAO();
         this.perkTypeDao = new PerkTypeDAO();
-        this.expDAO = new ExpertiseTypeDAO();
+        this.expertiseDAO = new ExpertiseTypeDAO();
         this.armorDAO = new ArmorTypeDAO();
         this.materialsDAO = new MaterialsDAO();
         this.elementDAO = new ElementDAO();
+        this.itemDAO = new ItemTypeDAO();
     }
 
     @Override
     public void commit(BeanEvent evt) throws Exception {
-        effectTypeDAO.replaceAll(getView().getEffectModel().getData());
-        perkTypeDao.replaceAll(getView().getPerkModel().getData());
-        expDAO.replaceAll(getView().getExpertiseModel().getData());
-        armorDAO.replaceAll(getView().getArmorModel().getData());
-        materialsDAO.replaceAll(getView().getMaterialModel().getData());
-        elementDAO.replaceAll(getView().getElementModel().getData());
+        this.effectTypeDAO.replaceAll(getView().getEffectModel().getData());
+        this.perkTypeDao.replaceAll(getView().getPerkModel().getData());
+        this.expertiseDAO.replaceAll(getView().getExpertiseModel().getData());
+        this.armorDAO.replaceAll(getView().getArmorModel().getData());
+        this.materialsDAO.replaceAll(getView().getMaterialModel().getData());
+        this.elementDAO.replaceAll(getView().getElementModel().getData());
+        this.itemDAO.replaceAll(getView().getItemModel().getData());
     }
 
     @Override
     public void load(BeanEvent evt) throws Exception {
         getView().getEffectModel().setData(effectTypeDAO.getList());
         getView().getPerkModel().setData(perkTypeDao.getList());
-        getView().getExpertiseModel().setData(expDAO.getList());
+        getView().getExpertiseModel().setData(expertiseDAO.getList());
         getView().getArmorModel().setData(armorDAO.getList());
         getView().getMaterialModel().setData(materialsDAO.getList());
         getView().getElementModel().setData(elementDAO.getList());
+        getView().getItemModel().setData(itemDAO.getList());
     }
 
     /**

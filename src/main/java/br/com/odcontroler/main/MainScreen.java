@@ -84,7 +84,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
             LOGGER.log(Level.SEVERE, null, ex);
         }
     }
-    
+
     /**
      * Mostra balão de mensagem com 5 segundos de duração
      *
@@ -93,6 +93,25 @@ public class MainScreen extends javax.swing.JFrame implements Main {
      */
     public void showBalloon(JComponent component, String text) {
         new BalloonUtil().showTimedBallon(component, text);
+    }
+
+    /**
+     * Mostra balão de mensagem com 5 segundos de duração
+     *
+     * @param text {@code String} Mensagem
+     */
+    public void showBalloon(String text) {
+        new BalloonUtil().showTimedBallon(jLMsgs, text);
+    }
+
+    /**
+     * Mostra balão de mensagem com 5 segundos de duração
+     *
+     * @param text {@code String} Mensagem
+     * @param type {@code int} Tipo da Mensagem
+     */
+    public void showTypedBalloon(String text, int type) {
+        new BalloonUtil().showStatusBallon(jLMsgs, text, type);
     }
 
     /**
