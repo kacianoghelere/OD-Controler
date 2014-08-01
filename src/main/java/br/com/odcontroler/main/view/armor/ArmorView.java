@@ -43,7 +43,7 @@ public class ArmorView extends View<ArmorBean> implements TableView, TableSource
      */
     private void initialize() {
         this.setControls(new ViewParameter(true, false, false, true));
-        this.setSize(735, 491);
+        this.setSize(662, 484);
         this.initComponents();
         this.model = new ArmorModel();
         this.gTable.buildTable(this, 0, model);
@@ -140,6 +140,9 @@ public class ArmorView extends View<ArmorBean> implements TableView, TableSource
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/armor/P/P_21.png"))); // NOI18N
         setMinimumSize(new java.awt.Dimension(735, 491));
 
+        gTable.setAutoResizeMode(4);
+        gTable.setAutoscrolls(false);
+        gTable.setKeyDelete(true);
         gTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -148,8 +151,6 @@ public class ArmorView extends View<ArmorBean> implements TableView, TableSource
 
             }
         ));
-        gTable.setAutoResizeMode(4);
-        gTable.setAutoscrolls(false);
         gTable.setOpaque(false);
         gTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -164,14 +165,14 @@ public class ArmorView extends View<ArmorBean> implements TableView, TableSource
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

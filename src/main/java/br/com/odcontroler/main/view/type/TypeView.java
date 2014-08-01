@@ -1,4 +1,4 @@
-package br.com.odcontroler.main.view.terms;
+package br.com.odcontroler.main.view.type;
 
 import br.com.gmp.comps.list.GList;
 import br.com.gmp.comps.model.GListModel;
@@ -13,10 +13,10 @@ import br.com.odcontroler.data.entity.PerkType;
 import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.View;
-import br.com.odcontroler.main.view.terms.bean.TermsBean;
+import br.com.odcontroler.main.view.exception.ViewException;
+import br.com.odcontroler.main.view.type.bean.TypeBean;
 import br.com.odcontroler.main.view.object.ViewParameter;
 import java.awt.event.KeyEvent;
-import java.util.logging.Level;
 
 /**
  * Tela para cadastro de termos comuns
@@ -26,9 +26,9 @@ import java.util.logging.Level;
  * @author kaciano
  * @version 1.1
  */
-public class TermsView extends View {
+public class TypeView extends View {
 
-    private TermsBean bean;
+    private TypeBean bean;
     private GListModel<EffectType> effectModel;
     private GListModel<PerkType> perkModel;
     private GListModel<ArmorType> armorModel;
@@ -38,11 +38,11 @@ public class TermsView extends View {
     private GListModel<ItemType> itemModel;
 
     /**
-     * Cria nova instancia de TermsView
+     * Cria nova instancia de TypeView
      *
      * @param mainScreen {@code MainScreen} Tela principal
      */
-    public TermsView(MainScreen mainScreen) {
+    public TypeView(MainScreen mainScreen) {
         super(mainScreen);
         initialize();
     }
@@ -61,7 +61,7 @@ public class TermsView extends View {
         this.materialModel = new GListModel<>();
         this.elementModel = new GListModel<>();
         this.itemModel = new GListModel<>();
-        this.bean = new TermsBean(this);
+        this.bean = new TypeBean(this);
         this.gLtEffectTp.setModel(effectModel);
         this.gLtPerkTp.setModel(perkModel);
         this.gLtExpTp.setModel(expertiseModel);
@@ -72,7 +72,7 @@ public class TermsView extends View {
         try {
             this.bean.load(null);
         } catch (Exception ex) {
-            LOGGER.log(Level.SEVERE, null, ex);
+            throwException(new ViewException(this, ex));
         }
     }
 
@@ -172,7 +172,7 @@ public class TermsView extends View {
      * @param model {@code GListModel} Modelo da lista
      */
     private void add(GTextField textfield, Object object, GListModel model) {
-        if (textfield.validateComponent()) {
+        if (textfield.validateComponent()) {            
             model.add(object);
             textfield.clear();
         }
@@ -255,7 +255,7 @@ public class TermsView extends View {
     }
 
     @Override
-    public TermsBean getBean() {
+    public TypeBean getBean() {
         return bean;
     }
 
@@ -298,19 +298,23 @@ public class TermsView extends View {
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("Termos comuns");
+        setTitle("Tipos");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1213_.png"))); // NOI18N
         setMaximumSize(new java.awt.Dimension(375, 327));
         setMinimumSize(new java.awt.Dimension(375, 327));
+        setName("Form"); // NOI18N
         setPreferredSize(new java.awt.Dimension(375, 327));
 
         jTabbedPane.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane.setName("jTabbedPane"); // NOI18N
 
         jPPerkTypes.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Vantagens"));
+        jPPerkTypes.setName("jPPerkTypes"); // NOI18N
 
         gTPerkTp.setPlaceholder("Tipos de vantagens");
         gTPerkTp.setMaximumSize(new java.awt.Dimension(150, 2147483647));
         gTPerkTp.setMinimumSize(new java.awt.Dimension(150, 28));
+        gTPerkTp.setName("gTPerkTp"); // NOI18N
         gTPerkTp.setPreferredSize(new java.awt.Dimension(150, 28));
         gTPerkTp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -318,6 +322,10 @@ public class TermsView extends View {
             }
         });
 
+        jSPPerk.setName("jSPPerk"); // NOI18N
+
+        gLtPerkTp.setKeyDelete(true);
+        gLtPerkTp.setName("gLtPerkTp"); // NOI18N
         gLtPerkTp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 gLtPerkTpKeyReleased(evt);
@@ -346,13 +354,15 @@ public class TermsView extends View {
                 .addGap(12, 12, 12))
         );
 
-        jTabbedPane.addTab("Vantagens", jPPerkTypes);
+        jTabbedPane.addTab("Vantagens", new javax.swing.ImageIcon(getClass().getResource("/MenuIcons/slice1390_@.png")), jPPerkTypes); // NOI18N
 
         jPEffects.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Efeitos"));
+        jPEffects.setName("jPEffects"); // NOI18N
 
         gTEffectTp.setPlaceholder("Tipos de efeitos");
         gTEffectTp.setMaximumSize(new java.awt.Dimension(150, 2147483647));
         gTEffectTp.setMinimumSize(new java.awt.Dimension(150, 28));
+        gTEffectTp.setName("gTEffectTp"); // NOI18N
         gTEffectTp.setNextFocusableComponent(gTPerkTp);
         gTEffectTp.setPreferredSize(new java.awt.Dimension(150, 28));
         gTEffectTp.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -361,6 +371,10 @@ public class TermsView extends View {
             }
         });
 
+        jSPEffect.setName("jSPEffect"); // NOI18N
+
+        gLtEffectTp.setKeyDelete(true);
+        gLtEffectTp.setName("gLtEffectTp"); // NOI18N
         gLtEffectTp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 gLtEffectTpKeyReleased(evt);
@@ -389,13 +403,15 @@ public class TermsView extends View {
                 .addGap(12, 12, 12))
         );
 
-        jTabbedPane.addTab("Efeitos", jPEffects);
+        jTabbedPane.addTab("Efeitos", new javax.swing.ImageIcon(getClass().getResource("/MenuIcons/slice1387_@.png")), jPEffects); // NOI18N
 
         jPExpertiseTypes.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Perícias"));
+        jPExpertiseTypes.setName("jPExpertiseTypes"); // NOI18N
 
         gTExpertiseTp.setPlaceholder("Tipos de perícias");
         gTExpertiseTp.setMaximumSize(new java.awt.Dimension(150, 2147483647));
         gTExpertiseTp.setMinimumSize(new java.awt.Dimension(150, 28));
+        gTExpertiseTp.setName("gTExpertiseTp"); // NOI18N
         gTExpertiseTp.setPreferredSize(new java.awt.Dimension(150, 28));
         gTExpertiseTp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -403,6 +419,10 @@ public class TermsView extends View {
             }
         });
 
+        jSPExpertise.setName("jSPExpertise"); // NOI18N
+
+        gLtExpTp.setKeyDelete(true);
+        gLtExpTp.setName("gLtExpTp"); // NOI18N
         gLtExpTp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 gLtExpTpKeyReleased(evt);
@@ -431,13 +451,15 @@ public class TermsView extends View {
                 .addGap(12, 12, 12))
         );
 
-        jTabbedPane.addTab("Perícias", jPExpertiseTypes);
+        jTabbedPane.addTab("Perícias", new javax.swing.ImageIcon(getClass().getResource("/MenuIcons/slice1215_.png")), jPExpertiseTypes); // NOI18N
 
-        jPArmorTypes.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Perícias"));
+        jPArmorTypes.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Armaduras"));
+        jPArmorTypes.setName("jPArmorTypes"); // NOI18N
 
         gTArmorTp.setPlaceholder("Tipos de Armaduras");
         gTArmorTp.setMaximumSize(new java.awt.Dimension(150, 2147483647));
         gTArmorTp.setMinimumSize(new java.awt.Dimension(150, 28));
+        gTArmorTp.setName("gTArmorTp"); // NOI18N
         gTArmorTp.setPreferredSize(new java.awt.Dimension(150, 28));
         gTArmorTp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -445,6 +467,10 @@ public class TermsView extends View {
             }
         });
 
+        jSPArmorTp.setName("jSPArmorTp"); // NOI18N
+
+        gLtArmorTp.setKeyDelete(true);
+        gLtArmorTp.setName("gLtArmorTp"); // NOI18N
         gLtArmorTp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 gLtArmorTpKeyReleased(evt);
@@ -473,13 +499,15 @@ public class TermsView extends View {
                 .addGap(12, 12, 12))
         );
 
-        jTabbedPane.addTab("Armaduras", jPArmorTypes);
+        jTabbedPane.addTab("Armaduras", new javax.swing.ImageIcon(getClass().getResource("/MenuIcons/DK_0.png")), jPArmorTypes); // NOI18N
 
         jPMaterials.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Materiais"));
+        jPMaterials.setName("jPMaterials"); // NOI18N
 
         gTMaterial.setPlaceholder("Tipos de Materiais");
         gTMaterial.setMaximumSize(new java.awt.Dimension(150, 2147483647));
         gTMaterial.setMinimumSize(new java.awt.Dimension(150, 28));
+        gTMaterial.setName("gTMaterial"); // NOI18N
         gTMaterial.setPreferredSize(new java.awt.Dimension(150, 28));
         gTMaterial.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -487,6 +515,10 @@ public class TermsView extends View {
             }
         });
 
+        jSPPerk1.setName("jSPPerk1"); // NOI18N
+
+        gLtMaterials.setKeyDelete(true);
+        gLtMaterials.setName("gLtMaterials"); // NOI18N
         gLtMaterials.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 gLtMaterialsKeyReleased(evt);
@@ -515,13 +547,15 @@ public class TermsView extends View {
                 .addGap(12, 12, 12))
         );
 
-        jTabbedPane.addTab("Materiais", jPMaterials);
+        jTabbedPane.addTab("Materiais", new javax.swing.ImageIcon(getClass().getResource("/MenuIcons/slice1285_.png")), jPMaterials); // NOI18N
 
         jPElement.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Elementos"));
+        jPElement.setName("jPElement"); // NOI18N
 
         gTElement.setPlaceholder("Tipos de Elementos");
         gTElement.setMaximumSize(new java.awt.Dimension(150, 2147483647));
         gTElement.setMinimumSize(new java.awt.Dimension(150, 28));
+        gTElement.setName("gTElement"); // NOI18N
         gTElement.setPreferredSize(new java.awt.Dimension(150, 28));
         gTElement.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -529,6 +563,10 @@ public class TermsView extends View {
             }
         });
 
+        jSPPerk2.setName("jSPPerk2"); // NOI18N
+
+        gLtElement.setKeyDelete(true);
+        gLtElement.setName("gLtElement"); // NOI18N
         gLtElement.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 gLtElementKeyReleased(evt);
@@ -557,13 +595,15 @@ public class TermsView extends View {
                 .addGap(12, 12, 12))
         );
 
-        jTabbedPane.addTab("Elementos", jPElement);
+        jTabbedPane.addTab("Elementos", new javax.swing.ImageIcon(getClass().getResource("/MenuIcons/slice1399_@.png")), jPElement); // NOI18N
 
         jPItemType.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Itens"));
+        jPItemType.setName("jPItemType"); // NOI18N
 
         gTItemTp.setPlaceholder("Tipos de Itens");
         gTItemTp.setMaximumSize(new java.awt.Dimension(150, 2147483647));
         gTItemTp.setMinimumSize(new java.awt.Dimension(150, 28));
+        gTItemTp.setName("gTItemTp"); // NOI18N
         gTItemTp.setPreferredSize(new java.awt.Dimension(150, 28));
         gTItemTp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -571,6 +611,10 @@ public class TermsView extends View {
             }
         });
 
+        jSPPerk3.setName("jSPPerk3"); // NOI18N
+
+        gLtItemTp.setKeyDelete(true);
+        gLtItemTp.setName("gLtItemTp"); // NOI18N
         gLtItemTp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 gLtItemTpKeyReleased(evt);
@@ -599,7 +643,7 @@ public class TermsView extends View {
                 .addGap(12, 12, 12))
         );
 
-        jTabbedPane.addTab("Itens", jPItemType);
+        jTabbedPane.addTab("Itens", new javax.swing.ImageIcon(getClass().getResource("/MenuIcons/slice1255_.png")), jPItemType); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -618,7 +662,7 @@ public class TermsView extends View {
             try {
                 addEffectType(evt);
             } catch (Exception ex) {
-                LOGGER.log(Level.SEVERE, null, ex);
+                throwException(new ViewException(this, ex));     
             }
         }
     }//GEN-LAST:event_gTEffectTpKeyReleased
@@ -628,7 +672,7 @@ public class TermsView extends View {
             try {
                 addPerkType(evt);
             } catch (Exception ex) {
-                LOGGER.log(Level.SEVERE, null, ex);
+                throwException(new ViewException(this, ex));
             }
         }
     }//GEN-LAST:event_gTPerkTpKeyReleased
@@ -650,7 +694,7 @@ public class TermsView extends View {
             try {
                 addExpType(evt);
             } catch (Exception ex) {
-                LOGGER.log(Level.SEVERE, null, ex);
+                throwException(new ViewException(this, ex));
             }
         }
     }//GEN-LAST:event_gTExpertiseTpKeyReleased
@@ -666,7 +710,7 @@ public class TermsView extends View {
             try {
                 addArmorTp(evt);
             } catch (Exception ex) {
-                LOGGER.log(Level.SEVERE, null, ex);
+                throwException(new ViewException(this, ex));
             }
         }
     }//GEN-LAST:event_gTArmorTpKeyReleased
@@ -682,7 +726,7 @@ public class TermsView extends View {
             try {
                 addMaterial(evt);
             } catch (Exception ex) {
-                LOGGER.log(Level.SEVERE, null, ex);
+                throwException(new ViewException(this, ex));
             }
         }
     }//GEN-LAST:event_gTMaterialKeyReleased
@@ -698,7 +742,7 @@ public class TermsView extends View {
             try {
                 addElement(evt);
             } catch (Exception ex) {
-                LOGGER.log(Level.SEVERE, null, ex);
+                throwException(new ViewException(this, ex));
             }
         }
     }//GEN-LAST:event_gTElementKeyReleased
@@ -714,7 +758,7 @@ public class TermsView extends View {
             try {
                 addItem(evt);
             } catch (Exception ex) {
-                LOGGER.log(Level.SEVERE, null, ex);
+                throwException(new ViewException(this, ex));
             }
         }
     }//GEN-LAST:event_gTItemTpKeyReleased

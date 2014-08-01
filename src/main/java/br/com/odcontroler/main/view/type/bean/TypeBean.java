@@ -1,4 +1,4 @@
-package br.com.odcontroler.main.view.terms.bean;
+package br.com.odcontroler.main.view.type.bean;
 
 import br.com.gmp.comps.model.GListModel;
 import br.com.gmp.utils.object.ObjectWrapper;
@@ -19,18 +19,18 @@ import br.com.odcontroler.data.entity.PerkType;
 import br.com.odcontroler.data.entity.Type;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.bean.ViewBean;
-import br.com.odcontroler.main.view.terms.TermsView;
+import br.com.odcontroler.main.view.type.TypeView;
 import java.util.List;
 
 /**
- * Bean para TermsView
+ * Bean para TypeView
  *
  * @author kaciano
  * @version 1.0
  * @author kaciano
  * @version 1.1
  */
-public class TermsBean extends ViewBean<TermsView> {
+public class TypeBean extends ViewBean<TypeView> {
 
     private final EffectTypeDAO effectTypeDAO;
     private final PerkTypeDAO perkTypeDao;
@@ -43,9 +43,9 @@ public class TermsBean extends ViewBean<TermsView> {
     /**
      * Cria nova instancia de TermsBean
      *
-     * @param view {@code TermsView} View
+     * @param view {@code TypeView} View
      */
-    public TermsBean(TermsView view) {
+    public TypeBean(TypeView view) {
         super(view);
         this.effectTypeDAO = new EffectTypeDAO();
         this.perkTypeDao = new PerkTypeDAO();

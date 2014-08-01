@@ -1,4 +1,4 @@
-package br.com.odcontroler.main.view.terms.object;
+package br.com.odcontroler.main.view.type.object;
 
 /**
  * Parametros para registro de termos

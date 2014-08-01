@@ -7,6 +7,8 @@ import br.com.odcontroler.main.util.TableUtil;
 import br.com.odcontroler.main.view.bean.ViewBean;
 import br.com.odcontroler.main.view.weapon.WeaponView;
 import br.com.odcontroler.main.view.weapon.sub.WeaponSubView;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Bean de controle de WeaponView
@@ -27,6 +29,16 @@ public class WeaponBean extends ViewBean<WeaponView> {
         super(view);
         this.dao = new WeaponDAO();
         this.tableUtil = new TableUtil(view);
+        try {
+            load(null);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void load(BeanEvent evt) throws Exception {
+        getView().getModel().setData(dao.getList());
     }
 
     @Override

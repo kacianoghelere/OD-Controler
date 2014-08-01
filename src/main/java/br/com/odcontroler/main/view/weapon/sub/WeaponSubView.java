@@ -114,7 +114,7 @@ public class WeaponSubView extends SubView {
             return false;
         }
         if (!(jSpnInitiative.getValue() != null && ((Integer) jSpnInitiative.getValue()) != 0)) {
-            System.out.println("Iniciativa invalida");
+            showBallon(jSpnInitiative, "Iniciativa invalida");
             return false;
         }
         if (!(gNDmgAmt.validateComponent() && gNDmgAmt.isZero() && gNDmgAmt.isNegative())) {
@@ -134,17 +134,6 @@ public class WeaponSubView extends SubView {
             return false;
         }
         return true;
-//        return gTName.validateComponent()
-//                && gCBType.validateComponent()
-//                && gCBMaterial.validateComponent()
-//                && gCBOrigin.validateComponent()
-//                && gCBAlignment.validateComponent()
-//                && (jSpnInitiative.getValue() != null && ((Integer) jSpnInitiative.getValue()) == 0)
-//                && (gNDmgAmt.validateComponent() && gNDmgAmt.isZero() && gNDmgAmt.isNegative())
-//                && gCBDmgDice.validateComponent()
-//                && (gNWeight.validateComponent() && gNWeight.isZero() && gNWeight.isNegative())
-//                && (gNPrice.validateComponent() && gNPrice.isZero() && gNPrice.isNegative());
-        //</editor-fold>
     }
 
     /**

@@ -194,6 +194,12 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         listener.load(new BeanEvent(this, evt));
     }
 
+    @Override
+    public void toggleProcess() {
+        jPBLoader.setString(!jPBLoader.getString().isEmpty() ? "" : "Aguarde...");
+        jPBLoader.setIndeterminate(!jPBLoader.isIndeterminate());
+    }
+
     /**
      * Retorna o listener
      *
@@ -416,6 +422,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         jBAudio = new javax.swing.JButton();
         desktop = new javax.swing.JDesktopPane();
         jTBMsgs = new javax.swing.JToolBar();
+        jPBLoader = new javax.swing.JProgressBar();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         jLMsgs = new javax.swing.JLabel();
         jTBSearch = new javax.swing.JToolBar();
@@ -533,6 +540,12 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         jTBMsgs.setFloatable(false);
         jTBMsgs.setRollover(true);
         jTBMsgs.setName("jTBMsgs"); // NOI18N
+
+        jPBLoader.setName("jPBLoader"); // NOI18N
+        jPBLoader.setPreferredSize(new java.awt.Dimension(100, 20));
+        jPBLoader.setString("");
+        jPBLoader.setStringPainted(true);
+        jTBMsgs.add(jPBLoader);
 
         jSeparator1.setName("jSeparator1"); // NOI18N
         jTBMsgs.add(jSeparator1);
@@ -751,6 +764,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     private javax.swing.JMenuItem jMIViews;
     private javax.swing.JMenu jMOptions;
     private javax.swing.JMenuBar jMenuBar;
+    private javax.swing.JProgressBar jPBLoader;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar jTBMsgs;
     private javax.swing.JToolBar jTBSearch;

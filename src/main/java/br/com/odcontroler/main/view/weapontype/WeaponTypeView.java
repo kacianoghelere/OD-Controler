@@ -186,6 +186,7 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
         setMinimumSize(new java.awt.Dimension(647, 401));
         setPreferredSize(new java.awt.Dimension(647, 401));
 
+        gTable.setKeyDelete(true);
         gTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

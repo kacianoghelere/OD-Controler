@@ -175,14 +175,10 @@ public class ArmorSubView extends SubView {
             return false;
         }
         if (!(jSpinCA.getValue() != null && ((Integer) jSpinCA.getValue()) != 0)) {
-            System.out.println("CA invalido");
+            showBallon(jSpinCA, "CA invalido");
             return false;
         }
         return true;
-//        return gTName.validateComponent()
-//                && gCBType.validateComponent()
-//                && gCBMaterial.validateComponent()
-//                && (jSpinCA.getValue() != null && ((Integer) jSpinCA.getValue()) == 0);
     }
 
     /**

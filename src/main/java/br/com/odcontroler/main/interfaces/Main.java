@@ -91,4 +91,10 @@ public interface Main {
      * @param evt {@code ActionEvent}
      */
     void load(ActionEvent evt);
+
+    /**
+     * Dispara o evento de processo iniciado
+     */
+    void toggleProcess();
+
 }

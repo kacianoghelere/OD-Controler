@@ -142,6 +142,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
             new Thread() {
                 @Override
                 public void run() {
+                    getMainScreen().toggleProcess();
                     try {
                         getBean().commit(new BeanEvent(View.this, null));
                         showMessage("Dados salvos.", MainScreen.SUCCESS_MSG);
@@ -149,6 +150,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
                     } catch (Exception ex) {
                         throwException(new ViewException(View.this, "Commit error", ex));
                     }
+                    getMainScreen().toggleProcess();
                 }
             }.start();
         } catch (Exception ex) {
@@ -162,12 +164,14 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
             new Thread() {
                 @Override
                 public void run() {
+                    getMainScreen().toggleProcess();
                     try {
                         getBean().process(new BeanEvent(View.this, null));
                         showMessage("Dados processados.", MainScreen.INFORMATIVE_MSG);
                     } catch (Exception ex) {
                         throwException(new ViewException(View.this, "Process error", ex));
                     }
+                    getMainScreen().toggleProcess();
                 }
             }.start();
         } catch (Exception ex) {
@@ -181,12 +185,14 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
             new Thread() {
                 @Override
                 public void run() {
+                    getMainScreen().toggleProcess();
                     try {
                         getBean().clear(new BeanEvent(View.this, null));
                         showMessage("Dados preenchidos removidos.", MainScreen.INFORMATIVE_MSG);
                     } catch (Exception ex) {
                         throwException(new ViewException(View.this, "Clear error", ex));
                     }
+                    getMainScreen().toggleProcess();
                 }
             }.start();
         } catch (Exception ex) {
@@ -200,12 +206,14 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
             new Thread() {
                 @Override
                 public void run() {
+                    getMainScreen().toggleProcess();
                     try {
                         getBean().load(new BeanEvent(View.this, null));
                         showMessage("Dados carregados.", MainScreen.INFORMATIVE_MSG);
                     } catch (Exception ex) {
                         throwException(new ViewException(View.this, "Load error", ex));
                     }
+                    getMainScreen().toggleProcess();
                 }
             }.start();
         } catch (Exception ex) {
@@ -218,13 +226,13 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
      *
      * @param ex {@code ViewException} Exceção a ser lançada
      */
-    protected void throwException(ViewException ex) {
-        LOGGER.log(Level.SEVERE, null, ex);
-        this.showMessage(ex.getView() + ":" + ex.getMessage(), MainScreen.ERROR_MSG);
+    public void throwException(ViewException ex) {
         try {
+            LOGGER.log(Level.SEVERE, null, ex);
+            this.showMessage(ex.getView() + ":" + ex.getMessage(), MainScreen.ERROR_MSG);
             mainScreen.getListener().appendLog(ex.getMessage());
-        } catch (IOException ex1) {
-            LOGGER.log(Level.SEVERE, null, ex1);
+        } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, null, e);
         }
     }
 
@@ -261,7 +269,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     }
 
     @Override
-    public void showBalloon(JComponent component, String text) {
+    public void showBallon(JComponent component, String text) {
         getMainScreen().showBalloon(component, text);
     }
 
