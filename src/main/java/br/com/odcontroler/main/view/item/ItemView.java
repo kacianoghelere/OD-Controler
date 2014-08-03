@@ -1,15 +1,16 @@
 package br.com.odcontroler.main.view.item;
 
-import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.gmp.comps.table.GTable;
+import br.com.gmp.comps.table.decorate.TableDecorator;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.odcontroler.data.db.dao.ItemDAO;
 import br.com.odcontroler.data.db.dao.ItemTypeDAO;
 import br.com.odcontroler.data.entity.Item;
-import br.com.odcontroler.data.entity.ItemType;
 import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.View;
+import br.com.odcontroler.main.view.annotation.ViewData;
+import br.com.odcontroler.main.view.enums.ViewType;
 import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.interfaces.TableView;
 import br.com.odcontroler.main.view.item.bean.ItemBean;
@@ -26,11 +27,18 @@ import java.util.logging.Logger;
  * @author kaciano
  * @version 1.0
  */
-public class ItemView extends View implements TableView, TableSource<Item> {
+@ViewData(name = "Itens gerais", type = ViewType.CRUD)
+public class ItemView extends View<ItemBean> implements TableView, TableSource<Item> {
 
     private ItemBean bean;
     private ItemModel model;
-    private GComboBoxModel<ItemType> typeModel;
+    private TableDecorator decorator;
+    private int count = 0;
+    private final int NAME = count++;
+    private final int TYPE = count++;
+    private final int DESCRIPTION = count++;
+    private final int WEIGHT = count++;
+    private final int PRICE = count++;
 
     /**
      * Creates new form ItemView
@@ -48,18 +56,28 @@ public class ItemView extends View implements TableView, TableSource<Item> {
     private void initialize() {
         this.setSize(662, 484);
         this.setControls(new ViewParameter(true, false, true, true));
-        this.model = new ItemModel();
-        this.typeModel = new GComboBoxModel(new ItemTypeDAO().getList());        
         this.initComponents();
+        this.decorator = new TableDecorator(gTable);
+        //----------------------------------------------------------------------
+        // Inicialização do modelo
+        this.model = new ItemModel();
+        //----------------------------------------------------------------------
+        // Inicialização do bean
         this.bean = new ItemBean(this);
-        this.gTable.setModel(model);
+        //----------------------------------------------------------------------
+        // Atribuição do modelo na tabela
+        this.gTable.buildTable(this, 0, model);
+        //----------------------------------------------------------------------
+        // Atribuição dos editores na tabela
+        this.decorator.withNumber(PRICE);
+        this.decorator.comboAt(TYPE, new ItemTypeDAO().getList());
     }
 
     @Override
     public void add() throws Exception {
         ItemSubView subview = new ItemSubView(this, null);
         getMainScreen().getListener().insertView(subview);
-        if (subview.getItem()!= null) {
+        if (subview.getItem() != null) {
             try {
                 bean.add(new BeanEvent(this, subview.getItem()));
             } catch (IllegalArgumentException | IllegalAccessException ex) {
@@ -97,15 +115,6 @@ public class ItemView extends View implements TableView, TableSource<Item> {
     @Override
     public List<Item> getTableData() {
         return new ItemDAO().getList();
-    }
-
-    /**
-     * Retorna o modelo da combobox de tipos
-     *
-     * @return {@code GComboBoxModel(ItemType)} Modelo dos tipos
-     */
-    public GComboBoxModel<ItemType> getTypeModel() {
-        return typeModel;
     }
 
     @Override
@@ -186,11 +195,6 @@ public class ItemView extends View implements TableView, TableSource<Item> {
             }
         ));
         gTable.setOpaque(false);
-        gTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                gTableMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(gTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -232,12 +236,6 @@ public class ItemView extends View implements TableView, TableSource<Item> {
     private void jBEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditActionPerformed
         edit();
     }//GEN-LAST:event_jBEditActionPerformed
-
-    private void gTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gTableMouseClicked
-        if (evt.getClickCount() == 2) {
-            edit();
-        }
-    }//GEN-LAST:event_gTableMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -5,7 +5,7 @@ import br.com.odcontroler.data.enums.Alignment;
 import br.com.odcontroler.data.entity.Armor;
 import br.com.odcontroler.data.entity.ArmorType;
 import br.com.odcontroler.data.entity.Origin;
-import br.com.odcontroler.data.entity.Material;
+import br.com.odcontroler.data.entity.MaterialType;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.sub.SubView;
 import br.com.odcontroler.main.view.armor.ArmorView;
@@ -30,7 +30,7 @@ public class ArmorSubView extends SubView {
     private ArmorBean bean;
     private final ArmorView view;
     private GComboBoxModel<ArmorType> armorTypeModel;
-    private GComboBoxModel<Material> materialModel;
+    private GComboBoxModel<MaterialType> materialModel;
     private GComboBoxModel<Origin> originModel;
     private GComboBoxModel<Alignment> alignmentModel;
 
@@ -90,7 +90,7 @@ public class ArmorSubView extends SubView {
     private void autoName() {
         if (gCBType.validateComponent() && gCBMaterial.validateComponent() && gCBOrigin.validateComponent()) {
             ArmorType prefix = this.armorTypeModel.getSelectedItem();
-            Material mat1 = this.materialModel.getSelectedItem();
+            MaterialType mat1 = this.materialModel.getSelectedItem();
             Origin origin = this.originModel.getSelectedItem();
             this.gTName.setText(prefix.getName() + " " + origin.getName()
                     + " de " + mat1.getName());
@@ -196,7 +196,7 @@ public class ArmorSubView extends SubView {
      *
      * @return {@code GComboBoxModel(PrimeMaterial)} Materiais
      */
-    public GComboBoxModel<Material> getMaterialModel() {
+    public GComboBoxModel<MaterialType> getMaterialModel() {
         return materialModel;
     }
 

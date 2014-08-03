@@ -24,6 +24,12 @@ public class ItemType extends Type {
 
     /**
      * Cria nova instancia de ItemType
+     */
+    public ItemType() {
+    }
+
+    /**
+     * Cria nova instancia de ItemType
      *
      * @param id {@code Long} Código do tipo de item
      * @param name {@code String} Nome do tipo de item

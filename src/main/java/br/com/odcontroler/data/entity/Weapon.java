@@ -22,6 +22,7 @@ public class Weapon {
     @Editable
     @ColumnName(name = "Nome")
     private String name;
+    @Editable
     @ColumnName(name = "Origem")
     private Origin origin;
     @Ignore
@@ -45,10 +46,13 @@ public class Weapon {
     @Editable
     @ColumnName(name = "Preço")
     private Integer price;
+    @Editable
     @ColumnName(name = "Tipo")
     private WeaponType type;
+    @Editable
     @ColumnName(name = "Material")
-    private Material material;
+    private MaterialType material;
+    @Editable
     @ColumnName(name = "Alinhamento")
     private Alignment alignment;
 
@@ -76,7 +80,7 @@ public class Weapon {
      */
     public Weapon(Long id, String name, Origin origin, String description,
             Integer initiative, Integer range, String damage, Double weight,
-            Integer price, WeaponType type, Material material, Alignment alignment) {
+            Integer price, WeaponType type, MaterialType material, Alignment alignment) {
         this.id = id;
         this.name = name;
         this.origin = origin;
@@ -250,20 +254,20 @@ public class Weapon {
     }
 
     /**
-     * Retorna o Material
+     * Retorna o MaterialType
      *
-     * @return {@code PrimeMaterial} Material
+     * @return {@code PrimeMaterial} MaterialType
      */
-    public Material getMaterial() {
+    public MaterialType getMaterial() {
         return material;
     }
 
     /**
-     * Modifica o Material
+     * Modifica o MaterialType
      *
-     * @param material {@code PrimeMaterial} Material
+     * @param material {@code PrimeMaterial} MaterialType
      */
-    public void setMaterial(Material material) {
+    public void setMaterial(MaterialType material) {
         this.material = material;
     }
 

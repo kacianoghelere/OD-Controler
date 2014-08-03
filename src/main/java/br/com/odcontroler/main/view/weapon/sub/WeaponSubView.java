@@ -1,10 +1,10 @@
 package br.com.odcontroler.main.view.weapon.sub;
 
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
-import br.com.odcontroler.data.db.dao.MaterialsDAO;
+import br.com.odcontroler.data.db.dao.MaterialTypeDAO;
 import br.com.odcontroler.data.db.dao.OriginDAO;
 import br.com.odcontroler.data.db.dao.WeaponTypeDAO;
-import br.com.odcontroler.data.entity.Material;
+import br.com.odcontroler.data.entity.MaterialType;
 import br.com.odcontroler.data.entity.Origin;
 import br.com.odcontroler.data.entity.Weapon;
 import br.com.odcontroler.data.entity.WeaponType;
@@ -32,7 +32,7 @@ public class WeaponSubView extends SubView {
     private Weapon weapon;
     private GComboBoxModel<WeaponType> typeModel;
     private GComboBoxModel<Origin> originModel;
-    private GComboBoxModel<Material> materialModel;
+    private GComboBoxModel<MaterialType> materialModel;
     private GComboBoxModel<Alignment> alignmentModel;
 
     /**
@@ -81,7 +81,7 @@ public class WeaponSubView extends SubView {
     public void load() {
         this.typeModel = new GComboBoxModel<>(new WeaponTypeDAO().getList());
         this.originModel = new GComboBoxModel<>(new OriginDAO().getList());
-        this.materialModel = new GComboBoxModel<>(new MaterialsDAO().getList());
+        this.materialModel = new GComboBoxModel<>(new MaterialTypeDAO().getList());
         this.alignmentModel = new GComboBoxModel<>(Alignment.values());
     }
 
@@ -144,7 +144,7 @@ public class WeaponSubView extends SubView {
     private void autoName() {
         if (gCBType.validateComponent() && gCBMaterial.validateComponent() && gCBOrigin.validateComponent()) {
             WeaponType prefix = this.typeModel.getSelectedItem();
-            Material material = this.materialModel.getSelectedItem();
+            MaterialType material = this.materialModel.getSelectedItem();
             Origin origin = this.originModel.getSelectedItem();
             this.gTName.setText(prefix.getName() + " " + origin.getName()
                     + " de " + material.getName());
@@ -163,7 +163,7 @@ public class WeaponSubView extends SubView {
         }
         this.weapon.setName(gTName.getText());
         this.weapon.setAlignment((Alignment) gCBAlignment.getSelectedItem());
-        this.weapon.setMaterial((Material) gCBMaterial.getSelectedItem());
+        this.weapon.setMaterial((MaterialType) gCBMaterial.getSelectedItem());
         this.weapon.setOrigin((Origin) gCBOrigin.getSelectedItem());
         this.weapon.setType((WeaponType) gCBType.getSelectedItem());
         this.weapon.setDescription(gTADesc.getText());
@@ -236,7 +236,7 @@ public class WeaponSubView extends SubView {
      *
      * @return {@code GComboBoxModel(PrimeMaterial)} Materiais
      */
-    public GComboBoxModel<Material> getMaterialModel() {
+    public GComboBoxModel<MaterialType> getMaterialModel() {
         return materialModel;
     }
 

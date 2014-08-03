@@ -27,12 +27,16 @@ public class WeaponType extends Type {
     @Editable
     @ColumnName(name = "Alcance")
     private Integer range;
+    @Editable
     @ColumnName(name = "Tipo de Dano")
     private DamageType damageType;
+    @Editable
     @ColumnName(name = "Tamanho")
     private Size size;
+    @Editable
     @ColumnName(name = "Porte")
     private UseType useType;
+    @Editable
     @ColumnName(name = "Tipo de Ataque")
     private AttackType attackType;
 

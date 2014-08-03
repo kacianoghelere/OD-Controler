@@ -1,12 +1,14 @@
 package br.com.odcontroler.main.view;
 
 import br.com.gmp.comps.cleaner.ComponentCleaner;
+import br.com.gmp.utils.system.TimeCounter;
 import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.actions.ClearAction;
 import br.com.odcontroler.main.actions.FrameAction;
 import br.com.odcontroler.main.actions.LoadAction;
 import br.com.odcontroler.main.actions.ProccessAction;
 import br.com.odcontroler.main.actions.CommitAction;
+import br.com.odcontroler.main.interfaces.Main;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.util.Description;
 import br.com.odcontroler.main.view.dialog.DescriptionDialog;
@@ -142,6 +144,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
             new Thread() {
                 @Override
                 public void run() {
+                    TimeCounter timeCounter = new TimeCounter();
                     getMainScreen().toggleProcess();
                     try {
                         getBean().commit(new BeanEvent(View.this, null));
@@ -151,6 +154,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
                         throwException(new ViewException(View.this, "Commit error", ex));
                     }
                     getMainScreen().toggleProcess();
+                    System.out.println("Commited in " + timeCounter.getTimeSpent() + "ms");
                 }
             }.start();
         } catch (Exception ex) {

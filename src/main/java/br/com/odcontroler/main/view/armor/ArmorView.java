@@ -1,32 +1,55 @@
 package br.com.odcontroler.main.view.armor;
 
 import br.com.gmp.comps.table.GTable;
+import br.com.gmp.comps.table.decorate.TableDecorator;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.odcontroler.data.db.dao.ArmorDAO;
+import br.com.odcontroler.data.db.dao.ArmorTypeDAO;
+import br.com.odcontroler.data.db.dao.MaterialTypeDAO;
+import br.com.odcontroler.data.db.dao.OriginDAO;
 import br.com.odcontroler.data.entity.Armor;
+import br.com.odcontroler.data.enums.Alignment;
 import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.util.Description;
-import br.com.odcontroler.main.util.TableUtil;
 import br.com.odcontroler.main.view.View;
+import br.com.odcontroler.main.view.annotation.ViewData;
 import br.com.odcontroler.main.view.armor.bean.ArmorBean;
 import br.com.odcontroler.main.view.armor.sub.ArmorSubView;
 import br.com.odcontroler.main.view.armor.model.ArmorModel;
+import br.com.odcontroler.main.view.enums.ViewType;
+import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.interfaces.TableView;
 import br.com.odcontroler.main.view.object.ViewParameter;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * View para cadastro e controle de armaduras
  *
  * @author kaciano
+ * @version 1.0
+ * @author kaciano
+ * @version 1.1
  */
+@ViewData(name = "Armaduras", type = ViewType.CRUD)
 public class ArmorView extends View<ArmorBean> implements TableView, TableSource<Armor> {
 
     private ArmorBean bean;
     private ArmorModel model;
-    private TableUtil tableUtil;
+    private TableDecorator decorator;
+    private int count = 0;
+    private final int NAME = count++;
+    private final int ORIGIN = count++;
+    private final int DESCRIPTION = count++;
+    private final int TYPE = count++;
+    private final int CA = count++;
+    private final int MOVIMENT_RED = count++;
+    private final int PRICE = count++;
+    private final int MATERIAL = count++;
+    private final int ALIGNMENT = count++;
 
     /**
      * Cria nova instancia de ArmorView
@@ -45,15 +68,25 @@ public class ArmorView extends View<ArmorBean> implements TableView, TableSource
         this.setControls(new ViewParameter(true, false, false, true));
         this.setSize(662, 484);
         this.initComponents();
+        this.decorator = new TableDecorator(gTable);
+        //----------------------------------------------------------------------
+        // Inicialização do modelo
         this.model = new ArmorModel();
-        this.gTable.buildTable(this, 0, model);
-        this.tableUtil = new TableUtil(this);
+        //----------------------------------------------------------------------
+        // Inicialização do bean
         this.bean = new ArmorBean(this);
-        try {
-            this.bean.load(null);
-        } catch (Exception ex) {
-            Logger.getLogger(ArmorView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        //----------------------------------------------------------------------
+        // Atribuição do modelo na tabela
+        this.gTable.buildTable(this, 0, model);
+        //----------------------------------------------------------------------
+        // Atribuição dos erros na tabela
+        this.decorator.withNumber(CA);
+        this.decorator.withNumber(MOVIMENT_RED);
+        this.decorator.withNumber(PRICE);
+        this.decorator.comboAt(ORIGIN, new OriginDAO().getList());
+        this.decorator.comboAt(TYPE, new ArmorTypeDAO().getList());
+        this.decorator.comboAt(MATERIAL, new MaterialTypeDAO().getList());
+        this.decorator.comboAt(ALIGNMENT, Arrays.asList(Alignment.values()));
     }
 
     @Override
@@ -74,9 +107,9 @@ public class ArmorView extends View<ArmorBean> implements TableView, TableSource
             try {
                 bean.add(new BeanEvent(this, dialog.getArmor()));
             } catch (IllegalArgumentException | IllegalAccessException ex) {
-                Logger.getLogger(ArmorView.class.getName()).log(Level.SEVERE, null, ex);
+                throwException(new ViewException(this, ex));
             } catch (Exception ex) {
-                Logger.getLogger(ArmorView.class.getName()).log(Level.SEVERE, null, ex);
+                throwException(new ViewException(this, ex));
             }
         }
     }
@@ -86,13 +119,13 @@ public class ArmorView extends View<ArmorBean> implements TableView, TableSource
         try {
             bean.edit(null);
         } catch (Exception ex) {
-            Logger.getLogger(ArmorView.class.getName()).log(Level.SEVERE, null, ex);
+            throwException(new ViewException(this, ex));
         }
     }
 
     @Override
-    public void remove() {
-        tableUtil.remove(null);
+    public void remove() throws Exception {
+        bean.remove(null);
     }
 
     @Override
@@ -152,11 +185,6 @@ public class ArmorView extends View<ArmorBean> implements TableView, TableSource
             }
         ));
         gTable.setOpaque(false);
-        gTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                gTableMouseClicked(evt);
-            }
-        });
         jScrollPane6.setViewportView(gTable);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -243,14 +271,12 @@ public class ArmorView extends View<ArmorBean> implements TableView, TableSource
     }//GEN-LAST:event_jBAddActionPerformed
 
     private void jBRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoveActionPerformed
-        remove();
-    }//GEN-LAST:event_jBRemoveActionPerformed
-
-    private void gTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gTableMouseClicked
-        if (evt.getClickCount() == 2) {
-            edit();
+        try {
+            remove();
+        } catch (Exception ex) {
+            throwException(new ViewException(this, ex));
         }
-    }//GEN-LAST:event_gTableMouseClicked
+    }//GEN-LAST:event_jBRemoveActionPerformed
 
     private void jBEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditActionPerformed
         edit();

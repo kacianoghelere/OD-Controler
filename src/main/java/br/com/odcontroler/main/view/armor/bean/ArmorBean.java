@@ -2,13 +2,15 @@ package br.com.odcontroler.main.view.armor.bean;
 
 import br.com.odcontroler.data.db.dao.ArmorDAO;
 import br.com.odcontroler.data.db.dao.ArmorTypeDAO;
-import br.com.odcontroler.data.db.dao.MaterialsDAO;
+import br.com.odcontroler.data.db.dao.MaterialTypeDAO;
 import br.com.odcontroler.data.db.dao.OriginDAO;
 import br.com.odcontroler.data.entity.Armor;
 import br.com.odcontroler.main.object.BeanEvent;
+import br.com.odcontroler.main.util.TableUtil;
 import br.com.odcontroler.main.view.armor.ArmorView;
 import br.com.odcontroler.main.view.armor.sub.ArmorSubView;
 import br.com.odcontroler.main.view.bean.ViewBean;
+import br.com.odcontroler.main.view.exception.ViewException;
 
 /**
  * Bean de controle para tela de armaduras
@@ -19,9 +21,10 @@ import br.com.odcontroler.main.view.bean.ViewBean;
 public class ArmorBean extends ViewBean<ArmorView> {
 
     private final ArmorTypeDAO armorTypeDAO;
-    private final MaterialsDAO materialsDAO;
+    private final MaterialTypeDAO materialsDAO;
     private final OriginDAO originDAO;
     private final ArmorDAO armorDAO;
+    private TableUtil tableUtil;
 
     /**
      * Cria nova instancia de ArmorBean
@@ -31,9 +34,15 @@ public class ArmorBean extends ViewBean<ArmorView> {
     public ArmorBean(ArmorView view) {
         super(view);
         this.armorTypeDAO = new ArmorTypeDAO();
-        this.materialsDAO = new MaterialsDAO();
+        this.materialsDAO = new MaterialTypeDAO();
         this.armorDAO = new ArmorDAO();
         this.originDAO = new OriginDAO();
+        this.tableUtil = new TableUtil(view);
+        try {
+            load(null);
+        } catch (Exception ex) {
+            view.throwException(new ViewException(view, ex));
+        }
     }
 
     @Override
@@ -72,6 +81,11 @@ public class ArmorBean extends ViewBean<ArmorView> {
         }
     }
 
+    @Override
+    public void remove(BeanEvent evt) throws Exception {
+        this.tableUtil.remove(evt);
+    }
+
     /**
      * Retorna o DAO de controle dos tipos de armadura
      *
@@ -84,9 +98,9 @@ public class ArmorBean extends ViewBean<ArmorView> {
     /**
      * Retorna o DAO de controle das matérias primas
      *
-     * @return {@code MaterialsDAO} DAO de PrimeMaterial
+     * @return {@code MaterialTypeDAO} DAO de PrimeMaterial
      */
-    public MaterialsDAO getMaterialsDAO() {
+    public MaterialTypeDAO getMaterialsDAO() {
         return materialsDAO;
     }
 

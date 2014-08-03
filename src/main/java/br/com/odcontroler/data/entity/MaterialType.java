@@ -10,7 +10,7 @@ import java.util.Objects;
  *
  * @author kaciano
  */
-public class Material extends Type {
+public class MaterialType extends Type {
 
     @Ignore
     @NotCopiable
@@ -22,7 +22,7 @@ public class Material extends Type {
     /**
      * Cria nova instancia de PrimeMaterial
      */
-    public Material() {
+    public MaterialType() {
     }
 
     /**
@@ -31,7 +31,7 @@ public class Material extends Type {
      * @param id {@code Long} Código do material
      * @param name {@code String} Nome do material
      */
-    public Material(Long id, String name) {
+    public MaterialType(Long id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -92,7 +92,7 @@ public class Material extends Type {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Material other = (Material) obj;
+        final MaterialType other = (MaterialType) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }

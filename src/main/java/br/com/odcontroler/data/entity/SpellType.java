@@ -7,12 +7,12 @@ import br.com.gmp.utils.annotations.NotCopiable;
 import java.util.Objects;
 
 /**
- * Entidade dos elementos
+ * Entidade dos tipos de mágica
  *
  * @author kaciano
- * @version 1.0
+ * @versio 1.0
  */
-public class Element extends Type {
+public class SpellType extends Type {
 
     @Ignore
     @NotCopiable
@@ -23,26 +23,26 @@ public class Element extends Type {
     private String name;
 
     /**
-     * Cria nova instancia de Element
+     * Cria nova instancia de MagicType
      */
-    public Element() {
+    public SpellType() {
     }
 
     /**
-     * Cria nova instancia de Element
+     * Cria nova instancia de MagicType
      *
-     * @param id {@code Long} ID do elemento
-     * @param title {@code String} Titulo do elemento
+     * @param id {@code Long} Código do tipo
+     * @param typeName {@code String} Nome do tipo
      */
-    public Element(Long id, String title) {
+    public SpellType(Long id, String typeName) {
         this.id = id;
-        this.name = title;
+        this.name = typeName;
     }
 
     /**
-     * Retorna o ID do elemento
+     * Retorna o Código do tipo
      *
-     * @return {@code Long} ID do elemento
+     * @return {@code Long} Código do tipo
      */
     @Override
     public Long getId() {
@@ -50,9 +50,9 @@ public class Element extends Type {
     }
 
     /**
-     * Modifica o ID do elemento
+     * Modifica o Código do tipo
      *
-     * @param id {@code Long} ID do elemento
+     * @param id {@code Long} Código do tipo
      */
     @Override
     public void setId(Long id) {
@@ -60,9 +60,9 @@ public class Element extends Type {
     }
 
     /**
-     * Retorna o Titulo do elemento
+     * Retorna o Nome do tipo
      *
-     * @return {@code String} Titulo do elemento
+     * @return {@code String} Nome do tipo
      */
     @Override
     public String getName() {
@@ -70,20 +70,20 @@ public class Element extends Type {
     }
 
     /**
-     * Modifica o Titulo do elemento
+     * Modifica o Nome do tipo
      *
-     * @param name {@code String} Titulo do elemento
+     * @param title {@code String} Nome do tipo
      */
     @Override
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String title) {
+        this.name = title;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.id);
-        hash = 53 * hash + Objects.hashCode(this.name);
+        hash = 89 * hash + Objects.hashCode(this.id);
+        hash = 89 * hash + Objects.hashCode(this.name);
         return hash;
     }
 
@@ -95,11 +95,11 @@ public class Element extends Type {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Element other = (Element) obj;
-        if (!Objects.equals(this.id, other.id)) {
+        final ArmorType other = (ArmorType) obj;
+        if (!Objects.equals(this.id, other.getId())) {
             return false;
         }
-        return Objects.equals(this.name, other.name);
+        return Objects.equals(this.name, other.getName());
     }
 
     @Override

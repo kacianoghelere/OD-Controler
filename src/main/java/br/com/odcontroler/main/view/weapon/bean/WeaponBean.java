@@ -5,10 +5,9 @@ import br.com.odcontroler.data.entity.Weapon;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.util.TableUtil;
 import br.com.odcontroler.main.view.bean.ViewBean;
+import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.weapon.WeaponView;
 import br.com.odcontroler.main.view.weapon.sub.WeaponSubView;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Bean de controle de WeaponView
@@ -32,7 +31,7 @@ public class WeaponBean extends ViewBean<WeaponView> {
         try {
             load(null);
         } catch (Exception ex) {
-            LOGGER.log(Level.SEVERE, null, ex);
+            view.throwException(new ViewException(view, ex));
         }
     }
 

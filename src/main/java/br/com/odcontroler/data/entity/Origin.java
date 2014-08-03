@@ -2,6 +2,7 @@ package br.com.odcontroler.data.entity;
 
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
+import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
 import java.util.Objects;
 
@@ -13,7 +14,7 @@ import java.util.Objects;
  */
 public class Origin {
 
-    //@Ignore
+    @Ignore
     @NotCopiable
     @ColumnName(name = "Código")
     private Long id;
@@ -38,6 +39,7 @@ public class Origin {
     public Origin(Long id, String name, String variation, Integer bonus) {
         this.id = id;
         this.name = name;
+        this.variation = variation;
         this.bonus = bonus;
     }
 

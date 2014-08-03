@@ -2,6 +2,7 @@ package br.com.odcontroler.main.view.weapontype;
 
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.gmp.comps.table.GTable;
+import br.com.gmp.comps.table.decorate.TableDecorator;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.odcontroler.data.db.dao.WeaponTypeDAO;
@@ -12,22 +13,25 @@ import br.com.odcontroler.data.enums.UseType;
 import br.com.odcontroler.data.enums.Size;
 import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.object.BeanEvent;
-import br.com.odcontroler.main.util.TableUtil;
 import br.com.odcontroler.main.view.View;
+import br.com.odcontroler.main.view.annotation.ViewData;
+import br.com.odcontroler.main.view.enums.ViewType;
+import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.interfaces.BeanListener;
 import br.com.odcontroler.main.view.interfaces.TableView;
 import br.com.odcontroler.main.view.object.ViewParameter;
 import br.com.odcontroler.main.view.weapontype.bean.WeaponTypeBean;
 import br.com.odcontroler.main.view.weapontype.model.WeaponTypeModel;
 import java.util.List;
-import java.util.logging.Level;
 
 /**
  * View de cadastro para tipos de armas
  *
  * @author kaciano
+ * @version 1.0
  */
-public class WeaponTypeView extends View implements TableView, TableSource<WeaponType> {
+@ViewData(name = "Tipos de armas", type = ViewType.CRUD)
+public class WeaponTypeView extends View<WeaponTypeBean> implements TableView, TableSource<WeaponType> {
 
     private WeaponTypeBean bean;
     private WeaponTypeModel model;
@@ -35,7 +39,14 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
     private GComboBoxModel<Size> sizeModel;
     private GComboBoxModel<DamageType> dmgModel;
     private GComboBoxModel<AttackType> atkModel;
-    private TableUtil tableUtil;
+    private TableDecorator decorator;
+    private int count = 0;
+    private final int NAME = count++;
+    private final int RANGE = count++;
+    private final int DMG_TYPE = count++;
+    private final int SIZE = count++;
+    private final int USE_TYPE = count++;
+    private final int ATK_TYPE = count++;
 
     /**
      * Cria nova instancia de WeaponTypeView
@@ -51,27 +62,34 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
      * Método de inicialização
      */
     private void initialize() {
-        this.initComponents();
         this.setSize(647, 401);
         this.setControls(new ViewParameter(true, false, true, false));
         this.initComponents();
+        this.decorator = new TableDecorator(gTable);
+        //----------------------------------------------------------------------
+        // Inicialização do modelo
         this.model = new WeaponTypeModel();
         this.useModel = new GComboBoxModel<>(UseType.values());
         this.sizeModel = new GComboBoxModel<>(Size.values());
         this.dmgModel = new GComboBoxModel<>(DamageType.values());
         this.atkModel = new GComboBoxModel<>(AttackType.values());
+        //----------------------------------------------------------------------
+        // Inicialização do bean
+        this.bean = new WeaponTypeBean(this);
+        //----------------------------------------------------------------------
+        // Atribuição dos modelos
         this.gTable.buildTable(this, 0, model);
-        this.tableUtil = new TableUtil(this);
         this.gCBUse.setGModel(useModel);
         this.gCBSize.setGModel(sizeModel);
         this.gCBDmgType.setGModel(dmgModel);
         this.gCBAtkType.setGModel(atkModel);
-        this.bean = new WeaponTypeBean(this);
-        try {
-            this.bean.load(null);
-        } catch (Exception ex) {
-            LOGGER.log(Level.SEVERE, null, ex);
-        }
+        //----------------------------------------------------------------------
+        // Atribuição dos editores
+        this.decorator.withNumber(RANGE);
+        this.decorator.comboAt(USE_TYPE, useModel.getData());
+        this.decorator.comboAt(SIZE, sizeModel.getData());
+        this.decorator.comboAt(DMG_TYPE, dmgModel.getData());
+        this.decorator.comboAt(ATK_TYPE, atkModel.getData());
     }
 
     @Override
@@ -87,11 +105,11 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
                         .addValue("size", sizeModel.getSelectedItem())
                         .addValue("damage", dmgModel.getSelectedItem())
                         .addValue("range", nTRange.getInteger())
-                        .addValue("attack",atkModel.getSelectedItem());
+                        .addValue("attack", atkModel.getSelectedItem());
                 this.bean.add(new BeanEvent(vw));
             }
         } catch (Exception ex) {
-            LOGGER.log(Level.SEVERE, null, ex);
+            throwException(new ViewException(this, ex));
         }
     }
 
@@ -108,8 +126,8 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
     }
 
     @Override
-    public void remove() {
-        tableUtil.remove(null);
+    public void remove() throws Exception {
+        bean.remove(null);
     }
 
     @Override
@@ -308,7 +326,7 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
         try {
             add();
         } catch (Exception ex) {
-            LOGGER.log(Level.SEVERE, null, ex);
+            throwException(new ViewException(this, ex));
         }
     }//GEN-LAST:event_jBAddActionPerformed
 
@@ -316,7 +334,7 @@ public class WeaponTypeView extends View implements TableView, TableSource<Weapo
         try {
             remove();
         } catch (Exception ex) {
-            LOGGER.log(Level.SEVERE, null, ex);
+            throwException(new ViewException(this, ex));
         }
     }//GEN-LAST:event_jBRemoveActionPerformed
 

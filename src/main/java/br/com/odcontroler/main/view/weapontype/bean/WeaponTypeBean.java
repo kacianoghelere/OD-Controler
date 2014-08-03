@@ -2,13 +2,13 @@ package br.com.odcontroler.main.view.weapontype.bean;
 
 import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.odcontroler.data.db.dao.WeaponTypeDAO;
-import br.com.odcontroler.data.db.dao.WeaponSizeDAO;
 import br.com.odcontroler.data.enums.AttackType;
 import br.com.odcontroler.data.enums.DamageType;
 import br.com.odcontroler.data.entity.WeaponType;
 import br.com.odcontroler.data.enums.UseType;
 import br.com.odcontroler.data.enums.Size;
 import br.com.odcontroler.main.object.BeanEvent;
+import br.com.odcontroler.main.util.TableUtil;
 import br.com.odcontroler.main.view.bean.ViewBean;
 import br.com.odcontroler.main.view.weapontype.WeaponTypeView;
 
@@ -20,6 +20,7 @@ import br.com.odcontroler.main.view.weapontype.WeaponTypeView;
 public class WeaponTypeBean extends ViewBean<WeaponTypeView> {
 
     private final WeaponTypeDAO dao;
+    private TableUtil tableUtil;
 
     /**
      * Cria nova instancia de WeaponTypeBean
@@ -29,16 +30,12 @@ public class WeaponTypeBean extends ViewBean<WeaponTypeView> {
     public WeaponTypeBean(WeaponTypeView view) {
         super(view);
         this.dao = new WeaponTypeDAO();
+        this.tableUtil = new TableUtil(view);
     }
 
     @Override
     public void commit(BeanEvent evt) throws Exception {
         dao.replaceAll(getView().getModel().getData());
-    }
-
-    @Override
-    public void load(BeanEvent evt) throws Exception {
-        getView().getSizeModel().setData(new WeaponSizeDAO().getList());
     }
 
     @Override
@@ -54,6 +51,11 @@ public class WeaponTypeBean extends ViewBean<WeaponTypeView> {
         type.setDamageType((DamageType) ow.getValue("damage"));
         type.setAttackType((AttackType) ow.getValue("attack"));
         getView().getModel().add(type);
+    }
+
+    @Override
+    public void remove(BeanEvent evt) throws Exception {
+        tableUtil.remove(evt);        
     }
 
     /**

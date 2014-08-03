@@ -10,7 +10,7 @@ import br.com.gmp.utils.annotations.NotCopiable;
  *
  * @author kaciano
  */
-public abstract class Type {
+public abstract class Type implements Comparable<Type> {
 
     @NotCopiable
     @Ignore
@@ -68,6 +68,11 @@ public abstract class Type {
     @Override
     public String toString() {
         return getName();
+    }
+
+    @Override
+    public int compareTo(Type o) {
+        return getId().compareTo(o.getId());
     }
 
 }

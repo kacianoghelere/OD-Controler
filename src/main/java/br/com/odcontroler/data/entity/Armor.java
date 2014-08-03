@@ -28,6 +28,7 @@ public class Armor implements Serializable {
     @Editable
     @ColumnName(name = "Descrição")
     private String description;
+    @Editable
     @ColumnName(name = "Tipo")
     private ArmorType type;
     @Editable
@@ -40,8 +41,10 @@ public class Armor implements Serializable {
     @ColumnName(name = "Preço")
     private Double price;
     @ColumnName(name = "Material")
-    private Material material;
+    @Editable
+    private MaterialType material;
     @ColumnName(name = "Alinhamento")
+    @Editable
     private Alignment alignment;
 
     /**
@@ -61,12 +64,12 @@ public class Armor implements Serializable {
      * @param armorClass {@code Integer} Classe de armadura
      * @param movReduction {@code Integer} Redução de Movimento
      * @param price {@code Double} Preço da armadura
-     * @param material {@code PrimeMaterial} Material
+     * @param material {@code PrimeMaterial} MaterialType
      * @param align {@code Align} Alinhamento
      */
     public Armor(Long id, String name, Origin origin, String description,
             ArmorType type, Integer armorClass, Integer movReduction,
-            Double price, Material material, Alignment align) {
+            Double price, MaterialType material, Alignment align) {
         this.id = id;
         this.name = name;
         this.origin = origin;
@@ -224,20 +227,20 @@ public class Armor implements Serializable {
     }
 
     /**
-     * Retorna o Material
+     * Retorna o MaterialType
      *
-     * @return {@code PrimeMaterial} Material
+     * @return {@code PrimeMaterial} MaterialType
      */
-    public Material getMaterial() {
+    public MaterialType getMaterial() {
         return material;
     }
 
     /**
-     * Modifica o Material
+     * Modifica o MaterialType
      *
-     * @param material {@code PrimeMaterial} Material
+     * @param material {@code PrimeMaterial} MaterialType
      */
-    public void setMaterial(Material material) {
+    public void setMaterial(MaterialType material) {
         this.material = material;
     }
 

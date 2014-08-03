@@ -1,6 +1,7 @@
 package br.com.odcontroler.main.view.origin;
 
 import br.com.gmp.comps.table.GTable;
+import br.com.gmp.comps.table.decorate.TableDecorator;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.odcontroler.data.db.dao.OriginDAO;
@@ -30,7 +31,11 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
 
     private OriginBean bean;
     private OriginModel model;
-    private TableUtil tableUtil;
+    private TableDecorator decorator;
+    private int count = 0;
+    private int NAME = count++;
+    private int VARIATION = count++;
+    private int BONUS = count++;
 
     /**
      * Cria nova instancia de OriginView
@@ -46,14 +51,22 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
      * Método de inicialização
      */
     private void initialize() {
-        this.initComponents();
         this.setSize(620, 300);
-        this.setControls(new ViewParameter(true, false, true, false));        
+        this.setControls(new ViewParameter(true, false, true, false));
+        this.initComponents();
+        this.decorator = new TableDecorator(gTable);
+        //----------------------------------------------------------------------
+        // Inicialização do modelo
         this.model = new OriginModel();
-        this.model.setData(new OriginDAO().getList());
-        this.gTable.setModel(model);
-        this.tableUtil = new TableUtil(this);
+        //----------------------------------------------------------------------
+        // Inicialização do bean
         this.bean = new OriginBean(this);
+        //----------------------------------------------------------------------
+        // Atribuição do modelo na tabela
+        this.gTable.buildTable(this, 0, model);
+        //----------------------------------------------------------------------
+        // Atribuição dos editores
+        this.decorator.withNumber(BONUS);
     }
 
     @Override

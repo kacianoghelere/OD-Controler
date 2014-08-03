@@ -1,30 +1,51 @@
 package br.com.odcontroler.main.view.weapon;
 
 import br.com.gmp.comps.table.GTable;
+import br.com.gmp.comps.table.decorate.TableDecorator;
 import br.com.gmp.comps.table.interfaces.TableSource;
+import br.com.odcontroler.data.db.dao.MaterialTypeDAO;
+import br.com.odcontroler.data.db.dao.OriginDAO;
 import br.com.odcontroler.data.db.dao.WeaponDAO;
+import br.com.odcontroler.data.db.dao.WeaponTypeDAO;
+import br.com.odcontroler.data.entity.MaterialType;
 import br.com.odcontroler.data.entity.Weapon;
+import br.com.odcontroler.data.enums.Alignment;
 import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.util.Description;
 import br.com.odcontroler.main.view.View;
+import br.com.odcontroler.main.view.annotation.ViewData;
+import br.com.odcontroler.main.view.enums.ViewType;
 import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.interfaces.TableView;
 import br.com.odcontroler.main.view.object.ViewParameter;
 import br.com.odcontroler.main.view.weapon.bean.WeaponBean;
 import br.com.odcontroler.main.view.weapon.model.WeaponModel;
 import br.com.odcontroler.main.view.weapon.sub.WeaponSubView;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * View para cadastro e controle de armas
  *
  * @author kaciano
+ * @version 1.0
  */
-public class WeaponView extends View implements TableView, TableSource<Weapon> {
+@ViewData(name = "Armas", type = ViewType.CRUD)
+public class WeaponView extends View<WeaponBean> implements TableView, TableSource<Weapon> {
 
     private WeaponBean bean;
     private WeaponModel model;
+    private TableDecorator decorator;
+    private int count = 0;
+    private final int NAME = count++;
+    private final int ORIGIN = count++;
+    private final int INITIATIVE = count++;
+    private final int RANGE = count++;
+    private final int DAMAGE = count++;
+    private final int TYPE = count++;
+    private final int MATERIAL = count++;
+    private final int ALIGNMENT = count++;
 
     /**
      * Cria nova instancia de WeaponView
@@ -43,9 +64,24 @@ public class WeaponView extends View implements TableView, TableSource<Weapon> {
         this.setControls(new ViewParameter(true, false, true, true));
         this.setSize(662, 481);
         this.initComponents();
-        this.bean = new WeaponBean(this);
+        this.decorator = new TableDecorator(gTable);
+        //----------------------------------------------------------------------
+        // Inicialização do modelo
         this.model = new WeaponModel();
-        this.gTable.setModel(model);
+        //----------------------------------------------------------------------
+        // Inicialização do bean        
+        this.bean = new WeaponBean(this);
+        //----------------------------------------------------------------------
+        // Atribuição do modelo à tabela
+        this.gTable.buildTable(this, 0, model);
+        //----------------------------------------------------------------------
+        // Atribuição dos editores à tabela
+        this.decorator.withNumber(INITIATIVE);
+        this.decorator.withNumber(RANGE);
+        this.decorator.comboAt(ORIGIN, new OriginDAO().getList());
+        this.decorator.comboAt(TYPE, new WeaponTypeDAO().getList());
+        this.decorator.comboAt(MATERIAL, new MaterialTypeDAO().getList());
+        this.decorator.comboAt(ALIGNMENT, Arrays.asList(Alignment.values()));
     }
 
     @Override
@@ -179,11 +215,6 @@ public class WeaponView extends View implements TableView, TableSource<Weapon> {
             }
         ));
         gTable.setOpaque(false);
-        gTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                gTableMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(gTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -225,12 +256,6 @@ public class WeaponView extends View implements TableView, TableSource<Weapon> {
             throwException(new ViewException(this, ex));
         }
     }//GEN-LAST:event_jBAddActionPerformed
-
-    private void gTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gTableMouseClicked
-        if (evt.getClickCount() == 2) {
-            edit();
-        }
-    }//GEN-LAST:event_gTableMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.table.GTable gTable;

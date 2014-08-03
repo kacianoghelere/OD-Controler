@@ -20,7 +20,6 @@ import java.util.logging.Logger;
 public class ItemBean extends ViewBean<ItemView> {
 
     private TableUtil tableUtil;
-    private final ItemTypeDAO typeDAO;
     private ItemDAO dao;
 
     /**
@@ -30,7 +29,6 @@ public class ItemBean extends ViewBean<ItemView> {
      */
     public ItemBean(ItemView view) {
         super(view);
-        this.typeDAO = new ItemTypeDAO();
         this.dao = new ItemDAO();
         this.tableUtil = new TableUtil(view);
         try {
@@ -48,7 +46,6 @@ public class ItemBean extends ViewBean<ItemView> {
     @Override
     public void load(BeanEvent evt) throws Exception {
         getView().getModel().setData(dao.getList());
-        getView().getTypeModel().setData(typeDAO.getList());
     }
 
     @Override

@@ -5,17 +5,20 @@ import br.com.gmp.comps.model.GListModel;
 import br.com.gmp.comps.textfield.GTextField;
 import br.com.odcontroler.data.entity.ArmorType;
 import br.com.odcontroler.data.entity.EffectType;
-import br.com.odcontroler.data.entity.Element;
+import br.com.odcontroler.data.entity.ElementType;
 import br.com.odcontroler.data.entity.ExpertiseType;
 import br.com.odcontroler.data.entity.ItemType;
-import br.com.odcontroler.data.entity.Material;
+import br.com.odcontroler.data.entity.SpellType;
+import br.com.odcontroler.data.entity.MaterialType;
 import br.com.odcontroler.data.entity.PerkType;
+import br.com.odcontroler.data.entity.Type;
 import br.com.odcontroler.main.MainScreen;
-import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.View;
+import br.com.odcontroler.main.view.annotation.ViewData;
+import br.com.odcontroler.main.view.enums.ViewType;
 import br.com.odcontroler.main.view.exception.ViewException;
-import br.com.odcontroler.main.view.type.bean.TypeBean;
 import br.com.odcontroler.main.view.object.ViewParameter;
+import br.com.odcontroler.main.view.type.bean.TypeBean;
 import java.awt.event.KeyEvent;
 
 /**
@@ -26,16 +29,18 @@ import java.awt.event.KeyEvent;
  * @author kaciano
  * @version 1.1
  */
-public class TypeView extends View {
+@ViewData(name = "Controle de tipos", type = ViewType.CRUD)
+public class TypeView extends View<TypeBean> {
 
     private TypeBean bean;
     private GListModel<EffectType> effectModel;
     private GListModel<PerkType> perkModel;
     private GListModel<ArmorType> armorModel;
     private GListModel<ExpertiseType> expertiseModel;
-    private GListModel<Material> materialModel;
-    private GListModel<Element> elementModel;
+    private GListModel<MaterialType> materialModel;
+    private GListModel<ElementType> elementModel;
     private GListModel<ItemType> itemModel;
+    private GListModel<SpellType> spellModel;
 
     /**
      * Cria nova instancia de TypeView
@@ -54,6 +59,8 @@ public class TypeView extends View {
         initComponents();
         this.setSize(375, 327);
         this.setControls(new ViewParameter(true, false, true, true));
+        //----------------------------------------------------------------------
+        // Inicialização dos modelos
         this.effectModel = new GListModel<>();
         this.perkModel = new GListModel<>();
         this.armorModel = new GListModel<>();
@@ -61,7 +68,12 @@ public class TypeView extends View {
         this.materialModel = new GListModel<>();
         this.elementModel = new GListModel<>();
         this.itemModel = new GListModel<>();
+        this.spellModel = new GListModel<>();
+        //----------------------------------------------------------------------
+        // Inicialização do bean
         this.bean = new TypeBean(this);
+        //----------------------------------------------------------------------
+        // Atribuição dos modelos nas listas
         this.gLtEffectTp.setModel(effectModel);
         this.gLtPerkTp.setModel(perkModel);
         this.gLtExpTp.setModel(expertiseModel);
@@ -69,98 +81,24 @@ public class TypeView extends View {
         this.gLtMaterials.setModel(materialModel);
         this.gLtElement.setModel(elementModel);
         this.gLtItemTp.setModel(itemModel);
-        try {
-            this.bean.load(null);
-        } catch (Exception ex) {
-            throwException(new ViewException(this, ex));
-        }
-    }
-
-    /**
-     * Adiciona novo elemento na lista de efeitos
-     *
-     * @param evt {@code KeyEvent} Evento do teclado
-     */
-    private void addEffectType(KeyEvent evt) {
-        if (gTEffectTp.validateComponent()) {
-            bean.addEffectTp(new BeanEvent(this, gTEffectTp.getText()));
-            gTEffectTp.clear();
-        }
-    }
-
-    /**
-     * Adiciona novo elemento na lista de PerkTypes
-     *
-     * @param evt {@code KeyEvent} Evento do teclado
-     */
-    private void addPerkType(KeyEvent evt) {
-        if (gTPerkTp.validateComponent()) {
-            bean.addPerkTp(new BeanEvent(this, gTPerkTp.getText()));
-            gTPerkTp.clear();
-        }
-    }
-
-    /**
-     * Adiciona novo elemento na lista de PerkTypes
-     *
-     * @param evt {@code KeyEvent} Evento do teclado
-     */
-    private void addExpType(KeyEvent evt) {
-        if (gTExpertiseTp.validateComponent()) {
-            bean.addExpTp(new BeanEvent(this, gTExpertiseTp.getText()));
-            gTExpertiseTp.clear();
-        }
-    }
-
-    /**
-     * Adiciona novo elemento na lista de ArmorTypes
-     *
-     * @param evt {@code KeyEvent} Evento do teclado
-     * @since 1.1
-     */
-    private void addArmorTp(KeyEvent evt) {
-        if (gTArmorTp.validateComponent()) {
-            bean.addArmorType(new BeanEvent(this, gTArmorTp.getText()));
-            gTArmorTp.clear();
-        }
-    }
-
-    /**
-     * Adiciona novo elemento na lista de Materials
-     *
-     * @param evt {@code KeyEvent} Evento do teclado
-     * @since 1.1
-     */
-    private void addMaterial(KeyEvent evt) {
-        if (gTMaterial.validateComponent()) {
-            bean.addMaterial(new BeanEvent(this, gTMaterial.getText()));
-            gTMaterial.clear();
-        }
+        this.gLtSpellTp.setModel(spellModel);
     }
 
     /**
      * Adiciona novo elemento na lista de Elements
      *
-     * @param evt {@code KeyEvent} Evento do teclado
-     * @since 1.1
+     * @param evt {@code KeyEvent} Evento do clique
+     * @param textfield {@code GTextField} Campo de texto
+     * @param object {@code Object} Objeto à ser adicionado
+     * @param model {@code GListModel} Modelo da lista
      */
-    private void addElement(KeyEvent evt) {
-        if (gTElement.validateComponent()) {
-            bean.addElement(new BeanEvent(this, gTElement.getText()));
-            gTElement.clear();
-        }
-    }
-
-    /**
-     * Adiciona novo elemento na lista de Elements
-     *
-     * @param evt {@code KeyEvent} Evento do teclado
-     * @since 1.1
-     */
-    private void addItem(KeyEvent evt) {
-        if (gTItemTp.validateComponent()) {
-            bean.addItem(new BeanEvent(this, gTItemTp.getText()));
-            gTItemTp.clear();
+    private void add(java.awt.event.KeyEvent evt, GTextField textfield, Object object, GListModel model) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                add(textfield, object, model);
+            } catch (Exception ex) {
+                throwException(new ViewException(this, ex));
+            }
         }
     }
 
@@ -172,7 +110,10 @@ public class TypeView extends View {
      * @param model {@code GListModel} Modelo da lista
      */
     private void add(GTextField textfield, Object object, GListModel model) {
-        if (textfield.validateComponent()) {            
+        if (textfield.validateComponent()) {
+            Type type = (Type) object;
+            type.setId(bean.getNextID(model.getData()));
+            type.setName(textfield.getText());
             model.add(object);
             textfield.clear();
         }
@@ -230,18 +171,18 @@ public class TypeView extends View {
     /**
      * Retorna o modelo de lista dos Materials
      *
-     * @return {@code GListModel(Material)}
+     * @return {@code GListModel(MaterialType)}
      */
-    public GListModel<Material> getMaterialModel() {
+    public GListModel<MaterialType> getMaterialModel() {
         return materialModel;
     }
 
     /**
      * Retorna o modelo de lista dos Elements
      *
-     * @return {@code GListModel(Element)}
+     * @return {@code GListModel(ElementType)}
      */
-    public GListModel<Element> getElementModel() {
+    public GListModel<ElementType> getElementModel() {
         return elementModel;
     }
 
@@ -252,6 +193,15 @@ public class TypeView extends View {
      */
     public GListModel<ItemType> getItemModel() {
         return itemModel;
+    }
+
+    /**
+     * Retorna o modelo de lista dos SpellTypes
+     *
+     * @return {@code GListModel(SpellType)}
+     */
+    public GListModel<SpellType> getSpellModel() {
+        return spellModel;
     }
 
     @Override
@@ -295,6 +245,10 @@ public class TypeView extends View {
         gTItemTp = new br.com.gmp.comps.textfield.GTextField();
         jSPPerk3 = new javax.swing.JScrollPane();
         gLtItemTp = new br.com.gmp.comps.list.GList();
+        jPMagicType = new javax.swing.JPanel();
+        gTSpellTp = new br.com.gmp.comps.textfield.GTextField();
+        jSPPerk4 = new javax.swing.JScrollPane();
+        gLtSpellTp = new br.com.gmp.comps.list.GList();
 
         setClosable(true);
         setIconifiable(true);
@@ -645,6 +599,54 @@ public class TypeView extends View {
 
         jTabbedPane.addTab("Itens", new javax.swing.ImageIcon(getClass().getResource("/MenuIcons/slice1255_.png")), jPItemType); // NOI18N
 
+        jPMagicType.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Magias"));
+        jPMagicType.setName("jPMagicType"); // NOI18N
+
+        gTSpellTp.setPlaceholder("Tipos de Itens");
+        gTSpellTp.setMaximumSize(new java.awt.Dimension(150, 2147483647));
+        gTSpellTp.setMinimumSize(new java.awt.Dimension(150, 28));
+        gTSpellTp.setName("gTSpellTp"); // NOI18N
+        gTSpellTp.setPreferredSize(new java.awt.Dimension(150, 28));
+        gTSpellTp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gTSpellTpKeyReleased(evt);
+            }
+        });
+
+        jSPPerk4.setName("jSPPerk4"); // NOI18N
+
+        gLtSpellTp.setKeyDelete(true);
+        gLtSpellTp.setName("gLtSpellTp"); // NOI18N
+        gLtSpellTp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gLtSpellTpKeyReleased(evt);
+            }
+        });
+        jSPPerk4.setViewportView(gLtSpellTp);
+
+        javax.swing.GroupLayout jPMagicTypeLayout = new javax.swing.GroupLayout(jPMagicType);
+        jPMagicType.setLayout(jPMagicTypeLayout);
+        jPMagicTypeLayout.setHorizontalGroup(
+            jPMagicTypeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPMagicTypeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPMagicTypeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(gTSpellTp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSPPerk4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPMagicTypeLayout.setVerticalGroup(
+            jPMagicTypeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPMagicTypeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSPPerk4, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gTSpellTp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
+        );
+
+        jTabbedPane.addTab("Magias", new javax.swing.ImageIcon(getClass().getResource("/MenuIcons/slice1385_@.png")), jPMagicType); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -658,23 +660,11 @@ public class TypeView extends View {
     }// </editor-fold>//GEN-END:initComponents
 
     private void gTEffectTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTEffectTpKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            try {
-                addEffectType(evt);
-            } catch (Exception ex) {
-                throwException(new ViewException(this, ex));     
-            }
-        }
+        add(evt, gTEffectTp, new EffectType(), effectModel);
     }//GEN-LAST:event_gTEffectTpKeyReleased
 
     private void gTPerkTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTPerkTpKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            try {
-                addPerkType(evt);
-            } catch (Exception ex) {
-                throwException(new ViewException(this, ex));
-            }
-        }
+        add(evt, gTPerkTp, new PerkType(), perkModel);
     }//GEN-LAST:event_gTPerkTpKeyReleased
 
     private void gLtEffectTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gLtEffectTpKeyReleased
@@ -690,13 +680,7 @@ public class TypeView extends View {
     }//GEN-LAST:event_gLtPerkTpKeyReleased
 
     private void gTExpertiseTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTExpertiseTpKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            try {
-                addExpType(evt);
-            } catch (Exception ex) {
-                throwException(new ViewException(this, ex));
-            }
-        }
+        add(evt, gTExpertiseTp, new ExpertiseType(), expertiseModel);
     }//GEN-LAST:event_gTExpertiseTpKeyReleased
 
     private void gLtExpTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gLtExpTpKeyReleased
@@ -706,13 +690,7 @@ public class TypeView extends View {
     }//GEN-LAST:event_gLtExpTpKeyReleased
 
     private void gTArmorTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTArmorTpKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            try {
-                addArmorTp(evt);
-            } catch (Exception ex) {
-                throwException(new ViewException(this, ex));
-            }
-        }
+        add(evt, gTArmorTp, new ArmorType(), armorModel);
     }//GEN-LAST:event_gTArmorTpKeyReleased
 
     private void gLtArmorTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gLtArmorTpKeyReleased
@@ -722,13 +700,7 @@ public class TypeView extends View {
     }//GEN-LAST:event_gLtArmorTpKeyReleased
 
     private void gTMaterialKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTMaterialKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            try {
-                addMaterial(evt);
-            } catch (Exception ex) {
-                throwException(new ViewException(this, ex));
-            }
-        }
+        add(evt, gTMaterial, new MaterialType(), materialModel);
     }//GEN-LAST:event_gTMaterialKeyReleased
 
     private void gLtMaterialsKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gLtMaterialsKeyReleased
@@ -738,13 +710,7 @@ public class TypeView extends View {
     }//GEN-LAST:event_gLtMaterialsKeyReleased
 
     private void gTElementKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTElementKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            try {
-                addElement(evt);
-            } catch (Exception ex) {
-                throwException(new ViewException(this, ex));
-            }
-        }
+        add(evt, gTElement, new ElementType(), elementModel);
     }//GEN-LAST:event_gTElementKeyReleased
 
     private void gLtElementKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gLtElementKeyReleased
@@ -754,13 +720,7 @@ public class TypeView extends View {
     }//GEN-LAST:event_gLtElementKeyReleased
 
     private void gTItemTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTItemTpKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            try {
-                addItem(evt);
-            } catch (Exception ex) {
-                throwException(new ViewException(this, ex));
-            }
-        }
+        add(evt, gTItemTp, new ItemType(), itemModel);
     }//GEN-LAST:event_gTItemTpKeyReleased
 
     private void gLtItemTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gLtItemTpKeyReleased
@@ -768,6 +728,16 @@ public class TypeView extends View {
             remove(gLtItemTp, itemModel);
         }
     }//GEN-LAST:event_gLtItemTpKeyReleased
+
+    private void gTSpellTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTSpellTpKeyReleased
+        add(evt, gTSpellTp, new SpellType(), spellModel);
+    }//GEN-LAST:event_gTSpellTpKeyReleased
+
+    private void gLtSpellTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gLtSpellTpKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
+            remove(gLtSpellTp, spellModel);
+        }
+    }//GEN-LAST:event_gLtSpellTpKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.list.GList gLtArmorTp;
@@ -777,6 +747,7 @@ public class TypeView extends View {
     private br.com.gmp.comps.list.GList gLtItemTp;
     private br.com.gmp.comps.list.GList gLtMaterials;
     private br.com.gmp.comps.list.GList gLtPerkTp;
+    private br.com.gmp.comps.list.GList gLtSpellTp;
     private br.com.gmp.comps.textfield.GTextField gTArmorTp;
     private br.com.gmp.comps.textfield.GTextField gTEffectTp;
     private br.com.gmp.comps.textfield.GTextField gTElement;
@@ -784,11 +755,13 @@ public class TypeView extends View {
     private br.com.gmp.comps.textfield.GTextField gTItemTp;
     private br.com.gmp.comps.textfield.GTextField gTMaterial;
     private br.com.gmp.comps.textfield.GTextField gTPerkTp;
+    private br.com.gmp.comps.textfield.GTextField gTSpellTp;
     private javax.swing.JPanel jPArmorTypes;
     private javax.swing.JPanel jPEffects;
     private javax.swing.JPanel jPElement;
     private javax.swing.JPanel jPExpertiseTypes;
     private javax.swing.JPanel jPItemType;
+    private javax.swing.JPanel jPMagicType;
     private javax.swing.JPanel jPMaterials;
     private javax.swing.JPanel jPPerkTypes;
     private javax.swing.JScrollPane jSPArmorTp;
@@ -798,6 +771,7 @@ public class TypeView extends View {
     private javax.swing.JScrollPane jSPPerk1;
     private javax.swing.JScrollPane jSPPerk2;
     private javax.swing.JScrollPane jSPPerk3;
+    private javax.swing.JScrollPane jSPPerk4;
     private javax.swing.JTabbedPane jTabbedPane;
     // End of variables declaration//GEN-END:variables
 }
