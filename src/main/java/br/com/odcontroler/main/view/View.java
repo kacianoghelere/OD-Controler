@@ -192,7 +192,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
                     getMainScreen().toggleProcess();
                     try {
                         getBean().clear(new BeanEvent(View.this, null));
-                        showMessage("Dados preenchidos removidos.", MainScreen.INFORMATIVE_MSG);
+                        //showMessage("Dados preenchidos removidos.", MainScreen.INFORMATIVE_MSG);
                     } catch (Exception ex) {
                         throwException(new ViewException(View.this, "Clear error", ex));
                     }
@@ -213,7 +213,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
                     getMainScreen().toggleProcess();
                     try {
                         getBean().load(new BeanEvent(View.this, null));
-                        showMessage("Dados carregados.", MainScreen.INFORMATIVE_MSG);
+                        //showMessage("Dados carregados.", MainScreen.INFORMATIVE_MSG);
                     } catch (Exception ex) {
                         throwException(new ViewException(View.this, "Load error", ex));
                     }
