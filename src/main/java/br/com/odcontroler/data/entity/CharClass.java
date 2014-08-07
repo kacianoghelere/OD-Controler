@@ -3,6 +3,7 @@ package br.com.odcontroler.data.entity;
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
+import br.com.odcontroler.data.enums.Dice;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
@@ -21,7 +22,7 @@ public class CharClass implements Serializable {
     @ColumnName(name = "Nome")
     private String name;
     @ColumnName(name = "Dado de Vida")
-    private String hpDice;
+    private Dice hpDice;
     @ColumnName(name = "CA Bônus")
     private Integer armorBonus;
     @Ignore
@@ -29,10 +30,10 @@ public class CharClass implements Serializable {
     private Requires requires;
     @Ignore
     @ColumnName(name = "Armaduras Permitidas")
-    private List<ArmorType> allowedArmors;    
+    private List<ArmorType> allowedArmors;
     @Ignore
     @ColumnName(name = "Armas Permitidas")
-    private List<WeaponType> allowedWeapons;    
+    private List<WeaponType> allowedWeapons;
     @Ignore
     @ColumnName(name = "Itens Permitidas")
     private List<ItemType> allowedItems;

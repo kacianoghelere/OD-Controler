@@ -9,15 +9,18 @@ import br.com.odcontroler.data.entity.Origin;
 import br.com.odcontroler.data.entity.Weapon;
 import br.com.odcontroler.data.entity.WeaponType;
 import br.com.odcontroler.data.enums.Alignment;
+import br.com.odcontroler.data.enums.Dice;
 import br.com.odcontroler.main.object.BeanEvent;
+import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.sub.SubView;
 import br.com.odcontroler.main.view.weapon.WeaponView;
 import br.com.odcontroler.main.view.weapon.bean.WeaponBean;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
+import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JMenuItem;
+import javax.swing.SwingUtilities;
 
 /**
  * SubView para controle de armas
@@ -34,6 +37,7 @@ public class WeaponSubView extends SubView {
     private GComboBoxModel<Origin> originModel;
     private GComboBoxModel<MaterialType> materialModel;
     private GComboBoxModel<Alignment> alignmentModel;
+    private GComboBoxModel<Dice> diceModel;
 
     /**
      * Cria nova instancia de WeaponSubView
@@ -61,6 +65,7 @@ public class WeaponSubView extends SubView {
         this.gCBOrigin.setGModel(originModel);
         this.gCBMaterial.setGModel(materialModel);
         this.gCBAlignment.setGModel(alignmentModel);
+        this.gCBDmgDice.setGModel(diceModel);
         this.setWeapon(weapon);
         //----------------------------------------------------------------------
         JMenuItem gen;
@@ -83,6 +88,7 @@ public class WeaponSubView extends SubView {
         this.originModel = new GComboBoxModel<>(new OriginDAO().getList());
         this.materialModel = new GComboBoxModel<>(new MaterialTypeDAO().getList());
         this.alignmentModel = new GComboBoxModel<>(Alignment.values());
+        this.diceModel = new GComboBoxModel<>(Dice.values());
     }
 
     /**
@@ -146,9 +152,32 @@ public class WeaponSubView extends SubView {
             WeaponType prefix = this.typeModel.getSelectedItem();
             MaterialType material = this.materialModel.getSelectedItem();
             Origin origin = this.originModel.getSelectedItem();
-            this.gTName.setText(prefix.getName() + " " + origin.getName()
+            this.gTName.setText(prefix.getName() + " "
+                    + (prefix.getName().endsWith("a")
+                    ? origin.getVariation() : origin.getName())
                     + " de " + material.getName());
         }
+    }
+
+    /**
+     * Seleciona os campos aleatóriamente criando uma arma única por vez
+     *
+     * @throws Exception Exceção propagada
+     */
+    private void randomize() throws Exception {        
+        Random rd = new Random();
+        this.gCBAlignment.setSelectedIndex(rd.nextInt(alignmentModel.getSize()));
+        this.gCBMaterial.setSelectedIndex(rd.nextInt(materialModel.getSize()));
+        this.gCBOrigin.setSelectedIndex(rd.nextInt(originModel.getSize()));
+        this.gCBType.setSelectedIndex(rd.nextInt(typeModel.getSize()));
+        this.gCBDmgDice.setSelectedIndex(rd.nextInt(diceModel.getSize()));        
+        this.gNPrice.setInt(rd.nextInt(80));
+        this.gNWeight.setInt(rd.nextInt(10));
+        this.jSpnInitiative.setValue(rd.nextInt(10));
+        this.jSpnRange.setValue(rd.nextInt(80));
+        this.gNDmgAmt.setInt(rd.nextInt(10));        
+        autoName();
+        updateComponents();
     }
 
     /**
@@ -171,7 +200,8 @@ public class WeaponSubView extends SubView {
         this.weapon.setWeight(gNWeight.getDouble());
         this.weapon.setInitiative((Integer) jSpnInitiative.getValue());
         this.weapon.setRange((Integer) jSpnRange.getValue());
-        this.weapon.setDamage(gNDmgAmt.getText() + gCBDmgDice.getSelectedItem());
+        this.weapon.setDmgAmount(gNDmgAmt.getInteger());
+        this.weapon.setDice(diceModel.getSelectedItem());
     }
 
     /**
@@ -202,17 +232,16 @@ public class WeaponSubView extends SubView {
                 this.gNWeight.setInt(weapon.getWeight().intValue());
                 this.jSpnInitiative.setValue(weapon.getInitiative());
                 this.jSpnRange.setValue(weapon.getRange());
-                String[] dmg = weapon.getDamage().split("D");
-                this.gNDmgAmt.setText(dmg[0]);
-                this.gCBDmgDice.setSelectedItem(("D" + dmg[1]));
+                this.gNDmgAmt.setInt(weapon.getDmgAmount());
+                this.gCBDmgDice.setSelectedItem(weapon.getDice());
             }
         } catch (Exception e) {
-            LOGGER.log(Level.SEVERE, null, e);
+            throwException(new ViewException(view, e));
         }
     }
 
     /**
-     * Retorna o Modelo dos Tipos de armas
+     * Retorna o modelo dos Tipos de armas
      *
      * @return {@code GComboBoxModel(WeaponType)} Tipos de armas
      * @since 1.0
@@ -222,7 +251,7 @@ public class WeaponSubView extends SubView {
     }
 
     /**
-     * Retorna o Modelo das origens
+     * Retorna o modelo das origens
      *
      * @return {@code GComboBoxModel(Origin)} Origens de armas
      * @since 1.0
@@ -232,7 +261,7 @@ public class WeaponSubView extends SubView {
     }
 
     /**
-     * Retorna o Modelo dos Materiais
+     * Retorna o modelo dos Materiais
      *
      * @return {@code GComboBoxModel(PrimeMaterial)} Materiais
      */
@@ -241,13 +270,23 @@ public class WeaponSubView extends SubView {
     }
 
     /**
-     * Retorna o Modelo dos alinhamentos
+     * Retorna o modelo dos alinhamentos
      *
      * @return {@code GComboBoxModel(Alignment)} Modelo dos alinhamentos
      * @since 1.1
      */
     public GComboBoxModel<Alignment> getAlignmentModel() {
         return alignmentModel;
+    }
+
+    /**
+     * Retorna o modelo dos dados
+     *
+     * @return {@code GComboBoxModel(Dice)} Modelo dos dados
+     * @since 1.1
+     */
+    public GComboBoxModel<Dice> getDiceModel() {
+        return diceModel;
     }
 
     /**
@@ -285,6 +324,7 @@ public class WeaponSubView extends SubView {
         gTADesc = new br.com.gmp.comps.textarea.GTextArea();
         jBCancel = new javax.swing.JButton();
         jBAdd = new javax.swing.JButton();
+        jBRandom = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -475,6 +515,16 @@ public class WeaponSubView extends SubView {
             }
         });
 
+        jBRandom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/transition/switch.png"))); // NOI18N
+        jBRandom.setText("Aleatório");
+        jBRandom.setFocusable(false);
+        jBRandom.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBRandom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRandomActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -487,6 +537,8 @@ public class WeaponSubView extends SubView {
                         .addComponent(jBAdd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBCancel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBRandom)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -498,7 +550,8 @@ public class WeaponSubView extends SubView {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBAdd)
-                    .addComponent(jBCancel))
+                    .addComponent(jBCancel)
+                    .addComponent(jBRandom))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -521,13 +574,21 @@ public class WeaponSubView extends SubView {
                 }
                 this.dispose();
             } catch (Exception ex) {
-                LOGGER.log(Level.SEVERE, null, ex);
+                throwException(new ViewException(view, ex));
                 this.dispose();
             }
         } else {
             System.out.println("Campos invalidos.");
         }
     }//GEN-LAST:event_jBAddActionPerformed
+
+    private void jBRandomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRandomActionPerformed
+        try {        
+            randomize();
+        } catch (Exception ex) {
+            throwException(new ViewException(view, ex));
+        }
+    }//GEN-LAST:event_jBRandomActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.combobox.GComboBox gCBAlignment;
@@ -542,6 +603,7 @@ public class WeaponSubView extends SubView {
     private br.com.gmp.comps.textfield.GTextField gTName;
     private javax.swing.JButton jBAdd;
     private javax.swing.JButton jBCancel;
+    private javax.swing.JButton jBRandom;
     private javax.swing.JLabel jLAlignment;
     private javax.swing.JLabel jLDamage;
     private javax.swing.JLabel jLInitiative;

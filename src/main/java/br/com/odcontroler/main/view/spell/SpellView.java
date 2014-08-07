@@ -1,16 +1,11 @@
-package br.com.odcontroler.main.view.weapon;
+package br.com.odcontroler.main.view.spell;
 
 import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.decorate.TableDecorator;
 import br.com.gmp.comps.table.interfaces.TableSource;
-import br.com.odcontroler.data.db.dao.MaterialTypeDAO;
-import br.com.odcontroler.data.db.dao.OriginDAO;
-import br.com.odcontroler.data.db.dao.WeaponDAO;
-import br.com.odcontroler.data.db.dao.WeaponTypeDAO;
-import br.com.odcontroler.data.entity.MaterialType;
-import br.com.odcontroler.data.entity.Weapon;
-import br.com.odcontroler.data.enums.Alignment;
-import br.com.odcontroler.data.enums.Dice;
+import br.com.odcontroler.data.db.dao.SpellDAO;
+import br.com.odcontroler.data.db.dao.SpellTypeDAO;
+import br.com.odcontroler.data.entity.Spell;
 import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.util.Description;
@@ -20,41 +15,36 @@ import br.com.odcontroler.main.view.enums.ViewType;
 import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.interfaces.TableView;
 import br.com.odcontroler.main.view.object.ViewParameter;
-import br.com.odcontroler.main.view.weapon.bean.WeaponBean;
-import br.com.odcontroler.main.view.weapon.model.WeaponModel;
-import br.com.odcontroler.main.view.weapon.sub.WeaponSubView;
-import java.util.Arrays;
+import br.com.odcontroler.main.view.spell.bean.SpellBean;
+import br.com.odcontroler.main.view.spell.model.SpellModel;
+import br.com.odcontroler.main.view.spell.sub.SpellSubView;
 import java.util.List;
 
 /**
- * View para cadastro e controle de armas
+ * View para cadastro e controle de magias
  *
  * @author kaciano
  * @version 1.0
  */
-@ViewData(name = "Armas", type = ViewType.CRUD)
-public class WeaponView extends View<WeaponBean> implements TableView, TableSource<Weapon> {
+@ViewData(name = "Magias", type = ViewType.CRUD)
+public class SpellView extends View<SpellBean> implements TableView, TableSource<Spell> {
 
-    private WeaponBean bean;
-    private WeaponModel model;
+    private SpellBean bean;
+    private SpellModel model;
     private TableDecorator decorator;
     private int count = 0;
     private final int NAME = count++;
-    private final int ORIGIN = count++;
-    private final int INITIATIVE = count++;
-    private final int RANGE = count++;
-    private final int DMG_AMOUNT = count++;
-    private final int DICE= count++;
+    private final int CIRCLE = count++;
     private final int TYPE = count++;
-    private final int MATERIAL = count++;
-    private final int ALIGNMENT = count++;
+    private final int RANGE = count++;
+    private final int DURATION = count++;
 
     /**
-     * Cria nova instancia de WeaponView
+     * Cria nova instancia de SpellView
      *
      * @param mainScreen {@code MainScreen} Tela principal
      */
-    public WeaponView(MainScreen mainScreen) {
+    public SpellView(MainScreen mainScreen) {
         super(mainScreen);
         this.initialize();
     }
@@ -69,31 +59,26 @@ public class WeaponView extends View<WeaponBean> implements TableView, TableSour
         this.decorator = new TableDecorator(gTable);
         //----------------------------------------------------------------------
         // Inicialização do modelo
-        this.model = new WeaponModel();
+        this.model = new SpellModel();
         //----------------------------------------------------------------------
         // Inicialização do bean        
-        this.bean = new WeaponBean(this);
+        this.bean = new SpellBean(this);
         //----------------------------------------------------------------------
         // Atribuição do modelo à tabela
         this.gTable.buildTable(this, 0, model);
         //----------------------------------------------------------------------
         // Atribuição dos editores à tabela
-        this.decorator.withNumber(INITIATIVE);
-        this.decorator.withNumber(RANGE);
-        this.decorator.comboAt(ORIGIN, new OriginDAO().getList());
-        this.decorator.comboAt(TYPE, new WeaponTypeDAO().getList());
-        this.decorator.comboAt(MATERIAL, new MaterialTypeDAO().getList());
-        this.decorator.comboAt(ALIGNMENT, Arrays.asList(Alignment.values()));
-        this.decorator.comboAt(DICE, Arrays.asList(Dice.values()));
+        this.decorator.withNumber(CIRCLE);
+        this.decorator.comboAt(TYPE, new SpellTypeDAO().getList());
     }
 
     @Override
     public void add() throws Exception {
-        WeaponSubView subview = new WeaponSubView(this, null);
+        SpellSubView subview = new SpellSubView(this, null);
         getMainScreen().getListener().insertView(subview);
-        if (subview.getWeapon() != null) {
+        if (subview.getSpell() != null) {
             try {
-                bean.add(new BeanEvent(this, subview.getWeapon()));
+                bean.add(new BeanEvent(this, subview.getSpell()));
             } catch (IllegalArgumentException | IllegalAccessException ex) {
                 throwException(new ViewException(this, ex));
             } catch (Exception ex) {
@@ -122,17 +107,17 @@ public class WeaponView extends View<WeaponBean> implements TableView, TableSour
     }
 
     @Override
-    public WeaponModel getModel() {
+    public SpellModel getModel() {
         return model;
     }
 
     @Override
-    public List<Weapon> getTableData() {
-        return new WeaponDAO().getList();
+    public List<Spell> getTableData() {
+        return new SpellDAO().getList();
     }
 
     @Override
-    public WeaponBean getBean() {
+    public SpellBean getBean() {
         return bean;
     }
 
@@ -140,7 +125,7 @@ public class WeaponView extends View<WeaponBean> implements TableView, TableSour
     public Description getDescription() {
         return new Description.Builder()
                 .setTitle(getTitle())
-                .setDescription("Tela de controle e cadastro de armas")
+                .setDescription("Tela de controle e cadastro de magias")
                 .setSave("Remove os itens antigos e salva os novos.")
                 .apply();
     }
@@ -163,8 +148,8 @@ public class WeaponView extends View<WeaponBean> implements TableView, TableSour
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Armas");
-        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/weapons/K/K_64.png"))); // NOI18N
+        setTitle("Magias");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1385_@.png"))); // NOI18N
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);

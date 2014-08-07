@@ -32,6 +32,7 @@ public class EntityMap {
         map.put(Origin.class, "OriginDB");
         map.put(Perk.class, "PerkDB");
         map.put(PerkType.class, "PerkTypeDB");
+        map.put(Spell.class, "SpellDB");
         map.put(SpellType.class, "SpellTypeDB");
         map.put(Weapon.class, "WeaponDB");
         map.put(WeaponType.class, "WeaponTypeDB");

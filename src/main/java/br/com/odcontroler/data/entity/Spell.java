@@ -32,6 +32,7 @@ public class Spell {
     @Editable
     @ColumnName(name = "Duração")
     private String duration;
+    @Editable
     @ColumnName(name = "Descrição")
     private String description;
 

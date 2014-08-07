@@ -26,6 +26,7 @@ import javax.swing.Action;
 import javax.swing.JComponent;
 import javax.swing.JInternalFrame;
 import javax.swing.KeyStroke;
+import javax.swing.SwingUtilities;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 
@@ -254,6 +255,13 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
             }
         }
 
+    }
+
+    /**
+     * Atualiza a estrutura dos componentes
+     */
+    protected void updateComponents() {
+        SwingUtilities.updateComponentTreeUI(this);
     }
 
     /**

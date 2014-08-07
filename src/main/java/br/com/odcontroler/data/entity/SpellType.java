@@ -10,7 +10,7 @@ import java.util.Objects;
  * Entidade dos tipos de mágica
  *
  * @author kaciano
- * @versio 1.0
+ * @version 1.0
  */
 public class SpellType extends Type {
 
@@ -95,7 +95,7 @@ public class SpellType extends Type {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final ArmorType other = (ArmorType) obj;
+        final SpellType other = (SpellType) obj;
         if (!Objects.equals(this.id, other.getId())) {
             return false;
         }

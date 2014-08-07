@@ -5,6 +5,7 @@ import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.NotCopiable;
 import br.com.odcontroler.data.enums.Alignment;
+import br.com.odcontroler.data.enums.Dice;
 import java.util.Objects;
 
 /**
@@ -36,8 +37,11 @@ public class Weapon {
     @ColumnName(name = "Alcance")
     private Integer range;
     @Editable
-    @ColumnName(name = "Dano")
-    private String damage;
+    @ColumnName(name = "Qt. Dano")
+    private Integer dmgAmount;
+    @Editable
+    @ColumnName(name = "Dado")
+    private Dice dice;
     @Ignore
     @Editable
     @ColumnName(name = "Peso")
@@ -71,7 +75,8 @@ public class Weapon {
      * @param description {@code String} Descrição da arma
      * @param initiative {@code Integer} Classificação do tipo
      * @param range {@code Double} Alcance da arma
-     * @param damage {@code String} Dano da arma
+     * @param dmgAmount {@code Integer} Quantidade de dano da arma
+     * @param dice {@code Dice} Dado de dano da arma
      * @param weight {@code Double} Peso da arma
      * @param price {@code Integer} Preço da arma
      * @param type {@code WeaponType} Tipo de arma
@@ -79,7 +84,7 @@ public class Weapon {
      * @param alignment {@code Align} Alinhamento
      */
     public Weapon(Long id, String name, Origin origin, String description,
-            Integer initiative, Integer range, String damage, Double weight,
+            Integer initiative, Integer range, Integer dmgAmount, Dice dice, Double weight,
             Integer price, WeaponType type, MaterialType material, Alignment alignment) {
         this.id = id;
         this.name = name;
@@ -87,7 +92,7 @@ public class Weapon {
         this.description = description;
         this.initiative = initiative;
         this.range = range;
-        this.damage = damage;
+        this.dmgAmount = dmgAmount;
         this.weight = weight;
         this.price = price;
         this.type = type;
@@ -220,19 +225,37 @@ public class Weapon {
     /**
      * Retorna o dano da arma
      *
-     * @return {@code String} Dano da arma
+     * @return {@code Integer} Dano da arma
      */
-    public String getDamage() {
-        return damage;
+    public Integer getDmgAmount() {
+        return dmgAmount;
     }
 
     /**
      * Modifica o dano da arma
      *
-     * @param damage {@code String} Dano da arma
+     * @param dmgAmount {@code Integer} Dano da arma
      */
-    public void setDamage(String damage) {
-        this.damage = damage;
+    public void setDmgAmount(Integer dmgAmount) {
+        this.dmgAmount = dmgAmount;
+    }
+
+    /**
+     * Retorna o dado de dano da arma
+     *
+     * @return {@code Dice} Dado de dano da arma
+     */
+    public Dice getDice() {
+        return dice;
+    }
+
+    /**
+     * Modifica o dado de dano da arma
+     *
+     * @param dice {@code Dice} Dado de dano da arma
+     */
+    public void setDice(Dice dice) {
+        this.dice = dice;
     }
 
     /**
