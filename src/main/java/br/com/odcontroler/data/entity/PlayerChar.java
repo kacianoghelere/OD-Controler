@@ -2,7 +2,7 @@ package br.com.odcontroler.data.entity;
 
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Ignore;
-import br.com.gmp.utils.annotations.NotCopiable;
+import br.com.gmp.utils.annotations.Id;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -14,7 +14,7 @@ import java.util.Objects;
 public class PlayerChar {
 
     @Ignore
-    @NotCopiable
+    @Id
     @ColumnName(name = "Código")
     private Long id;
     @ColumnName(name = "Nome")
@@ -49,7 +49,7 @@ public class PlayerChar {
     /**
      * Cria nova instancia de PlayerChar
      *
-     * @param id {@code Long} ID do personagem
+     * @param id {@code Long} Id do personagem
      * @param charName {@code String} Nome do personagem
      * @param playerName {@code String} Nome do jogador
      * @param age {@code Integer} Idade do personagem
@@ -70,18 +70,18 @@ public class PlayerChar {
     }
 
     /**
-     * Retorna o ID do personagem
+     * Retorna o Id do personagem
      *
-     * @return {@code Long} ID do personagem
+     * @return {@code Long} Id do personagem
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * Modifica o ID do personagem
+     * Modifica o Id do personagem
      *
-     * @param id {@code Long} ID do personagem
+     * @param id {@code Long} Id do personagem
      */
     public void setId(Long id) {
         this.id = id;
@@ -271,16 +271,8 @@ public class PlayerChar {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 71 * hash + Objects.hashCode(this.id);
-        hash = 71 * hash + Objects.hashCode(this.name);
-        hash = 71 * hash + Objects.hashCode(this.player);
-        hash = 71 * hash + Objects.hashCode(this.age);
-        hash = 71 * hash + Objects.hashCode(this.sex);
-        hash = 71 * hash + Objects.hashCode(this.height);
-        hash = 71 * hash + Objects.hashCode(this.weight);
-        hash = 71 * hash + Objects.hashCode(this.charClass);
-        hash = 71 * hash + Objects.hashCode(this.charRace);
+        int hash = 3;
+        hash = 29 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -296,28 +288,7 @@ public class PlayerChar {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.player, other.player)) {
-            return false;
-        }
-        if (!Objects.equals(this.age, other.age)) {
-            return false;
-        }
-        if (!Objects.equals(this.sex, other.sex)) {
-            return false;
-        }
-        if (!Objects.equals(this.height, other.height)) {
-            return false;
-        }
-        if (!Objects.equals(this.weight, other.weight)) {
-            return false;
-        }
-        if (!Objects.equals(this.charClass, other.charClass)) {
-            return false;
-        }
-        return Objects.equals(this.charRace, other.charRace);
+        return true;
     }
 
     @Override

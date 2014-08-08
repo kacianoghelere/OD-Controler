@@ -3,7 +3,7 @@ package br.com.odcontroler.data.entity;
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
-import br.com.gmp.utils.annotations.NotCopiable;
+import br.com.gmp.utils.annotations.Id;
 import java.util.Objects;
 
 /**
@@ -14,7 +14,7 @@ import java.util.Objects;
  */
 public class Perk {
 
-    @NotCopiable
+    @Id
     @Ignore
     @ColumnName(name = "Código")
     private Long id;
@@ -48,7 +48,7 @@ public class Perk {
     }
 
     /**
-     * Retorna o ID do Perk
+     * Retorna o Id do Perk
      *
      * @return {@code Long}
      */
@@ -57,7 +57,7 @@ public class Perk {
     }
 
     /**
-     * Modifica o ID do Perk
+     * Modifica o Id do Perk
      *
      * @param id {@code Long}
      */
@@ -122,9 +122,7 @@ public class Perk {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 71 * hash + Objects.hashCode(this.id);
-        hash = 71 * hash + Objects.hashCode(this.title);
-        hash = 71 * hash + Objects.hashCode(this.type);
+        hash = 67 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -137,13 +135,7 @@ public class Perk {
             return false;
         }
         final Perk other = (Perk) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.title, other.title)) {
-            return false;
-        }
-        return Objects.equals(this.type, other.type);
+        return Objects.equals(this.id, other.id);
     }
 
     @Override

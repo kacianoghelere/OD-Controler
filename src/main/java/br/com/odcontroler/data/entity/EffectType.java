@@ -3,7 +3,7 @@ package br.com.odcontroler.data.entity;
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
-import br.com.gmp.utils.annotations.NotCopiable;
+import br.com.gmp.utils.annotations.Id;
 import java.util.Objects;
 
 /**
@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public class EffectType extends Type {
 
-    @NotCopiable
+    @Id
     @Ignore
     @ColumnName(name = "Código")
     private Long id;
@@ -39,9 +39,9 @@ public class EffectType extends Type {
     }
 
     /**
-     * Retorna o ID do EffectType
+     * Retorna o Id do EffectType
      *
-     * @return {@code Long} ID do EffectType
+     * @return {@code Long} Id do EffectType
      */
     @Override
     public Long getId() {
@@ -49,9 +49,9 @@ public class EffectType extends Type {
     }
 
     /**
-     * Modifica o ID do EffectType
+     * Modifica o Id do EffectType
      *
-     * @param id {@code Long} ID do EffectType
+     * @param id {@code Long} Id do EffectType
      */
     @Override
     public void setId(Long id) {
@@ -80,9 +80,8 @@ public class EffectType extends Type {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.id);
-        hash = 23 * hash + Objects.hashCode(this.name);
+        int hash = 5;
+        hash = 37 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -95,10 +94,7 @@ public class EffectType extends Type {
             return false;
         }
         final EffectType other = (EffectType) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return Objects.equals(this.name, other.name);
+        return Objects.equals(this.id, other.id);
     }
 
     @Override

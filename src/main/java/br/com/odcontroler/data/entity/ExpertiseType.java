@@ -3,7 +3,7 @@ package br.com.odcontroler.data.entity;
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
-import br.com.gmp.utils.annotations.NotCopiable;
+import br.com.gmp.utils.annotations.Id;
 import java.util.Objects;
 
 /**
@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public class ExpertiseType extends Type {
 
-    @NotCopiable
+    @Id
     @Ignore
     @ColumnName(name = "Código")
     private Long id;
@@ -39,19 +39,21 @@ public class ExpertiseType extends Type {
     }
 
     /**
-     * Retorna o ID do ExpertiseType
+     * Retorna o Id do ExpertiseType
      *
-     * @return {@code Long} ID do ExpertiseType
+     * @return {@code Long} Id do ExpertiseType
      */
+    @Override
     public Long getId() {
         return id;
     }
 
     /**
-     * Modifica o ID do ExpertiseType
+     * Modifica o Id do ExpertiseType
      *
-     * @param id {@code Long} ID do ExpertiseType
+     * @param id {@code Long} Id do ExpertiseType
      */
+    @Override
     public void setId(Long id) {
         this.id = id;
     }
@@ -61,6 +63,7 @@ public class ExpertiseType extends Type {
      *
      * @return {@code String} Titulo do ExpertiseType
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -70,6 +73,7 @@ public class ExpertiseType extends Type {
      *
      * @param title {@code String} Titulo do ExpertiseType
      */
+    @Override
     public void setName(String title) {
         this.name = title;
     }
@@ -77,8 +81,7 @@ public class ExpertiseType extends Type {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.id);
-        hash = 23 * hash + Objects.hashCode(this.name);
+        hash = 29 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -94,7 +97,7 @@ public class ExpertiseType extends Type {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        return Objects.equals(this.name, other.name);
+        return true;
     }
 
     @Override

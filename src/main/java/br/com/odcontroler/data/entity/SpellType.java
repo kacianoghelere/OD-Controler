@@ -3,7 +3,7 @@ package br.com.odcontroler.data.entity;
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
-import br.com.gmp.utils.annotations.NotCopiable;
+import br.com.gmp.utils.annotations.Id;
 import java.util.Objects;
 
 /**
@@ -15,7 +15,7 @@ import java.util.Objects;
 public class SpellType extends Type {
 
     @Ignore
-    @NotCopiable
+    @Id
     @ColumnName(name = "Código")
     private Long id;
     @Editable
@@ -81,9 +81,8 @@ public class SpellType extends Type {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.id);
-        hash = 89 * hash + Objects.hashCode(this.name);
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -96,10 +95,7 @@ public class SpellType extends Type {
             return false;
         }
         final SpellType other = (SpellType) obj;
-        if (!Objects.equals(this.id, other.getId())) {
-            return false;
-        }
-        return Objects.equals(this.name, other.getName());
+        return Objects.equals(this.id, other.id);
     }
 
     @Override

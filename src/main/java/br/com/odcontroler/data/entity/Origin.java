@@ -3,7 +3,7 @@ package br.com.odcontroler.data.entity;
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
-import br.com.gmp.utils.annotations.NotCopiable;
+import br.com.gmp.utils.annotations.Id;
 import java.util.Objects;
 
 /**
@@ -15,7 +15,7 @@ import java.util.Objects;
 public class Origin {
 
     @Ignore
-    @NotCopiable
+    @Id
     @ColumnName(name = "Código")
     private Long id;
     @Editable
@@ -31,7 +31,7 @@ public class Origin {
     /**
      * Cria nova instancia de Origin
      *
-     * @param id {@code Long} ID da origem
+     * @param id {@code Long} Id da origem
      * @param name {@code String} Nome da origem
      * @param variation {@code String} Variação do nome da origem
      * @param bonus {@code Integer} Bonus da origem
@@ -50,8 +50,8 @@ public class Origin {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.id);
+        int hash = 5;
+        hash = 71 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -68,18 +68,18 @@ public class Origin {
     }
 
     /**
-     * Retorna o ID da origem
+     * Retorna o Id da origem
      *
-     * @return {@code Long} ID da origem
+     * @return {@code Long} Id da origem
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * Modifica o ID da origem
+     * Modifica o Id da origem
      *
-     * @param id {@code Long} ID da origem
+     * @param id {@code Long} Id da origem
      */
     public void setId(Long id) {
         this.id = id;

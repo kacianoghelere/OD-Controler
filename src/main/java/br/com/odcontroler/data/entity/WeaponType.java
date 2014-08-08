@@ -7,7 +7,7 @@ import br.com.odcontroler.data.enums.Size;
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
-import br.com.gmp.utils.annotations.NotCopiable;
+import br.com.gmp.utils.annotations.Id;
 import java.util.Objects;
 
 /**
@@ -18,7 +18,7 @@ import java.util.Objects;
 public class WeaponType extends Type {
 
     @Ignore
-    @NotCopiable
+    @Id
     @ColumnName(name = "Código")
     private Long id;
     @Editable
@@ -202,9 +202,7 @@ public class WeaponType extends Type {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.id);
-        hash = 29 * hash + Objects.hashCode(this.title);
-        hash = 29 * hash + Objects.hashCode(this.useType);
+        hash = 79 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -217,13 +215,7 @@ public class WeaponType extends Type {
             return false;
         }
         final WeaponType other = (WeaponType) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.title, other.title)) {
-            return false;
-        }
-        return Objects.equals(this.useType, other.useType);
+        return Objects.equals(this.id, other.id);
     }
 
     @Override

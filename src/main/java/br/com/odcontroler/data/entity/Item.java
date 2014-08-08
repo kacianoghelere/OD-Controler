@@ -3,7 +3,7 @@ package br.com.odcontroler.data.entity;
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
-import br.com.gmp.utils.annotations.NotCopiable;
+import br.com.gmp.utils.annotations.Id;
 import java.util.Objects;
 
 /**
@@ -15,7 +15,7 @@ import java.util.Objects;
 public class Item {
 
     @Ignore
-    @NotCopiable
+    @Id
     @ColumnName(name = "Código")
     private Long id;
     @Editable
@@ -61,9 +61,8 @@ public class Item {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 89 * hash + Objects.hashCode(this.id);
-        hash = 89 * hash + Objects.hashCode(this.type);
+        int hash = 3;
+        hash = 83 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -76,10 +75,7 @@ public class Item {
             return false;
         }
         final Item other = (Item) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return Objects.equals(this.type, other.type);
+        return Objects.equals(this.id, other.id);
     }
 
     /**

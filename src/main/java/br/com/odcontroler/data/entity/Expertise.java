@@ -3,7 +3,7 @@ package br.com.odcontroler.data.entity;
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
-import br.com.gmp.utils.annotations.NotCopiable;
+import br.com.gmp.utils.annotations.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -16,7 +16,7 @@ import java.util.Objects;
 public class Expertise implements Serializable {
 
     @Ignore
-    @NotCopiable
+    @Id
     @ColumnName(name = "Código")
     private Long id;
     @Editable
@@ -39,7 +39,7 @@ public class Expertise implements Serializable {
     /**
      * Cria nova instancia de Expertise
      *
-     * @param id {@code Long} ID da perícia
+     * @param id {@code Long} Id da perícia
      * @param title {@code String} Titulo da perícia
      * @param type {@code ExpertiseType} Tipo de perícia
      * @param attribute {@code Attribute} Atributo chave
@@ -54,18 +54,18 @@ public class Expertise implements Serializable {
     }
 
     /**
-     * Retorna o ID da perícia
+     * Retorna o Id da perícia
      *
-     * @return {@code Long} ID da perícia
+     * @return {@code Long} Id da perícia
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * Modifica o ID da perícia
+     * Modifica o Id da perícia
      *
-     * @param id {@code Long} ID da perícia
+     * @param id {@code Long} Id da perícia
      */
     public void setId(Long id) {
         this.id = id;
@@ -110,7 +110,8 @@ public class Expertise implements Serializable {
     /**
      * Retorna o atributo chave
      *
-     * @return {@code br.com.odcontroler.data.entity.attr.Attribute} Atributo chave
+     * @return {@code br.com.odcontroler.data.entity.attr.Attribute} Atributo
+     * chave
      */
     public br.com.odcontroler.data.entity.attr.Attribute getAttribute() {
         return attribute;
@@ -119,7 +120,8 @@ public class Expertise implements Serializable {
     /**
      * Modifica o atributo chave
      *
-     * @param attribute {@code br.com.odcontroler.data.entity.attr.Attribute} Atributo chave
+     * @param attribute {@code br.com.odcontroler.data.entity.attr.Attribute}
+     * Atributo chave
      */
     public void setAttribute(br.com.odcontroler.data.entity.attr.Attribute attribute) {
         this.attribute = attribute;
@@ -145,10 +147,8 @@ public class Expertise implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 89 * hash + Objects.hashCode(this.id);
-        hash = 89 * hash + Objects.hashCode(this.type);
-        hash = 89 * hash + Objects.hashCode(this.attribute);
+        int hash = 5;
+        hash = 61 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -161,13 +161,7 @@ public class Expertise implements Serializable {
             return false;
         }
         final Expertise other = (Expertise) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.type, other.type)) {
-            return false;
-        }
-        return Objects.equals(this.attribute, other.attribute);
+        return Objects.equals(this.id, other.id);
     }
 
     @Override

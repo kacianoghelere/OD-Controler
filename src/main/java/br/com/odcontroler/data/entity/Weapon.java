@@ -3,7 +3,7 @@ package br.com.odcontroler.data.entity;
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
-import br.com.gmp.utils.annotations.NotCopiable;
+import br.com.gmp.utils.annotations.Id;
 import br.com.odcontroler.data.enums.Alignment;
 import br.com.odcontroler.data.enums.Dice;
 import java.util.Objects;
@@ -17,7 +17,7 @@ import java.util.Objects;
 public class Weapon {
 
     @Ignore
-    @NotCopiable
+    @Id
     @ColumnName(name = "Código")
     private Long id;
     @Editable
@@ -69,7 +69,7 @@ public class Weapon {
     /**
      * Cria nova instancia de Weapon
      *
-     * @param id {@code Long} ID da arma
+     * @param id {@code Long} Id da arma
      * @param name {@code String} Nome da arma
      * @param origin {@code Origin} Origem da arma
      * @param description {@code String} Descrição da arma
@@ -107,10 +107,8 @@ public class Weapon {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 43 * hash + Objects.hashCode(this.id);
-        hash = 43 * hash + Objects.hashCode(this.origin);
-        hash = 43 * hash + Objects.hashCode(this.type);
+        int hash = 5;
+        hash = 41 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -123,28 +121,22 @@ public class Weapon {
             return false;
         }
         final Weapon other = (Weapon) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.origin, other.origin)) {
-            return false;
-        }
-        return Objects.equals(this.type, other.type);
+        return Objects.equals(this.id, other.id);
     }
 
     /**
-     * Retorna o ID da arma
+     * Retorna o Id da arma
      *
-     * @return {@code Long} ID da arma
+     * @return {@code Long} Id da arma
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * Modifica o ID da arma
+     * Modifica o Id da arma
      *
-     * @param id {@code Long} ID da arma
+     * @param id {@code Long} Id da arma
      */
     public void setId(Long id) {
         this.id = id;

@@ -3,7 +3,7 @@ package br.com.odcontroler.data.entity;
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
-import br.com.gmp.utils.annotations.NotCopiable;
+import br.com.gmp.utils.annotations.Id;
 import java.util.Objects;
 
 /**
@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public class PerkType extends Type {
 
-    @NotCopiable
+    @Id
     @Ignore
     @ColumnName(name = "Código")
     private Long id;
@@ -39,9 +39,9 @@ public class PerkType extends Type {
     }
 
     /**
-     * Retorna o ID do PerkType
+     * Retorna o Id do PerkType
      *
-     * @return {@code Long} ID do PerkType
+     * @return {@code Long} Id do PerkType
      */
     @Override
     public Long getId() {
@@ -49,9 +49,9 @@ public class PerkType extends Type {
     }
 
     /**
-     * Modifica o ID do PerkType
+     * Modifica o Id do PerkType
      *
-     * @param id {@code Long} ID do PerkType
+     * @param id {@code Long} Id do PerkType
      */
     @Override
     public void setId(Long id) {
@@ -80,9 +80,8 @@ public class PerkType extends Type {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.id);
-        hash = 23 * hash + Objects.hashCode(this.name);
+        int hash = 5;
+        hash = 11 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -95,10 +94,7 @@ public class PerkType extends Type {
             return false;
         }
         final PerkType other = (PerkType) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return Objects.equals(this.name, other.name);
+        return Objects.equals(this.id, other.id);
     }
 
     @Override

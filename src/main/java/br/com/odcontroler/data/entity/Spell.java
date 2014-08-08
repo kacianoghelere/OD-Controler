@@ -3,7 +3,8 @@ package br.com.odcontroler.data.entity;
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
-import br.com.gmp.utils.annotations.NotCopiable;
+import br.com.gmp.utils.annotations.Id;
+import java.util.Objects;
 
 /**
  * Entidade de registro das magias
@@ -13,7 +14,7 @@ import br.com.gmp.utils.annotations.NotCopiable;
  */
 public class Spell {
 
-    @NotCopiable
+    @Id
     @Ignore
     @ColumnName(name = "Código")
     private Long id;
@@ -37,18 +38,64 @@ public class Spell {
     private String description;
 
     /**
-     * Retorna o ID do Spell
+     * Cria nova instancia de Spell
+     */
+    public Spell() {
+    }
+
+    /**
+     * Cria nova instancia de Spell
      *
-     * @return {@code Long} ID do Spell
+     * @param id {@code Long} Id do Spell
+     * @param name {@code String} Nome do Spell
+     * @param circle {@code Integer} O circulo do Spell
+     * @param type {@code SpellType} Tipo do SpellType
+     * @param range {@code String} O alcance do Spell
+     * @param duration {@code String} Duração do Spell
+     * @param description {@code String} Descrição do Spell
+     */
+    public Spell(Long id, String name, Integer circle, SpellType type, String range, String duration, String description) {
+        this.id = id;
+        this.name = name;
+        this.circle = circle;
+        this.type = type;
+        this.range = range;
+        this.duration = duration;
+        this.description = description;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 19 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Spell other = (Spell) obj;
+        return Objects.equals(this.id, other.id);
+    }
+
+    /**
+     * Retorna o Id do Spell
+     *
+     * @return {@code Long} Id do Spell
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * Modifica o ID do Spell
+     * Modifica o Id do Spell
      *
-     * @param id {@code Long} ID do Spell
+     * @param id {@code Long} Id do Spell
      */
     public void setId(Long id) {
         this.id = id;

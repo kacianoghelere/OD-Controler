@@ -2,7 +2,7 @@ package br.com.odcontroler.data.entity;
 
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Ignore;
-import br.com.gmp.utils.annotations.NotCopiable;
+import br.com.gmp.utils.annotations.Id;
 import java.util.Objects;
 
 /**
@@ -14,7 +14,7 @@ import java.util.Objects;
 public class Status {
 
     @Ignore
-    @NotCopiable
+    @Id
     @ColumnName(name = "Código")
     private Long id;
     @ColumnName(name = "Titulo")
@@ -33,7 +33,7 @@ public class Status {
     /**
      * Cria nova instancia de Status
      *
-     * @param id {@code Long} ID do Status
+     * @param id {@code Long} Id do Status
      * @param title {@code String} Titulo do Status
      * @param duration {@code Integer} Duração do Status
      * @param idEffect {@code Effect} Efeito do Status
@@ -46,18 +46,18 @@ public class Status {
     }
 
     /**
-     * Retorna o ID
+     * Retorna o Id
      *
-     * @return {@code Long} ID do Status
+     * @return {@code Long} Id do Status
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * Modifica o ID
+     * Modifica o Id
      *
-     * @param id {@code Long} ID do Status
+     * @param id {@code Long} Id do Status
      */
     public void setId(Long id) {
         this.id = id;
@@ -120,10 +120,7 @@ public class Status {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 67 * hash + Objects.hashCode(this.id);
-        hash = 67 * hash + Objects.hashCode(this.title);
-        hash = 67 * hash + Objects.hashCode(this.duration);
-        hash = 67 * hash + Objects.hashCode(this.idEffect);
+        hash = 19 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -136,16 +133,7 @@ public class Status {
             return false;
         }
         final Status other = (Status) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.title, other.title)) {
-            return false;
-        }
-        if (!Objects.equals(this.duration, other.duration)) {
-            return false;
-        }
-        return Objects.equals(this.idEffect, other.idEffect);
+        return Objects.equals(this.id, other.id);
     }
 
     @Override

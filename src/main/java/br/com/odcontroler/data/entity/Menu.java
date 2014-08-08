@@ -62,9 +62,7 @@ public class Menu implements Comparable<Menu> {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.id);
-        hash = 79 * hash + Objects.hashCode(this.title);
-        hash = 79 * hash + Objects.hashCode(this.icon);
+        hash = 83 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -77,13 +75,7 @@ public class Menu implements Comparable<Menu> {
             return false;
         }
         final Menu other = (Menu) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.title, other.title)) {
-            return false;
-        }
-        return Objects.equals(this.icon, other.icon);
+        return Objects.equals(this.id, other.id);
     }
 
     @Override

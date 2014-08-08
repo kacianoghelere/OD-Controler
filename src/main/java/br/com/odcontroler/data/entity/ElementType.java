@@ -3,7 +3,7 @@ package br.com.odcontroler.data.entity;
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
-import br.com.gmp.utils.annotations.NotCopiable;
+import br.com.gmp.utils.annotations.Id;
 import java.util.Objects;
 
 /**
@@ -15,7 +15,7 @@ import java.util.Objects;
 public class ElementType extends Type {
 
     @Ignore
-    @NotCopiable
+    @Id
     @ColumnName(name = "Código")
     private Long id;
     @Editable
@@ -31,7 +31,7 @@ public class ElementType extends Type {
     /**
      * Cria nova instancia de Element
      *
-     * @param id {@code Long} ID do elemento
+     * @param id {@code Long} Id do elemento
      * @param title {@code String} Titulo do elemento
      */
     public ElementType(Long id, String title) {
@@ -40,9 +40,9 @@ public class ElementType extends Type {
     }
 
     /**
-     * Retorna o ID do elemento
+     * Retorna o Id do elemento
      *
-     * @return {@code Long} ID do elemento
+     * @return {@code Long} Id do elemento
      */
     @Override
     public Long getId() {
@@ -50,9 +50,9 @@ public class ElementType extends Type {
     }
 
     /**
-     * Modifica o ID do elemento
+     * Modifica o Id do elemento
      *
-     * @param id {@code Long} ID do elemento
+     * @param id {@code Long} Id do elemento
      */
     @Override
     public void setId(Long id) {
@@ -82,8 +82,7 @@ public class ElementType extends Type {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.id);
-        hash = 53 * hash + Objects.hashCode(this.name);
+        hash = 67 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -96,10 +95,7 @@ public class ElementType extends Type {
             return false;
         }
         final ElementType other = (ElementType) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return Objects.equals(this.name, other.name);
+        return Objects.equals(this.id, other.id);
     }
 
     @Override

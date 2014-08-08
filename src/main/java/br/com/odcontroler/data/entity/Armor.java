@@ -4,7 +4,7 @@ import br.com.odcontroler.data.enums.Alignment;
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
-import br.com.gmp.utils.annotations.NotCopiable;
+import br.com.gmp.utils.annotations.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -16,7 +16,7 @@ import java.util.Objects;
  */
 public class Armor implements Serializable {
 
-    @NotCopiable
+    @Id
     @Ignore
     @ColumnName(name = "Código")
     private Long id;
@@ -56,7 +56,7 @@ public class Armor implements Serializable {
     /**
      * Cria nova instancia de Armor
      *
-     * @param id {@code Long} ID da armadura
+     * @param id {@code Long} Id da armadura
      * @param name {@code String} Nome da armadura
      * @param origin {@code Origin} Origem da armadura
      * @param description {@code String} Descrição da armadura
@@ -83,18 +83,18 @@ public class Armor implements Serializable {
     }
 
     /**
-     * Retorna o ID da armadura
+     * Retorna o Id da armadura
      *
-     * @return {@code Long} ID da armadura
+     * @return {@code Long} Id da armadura
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * Modifica o ID da armadura
+     * Modifica o Id da armadura
      *
-     * @param id {@code Long} ID da armadura
+     * @param id {@code Long} Id da armadura
      */
     public void setId(Long id) {
         this.id = id;
@@ -264,11 +264,8 @@ public class Armor implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.id);
-        hash = 53 * hash + Objects.hashCode(this.name);
-        hash = 53 * hash + Objects.hashCode(this.type);
-        hash = 53 * hash + Objects.hashCode(this.material);
+        int hash = 3;
+        hash = 13 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -281,16 +278,7 @@ public class Armor implements Serializable {
             return false;
         }
         final Armor other = (Armor) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.type, other.type)) {
-            return false;
-        }
-        return Objects.equals(this.material, other.material);
+        return Objects.equals(this.id, other.id);
     }
 
     @Override

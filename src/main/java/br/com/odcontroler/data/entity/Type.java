@@ -3,7 +3,8 @@ package br.com.odcontroler.data.entity;
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
-import br.com.gmp.utils.annotations.NotCopiable;
+import br.com.gmp.utils.annotations.Id;
+import java.util.Objects;
 
 /**
  * Super classe dos tipos
@@ -12,7 +13,7 @@ import br.com.gmp.utils.annotations.NotCopiable;
  */
 public abstract class Type implements Comparable<Type> {
 
-    @NotCopiable
+    @Id
     @Ignore
     @ColumnName(name = "Código")
     private Long id;
@@ -37,17 +38,36 @@ public abstract class Type implements Comparable<Type> {
         this.name = name;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 29 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Type other = (Type) obj;
+        return Objects.equals(this.id, other.id);
+    }
+
     /**
-     * Retorna o ID do EffectType
+     * Retorna o Id do EffectType
      *
-     * @return {@code Long} ID do Type
+     * @return {@code Long} Id do Type
      */
     public abstract Long getId();
 
     /**
-     * Modifica o ID do EffectType
+     * Modifica o Id do EffectType
      *
-     * @param id {@code Long} ID do Type
+     * @param id {@code Long} Id do Type
      */
     public abstract void setId(Long id);
 

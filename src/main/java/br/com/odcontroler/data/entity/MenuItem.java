@@ -52,11 +52,7 @@ public class MenuItem implements Comparable<MenuItem> {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 89 * hash + Objects.hashCode(this.id);
-        hash = 89 * hash + Objects.hashCode(this.menu);
-        hash = 89 * hash + Objects.hashCode(this.viewClass);
-        hash = 89 * hash + Objects.hashCode(this.title);
-        hash = 89 * hash + Objects.hashCode(this.icon);
+        hash = 97 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -69,19 +65,7 @@ public class MenuItem implements Comparable<MenuItem> {
             return false;
         }
         final MenuItem other = (MenuItem) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.menu, other.menu)) {
-            return false;
-        }
-        if (!Objects.equals(this.viewClass, other.viewClass)) {
-            return false;
-        }
-        if (!Objects.equals(this.title, other.title)) {
-            return false;
-        }
-        return Objects.equals(this.icon, other.icon);
+        return Objects.equals(this.id, other.id);
     }
 
     @Override

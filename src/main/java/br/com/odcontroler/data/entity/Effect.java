@@ -3,7 +3,7 @@ package br.com.odcontroler.data.entity;
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
-import br.com.gmp.utils.annotations.NotCopiable;
+import br.com.gmp.utils.annotations.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -14,7 +14,7 @@ import java.util.Objects;
  */
 public class Effect implements Serializable {
 
-    @NotCopiable
+    @Id
     @Ignore
     @ColumnName(name = "Código")
     private Long id;
@@ -36,7 +36,7 @@ public class Effect implements Serializable {
     /**
      * Cria nova instancia de efeito
      *
-     * @param id {@code Long} ID do efeito
+     * @param id {@code Long} Id do efeito
      * @param title {@code String} Titulo do efeito
      * @param strength {@code Double} Força do efeito
      */
@@ -49,7 +49,7 @@ public class Effect implements Serializable {
     /**
      * Cria nova instancia de efeito
      *
-     * @param id {@code Long} ID do efeito
+     * @param id {@code Long} Id do efeito
      * @param title {@code String} Titulo do efeito
      * @param strength {@code Double} Força do efeito
      * @param type {@code EffectType} Tipo do efeito
@@ -62,18 +62,18 @@ public class Effect implements Serializable {
     }
 
     /**
-     * Retorna o ID do efeito
+     * Retorna o Id do efeito
      *
-     * @return {@code Long} ID do efeito
+     * @return {@code Long} Id do efeito
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * Modifica o ID do efeito
+     * Modifica o Id do efeito
      *
-     * @param id {@code Long} ID do efeito
+     * @param id {@code Long} Id do efeito
      */
     public void setId(Long id) {
         this.id = id;
@@ -135,10 +135,8 @@ public class Effect implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 37 * hash + Objects.hashCode(this.id);
-        hash = 37 * hash + Objects.hashCode(this.strength);
-        hash = 37 * hash + Objects.hashCode(this.type);
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -151,13 +149,7 @@ public class Effect implements Serializable {
             return false;
         }
         final Effect other = (Effect) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.strength, other.strength)) {
-            return false;
-        }
-        return Objects.equals(this.type, other.type);
+        return Objects.equals(this.id, other.id);
     }
 
     @Override

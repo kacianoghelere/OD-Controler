@@ -2,7 +2,7 @@ package br.com.odcontroler.data.entity;
 
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Ignore;
-import br.com.gmp.utils.annotations.NotCopiable;
+import br.com.gmp.utils.annotations.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -13,7 +13,7 @@ import java.util.Objects;
 public class PlayerCharInfo implements Serializable {
 
     @Ignore
-    @NotCopiable
+    @Id
     @ColumnName(name = "Código")
     private Long id;
     @ColumnName(name = "Nivel")
@@ -47,10 +47,9 @@ public class PlayerCharInfo implements Serializable {
 //        this.playerChar = playerChar;
 //        this.active = true;
 //    }
-
     /**
      *
-     * @return {@code Long} ID do Info
+     * @return {@code Long} Id do Info
      */
     public Long getId() {
         return id;
@@ -58,7 +57,7 @@ public class PlayerCharInfo implements Serializable {
 
     /**
      *
-     * @param id {@code Long} ID do Info
+     * @param id {@code Long} Id do Info
      */
     public void setId(Long id) {
         this.id = id;
@@ -87,7 +86,6 @@ public class PlayerCharInfo implements Serializable {
 //    public Attributes getAttributes() {
 //        return attributes;
 //    }
-
     /**
      *
      * @param attributes {@code Attributes} Atributos principais
@@ -95,7 +93,6 @@ public class PlayerCharInfo implements Serializable {
 //    public void setAttributes(Attributes attributes) {
 //        this.attributes = attributes;
 //    }
-
     /**
      *
      * @return {@code PlayerChar} Personagem
@@ -130,12 +127,8 @@ public class PlayerCharInfo implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.id);
-        hash = 29 * hash + Objects.hashCode(this.charLevel);
-//        hash = 29 * hash + Objects.hashCode(this.attributes);
-        hash = 29 * hash + Objects.hashCode(this.playerChar);
-        hash = 29 * hash + Objects.hashCode(this.active);
+        int hash = 3;
+        hash = 67 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -151,16 +144,7 @@ public class PlayerCharInfo implements Serializable {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.charLevel, other.charLevel)) {
-            return false;
-        }
-//        if (!Objects.equals(this.attributes, other.attributes)) {
-//            return false;
-//        }
-        if (!Objects.equals(this.playerChar, other.playerChar)) {
-            return false;
-        }
-        return Objects.equals(this.active, other.active);
+        return true;
     }
 
     @Override
