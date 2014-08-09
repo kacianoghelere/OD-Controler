@@ -99,7 +99,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>br.com.odcontroler.system.SystemControl</mainClass>      
+                            <mainClass>br.com.odcontroler.system.SystemManager</mainClass>      
                             <classpathPrefix>dependency-jars/</classpathPrefix>                      
                         </manifest>
                     </archive>

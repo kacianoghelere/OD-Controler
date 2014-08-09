@@ -1,9 +1,11 @@
 package br.com.odcontroler.data.db;
 
+import br.com.gmp.utils.annotations.Intercept;
 import br.com.odcontroler.data.db.interfaces.DAO;
 import br.com.gmp.utils.object.ObjectCopy;
 import br.com.gmp.utils.system.SystemProperties;
 import br.com.odcontroler.data.db.map.EntityMap;
+import br.com.odcontroler.system.SystemManager;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
@@ -22,22 +24,23 @@ import java.util.List;
  */
 public class GenericDAO<T> implements DAO<T> {
 
-    private Class<T> objectClass;
-    private String dir = SystemProperties.USER_HOME + "/.config/rpg/";
+    private Class<T> entity;
+    private String dir = SystemProperties.USER_HOME
+            + SystemManager.getProperty("system.db.path");
     private String database;
-    private String sufix = ".yap";
+    private String sufix = SystemManager.getProperty("system.db.sufix");
 
     /**
      * Cria nova instancia de GenericDAO
      */
     public GenericDAO() {
-        this.objectClass = (Class<T>) ((ParameterizedType) (getClass()
+        this.entity = (Class<T>) ((ParameterizedType) (getClass()
                 .getGenericSuperclass())).getActualTypeArguments()[0];
         File file = new File(dir);
         if (!file.exists()) {
             file.mkdirs();
         }
-        this.database = dir + (new EntityMap().getMap().get(objectClass)) + sufix;
+        this.database = dir + (new EntityMap().getMap().get(entity)) + sufix;
     }
 
     /**
@@ -55,12 +58,13 @@ public class GenericDAO<T> implements DAO<T> {
      *
      * @return {@code T} Entidade
      */
+    @Intercept
     @Override
     public List<T> getList() {
         ObjectContainer db = getClient();
         Query query = db.query();
         query = new QueryBuilder(query)
-                .constrain(objectClass)
+                .constrain(entity)
                 .descend("id")
                 .orderAscending()
                 .ready();
@@ -76,6 +80,7 @@ public class GenericDAO<T> implements DAO<T> {
      *
      * @param entity {@code T} Entidade
      */
+    @Intercept
     @Override
     public void insert(T entity) {
         ObjectContainer db = getClient();
@@ -89,11 +94,12 @@ public class GenericDAO<T> implements DAO<T> {
      *
      * @param entities {@code List(T)} Entidades
      */
+    @Intercept
     @Override
     public void insertAll(List<T> entities) {
         ObjectContainer db = getClient();
-        for (T entity : entities) {
-            db.store(entity);
+        for (T ent : entities) {
+            db.store(ent);
         }
         db.commit();
         db.close();
@@ -105,6 +111,7 @@ public class GenericDAO<T> implements DAO<T> {
      * @param entity {@code T} Entidade
      * @throws java.lang.IllegalAccessException Acesso ilegal
      */
+    @Intercept
     @Override
     public void update(T entity) throws IllegalArgumentException, IllegalAccessException {
         ObjectContainer db = getClient();
@@ -120,11 +127,12 @@ public class GenericDAO<T> implements DAO<T> {
      *
      * @param entities {@code List(T)} Lista a ser deletada
      */
+    @Intercept
     @Override
     public void deleteAll(List<T> entities) {
         ObjectContainer db = getClient();
-        for (T entity : entities) {
-            ObjectSet<T> os = db.queryByExample(entity);
+        for (T ent : entities) {
+            ObjectSet<T> os = db.queryByExample(ent);
             db.delete(os.next());
         }
         db.commit();
@@ -134,10 +142,11 @@ public class GenericDAO<T> implements DAO<T> {
     /**
      * Deleta todos os objetos do banco
      */
+    @Intercept
     @Override
     public void deleteAll() {
         ObjectContainer db = getClient();
-        ObjectSet<T> query = db.query(objectClass);
+        ObjectSet<T> query = db.query(entity);
         for (T t : query) {
             db.delete(t);
         }
@@ -150,6 +159,7 @@ public class GenericDAO<T> implements DAO<T> {
      *
      * @param entity {@code T} Entidade
      */
+    @Intercept
     @Override
     public void delete(T entity) {
         ObjectContainer db = getClient();
@@ -164,6 +174,7 @@ public class GenericDAO<T> implements DAO<T> {
      *
      * @param entities {@code List(T)} Lista dos novos registros
      */
+    @Intercept
     @Override
     public void replaceAll(List<T> entities) {
         deleteAll();
@@ -176,12 +187,13 @@ public class GenericDAO<T> implements DAO<T> {
      * @param id {@code Integer} ID
      * @return {@code T} Entidade
      */
+    @Intercept
     @Override
     public T queryByID(int id) {
         ObjectContainer db = getClient();
         Query query = db.query();
         query = new QueryBuilder(query)
-                .constrain(objectClass)
+                .constrain(entity)
                 .searchFor("id", id)
                 .descend("id")
                 .orderAscending()
@@ -190,8 +202,8 @@ public class GenericDAO<T> implements DAO<T> {
         List<T> list = new ArrayList<>();
         list.addAll(os);
         db.close();
-        for (T entity : list) {
-            return entity;
+        for (T ent : list) {
+            return ent;
         }
         return null;
     }
@@ -203,13 +215,14 @@ public class GenericDAO<T> implements DAO<T> {
      * @param value {@code Object} Valor da busca
      * @return {@code List(T)} Lista contendo o resultado
      */
+    @Intercept
     @Override
     public List<T> queryByField(String field, Object value) {
         List<T> list = new ArrayList<>();
         ObjectContainer db = getClient();
         Query query = db.query();
         query = new QueryBuilder(query)
-                .constrain(objectClass)
+                .constrain(entity)
                 .searchFor(field, value)
                 .descend("id")
                 .orderAscending()
@@ -227,7 +240,7 @@ public class GenericDAO<T> implements DAO<T> {
      */
     @Override
     public Class<T> getObjClass() {
-        return objectClass;
+        return entity;
     }
 
     /**
@@ -237,7 +250,7 @@ public class GenericDAO<T> implements DAO<T> {
      */
     @Override
     public void setObjClass(Class<T> oClass) {
-        this.objectClass = oClass;
+        this.entity = oClass;
     }
 
     /**

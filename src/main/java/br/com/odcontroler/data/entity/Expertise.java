@@ -4,6 +4,7 @@ import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.Id;
+import br.com.odcontroler.data.enums.Attribute;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -25,7 +26,7 @@ public class Expertise implements Serializable {
     @ColumnName(name = "Tipo")
     private ExpertiseType type;
     @ColumnName(name = "Atributo chave")
-    private br.com.odcontroler.data.entity.attr.Attribute attribute;
+    private Attribute attribute;
     @Editable
     @ColumnName(name = "Modificador")
     private Integer mod;
@@ -45,7 +46,7 @@ public class Expertise implements Serializable {
      * @param attribute {@code Attribute} Atributo chave
      * @param value {@code Integer} Valor da perícia
      */
-    public Expertise(Long id, String title, ExpertiseType type, br.com.odcontroler.data.entity.attr.Attribute attribute, Integer value) {
+    public Expertise(Long id, String title, ExpertiseType type, Attribute attribute, Integer value) {
         this.id = id;
         this.title = title;
         this.type = type;
@@ -110,20 +111,18 @@ public class Expertise implements Serializable {
     /**
      * Retorna o atributo chave
      *
-     * @return {@code br.com.odcontroler.data.entity.attr.Attribute} Atributo
-     * chave
+     * @return {@code Attribute} Atributo chave
      */
-    public br.com.odcontroler.data.entity.attr.Attribute getAttribute() {
+    public Attribute getAttribute() {
         return attribute;
     }
 
     /**
      * Modifica o atributo chave
      *
-     * @param attribute {@code br.com.odcontroler.data.entity.attr.Attribute}
-     * Atributo chave
+     * @param attribute {@code Attribute} Atributo chave
      */
-    public void setAttribute(br.com.odcontroler.data.entity.attr.Attribute attribute) {
+    public void setAttribute(br.com.odcontroler.data.enums.Attribute attribute) {
         this.attribute = attribute;
     }
 

@@ -1,4 +1,4 @@
-package br.com.odcontroler.data.entity.attr;
+package br.com.odcontroler.data.enums;
 
 /**
  * Interface para padronização na criação de atributos

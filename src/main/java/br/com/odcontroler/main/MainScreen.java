@@ -3,7 +3,6 @@ package br.com.odcontroler.main;
 import br.com.gmp.comps.baloontip.src.BalloonUtil;
 import br.com.gmp.utils.annotations.Intercept;
 import br.com.gmp.utils.interceptors.InterceptorModule;
-import br.com.gmp.utils.system.SystemProperties;
 import br.com.odcontroler.main.bean.MainScreenBean;
 import br.com.odcontroler.main.interfaces.Main;
 import br.com.odcontroler.main.interfaces.MainListener;
@@ -13,6 +12,7 @@ import br.com.odcontroler.main.view.dice.DiceView;
 import br.com.odcontroler.main.view.menu.MenuView;
 import br.com.odcontroler.main.view.menuitem.MenuItemView;
 import br.com.odcontroler.main.view.object.ViewParameter;
+import br.com.odcontroler.system.SystemManager;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import java.awt.event.ActionEvent;
@@ -36,12 +36,11 @@ import javax.swing.JMenu;
  */
 public class MainScreen extends javax.swing.JFrame implements Main {
 
-    private final String ICON = "/dices/d12-icon.png";
-    private final String PROP = "/br/com/odcontroler/properties/od-properties.properties";
-    private final String VIEWPATH = "src/main/java/br/com/odcontroler/main/view";
+    private final String icon = SystemManager.getProperty("system.main.icon");
+    private final String path = SystemManager.getProperty("system.main.viewpath");
     private MainListener listener;
     private Injector injector;
-    private Properties PROPS;
+    private Properties properties;
 
     /**
      * Cria novo MainScreen
@@ -54,11 +53,15 @@ public class MainScreen extends javax.swing.JFrame implements Main {
      * Metodo de inicialização
      */
     private void initialize() {
-        loadProperties();
+        try {
+            properties = SystemManager.properties();
+        } catch (IOException ex) {
+            LOGGER.log(Level.SEVERE, null, ex);
+        }
         String name = getProperty("system.name");
         String version = getProperty("system.version");
         setTitle(name + " - Versão: " + version);
-        setIconImage(new ImageIcon(getClass().getResource(ICON)).getImage());
+        setIconImage(new ImageIcon(getClass().getResource(icon)).getImage());
         initComponents();
         setControls(new ViewParameter(false, false, false, false));
         setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
@@ -131,7 +134,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
      * Método que efetua a impressão de todas as views geradas
      */
     private void printViews() {
-        File viewDir = new File(VIEWPATH);
+        File viewDir = new File(path);
         printChild(viewDir);
     }
 
@@ -153,25 +156,13 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     }
 
     /**
-     * Retorna o arquivo de propriedades do sistema
-     */
-    private void loadProperties() {
-        try {
-            PROPS = new Properties();
-            PROPS.load(getClass().getResourceAsStream(PROP));
-        } catch (IOException ex) {
-            LOGGER.log(Level.SEVERE, null, ex);
-        }
-    }
-
-    /**
      * Retorna a propriedade da chave indicada
      *
      * @param key {@code String} Chave da propriedade
      * @return {@code String} Valor da propriedade
      */
     public String getProperty(String key) {
-        return PROPS.getProperty(key);
+        return properties.getProperty(key);
     }
 
     @Override
@@ -361,23 +352,23 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         switch (type) {
             case 1:
                 printMsg(text, INFORMATIVE_ICON);
-                LOGGER.info(text);
+                LOGGER.log(Level.INFO, text);
                 break;
             case 2:
                 printMsg(text, QUESTION_ICON);
-                LOGGER.info(text);
+                LOGGER.log(Level.INFO, text);
                 break;
             case 3:
                 printMsg(text, WARNING_ICON);
-                LOGGER.warning(text);
+                LOGGER.log(Level.WARNING, text);
                 break;
             case 4:
                 printMsg(text, ERROR_ICON);
-                LOGGER.severe(text);
+                LOGGER.log(Level.SEVERE, text);
                 break;
             case 5:
                 printMsg(text, SUCCESS_ICON);
-                LOGGER.fine(text);
+                LOGGER.log(Level.FINE, text);
                 break;
             default:
                 throw new AssertionError();

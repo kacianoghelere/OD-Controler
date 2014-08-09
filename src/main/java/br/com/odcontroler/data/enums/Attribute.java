@@ -1,4 +1,4 @@
-package br.com.odcontroler.data.entity.attr;
+package br.com.odcontroler.data.enums;
 
 /**
  * Enumerador de constantes para os atributos
@@ -49,7 +49,7 @@ public enum Attribute implements Attr {
 
     @Override
     public String toString() {
-        return shortTitle;
+        return title;
     }
 
     @Override

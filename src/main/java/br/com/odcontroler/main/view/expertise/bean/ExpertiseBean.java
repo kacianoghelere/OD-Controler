@@ -5,11 +5,11 @@ import br.com.odcontroler.data.db.dao.ExpertiseDAO;
 import br.com.odcontroler.data.db.dao.ExpertiseTypeDAO;
 import br.com.odcontroler.data.entity.Expertise;
 import br.com.odcontroler.data.entity.ExpertiseType;
-import br.com.odcontroler.data.entity.attr.Attribute;
+import br.com.odcontroler.data.enums.Attribute;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.bean.ViewBean;
 import br.com.odcontroler.main.view.expertise.ExpertiseView;
-import javax.swing.SwingUtilities;
+import java.util.logging.Level;
 
 /**
  * Bean de controle para tela de perícias
@@ -31,6 +31,11 @@ public class ExpertiseBean extends ViewBean<ExpertiseView> {
         super(view);
         this.dao = new ExpertiseDAO();
         this.typeDAO = new ExpertiseTypeDAO();
+        try {
+            load(null);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -42,7 +47,7 @@ public class ExpertiseBean extends ViewBean<ExpertiseView> {
     public void load(BeanEvent evt) throws Exception {
         getView().getAttrModel().setData(Attribute.values());
         getView().getTypeModel().setData(typeDAO.getList());
-        SwingUtilities.updateComponentTreeUI(getView());
+        getView().updateComponents();
     }
 
     @Override

@@ -1,7 +1,7 @@
 package br.com.odcontroler.datatables;
 
 import br.com.gmp.utils.collections.Pair;
-import br.com.odcontroler.data.entity.attr.Attribute;
+import br.com.odcontroler.data.enums.Attribute;
 import br.com.odcontroler.datatables.charisma.CharData;
 import br.com.odcontroler.datatables.charisma.CharValues;
 import br.com.odcontroler.datatables.constitution.ConstData;

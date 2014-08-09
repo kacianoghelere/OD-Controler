@@ -5,7 +5,7 @@ import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.odcontroler.data.db.dao.ExpertiseDAO;
-import br.com.odcontroler.data.entity.attr.Attribute;
+import br.com.odcontroler.data.enums.Attribute;
 import br.com.odcontroler.data.entity.Expertise;
 import br.com.odcontroler.data.entity.ExpertiseType;
 import br.com.odcontroler.main.MainScreen;
@@ -13,19 +13,21 @@ import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.util.Description;
 import br.com.odcontroler.main.util.TableUtil;
 import br.com.odcontroler.main.view.View;
+import br.com.odcontroler.main.view.annotation.ViewData;
+import br.com.odcontroler.main.view.enums.ViewType;
 import br.com.odcontroler.main.view.expertise.bean.ExpertiseBean;
 import br.com.odcontroler.main.view.expertise.model.ExpertiseModel;
 import br.com.odcontroler.main.view.interfaces.TableView;
 import br.com.odcontroler.main.view.object.ViewParameter;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Tela para cadastro e controle de perícias
  *
  * @author kaciano
  */
+@ViewData(name = "Perícias", type = ViewType.CRUD)
 public class ExpertiseView extends View implements TableView, TableSource<Expertise> {
 
     private ExpertiseBean bean;
@@ -54,16 +56,11 @@ public class ExpertiseView extends View implements TableView, TableSource<Expert
         this.model = new ExpertiseModel();
         this.attrModel = new GComboBoxModel<>();
         this.typeModel = new GComboBoxModel<>();
+        this.bean = new ExpertiseBean(this);
         this.gCBAttribute.setGModel(attrModel);
         this.gCBType.setGModel(typeModel);
         this.gTable.buildTable(this, 0, model);
-        this.tableUtil = new TableUtil(this);
-        this.bean = new ExpertiseBean(this);
-        try {
-            this.bean.load(null);
-        } catch (Exception ex) {
-            Logger.getLogger(ExpertiseView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.tableUtil = new TableUtil(this);        
     }
 
     @Override
@@ -82,7 +79,7 @@ public class ExpertiseView extends View implements TableView, TableSource<Expert
                         .addValue("value", (Integer) jSpinValue.getValue());
                 bean.add(new BeanEvent(vw));
             } catch (Exception ex) {
-                Logger.getLogger(ExpertiseView.class.getName()).log(Level.SEVERE, null, ex);
+                LOGGER.log(Level.SEVERE, null, ex);
             }
         }
     }

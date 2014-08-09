@@ -8,7 +8,6 @@ import br.com.odcontroler.main.actions.FrameAction;
 import br.com.odcontroler.main.actions.LoadAction;
 import br.com.odcontroler.main.actions.ProccessAction;
 import br.com.odcontroler.main.actions.CommitAction;
-import br.com.odcontroler.main.interfaces.Main;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.util.Description;
 import br.com.odcontroler.main.view.dialog.DescriptionDialog;
@@ -260,7 +259,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     /**
      * Atualiza a estrutura dos componentes
      */
-    protected void updateComponents() {
+    public void updateComponents() {
         SwingUtilities.updateComponentTreeUI(this);
     }
 
