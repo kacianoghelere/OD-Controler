@@ -55,17 +55,19 @@ public class MenuView extends View implements TableSource<Menu>, TableView {
      * Método de inicialização
      */
     private void initialize() {
-        this.initComponents();
         this.setControls(new ViewParameter(true, true, true, false));
         this.setSize(540, 415);
+        this.initComponents();
         this.iconModel = new GComboBoxModel<>();
         this.parentModel = new GComboBoxModel<>();
         this.model = new MenuModel();
+        this.bean = new MenuBean(this);
         this.gTable.buildTable(this, 0, model);
         this.gCBIcon.setGModel(iconModel);
         this.gCBParent.setGModel(parentModel);
-        this.bean = new MenuBean(this);
-        this.decorator = new TableDecorator(gTable).withIcon(ICON_COLUMN);
+        this.decorator = new TableDecorator(gTable);
+        this.decorator.withIcon(ICON_COLUMN);
+        this.decorator.comboAt(ICON_COLUMN, iconModel.getData());
     }
 
     @Override
@@ -75,8 +77,7 @@ public class MenuView extends View implements TableSource<Menu>, TableView {
 
     @Override
     public void add() throws Exception {
-        if (gTTitle.validateComponent()
-                && gCBIcon.validateComponent()
+        if (gTTitle.validateComponent() && gCBIcon.validateComponent()
                 && gCBParent.validateComponent()) {
             Long parent = ((Menu) gCBParent.getSelectedItem()).getId();
             int index = gCBIcon.getSelectedIndex();
@@ -84,7 +85,7 @@ public class MenuView extends View implements TableSource<Menu>, TableView {
                     .addValue("title", gTTitle.getText())
                     .addValue("index", index)
                     .addValue("parent", parent);
-            bean.add(new BeanEvent(this, ow));
+            bean.add(new BeanEvent(ow));
         }
     }
 

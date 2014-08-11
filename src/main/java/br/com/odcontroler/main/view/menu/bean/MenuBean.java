@@ -1,11 +1,12 @@
 package br.com.odcontroler.main.view.menu.bean;
 
-import br.com.gmp.utils.collections.Triad;
+import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.odcontroler.data.db.dao.MenuDAO;
 import br.com.odcontroler.data.entity.Menu;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.util.MenuBuilder;
 import br.com.odcontroler.main.view.bean.ViewBean;
+import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.menu.MenuView;
 import java.io.File;
 import java.util.ArrayList;
@@ -31,8 +32,11 @@ public class MenuBean extends ViewBean<MenuView> {
     public MenuBean(MenuView view) {
         super(view);
         this.dao = new MenuDAO();
-        getView().getIconModel().setData(getMenuIcons());
-        getView().getParentModel().setData(getParentMenus());
+        try {
+            load(null);
+        } catch (Exception ex) {
+            getView().throwException(new ViewException(view, ex));
+        }
         buildPreview();
     }
 
@@ -83,13 +87,16 @@ public class MenuBean extends ViewBean<MenuView> {
      */
     @Override
     public void add(BeanEvent evt) throws Exception {
-        String title = (String) evt.getWrapper().getValue("title");
-        String icon = getIcons()[(Integer) evt.getWrapper().getValue("index")];
-        Long parent = (Long) evt.getWrapper().getValue("parent");
-        getView().getModel().add(buildNew(title, icon, parent));
-        getView().getParentModel().setData(getParentMenus());
-        buildPreview();
-        getView().refresh();
+        ObjectWrapper wrapper = evt.getWrapper();
+        if (wrapper != null) {
+            String title = (String) wrapper.getValue("title");
+            String icon = getIcons()[(Integer) wrapper.getValue("index")];
+            Long parent = (Long) wrapper.getValue("parent");
+            getView().getModel().add(buildNew(title, icon, parent));
+            getView().getParentModel().setData(getParentMenus());
+            buildPreview();
+            getView().refresh();
+        }
     }
 
     /**

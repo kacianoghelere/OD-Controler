@@ -2,6 +2,7 @@ package br.com.odcontroler.data.entity;
 
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
+import br.com.gmp.utils.annotations.Id;
 import br.com.gmp.utils.object.StringUtil;
 import java.util.Objects;
 
@@ -13,6 +14,7 @@ import java.util.Objects;
  */
 public class Menu implements Comparable<Menu> {
 
+    @Id
     @ColumnName(name = "ID")
     private Long id;
     @Editable
@@ -21,6 +23,7 @@ public class Menu implements Comparable<Menu> {
     @Editable
     @ColumnName(name = "Titulo")
     private String title;
+    @Editable
     @ColumnName(name = "Icone")
     private String icon;
 

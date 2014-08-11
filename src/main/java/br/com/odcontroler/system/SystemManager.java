@@ -4,13 +4,11 @@ import br.com.gmp.utils.annotations.Intercept;
 import br.com.gmp.utils.interceptors.InterceptorModule;
 import br.com.gmp.utils.system.SystemProperties;
 import br.com.odcontroler.main.MainScreen;
-import br.com.odcontroler.main.bean.MainScreenBean;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -28,7 +26,7 @@ public class SystemManager {
      */
     public static final Logger LOGGER = Logger.getLogger(SystemManager.class.getName());
     private static final String prop = "/br/com/odcontroler/properties/od-properties.properties";
-    private Injector injector;
+    private final Injector injector;
 
     /**
      * Cria nova instancia de SystemControl

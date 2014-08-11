@@ -9,6 +9,7 @@ import br.com.odcontroler.system.SystemManager;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
+import com.db4o.config.Configuration;
 import com.db4o.query.Query;
 import java.io.File;
 import java.lang.reflect.ParameterizedType;
@@ -29,6 +30,7 @@ public class GenericDAO<T> implements DAO<T> {
             + SystemManager.getProperty("system.db.path");
     private String database;
     private String sufix = SystemManager.getProperty("system.db.sufix");
+    private final String id = SystemManager.getProperty("system.db.id");
 
     /**
      * Cria nova instancia de GenericDAO
@@ -50,7 +52,10 @@ public class GenericDAO<T> implements DAO<T> {
      */
     @Override
     public ObjectContainer getClient() {
-        return Db4o.openFile(database);
+        Configuration conf = Db4o.configure();
+        conf.objectClass(entity).objectField(id).indexed(true);
+        conf.generateUUIDs(Integer.MAX_VALUE);
+        return Db4o.openFile(conf, database);
     }
 
     /**
@@ -65,7 +70,7 @@ public class GenericDAO<T> implements DAO<T> {
         Query query = db.query();
         query = new QueryBuilder(query)
                 .constrain(entity)
-                .descend("id")
+                .descend(id)
                 .orderAscending()
                 .ready();
         ObjectSet os = query.execute();
@@ -194,8 +199,8 @@ public class GenericDAO<T> implements DAO<T> {
         Query query = db.query();
         query = new QueryBuilder(query)
                 .constrain(entity)
-                .searchFor("id", id)
-                .descend("id")
+                .searchFor(this.id, id)
+                .descend(this.id)
                 .orderAscending()
                 .ready();
         ObjectSet<T> os = query.execute();
@@ -224,7 +229,7 @@ public class GenericDAO<T> implements DAO<T> {
         query = new QueryBuilder(query)
                 .constrain(entity)
                 .searchFor(field, value)
-                .descend("id")
+                .descend(id)
                 .orderAscending()
                 .ready();
         ObjectSet<T> os = query.execute();
