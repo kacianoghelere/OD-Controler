@@ -15,7 +15,6 @@ import br.com.odcontroler.main.view.enums.ViewType;
 import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.interfaces.TableView;
 import br.com.odcontroler.main.view.object.ViewParameter;
-import br.com.odcontroler.main.view.spell.bean.SpellBean;
 import br.com.odcontroler.main.view.spell.model.SpellModel;
 import br.com.odcontroler.main.view.spell.sub.SpellSubView;
 import java.util.List;

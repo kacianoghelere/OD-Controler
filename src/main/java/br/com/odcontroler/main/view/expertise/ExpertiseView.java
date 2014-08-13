@@ -15,7 +15,6 @@ import br.com.odcontroler.main.util.TableUtil;
 import br.com.odcontroler.main.view.View;
 import br.com.odcontroler.main.view.annotation.ViewData;
 import br.com.odcontroler.main.view.enums.ViewType;
-import br.com.odcontroler.main.view.expertise.bean.ExpertiseBean;
 import br.com.odcontroler.main.view.expertise.model.ExpertiseModel;
 import br.com.odcontroler.main.view.interfaces.TableView;
 import br.com.odcontroler.main.view.object.ViewParameter;

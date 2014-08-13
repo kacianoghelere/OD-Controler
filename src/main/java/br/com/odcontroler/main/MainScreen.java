@@ -9,6 +9,7 @@ import br.com.odcontroler.main.interfaces.MainListener;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.util.MenuBuilder;
 import br.com.odcontroler.main.view.dice.DiceView;
+import br.com.odcontroler.main.view.log.LogView;
 import br.com.odcontroler.main.view.menu.MenuView;
 import br.com.odcontroler.main.view.menuitem.MenuItemView;
 import br.com.odcontroler.main.view.object.ViewParameter;
@@ -422,6 +423,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         jMControls = new javax.swing.JMenu();
         jMIMenus = new javax.swing.JMenuItem();
         jMIViews = new javax.swing.JMenuItem();
+        jMILog = new javax.swing.JMenuItem();
         root = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -631,6 +633,16 @@ public class MainScreen extends javax.swing.JFrame implements Main {
 
         jMOptions.add(jMControls);
 
+        jMILog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/menubar/menubar/file.png"))); // NOI18N
+        jMILog.setText("Logs");
+        jMILog.setName("jMILog"); // NOI18N
+        jMILog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMILogActionPerformed(evt);
+            }
+        });
+        jMOptions.add(jMILog);
+
         jMenuBar.add(jMOptions);
 
         root.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1214_.png"))); // NOI18N
@@ -731,6 +743,10 @@ public class MainScreen extends javax.swing.JFrame implements Main {
 
     }//GEN-LAST:event_jBAudioActionPerformed
 
+    private void jMILogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMILogActionPerformed
+        listener.insertView(new LogView(this));
+    }//GEN-LAST:event_jMILogActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
     private br.com.gmp.comps.textfield.GTextField gTView;
@@ -743,6 +759,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     private javax.swing.JLabel jLMsgs;
     private javax.swing.JMenu jMControls;
     private javax.swing.JMenuItem jMIDice;
+    private javax.swing.JMenuItem jMILog;
     private javax.swing.JMenuItem jMIMenus;
     private javax.swing.JMenuItem jMIProcess;
     private javax.swing.JMenuItem jMIRefresh;

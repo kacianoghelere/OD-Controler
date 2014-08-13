@@ -13,7 +13,6 @@ import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.View;
 import br.com.odcontroler.main.view.interfaces.TableView;
-import br.com.odcontroler.main.view.menu.bean.MenuBean;
 import br.com.odcontroler.main.view.menu.model.MenuModel;
 import br.com.odcontroler.main.view.object.ViewParameter;
 import java.util.List;

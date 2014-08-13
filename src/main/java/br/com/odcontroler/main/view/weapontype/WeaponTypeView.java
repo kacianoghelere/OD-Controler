@@ -20,7 +20,6 @@ import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.interfaces.BeanListener;
 import br.com.odcontroler.main.view.interfaces.TableView;
 import br.com.odcontroler.main.view.object.ViewParameter;
-import br.com.odcontroler.main.view.weapontype.bean.WeaponTypeBean;
 import br.com.odcontroler.main.view.weapontype.model.WeaponTypeModel;
 import java.util.List;
 

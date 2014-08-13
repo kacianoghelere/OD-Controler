@@ -14,7 +14,6 @@ import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.View;
 import br.com.odcontroler.main.view.interfaces.BeanListener;
 import br.com.odcontroler.main.view.interfaces.TableView;
-import br.com.odcontroler.main.view.menuitem.bean.MenuItemBean;
 import br.com.odcontroler.main.view.menuitem.model.MenuItemModel;
 import br.com.odcontroler.main.view.object.ViewParameter;
 import java.util.List;

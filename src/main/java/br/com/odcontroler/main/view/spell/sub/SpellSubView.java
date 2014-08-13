@@ -7,7 +7,7 @@ import br.com.odcontroler.data.entity.SpellType;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.spell.SpellView;
-import br.com.odcontroler.main.view.spell.bean.SpellBean;
+import br.com.odcontroler.main.view.spell.SpellBean;
 import br.com.odcontroler.main.view.sub.SubView;
 
 /**

@@ -20,7 +20,6 @@ import br.com.odcontroler.main.view.enums.ViewType;
 import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.interfaces.TableView;
 import br.com.odcontroler.main.view.object.ViewParameter;
-import br.com.odcontroler.main.view.weapon.bean.WeaponBean;
 import br.com.odcontroler.main.view.weapon.model.WeaponModel;
 import br.com.odcontroler.main.view.weapon.sub.WeaponSubView;
 import java.util.Arrays;

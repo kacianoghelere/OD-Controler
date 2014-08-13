@@ -2,7 +2,6 @@ package br.com.odcontroler.main.view.attribute;
 
 import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.view.View;
-import br.com.odcontroler.main.view.attribute.bean.AttributeBean;
 
 /**
  * Tela para cadastro e controle de faixas de atributos

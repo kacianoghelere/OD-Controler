@@ -9,7 +9,7 @@ import br.com.odcontroler.data.entity.MaterialType;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.sub.SubView;
 import br.com.odcontroler.main.view.armor.ArmorView;
-import br.com.odcontroler.main.view.armor.bean.ArmorBean;
+import br.com.odcontroler.main.view.armor.ArmorBean;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Level;

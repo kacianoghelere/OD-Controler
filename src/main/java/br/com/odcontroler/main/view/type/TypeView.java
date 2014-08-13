@@ -18,7 +18,6 @@ import br.com.odcontroler.main.view.annotation.ViewData;
 import br.com.odcontroler.main.view.enums.ViewType;
 import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.object.ViewParameter;
-import br.com.odcontroler.main.view.type.bean.TypeBean;
 import java.awt.event.KeyEvent;
 
 /**

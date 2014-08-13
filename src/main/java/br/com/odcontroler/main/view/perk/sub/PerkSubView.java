@@ -8,7 +8,7 @@ import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.object.ViewParameter;
 import br.com.odcontroler.main.view.sub.SubView;
 import br.com.odcontroler.main.view.perk.PerkView;
-import br.com.odcontroler.main.view.perk.bean.PerkBean;
+import br.com.odcontroler.main.view.perk.PerkBean;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

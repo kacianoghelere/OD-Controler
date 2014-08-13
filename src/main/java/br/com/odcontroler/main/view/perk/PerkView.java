@@ -8,7 +8,6 @@ import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.util.TableUtil;
 import br.com.odcontroler.main.view.View;
-import br.com.odcontroler.main.view.perk.bean.PerkBean;
 import br.com.odcontroler.main.view.perk.sub.PerkSubView;
 import br.com.odcontroler.main.view.interfaces.TableView;
 import br.com.odcontroler.main.view.object.ViewParameter;

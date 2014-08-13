@@ -1,5 +1,6 @@
 package br.com.odcontroler.main.view.armor;
 
+import br.com.odcontroler.main.view.armor.model.ArmorModel;
 import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.decorate.TableDecorator;
 import br.com.gmp.comps.table.interfaces.TableSource;
@@ -14,17 +15,13 @@ import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.util.Description;
 import br.com.odcontroler.main.view.View;
 import br.com.odcontroler.main.view.annotation.ViewData;
-import br.com.odcontroler.main.view.armor.bean.ArmorBean;
 import br.com.odcontroler.main.view.armor.sub.ArmorSubView;
-import br.com.odcontroler.main.view.armor.model.ArmorModel;
 import br.com.odcontroler.main.view.enums.ViewType;
 import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.interfaces.TableView;
 import br.com.odcontroler.main.view.object.ViewParameter;
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * View para cadastro e controle de armaduras

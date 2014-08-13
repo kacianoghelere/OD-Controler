@@ -10,7 +10,6 @@ import br.com.odcontroler.data.entity.EffectType;
 import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.util.TableUtil;
-import br.com.odcontroler.main.view.effect.bean.EffectBean;
 import br.com.odcontroler.main.view.effect.model.EffectModel;
 import br.com.odcontroler.main.view.interfaces.BeanListener;
 import br.com.odcontroler.main.view.interfaces.TableView;

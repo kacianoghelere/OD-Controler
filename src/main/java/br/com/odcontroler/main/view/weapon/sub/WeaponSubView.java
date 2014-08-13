@@ -14,7 +14,7 @@ import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.sub.SubView;
 import br.com.odcontroler.main.view.weapon.WeaponView;
-import br.com.odcontroler.main.view.weapon.bean.WeaponBean;
+import br.com.odcontroler.main.view.weapon.WeaponBean;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;

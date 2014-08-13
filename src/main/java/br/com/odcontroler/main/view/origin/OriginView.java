@@ -14,7 +14,6 @@ import br.com.odcontroler.main.view.annotation.ViewData;
 import br.com.odcontroler.main.view.enums.ViewType;
 import br.com.odcontroler.main.view.interfaces.TableView;
 import br.com.odcontroler.main.view.object.ViewParameter;
-import br.com.odcontroler.main.view.origin.bean.OriginBean;
 import br.com.odcontroler.main.view.origin.model.OriginModel;
 import java.util.List;
 import java.util.logging.Level;

@@ -13,7 +13,6 @@ import br.com.odcontroler.main.view.annotation.ViewData;
 import br.com.odcontroler.main.view.enums.ViewType;
 import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.interfaces.TableView;
-import br.com.odcontroler.main.view.item.bean.ItemBean;
 import br.com.odcontroler.main.view.item.model.ItemModel;
 import br.com.odcontroler.main.view.item.sub.ItemSubView;
 import br.com.odcontroler.main.view.object.ViewParameter;

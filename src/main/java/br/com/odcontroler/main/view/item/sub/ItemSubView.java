@@ -8,7 +8,7 @@ import br.com.odcontroler.main.interfaces.Main;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.item.ItemView;
-import br.com.odcontroler.main.view.item.bean.ItemBean;
+import br.com.odcontroler.main.view.item.ItemBean;
 import br.com.odcontroler.main.view.object.ViewParameter;
 import br.com.odcontroler.main.view.sub.SubView;
 
