@@ -1,10 +1,7 @@
 package br.com.odcontroler.main.view.log;
 
-import br.com.gmp.comps.model.GListModel;
-import br.com.gmp.utils.file.FileUtil;
 import br.com.gmp.utils.object.TextBuilder;
 import br.com.odcontroler.main.MainScreen;
-import br.com.odcontroler.main.interfaces.Main;
 import br.com.odcontroler.main.view.View;
 import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.object.ViewParameter;
@@ -54,10 +51,10 @@ public class LogView extends View {
     private void showLog(javax.swing.event.TreeSelectionEvent evt) {
         DefaultMutableTreeNode node = (DefaultMutableTreeNode) evt
                 .getPath().getLastPathComponent();
-        if (node.isLeaf()) {
+        File file = (File) node.getUserObject();
+        if (node.isLeaf() && file.isFile()) {
             try {
                 System.out.println("Lendo...");
-                File file = (File) node.getUserObject();
                 TextBuilder builder = new TextBuilder();
                 FileReader fr = new FileReader(file);
                 BufferedReader br = new BufferedReader(fr);
@@ -77,35 +74,48 @@ public class LogView extends View {
      * Método para adição recursiva de nós na arvore
      */
     DefaultMutableTreeNode addNodes(DefaultMutableTreeNode curTop, File dir) {
-        String curPath = dir.getPath();
+        String curPath = dir.getAbsolutePath();
         DefaultMutableTreeNode curDir = new DefaultMutableTreeNode(dir);
         if (curTop != null) {
             curTop.add(curDir);
         }
-        List mainList = new LinkedList();
-        String[] tmp = dir.list();
+        List<File> mainList = new LinkedList();
+        File[] tmp = dir.listFiles();
         mainList.addAll(Arrays.asList(tmp));
-        Collections.sort(mainList, String.CASE_INSENSITIVE_ORDER);
+        Collections.sort(mainList);
         File f;
         List<File> files = new LinkedList();
-        for (Object obj : mainList) {
-            File thisObject = new File((String) obj);
+        for (File obj : mainList) {
             String newPath;
             if (curPath.equals(".")) {
-                newPath = thisObject.getPath();
+                newPath = obj.getAbsolutePath();
             } else {
-                newPath = curPath + File.separator + thisObject;
+                newPath = curPath + File.separator + obj;
             }
             if ((f = new File(newPath)).isDirectory()) {
                 addNodes(curDir, f);
             } else {
-                files.add(thisObject);
+                files.add(obj);
             }
         }
         for (Object file : files) {
             curDir.add(new DefaultMutableTreeNode(file));
         }
         return curDir;
+    }
+
+    DefaultMutableTreeNode nodes(DefaultMutableTreeNode top, File dir) {
+        if (top == null) {
+            top = new DefaultMutableTreeNode(dir);
+        }
+        if (dir.isDirectory()) {
+            for (File file : dir.listFiles()) {
+                nodes(top, file);
+            }
+        } else {
+            top.add(new DefaultMutableTreeNode(dir));
+        }
+        return top;
     }
 
     @Override
@@ -126,7 +136,7 @@ public class LogView extends View {
         jScrollPane2 = new javax.swing.JScrollPane();
         gTALog = new br.com.gmp.comps.textarea.GTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTree = new javax.swing.JTree(addNodes(null, dir));
+        jTree = new javax.swing.JTree(nodes(null, dir));
 
         setClosable(true);
         setIconifiable(true);
@@ -138,6 +148,7 @@ public class LogView extends View {
 
         gTALog.setEditable(false);
         gTALog.setColumns(20);
+        gTALog.setLineWrap(true);
         gTALog.setRows(5);
         jScrollPane2.setViewportView(gTALog);
 
@@ -158,7 +169,8 @@ public class LogView extends View {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE))
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
