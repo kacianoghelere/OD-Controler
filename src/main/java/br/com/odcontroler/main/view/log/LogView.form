@@ -34,70 +34,37 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jSplitPane1" pref="620" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="620" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jSplitPane1" pref="449" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="452" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JSplitPane" name="jSplitPane1">
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
 
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout"/>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+        <Component class="org.jdesktop.swingx.JXTreeTable" name="jXTreeTable">
+          <Events>
+            <EventHandler event="valueChanged" listener="javax.swing.event.TreeSelectionListener" parameters="javax.swing.event.TreeSelectionEvent" handler="jXTreeTableValueChanged"/>
+          </Events>
           <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new org.jdesktop.swingx.JXTreeTable() {&#xa;&#xa;    @Override&#xa;    public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {&#xa;        Component c = super.prepareRenderer(renderer, row, column);&#xa;        if (c instanceof JCheckBox) {&#xa;            JCheckBox check = (JCheckBox) c;&#xa;            check.setOpaque(showVerticalLines);&#xa;        }&#xa;        if (row % 2 == 0 &amp;&amp; !isCellSelected(row, column)) {&#xa;            c.setBackground(GColors.FOCUS);&#xa;        } else if (isCellSelected(row, column)) {&#xa;            c.setBackground(getSelectionBackground());&#xa;        } else {&#xa;            c.setBackground(getBackground());&#xa;        }&#xa;        return c;&#xa;    }&#xa;&#xa;    @Override&#xa;    public Component prepareRenderer(int row, int column) {&#xa;        Component c = super.prepareRenderer(row, column);&#xa;        if (c instanceof JCheckBox) {&#xa;                JCheckBox check = (JCheckBox) c;&#xa;                check.setOpaque(showVerticalLines);&#xa;            }&#xa;        if (row % 2 == 0 &amp;&amp; !isCellSelected(row, column)) {&#xa;                c.setBackground(GColors.FOCUS);&#xa;            } else if (isCellSelected(row, column)) {&#xa;                c.setBackground(getSelectionBackground());&#xa;            } else {&#xa;                c.setBackground(getBackground());&#xa;            }&#xa;        return c;&#xa;    }&#xa;&#xa;    @Override&#xa;    public TreeCellRenderer getTreeCellRenderer() {&#xa;        DefaultTreeCellRenderer rend = new DefaultTreeCellRenderer() {&#xa;&#xa;            @Override&#xa;            public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocus) {&#xa;                Component c = super.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);&#xa;                if (c instanceof JCheckBox) {&#xa;                    JCheckBox check = (JCheckBox) c;&#xa;                    check.setOpaque(showVerticalLines);&#xa;                }&#xa;                if (row % 2 == 0 &amp;&amp; !sel) {&#xa;                    c.setBackground(GColors.FOCUS);&#xa;                } else if (sel) {&#xa;                    c.setBackground(getSelectionBackground());&#xa;                } else {&#xa;                    c.setBackground(getBackground());&#xa;                }&#xa;                return c;&#xa;            }&#xa;&#xa;        };&#xa;        return rend;&#xa;    }&#xa;&#xa;}"/>
           </AuxValues>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
-              <JSplitPaneConstraints position="right"/>
-            </Constraint>
-          </Constraints>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="br.com.gmp.comps.textarea.GTextArea" name="gTALog">
-              <Properties>
-                <Property name="editable" type="boolean" value="false"/>
-                <Property name="columns" type="int" value="20"/>
-                <Property name="lineWrap" type="boolean" value="true"/>
-                <Property name="rows" type="int" value="5"/>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane3">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
-              <JSplitPaneConstraints position="left"/>
-            </Constraint>
-          </Constraints>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JTree" name="jTree">
-              <Events>
-                <EventHandler event="valueChanged" listener="javax.swing.event.TreeSelectionListener" parameters="javax.swing.event.TreeSelectionEvent" handler="jTreeValueChanged"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTree(nodes(null, dir))"/>
-              </AuxValues>
-            </Component>
-          </SubComponents>
-        </Container>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

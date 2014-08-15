@@ -1,11 +1,13 @@
 package br.com.odcontroler.main.view.log;
 
+import br.com.gmp.comps.GColors;
 import br.com.gmp.utils.object.TextBuilder;
 import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.view.View;
 import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.object.ViewParameter;
 import br.com.odcontroler.system.SystemManager;
+import java.awt.Component;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -14,7 +16,14 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import javax.swing.JCheckBox;
+import javax.swing.JTree;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
+import javax.swing.tree.TreeCellRenderer;
+import org.jdesktop.swingx.JXTreeTable;
 
 /**
  * Tela para gerenciamento de logs
@@ -25,6 +34,7 @@ public class LogView extends View {
 
     private LogBean bean;
     File dir = new File(SystemManager.getProperty("system.log.path"));
+    FileModel model = new FileModel();
 
     /**
      * Cria nova instancia de LogView
@@ -40,82 +50,23 @@ public class LogView extends View {
         setSize(655, 500);
         setControls(new ViewParameter(false, true, false, false));
         initComponents();
+        this.jXTreeTable.setTreeTableModel(model);
+        this.jXTreeTable = new JXTreeTable() {
+
+        };
         this.bean = new LogBean(this);
     }
 
     /**
      * Mostra o log selecionado
      *
-     * @param evt {@code javax.swing.event.TreeSelectionEvent} Evento de seleção
+     * @param evt {@code javax.swing.event.TreeSelectionEvent} Objeto do evento
      */
     private void showLog(javax.swing.event.TreeSelectionEvent evt) {
-        DefaultMutableTreeNode node = (DefaultMutableTreeNode) evt
-                .getPath().getLastPathComponent();
-        File file = (File) node.getUserObject();
-        if (node.isLeaf() && file.isFile()) {
-            try {
-                System.out.println("Lendo...");
-                TextBuilder builder = new TextBuilder();
-                FileReader fr = new FileReader(file);
-                BufferedReader br = new BufferedReader(fr);
-                while (br.ready()) {
-                    builder.append(br.readLine() + "\n");
-                }
-                br.close();
-                fr.close();
-                gTALog.setText(builder.getText());
-            } catch (IOException e) {
-                throwException(new ViewException(this, e));
-            }
+        FileNode node = (FileNode) evt.getPath().getLastPathComponent();
+        if (model.isLeaf(node)) {
+            System.out.println(node.getName());
         }
-    }
-
-    /**
-     * Método para adição recursiva de nós na arvore
-     */
-    DefaultMutableTreeNode addNodes(DefaultMutableTreeNode curTop, File dir) {
-        String curPath = dir.getAbsolutePath();
-        DefaultMutableTreeNode curDir = new DefaultMutableTreeNode(dir);
-        if (curTop != null) {
-            curTop.add(curDir);
-        }
-        List<File> mainList = new LinkedList();
-        File[] tmp = dir.listFiles();
-        mainList.addAll(Arrays.asList(tmp));
-        Collections.sort(mainList);
-        File f;
-        List<File> files = new LinkedList();
-        for (File obj : mainList) {
-            String newPath;
-            if (curPath.equals(".")) {
-                newPath = obj.getAbsolutePath();
-            } else {
-                newPath = curPath + File.separator + obj;
-            }
-            if ((f = new File(newPath)).isDirectory()) {
-                addNodes(curDir, f);
-            } else {
-                files.add(obj);
-            }
-        }
-        for (Object file : files) {
-            curDir.add(new DefaultMutableTreeNode(file));
-        }
-        return curDir;
-    }
-
-    DefaultMutableTreeNode nodes(DefaultMutableTreeNode top, File dir) {
-        if (top == null) {
-            top = new DefaultMutableTreeNode(dir);
-        }
-        if (dir.isDirectory()) {
-            for (File file : dir.listFiles()) {
-                nodes(top, file);
-            }
-        } else {
-            top.add(new DefaultMutableTreeNode(dir));
-        }
-        return top;
     }
 
     @Override
@@ -132,11 +83,69 @@ public class LogView extends View {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSplitPane1 = new javax.swing.JSplitPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        gTALog = new br.com.gmp.comps.textarea.GTextArea();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTree = new javax.swing.JTree(nodes(null, dir));
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jXTreeTable = new org.jdesktop.swingx.JXTreeTable() {
+
+            @Override
+            public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
+                Component c = super.prepareRenderer(renderer, row, column);
+                if (c instanceof JCheckBox) {
+                    JCheckBox check = (JCheckBox) c;
+                    check.setOpaque(showVerticalLines);
+                }
+                if (row % 2 == 0 && !isCellSelected(row, column)) {
+                    c.setBackground(GColors.FOCUS);
+                } else if (isCellSelected(row, column)) {
+                    c.setBackground(getSelectionBackground());
+                } else {
+                    c.setBackground(getBackground());
+                }
+                return c;
+            }
+
+            @Override
+            public Component prepareRenderer(int row, int column) {
+                Component c = super.prepareRenderer(row, column);
+                if (c instanceof JCheckBox) {
+                    JCheckBox check = (JCheckBox) c;
+                    check.setOpaque(showVerticalLines);
+                }
+                if (row % 2 == 0 && !isCellSelected(row, column)) {
+                    c.setBackground(GColors.FOCUS);
+                } else if (isCellSelected(row, column)) {
+                    c.setBackground(getSelectionBackground());
+                } else {
+                    c.setBackground(getBackground());
+                }
+                return c;
+            }
+
+            @Override
+            public TreeCellRenderer getTreeCellRenderer() {
+                DefaultTreeCellRenderer rend = new DefaultTreeCellRenderer() {
+
+                    @Override
+                    public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocus) {
+                        Component c = super.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
+                        if (c instanceof JCheckBox) {
+                            JCheckBox check = (JCheckBox) c;
+                            check.setOpaque(showVerticalLines);
+                        }
+                        if (row % 2 == 0 && !sel) {
+                            c.setBackground(GColors.FOCUS);
+                        } else if (sel) {
+                            c.setBackground(getSelectionBackground());
+                        } else {
+                            c.setBackground(getBackground());
+                        }
+                        return c;
+                    }
+
+                };
+                return rend;
+            }
+
+        };
 
         setClosable(true);
         setIconifiable(true);
@@ -146,22 +155,12 @@ public class LogView extends View {
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/menubar/menubar/file.png"))); // NOI18N
         setMinimumSize(new java.awt.Dimension(655, 500));
 
-        gTALog.setEditable(false);
-        gTALog.setColumns(20);
-        gTALog.setLineWrap(true);
-        gTALog.setRows(5);
-        jScrollPane2.setViewportView(gTALog);
-
-        jSplitPane1.setRightComponent(jScrollPane2);
-
-        jTree.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
+        jXTreeTable.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
             public void valueChanged(javax.swing.event.TreeSelectionEvent evt) {
-                jTreeValueChanged(evt);
+                jXTreeTableValueChanged(evt);
             }
         });
-        jScrollPane3.setViewportView(jTree);
-
-        jSplitPane1.setLeftComponent(jScrollPane3);
+        jScrollPane1.setViewportView(jXTreeTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -169,28 +168,25 @@ public class LogView extends View {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTreeValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTreeValueChanged
+    private void jXTreeTableValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jXTreeTableValueChanged
         showLog(evt);
-    }//GEN-LAST:event_jTreeValueChanged
+    }//GEN-LAST:event_jXTreeTableValueChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private br.com.gmp.comps.textarea.GTextArea gTALog;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTree jTree;
+    private javax.swing.JScrollPane jScrollPane1;
+    private org.jdesktop.swingx.JXTreeTable jXTreeTable;
     // End of variables declaration//GEN-END:variables
 }
