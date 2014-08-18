@@ -1,54 +1,111 @@
-package br.com.odcontroler.main.view.log;
+package br.com.odcontroler.main.view.log.model;
 
 import br.com.odcontroler.system.SystemManager;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 import org.jdesktop.swingx.treetable.AbstractTreeTableModel;
 
+/**
+ * Modelo para treetables que reconstroi dinamicamente a estrutura de um
+ * diretório
+ *
+ * @author kaciano
+ * @version 1.0
+ */
 public class FileModel extends AbstractTreeTableModel {
 
     private FileNode root;
+    private File fileDir;
 
+    /**
+     * Cria nova instância de FileModel
+     */
     public FileModel() {
-        root = new FileNode(new File(SystemManager.getProperty("system.log.path")));
+        this(new File(SystemManager.getProperty("system.log.path")));
+    }
+
+    /**
+     * Cria nova instância de FileModel
+     *
+     * @param fileDir {@code File} Arquivo/Diretório
+     */
+    public FileModel(File fileDir) {
+        this(new FileNode(fileDir), fileDir);
+    }
+
+    /**
+     * Cria nova instância de FileModel
+     *
+     * @param root {@code FileNode} Nó raiz
+     * @param fileDir {@code File} Arquivo/Diretório
+     */
+    public FileModel(FileNode root, File fileDir) {
+        this.root = root;
+        this.fileDir = fileDir;
+        initialize();
+    }
+
+    /**
+     * Método de inicialização
+     */
+    private void initialize() {
         buildNodes(root, root.getFile());
     }
 
-    private void buildNodes(FileNode node, File dir) {
+    /**
+     * Constroi os nós dentro do root recursivamente
+     *
+     * @param node {@code FileNode} Nó pai
+     * @param dir {@code File} Arquivo/Diretório
+     */
+    public void buildNodes(FileNode node, File dir) {
         for (File file : dir.listFiles()) {
+            FileNode newNode = new FileNode(file);
             if (file.isDirectory()) {
-                FileNode newNode = new FileNode(file);
                 buildNodes(newNode, newNode.getFile());
-                node.getChildren().add(newNode);
-            } else {
-                node.getChildren().add(new FileNode(file));
             }
+            node.getChildren().add(newNode);
         }
     }
 
+    /**
+     * Retorna a quantidade de colunas
+     *
+     * @return {@code int} Quantidade de colunas
+     */
     @Override
     public int getColumnCount() {
         return 3;
     }
 
+    /**
+     * Retorna o nome da coluna a partir o indice
+     *
+     * @param column {@code int} Indice da coluna
+     * @return {@code String} Nome da coluna
+     */
     @Override
     public String getColumnName(int column) {
         switch (column) {
             case 0:
-                return "Name";
+                return "Nome";
             case 1:
-                return "Description";
+                return "Caminho";
             case 2:
-                return "Number Of Children";
+                return "Registros";
             default:
                 return "Unknown";
         }
     }
 
+    /**
+     * Retorna os dados do nó na coluna
+     *
+     * @param node {@code Object} Nó
+     * @param column {@code int} Indice da coluna
+     * @return {@code Object} Valor da posição
+     */
     @Override
     public Object getValueAt(Object node, int column) {
-        System.out.println("getValueAt: " + node + ", " + column);
         FileNode treenode = (FileNode) node;
         switch (column) {
             case 0:
@@ -94,52 +151,5 @@ public class FileModel extends AbstractTreeTableModel {
     @Override
     public Object getRoot() {
         return root;
-    }
-}
-
-class FileNode {
-
-    private File file;
-    private String name;
-    private String description;
-    private List<FileNode> children = new ArrayList<>();
-
-    public FileNode(File file) {
-        this.name = file.getName();
-        this.description = file.getPath();
-        this.file = file;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public File getFile() {
-        return file;
-    }
-
-    public void setFile(File file) {
-        this.file = file;
-    }
-
-    public List<FileNode> getChildren() {
-        return children;
-    }
-
-    @Override
-    public String toString() {
-        return name;
     }
 }

@@ -4,7 +4,6 @@ import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.decorate.TableDecorator;
 import br.com.gmp.comps.table.interfaces.TableSource;
-import br.com.gmp.utils.collections.Triad;
 import br.com.gmp.utils.interact.WindowUtil;
 import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.odcontroler.data.db.dao.MenuDAO;
@@ -207,6 +206,8 @@ public class MenuView extends View implements TableSource<Menu>, TableView {
         jScrollPane1.setViewportView(gTable);
 
         jLTitle.setText("Titulo:");
+
+        gTTitle.setPlaceholder("Titulo do menu");
 
         jLParent.setText("Pai:");
 

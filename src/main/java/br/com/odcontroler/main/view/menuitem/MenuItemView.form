@@ -148,8 +148,14 @@
       </Properties>
     </Component>
     <Component class="br.com.gmp.comps.textfield.GTextField" name="gTTitle">
+      <Properties>
+        <Property name="placeholder" type="java.lang.String" value="Titulo da tela"/>
+      </Properties>
     </Component>
     <Component class="br.com.gmp.comps.textfield.GTextField" name="gTClass">
+      <Properties>
+        <Property name="placeholder" type="java.lang.String" value="Classe da tela"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLClass">
       <Properties>

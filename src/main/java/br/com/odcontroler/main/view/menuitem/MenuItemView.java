@@ -18,7 +18,6 @@ import br.com.odcontroler.main.view.menuitem.model.MenuItemModel;
 import br.com.odcontroler.main.view.object.ViewParameter;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
@@ -189,6 +188,10 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
         jScrollPane.setViewportView(gTable);
 
         jLTitle.setText("Titulo:");
+
+        gTTitle.setPlaceholder("Titulo da tela");
+
+        gTClass.setPlaceholder("Classe da tela");
 
         jLClass.setText("Classe:");
 

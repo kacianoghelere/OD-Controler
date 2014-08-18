@@ -529,6 +529,8 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         jTBMsgs.setRollover(true);
         jTBMsgs.setName("jTBMsgs"); // NOI18N
 
+        jPBLoader.setMaximumSize(new java.awt.Dimension(100, 20));
+        jPBLoader.setMinimumSize(new java.awt.Dimension(100, 20));
         jPBLoader.setName("jPBLoader"); // NOI18N
         jPBLoader.setPreferredSize(new java.awt.Dimension(100, 20));
         jPBLoader.setString("");
@@ -552,6 +554,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         jTBSearch.setRollover(true);
         jTBSearch.setName("jTBSearch"); // NOI18N
 
+        gTView.setPlaceholder("Buscar telas...");
         gTView.setName("gTView"); // NOI18N
         gTView.setPreferredSize(new java.awt.Dimension(170, 28));
         gTView.addKeyListener(new java.awt.event.KeyAdapter() {

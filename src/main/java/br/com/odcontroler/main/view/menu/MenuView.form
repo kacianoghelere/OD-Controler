@@ -158,6 +158,9 @@
           </Properties>
         </Component>
         <Component class="br.com.gmp.comps.textfield.GTextField" name="gTTitle">
+          <Properties>
+            <Property name="placeholder" type="java.lang.String" value="Titulo do menu"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLParent">
           <Properties>

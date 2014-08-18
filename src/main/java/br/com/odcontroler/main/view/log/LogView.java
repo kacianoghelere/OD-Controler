@@ -1,26 +1,22 @@
 package br.com.odcontroler.main.view.log;
 
+import br.com.odcontroler.main.view.log.model.FileNode;
+import br.com.odcontroler.main.view.log.model.FileModel;
 import br.com.gmp.comps.GColors;
-import br.com.gmp.utils.object.TextBuilder;
+import br.com.gmp.utils.file.FileUtil;
 import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.view.View;
 import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.object.ViewParameter;
 import br.com.odcontroler.system.SystemManager;
 import java.awt.Component;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JCheckBox;
 import javax.swing.JTree;
 import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableModel;
-import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
 import org.jdesktop.swingx.JXTreeTable;
@@ -44,6 +40,7 @@ public class LogView extends View {
     public LogView(MainScreen mainScreen) {
         super(mainScreen);
         initialize();
+
     }
 
     private void initialize() {
@@ -62,10 +59,12 @@ public class LogView extends View {
      *
      * @param evt {@code javax.swing.event.TreeSelectionEvent} Objeto do evento
      */
-    private void showLog(javax.swing.event.TreeSelectionEvent evt) {
+    private void showLog(javax.swing.event.TreeSelectionEvent evt) throws IOException {
         FileNode node = (FileNode) evt.getPath().getLastPathComponent();
         if (model.isLeaf(node)) {
-            System.out.println(node.getName());
+            gDialog.setTitle(node.getDescription());
+            gTextArea1.setText(FileUtil.readString(node.getFile()));
+            gDialog.show();
         }
     }
 
@@ -83,6 +82,9 @@ public class LogView extends View {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        gDialog = new br.com.gmp.comps.dialog.GDialog();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        gTextArea1 = new br.com.gmp.comps.textarea.GTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
         jXTreeTable = new org.jdesktop.swingx.JXTreeTable() {
 
@@ -147,6 +149,30 @@ public class LogView extends View {
 
         };
 
+        gDialog.setMinimumSize(new java.awt.Dimension(651, 444));
+
+        gTextArea1.setColumns(20);
+        gTextArea1.setLineWrap(true);
+        gTextArea1.setRows(5);
+        jScrollPane2.setViewportView(gTextArea1);
+
+        javax.swing.GroupLayout gDialogLayout = new javax.swing.GroupLayout(gDialog.getContentPane());
+        gDialog.getContentPane().setLayout(gDialogLayout);
+        gDialogLayout.setHorizontalGroup(
+            gDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(gDialogLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        gDialogLayout.setVerticalGroup(
+            gDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(gDialogLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
@@ -155,6 +181,7 @@ public class LogView extends View {
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/menubar/menubar/file.png"))); // NOI18N
         setMinimumSize(new java.awt.Dimension(655, 500));
 
+        jXTreeTable.setShowGrid(true);
         jXTreeTable.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
             public void valueChanged(javax.swing.event.TreeSelectionEvent evt) {
                 jXTreeTableValueChanged(evt);
@@ -181,12 +208,19 @@ public class LogView extends View {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jXTreeTableValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jXTreeTableValueChanged
-        showLog(evt);
+        try {
+            showLog(evt);
+        } catch (IOException ex) {
+            throwException(new ViewException(this, ex));
+        }
     }//GEN-LAST:event_jXTreeTableValueChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private br.com.gmp.comps.dialog.GDialog gDialog;
+    private br.com.gmp.comps.textarea.GTextArea gTextArea1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private org.jdesktop.swingx.JXTreeTable jXTreeTable;
     // End of variables declaration//GEN-END:variables
 }
