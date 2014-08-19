@@ -25,9 +25,14 @@ public class CharClass implements Serializable {
     private Dice hpDice;
     @ColumnName(name = "CA Bônus")
     private Integer armorBonus;
+    @ColumnName(name = "Usa magica?")
+    private Boolean magic;
     @Ignore
     @ColumnName(name = "Requerimentos")
     private Requires requires;
+    @Ignore
+    @ColumnName(name = "Níveis de classes")
+    private List<ClassLevel> classLevels;
     @Ignore
     @ColumnName(name = "Armaduras Permitidas")
     private List<ArmorType> allowedArmors;
@@ -37,6 +42,9 @@ public class CharClass implements Serializable {
     @Ignore
     @ColumnName(name = "Itens Permitidas")
     private List<ItemType> allowedItems;
+    @Ignore
+    @ColumnName(name = "Perícias Exclusivas")
+    private List<Expertise> allowedExpertises;
     @Ignore
     @ColumnName(name = "Vantagens")
     private List<Perk> perks;
