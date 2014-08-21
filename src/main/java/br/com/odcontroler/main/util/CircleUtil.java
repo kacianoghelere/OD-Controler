@@ -67,23 +67,48 @@ public class CircleUtil {
      * @param size {@code int} Tamanho do circulo
      * @return {@code List(int[])} Lista de circulos preenchida
      */
-    public static List<int[]> list(int levels, int size) {
-        List<int[]> circles = new ArrayList<>();
-        int[] circle = new int[size];
-        for (int count = 0; count < levels; count++) {
-            for (int i = 0; i < circle.length; i++) {
-                if (i == 0 || circle[i] != 0) {
-                    circle[i]++;
-                }
-            }
-            circles.add(Arrays.copyOf(circle, size));
-        }
+    public static List<String[]> list(int levels, int size) {
+        List<String[]> circles = new ArrayList<>();
+        int count = 0;
+        do {
+            circles.add(generateMatrix(count, size));
+            count += 2;
+        } while (count < size);
         return circles;
     }
 
+    private static String[] generateMatrix(int index, int size) {
+        int begin = 1;
+        String temp = "";
+        do {
+            for (int j = index; j < begin + index; j++) {
+                if (temp.replaceAll(",", "").length() < (size - index)) {
+                    temp += begin + ",";
+                } else {
+                    break;
+                }
+            }
+            begin++;
+        } while (temp.replaceAll(",", "").length() < (size - index));
+        String zeros = "";
+        if ((temp.length() - 1) > 0) {
+            temp = temp.substring(0, temp.length() - 1);
+            zeros = addZeros(size - temp.replaceAll(",", "").length()) + temp;
+        }
+        return zeros.split(",");
+    }
+
+    private static String addZeros(int amount) {
+        String zeros = "";
+        for (int i = 0; i < amount; i++) {
+            zeros += "0,";
+        }
+        return zeros;
+    }
+
     public static void main(String[] args) {
-        List<int[]> list = new CircleUtil().list(20, 9);
-        for (int[] is : list) {
+        List<String[]> list = new CircleUtil().list(9, 30);
+        for (String[] is : list) {
             System.out.println(Arrays.toString(is));
         }
     }
