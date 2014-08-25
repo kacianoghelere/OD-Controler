@@ -5,111 +5,120 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Utilitário para listar habilidades por circulo de magia
+ * Utilitário para listar habilidades por circulo de magia (Utilizando MCRL)
  *
  * @author kaciano
+ * @version 1.0
  */
 public class CircleUtil {
 
     /**
-     * Lista todos os circulos do tamanho desejado na quantidade de niveis
-     * recebida
+     * Retorna o array bidimensonal dos circulos
      *
      * @param levels {@code int} Quantidade de niveis
-     * @param size {@code int} Tamanho do circulo
-     * @return {@code List(int[])} Lista de circulos preenchida
+     * @param amount {@code int} Quantidade de circulos
+     * @return {@code Integer[][]} Matriz de circulos
      */
-    public static List<int[]> listCircles(int levels, int size) {
-        int count = 0;
-        int index = 0;
-        List<int[]> circles = new ArrayList<>();
-        int[] circle = new int[size];
-        int oldIndex = 0;
-        int newIndex = 0;
-        do {
-            oldIndex = (index - 1);
-            newIndex = (index + 1);
-            if (index < size) {
-                //--------------------------------------------------------------
-                // Se o circulo anterior não for negativo
-                if (oldIndex != -1) {
-                    circle[index]++;
-                    //----------------------------------------------------------
-                    // Se o circulo anterior for igual ao atual
-                    if (circle[oldIndex] <= circle[index]) {
-                        index++;
-                    }
-                } //--------------------------------------------------------------
-                // Se o circulo anterior for negativo
-                else {
-                    //----------------------------------------------------------
-                    // Se o circulo atual for menor do que o próximo
-                    if (circle[index] <= circle[newIndex]) {
-                        circle[index]++;
-                    } else // Se o circulo atual for maior do que o próximo
-                    if (circle[index] > circle[newIndex]) {
-                        circle[index]++;
-                        index++;
-                    }
-                }
-            }
-            count++;
-            circles.add(Arrays.copyOf(circle, size));
-        } while (levels > count);
-        return circles;
+    public Integer[][] getMatrix(int levels, int amount) {
+        return build(levels, amount);
     }
 
     /**
-     * Lista todos os circulos do tamanho desejado na quantidade de niveis
-     * recebida
+     * Retorna uma lista com os arrays dos circulos
      *
      * @param levels {@code int} Quantidade de niveis
-     * @param size {@code int} Tamanho do circulo
-     * @return {@code List(int[])} Lista de circulos preenchida
+     * @param amount {@code int} Quantidade de circulos
+     * @return {@code List(Integer[])} Lista de circulos
      */
-    public static List<String[]> list(int levels, int size) {
-        List<String[]> circles = new ArrayList<>();
-        int count = 0;
-        do {
-            circles.add(generateMatrix(count, size));
-            count += 2;
-        } while (count < size);
-        return circles;
+    public List<Integer[]> getList(int levels, int amount) {
+        return Arrays.asList(build(levels, amount));
     }
 
-    private static String[] generateMatrix(int index, int size) {
-        int begin = 1;
-        String temp = "";
+    /**
+     * Constroi a matriz de circulos a partir da quantidade de niveis e circulos
+     *
+     * @param levels {@code int} Quantidade de niveis
+     * @param amount {@code int} Quantidade de circulos
+     * @return {@code Integer[][]} Matriz de circulos
+     */
+    private Integer[][] build(int levels, int amount) {
+        int begin = 0;
+        int value = 1;
+        List<Integer[]> circles = new ArrayList();
+        List<Integer> level = null;
+        //----------------------------------------------------------------------
+        // Laço dos niveis dentro do circulo
         do {
-            for (int j = index; j < begin + index; j++) {
-                if (temp.replaceAll(",", "").length() < (size - index)) {
-                    temp += begin + ",";
-                } else {
-                    break;
+            level = new ArrayList();
+            //------------------------------------------------------------------
+            // Laço para preencher os valores dentro dos niveis
+            do {
+                //--------------------------------------------------------------
+                // Adiciona o valor dentro da lista conforme o tamanho dele
+                // Ex: 1 add 1 vez, 2 add 2 vezes, 3 add 3 vezes...
+                for (int i = 0; i < value; i++) {
+                    //----------------------------------------------------------
+                    // Verifica se o tamanho do circulo não foi comprometido,
+                    // caso esteja ok adiciona o valor, se não, para o loop
+                    if (level.size() < (levels - begin)) {
+                        level.add(value);
+                    } else {
+                        break;
+                    }
                 }
+                //--------------------------------------------------------------
+                // Incrementa o valor para prosseguir
+                value++;
+            } while (level.size() < (levels - begin));
+            //------------------------------------------------------------------
+            // Verifica a diferença entre o tamanho da lista e o tamanho
+            // desejado, completa com zeros caso seja necessário
+            while (level.size() < levels) {
+                level.add(0, 0);
             }
-            begin++;
-        } while (temp.replaceAll(",", "").length() < (size - index));
-        String zeros = "";
-        if ((temp.length() - 1) > 0) {
-            temp = temp.substring(0, temp.length() - 1);
-            zeros = addZeros(size - temp.replaceAll(",", "").length()) + temp;
-        }
-        return zeros.split(",");
+            //------------------------------------------------------------------
+            // Reset no valor para evitar o loop infinito
+            value = 1;
+            //------------------------------------------------------------------
+            // Aumenta as casas do inicio, para manter o nivelamento
+            begin += 2;
+            //------------------------------------------------------------------
+            // Converte e atribui a lista à lista de circulos
+            circles.add(level.toArray(new Integer[]{}));
+        } while (circles.size() < amount);
+        return tranpose(circles.toArray(new Integer[][]{}));
     }
 
-    private static String addZeros(int amount) {
-        String zeros = "";
-        for (int i = 0; i < amount; i++) {
-            zeros += "0,";
+    /**
+     * Transpoe a matriz (Transforma linhas em colunas e vice versa)
+     *
+     * @param matrix {@code Object[][]} Matriz a ser transposta
+     * @return {@code Object[][]} Matriz transposta
+     */
+    public static Object[][] tranpose(Object[][] matrix) {
+        Object[][] transposed = new Object[matrix[0].length][matrix.length];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                transposed[j][i] = matrix[i][j];
+            }
         }
-        return zeros;
+        return transposed;
     }
 
-    public static void main(String[] args) {
-        List<String[]> list = new CircleUtil().list(9, 30);
-        for (String[] is : list) {
-            System.out.println(Arrays.toString(is));
+    /**
+     * Transpoe a matriz (Transforma linhas em colunas e vice versa)
+     *
+     * @param matrix {@code Integer[][]} Matriz a ser transposta
+     * @return {@code Integer[][]} Matriz transposta
+     */
+    private Integer[][] tranpose(Integer[][] matrix) {
+        Integer[][] transposed = new Integer[matrix[0].length][matrix.length];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                transposed[j][i] = matrix[i][j];
+            }
         }
+        return transposed;
     }
+
 }
