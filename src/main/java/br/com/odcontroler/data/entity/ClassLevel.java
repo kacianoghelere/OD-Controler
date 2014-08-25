@@ -23,7 +23,9 @@ public class ClassLevel {
     @ColumnName(name = "Ataque Base")
     private Integer atkBase;
     @ColumnName(name = "JP")
-    private Integer protection;
+    private Integer protection;    
+    @ColumnName(name = "Magias por circulo")
+    private Integer[] magicPerCircle;
 
     /**
      * Cria nova instância de ClassLevel
@@ -40,15 +42,17 @@ public class ClassLevel {
      * @param plusLife {@code Integer} Representa vida extra
      * @param atkBase {@code Integer} Base de ataque
      * @param protection {@code Integer} JP
+     * @param magicPerCircle {@code Integer[]} Magias por circulo
      */
-    public ClassLevel(Integer level, Long xp, Integer lifeAmount, 
-            Boolean plusLife, Integer atkBase, Integer protection) {
+    public ClassLevel(Integer level, Long xp, Integer lifeAmount, Boolean plusLife,
+            Integer atkBase, Integer protection, Integer[] magicPerCircle) {
         this.level = level;
         this.xp = xp;
         this.lifeAmount = lifeAmount;
         this.plusLife = plusLife;
         this.atkBase = atkBase;
         this.protection = protection;
+        this.magicPerCircle = magicPerCircle;
     }
 
     @Override
@@ -167,6 +171,24 @@ public class ClassLevel {
      */
     public void setProtection(Integer protection) {
         this.protection = protection;
+    }
+
+    /**
+     * Retorna as magias por circulo
+     *
+     * @return {@code Integer[]}
+     */
+    public Integer[] getMagicPerCircle() {
+        return magicPerCircle;
+    }
+
+    /**
+     * Modifica as magias por circulo
+     *
+     * @param magicPerCircle {@code Integer[]}
+     */
+    public void setMagicPerCircle(Integer[] magicPerCircle) {
+        this.magicPerCircle = magicPerCircle;
     }
 
 }

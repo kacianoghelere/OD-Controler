@@ -1,51 +1,50 @@
-package br.com.odcontroler.main.view.item;
+package br.com.odcontroler.main.view.classes;
 
 import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.decorate.TableDecorator;
 import br.com.gmp.comps.table.interfaces.TableSource;
-import br.com.odcontroler.data.db.dao.ItemDAO;
-import br.com.odcontroler.data.db.dao.ItemTypeDAO;
-import br.com.odcontroler.data.entity.Item;
+import br.com.odcontroler.data.db.dao.ClassBaseDao;
+import br.com.odcontroler.data.entity.ClassBase;
 import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.util.Description;
 import br.com.odcontroler.main.view.View;
 import br.com.odcontroler.main.view.annotation.ViewData;
+import br.com.odcontroler.main.view.classes.model.ClassModel;
+import br.com.odcontroler.main.view.classes.sub.ClassSubView;
 import br.com.odcontroler.main.view.enums.ViewType;
 import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.interfaces.TableView;
-import br.com.odcontroler.main.view.item.model.ItemModel;
-import br.com.odcontroler.main.view.item.sub.ItemSubView;
 import br.com.odcontroler.main.view.object.ViewParameter;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
- * View de controle para itens gerais
+ * View de controle para classes
  *
  * @author kaciano
  * @version 1.0
  */
-@ViewData(name = "Itens gerais", type = ViewType.CRUD, path = {""})
-public class ItemView extends View<ItemBean> implements TableView, TableSource<Item> {
+@ViewData(name = "Classes", type = ViewType.CRUD, path = {""})
+public class ClassView extends View implements TableSource<ClassBase>, TableView {
 
-    private ItemBean bean;
-    private ItemModel model;
+    private ClassBean bean;
+    private ClassModel model;
     private TableDecorator decorator;
     private int count = 0;
+    private final int ID = count++;
     private final int NAME = count++;
+    private final int DICE = count++;
+    private final int ARMOR_BONUS = count++;
+    private final int ATTRIBUTE = count++;
     private final int TYPE = count++;
-    private final int DESCRIPTION = count++;
-    private final int WEIGHT = count++;
-    private final int PRICE = count++;
+    private final int ALIGNMENT = count++;
 
     /**
-     * Creates new form ItemView
+     * Cria nova instancia de ClassView
      *
      * @param mainScreen {@code MainScreen} Tela principal
      */
-    public ItemView(MainScreen mainScreen) {
+    public ClassView(MainScreen mainScreen) {
         super(mainScreen);
         initialize();
     }
@@ -54,32 +53,31 @@ public class ItemView extends View<ItemBean> implements TableView, TableSource<I
      * Método de inicialização
      */
     private void initialize() {
+        setControls(new ViewParameter(true, false, true, false));
         this.setSize(662, 484);
-        this.setControls(new ViewParameter(true, false, true, true));
         this.initComponents();
         this.decorator = new TableDecorator(gTable);
         //----------------------------------------------------------------------
         // Inicialização do modelo
-        this.model = new ItemModel();
+        this.model = new ClassModel();
         //----------------------------------------------------------------------
         // Inicialização do bean
-        this.bean = new ItemBean(this);
+        this.bean = new ClassBean(this);
         //----------------------------------------------------------------------
         // Atribuição do modelo na tabela
         this.gTable.buildTable(this, 0, model);
         //----------------------------------------------------------------------
         // Atribuição dos editores na tabela
-        this.decorator.withNumber(PRICE);
-        this.decorator.comboAt(TYPE, new ItemTypeDAO().getList());
+
     }
 
     @Override
     public void add() throws Exception {
-        ItemSubView subview = new ItemSubView(this, null);
-        getMainScreen().getListener().insertView(subview);
-        if (subview.getItem() != null) {
+        ClassSubView sub = new ClassSubView(this, null);
+        getMainScreen().getListener().insertView(sub);
+        if (sub.getClassBase() != null) {
             try {
-                bean.add(new BeanEvent(this, subview.getItem()));
+                bean.add(new BeanEvent(this, sub.getClassBase()));
             } catch (IllegalArgumentException | IllegalAccessException ex) {
                 throwException(new ViewException(this, ex));
             } catch (Exception ex) {
@@ -108,33 +106,32 @@ public class ItemView extends View<ItemBean> implements TableView, TableSource<I
     }
 
     @Override
-    public ItemModel getModel() {
+    public ClassModel getModel() {
         return this.model;
     }
 
     @Override
-    public List<Item> getTableData() {
-        return new ItemDAO().getList();
+    public ClassBean getBean() {
+        return this.bean;
     }
 
     @Override
-    public ItemBean getBean() {
-        return this.bean;
+    public List<ClassBase> getTableData() {
+        return new ClassBaseDao().getList();
     }
+
     @Override
     public Description getDescription() {
         return new Description.Builder()
                 .setTitle(getTitle())
-                .setDescription("View para cadastro de controle de itens gerais.")
+                .setDescription("View para cadastro de controle de classes.")
                 .setSave("Remove todos os itens e salva os novos")
                 .setProcces("Nada faz.")
                 .setClear("Nada faz.")
                 .setLoad("Nada faz.")
                 .apply();
     }
-    /**
-     * Dados gerados automaticamente
-     */
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -143,15 +140,18 @@ public class ItemView extends View<ItemBean> implements TableView, TableSource<I
         jBAdd = new javax.swing.JButton();
         jBRemove = new javax.swing.JButton();
         jBEdit = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane6 = new javax.swing.JScrollPane();
         gTable = new br.com.gmp.comps.table.GTable();
 
+        setBackground(new java.awt.Color(221, 221, 221));
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Itens Gerais");
-        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/MenuIcons/slice1255_.png"))); // NOI18N
+        setTitle("Classes");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/status/avenge.png"))); // NOI18N
+        setMinimumSize(new java.awt.Dimension(662, 487));
+        setPreferredSize(new java.awt.Dimension(662, 487));
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
@@ -195,6 +195,8 @@ public class ItemView extends View<ItemBean> implements TableView, TableSource<I
         });
         jToolBar1.add(jBEdit);
 
+        gTable.setAutoResizeMode(4);
+        gTable.setAutoscrolls(false);
         gTable.setKeyDelete(true);
         gTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -205,7 +207,7 @@ public class ItemView extends View<ItemBean> implements TableView, TableSource<I
             }
         ));
         gTable.setOpaque(false);
-        jScrollPane1.setViewportView(gTable);
+        jScrollPane6.setViewportView(gTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -214,16 +216,16 @@ public class ItemView extends View<ItemBean> implements TableView, TableSource<I
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1)
-                .addGap(15, 15, 15))
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -231,7 +233,7 @@ public class ItemView extends View<ItemBean> implements TableView, TableSource<I
         try {
             add();
         } catch (Exception ex) {
-            Logger.getLogger(ItemView.class.getName()).log(Level.SEVERE, null, ex);
+            throwException(new ViewException(this, ex));
         }
     }//GEN-LAST:event_jBAddActionPerformed
 
@@ -239,7 +241,7 @@ public class ItemView extends View<ItemBean> implements TableView, TableSource<I
         try {
             remove();
         } catch (Exception ex) {
-            LOGGER.log(Level.SEVERE, null, ex);
+            throwException(new ViewException(this, ex));
         }
     }//GEN-LAST:event_jBRemoveActionPerformed
 
@@ -253,7 +255,7 @@ public class ItemView extends View<ItemBean> implements TableView, TableSource<I
     private javax.swing.JButton jBAdd;
     private javax.swing.JButton jBEdit;
     private javax.swing.JButton jBRemove;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 

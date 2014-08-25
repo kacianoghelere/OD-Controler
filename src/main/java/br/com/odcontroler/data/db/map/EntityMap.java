@@ -20,6 +20,7 @@ public class EntityMap {
         Map<Class<?>, String> map = new HashMap<>();
         map.put(Armor.class, "ArmorDB");
         map.put(ArmorType.class, "ArmorTypeDB");
+        map.put(ClassBase.class, "ClassBaseDB");
         map.put(Effect.class, "EffectDB");
         map.put(EffectType.class, "EffectTypeDB");
         map.put(ElementType.class, "ElementTypeDB");

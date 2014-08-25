@@ -25,7 +25,7 @@ import java.util.List;
  * @author kaciano
  * @version 1.0
  */
-@ViewData(name = "Magias", type = ViewType.CRUD)
+@ViewData(name = "Magias", type = ViewType.CRUD, path = {""})
 public class SpellView extends View<SpellBean> implements TableView, TableSource<Spell> {
 
     private SpellBean bean;

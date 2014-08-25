@@ -26,7 +26,7 @@ import java.util.logging.Level;
  *
  * @author kaciano
  */
-@ViewData(name = "Perícias", type = ViewType.CRUD)
+@ViewData(name = "Perícias", type = ViewType.CRUD, path = {""})
 public class ExpertiseView extends View implements TableView, TableSource<Expertise> {
 
     private ExpertiseBean bean;

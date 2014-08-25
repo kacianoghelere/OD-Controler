@@ -7,7 +7,6 @@ import br.com.odcontroler.data.db.dao.OriginDAO;
 import br.com.odcontroler.data.entity.Armor;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.util.TableUtil;
-import br.com.odcontroler.main.view.armor.ArmorView;
 import br.com.odcontroler.main.view.armor.sub.ArmorSubView;
 import br.com.odcontroler.main.view.bean.ViewBean;
 import br.com.odcontroler.main.view.exception.ViewException;

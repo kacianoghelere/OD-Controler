@@ -31,7 +31,7 @@ import java.util.List;
  * @author kaciano
  * @version 1.1
  */
-@ViewData(name = "Armaduras", type = ViewType.CRUD)
+@ViewData(name = "Armaduras", type = ViewType.CRUD, path = {""})
 public class ArmorView extends View<ArmorBean> implements TableView, TableSource<Armor> {
 
     private ArmorBean bean;
@@ -76,7 +76,7 @@ public class ArmorView extends View<ArmorBean> implements TableView, TableSource
         // Atribuição do modelo na tabela
         this.gTable.buildTable(this, 0, model);
         //----------------------------------------------------------------------
-        // Atribuição dos erros na tabela
+        // Atribuição dos editores na tabela
         this.decorator.withNumber(CA);
         this.decorator.withNumber(MOVIMENT_RED);
         this.decorator.withNumber(PRICE);

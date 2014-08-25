@@ -234,10 +234,14 @@ public class MainScreen extends javax.swing.JFrame implements Main {
      * @param controls {@code boolean[]} Array com as opções de controle
      */
     public void setControls(Boolean... controls) {
-        this.jBSave.setEnabled(controls[0]);
+        this.jBCommit.setEnabled(controls[0]);
         this.jBProcess.setEnabled(controls[1]);
         this.jBClear.setEnabled(controls[2]);
         this.jBRefresh.setEnabled(controls[3]);
+        this.jMICommit.setEnabled(controls[0]);
+        this.jMIProcess.setEnabled(controls[1]);
+        this.jMIClean.setEnabled(controls[2]);
+        this.jMIRefresh.setEnabled(controls[3]);
     }
 
     /**
@@ -246,10 +250,10 @@ public class MainScreen extends javax.swing.JFrame implements Main {
      * @param param {@code ViewParameter} Parametros das opções de controle
      */
     public void setControls(ViewParameter param) {
-        this.jBSave.setEnabled(param.isSave());
-        this.jBProcess.setEnabled(param.isProcess());
-        this.jBClear.setEnabled(param.isClear());
-        this.jBRefresh.setEnabled(param.isLoad());
+        setControls(param.isSave(), 
+                param.isProcess(), 
+                param.isClear(), 
+                param.isLoad());
     }
 
     /**
@@ -401,7 +405,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     private void initComponents() {
 
         jToolBar = new javax.swing.JToolBar();
-        jBSave = new javax.swing.JButton();
+        jBCommit = new javax.swing.JButton();
         jBProcess = new javax.swing.JButton();
         jBClear = new javax.swing.JButton();
         jBRefresh = new javax.swing.JButton();
@@ -416,9 +420,10 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         gTView = new br.com.gmp.comps.textfield.GTextField();
         jMenuBar = new javax.swing.JMenuBar();
         jMOptions = new javax.swing.JMenu();
-        jMISave = new javax.swing.JMenuItem();
+        jMICommit = new javax.swing.JMenuItem();
         jMIProcess = new javax.swing.JMenuItem();
         jMIRefresh = new javax.swing.JMenuItem();
+        jMIClean = new javax.swing.JMenuItem();
         jMIDice = new javax.swing.JMenuItem();
         jMControls = new javax.swing.JMenu();
         jMIMenus = new javax.swing.JMenuItem();
@@ -433,18 +438,18 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         jToolBar.setRollover(true);
         jToolBar.setName("jToolBar"); // NOI18N
 
-        jBSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/save.png"))); // NOI18N
-        jBSave.setToolTipText("Salvar");
-        jBSave.setFocusable(false);
-        jBSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBSave.setName("jBSave"); // NOI18N
-        jBSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jBSave.addActionListener(new java.awt.event.ActionListener() {
+        jBCommit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/save.png"))); // NOI18N
+        jBCommit.setToolTipText("Salvar");
+        jBCommit.setFocusable(false);
+        jBCommit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBCommit.setName("jBCommit"); // NOI18N
+        jBCommit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBCommit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBSaveActionPerformed(evt);
+                jBCommitActionPerformed(evt);
             }
         });
-        jToolBar.add(jBSave);
+        jToolBar.add(jBCommit);
 
         jBProcess.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/settings.png"))); // NOI18N
         jBProcess.setToolTipText("Processar");
@@ -570,17 +575,19 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         jMOptions.setText("Opções");
         jMOptions.setName("jMOptions"); // NOI18N
 
-        jMISave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/save.png"))); // NOI18N
-        jMISave.setText("Salvar");
-        jMISave.setName("jMISave"); // NOI18N
-        jMISave.addActionListener(new java.awt.event.ActionListener() {
+        jMICommit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/save.png"))); // NOI18N
+        jMICommit.setMnemonic('S');
+        jMICommit.setText("Salvar");
+        jMICommit.setName("jMICommit"); // NOI18N
+        jMICommit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMISaveActionPerformed(evt);
+                jMICommitActionPerformed(evt);
             }
         });
-        jMOptions.add(jMISave);
+        jMOptions.add(jMICommit);
 
         jMIProcess.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/settings.png"))); // NOI18N
+        jMIProcess.setMnemonic('P');
         jMIProcess.setText("Processar");
         jMIProcess.setName("jMIProcess"); // NOI18N
         jMIProcess.addActionListener(new java.awt.event.ActionListener() {
@@ -591,6 +598,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         jMOptions.add(jMIProcess);
 
         jMIRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/transition/switch.png"))); // NOI18N
+        jMIRefresh.setMnemonic('R');
         jMIRefresh.setText("Recarregar");
         jMIRefresh.setName("jMIRefresh"); // NOI18N
         jMIRefresh.addActionListener(new java.awt.event.ActionListener() {
@@ -599,6 +607,12 @@ public class MainScreen extends javax.swing.JFrame implements Main {
             }
         });
         jMOptions.add(jMIRefresh);
+
+        jMIClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/brush.png"))); // NOI18N
+        jMIClean.setMnemonic('L');
+        jMIClean.setText("Limpar");
+        jMIClean.setName("jMIClean"); // NOI18N
+        jMOptions.add(jMIClean);
 
         jMIDice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/dice.gif"))); // NOI18N
         jMIDice.setText("Jogar dados");
@@ -682,9 +696,9 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSaveActionPerformed
+    private void jBCommitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCommitActionPerformed
         commit(evt);
-    }//GEN-LAST:event_jBSaveActionPerformed
+    }//GEN-LAST:event_jBCommitActionPerformed
 
     private void jBProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProcessActionPerformed
         process(evt);
@@ -694,9 +708,9 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         load(evt);
     }//GEN-LAST:event_jBRefreshActionPerformed
 
-    private void jMISaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMISaveActionPerformed
+    private void jMICommitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICommitActionPerformed
         commit(evt);
-    }//GEN-LAST:event_jMISaveActionPerformed
+    }//GEN-LAST:event_jMICommitActionPerformed
 
     private void jMIProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIProcessActionPerformed
         process(evt);
@@ -755,18 +769,19 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     private br.com.gmp.comps.textfield.GTextField gTView;
     private javax.swing.JButton jBAudio;
     private javax.swing.JButton jBClear;
+    private javax.swing.JButton jBCommit;
     private javax.swing.JButton jBDice;
     private javax.swing.JButton jBProcess;
     private javax.swing.JButton jBRefresh;
-    private javax.swing.JButton jBSave;
     private javax.swing.JLabel jLMsgs;
     private javax.swing.JMenu jMControls;
+    private javax.swing.JMenuItem jMIClean;
+    private javax.swing.JMenuItem jMICommit;
     private javax.swing.JMenuItem jMIDice;
     private javax.swing.JMenuItem jMILog;
     private javax.swing.JMenuItem jMIMenus;
     private javax.swing.JMenuItem jMIProcess;
     private javax.swing.JMenuItem jMIRefresh;
-    private javax.swing.JMenuItem jMISave;
     private javax.swing.JMenuItem jMIViews;
     private javax.swing.JMenu jMOptions;
     private javax.swing.JMenuBar jMenuBar;

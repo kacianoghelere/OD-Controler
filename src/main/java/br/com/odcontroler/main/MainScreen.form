@@ -16,16 +16,17 @@
             <Property name="name" type="java.lang.String" value="jMOptions" noResource="true"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMISave">
+            <MenuItem class="javax.swing.JMenuItem" name="jMICommit">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/ComponentIcons/controlers/save.png"/>
                 </Property>
+                <Property name="mnemonic" type="int" value="83"/>
                 <Property name="text" type="java.lang.String" value="Salvar"/>
-                <Property name="name" type="java.lang.String" value="jMISave" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="jMICommit" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMISaveActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMICommitActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMIProcess">
@@ -33,6 +34,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/ComponentIcons/controlers/settings.png"/>
                 </Property>
+                <Property name="mnemonic" type="int" value="80"/>
                 <Property name="text" type="java.lang.String" value="Processar"/>
                 <Property name="name" type="java.lang.String" value="jMIProcess" noResource="true"/>
               </Properties>
@@ -45,12 +47,23 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/ComponentIcons/transition/switch.png"/>
                 </Property>
+                <Property name="mnemonic" type="int" value="82"/>
                 <Property name="text" type="java.lang.String" value="Recarregar"/>
                 <Property name="name" type="java.lang.String" value="jMIRefresh" noResource="true"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIRefreshActionPerformed"/>
               </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMIClean">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/ComponentIcons/controlers/brush.png"/>
+                </Property>
+                <Property name="mnemonic" type="int" value="76"/>
+                <Property name="text" type="java.lang.String" value="Limpar"/>
+                <Property name="name" type="java.lang.String" value="jMIClean" noResource="true"/>
+              </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMIDice">
               <Properties>
@@ -183,7 +196,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jBSave">
+        <Component class="javax.swing.JButton" name="jBCommit">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/ComponentIcons/controlers/save.png"/>
@@ -191,11 +204,11 @@
             <Property name="toolTipText" type="java.lang.String" value="Salvar"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
-            <Property name="name" type="java.lang.String" value="jBSave" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="jBCommit" noResource="true"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBSaveActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBCommitActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBProcess">

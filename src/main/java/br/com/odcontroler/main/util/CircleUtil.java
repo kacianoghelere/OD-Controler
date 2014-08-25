@@ -35,19 +35,55 @@ public class CircleUtil {
     }
 
     /**
+     * Retorna o circulo conforme o nível recebido
+     *
+     * @param level {@code int} Nivel do circulo
+     * @param levels {@code int} Quantidade de niveis
+     * @param amount {@code int} Quantidade de circulos
+     * @return {@code Integer[]} Circulo do nível
+     */
+    public Integer[] getCircle(int level, int levels, int amount) {
+        Integer[][] matrix = getMatrix(levels, amount);
+        return matrix[level];
+    }
+
+    /**
+     * Retorna o circulo conforme o nível recebido
+     *
+     * @param level {@code int} Nivel do circulo
+     * @param matrix {@code Integer[][]} Matriz de circulos
+     * @return {@code Integer[]} Circulo do nível
+     */
+    public Integer[] getCircle(int level, Integer[][] matrix) {
+        return matrix[level];
+    }
+
+    /**
+     * Retorna o circulo conforme o nível recebido
+     *
+     * @param level {@code int} Nivel do circulo
+     * @param list {@code Integer[][]} Lista de circulos
+     * @return {@code List(Integer[])} Lista de circulos
+     */
+    public Integer[] getCircle(int level, List<Integer[]> list) {
+        return list.get(level);
+    }
+
+    /**
      * Constroi a matriz de circulos a partir da quantidade de niveis e circulos
      *
      * @param levels {@code int} Quantidade de niveis
-     * @param amount {@code int} Quantidade de circulos
+     * @param circles {@code int} Quantidade de circulos
      * @return {@code Integer[][]} Matriz de circulos
      */
-    private Integer[][] build(int levels, int amount) {
+    private Integer[][] build(int levels, int circles) {
         int begin = 0;
         int value = 1;
-        List<Integer[]> circles = new ArrayList();
+        List<Integer[]> list = new ArrayList();
         List<Integer> level = null;
         //----------------------------------------------------------------------
-        // Laço dos niveis dentro do circulo
+        // Laço dos niveis dentro do circulo, continua enquanto o tamanho da
+        // lista for inferior ao numero de circulos
         do {
             level = new ArrayList();
             //------------------------------------------------------------------
@@ -84,9 +120,11 @@ public class CircleUtil {
             begin += 2;
             //------------------------------------------------------------------
             // Converte e atribui a lista à lista de circulos
-            circles.add(level.toArray(new Integer[]{}));
-        } while (circles.size() < amount);
-        return tranpose(circles.toArray(new Integer[][]{}));
+            list.add(level.toArray(new Integer[]{}));
+        } while (list.size() < circles);
+        //----------------------------------------------------------------------
+        // Retorna a matriz transposta
+        return transpose(list.toArray(new Integer[][]{}));
     }
 
     /**
@@ -95,7 +133,7 @@ public class CircleUtil {
      * @param matrix {@code Object[][]} Matriz a ser transposta
      * @return {@code Object[][]} Matriz transposta
      */
-    public static Object[][] tranpose(Object[][] matrix) {
+    public static Object[][] transpose(Object[][] matrix) {
         Object[][] transposed = new Object[matrix[0].length][matrix.length];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
@@ -111,7 +149,7 @@ public class CircleUtil {
      * @param matrix {@code Integer[][]} Matriz a ser transposta
      * @return {@code Integer[][]} Matriz transposta
      */
-    private Integer[][] tranpose(Integer[][] matrix) {
+    private Integer[][] transpose(Integer[][] matrix) {
         Integer[][] transposed = new Integer[matrix[0].length][matrix.length];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {

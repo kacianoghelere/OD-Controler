@@ -7,7 +7,6 @@ import br.com.odcontroler.data.db.dao.MaterialTypeDAO;
 import br.com.odcontroler.data.db.dao.OriginDAO;
 import br.com.odcontroler.data.db.dao.WeaponDAO;
 import br.com.odcontroler.data.db.dao.WeaponTypeDAO;
-import br.com.odcontroler.data.entity.MaterialType;
 import br.com.odcontroler.data.entity.Weapon;
 import br.com.odcontroler.data.enums.Alignment;
 import br.com.odcontroler.data.enums.Dice;
@@ -31,7 +30,7 @@ import java.util.List;
  * @author kaciano
  * @version 1.0
  */
-@ViewData(name = "Armas", type = ViewType.CRUD)
+@ViewData(name = "Armas", type = ViewType.CRUD, path = {""})
 public class WeaponView extends View<WeaponBean> implements TableView, TableSource<Weapon> {
 
     private WeaponBean bean;

@@ -6,6 +6,7 @@ import br.com.odcontroler.data.db.dao.PerkDAO;
 import br.com.odcontroler.data.entity.Perk;
 import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.object.BeanEvent;
+import br.com.odcontroler.main.util.Description;
 import br.com.odcontroler.main.util.TableUtil;
 import br.com.odcontroler.main.view.View;
 import br.com.odcontroler.main.view.perk.sub.PerkSubView;
@@ -94,6 +95,18 @@ public class PerkView extends View implements TableSource<Perk>, TableView {
     @Override
     public PerkBean getBean() {
         return this.bean;
+    }
+
+    @Override
+    public Description getDescription() {
+        return new Description.Builder()
+                .setTitle(getTitle())
+                .setDescription("View para cadastro de controle de vantagens.")
+                .setSave("Remove todos os itens e salva os novos")
+                .setProcces("Nada faz.")
+                .setClear("Nada faz.")
+                .setLoad("Nada faz.")
+                .apply();
     }
 
     /**

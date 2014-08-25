@@ -30,7 +30,7 @@ public class PlayerChar {
     @ColumnName(name = "Peso")
     private Integer weight;
     @ColumnName(name = "Classe")
-    private CharClass charClass;
+    private ClassBase charClass;
     @ColumnName(name = "Raça")
     private CharRace charRace;
     @Ignore
@@ -56,10 +56,10 @@ public class PlayerChar {
      * @param sex {@code Character} Sexo do personagem
      * @param height {@code Double} Altura do personagem
      * @param weight {@code Integer} Peso do personagem
-     * @param charClass {@code CharClass} Classe do personagem
+     * @param charClass {@code ClassBase} Classe do personagem
      * @param charRace {@code CharRace} Raça do personagem
      */
-    public PlayerChar(Long id, String charName, String playerName, Integer age, Character sex, Double height, Integer weight, CharClass charClass, CharRace charRace) {
+    public PlayerChar(Long id, String charName, String playerName, Integer age, Character sex, Double height, Integer weight, ClassBase charClass, CharRace charRace) {
         this.id = id;
         this.name = charName;
         this.player = playerName;
@@ -217,25 +217,25 @@ public class PlayerChar {
     /**
      * Retorna a Classe do personagem
      *
-     * @return {@code CharClass} Classe do personagem
+     * @return {@code ClassBase} Classe do personagem
      */
-    public CharClass getCharClass() {
+    public ClassBase getCharClass() {
         return charClass;
     }
 
     /**
      * Modifica a Classe do personagem
      *
-     * @param charClass {@code CharClass} Classe do personagem
+     * @param charClass {@code ClassBase} Classe do personagem
      */
-    public void setCharClass(CharClass charClass) {
+    public void setCharClass(ClassBase charClass) {
         this.charClass = charClass;
     }
 
     /**
      * Retorna a Raça do personagem
      *
-     * @return {@code CharClass} Raça do personagem
+     * @return {@code ClassBase} Raça do personagem
      */
     public CharRace getCharRace() {
         return charRace;
@@ -244,7 +244,7 @@ public class PlayerChar {
     /**
      * Modifica a Raça do personagem
      *
-     * @param charRace {@code CharClass} Raça do personagem
+     * @param charRace {@code ClassBase} Raça do personagem
      */
     public void setCharRace(CharRace charRace) {
         this.charRace = charRace;

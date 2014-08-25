@@ -1,6 +1,7 @@
 package br.com.odcontroler.main.util;
 
 import br.com.gmp.utils.annotations.Intercept;
+import br.com.gmp.utils.object.StringUtil;
 import br.com.gmp.utils.reflection.ObjectInstance;
 import br.com.gmp.utils.reflection.ReflectionUtil;
 import br.com.odcontroler.data.db.dao.MenuDAO;
@@ -137,8 +138,8 @@ public class MenuBuilder {
         Long menuid = null;
         for (Component comp : parent.getMenuComponents()) {
             jmenu = (JMenu) comp;
-            sub = jmenu.getText().split("-")[0].trim().substring(1);
-            menuid = Long.parseLong(sub);
+            sub = jmenu.getText().split("-")[0].trim();
+            menuid = Long.parseLong(StringUtil.onlyNumbers(sub));
             if (menu.getParent().equals(menuid)) {
                 mainScreen.printTypedMsg("Inserindo em: " + jmenu.getText(),
                         Main.INFORMATIVE_MSG);
@@ -159,7 +160,7 @@ public class MenuBuilder {
      * @throws java.lang.InstantiationException Exceção de instanciamento
      */
     public void buildItems(List<MenuItem> items, boolean execute) throws ClassNotFoundException, InstantiationException {
-        //Collections.sort(items);
+        Collections.sort(items);
         for (MenuItem item : items) {
             if (((long) 0) == item.getMenu()) {
                 insertItem(root, item, execute);
@@ -184,8 +185,8 @@ public class MenuBuilder {
         Long menuid = null;
         for (Component comp : jmenu.getMenuComponents()) {
             menu = (JMenu) comp;
-            prefix = menu.getText().split("-")[0].trim().substring(1);
-            menuid = Long.parseLong(prefix);
+            prefix = menu.getText().split("-")[0].trim();
+            menuid = Long.parseLong(StringUtil.onlyNumbers(prefix));
             if (item.getMenu().equals(menuid)) {
                 insertItem(menu, item, execute);
                 break;

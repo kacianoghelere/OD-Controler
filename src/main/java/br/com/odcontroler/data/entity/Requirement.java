@@ -5,7 +5,7 @@ package br.com.odcontroler.data.entity;
  *
  * @author ka
  */
-public class Requires {
+public class Requirement {
 
     private int STR;
     private int DES;
@@ -17,7 +17,7 @@ public class Requires {
     /**
      * Cria nova instancia de Requires
      */
-    public Requires() {
+    public Requirement() {
     }
 
     /**
@@ -30,7 +30,7 @@ public class Requires {
      * @param WIS {@code int} Requerimento minimo para sabedoria
      * @param CHA {@code int} Requerimento minimo para carisma
      */
-    public Requires(int STR, int DES, int CON, int INT, int WIS, int CHA) {
+    public Requirement(int STR, int DES, int CON, int INT, int WIS, int CHA) {
         this.STR = STR;
         this.DES = DES;
         this.CON = CON;

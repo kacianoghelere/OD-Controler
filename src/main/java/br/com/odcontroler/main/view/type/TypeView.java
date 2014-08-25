@@ -13,6 +13,7 @@ import br.com.odcontroler.data.entity.MaterialType;
 import br.com.odcontroler.data.entity.PerkType;
 import br.com.odcontroler.data.entity.Type;
 import br.com.odcontroler.main.MainScreen;
+import br.com.odcontroler.main.util.Description;
 import br.com.odcontroler.main.view.View;
 import br.com.odcontroler.main.view.annotation.ViewData;
 import br.com.odcontroler.main.view.enums.ViewType;
@@ -28,7 +29,7 @@ import java.awt.event.KeyEvent;
  * @author kaciano
  * @version 1.1
  */
-@ViewData(name = "Controle de tipos", type = ViewType.CRUD)
+@ViewData(name = "Controle de tipos", type = ViewType.CRUD, path = {""})
 public class TypeView extends View<TypeBean> {
 
     private TypeBean bean;
@@ -130,7 +131,17 @@ public class TypeView extends View<TypeBean> {
             model.remove(type);
         }
     }
-
+    @Override
+    public Description getDescription() {
+        return new Description.Builder()
+                .setTitle(getTitle())
+                .setDescription("View para cadastro de controle de tipos.")
+                .setSave("Remove todos os itens e salva os novos")
+                .setProcces("Nada faz.")
+                .setClear("Nada faz.")
+                .setLoad("Nada faz.")
+                .apply();
+    }
     /**
      * Retorna o modelo de lista dos EffectTypes
      *

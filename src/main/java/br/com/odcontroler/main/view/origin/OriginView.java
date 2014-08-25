@@ -8,7 +8,7 @@ import br.com.odcontroler.data.db.dao.OriginDAO;
 import br.com.odcontroler.data.entity.Origin;
 import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.object.BeanEvent;
-import br.com.odcontroler.main.util.TableUtil;
+import br.com.odcontroler.main.util.Description;
 import br.com.odcontroler.main.view.View;
 import br.com.odcontroler.main.view.annotation.ViewData;
 import br.com.odcontroler.main.view.enums.ViewType;
@@ -25,7 +25,7 @@ import java.util.logging.Logger;
  * @author kaciano
  * @version 1.0
  */
-@ViewData(name = "Origem de itens", type = ViewType.CRUD)
+@ViewData(name = "Origem de itens", type = ViewType.CRUD, path = {""})
 public class OriginView extends View implements TableView, TableSource<Origin> {
 
     private OriginBean bean;
@@ -109,6 +109,18 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
     @Override
     public List<Origin> getTableData() {
         return new OriginDAO().getList();
+    }
+
+    @Override
+    public Description getDescription() {
+        return new Description.Builder()
+                .setTitle(getTitle())
+                .setDescription("View para cadastro de controle de origens.")
+                .setSave("Remove todos os itens e salva os novos")
+                .setProcces("Nada faz.")
+                .setClear("Nada faz.")
+                .setLoad("Nada faz.")
+                .apply();
     }
 
     @SuppressWarnings("unchecked")

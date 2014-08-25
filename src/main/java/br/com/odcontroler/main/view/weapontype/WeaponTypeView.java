@@ -13,6 +13,7 @@ import br.com.odcontroler.data.enums.UseType;
 import br.com.odcontroler.data.enums.Size;
 import br.com.odcontroler.main.MainScreen;
 import br.com.odcontroler.main.object.BeanEvent;
+import br.com.odcontroler.main.util.Description;
 import br.com.odcontroler.main.view.View;
 import br.com.odcontroler.main.view.annotation.ViewData;
 import br.com.odcontroler.main.view.enums.ViewType;
@@ -29,7 +30,7 @@ import java.util.List;
  * @author kaciano
  * @version 1.0
  */
-@ViewData(name = "Tipos de armas", type = ViewType.CRUD)
+@ViewData(name = "Tipos de armas", type = ViewType.CRUD, path = {""})
 public class WeaponTypeView extends View<WeaponTypeBean> implements TableView, TableSource<WeaponType> {
 
     private WeaponTypeBean bean;
@@ -152,6 +153,18 @@ public class WeaponTypeView extends View<WeaponTypeBean> implements TableView, T
     @Override
     public BeanListener getBean() {
         return this.bean;
+    }
+
+    @Override
+    public Description getDescription() {
+        return new Description.Builder()
+                .setTitle(getTitle())
+                .setDescription("View para cadastro de controle de tipos de armas.")
+                .setSave("Remove todos os itens e salva os novos")
+                .setProcces("Nada faz.")
+                .setClear("Nada faz.")
+                .setLoad("Nada faz.")
+                .apply();
     }
 
     /**

@@ -5,6 +5,7 @@ import br.com.odcontroler.main.view.log.model.FileModel;
 import br.com.gmp.comps.GColors;
 import br.com.gmp.utils.file.FileUtil;
 import br.com.odcontroler.main.MainScreen;
+import br.com.odcontroler.main.util.Description;
 import br.com.odcontroler.main.view.View;
 import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.object.ViewParameter;
@@ -12,8 +13,6 @@ import br.com.odcontroler.system.SystemManager;
 import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JCheckBox;
 import javax.swing.JTree;
 import javax.swing.table.TableCellRenderer;
@@ -76,6 +75,18 @@ public class LogView extends View {
     @Override
     public LogBean getBean() {
         return this.bean;
+    }
+
+    @Override
+    public Description getDescription() {
+        return new Description.Builder()
+                .setTitle(getTitle())
+                .setDescription("View para controle de logs.")
+                .setSave("Nada faz.")
+                .setProcces("Nada faz.")
+                .setClear("Nada faz.")
+                .setLoad("Nada faz.")
+                .apply();
     }
 
     @SuppressWarnings("unchecked")
