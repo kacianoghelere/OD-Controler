@@ -4,6 +4,7 @@ import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.odcontroler.data.db.dao.SpellTypeDAO;
 import br.com.odcontroler.data.entity.Spell;
 import br.com.odcontroler.data.entity.SpellType;
+import br.com.odcontroler.data.enums.Category;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.exception.ViewException;
 import br.com.odcontroler.main.view.spell.SpellView;
@@ -22,12 +23,13 @@ public class SpellSubView extends SubView {
     private SpellBean bean;
     private Spell spell;
     private GComboBoxModel<SpellType> typeModel;
+    private GComboBoxModel<Category> categoryModel;
 
     /**
      * Cria nova instancia de SpellSubView
      *
      * @param parent {@code SpellView} Tela das Magias
-     * @param spell {@code SpellView} Magia
+     * @param spell {@code Spell} Magia
      */
     public SpellSubView(SpellView parent, Spell spell) {
         super(parent);
@@ -38,20 +40,22 @@ public class SpellSubView extends SubView {
     /**
      * Método de inicialização
      *
-     * @param spell {@code SpellView} Magia
+     * @param spell {@code Spell} Magia
      */
     private void initialize(Spell spell) {
-        this.setSize(385, 427);
+        this.setSize(458, 435);
         this.bean = view.getBean();
         this.initComponents();
         this.load();
         this.gCBType.setGModel(typeModel);
+        this.gCBCategory.setGModel(categoryModel);
         this.setSpell(spell);
     }
 
     @Override
     public void load() {
         this.typeModel = new GComboBoxModel<>(new SpellTypeDAO().getList());
+        this.categoryModel = new GComboBoxModel<>(Category.values());
     }
 
     /**
@@ -67,6 +71,10 @@ public class SpellSubView extends SubView {
         }
         if (!gCBType.validateComponent()) {
             LOGGER.severe("Tipo invalido");
+            return false;
+        }
+        if (!gCBCategory.validateComponent()) {
+            LOGGER.severe("Categoria invalida");
             return false;
         }
         if (!gTRange.validateComponent()) {
@@ -85,7 +93,7 @@ public class SpellSubView extends SubView {
     }
 
     /**
-     * Reconstroi a arma
+     * Reconstroi a magia
      */
     private void build() {
         if (spell == null) {
@@ -96,6 +104,7 @@ public class SpellSubView extends SubView {
         }
         this.spell.setName(gTName.getText());
         this.spell.setType(typeModel.getSelectedItem());
+        this.spell.setCategory(categoryModel.getSelectedItem());
         this.spell.setCircle((Integer) jSpnCircle.getValue());
         this.spell.setRange(gTRange.getText());
         this.spell.setDuration(gTDuration.getText());
@@ -122,6 +131,7 @@ public class SpellSubView extends SubView {
                 this.spell = spell;
                 this.gTName.setText(spell.getName());
                 this.gCBType.setSelectedItem(spell.getType());
+                this.gCBCategory.setSelectedItem(spell.getCategory());
                 this.jSpnCircle.setValue(spell.getCircle());
                 this.gTRange.setText(spell.getRange());
                 this.gTDuration.setText(spell.getDuration());
@@ -163,6 +173,8 @@ public class SpellSubView extends SubView {
         jLLength = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         gTADesc = new br.com.gmp.comps.textarea.GTextArea();
+        jLCategory = new javax.swing.JLabel();
+        gCBCategory = new br.com.gmp.comps.combobox.GComboBox();
         jBCancel = new javax.swing.JButton();
         jBAdd = new javax.swing.JButton();
 
@@ -170,9 +182,9 @@ public class SpellSubView extends SubView {
         setIconifiable(true);
         setTitle("Editar magias");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1399_@.png"))); // NOI18N
-        setMaximumSize(new java.awt.Dimension(385, 427));
-        setMinimumSize(new java.awt.Dimension(385, 427));
-        setPreferredSize(new java.awt.Dimension(385, 427));
+        setMaximumSize(new java.awt.Dimension(458, 435));
+        setMinimumSize(new java.awt.Dimension(458, 435));
+        setPreferredSize(new java.awt.Dimension(458, 435));
 
         jLName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLName.setText("Nome:");
@@ -196,6 +208,9 @@ public class SpellSubView extends SubView {
         gTADesc.setRows(5);
         jScrollPane2.setViewportView(gTADesc);
 
+        jLCategory.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLCategory.setText("Categoria:");
+
         javax.swing.GroupLayout jPBasicsLayout = new javax.swing.GroupLayout(jPBasics);
         jPBasics.setLayout(jPBasicsLayout);
         jPBasicsLayout.setHorizontalGroup(
@@ -205,30 +220,32 @@ public class SpellSubView extends SubView {
                 .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
                     .addGroup(jPBasicsLayout.createSequentialGroup()
-                        .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLRange, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLRange, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(gTName, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(gTRange, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(gTName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(gTRange, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPBasicsLayout.createSequentialGroup()
-                                .addComponent(gCBType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(gCBType, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLCircle)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jSpnCircle, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPBasicsLayout.createSequentialGroup()
-                        .addComponent(jLLength)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(gTDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBasicsLayout.createSequentialGroup()
+                        .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLCategory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLLength, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(gTDuration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(gCBCategory, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE))))
                 .addContainerGap())
         );
 
-        jPBasicsLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLLength, jLName, jLRange, jLType});
-
-        jPBasicsLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {gTDuration, gTName, gTRange});
+        jPBasicsLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLCategory, jLLength, jLName, jLRange, jLType});
 
         jPBasicsLayout.setVerticalGroup(
             jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,11 +269,17 @@ public class SpellSubView extends SubView {
                     .addComponent(gTDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLLength))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gCBCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         jPBasicsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCBType, gTName, jLLength, jLName, jLRange, jLType});
+
+        jPBasicsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCBCategory, gTDuration});
 
         jTabs.addTab("Configurações Básicas", jPBasics);
 
@@ -287,7 +310,7 @@ public class SpellSubView extends SubView {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabs)
+                    .addComponent(jTabs, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jBAdd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -299,8 +322,8 @@ public class SpellSubView extends SubView {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabs)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBAdd)
                     .addComponent(jBCancel))
@@ -335,6 +358,7 @@ public class SpellSubView extends SubView {
     }//GEN-LAST:event_jBAddActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private br.com.gmp.comps.combobox.GComboBox gCBCategory;
     private br.com.gmp.comps.combobox.GComboBox gCBType;
     private br.com.gmp.comps.textarea.GTextArea gTADesc;
     private br.com.gmp.comps.textfield.GTextField gTDuration;
@@ -342,6 +366,7 @@ public class SpellSubView extends SubView {
     private br.com.gmp.comps.textfield.GTextField gTRange;
     private javax.swing.JButton jBAdd;
     private javax.swing.JButton jBCancel;
+    private javax.swing.JLabel jLCategory;
     private javax.swing.JLabel jLCircle;
     private javax.swing.JLabel jLLength;
     private javax.swing.JLabel jLName;

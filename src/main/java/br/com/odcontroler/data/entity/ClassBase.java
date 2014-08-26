@@ -66,7 +66,7 @@ public class ClassBase implements Serializable {
     @Ignore
     @ColumnName(name = "Vantagens")
     private List<Perk> perks;
-
+    
     /**
      * Cria nova instancia de CharClass
      */

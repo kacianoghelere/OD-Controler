@@ -4,8 +4,7 @@ import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.odcontroler.data.enums.Alignment;
 import br.com.odcontroler.data.entity.ClassBase;
 import br.com.odcontroler.data.enums.ClassType;
-import br.com.odcontroler.data.entity.Origin;
-import br.com.odcontroler.data.entity.MaterialType;
+import br.com.odcontroler.data.enums.Attribute;
 import br.com.odcontroler.main.object.BeanEvent;
 import br.com.odcontroler.main.view.sub.SubView;
 import br.com.odcontroler.main.view.classes.ClassView;
@@ -31,6 +30,7 @@ public class ClassSubView extends SubView {
     private final ClassView view;
     private GComboBoxModel<ClassType> clTypeModel;
     private GComboBoxModel<Alignment> alignmentModel;
+    private GComboBoxModel<Attribute> attrModel;
 
     /**
      * Cria nova instancia de ClassSubView
@@ -57,17 +57,18 @@ public class ClassSubView extends SubView {
         this.bean = view.getBean();
         this.clTypeModel = new GComboBoxModel<>();
         this.alignmentModel = new GComboBoxModel<>(Alignment.values());
+        this.attrModel = new GComboBoxModel<>(Attribute.values());
         //----------------------------------------------------------------------
-        JMenuItem gen;
-        gen = new JMenuItem("Gerar nome", new ImageIcon(getClass()
-                .getResource("/ComponentIcons/controlers/settings.png")));
-        gen.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                autoName();
-            }
-        });
+//        JMenuItem gen;
+//        gen = new JMenuItem("Gerar nome", new ImageIcon(getClass()
+//                .getResource("/ComponentIcons/controlers/settings.png")));
+//        gen.addActionListener(new ActionListener() {
+//
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                autoName();
+//            }
+//        });
 //        this.gTName.getComponentPopupMenu().add(gen);
         //----------------------------------------------------------------------
         this.setClass(cl);
@@ -79,7 +80,7 @@ public class ClassSubView extends SubView {
      *
      * @since 1.0
      */
-    private void autoName() {
+//    private void autoName() {
 //        if (gCBType.validateComponent() && gCBMaterial.validateComponent() && gCBOrigin.validateComponent()) {
 //            ClassType prefix = this.clTypeModel.getSelectedItem();
 //            MaterialType mat1 = this.materialModel.getSelectedItem();
@@ -87,7 +88,7 @@ public class ClassSubView extends SubView {
 //            this.gTName.setText(prefix.getName() + " " + origin.getName()
 //                    + " de " + mat1.getName());
 //        }
-    }
+//    }
 
     /**
      * Retorna a classe que está sendo editada

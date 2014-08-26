@@ -4,6 +4,7 @@ import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.Id;
+import br.com.odcontroler.data.enums.Category;
 import java.util.Objects;
 
 /**
@@ -28,6 +29,9 @@ public class Spell {
     @ColumnName(name = "Tipo")
     private SpellType type;
     @Editable
+    @ColumnName(name = "Categoria")
+    private Category category;
+    @Editable
     @ColumnName(name = "Alcance")
     private String range;
     @Editable
@@ -49,16 +53,19 @@ public class Spell {
      * @param id {@code Long} Id do Spell
      * @param name {@code String} Nome do Spell
      * @param circle {@code Integer} O circulo do Spell
-     * @param type {@code SpellType} Tipo do SpellType
+     * @param type {@code SpellType} Tipo do Spell
+     * @param category {@code Category} Categoria do Spell
      * @param range {@code String} O alcance do Spell
      * @param duration {@code String} Duração do Spell
      * @param description {@code String} Descrição do Spell
      */
-    public Spell(Long id, String name, Integer circle, SpellType type, String range, String duration, String description) {
+    public Spell(Long id, String name, Integer circle, SpellType type,
+            Category category, String range, String duration, String description) {
         this.id = id;
         this.name = name;
         this.circle = circle;
         this.type = type;
+        this.category = category;
         this.range = range;
         this.duration = duration;
         this.description = description;
@@ -153,6 +160,24 @@ public class Spell {
      */
     public void setType(SpellType type) {
         this.type = type;
+    }
+
+    /**
+     * Retorna o Category do SpellType
+     *
+     * @return {@code Category} Category do SpellType
+     */
+    public Category getCategory() {
+        return category;
+    }
+
+    /**
+     * Modifica o Category do SpellType
+     *
+     * @param category {@code Category} Category do SpellType
+     */
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     /**
