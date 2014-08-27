@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<project name="odcontroler" id="Project9230002" database="HSql" >
-    <comment>Banco de dados para o odcontroler</comment>
+<project name="urcontroler" id="Project9230002" database="HSql" >
+    <comment>Banco de dados para o urcontroler</comment>
     <schema name="PUBLIC" catalogname="PUBLIC" schemaname="PUBLIC" defo="y" >
         <table name="CHAR_CLASS" >
             <column name="ID" type="integer" length="32" decimal="0" jt="4" mandatory="y" />
@@ -250,9 +250,9 @@
             </index>
         </table>
     </schema>
-    <schema name="odcontroler" schemaname="odcontroler" defo="y" />
+    <schema name="urcontroler" schemaname="urcontroler" defo="y" />
     <connector name="HSql" database="HSql" driver_class="org.hsqldb.jdbc.JDBCDriver" driver_jar="hsqldb.jar" host="localhost" port="9001" instance="/home/kaciano/.RPG/rpgdb.properties" schema_mapping="" />
-    <layout id="Layout9230004" name="odcontroler" joined_routing="y" show_column_type="y" show_relation_columns="y" >
+    <layout id="Layout9230004" name="urcontroler" joined_routing="y" show_column_type="y" show_relation_columns="y" >
         <entity schema="PUBLIC" name="EXPERTISE" color="b2cdf7" x="540" y="510" />
         <entity schema="PUBLIC" name="EFFECT" color="f7b4b2" x="300" y="510" />
         <entity schema="PUBLIC" name="STATUS" color="b2cdf7" x="735" y="510" />

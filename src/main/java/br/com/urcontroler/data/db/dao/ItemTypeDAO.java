@@ -1,0 +1,14 @@
+package br.com.urcontroler.data.db.dao;
+
+import br.com.urcontroler.data.db.GenericDAO;
+import br.com.urcontroler.data.entity.ItemType;
+
+/**
+ * Dao de controle para tipos de itens
+ *
+ * @author kaciano
+ * @version 1.0
+ */
+public class ItemTypeDAO extends GenericDAO<ItemType> {
+
+}

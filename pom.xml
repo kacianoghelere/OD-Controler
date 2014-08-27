@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>br.com.odcontroler</groupId>
-    <artifactId>OD-Controler</artifactId>
+    <groupId>br.com.urcontroler</groupId>
+    <artifactId>Ultimate-RPG-Controler</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
     <repositories>
@@ -13,6 +13,11 @@
         <repository>
             <id>central</id>
             <url>http://repo1.maven.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>unknown-jars-temp-repo</id>
+            <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
+            <url>file:${project.basedir}/lib</url>
         </repository>
     </repositories>
     <dependencies>      
@@ -50,7 +55,7 @@
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
-        </dependency>        
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -104,7 +109,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>br.com.odcontroler.system.SystemManager</mainClass>      
+                            <mainClass>br.com.urcontroler.system.SystemManager</mainClass>      
                             <classpathPrefix>dependency-jars/</classpathPrefix>                      
                         </manifest>
                     </archive>
@@ -131,5 +136,5 @@
             </plugin>                  
         </plugins>      
     </build>
-    <name>OD-Controler</name>
+    <name>Ultimate RPG Controler</name>
 </project>
