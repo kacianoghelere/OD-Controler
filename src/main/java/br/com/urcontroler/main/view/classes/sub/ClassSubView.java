@@ -1,14 +1,20 @@
 package br.com.urcontroler.main.view.classes.sub;
 
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
+import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.urcontroler.data.enums.Alignment;
 import br.com.urcontroler.data.entity.ClassBase;
+import br.com.urcontroler.data.entity.ClassLevel;
 import br.com.urcontroler.data.enums.ClassType;
 import br.com.urcontroler.data.enums.Attribute;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.view.sub.SubView;
 import br.com.urcontroler.main.view.classes.ClassView;
 import br.com.urcontroler.main.view.classes.ClassBean;
+import br.com.urcontroler.main.view.classes.sub.model.ClassLevelModel;
+import br.com.urcontroler.main.view.exception.ViewException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 /**
@@ -19,11 +25,12 @@ import java.util.logging.Level;
  * @author kaciano
  * @version 1.1
  */
-public class ClassSubView extends SubView {
+public class ClassSubView extends SubView implements TableSource<ClassLevel> {
 
     private ClassBase classBase;
     private ClassBean bean;
     private final ClassView view;
+    private ClassLevelModel levelModel;
     private GComboBoxModel<ClassType> clTypeModel;
     private GComboBoxModel<Alignment> alignmentModel;
     private GComboBoxModel<Attribute> attrModel;
@@ -51,14 +58,38 @@ public class ClassSubView extends SubView {
         this.setSize(624, 476);
         this.initComponents();
         this.bean = view.getBean();
-        this.clTypeModel = new GComboBoxModel<>();
-        this.alignmentModel = new GComboBoxModel<>(Alignment.values());
-        this.attrModel = new GComboBoxModel<>(Attribute.values());
+        this.load();
+        this.gTblLevels.buildTable(this, 0, levelModel);
         //----------------------------------------------------------------------
         this.setClass(cl);
         this.setVisible(true);
     }
 
+    @Override
+    public void load() {
+        this.levelModel = new ClassLevelModel();
+        this.clTypeModel = new GComboBoxModel<>();
+        this.alignmentModel = new GComboBoxModel<>(Alignment.values());
+        this.attrModel = new GComboBoxModel<>(Attribute.values());
+    }
+
+    @Override
+    public List<ClassLevel> getTableData() {
+        List<ClassLevel> list = new ArrayList<>();
+        if (classBase != null) {
+            list.addAll(classBase.getClassLevels());
+        } else {
+            Long previous = 0l;
+            Long exp = 0l;
+            for (int i = 0; i < 20; i++) {
+                int next = (i + 1);
+                exp = Math.round(previous * 1.5);
+                previous = exp;
+                list.add(new ClassLevel(next, exp, i, (next > 9), next, (15 - i)));
+            }
+        }
+        return list;
+    }
 
     /**
      * Retorna a classe que está sendo editada
@@ -80,11 +111,10 @@ public class ClassSubView extends SubView {
         try {
             if (cl != null) {
                 this.classBase = cl;
-//                this.gTName.setText(cl.getName());
-
+                this.gTName.setText(cl.getName());
             }
         } catch (Exception e) {
-            LOGGER.log(Level.SEVERE, null, e);
+            throwException(new ViewException(view, e));
         }
     }
 
@@ -100,7 +130,7 @@ public class ClassSubView extends SubView {
         if (this.classBase.getId() == null) {
             this.classBase.setId(bean.getNextID());
         }
-//        this.classBase.setName(gTName.getText());
+        this.classBase.setName(gTName.getText());
         this.classBase.setDescription(gTADesc.getText());
         this.classBase.setType(clTypeModel.getSelectedItem());
     }
@@ -112,18 +142,26 @@ public class ClassSubView extends SubView {
      * @since 1.0
      */
     private boolean validateFields() {
-//        if (!gTName.validateComponent()) {
-//            System.out.println("Nome invalido");
-//            return false;
-//        }
-//        if (!gCBType.validateComponent()) {
-//            System.out.println("Tipo invalido");
-//            return false;
-//        }
-//        if (!gCBMaterial.validateComponent()) {
-//            System.out.println("Material invalido");
-//            return false;
-//        }
+        if (!gTName.validateComponent()) {
+            System.out.println("Nome invalido");
+            return false;
+        }
+        if (!gCBDice.validateComponent()) {
+            System.out.println("Dado de vida invalido");
+            return false;
+        }
+        if (!gCBType.validateComponent()) {
+            System.out.println("Tipo invalido");
+            return false;
+        }
+        if (!gCBKeyAttr.validateComponent()) {
+            System.out.println("Atributo chave invalido");
+            return false;
+        }
+        if (!gCBAligment.validateComponent()) {
+            System.out.println("Alinhamento invalido");
+            return false;
+        }
 //        if (!(jSpinCA.getValue() != null && ((Integer) jSpinCA.getValue()) != 0)) {
 //            showBallon(jSpinCA, "CA invalido");
 //            return false;
@@ -168,6 +206,7 @@ public class ClassSubView extends SubView {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bGEvolution = new javax.swing.ButtonGroup();
         jBAdd = new javax.swing.JButton();
         jBCancel = new javax.swing.JButton();
         jTPConfigs = new javax.swing.JTabbedPane();
@@ -186,8 +225,14 @@ public class ClassSubView extends SubView {
         jLAligment = new javax.swing.JLabel();
         rPane = new br.com.urcontroler.main.comps.RequirementPane();
         jTBModifiers = new javax.swing.JTabbedPane();
+        jPLevels = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         gTblLevels = new br.com.gmp.comps.table.GTable();
+        gCHMedium = new br.com.gmp.comps.checkbox.GCheckBox();
+        jLEvolution = new javax.swing.JLabel();
+        gCHFast = new br.com.gmp.comps.checkbox.GCheckBox();
+        gCHSlow = new br.com.gmp.comps.checkbox.GCheckBox();
+        jBRecharge = new javax.swing.JButton();
         gDLArmors = new br.com.gmp.comps.list.dual.GMPDualList();
         gDLWeapons = new br.com.gmp.comps.list.dual.GMPDualList();
         gDLItems = new br.com.gmp.comps.list.dual.GMPDualList();
@@ -316,7 +361,59 @@ public class ClassSubView extends SubView {
 
         jScrollPane1.setViewportView(gTblLevels);
 
-        jTBModifiers.addTab("Niveis", new javax.swing.ImageIcon(getClass().getResource("/Mixed/slice1393_@.png")), jScrollPane1); // NOI18N
+        bGEvolution.add(gCHMedium);
+        gCHMedium.setText("Mediana");
+
+        jLEvolution.setText("Evolução:");
+
+        bGEvolution.add(gCHFast);
+        gCHFast.setSelected(true);
+        gCHFast.setText("Rápida");
+
+        bGEvolution.add(gCHSlow);
+        gCHSlow.setText("Lenta");
+
+        jBRecharge.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/transition/switch.png"))); // NOI18N
+        jBRecharge.setText("Recarregar");
+
+        javax.swing.GroupLayout jPLevelsLayout = new javax.swing.GroupLayout(jPLevels);
+        jPLevels.setLayout(jPLevelsLayout);
+        jPLevelsLayout.setHorizontalGroup(
+            jPLevelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
+            .addGroup(jPLevelsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLEvolution)
+                .addGap(14, 14, 14)
+                .addComponent(gCHFast, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gCHMedium, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gCHSlow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBRecharge)
+                .addContainerGap())
+        );
+
+        jPLevelsLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {gCHFast, gCHMedium, gCHSlow});
+
+        jPLevelsLayout.setVerticalGroup(
+            jPLevelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPLevelsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPLevelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(gCHMedium, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLEvolution)
+                    .addComponent(gCHFast, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gCHSlow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBRecharge))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
+        );
+
+        jPLevelsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCHFast, gCHMedium, gCHSlow});
+
+        jTBModifiers.addTab("Niveis", new javax.swing.ImageIcon(getClass().getResource("/Mixed/slice1393_@.png")), jPLevels); // NOI18N
 
         gDLArmors.setDestinationLabelText("Pode utilizar");
         gDLArmors.setSourceLabelText("Não pode utilizar");
@@ -397,10 +494,14 @@ public class ClassSubView extends SubView {
     }//GEN-LAST:event_jBAddActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup bGEvolution;
     private br.com.gmp.comps.combobox.GComboBox gCBAligment;
     private br.com.gmp.comps.combobox.GComboBox gCBDice;
     private br.com.gmp.comps.combobox.GComboBox gCBKeyAttr;
     private br.com.gmp.comps.combobox.GComboBox gCBType;
+    private br.com.gmp.comps.checkbox.GCheckBox gCHFast;
+    private br.com.gmp.comps.checkbox.GCheckBox gCHMedium;
+    private br.com.gmp.comps.checkbox.GCheckBox gCHSlow;
     private br.com.gmp.comps.list.dual.GMPDualList gDLArmors;
     private br.com.gmp.comps.list.dual.GMPDualList gDLItems;
     private br.com.gmp.comps.list.dual.GMPDualList gDLMagics;
@@ -411,17 +512,21 @@ public class ClassSubView extends SubView {
     private br.com.gmp.comps.table.GTable gTblLevels;
     private javax.swing.JButton jBAdd;
     private javax.swing.JButton jBCancel;
+    private javax.swing.JButton jBRecharge;
     private javax.swing.JLabel jLAligment;
     private javax.swing.JLabel jLBonusCA;
     private javax.swing.JLabel jLDice;
+    private javax.swing.JLabel jLEvolution;
     private javax.swing.JLabel jLKeyAttr;
     private javax.swing.JLabel jLName;
     private javax.swing.JLabel jLType;
     private javax.swing.JPanel jPBasics;
+    private javax.swing.JPanel jPLevels;
     private javax.swing.JScrollPane jSPDesc;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTBModifiers;
     private javax.swing.JTabbedPane jTPConfigs;
     private br.com.urcontroler.main.comps.RequirementPane rPane;
     // End of variables declaration//GEN-END:variables
+
 }

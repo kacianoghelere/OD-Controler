@@ -1,6 +1,7 @@
 package br.com.urcontroler.data.entity;
 
 import br.com.gmp.utils.annotations.ColumnName;
+import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
 
 /**
@@ -13,19 +14,21 @@ public class ClassLevel {
 
     @ColumnName(name = "Nível")
     private Integer level;
+    @Editable
     @ColumnName(name = "Exp")
     private Long xp;
+    @Editable
     @ColumnName(name = "Dado de vida")
     private Integer lifeAmount;
     @Ignore
     @ColumnName(name = "Vida extra")
     private Boolean plusLife;
+    @Editable
     @ColumnName(name = "Ataque Base")
     private Integer atkBase;
+    @Editable
     @ColumnName(name = "JP")
-    private Integer protection;    
-    @ColumnName(name = "Magias por circulo")
-    private Integer[] magicPerCircle;
+    private Integer protection;
 
     /**
      * Cria nova instância de ClassLevel
@@ -42,17 +45,15 @@ public class ClassLevel {
      * @param plusLife {@code Integer} Representa vida extra
      * @param atkBase {@code Integer} Base de ataque
      * @param protection {@code Integer} JP
-     * @param magicPerCircle {@code Integer[]} Magias por circulo
      */
     public ClassLevel(Integer level, Long xp, Integer lifeAmount, Boolean plusLife,
-            Integer atkBase, Integer protection, Integer[] magicPerCircle) {
+            Integer atkBase, Integer protection) {
         this.level = level;
         this.xp = xp;
         this.lifeAmount = lifeAmount;
         this.plusLife = plusLife;
         this.atkBase = atkBase;
         this.protection = protection;
-        this.magicPerCircle = magicPerCircle;
     }
 
     @Override
@@ -171,24 +172,6 @@ public class ClassLevel {
      */
     public void setProtection(Integer protection) {
         this.protection = protection;
-    }
-
-    /**
-     * Retorna as magias por circulo
-     *
-     * @return {@code Integer[]}
-     */
-    public Integer[] getMagicPerCircle() {
-        return magicPerCircle;
-    }
-
-    /**
-     * Modifica as magias por circulo
-     *
-     * @param magicPerCircle {@code Integer[]}
-     */
-    public void setMagicPerCircle(Integer[] magicPerCircle) {
-        this.magicPerCircle = magicPerCircle;
     }
 
 }
