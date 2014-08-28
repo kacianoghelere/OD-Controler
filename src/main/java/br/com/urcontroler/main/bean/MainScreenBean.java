@@ -10,6 +10,7 @@ import br.com.urcontroler.main.interfaces.Main;
 import br.com.urcontroler.main.interfaces.MainListener;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.view.View;
+import br.com.urcontroler.main.view.annotation.ViewData;
 import br.com.urcontroler.main.view.object.ViewParameter;
 import java.awt.Component;
 import java.beans.PropertyVetoException;
@@ -34,6 +35,7 @@ public class MainScreenBean implements MainListener {
     private Map<String, MenuItem> viewMap;
     private File dir;
     private File log;
+    private final ReflectionUtil reflect = new ReflectionUtil();
 
     /**
      * Cria nova instancia de MainScreenBean
@@ -179,6 +181,21 @@ public class MainScreenBean implements MainListener {
         } else {
             screen.printTypedMsg("View já carregada!", Main.INFORMATIVE_MSG);
         }
+    }
+
+    @Intercept
+    @Override
+    public void insertInstance(ObjectInstance instance) {        
+        try {            
+            View newView = (View) reflect.newInstance(instance);
+            if (instance.getCl().getClass().isAnnotationPresent(ViewData.class)) {
+                ViewData data = instance.getCl().getClass().getAnnotation(ViewData.class);      
+                newView.setTitle(data.name());
+            }
+            insertView(newView);
+        } catch (InstantiationException ex) {
+            LOGGER.log(Level.SEVERE, null, ex);
+        }        
     }
 
     /**

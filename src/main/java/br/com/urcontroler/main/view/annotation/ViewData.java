@@ -21,19 +21,19 @@ public @interface ViewData {
      *
      * @return {@code String} Nome da View
      */
-    String name();
+    public String name();
 
     /**
      * Caminho da View
      *
      * @return {@code String} Caminho da View
      */
-    String[] path();
+    public String[] path();
 
     /**
      * Tipo da View
      *
      * @return {@code ViewType} Tipo da View
      */
-    ViewType type();
+    public ViewType type();
 }

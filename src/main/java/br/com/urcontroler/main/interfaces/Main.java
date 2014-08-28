@@ -1,5 +1,6 @@
 package br.com.urcontroler.main.interfaces;
 
+import br.com.gmp.utils.reflection.ObjectInstance;
 import java.awt.event.ActionEvent;
 import java.util.logging.Logger;
 

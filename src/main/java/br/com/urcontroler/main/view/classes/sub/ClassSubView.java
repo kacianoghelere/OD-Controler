@@ -2,10 +2,11 @@ package br.com.urcontroler.main.view.classes.sub;
 
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.gmp.comps.table.interfaces.TableSource;
+import br.com.urcontroler.data.db.dao.ClassTypeDAO;
 import br.com.urcontroler.data.enums.Alignment;
 import br.com.urcontroler.data.entity.ClassBase;
 import br.com.urcontroler.data.entity.ClassLevel;
-import br.com.urcontroler.data.enums.ClassType;
+import br.com.urcontroler.data.entity.ClassType;
 import br.com.urcontroler.data.enums.Attribute;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.view.sub.SubView;
@@ -31,7 +32,7 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
     private ClassBean bean;
     private final ClassView view;
     private ClassLevelModel levelModel;
-    private GComboBoxModel<ClassType> clTypeModel;
+    private GComboBoxModel<ClassType> typeModel;
     private GComboBoxModel<Alignment> alignmentModel;
     private GComboBoxModel<Attribute> attrModel;
 
@@ -58,9 +59,13 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
         this.setSize(624, 476);
         this.initComponents();
         this.bean = view.getBean();
-        this.load();
-        this.gTblLevels.buildTable(this, 0, levelModel);
+        this.load();        
         //----------------------------------------------------------------------
+        // Atribuição dos modelos
+        this.gTblLevels.buildTable(this, 0, levelModel);
+        this.gCBType.setGModel(typeModel);
+        this.gCBAligment.setGModel(alignmentModel);
+        this.gCBKeyAttr.setGModel(attrModel);
         this.setClass(cl);
         this.setVisible(true);
     }
@@ -68,7 +73,7 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
     @Override
     public void load() {
         this.levelModel = new ClassLevelModel();
-        this.clTypeModel = new GComboBoxModel<>();
+        this.typeModel = new GComboBoxModel<>(new ClassTypeDAO().getList());
         this.alignmentModel = new GComboBoxModel<>(Alignment.values());
         this.attrModel = new GComboBoxModel<>(Attribute.values());
     }
@@ -81,11 +86,23 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
         } else {
             Long previous = 0l;
             Long exp = 0l;
+            int counter = 0;
+            int plus = 1;
+            boolean plusLife = false;
             for (int i = 0; i < 20; i++) {
                 int next = (i + 1);
                 exp = Math.round(previous * 1.5);
                 previous = exp;
-                list.add(new ClassLevel(next, exp, i, (next > 9), next, (15 - i)));
+                plusLife = (next > 9);
+                if (plusLife) {
+                    if (counter == 2) {
+                        counter = 0;
+                        plus++;
+                    } else {
+                        counter++;
+                    }
+                }
+                list.add(new ClassLevel(next, exp, plusLife ? next : plus, plusLife, next, (15 - i)));
             }
         }
         return list;
@@ -132,7 +149,7 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
         }
         this.classBase.setName(gTName.getText());
         this.classBase.setDescription(gTADesc.getText());
-        this.classBase.setType(clTypeModel.getSelectedItem());
+        this.classBase.setType(typeModel.getSelectedItem());
     }
 
     /**
@@ -176,7 +193,7 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
      * @since 1.0
      */
     public GComboBoxModel<ClassType> getClassTypeModel() {
-        return clTypeModel;
+        return typeModel;
     }
 
     /**

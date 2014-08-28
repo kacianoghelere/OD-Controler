@@ -22,25 +22,29 @@ public class Spell {
     private Long id;
     @Editable
     @ColumnName(name = "Nome")
-    private String name;
+    private String name; //1
     @Editable
     @ColumnName(name = "Tipo")
-    private SpellType type;
+    private SpellType type;//2
     @Editable
     @ColumnName(name = "Categoria")
-    private SpellCategory category;
+    private SpellCategory category; //3
     @Editable
     @ColumnName(name = "Classificação")
-    private SpellClass classification;
+    private SpellClass classification;//4
+    @Editable
+    @ColumnName(name = "Classificação")
+    private ElementType elementType;//5
     @Editable
     @ColumnName(name = "Custo de Magia")
-    private Integer magicCost;
+    private Integer magicCost;//6
     @Editable
     @ColumnName(name = "Alcance")
-    private String range;
+    private String range;//7
     @Editable
     @ColumnName(name = "Duração")
-    private String duration;
+    private String duration;//8
+    @Ignore
     @Editable
     @ColumnName(name = "Descrição")
     private String description;
@@ -59,13 +63,14 @@ public class Spell {
      * @param type {@code SpellType} Tipo do Spell
      * @param category {@code SpellCategory} Categoria do Spell
      * @param classification {@code SpellClass} Classificação do Spell
+     * @param elementType {@code ElementType} Elemento
      * @param magicCost {@code Integer} Custo de magica
      * @param range {@code String} O alcance do Spell
      * @param duration {@code String} Duração do Spell
      * @param description {@code String} Descrição do Spell
      */
     public Spell(Long id, String name, SpellType type, SpellCategory category,
-            SpellClass classification, Integer magicCost,
+            SpellClass classification, ElementType elementType, Integer magicCost,
             String range, String duration, String description) {
         this.id = id;
         this.name = name;
@@ -153,7 +158,7 @@ public class Spell {
     /**
      * Retorna o SpellCategory do Spell
      *
-     * @return {@code SpellClass} SpellClass do Spell
+     * @return {@code SpellCategory} SpellClass do Spell
      */
     public SpellCategory getCategory() {
         return category;
@@ -184,6 +189,24 @@ public class Spell {
      */
     public void setClassification(SpellClass classification) {
         this.classification = classification;
+    }
+
+    /**
+     * Retorna o elemento da magia
+     *
+     * @return {@code ElementType} Elemento
+     */
+    public ElementType getElementType() {
+        return elementType;
+    }
+
+    /**
+     * Modifica o elemento da magia
+     *
+     * @param elementType {@code ElementType} Elemento
+     */
+    public void setElementType(ElementType elementType) {
+        this.elementType = elementType;
     }
 
     /**

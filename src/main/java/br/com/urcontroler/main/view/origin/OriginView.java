@@ -117,9 +117,9 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
                 .setTitle(getTitle())
                 .setDescription("View para cadastro de controle de origens.")
                 .setSave("Remove todos os itens e salva os novos")
-                .setProcces("Nada faz.")
-                .setClear("Nada faz.")
-                .setLoad("Nada faz.")
+                .setProcces("--")
+                .setClear("--")
+                .setLoad("--")
                 .apply();
     }
 

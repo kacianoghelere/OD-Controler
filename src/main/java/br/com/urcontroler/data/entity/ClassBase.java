@@ -6,7 +6,6 @@ import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.Id;
 import br.com.urcontroler.data.enums.Alignment;
 import br.com.urcontroler.data.enums.Attribute;
-import br.com.urcontroler.data.enums.ClassType;
 import br.com.urcontroler.data.enums.Dice;
 import br.com.urcontroler.data.enums.SpellCategory;
 import java.io.Serializable;

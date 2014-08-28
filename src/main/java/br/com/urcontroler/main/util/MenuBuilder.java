@@ -94,7 +94,7 @@ public class MenuBuilder {
         Collections.sort(items);
         buildMenu(menus);
         buildItems(items, execute);
-        SwingUtilities.updateComponentTreeUI(root);
+        SwingUtilities.updateComponentTreeUI(mainScreen);
     }
 
     /**
@@ -112,7 +112,6 @@ public class MenuBuilder {
                 recursiveMenus(root, menu);
             }
         }
-        SwingUtilities.updateComponentTreeUI(root);
     }
 
     /**
@@ -141,8 +140,7 @@ public class MenuBuilder {
             sub = jmenu.getText().split("-")[0].trim();
             menuid = Long.parseLong(StringUtil.onlyNumbers(sub));
             if (menu.getParent().equals(menuid)) {
-                mainScreen.printTypedMsg("Inserindo em: " + jmenu.getText(),
-                        Main.INFORMATIVE_MSG);
+                System.out.println("Inserindo em: " + jmenu.getText());
                 insertMenu(jmenu, menu);
                 break;
             } else {
@@ -184,14 +182,16 @@ public class MenuBuilder {
         String prefix = null;
         Long menuid = null;
         for (Component comp : jmenu.getMenuComponents()) {
-            menu = (JMenu) comp;
-            prefix = menu.getText().split("-")[0].trim();
-            menuid = Long.parseLong(StringUtil.onlyNumbers(prefix));
-            if (item.getMenu().equals(menuid)) {
-                insertItem(menu, item, execute);
-                break;
-            } else {
-                recursiveItems(menu, item, execute);
+            if (comp instanceof JMenu) {
+                menu = (JMenu) comp;
+                prefix = menu.getText().split("-")[0].trim();
+                menuid = Long.parseLong(StringUtil.onlyNumbers(prefix));
+                if (item.getMenu().equals(menuid)) {
+                    insertItem(menu, item, execute);
+                    break;
+                } else {
+                    recursiveItems(menu, item, execute);
+                }
             }
         }
     }
@@ -237,26 +237,20 @@ public class MenuBuilder {
         JMenuItem item = new JMenuItem();
         item.setText(view.toString());
         item.setIcon(new ImageIcon(getClass().getResource(view.getIcon())));
-        if (execute) {
-            final ObjectInstance instance;
-            instance = new ObjectInstance(
-                    Class.forName(view.getViewClass().replaceAll(".java", "")),
-                    new Class[]{MainScreen.class},
-                    new Object[]{mainScreen});
-            Map<String, MenuItem> viewMap = mainScreen.getListener().getViewMap();
-            viewMap.put(view.toString().split("-")[0].trim(), view);
+        if (execute) {            
+            mainScreen.getListener().getViewMap()
+                    .put(view.toString().split("-")[0].trim(), view);
             item.addActionListener(new ActionListener() {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
-                        View newView = (View) reflect.newInstance(instance);
-                        newView.setTitle(view.toString());
-                        mainScreen.getListener().insertView(newView);
-                    } catch (InstantiationException ex) {
-                        LOGGER.log(Level.SEVERE,
-                                "Instantiation Exception on #generateItem", ex);
-                        LOGGER.severe(ex.getMessage());
+                        mainScreen.getListener().insertInstance(new ObjectInstance(
+                                Class.forName(view.getViewClass().replaceAll(".java", "")),
+                                new Class[]{MainScreen.class},
+                                new Object[]{mainScreen}));
+                    } catch (ClassNotFoundException ex) {
+                        LOGGER.log(Level.SEVERE, null, ex);
                     }
                 }
             });

@@ -113,7 +113,10 @@
                                   <Component id="gCBClass" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Component id="gNCost" min="-2" pref="75" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLElement" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="gCBElement" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -149,6 +152,8 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="gNCost" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLCost" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="gCBElement" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLElement" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -220,6 +225,14 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="4"/>
                 <Property name="text" type="java.lang.String" value="Custo de Magia:"/>
+              </Properties>
+            </Component>
+            <Component class="br.com.gmp.comps.combobox.GComboBox" name="gCBElement">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLElement">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="4"/>
+                <Property name="text" type="java.lang.String" value="Elemento:"/>
               </Properties>
             </Component>
           </SubComponents>

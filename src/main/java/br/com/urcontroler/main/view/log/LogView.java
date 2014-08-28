@@ -82,10 +82,10 @@ public class LogView extends View {
         return new Description.Builder()
                 .setTitle(getTitle())
                 .setDescription("View para controle de logs.")
-                .setSave("Nada faz.")
-                .setProcces("Nada faz.")
-                .setClear("Nada faz.")
-                .setLoad("Nada faz.")
+                .setSave("--")
+                .setProcces("--")
+                .setClear("--")
+                .setLoad("--")
                 .apply();
     }
 

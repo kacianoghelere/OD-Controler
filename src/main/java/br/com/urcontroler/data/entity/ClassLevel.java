@@ -20,7 +20,7 @@ public class ClassLevel {
     @Editable
     @ColumnName(name = "Dado de vida")
     private Integer lifeAmount;
-    @Ignore
+    //@Ignore
     @ColumnName(name = "Vida extra")
     private Boolean plusLife;
     @Editable

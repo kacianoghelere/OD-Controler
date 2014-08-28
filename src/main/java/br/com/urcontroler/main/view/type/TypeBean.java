@@ -2,7 +2,7 @@ package br.com.urcontroler.main.view.type;
 
 import br.com.urcontroler.data.db.dao.ArmorTypeDAO;
 import br.com.urcontroler.data.db.dao.EffectTypeDAO;
-import br.com.urcontroler.data.db.dao.ElementDAO;
+import br.com.urcontroler.data.db.dao.ElementTypeDAO;
 import br.com.urcontroler.data.db.dao.ExpertiseTypeDAO;
 import br.com.urcontroler.data.db.dao.ItemTypeDAO;
 import br.com.urcontroler.data.db.dao.MaterialTypeDAO;
@@ -30,7 +30,7 @@ public class TypeBean extends ViewBean<TypeView> {
     private final ExpertiseTypeDAO expertiseDAO;
     private final ArmorTypeDAO armorDAO;
     private final MaterialTypeDAO materialsDAO;
-    private final ElementDAO elementDAO;
+    private final ElementTypeDAO elementDAO;
     private final ItemTypeDAO itemDAO;
     private final SpellTypeDAO spellDAO;
 
@@ -46,7 +46,7 @@ public class TypeBean extends ViewBean<TypeView> {
         this.expertiseDAO = new ExpertiseTypeDAO();
         this.armorDAO = new ArmorTypeDAO();
         this.materialsDAO = new MaterialTypeDAO();
-        this.elementDAO = new ElementDAO();
+        this.elementDAO = new ElementTypeDAO();
         this.itemDAO = new ItemTypeDAO();
         this.spellDAO = new SpellTypeDAO();
         try {

@@ -1,5 +1,6 @@
 package br.com.urcontroler.main.interfaces;
 
+import br.com.gmp.utils.reflection.ObjectInstance;
 import br.com.urcontroler.data.entity.MenuItem;
 import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.object.BeanEvent;
@@ -110,4 +111,11 @@ public interface MainListener {
      * @throws java.io.IOException Exceção de I/O
      */
     void appendLog(String logData) throws IOException;
+
+    /**
+     * Insere a instancia do objeto na área de trabalho
+     *
+     * @param instance {@code ObjectInstance} Instancia
+     */
+    void insertInstance(ObjectInstance instance);
 }

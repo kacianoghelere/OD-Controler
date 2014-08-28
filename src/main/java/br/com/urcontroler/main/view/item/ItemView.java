@@ -127,9 +127,9 @@ public class ItemView extends View<ItemBean> implements TableView, TableSource<I
                 .setTitle(getTitle())
                 .setDescription("View para cadastro de controle de itens gerais.")
                 .setSave("Remove todos os itens e salva os novos")
-                .setProcces("Nada faz.")
-                .setClear("Nada faz.")
-                .setLoad("Nada faz.")
+                .setProcces("--")
+                .setClear("--")
+                .setLoad("--")
                 .apply();
     }
     /**

@@ -3,9 +3,12 @@ package br.com.urcontroler.main.view.spell;
 import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.decorate.TableDecorator;
 import br.com.gmp.comps.table.interfaces.TableSource;
+import br.com.urcontroler.data.db.dao.ElementTypeDAO;
 import br.com.urcontroler.data.db.dao.SpellDAO;
 import br.com.urcontroler.data.db.dao.SpellTypeDAO;
 import br.com.urcontroler.data.entity.Spell;
+import br.com.urcontroler.data.enums.SpellCategory;
+import br.com.urcontroler.data.enums.SpellClass;
 import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.util.Description;
@@ -17,6 +20,7 @@ import br.com.urcontroler.main.view.interfaces.TableView;
 import br.com.urcontroler.main.view.object.ViewParameter;
 import br.com.urcontroler.main.view.spell.model.SpellModel;
 import br.com.urcontroler.main.view.spell.sub.SpellSubView;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -33,8 +37,11 @@ public class SpellView extends View<SpellBean> implements TableView, TableSource
     private TableDecorator decorator;
     private int count = 0;
     private final int NAME = count++;
-    private final int CIRCLE = count++;
     private final int TYPE = count++;
+    private final int CATEGORY = count++;
+    private final int CLASSIFICATION = count++;
+    private final int ELEMENT = count++;
+    private final int MAGIC_COST = count++;
     private final int RANGE = count++;
     private final int DURATION = count++;
 
@@ -67,8 +74,11 @@ public class SpellView extends View<SpellBean> implements TableView, TableSource
         this.gTable.buildTable(this, 0, model);
         //----------------------------------------------------------------------
         // Atribuição dos editores à tabela
-        this.decorator.withNumber(CIRCLE);
+        this.decorator.withNumber(MAGIC_COST);
         this.decorator.comboAt(TYPE, new SpellTypeDAO().getList());
+        this.decorator.comboAt(CATEGORY, Arrays.asList(SpellCategory.values()));
+        this.decorator.comboAt(CLASSIFICATION, Arrays.asList(SpellClass.values()));
+        this.decorator.comboAt(ELEMENT, new ElementTypeDAO().getList());
     }
 
     @Override

@@ -1,7 +1,9 @@
 package br.com.urcontroler.main.view.spell.sub;
 
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
+import br.com.urcontroler.data.db.dao.ElementTypeDAO;
 import br.com.urcontroler.data.db.dao.SpellTypeDAO;
+import br.com.urcontroler.data.entity.ElementType;
 import br.com.urcontroler.data.entity.Spell;
 import br.com.urcontroler.data.entity.SpellType;
 import br.com.urcontroler.data.enums.SpellCategory;
@@ -26,6 +28,7 @@ public class SpellSubView extends SubView {
     private GComboBoxModel<SpellType> typeModel;
     private GComboBoxModel<SpellClass> classModel;
     private GComboBoxModel<SpellCategory> categoryModel;
+    private GComboBoxModel<ElementType> elementModel;
 
     /**
      * Cria nova instancia de SpellSubView
@@ -52,6 +55,7 @@ public class SpellSubView extends SubView {
         this.gCBType.setGModel(typeModel);
         this.gCBCategory.setGModel(categoryModel);
         this.gCBClass.setGModel(classModel);
+        this.gCBElement.setGModel(elementModel);
         //----------------------------------------------------------------------
         this.setSpell(spell);
     }
@@ -61,6 +65,8 @@ public class SpellSubView extends SubView {
         this.typeModel = new GComboBoxModel<>(new SpellTypeDAO().getList());
         this.classModel = new GComboBoxModel<>(SpellClass.values());
         this.categoryModel = new GComboBoxModel<>(SpellCategory.values());
+        this.elementModel = new GComboBoxModel<>(new ElementTypeDAO().getList());
+        this.elementModel.getData().add(0, new ElementType());
     }
 
     /**
@@ -113,7 +119,10 @@ public class SpellSubView extends SubView {
         }
         this.spell.setName(gTName.getText());
         this.spell.setType(typeModel.getSelectedItem());
+        this.spell.setClassification(classModel.getSelectedItem());
         this.spell.setCategory(categoryModel.getSelectedItem());
+        ElementType element = elementModel.getSelectedItem();
+        this.spell.setElementType(element.getId() != null ? element : null);
         this.spell.setMagicCost(gNCost.getInteger());
         this.spell.setRange(gTRange.getText());
         this.spell.setDuration(gTDuration.getText());
@@ -140,7 +149,9 @@ public class SpellSubView extends SubView {
                 this.spell = spell;
                 this.gTName.setText(spell.getName());
                 this.gCBType.setSelectedItem(spell.getType());
-                this.gCBCategory.setSelectedItem(spell.getClassification());
+                this.gCBCategory.setSelectedItem(spell.getCategory());
+                this.gCBClass.setSelectedItem(spell.getClassification());
+                this.gCBElement.setSelectedItem(spell.getElementType());
                 this.gNCost.setInt(spell.getMagicCost());
                 this.gTRange.setText(spell.getRange());
                 this.gTDuration.setText(spell.getDuration());
@@ -184,6 +195,8 @@ public class SpellSubView extends SubView {
         jLClass = new javax.swing.JLabel();
         gNCost = new br.com.gmp.comps.textfield.numeric.GNumericField();
         jLCost = new javax.swing.JLabel();
+        gCBElement = new br.com.gmp.comps.combobox.GComboBox();
+        jLElement = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         gTADesc = new br.com.gmp.comps.textarea.GTextArea();
         jBCancel = new javax.swing.JButton();
@@ -218,6 +231,9 @@ public class SpellSubView extends SubView {
         jLCost.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLCost.setText("Custo de Magia:");
 
+        jLElement.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLElement.setText("Elemento:");
+
         javax.swing.GroupLayout jPBasicsLayout = new javax.swing.GroupLayout(jPBasics);
         jPBasics.setLayout(jPBasicsLayout);
         jPBasicsLayout.setHorizontalGroup(
@@ -248,7 +264,10 @@ public class SpellSubView extends SubView {
                             .addComponent(gCBClass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPBasicsLayout.createSequentialGroup()
                                 .addComponent(gNCost, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLElement)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(gCBElement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
 
@@ -276,7 +295,9 @@ public class SpellSubView extends SubView {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gNCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLCost))
+                    .addComponent(jLCost)
+                    .addComponent(gCBElement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLElement))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gTRange, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -288,7 +309,7 @@ public class SpellSubView extends SubView {
                 .addContainerGap())
         );
 
-        jPBasicsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCBClass, gCBType, gTName, jLCategory, jLClass, jLCost, jLLength, jLName, jLRange, jLType});
+        jPBasicsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCBClass, gCBElement, gCBType, gTName, jLCategory, jLClass, jLCost, jLLength, jLName, jLRange, jLType});
 
         jPBasicsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCBCategory, gTDuration});
 
@@ -378,6 +399,7 @@ public class SpellSubView extends SubView {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.combobox.GComboBox gCBCategory;
     private br.com.gmp.comps.combobox.GComboBox gCBClass;
+    private br.com.gmp.comps.combobox.GComboBox gCBElement;
     private br.com.gmp.comps.combobox.GComboBox gCBType;
     private br.com.gmp.comps.textfield.numeric.GNumericField gNCost;
     private br.com.gmp.comps.textarea.GTextArea gTADesc;
@@ -389,6 +411,7 @@ public class SpellSubView extends SubView {
     private javax.swing.JLabel jLCategory;
     private javax.swing.JLabel jLClass;
     private javax.swing.JLabel jLCost;
+    private javax.swing.JLabel jLElement;
     private javax.swing.JLabel jLLength;
     private javax.swing.JLabel jLName;
     private javax.swing.JLabel jLRange;

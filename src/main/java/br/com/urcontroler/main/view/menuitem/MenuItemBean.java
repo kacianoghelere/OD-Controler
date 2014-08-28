@@ -54,8 +54,10 @@ public class MenuItemBean extends ViewBean<MenuItemView> {
         Integer icon = (Integer) ow.getValue("icon");
         String itemClass = (String) ow.getValue("class");
         Long menu = ((Menu) ow.getValue("menu")).getId();
-        MenuItem item = buildNew(title, icon, itemClass, menu);
+        MenuItem item = new MenuItem(getNextID(), menu, itemClass, title, getIcons()[icon]);
+        System.out.println("Tamanho do modelo: " + getView().getModel());
         getView().getModel().add(item);
+        System.out.println("Tamanho do modelo: " + getView().getModel());
     }
 
     /**
@@ -67,9 +69,8 @@ public class MenuItemBean extends ViewBean<MenuItemView> {
      * @param menu {@code Long} ID do menu do item
      * @return {@code MenuItem} Item de menu construido
      */
-    public MenuItem buildNew(String title, Integer icon, String itemClass, Long menu) {
-        Long id = getNextID();
-        return new MenuItem(id, menu, itemClass, title, getIcons()[icon]);
+    public MenuItem buildNew(String title, Integer icon, String itemClass, Long menu) {        
+        return new MenuItem(getNextID(), menu, itemClass, title, getIcons()[icon]);
     }
 
     /**

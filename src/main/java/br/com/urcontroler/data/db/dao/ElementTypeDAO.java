@@ -8,6 +8,6 @@ import br.com.urcontroler.data.entity.ElementType;
  *
  * @author kaciano
  */
-public class ElementDAO extends GenericDAO<ElementType> {
+public class ElementTypeDAO extends GenericDAO<ElementType> {
 
 }

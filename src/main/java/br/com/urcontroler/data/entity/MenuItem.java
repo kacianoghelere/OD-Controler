@@ -125,7 +125,7 @@ public class MenuItem implements Comparable<MenuItem> {
      * @param viewClass {@code String} Classe do MenuItem
      */
     public void setViewClass(String viewClass) {
-        this.viewClass = viewClass;
+        this.viewClass = viewClass.replaceAll(".java", "");
     }
 
     /**

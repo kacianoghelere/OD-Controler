@@ -12,6 +12,7 @@ import br.com.urcontroler.data.entity.MenuItem;
 import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.view.View;
+import br.com.urcontroler.main.view.exception.ViewException;
 import br.com.urcontroler.main.view.interfaces.BeanListener;
 import br.com.urcontroler.main.view.interfaces.TableView;
 import br.com.urcontroler.main.view.menuitem.model.MenuItemModel;
@@ -69,20 +70,15 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
 
     @Override
     public void add() throws Exception {
-        if (gTTitle.validateComponent()) {
-            if (gCBIcon.validateComponent()) {
-                if (gTClass.validateComponent()) {
-                    if (gCBMenu.validateComponent()) {
-                        ObjectWrapper ow = new ObjectWrapper(this)
-                                .addValue("title", gTTitle.getText())
-                                .addValue("icon", gCBIcon.getSelectedIndex())
-                                .addValue("class", gTClass.getText())
-                                .addValue("menu", (Menu) gCBMenu.getSelectedItem());
-                        bean.add(new BeanEvent(this, ow));
-                        super.clear();
-                    }
-                }
-            }
+        if (gTTitle.validateComponent() && gCBIcon.validateComponent()
+                && gTClass.validateComponent() && gCBMenu.validateComponent()) {
+            ObjectWrapper ow = new ObjectWrapper(this)
+                    .addValue("title", gTTitle.getText())
+                    .addValue("icon", gCBIcon.getSelectedIndex())
+                    .addValue("class", gTClass.getText())
+                    .addValue("menu", (Menu) gCBMenu.getSelectedItem());
+            bean.add(new BeanEvent(this, ow));
+            //super.clear();
         }
     }
 
@@ -95,7 +91,7 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
                     model.remove(gTable.getSelectedRows());
                 }
             } catch (NumberFormatException e) {
-                LOGGER.log(Level.SEVERE, null, e);
+                throwException(new ViewException(this, e));
             }
         }
     }
@@ -150,8 +146,6 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane = new javax.swing.JScrollPane();
-        gTable = new br.com.gmp.comps.table.GTable();
         jLTitle = new javax.swing.JLabel();
         gTTitle = new br.com.gmp.comps.textfield.GTextField();
         gTClass = new br.com.gmp.comps.textfield.GTextField();
@@ -162,6 +156,8 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
         gCBMenu = new br.com.gmp.comps.combobox.GComboBox();
         jBAdd = new javax.swing.JButton();
         jBRemove = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        gTable = new br.com.gmp.comps.table.GTable();
         jMenuBar = new javax.swing.JMenuBar();
         jMPreview = new javax.swing.JMenu();
 
@@ -173,20 +169,6 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/window/dialog.png"))); // NOI18N
         setMinimumSize(new java.awt.Dimension(600, 420));
         setPreferredSize(new java.awt.Dimension(600, 420));
-
-        gTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        gTable.setOpaque(false);
-        gTable.setPreferredScrollableViewportSize(new java.awt.Dimension(450, 500));
-        gTable.setPreferredSize(new java.awt.Dimension(280, 500));
-        gTable.setRowHeight(22);
-        jScrollPane.setViewportView(gTable);
 
         jLTitle.setText("Titulo:");
 
@@ -214,6 +196,8 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
             }
         });
 
+        jScrollPane1.setViewportView(gTable);
+
         jMPreview.setText("Pré-Visualização");
         jMenuBar.add(jMPreview);
 
@@ -224,9 +208,9 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLMenu)
                             .addComponent(jLClass)
@@ -234,7 +218,7 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(gTTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(gTTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLIcon)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -246,7 +230,9 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
                                 .addComponent(jBAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jBRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jScrollPane1)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -270,8 +256,8 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jBAdd)
                         .addComponent(jBRemove)))
-                .addGap(8, 8, 8)
-                .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -285,7 +271,7 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
         try {
             add();
         } catch (Exception ex) {
-            LOGGER.log(Level.SEVERE, null, ex);
+            throwException(new ViewException(this, ex));
         }
     }//GEN-LAST:event_jBAddActionPerformed
 
@@ -307,6 +293,6 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
     private javax.swing.JLabel jLTitle;
     private javax.swing.JMenu jMPreview;
     private javax.swing.JMenuBar jMenuBar;
-    private javax.swing.JScrollPane jScrollPane;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
