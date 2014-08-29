@@ -9,7 +9,7 @@ public class Description {
 
     private String title;
     private String description;
-    private String save;
+    private String commit;
     private String procces;
     private String clear;
     private String load;
@@ -53,7 +53,7 @@ public class Description {
     private Description() {
         this.title = "--";
         this.description = "--";
-        this.save = "--";
+        this.commit = "--";
         this.procces = "--";
         this.clear = "--";
         this.load = "--";
@@ -64,15 +64,15 @@ public class Description {
      *
      * @param title {@code String} Texto do titulo
      * @param description {@code String} Texto da descrição
-     * @param save {@code String} Texto da função de salvar
+     * @param commit {@code String} Texto da função de salvar
      * @param procces {@code String} Texto da função de processar
      * @param clear {@code String} Texto da função de limpar
      * @param load {@code String} Texto da função de carregar
      */
-    private Description(String title, String description, String save, String procces, String clear, String load) {
+    private Description(String title, String description, String commit, String procces, String clear, String load) {
         this.title = title;
         this.description = description;
-        this.save = save;
+        this.commit = commit;
         this.procces = procces;
         this.clear = clear;
         this.load = load;
@@ -84,7 +84,7 @@ public class Description {
      * @return {@code String} Descrição formatada da view
      */
     public String format() {
-        return String.format(base, title, description, save, procces, clear, load);
+        return String.format(base, title, description, commit, procces, clear, load);
     }
 
     /**
@@ -236,8 +236,8 @@ public class Description {
      *
      * @return {@code String} Texto da função de salvar
      */
-    public String getSave() {
-        return save;
+    public String getCommit() {
+        return commit;
     }
 
     /**
@@ -247,7 +247,7 @@ public class Description {
      * @return {@code Description} Construtor de descrição
      */
     private Description setSave(String save) {
-        this.save = save;
+        this.commit = save;
         return this;
     }
 

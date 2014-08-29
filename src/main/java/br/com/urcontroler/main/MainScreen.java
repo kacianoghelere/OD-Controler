@@ -8,6 +8,7 @@ import br.com.urcontroler.main.interfaces.Main;
 import br.com.urcontroler.main.interfaces.MainListener;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.util.MenuBuilder;
+import br.com.urcontroler.main.view.description.DescriptionView;
 import br.com.urcontroler.main.view.dice.DiceView;
 import br.com.urcontroler.main.view.log.LogView;
 import br.com.urcontroler.main.view.menu.MenuView;
@@ -82,7 +83,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
             MenuBuilder builder = injector.getInstance(MenuBuilder.class);
             builder.setMainScreen(this);
             builder.setRoot(root);
-            builder.build();            
+            builder.build();
             printTypedMsg("Menus carregados", Main.INFORMATIVE_MSG);
         } catch (ClassNotFoundException | InstantiationException ex) {
             LOGGER.log(Level.SEVERE, null, ex);
@@ -428,6 +429,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         jMControls = new javax.swing.JMenu();
         jMIMenus = new javax.swing.JMenuItem();
         jMIViews = new javax.swing.JMenuItem();
+        jMIDescriptions = new javax.swing.JMenuItem();
         jMILog = new javax.swing.JMenuItem();
         root = new javax.swing.JMenu();
 
@@ -654,6 +656,16 @@ public class MainScreen extends javax.swing.JFrame implements Main {
 
         jMOptions.add(jMControls);
 
+        jMIDescriptions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/menubar/menubar/edit.png"))); // NOI18N
+        jMIDescriptions.setText("Descrições");
+        jMIDescriptions.setName("jMIDescriptions"); // NOI18N
+        jMIDescriptions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIDescriptionsActionPerformed(evt);
+            }
+        });
+        jMOptions.add(jMIDescriptions);
+
         jMILog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/menubar/menubar/file.png"))); // NOI18N
         jMILog.setText("Logs");
         jMILog.setName("jMILog"); // NOI18N
@@ -768,6 +780,10 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         listener.insertView(new LogView(this));
     }//GEN-LAST:event_jMILogActionPerformed
 
+    private void jMIDescriptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIDescriptionsActionPerformed
+        listener.insertView(new DescriptionView(this));
+    }//GEN-LAST:event_jMIDescriptionsActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
     private br.com.gmp.comps.textfield.GTextField gTView;
@@ -781,6 +797,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     private javax.swing.JMenu jMControls;
     private javax.swing.JMenuItem jMIClean;
     private javax.swing.JMenuItem jMICommit;
+    private javax.swing.JMenuItem jMIDescriptions;
     private javax.swing.JMenuItem jMIDice;
     private javax.swing.JMenuItem jMILog;
     private javax.swing.JMenuItem jMIMenus;

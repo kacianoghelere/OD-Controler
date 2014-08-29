@@ -2,7 +2,9 @@ package br.com.urcontroler.data.entity;
 
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
+import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.object.StringUtil;
+import br.com.urcontroler.main.util.Description;
 import java.util.Objects;
 
 /**
@@ -25,6 +27,9 @@ public class MenuItem implements Comparable<MenuItem> {
     private String viewClass;
     @ColumnName(name = "Ícone")
     private String icon;
+    @Ignore
+    @ColumnName(name = "Descrição")
+    private Description description;
 
     /**
      * Cria nova instancia de Menu
@@ -35,18 +40,20 @@ public class MenuItem implements Comparable<MenuItem> {
     /**
      * Cria nova instancia de Menu
      *
-     * @param id {@code Long} ID do MenuView
-     * @param parent {@code Long} ID do menu
-     * @param viewClass {@code String} Classe do MenuView
-     * @param title {@code String} Titulo do MenuView
-     * @param icon {@code String} Icone do MenuViewMenuView
+     * @param id {@code Long} ID do MenuItem
+     * @param parent {@code Long} ID do MenuItem
+     * @param viewClass {@code String} Classe do MenuItem
+     * @param title {@code String} Titulo do MenuItem
+     * @param icon {@code String} Icone do MenuItem
+     * @param description {@code Description} Descrição do MenuItem
      */
-    public MenuItem(Long id, Long parent, String viewClass, String title, String icon) {
+    public MenuItem(Long id, Long parent, String viewClass, String title, String icon, Description description) {
         this.id = id;
         this.menu = parent;
         this.viewClass = viewClass;
         this.title = title;
         this.icon = icon;
+        this.description = description;
     }
 
     @Override
@@ -162,6 +169,24 @@ public class MenuItem implements Comparable<MenuItem> {
      */
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    /**
+     * Retorna a Descrição do MenuItem
+     *
+     * @return {@code Description} Descrição do MenuItem
+     */
+    public Description getDescription() {
+        return description;
+    }
+
+    /**
+     * Modifica a Descrição do MenuItem
+     *
+     * @param description {@code Description} Descrição do MenuItem
+     */
+    public void setDescription(Description description) {
+        this.description = description;
     }
 
     @Override

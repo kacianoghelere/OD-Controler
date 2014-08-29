@@ -18,7 +18,6 @@ import br.com.urcontroler.main.view.interfaces.TableView;
 import br.com.urcontroler.main.view.menuitem.model.MenuItemModel;
 import br.com.urcontroler.main.view.object.ViewParameter;
 import java.util.List;
-import java.util.logging.Level;
 import javax.swing.ImageIcon;
 
 /**
@@ -146,18 +145,20 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLTitle = new javax.swing.JLabel();
-        gTTitle = new br.com.gmp.comps.textfield.GTextField();
-        gTClass = new br.com.gmp.comps.textfield.GTextField();
-        jLClass = new javax.swing.JLabel();
-        jLIcon = new javax.swing.JLabel();
-        gCBIcon = new br.com.gmp.comps.combobox.GComboBox();
-        jLMenu = new javax.swing.JLabel();
-        gCBMenu = new br.com.gmp.comps.combobox.GComboBox();
-        jBAdd = new javax.swing.JButton();
-        jBRemove = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         gTable = new br.com.gmp.comps.table.GTable();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPBasics = new javax.swing.JPanel();
+        jLTitle = new javax.swing.JLabel();
+        gTTitle = new br.com.gmp.comps.textfield.GTextField();
+        jLIcon = new javax.swing.JLabel();
+        gCBIcon = new br.com.gmp.comps.combobox.GComboBox();
+        gTClass = new br.com.gmp.comps.textfield.GTextField();
+        jLClass = new javax.swing.JLabel();
+        jBRemove = new javax.swing.JButton();
+        jBAdd = new javax.swing.JButton();
+        gCBMenu = new br.com.gmp.comps.combobox.GComboBox();
+        jLMenu = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
         jMPreview = new javax.swing.JMenu();
 
@@ -170,24 +171,19 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
         setMinimumSize(new java.awt.Dimension(600, 420));
         setPreferredSize(new java.awt.Dimension(600, 420));
 
+        jScrollPane1.setViewportView(gTable);
+
+        jLTitle.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLTitle.setText("Titulo:");
 
         gTTitle.setPlaceholder("Titulo da tela");
 
-        gTClass.setPlaceholder("Classe da tela");
-
-        jLClass.setText("Classe:");
-
         jLIcon.setText("Ícone:");
 
-        jLMenu.setText("Menu:");
+        gTClass.setPlaceholder("Classe da tela");
 
-        jBAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/new.png"))); // NOI18N
-        jBAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBAddActionPerformed(evt);
-            }
-        });
+        jLClass.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLClass.setText("Classe:");
 
         jBRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/off.png"))); // NOI18N
         jBRemove.addActionListener(new java.awt.event.ActionListener() {
@@ -196,7 +192,74 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
             }
         });
 
-        jScrollPane1.setViewportView(gTable);
+        jBAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/new.png"))); // NOI18N
+        jBAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAddActionPerformed(evt);
+            }
+        });
+
+        jLMenu.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLMenu.setText("Menu:");
+
+        javax.swing.GroupLayout jPBasicsLayout = new javax.swing.GroupLayout(jPBasics);
+        jPBasics.setLayout(jPBasicsLayout);
+        jPBasicsLayout.setHorizontalGroup(
+            jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPBasicsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLTitle)
+                    .addComponent(jLClass)
+                    .addComponent(jLMenu))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPBasicsLayout.createSequentialGroup()
+                        .addComponent(gCBMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPBasicsLayout.createSequentialGroup()
+                        .addComponent(gTTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLIcon)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(gCBIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(gTClass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jPBasicsLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLClass, jLMenu, jLTitle});
+
+        jPBasicsLayout.setVerticalGroup(
+            jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPBasicsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLTitle)
+                    .addComponent(gTTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLIcon)
+                    .addComponent(gCBIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(gTClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLClass))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBAdd)
+                    .addComponent(jBRemove)
+                    .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(gCBMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLMenu)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPBasicsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCBIcon, gTTitle});
+
+        jPBasicsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCBMenu, jBAdd});
+
+        jTabbedPane1.addTab("Configurações Basicas", jPBasics);
 
         jMPreview.setText("Pré-Visualização");
         jMenuBar.add(jMPreview);
@@ -208,63 +271,21 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLMenu)
-                            .addComponent(jLClass)
-                            .addComponent(jLTitle))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(gTTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLIcon)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(gCBIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(gTClass, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(gCBMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jScrollPane1)))
+                    .addComponent(jTabbedPane1)
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLTitle)
-                    .addComponent(gTTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLIcon)
-                    .addComponent(gCBIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(gTClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLClass))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLMenu)
-                        .addComponent(gCBMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jBAdd)
-                        .addComponent(jBRemove)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCBIcon, gTTitle});
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCBMenu, jBAdd});
-
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddActionPerformed
@@ -293,6 +314,8 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
     private javax.swing.JLabel jLTitle;
     private javax.swing.JMenu jMPreview;
     private javax.swing.JMenuBar jMenuBar;
+    private javax.swing.JPanel jPBasics;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }

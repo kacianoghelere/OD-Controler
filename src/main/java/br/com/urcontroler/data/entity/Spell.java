@@ -33,7 +33,7 @@ public class Spell {
     @ColumnName(name = "Classificação")
     private SpellClass classification;//4
     @Editable
-    @ColumnName(name = "Classificação")
+    @ColumnName(name = "Elemento")
     private ElementType elementType;//5
     @Editable
     @ColumnName(name = "Custo de Magia")

@@ -130,8 +130,7 @@ public class MainScreenBean implements MainListener {
         for (Map.Entry<String, MenuItem> entry : viewMap.entrySet()) {
             System.out.println(prefix + " == " + entry.getKey() + "?");
             if (prefix.equalsIgnoreCase(entry.getKey())) {
-                try {
-                    ReflectionUtil reflect = new ReflectionUtil();
+                try {                    
                     Class<?> objClass = Class.forName(entry.getValue().getViewClass());
                     Class<?>[] argTypes = new Class[]{MainScreen.class};
                     Object[] arguments = new Object[]{screen};

@@ -6,6 +6,7 @@ import br.com.urcontroler.data.db.dao.MenuItemDAO;
 import br.com.urcontroler.data.entity.Menu;
 import br.com.urcontroler.data.entity.MenuItem;
 import br.com.urcontroler.main.object.BeanEvent;
+import br.com.urcontroler.main.util.Description;
 import br.com.urcontroler.main.view.bean.ViewBean;
 import java.io.File;
 import java.util.ArrayList;
@@ -54,23 +55,9 @@ public class MenuItemBean extends ViewBean<MenuItemView> {
         Integer icon = (Integer) ow.getValue("icon");
         String itemClass = (String) ow.getValue("class");
         Long menu = ((Menu) ow.getValue("menu")).getId();
-        MenuItem item = new MenuItem(getNextID(), menu, itemClass, title, getIcons()[icon]);
-        System.out.println("Tamanho do modelo: " + getView().getModel());
+        MenuItem item = new MenuItem(getNextID(), menu, itemClass, title,
+                getIcons()[icon], new Description.Builder().apply());
         getView().getModel().add(item);
-        System.out.println("Tamanho do modelo: " + getView().getModel());
-    }
-
-    /**
-     * Constroi novo MenuItem a partir dos dados recebidos
-     *
-     * @param title {@code String} Titulo do item
-     * @param icon {@code Integer} Indice do icone
-     * @param itemClass {@code String} Classe do Item
-     * @param menu {@code Long} ID do menu do item
-     * @return {@code MenuItem} Item de menu construido
-     */
-    public MenuItem buildNew(String title, Integer icon, String itemClass, Long menu) {        
-        return new MenuItem(getNextID(), menu, itemClass, title, getIcons()[icon]);
     }
 
     /**
