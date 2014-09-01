@@ -121,17 +121,7 @@ public class ItemView extends View<ItemBean> implements TableView, TableSource<I
     public ItemBean getBean() {
         return this.bean;
     }
-    @Override
-    public Description getDescription() {
-        return new Description.Builder()
-                .setTitle(getTitle())
-                .setDescription("View para cadastro de controle de itens gerais.")
-                .setSave("Remove todos os itens e salva os novos")
-                .setProcces("--")
-                .setClear("--")
-                .setLoad("--")
-                .apply();
-    }
+
     /**
      * Dados gerados automaticamente
      */

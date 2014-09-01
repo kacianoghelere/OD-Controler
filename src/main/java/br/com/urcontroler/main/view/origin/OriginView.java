@@ -111,18 +111,6 @@ public class OriginView extends View implements TableView, TableSource<Origin> {
         return new OriginDAO().getList();
     }
 
-    @Override
-    public Description getDescription() {
-        return new Description.Builder()
-                .setTitle(getTitle())
-                .setDescription("View para cadastro de controle de origens.")
-                .setSave("Remove todos os itens e salva os novos")
-                .setProcces("--")
-                .setClear("--")
-                .setLoad("--")
-                .apply();
-    }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

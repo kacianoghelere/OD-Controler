@@ -59,7 +59,7 @@ public class ExpertiseView extends View implements TableView, TableSource<Expert
         this.gCBAttribute.setGModel(attrModel);
         this.gCBType.setGModel(typeModel);
         this.gTable.buildTable(this, 0, model);
-        this.tableUtil = new TableUtil(this);        
+        this.tableUtil = new TableUtil(this);
     }
 
     @Override
@@ -106,18 +106,6 @@ public class ExpertiseView extends View implements TableView, TableSource<Expert
     @Override
     public List<Expertise> getTableData() {
         return new ExpertiseDAO().getList();
-    }
-
-    @Override
-    public Description getDescription() {
-        return new Description.Builder()
-                .setTitle(getTitle())
-                .setDescription("Tela para cadastro e controle de pericias")
-                .setSave("Remove todos os itens anteriores e salva os novos.")
-                .setProcces("--")
-                .setClear("Limpa os campos")
-                .setLoad("--")
-                .apply();
     }
 
     /**

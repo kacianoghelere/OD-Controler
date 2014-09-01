@@ -47,9 +47,16 @@ public interface DAO<T> {
     /**
      * Busca todos os dados da entidade
      *
-     * @return {@code T} Entidade
+     * @return {@code List(T)} Entidade
      */
     List<T> getList();
+
+    /**
+     * Busca todos os dados da entidade
+     *
+     * @return {@code T[]} Entidade
+     */
+    Object[] getArray();
 
     /**
      * Retorna a classe do objeto que aplica o DAO

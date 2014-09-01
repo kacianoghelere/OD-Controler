@@ -61,7 +61,7 @@ public class GenericDAO<T> implements DAO<T> {
     /**
      * Busca todos os dados da entidade
      *
-     * @return {@code T} Entidade
+     * @return {@code List(T)} Entidade
      */
     @Intercept
     @Override
@@ -78,6 +78,16 @@ public class GenericDAO<T> implements DAO<T> {
         objs.addAll(os);
         db.close();
         return objs;
+    }
+
+    /**
+     * Busca todos os dados da entidade
+     *
+     * @return {@code T[]} Entidade
+     */
+    @Override
+    public Object[] getArray() {
+        return getList().toArray();
     }
 
     /**

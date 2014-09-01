@@ -1,7 +1,6 @@
 package br.com.urcontroler.main.view.bean;
 
 import br.com.gmp.comps.cleaner.ComponentCleaner;
-import br.com.urcontroler.main.interfaces.Main;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.view.View;
 import br.com.urcontroler.main.view.interfaces.BeanListener;
@@ -44,9 +43,7 @@ public class ViewBean<T> implements BeanListener<T> {
 
     @Override
     public void clear(BeanEvent evt) throws Exception {
-        View v = (View) this.view;
-        new ComponentCleaner(true).clean(v);
-        v.showMessage("Dados removidos dos campos", Main.INFORMATIVE_MSG);
+        new ComponentCleaner(true).clean((View) this.view);
     }
 
     @Override

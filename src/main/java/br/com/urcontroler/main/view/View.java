@@ -19,7 +19,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JComponent;
@@ -38,10 +37,6 @@ import javax.swing.event.InternalFrameEvent;
  */
 public abstract class View<T> extends JInternalFrame implements ViewListener<T> {
 
-    /**
-     * Acesso aos logs
-     */
-    public static final Logger LOGGER = Logger.getLogger(View.class.getName());
     private final MainScreen mainScreen;
     private Boolean canSave;
     private Boolean canProcess;
@@ -88,7 +83,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
         DescribeAction describe = new DescribeAction();
         getRootPane().getActionMap().put("describe", describe);
         getRootPane().getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0), "describe");
-        buildActions();
+        buildActions();        
     }
 
     /**

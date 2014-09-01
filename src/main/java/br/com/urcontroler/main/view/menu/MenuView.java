@@ -10,6 +10,7 @@ import br.com.urcontroler.data.db.dao.MenuDAO;
 import br.com.urcontroler.data.entity.Menu;
 import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.object.BeanEvent;
+import br.com.urcontroler.main.util.Description;
 import br.com.urcontroler.main.view.View;
 import br.com.urcontroler.main.view.interfaces.TableView;
 import br.com.urcontroler.main.view.menu.model.MenuModel;
@@ -132,6 +133,15 @@ public class MenuView extends View implements TableSource<Menu>, TableView {
         this.gCBParent.repaint();
         this.gCBParent.revalidate();
         SwingUtilities.updateComponentTreeUI(this);
+    }
+
+    @Override
+    public Description getDescription() {
+        return new Description.Builder()
+                .setTitle(getTitle())
+                .setDescription("Tela de controle e cadastro de menus")
+                .setSave("Remove os itens antigos e salva os novos.")
+                .apply();
     }
 
     /**

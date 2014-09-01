@@ -42,7 +42,7 @@ public class WeaponView extends View<WeaponBean> implements TableView, TableSour
     private final int INITIATIVE = count++;
     private final int RANGE = count++;
     private final int DMG_AMOUNT = count++;
-    private final int DICE= count++;
+    private final int DICE = count++;
     private final int TYPE = count++;
     private final int MATERIAL = count++;
     private final int ALIGNMENT = count++;
@@ -132,15 +132,6 @@ public class WeaponView extends View<WeaponBean> implements TableView, TableSour
     @Override
     public WeaponBean getBean() {
         return bean;
-    }
-
-    @Override
-    public Description getDescription() {
-        return new Description.Builder()
-                .setTitle(getTitle())
-                .setDescription("Tela de controle e cadastro de armas")
-                .setSave("Remove os itens antigos e salva os novos.")
-                .apply();
     }
 
     /**

@@ -13,13 +13,13 @@
       <Image iconType="3" name="/RpgIcons/status/avenge.png"/>
     </Property>
     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[535, 464]"/>
+      <Dimension value="[624, 476]"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[535, 464]"/>
+      <Dimension value="[624, 476]"/>
     </Property>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[535, 464]"/>
+      <Dimension value="[624, 476]"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -149,7 +149,7 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLKeyAttr" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="gCBKeyAttr" pref="149" max="32767" attributes="0"/>
+                                      <Component id="gCBKeyAttr" pref="238" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -276,7 +276,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" alignment="0" pref="484" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" alignment="0" pref="573" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLEvolution" min="-2" max="-2" attributes="0"/>
@@ -318,6 +318,9 @@
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
                     <Component class="br.com.gmp.comps.table.GTable" name="gTblLevels">
+                      <Properties>
+                        <Property name="autoscrolls" type="boolean" value="false"/>
+                      </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -447,6 +450,7 @@
             <Component class="br.com.gmp.comps.textarea.GTextArea" name="gTADesc">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
+                <Property name="lineWrap" type="boolean" value="true"/>
                 <Property name="rows" type="int" value="5"/>
               </Properties>
             </Component>

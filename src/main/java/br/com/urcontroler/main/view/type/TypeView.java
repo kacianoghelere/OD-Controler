@@ -131,17 +131,7 @@ public class TypeView extends View<TypeBean> {
             model.remove(type);
         }
     }
-    @Override
-    public Description getDescription() {
-        return new Description.Builder()
-                .setTitle(getTitle())
-                .setDescription("View para cadastro de controle de tipos.")
-                .setSave("Remove todos os itens e salva os novos")
-                .setProcces("--")
-                .setClear("--")
-                .setLoad("--")
-                .apply();
-    }
+
     /**
      * Retorna o modelo de lista dos EffectTypes
      *

@@ -77,6 +77,15 @@ public class MenuItem implements Comparable<MenuItem> {
 
     @Override
     public String toString() {
+        return title;
+    }
+
+    /**
+     * Retorna o nome construido da view
+     *
+     * @return {@code String} Nome da view
+     */
+    public String getName() {
         String number = new StringUtil().completeWithZeros(3, id);
         return "VIEW" + number + " - " + title;
     }

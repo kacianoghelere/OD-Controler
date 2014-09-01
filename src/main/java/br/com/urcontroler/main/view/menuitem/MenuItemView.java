@@ -11,6 +11,7 @@ import br.com.urcontroler.data.entity.Menu;
 import br.com.urcontroler.data.entity.MenuItem;
 import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.object.BeanEvent;
+import br.com.urcontroler.main.util.Description;
 import br.com.urcontroler.main.view.View;
 import br.com.urcontroler.main.view.exception.ViewException;
 import br.com.urcontroler.main.view.interfaces.BeanListener;
@@ -118,6 +119,15 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
     @Override
     public BeanListener getBean() {
         return this.bean;
+    }
+
+    @Override
+    public Description getDescription() {
+        return new Description.Builder()
+                .setTitle(getTitle())
+                .setDescription("Tela de controle e cadastro de telas")
+                .setSave("Remove os itens antigos e salva os novos.")
+                .apply();
     }
 
     /**

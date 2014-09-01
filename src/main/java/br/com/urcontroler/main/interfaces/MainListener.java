@@ -4,6 +4,7 @@ import br.com.gmp.utils.reflection.ObjectInstance;
 import br.com.urcontroler.data.entity.MenuItem;
 import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.object.BeanEvent;
+import br.com.urcontroler.main.util.Description;
 import br.com.urcontroler.main.view.View;
 import java.io.IOException;
 import java.util.Map;
@@ -118,4 +119,12 @@ public interface MainListener {
      * @param instance {@code ObjectInstance} Instancia
      */
     void insertInstance(ObjectInstance instance);
+
+    /**
+     * Insere a instancia do objeto na área de trabalho
+     *
+     * @param instance {@code ObjectInstance} Instancia
+     * @param description {@code Description} Descrição da View
+     */
+    void insertInstance(ObjectInstance instance, Description description);
 }

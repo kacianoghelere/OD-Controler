@@ -135,18 +135,6 @@ public class ArmorView extends View<ArmorBean> implements TableView, TableSource
         return model;
     }
 
-    @Override
-    public Description getDescription() {
-        return new Description.Builder()
-                .setTitle(getTitle())
-                .setDescription("View para cadastro de controle de armaduras.")
-                .setSave("Remove todos os itens e salva os novos")
-                .setProcces("--")
-                .setClear("--")
-                .setLoad("--")
-                .apply();
-    }
-
     /**
      *
      */

@@ -130,15 +130,6 @@ public class SpellView extends View<SpellBean> implements TableView, TableSource
         return bean;
     }
 
-    @Override
-    public Description getDescription() {
-        return new Description.Builder()
-                .setTitle(getTitle())
-                .setDescription("Tela de controle e cadastro de magias")
-                .setSave("Remove os itens antigos e salva os novos.")
-                .apply();
-    }
-
     /**
      * Dados gerados automaticamente
      */

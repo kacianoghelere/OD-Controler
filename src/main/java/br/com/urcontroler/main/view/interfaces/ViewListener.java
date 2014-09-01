@@ -1,6 +1,8 @@
 package br.com.urcontroler.main.view.interfaces;
 
 import br.com.urcontroler.main.MainScreen;
+import br.com.urcontroler.main.view.View;
+import java.util.logging.Logger;
 import javax.swing.JComponent;
 
 /**
@@ -10,6 +12,11 @@ import javax.swing.JComponent;
  * @param <T> Tipo do Bean
  */
 public interface ViewListener<T> {
+
+    /**
+     * Acesso aos logs
+     */
+    public static final Logger LOGGER = Logger.getLogger(View.class.getName());
 
     /**
      * Retorna se a View pode salvar

@@ -4,10 +4,13 @@ import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.decorate.TableDecorator;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.urcontroler.data.db.dao.ClassBaseDao;
+import br.com.urcontroler.data.db.dao.ClassTypeDAO;
 import br.com.urcontroler.data.entity.ClassBase;
+import br.com.urcontroler.data.enums.Alignment;
+import br.com.urcontroler.data.enums.Attribute;
+import br.com.urcontroler.data.enums.Dice;
 import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.object.BeanEvent;
-import br.com.urcontroler.main.util.Description;
 import br.com.urcontroler.main.view.View;
 import br.com.urcontroler.main.view.annotation.ViewData;
 import br.com.urcontroler.main.view.classes.model.ClassModel;
@@ -16,6 +19,7 @@ import br.com.urcontroler.main.view.enums.ViewType;
 import br.com.urcontroler.main.view.exception.ViewException;
 import br.com.urcontroler.main.view.interfaces.TableView;
 import br.com.urcontroler.main.view.object.ViewParameter;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -31,7 +35,6 @@ public class ClassView extends View implements TableSource<ClassBase>, TableView
     private ClassModel model;
     private TableDecorator decorator;
     private int count = 0;
-    private final int ID = count++;
     private final int NAME = count++;
     private final int DICE = count++;
     private final int ARMOR_BONUS = count++;
@@ -53,7 +56,7 @@ public class ClassView extends View implements TableSource<ClassBase>, TableView
      * Método de inicialização
      */
     private void initialize() {
-        setControls(new ViewParameter(true, false, true, false));
+        this.setControls(new ViewParameter(true, false, true, false));
         this.setSize(662, 484);
         this.initComponents();
         this.decorator = new TableDecorator(gTable);
@@ -68,7 +71,10 @@ public class ClassView extends View implements TableSource<ClassBase>, TableView
         this.gTable.buildTable(this, 0, model);
         //----------------------------------------------------------------------
         // Atribuição dos editores na tabela
-
+        this.decorator.comboAt(DICE, Arrays.asList(Dice.values()));
+        this.decorator.comboAt(ATTRIBUTE, Arrays.asList(Attribute.values()));
+        this.decorator.comboAt(TYPE, new ClassTypeDAO().getList());
+        this.decorator.comboAt(ALIGNMENT, Arrays.asList(Alignment.values()));
     }
 
     @Override
@@ -79,8 +85,6 @@ public class ClassView extends View implements TableSource<ClassBase>, TableView
             try {
                 bean.add(new BeanEvent(this, sub.getClassBase()));
             } catch (IllegalArgumentException | IllegalAccessException ex) {
-                throwException(new ViewException(this, ex));
-            } catch (Exception ex) {
                 throwException(new ViewException(this, ex));
             }
         }
@@ -118,18 +122,6 @@ public class ClassView extends View implements TableSource<ClassBase>, TableView
     @Override
     public List<ClassBase> getTableData() {
         return new ClassBaseDao().getList();
-    }
-
-    @Override
-    public Description getDescription() {
-        return new Description.Builder()
-                .setTitle(getTitle())
-                .setDescription("View para cadastro de controle de classes.")
-                .setSave("Remove todos os itens e salva os novos")
-                .setProcces("--")
-                .setClear("--")
-                .setLoad("--")
-                .apply();
     }
 
     @SuppressWarnings("unchecked")

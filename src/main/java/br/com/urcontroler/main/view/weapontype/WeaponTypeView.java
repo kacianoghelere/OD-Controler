@@ -155,18 +155,6 @@ public class WeaponTypeView extends View<WeaponTypeBean> implements TableView, T
         return this.bean;
     }
 
-    @Override
-    public Description getDescription() {
-        return new Description.Builder()
-                .setTitle(getTitle())
-                .setDescription("View para cadastro de controle de tipos de armas.")
-                .setSave("Remove todos os itens e salva os novos")
-                .setProcces("--")
-                .setClear("--")
-                .setLoad("--")
-                .apply();
-    }
-
     /**
      * Retorna o modelo dos UseTypes
      *

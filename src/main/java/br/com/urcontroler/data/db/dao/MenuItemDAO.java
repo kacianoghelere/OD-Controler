@@ -2,7 +2,6 @@ package br.com.urcontroler.data.db.dao;
 
 import br.com.urcontroler.data.db.GenericDAO;
 import br.com.urcontroler.data.entity.MenuItem;
-import br.com.urcontroler.main.view.menu.MenuView;
 
 /**
  * DAO de controle para MenuViews

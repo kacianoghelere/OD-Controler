@@ -654,8 +654,6 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         });
         jMControls.add(jMIViews);
 
-        jMOptions.add(jMControls);
-
         jMIDescriptions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/menubar/menubar/edit.png"))); // NOI18N
         jMIDescriptions.setText("Descrições");
         jMIDescriptions.setName("jMIDescriptions"); // NOI18N
@@ -664,7 +662,9 @@ public class MainScreen extends javax.swing.JFrame implements Main {
                 jMIDescriptionsActionPerformed(evt);
             }
         });
-        jMOptions.add(jMIDescriptions);
+        jMControls.add(jMIDescriptions);
+
+        jMOptions.add(jMControls);
 
         jMILog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/menubar/menubar/file.png"))); // NOI18N
         jMILog.setText("Logs");

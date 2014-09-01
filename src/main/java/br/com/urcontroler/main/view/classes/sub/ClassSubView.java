@@ -1,8 +1,13 @@
 package br.com.urcontroler.main.view.classes.sub;
 
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
+import br.com.gmp.comps.list.dual.model.SortedListModel;
 import br.com.gmp.comps.table.interfaces.TableSource;
+import br.com.urcontroler.data.db.dao.ArmorTypeDAO;
 import br.com.urcontroler.data.db.dao.ClassTypeDAO;
+import br.com.urcontroler.data.db.dao.ItemTypeDAO;
+import br.com.urcontroler.data.db.dao.SpellTypeDAO;
+import br.com.urcontroler.data.db.dao.WeaponTypeDAO;
 import br.com.urcontroler.data.enums.Alignment;
 import br.com.urcontroler.data.entity.ClassBase;
 import br.com.urcontroler.data.entity.ClassLevel;
@@ -35,6 +40,10 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
     private GComboBoxModel<ClassType> typeModel;
     private GComboBoxModel<Alignment> alignmentModel;
     private GComboBoxModel<Attribute> attrModel;
+    private SortedListModel armorModel;
+    private SortedListModel itemModel;
+    private SortedListModel magicModel;
+    private SortedListModel weaponModel;
 
     /**
      * Cria nova instancia de ClassSubView
@@ -59,13 +68,30 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
         this.setSize(624, 476);
         this.initComponents();
         this.bean = view.getBean();
-        this.load();        
+        this.load();
+        //----------------------------------------------------------------------
+        // Inicializações dos modelos
+        this.armorModel = new SortedListModel();
+        this.armorModel.addAll(new ArmorTypeDAO().getArray());
+        //
+        this.itemModel = new SortedListModel();
+        this.itemModel.addAll(new ItemTypeDAO().getArray());
+        //
+        this.magicModel = new SortedListModel();
+        this.magicModel.addAll(new SpellTypeDAO().getArray());
+        //
+        this.weaponModel = new SortedListModel();
+        this.weaponModel.addAll(new WeaponTypeDAO().getArray());
         //----------------------------------------------------------------------
         // Atribuição dos modelos
         this.gTblLevels.buildTable(this, 0, levelModel);
         this.gCBType.setGModel(typeModel);
         this.gCBAligment.setGModel(alignmentModel);
         this.gCBKeyAttr.setGModel(attrModel);
+        this.gDLArmors.setSourceElements(armorModel);
+        this.gDLItems.setSourceElements(itemModel);
+        this.gDLMagics.setSourceElements(magicModel);
+        this.gDLWeapons.setSourceElements(weaponModel);
         this.setClass(cl);
         this.setVisible(true);
     }
@@ -82,7 +108,7 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
     public List<ClassLevel> getTableData() {
         List<ClassLevel> list = new ArrayList<>();
         if (classBase != null) {
-            list.addAll(classBase.getClassLevels());
+            return classBase.getClassLevels();
         } else {
             Long previous = 0l;
             Long exp = 0l;
@@ -94,6 +120,7 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
                 exp = Math.round(previous * 1.5);
                 previous = exp;
                 plusLife = (next > 9);
+                list.add(new ClassLevel(next, exp, plusLife ? plus : next, plusLife, next, (15 - i)));
                 if (plusLife) {
                     if (counter == 2) {
                         counter = 0;
@@ -102,7 +129,6 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
                         counter++;
                     }
                 }
-                list.add(new ClassLevel(next, exp, plusLife ? next : plus, plusLife, next, (15 - i)));
             }
         }
         return list;
@@ -261,9 +287,9 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
         setIconifiable(true);
         setTitle("Editar classe");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/status/avenge.png"))); // NOI18N
-        setMaximumSize(new java.awt.Dimension(535, 464));
-        setMinimumSize(new java.awt.Dimension(535, 464));
-        setPreferredSize(new java.awt.Dimension(535, 464));
+        setMaximumSize(new java.awt.Dimension(624, 476));
+        setMinimumSize(new java.awt.Dimension(624, 476));
+        setPreferredSize(new java.awt.Dimension(624, 476));
 
         jBAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/new.png"))); // NOI18N
         jBAdd.setText("Salvar");
@@ -334,7 +360,7 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLKeyAttr)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(gCBKeyAttr, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)))))
+                                .addComponent(gCBKeyAttr, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
 
@@ -376,6 +402,7 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
 
         jTPConfigs.addTab("Configurações basicas", new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1253_.png")), jPBasics); // NOI18N
 
+        gTblLevels.setAutoscrolls(false);
         jScrollPane1.setViewportView(gTblLevels);
 
         bGEvolution.add(gCHMedium);
@@ -397,7 +424,7 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
         jPLevels.setLayout(jPLevelsLayout);
         jPLevelsLayout.setHorizontalGroup(
             jPLevelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
             .addGroup(jPLevelsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLEvolution)
@@ -451,6 +478,7 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
         jTPConfigs.addTab("Modificadores", new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1247_.png")), jTBModifiers); // NOI18N
 
         gTADesc.setColumns(20);
+        gTADesc.setLineWrap(true);
         gTADesc.setRows(5);
         jSPDesc.setViewportView(gTADesc);
 

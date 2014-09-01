@@ -9,6 +9,7 @@ import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.interfaces.Main;
 import br.com.urcontroler.main.interfaces.MainListener;
 import br.com.urcontroler.main.object.BeanEvent;
+import br.com.urcontroler.main.util.Description;
 import br.com.urcontroler.main.view.View;
 import br.com.urcontroler.main.view.annotation.ViewData;
 import br.com.urcontroler.main.view.object.ViewParameter;
@@ -130,7 +131,7 @@ public class MainScreenBean implements MainListener {
         for (Map.Entry<String, MenuItem> entry : viewMap.entrySet()) {
             System.out.println(prefix + " == " + entry.getKey() + "?");
             if (prefix.equalsIgnoreCase(entry.getKey())) {
-                try {                    
+                try {
                     Class<?> objClass = Class.forName(entry.getValue().getViewClass());
                     Class<?>[] argTypes = new Class[]{MainScreen.class};
                     Object[] arguments = new Object[]{screen};
@@ -184,17 +185,25 @@ public class MainScreenBean implements MainListener {
 
     @Intercept
     @Override
-    public void insertInstance(ObjectInstance instance) {        
-        try {            
+    public void insertInstance(ObjectInstance instance) {
+        insertInstance(instance, null);
+    }
+
+    @Intercept
+    @Override
+    public void insertInstance(ObjectInstance instance, Description description) {
+        try {
             View newView = (View) reflect.newInstance(instance);
+            newView.setDescription(description != null
+                    ? description : new Description.Builder().apply());
             if (instance.getCl().getClass().isAnnotationPresent(ViewData.class)) {
-                ViewData data = instance.getCl().getClass().getAnnotation(ViewData.class);      
+                ViewData data = instance.getCl().getClass().getAnnotation(ViewData.class);
                 newView.setTitle(data.name());
             }
             insertView(newView);
         } catch (InstantiationException ex) {
             LOGGER.log(Level.SEVERE, null, ex);
-        }        
+        }
     }
 
     /**

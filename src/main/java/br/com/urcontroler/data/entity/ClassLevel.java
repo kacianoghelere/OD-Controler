@@ -2,7 +2,6 @@ package br.com.urcontroler.data.entity;
 
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
-import br.com.gmp.utils.annotations.Ignore;
 
 /**
  * Parametros da classe
@@ -20,7 +19,7 @@ public class ClassLevel {
     @Editable
     @ColumnName(name = "Dado de vida")
     private Integer lifeAmount;
-    //@Ignore
+    @Editable
     @ColumnName(name = "Vida extra")
     private Boolean plusLife;
     @Editable

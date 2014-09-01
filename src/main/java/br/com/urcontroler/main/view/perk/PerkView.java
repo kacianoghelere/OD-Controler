@@ -97,18 +97,6 @@ public class PerkView extends View implements TableSource<Perk>, TableView {
         return this.bean;
     }
 
-    @Override
-    public Description getDescription() {
-        return new Description.Builder()
-                .setTitle(getTitle())
-                .setDescription("View para cadastro de controle de vantagens.")
-                .setSave("Remove todos os itens e salva os novos")
-                .setProcces("--")
-                .setClear("--")
-                .setLoad("--")
-                .apply();
-    }
-
     /**
      *
      */

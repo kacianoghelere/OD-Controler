@@ -9,14 +9,11 @@ import br.com.urcontroler.data.db.dao.MenuItemDAO;
 import br.com.urcontroler.data.entity.Menu;
 import br.com.urcontroler.data.entity.MenuItem;
 import br.com.urcontroler.main.MainScreen;
-import br.com.urcontroler.main.interfaces.Main;
-import br.com.urcontroler.main.view.View;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -87,7 +84,8 @@ public class MenuBuilder {
      * @throws java.lang.InstantiationException Exceção de instanciamento
      */
     @Intercept
-    public void build(List<Menu> menus, List<MenuItem> items, boolean execute) throws ClassNotFoundException, InstantiationException {
+    public void build(List<Menu> menus, List<MenuItem> items, boolean execute)
+            throws ClassNotFoundException, InstantiationException {
         menus.removeAll(Collections.singleton(null));
         items.removeAll(Collections.singleton(null));
         Collections.sort(menus);
@@ -157,7 +155,8 @@ public class MenuBuilder {
      * @throws java.lang.ClassNotFoundException Exceção de classe desconhecida
      * @throws java.lang.InstantiationException Exceção de instanciamento
      */
-    public void buildItems(List<MenuItem> items, boolean execute) throws ClassNotFoundException, InstantiationException {
+    public void buildItems(List<MenuItem> items, boolean execute)
+            throws ClassNotFoundException, InstantiationException {
         Collections.sort(items);
         for (MenuItem item : items) {
             if (((long) 0) == item.getMenu()) {
@@ -177,7 +176,8 @@ public class MenuBuilder {
      * @throws java.lang.ClassNotFoundException Exceção de classe desconhecida
      * @throws java.lang.InstantiationException Exceção de instanciamento
      */
-    public void recursiveItems(JMenu jmenu, MenuItem item, boolean execute) throws ClassNotFoundException, InstantiationException {
+    public void recursiveItems(JMenu jmenu, MenuItem item, boolean execute)
+            throws ClassNotFoundException, InstantiationException {
         JMenu menu = null;
         String prefix = null;
         Long menuid = null;
@@ -205,7 +205,8 @@ public class MenuBuilder {
      * @throws java.lang.ClassNotFoundException Exceção de classe não encontrada
      * @throws java.lang.InstantiationException Exceção de instanciamento
      */
-    private void insertItem(JMenu menu, MenuItem item, boolean execute) throws ClassNotFoundException, InstantiationException {
+    private void insertItem(JMenu menu, MenuItem item, boolean execute)
+            throws ClassNotFoundException, InstantiationException {
         JMenuItem jitem = generateItem(item, execute);
         menu.add(jitem);
     }
@@ -233,22 +234,26 @@ public class MenuBuilder {
      * @throws ClassNotFoundException Exceção de classe não encontrada
      * @throws java.lang.InstantiationException Exceção de instanciamento
      */
-    public JMenuItem generateItem(final MenuItem view, boolean execute) throws ClassNotFoundException, InstantiationException {
+    public JMenuItem generateItem(final MenuItem view, boolean execute)
+            throws ClassNotFoundException, InstantiationException {
         JMenuItem item = new JMenuItem();
-        item.setText(view.toString());
+        item.setText(view.getName());
         item.setIcon(new ImageIcon(getClass().getResource(view.getIcon())));
-        if (execute) {            
+        if (execute) {
             mainScreen.getListener().getViewMap()
-                    .put(view.toString().split("-")[0].trim(), view);
+                    .put(view.getName().split("-")[0].trim(), view);
+            view.setViewClass(view.getViewClass().replaceAll(".java", ""));
             item.addActionListener(new ActionListener() {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
-                        mainScreen.getListener().insertInstance(new ObjectInstance(
-                                Class.forName(view.getViewClass().replaceAll(".java", "")),
-                                new Class[]{MainScreen.class},
-                                new Object[]{mainScreen}));
+                        mainScreen.getListener().insertInstance(
+                                new ObjectInstance(
+                                        Class.forName(view.getViewClass()),
+                                        new Class[]{MainScreen.class},
+                                        new Object[]{mainScreen}),
+                                view.getDescription());
                     } catch (ClassNotFoundException ex) {
                         LOGGER.log(Level.SEVERE, null, ex);
                     }
