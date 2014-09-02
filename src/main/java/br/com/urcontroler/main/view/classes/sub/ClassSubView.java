@@ -1,18 +1,27 @@
 package br.com.urcontroler.main.view.classes.sub;
 
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
-import br.com.gmp.comps.list.dual.model.SortedListModel;
+import br.com.gmp.comps.list.dual.GDualList;
+import br.com.gmp.comps.list.dual.model.GDualListModel;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.urcontroler.data.db.dao.ArmorTypeDAO;
 import br.com.urcontroler.data.db.dao.ClassTypeDAO;
+import br.com.urcontroler.data.db.dao.ExpertiseDAO;
 import br.com.urcontroler.data.db.dao.ItemTypeDAO;
-import br.com.urcontroler.data.db.dao.SpellTypeDAO;
+import br.com.urcontroler.data.db.dao.PerkDAO;
 import br.com.urcontroler.data.db.dao.WeaponTypeDAO;
+import br.com.urcontroler.data.entity.ArmorType;
 import br.com.urcontroler.data.enums.Alignment;
 import br.com.urcontroler.data.entity.ClassBase;
 import br.com.urcontroler.data.entity.ClassLevel;
 import br.com.urcontroler.data.entity.ClassType;
+import br.com.urcontroler.data.entity.Expertise;
+import br.com.urcontroler.data.entity.ItemType;
+import br.com.urcontroler.data.entity.Perk;
+import br.com.urcontroler.data.entity.WeaponType;
 import br.com.urcontroler.data.enums.Attribute;
+import br.com.urcontroler.data.enums.Dice;
+import br.com.urcontroler.data.enums.SpellCategory;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.view.sub.SubView;
 import br.com.urcontroler.main.view.classes.ClassView;
@@ -20,6 +29,7 @@ import br.com.urcontroler.main.view.classes.ClassBean;
 import br.com.urcontroler.main.view.classes.sub.model.ClassLevelModel;
 import br.com.urcontroler.main.view.exception.ViewException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -40,59 +50,51 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
     private GComboBoxModel<ClassType> typeModel;
     private GComboBoxModel<Alignment> alignmentModel;
     private GComboBoxModel<Attribute> attrModel;
-    private SortedListModel armorModel;
-    private SortedListModel itemModel;
-    private SortedListModel magicModel;
-    private SortedListModel weaponModel;
+    private GComboBoxModel<Dice> diceModel;
+    private GDualListModel<ArmorType> armorModel;
+    private GDualListModel<ItemType> itemModel;
+    private GDualListModel<SpellCategory> spellModel;
+    private GDualListModel<WeaponType> weaponModel;
+    private GDualListModel<Perk> perkModel;
+    private GDualListModel<Expertise> expertiseModel;
 
     /**
      * Cria nova instancia de ClassSubView
      *
      * @param view {@code ClassView} Tela das Armaduras
-     * @param cl {@code ClassBase} Armadura
+     * @param classBase {@code ClassBase} Armadura
      * @since 1.0
      */
-    public ClassSubView(ClassView view, ClassBase cl) {
+    public ClassSubView(ClassView view, ClassBase classBase) {
         super(view);
         this.view = view;
-        initialize(cl);
+        initialize(classBase);
     }
 
     /**
      * Método de inicialização
      *
-     * @param cl {@code ClassBase} Armadura
+     * @param classBase {@code ClassBase} Armadura
      * @since 1.0
      */
-    private void initialize(ClassBase cl) {
+    private void initialize(ClassBase classBase) {
         this.setSize(624, 476);
         this.initComponents();
         this.bean = view.getBean();
         this.load();
         //----------------------------------------------------------------------
-        // Inicializações dos modelos
-        this.armorModel = new SortedListModel();
-        this.armorModel.addAll(new ArmorTypeDAO().getArray());
-        //
-        this.itemModel = new SortedListModel();
-        this.itemModel.addAll(new ItemTypeDAO().getArray());
-        //
-        this.magicModel = new SortedListModel();
-        this.magicModel.addAll(new SpellTypeDAO().getArray());
-        //
-        this.weaponModel = new SortedListModel();
-        this.weaponModel.addAll(new WeaponTypeDAO().getArray());
-        //----------------------------------------------------------------------
         // Atribuição dos modelos
         this.gTblLevels.buildTable(this, 0, levelModel);
+        this.gCBDice.setGModel(diceModel);
         this.gCBType.setGModel(typeModel);
         this.gCBAligment.setGModel(alignmentModel);
         this.gCBKeyAttr.setGModel(attrModel);
         this.gDLArmors.setSourceElements(armorModel);
         this.gDLItems.setSourceElements(itemModel);
-        this.gDLMagics.setSourceElements(magicModel);
+        this.gDLMagics.setSourceElements(spellModel);
         this.gDLWeapons.setSourceElements(weaponModel);
-        this.setClass(cl);
+        this.gDLPerk.setSourceElements(perkModel);
+        this.setClass(classBase);
         this.setVisible(true);
     }
 
@@ -102,6 +104,38 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
         this.typeModel = new GComboBoxModel<>(new ClassTypeDAO().getList());
         this.alignmentModel = new GComboBoxModel<>(Alignment.values());
         this.attrModel = new GComboBoxModel<>(Attribute.values());
+        this.diceModel = new GComboBoxModel<>(Dice.values());
+        //----------------------------------------------------------------------
+        this.armorModel = new GDualListModel<>();
+        this.itemModel = new GDualListModel<>();
+        this.spellModel = new GDualListModel<>();
+        this.weaponModel = new GDualListModel<>();
+        this.perkModel = new GDualListModel<>();
+        this.expertiseModel = new GDualListModel<>();
+    }
+
+    /**
+     * Move todos os itens já adicionados para a lista de destino, separando o
+     * conteído
+     *
+     * @param data {@code List} Dados do objeto
+     * @param model {@code List} Dados da entidade
+     * @param dual {@code GDualList} Lista dupla
+     */
+    private void moveExistent(List data, List model, GDualList dual) {
+        List contains = new ArrayList();
+        List notContains = new ArrayList();
+        for (Object object : data) {
+            if (model.contains(object)) {
+                contains.add(object);
+            } else {
+                notContains.add(object);
+            }
+        }
+        dual.clearDestinationListModel();
+        dual.clearSourceListModel();
+        dual.setSourceElements(notContains.toArray());
+        dual.setDestinationElements(contains.toArray());
     }
 
     @Override
@@ -152,10 +186,56 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
      */
     public void setClass(ClassBase cl) {
         try {
+            List<ArmorType> armors = new ArmorTypeDAO().getList();
+            List<ItemType> items = new ItemTypeDAO().getList();
+            List<SpellCategory> magics = Arrays.asList(SpellCategory.values());
+            List<WeaponType> weapons = new WeaponTypeDAO().getList();
+            List<Perk> perks = new PerkDAO().getList();
+            List<Expertise> expertises = new ExpertiseDAO().getList();
+            //------------------------------------------------------------------            
             if (cl != null) {
                 this.classBase = cl;
                 this.gTName.setText(cl.getName());
+                this.gCBDice.setSelectedItem(classBase.getLifeDice());
+                this.gCBType.setSelectedItem(classBase.getType());
+                this.gNBonusCA.setInt(classBase.getArmorBonus());
+                this.gCBKeyAttr.setSelectedItem(classBase.getKeyAttribute());
+                this.gCBAligment.setSelectedItem(classBase.getAlignment());
+                this.rPane.setRequirement(classBase.getRequirement());
+                this.levelModel.setData(classBase.getClassLevels());
+                this.gTADesc.setText(classBase.getDescription());
             }
+            //------------------------------------------------------------------        
+            // Organiza a lista de tipos de armaduras
+            List<ArmorType> clArmor = (List<ArmorType>) (cl == null
+                    ? new ArrayList<>() : cl.getAllowedArmors());
+            moveExistent(armors, clArmor, gDLArmors);
+            //------------------------------------------------------------------            
+            // Organiza a lista de tipos de armas
+            List<WeaponType> clWeapons = (List<WeaponType>) (cl == null
+                    ? new ArrayList<>() : cl.getAllowedWeapons());
+            moveExistent(weapons, clWeapons, gDLWeapons);
+            //------------------------------------------------------------------            
+            // Organiza a lista de tipos de itens
+            List<ItemType> clItems = (List<ItemType>) (cl == null
+                    ? new ArrayList<>() : cl.getAllowedItems());
+            moveExistent(items, clItems, gDLItems);
+            //------------------------------------------------------------------            
+            // Organiza a lista de tipos de magias
+            List<SpellCategory> clMagic = (List<SpellCategory>) (cl == null
+                    ? new ArrayList<>() : cl.getAllowedMagic());
+            moveExistent(magics, clMagic, gDLMagics);
+            //------------------------------------------------------------------            
+            // Organiza a lista de tipos de vantagens
+            List<Perk> clPerks = (List<Perk>) (cl == null
+                    ? new ArrayList<>() : cl.getPerks());
+            moveExistent(perks, clPerks, gDLPerk);
+            //------------------------------------------------------------------            
+            // Organiza a lista de tipos de vantagens
+            List<Expertise> clExpertise = (List<Expertise>) (cl == null
+                    ? new ArrayList<>() : cl.getAllowedExpertises());
+            moveExistent(expertises, clExpertise, gDLExpertise);
+            //------------------------------------------------------------------            
         } catch (Exception e) {
             throwException(new ViewException(view, e));
         }
@@ -174,8 +254,20 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
             this.classBase.setId(bean.getNextID());
         }
         this.classBase.setName(gTName.getText());
-        this.classBase.setDescription(gTADesc.getText());
+        this.classBase.setLifeDice(diceModel.getSelectedItem());
         this.classBase.setType(typeModel.getSelectedItem());
+        this.classBase.setArmorBonus(gNBonusCA.getInteger());
+        this.classBase.setKeyAttribute(attrModel.getSelectedItem());
+        this.classBase.setAlignment(alignmentModel.getSelectedItem());
+        this.classBase.setRequirement(rPane.getRequirement());
+        this.classBase.setClassLevels(levelModel.getData());
+        this.classBase.setAllowedArmors(gDLArmors.getDestinationData().getList());
+        this.classBase.setAllowedWeapons(gDLWeapons.getDestinationData().getList());
+        this.classBase.setAllowedItems(gDLItems.getDestinationData().getList());
+        this.classBase.setAllowedMagic(gDLMagics.getDestinationData().getList());
+        this.classBase.setPerks(gDLPerk.getDestinationData().getList());
+        this.classBase.setAllowedExpertises(gDLExpertise.getDestinationData().getList());
+        this.classBase.setDescription(gTADesc.getText());
     }
 
     /**
@@ -233,7 +325,7 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
     }
 
     /**
-     * Retorna o ClassView
+     * Retorna o View principal
      *
      * @return {@code ClassView}
      * @since 1.0
@@ -271,15 +363,13 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
         jPLevels = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         gTblLevels = new br.com.gmp.comps.table.GTable();
-        gCHMedium = new br.com.gmp.comps.checkbox.GCheckBox();
-        jLEvolution = new javax.swing.JLabel();
-        gCHFast = new br.com.gmp.comps.checkbox.GCheckBox();
-        gCHSlow = new br.com.gmp.comps.checkbox.GCheckBox();
         jBRecharge = new javax.swing.JButton();
-        gDLArmors = new br.com.gmp.comps.list.dual.GMPDualList();
-        gDLWeapons = new br.com.gmp.comps.list.dual.GMPDualList();
-        gDLItems = new br.com.gmp.comps.list.dual.GMPDualList();
-        gDLMagics = new br.com.gmp.comps.list.dual.GMPDualList();
+        gDLArmors = new br.com.gmp.comps.list.dual.GDualList();
+        gDLWeapons = new br.com.gmp.comps.list.dual.GDualList();
+        gDLItems = new br.com.gmp.comps.list.dual.GDualList();
+        gDLMagics = new br.com.gmp.comps.list.dual.GDualList();
+        gDLExpertise = new br.com.gmp.comps.list.dual.GDualList();
+        gDLPerk = new br.com.gmp.comps.list.dual.GDualList();
         jSPDesc = new javax.swing.JScrollPane();
         gTADesc = new br.com.gmp.comps.textarea.GTextArea();
 
@@ -405,18 +495,6 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
         gTblLevels.setAutoscrolls(false);
         jScrollPane1.setViewportView(gTblLevels);
 
-        bGEvolution.add(gCHMedium);
-        gCHMedium.setText("Mediana");
-
-        jLEvolution.setText("Evolução:");
-
-        bGEvolution.add(gCHFast);
-        gCHFast.setSelected(true);
-        gCHFast.setText("Rápida");
-
-        bGEvolution.add(gCHSlow);
-        gCHSlow.setText("Lenta");
-
         jBRecharge.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/transition/switch.png"))); // NOI18N
         jBRecharge.setText("Recarregar");
 
@@ -426,36 +504,18 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
             jPLevelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
             .addGroup(jPLevelsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLEvolution)
-                .addGap(14, 14, 14)
-                .addComponent(gCHFast, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(gCHMedium, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(gCHSlow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBRecharge)
                 .addContainerGap())
         );
-
-        jPLevelsLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {gCHFast, gCHMedium, gCHSlow});
-
         jPLevelsLayout.setVerticalGroup(
             jPLevelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPLevelsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPLevelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(gCHMedium, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLEvolution)
-                    .addComponent(gCHFast, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(gCHSlow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBRecharge))
+                .addComponent(jBRecharge)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
         );
-
-        jPLevelsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCHFast, gCHMedium, gCHSlow});
 
         jTBModifiers.addTab("Niveis", new javax.swing.ImageIcon(getClass().getResource("/Mixed/slice1393_@.png")), jPLevels); // NOI18N
 
@@ -474,6 +534,14 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
         gDLMagics.setDestinationLabelText("Pode utilizar");
         gDLMagics.setSourceLabelText("Não pode utilizar");
         jTBModifiers.addTab("Magias", new javax.swing.ImageIcon(getClass().getResource("/Mixed/slice1385_@.png")), gDLMagics); // NOI18N
+
+        gDLExpertise.setDestinationLabelText("Pode utilizar");
+        gDLExpertise.setSourceLabelText("Não pode utilizar");
+        jTBModifiers.addTab("Perícias", new javax.swing.ImageIcon(getClass().getResource("/Mixed/slice1215_.png")), gDLExpertise); // NOI18N
+
+        gDLPerk.setDestinationLabelText("Pode utilizar");
+        gDLPerk.setSourceLabelText("Não pode utilizar");
+        jTBModifiers.addTab("Vantagens", new javax.swing.ImageIcon(getClass().getResource("/Mixed/slice1390_@.png")), gDLPerk); // NOI18N
 
         jTPConfigs.addTab("Modificadores", new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1247_.png")), jTBModifiers); // NOI18N
 
@@ -544,13 +612,12 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
     private br.com.gmp.comps.combobox.GComboBox gCBDice;
     private br.com.gmp.comps.combobox.GComboBox gCBKeyAttr;
     private br.com.gmp.comps.combobox.GComboBox gCBType;
-    private br.com.gmp.comps.checkbox.GCheckBox gCHFast;
-    private br.com.gmp.comps.checkbox.GCheckBox gCHMedium;
-    private br.com.gmp.comps.checkbox.GCheckBox gCHSlow;
-    private br.com.gmp.comps.list.dual.GMPDualList gDLArmors;
-    private br.com.gmp.comps.list.dual.GMPDualList gDLItems;
-    private br.com.gmp.comps.list.dual.GMPDualList gDLMagics;
-    private br.com.gmp.comps.list.dual.GMPDualList gDLWeapons;
+    private br.com.gmp.comps.list.dual.GDualList gDLArmors;
+    private br.com.gmp.comps.list.dual.GDualList gDLExpertise;
+    private br.com.gmp.comps.list.dual.GDualList gDLItems;
+    private br.com.gmp.comps.list.dual.GDualList gDLMagics;
+    private br.com.gmp.comps.list.dual.GDualList gDLPerk;
+    private br.com.gmp.comps.list.dual.GDualList gDLWeapons;
     private br.com.gmp.comps.textfield.numeric.GNumericField gNBonusCA;
     private br.com.gmp.comps.textarea.GTextArea gTADesc;
     private br.com.gmp.comps.textfield.GTextField gTName;
@@ -561,7 +628,6 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
     private javax.swing.JLabel jLAligment;
     private javax.swing.JLabel jLBonusCA;
     private javax.swing.JLabel jLDice;
-    private javax.swing.JLabel jLEvolution;
     private javax.swing.JLabel jLKeyAttr;
     private javax.swing.JLabel jLName;
     private javax.swing.JLabel jLType;

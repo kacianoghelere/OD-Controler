@@ -278,14 +278,6 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jScrollPane1" alignment="0" pref="573" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLEvolution" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                          <Component id="gCHFast" linkSize="4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="gCHMedium" linkSize="4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="gCHSlow" linkSize="4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="jBRecharge" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -296,13 +288,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="gCHMedium" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLEvolution" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="gCHFast" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="gCHSlow" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jBRecharge" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jBRecharge" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jScrollPane1" pref="248" max="32767" attributes="0"/>
                       </Group>
@@ -324,36 +310,6 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="br.com.gmp.comps.checkbox.GCheckBox" name="gCHMedium">
-                  <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bGEvolution"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Mediana"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLEvolution">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Evolu&#xe7;&#xe3;o:"/>
-                  </Properties>
-                </Component>
-                <Component class="br.com.gmp.comps.checkbox.GCheckBox" name="gCHFast">
-                  <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bGEvolution"/>
-                    </Property>
-                    <Property name="selected" type="boolean" value="true"/>
-                    <Property name="text" type="java.lang.String" value="R&#xe1;pida"/>
-                  </Properties>
-                </Component>
-                <Component class="br.com.gmp.comps.checkbox.GCheckBox" name="gCHSlow">
-                  <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bGEvolution"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Lenta"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JButton" name="jBRecharge">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -364,7 +320,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="br.com.gmp.comps.list.dual.GMPDualList" name="gDLArmors">
+            <Component class="br.com.gmp.comps.list.dual.GDualList" name="gDLArmors">
               <Properties>
                 <Property name="destinationLabelText" type="java.lang.String" value="Pode utilizar"/>
                 <Property name="sourceLabelText" type="java.lang.String" value="N&#xe3;o pode utilizar"/>
@@ -380,7 +336,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="br.com.gmp.comps.list.dual.GMPDualList" name="gDLWeapons">
+            <Component class="br.com.gmp.comps.list.dual.GDualList" name="gDLWeapons">
               <Properties>
                 <Property name="destinationLabelText" type="java.lang.String" value="Pode utilizar"/>
                 <Property name="sourceLabelText" type="java.lang.String" value="N&#xe3;o pode utilizar"/>
@@ -396,7 +352,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="br.com.gmp.comps.list.dual.GMPDualList" name="gDLItems">
+            <Component class="br.com.gmp.comps.list.dual.GDualList" name="gDLItems">
               <Properties>
                 <Property name="destinationLabelText" type="java.lang.String" value="Pode utilizar"/>
                 <Property name="sourceLabelText" type="java.lang.String" value="N&#xe3;o pode utilizar"/>
@@ -412,7 +368,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="br.com.gmp.comps.list.dual.GMPDualList" name="gDLMagics">
+            <Component class="br.com.gmp.comps.list.dual.GDualList" name="gDLMagics">
               <Properties>
                 <Property name="destinationLabelText" type="java.lang.String" value="Pode utilizar"/>
                 <Property name="sourceLabelText" type="java.lang.String" value="N&#xe3;o pode utilizar"/>
@@ -423,6 +379,38 @@
                     <Property name="tabTitle" type="java.lang.String" value="Magias"/>
                     <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Mixed/slice1385_@.png"/>
+                    </Property>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="br.com.gmp.comps.list.dual.GDualList" name="gDLExpertise">
+              <Properties>
+                <Property name="destinationLabelText" type="java.lang.String" value="Pode utilizar"/>
+                <Property name="sourceLabelText" type="java.lang.String" value="N&#xe3;o pode utilizar"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Per&#xed;cias">
+                    <Property name="tabTitle" type="java.lang.String" value="Per&#xed;cias"/>
+                    <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Mixed/slice1215_.png"/>
+                    </Property>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="br.com.gmp.comps.list.dual.GDualList" name="gDLPerk">
+              <Properties>
+                <Property name="destinationLabelText" type="java.lang.String" value="Pode utilizar"/>
+                <Property name="sourceLabelText" type="java.lang.String" value="N&#xe3;o pode utilizar"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Vantagens">
+                    <Property name="tabTitle" type="java.lang.String" value="Vantagens"/>
+                    <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Mixed/slice1390_@.png"/>
                     </Property>
                   </JTabbedPaneConstraints>
                 </Constraint>
