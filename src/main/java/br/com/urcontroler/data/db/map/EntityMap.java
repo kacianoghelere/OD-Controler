@@ -28,14 +28,17 @@ public class EntityMap {
         map.put(Expertise.class, "ExpertiseDB");
         map.put(ExpertiseType.class, "ExpertiseTypeDB");
         map.put(ItemType.class, "ItemTypeDB");
+        map.put(LanguageType.class, "LanguageTypeDB");
         map.put(MaterialType.class, "MaterialTypeDB");
         map.put(Menu.class, "MenuDB");
         map.put(MenuItem.class, "MenuItemDB");
         map.put(Origin.class, "OriginDB");
         map.put(Perk.class, "PerkDB");
         map.put(PerkType.class, "PerkTypeDB");
+        map.put(Race.class, "RaceDB");
         map.put(Spell.class, "SpellDB");
         map.put(SpellType.class, "SpellTypeDB");
+        map.put(Skill.class, "SkillDB");
         map.put(Weapon.class, "WeaponDB");
         map.put(WeaponType.class, "WeaponTypeDB");
         return map;

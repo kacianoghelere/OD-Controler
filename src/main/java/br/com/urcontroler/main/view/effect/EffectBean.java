@@ -7,7 +7,6 @@ import br.com.urcontroler.data.entity.Effect;
 import br.com.urcontroler.data.entity.EffectType;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.view.bean.ViewBean;
-import br.com.urcontroler.main.view.effect.EffectView;
 
 /**
  * Bean de controle para EffectView
@@ -39,10 +38,10 @@ public class EffectBean extends ViewBean<EffectView> {
     public void add(BeanEvent evt) throws Exception {
         ObjectWrapper vw = evt.getWrapper();
         String title = (String) vw.getValue("title");
-        Double strength = (Double) vw.getValue("strength");
+        String description = (String) vw.getValue("description");
         EffectType type = (EffectType) vw.getValue("type");
         Long nextID = getNextID();
-        Effect effect = new Effect(nextID, title, strength, type);
+        Effect effect = new Effect(nextID, title, description, type);
         getView().getModel().add(effect);
     }
 

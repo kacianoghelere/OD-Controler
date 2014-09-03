@@ -38,24 +38,23 @@
                   <Component id="jScrollPane1" alignment="0" pref="516" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLStrength" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLTitle" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLDesc" linkSize="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLTitle" linkSize="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="gTTitle" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="nTStrength" min="-2" pref="69" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLType" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="gCBType" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jBAdd" min="-2" pref="30" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jBRemove" min="-2" pref="30" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="gTDesc" alignment="1" max="32767" attributes="0"/>
                       </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLType" linkSize="2" min="-2" pref="59" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="gCBType" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jBAdd" min="-2" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jBRemove" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -71,18 +70,21 @@
                   <Component id="gTTitle" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLDesc" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="gTDesc" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLStrength" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="nTStrength" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="jLType" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="gCBType" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="gCBType" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jBRemove" min="-2" max="-2" attributes="0"/>
                   <Component id="jBAdd" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="278" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="247" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -121,20 +123,21 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLTitle">
       <Properties>
+        <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="Titulo:"/>
       </Properties>
     </Component>
     <Component class="br.com.gmp.comps.textfield.GTextField" name="gTTitle">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLStrength">
+    <Component class="javax.swing.JLabel" name="jLDesc">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Propor&#xe7;&#xe3;o:"/>
+        <Property name="horizontalAlignment" type="int" value="4"/>
+        <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o:"/>
       </Properties>
-    </Component>
-    <Component class="br.com.gmp.comps.textfield.NumericTextField" name="nTStrength">
     </Component>
     <Component class="javax.swing.JLabel" name="jLType">
       <Properties>
+        <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="Tipo:"/>
       </Properties>
     </Component>
@@ -159,6 +162,8 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBRemoveActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="br.com.gmp.comps.textfield.GTextField" name="gTDesc">
     </Component>
   </SubComponents>
 </Form>

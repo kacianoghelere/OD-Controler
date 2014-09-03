@@ -32,7 +32,7 @@ public class PlayerChar {
     @ColumnName(name = "Classe")
     private ClassBase charClass;
     @ColumnName(name = "Raça")
-    private CharRace charRace;
+    private Race charRace;
     @Ignore
     @ColumnName(name = "Informações")
     private Collection<PlayerCharInfo> playerCharInfoCollection;
@@ -57,9 +57,9 @@ public class PlayerChar {
      * @param height {@code Double} Altura do personagem
      * @param weight {@code Integer} Peso do personagem
      * @param charClass {@code ClassBase} Classe do personagem
-     * @param charRace {@code CharRace} Raça do personagem
+     * @param charRace {@code Race} Raça do personagem
      */
-    public PlayerChar(Long id, String charName, String playerName, Integer age, Character sex, Double height, Integer weight, ClassBase charClass, CharRace charRace) {
+    public PlayerChar(Long id, String charName, String playerName, Integer age, Character sex, Double height, Integer weight, ClassBase charClass, Race charRace) {
         this.id = id;
         this.name = charName;
         this.player = playerName;
@@ -237,7 +237,7 @@ public class PlayerChar {
      *
      * @return {@code ClassBase} Raça do personagem
      */
-    public CharRace getCharRace() {
+    public Race getCharRace() {
         return charRace;
     }
 
@@ -246,7 +246,7 @@ public class PlayerChar {
      *
      * @param charRace {@code ClassBase} Raça do personagem
      */
-    public void setCharRace(CharRace charRace) {
+    public void setCharRace(Race charRace) {
         this.charRace = charRace;
     }
 

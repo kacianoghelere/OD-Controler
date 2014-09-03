@@ -8,12 +8,12 @@ import br.com.urcontroler.data.entity.EffectType;
 import br.com.urcontroler.data.entity.ElementType;
 import br.com.urcontroler.data.entity.ExpertiseType;
 import br.com.urcontroler.data.entity.ItemType;
+import br.com.urcontroler.data.entity.LanguageType;
 import br.com.urcontroler.data.entity.SpellType;
 import br.com.urcontroler.data.entity.MaterialType;
 import br.com.urcontroler.data.entity.PerkType;
 import br.com.urcontroler.data.entity.Type;
 import br.com.urcontroler.main.MainScreen;
-import br.com.urcontroler.main.util.Description;
 import br.com.urcontroler.main.view.View;
 import br.com.urcontroler.main.view.annotation.ViewData;
 import br.com.urcontroler.main.view.enums.ViewType;
@@ -41,6 +41,7 @@ public class TypeView extends View<TypeBean> {
     private GListModel<ElementType> elementModel;
     private GListModel<ItemType> itemModel;
     private GListModel<SpellType> spellModel;
+    private GListModel<LanguageType> languageModel;
 
     /**
      * Cria nova instancia de TypeView
@@ -69,6 +70,7 @@ public class TypeView extends View<TypeBean> {
         this.elementModel = new GListModel<>();
         this.itemModel = new GListModel<>();
         this.spellModel = new GListModel<>();
+        this.languageModel = new GListModel<>();
         //----------------------------------------------------------------------
         // Inicialização do bean
         this.bean = new TypeBean(this);
@@ -82,6 +84,7 @@ public class TypeView extends View<TypeBean> {
         this.gLtElement.setModel(elementModel);
         this.gLtItemTp.setModel(itemModel);
         this.gLtSpellTp.setModel(spellModel);
+        this.gLtLangTp.setModel(languageModel);
     }
 
     /**
@@ -204,6 +207,15 @@ public class TypeView extends View<TypeBean> {
         return spellModel;
     }
 
+    /**
+     * Retorna o modelo de lista dos LanguageTypes
+     *
+     * @return {@code GListModel(LanguageType)}
+     */
+    public GListModel<LanguageType> getLangModel() {
+        return languageModel;
+    }
+
     @Override
     public TypeBean getBean() {
         return bean;
@@ -249,6 +261,10 @@ public class TypeView extends View<TypeBean> {
         gTSpellTp = new br.com.gmp.comps.textfield.GTextField();
         jSPPerk4 = new javax.swing.JScrollPane();
         gLtSpellTp = new br.com.gmp.comps.list.GList();
+        jPLanguageType = new javax.swing.JPanel();
+        gTLangTp = new br.com.gmp.comps.textfield.GTextField();
+        jSPPerk5 = new javax.swing.JScrollPane();
+        gLtLangTp = new br.com.gmp.comps.list.GList();
 
         setClosable(true);
         setIconifiable(true);
@@ -647,6 +663,54 @@ public class TypeView extends View<TypeBean> {
 
         jTabbedPane.addTab("Magias", jPMagicType);
 
+        jPLanguageType.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Idiomas"));
+        jPLanguageType.setName("jPLanguageType"); // NOI18N
+
+        gTLangTp.setPlaceholder("Tipos de Idiomas");
+        gTLangTp.setMaximumSize(new java.awt.Dimension(150, 2147483647));
+        gTLangTp.setMinimumSize(new java.awt.Dimension(150, 28));
+        gTLangTp.setName("gTLangTp"); // NOI18N
+        gTLangTp.setPreferredSize(new java.awt.Dimension(150, 28));
+        gTLangTp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gTLangTpKeyReleased(evt);
+            }
+        });
+
+        jSPPerk5.setName("jSPPerk5"); // NOI18N
+
+        gLtLangTp.setKeyDelete(true);
+        gLtLangTp.setName("gLtLangTp"); // NOI18N
+        gLtLangTp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gLtLangTpKeyReleased(evt);
+            }
+        });
+        jSPPerk5.setViewportView(gLtLangTp);
+
+        javax.swing.GroupLayout jPLanguageTypeLayout = new javax.swing.GroupLayout(jPLanguageType);
+        jPLanguageType.setLayout(jPLanguageTypeLayout);
+        jPLanguageTypeLayout.setHorizontalGroup(
+            jPLanguageTypeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPLanguageTypeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPLanguageTypeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(gTLangTp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSPPerk5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPLanguageTypeLayout.setVerticalGroup(
+            jPLanguageTypeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPLanguageTypeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSPPerk5, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gTLangTp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
+        );
+
+        jTabbedPane.addTab("Idiomas", jPLanguageType);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -739,12 +803,23 @@ public class TypeView extends View<TypeBean> {
         }
     }//GEN-LAST:event_gLtSpellTpKeyReleased
 
+    private void gTLangTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTLangTpKeyReleased
+        add(evt, gTLangTp, new LanguageType(), languageModel);
+    }//GEN-LAST:event_gTLangTpKeyReleased
+
+    private void gLtLangTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gLtLangTpKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
+            remove(gLtLangTp, languageModel);
+        }
+    }//GEN-LAST:event_gLtLangTpKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.list.GList gLtArmorTp;
     private br.com.gmp.comps.list.GList gLtEffectTp;
     private br.com.gmp.comps.list.GList gLtElement;
     private br.com.gmp.comps.list.GList gLtExpTp;
     private br.com.gmp.comps.list.GList gLtItemTp;
+    private br.com.gmp.comps.list.GList gLtLangTp;
     private br.com.gmp.comps.list.GList gLtMaterials;
     private br.com.gmp.comps.list.GList gLtPerkTp;
     private br.com.gmp.comps.list.GList gLtSpellTp;
@@ -753,6 +828,7 @@ public class TypeView extends View<TypeBean> {
     private br.com.gmp.comps.textfield.GTextField gTElement;
     private br.com.gmp.comps.textfield.GTextField gTExpertiseTp;
     private br.com.gmp.comps.textfield.GTextField gTItemTp;
+    private br.com.gmp.comps.textfield.GTextField gTLangTp;
     private br.com.gmp.comps.textfield.GTextField gTMaterial;
     private br.com.gmp.comps.textfield.GTextField gTPerkTp;
     private br.com.gmp.comps.textfield.GTextField gTSpellTp;
@@ -761,6 +837,7 @@ public class TypeView extends View<TypeBean> {
     private javax.swing.JPanel jPElement;
     private javax.swing.JPanel jPExpertiseTypes;
     private javax.swing.JPanel jPItemType;
+    private javax.swing.JPanel jPLanguageType;
     private javax.swing.JPanel jPMagicType;
     private javax.swing.JPanel jPMaterials;
     private javax.swing.JPanel jPPerkTypes;
@@ -772,6 +849,7 @@ public class TypeView extends View<TypeBean> {
     private javax.swing.JScrollPane jSPPerk2;
     private javax.swing.JScrollPane jSPPerk3;
     private javax.swing.JScrollPane jSPPerk4;
+    private javax.swing.JScrollPane jSPPerk5;
     private javax.swing.JTabbedPane jTabbedPane;
     // End of variables declaration//GEN-END:variables
 }

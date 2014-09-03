@@ -1,76 +1,109 @@
-package br.com.urcontroler.main.comps;
+package br.com.urcontroler.main.comps.modifier;
 
-import br.com.urcontroler.data.entity.Requirement;
+import br.com.urcontroler.data.entity.Modifier;
 
 /**
- * Painel auxiliar para controle de requerimentos
+ * Painel auxiliar para controle de modificadores
  *
  * @author kaciano
  */
-public class RequirementPane extends javax.swing.JPanel {
+public class ModifierPane extends javax.swing.JPanel {
 
-    private Requirement requirement;
+    private Modifier modifier;
 
     /**
-     * Cria nova instancia de RequirementPane
+     * Cria nova instancia de ModifierPane
      */
-    public RequirementPane() {
+    public ModifierPane() {
         this(null);
     }
 
     /**
-     * Cria nova instancia de RequirementPane
+     * Cria nova instancia de ModifierPane
      *
-     * @param requirement {@code Requirement} Requerimentos
+     * @param requirement {@code Modifier} Modificadores
      */
-    public RequirementPane(Requirement requirement) {
-        this.requirement = requirement;
+    public ModifierPane(Modifier requirement) {
+        this.modifier = requirement;
         this.initialize(requirement);
     }
 
     /**
      * Método de inicialização
      *
-     * @param r {@code Requirement} Requerimentos
+     * @param r {@code Modifier} Modificadores
      */
-    private void initialize(Requirement r) {
+    private void initialize(Modifier r) {
         initComponents();
         if (r != null) {
-            setRequirement(requirement);
+            setModifier(modifier);
         }
     }
 
     /**
-     * Retorna os requerimentos editados
+     * Retorna os modificadores editados
      *
-     * @return {@code Requirement} Requerimentos
+     * @return {@code Modifier} Modificadores
      */
-    public Requirement getRequirement() {
-        if (requirement == null) {
-            requirement = new Requirement();
+    public Modifier getModifier() {
+        if (modifier == null) {
+            modifier = new Modifier();
         }
-        requirement.setSTR((int) this.jSpnStr.getValue());
-        requirement.setDES((int) this.jSpnDex.getValue());
-        requirement.setCON((int) this.jSpnCon.getValue());
-        requirement.setINT((int) this.jSpnInt.getValue());
-        requirement.setWIS((int) this.jSpnWis.getValue());
-        requirement.setCHA((int) this.jSpnCha.getValue());
-        return requirement;
+        modifier.setSTR((int) this.jSpnStr.getValue());
+        modifier.setDES((int) this.jSpnDex.getValue());
+        modifier.setCON((int) this.jSpnCon.getValue());
+        modifier.setINT((int) this.jSpnInt.getValue());
+        modifier.setWIS((int) this.jSpnWis.getValue());
+        modifier.setCHA((int) this.jSpnCha.getValue());
+        return modifier;
     }
 
     /**
-     * Modifica os requerimentos editados
+     * Modifica os modificadores editados
      *
-     * @param requirement {@code Requirement} Requerimentos
+     * @param modifier {@code Modifier} Modificadores
      */
-    public void setRequirement(Requirement requirement) {
-        this.requirement = requirement;
-        this.jSpnStr.setValue(requirement.getSTR());
-        this.jSpnDex.setValue(requirement.getDES());
-        this.jSpnCon.setValue(requirement.getCON());
-        this.jSpnInt.setValue(requirement.getINT());
-        this.jSpnWis.setValue(requirement.getWIS());
-        this.jSpnCha.setValue(requirement.getCHA());
+    public void setModifier(Modifier modifier) {
+        this.modifier = modifier;
+        this.jSpnStr.setValue(modifier.getSTR());
+        this.jSpnDex.setValue(modifier.getDES());
+        this.jSpnCon.setValue(modifier.getCON());
+        this.jSpnInt.setValue(modifier.getINT());
+        this.jSpnWis.setValue(modifier.getWIS());
+        this.jSpnCha.setValue(modifier.getCHA());
+    }
+
+    /**
+     * Retorna uma String com os valores preenchidos separados por virgula
+     *
+     * @return {@code String} String com os valores preenchidos
+     */
+    public String getValues() {
+        String value = jSpnStr.getValue() + ","
+                + jSpnDex.getValue() + ","
+                + jSpnCon.getValue() + ","
+                + jSpnInt.getValue() + ","
+                + jSpnWis.getValue() + ","
+                + jSpnCha.getValue();
+        return value;
+    }
+
+    /**
+     * Modifica os valores digitados
+     *
+     * @param values {@code String} String com os valores preenchidos
+     */
+    public void setValues(String values) {
+        String[] split = values.split(",");
+        if (split.length != 6) {
+            return;
+        }
+        this.jSpnStr.setValue(split[0]);
+        this.jSpnDex.setValue(split[1]);
+        this.jSpnCon.setValue(split[2]);
+        this.jSpnInt.setValue(split[3]);
+        this.jSpnWis.setValue(split[4]);
+        this.jSpnCha.setValue(split[5]);
     }
 
     @SuppressWarnings("unchecked")
@@ -91,24 +124,24 @@ public class RequirementPane extends javax.swing.JPanel {
         jSpnInt = new javax.swing.JSpinner();
         jSpnWis = new javax.swing.JSpinner();
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Requisitos"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Modificadores"));
 
         jLStr.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLStr.setText("Força:");
 
-        jSpnStr.setModel(new javax.swing.SpinnerNumberModel(0, 0, 20, 1));
+        jSpnStr.setModel(new javax.swing.SpinnerNumberModel(0, -3, 3, 1));
 
-        jSpnDex.setModel(new javax.swing.SpinnerNumberModel(0, 0, 20, 1));
+        jSpnDex.setModel(new javax.swing.SpinnerNumberModel(0, -3, 3, 1));
 
         jLDex.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLDex.setText("Destreza:");
 
-        jSpnCon.setModel(new javax.swing.SpinnerNumberModel(0, 0, 20, 1));
+        jSpnCon.setModel(new javax.swing.SpinnerNumberModel(0, -3, 3, 1));
 
         jLCons.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLCons.setText("Constituição:");
 
-        jSpnCha.setModel(new javax.swing.SpinnerNumberModel(0, 0, 20, 1));
+        jSpnCha.setModel(new javax.swing.SpinnerNumberModel(0, -3, 3, 1));
 
         jLChar.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLChar.setText("Carisma:");
@@ -119,9 +152,9 @@ public class RequirementPane extends javax.swing.JPanel {
         jLInt.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLInt.setText("Inteligência:");
 
-        jSpnInt.setModel(new javax.swing.SpinnerNumberModel(0, 0, 20, 1));
+        jSpnInt.setModel(new javax.swing.SpinnerNumberModel(0, -3, 3, 1));
 
-        jSpnWis.setModel(new javax.swing.SpinnerNumberModel(0, 0, 20, 1));
+        jSpnWis.setModel(new javax.swing.SpinnerNumberModel(0, -3, 3, 1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

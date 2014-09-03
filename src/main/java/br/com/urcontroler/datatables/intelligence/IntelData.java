@@ -2,7 +2,6 @@ package br.com.urcontroler.datatables.intelligence;
 
 import br.com.urcontroler.data.entity.AttrRange;
 import br.com.urcontroler.datatables.AttrData;
-import java.util.Arrays;
 
 /**
  * Objeto de dados para preenchimento da tabela de modificadores de inteligencia
@@ -15,7 +14,6 @@ public class IntelData implements AttrData {
     private AttrRange range;
     private int languages;
     private int learnMagic;
-    private int[] additSpells = new int[9];
 
     /**
      * Cria nova instancia de IntData
@@ -40,21 +38,6 @@ public class IntelData implements AttrData {
     /**
      * Cria nova instancia de IntData
      *
-     * @param range {@code AttrRange} Faixa de valores
-     * @param languages {@code int} Idiomas adicionais
-     * @param learnMagic {@code int} Porcentagem de aprender magica
-     * @param aditMagics {@code int[]} Magias adicionais
-     */
-    public IntelData(AttrRange range, int languages, int learnMagic, int[] aditMagics) {
-        this.range = range;
-        this.languages = languages;
-        this.learnMagic = learnMagic;
-        this.additSpells = aditMagics;
-    }
-
-    /**
-     * Cria nova instancia de IntData
-     *
      * @param init {@code int} Inicio da faixa
      * @param end {@code int} Fim da faixa
      * @param languages {@code int} Idiomas adicionais
@@ -68,11 +51,8 @@ public class IntelData implements AttrData {
 
     @Override
     public String toString() {
-        return "IntData{"
-                + range + ", "
-                + "languages: " + languages + ", "
-                + "learnMagic: " + learnMagic + ", "
-                + "additSpells: " + Arrays.toString(additSpells) + '}';
+        return "IntData{" + range + ", " + "languages: " + languages + ", "
+                + "learnMagic: " + learnMagic;
     }
 
     /**
@@ -128,24 +108,6 @@ public class IntelData implements AttrData {
      */
     public void setLearnMagic(int learnMagic) {
         this.learnMagic = learnMagic;
-    }
-
-    /**
-     * Retorna as magias adicionais
-     *
-     * @return {@code int[]} Magias adicionais
-     */
-    public int[] getAdditSpells() {
-        return additSpells;
-    }
-
-    /**
-     * Modifica as magias adicionais
-     *
-     * @param additSpells {@code int[]} Magias adicionais
-     */
-    public void setAdditSpells(int[] additSpells) {
-        this.additSpells = additSpells;
     }
 
 }

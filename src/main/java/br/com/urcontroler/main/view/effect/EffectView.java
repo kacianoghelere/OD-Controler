@@ -14,6 +14,8 @@ import br.com.urcontroler.main.view.effect.model.EffectModel;
 import br.com.urcontroler.main.view.interfaces.BeanListener;
 import br.com.urcontroler.main.view.interfaces.TableView;
 import br.com.urcontroler.main.view.object.ViewParameter;
+import br.com.urcontroler.main.view.View;
+import br.com.urcontroler.main.view.exception.ViewException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,8 +24,11 @@ import java.util.logging.Logger;
  * View para cadastro de efeitos
  *
  * @author kaciano
+ * @version 1.0
+ * @author kaciano
+ * @version 1.1
  */
-public class EffectView extends br.com.urcontroler.main.view.View implements TableView, TableSource<Effect> {
+public class EffectView extends View implements TableView, TableSource<Effect> {
 
     private EffectBean bean;
     private EffectModel model;
@@ -50,26 +55,29 @@ public class EffectView extends br.com.urcontroler.main.view.View implements Tab
         this.tableUtil = new TableUtil(this);
         this.model = new EffectModel();
         this.typeModel = new GComboBoxModel<>();
-        this.gTable.buildTable(this, 0, model);
-        this.gCBType.setGModel(typeModel);
+        //----------------------------------------------------------------------
         this.bean = new EffectBean(this);
+        //----------------------------------------------------------------------
+        this.gTable.buildTable(this, 0, model);
+        //----------------------------------------------------------------------
+        this.gCBType.setGModel(typeModel);
     }
 
     @Override
     public void clear() {
         gTTitle.clear();
-        nTStrength.clear();
+        gTDesc.clear();
         gCBType.setSelectedIndex(0);
     }
 
     @Override
     public void add() {
-        if (gTTitle.validateComponent() && nTStrength.validateComponent()
+        if (gTTitle.validateComponent() && gTDesc.validateComponent()
                 && gCBType.validateComponent()) {
             try {
                 ObjectWrapper vw = new ObjectWrapper(this)
                         .addValue("title", gTTitle.getText())
-                        .addValue("strength", nTStrength.getDouble())
+                        .addValue("description", gTDesc.getText())
                         .addValue("type", (EffectType) gCBType.getSelectedItem());
                 bean.add(new BeanEvent(vw));
             } catch (Exception ex) {
@@ -128,12 +136,12 @@ public class EffectView extends br.com.urcontroler.main.view.View implements Tab
         gTable = new br.com.gmp.comps.table.GTable();
         jLTitle = new javax.swing.JLabel();
         gTTitle = new br.com.gmp.comps.textfield.GTextField();
-        jLStrength = new javax.swing.JLabel();
-        nTStrength = new br.com.gmp.comps.textfield.NumericTextField();
+        jLDesc = new javax.swing.JLabel();
         jLType = new javax.swing.JLabel();
         gCBType = new br.com.gmp.comps.combobox.GComboBox();
         jBAdd = new javax.swing.JButton();
         jBRemove = new javax.swing.JButton();
+        gTDesc = new br.com.gmp.comps.textfield.GTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -156,12 +164,13 @@ public class EffectView extends br.com.urcontroler.main.view.View implements Tab
         gTable.setOpaque(false);
         jScrollPane1.setViewportView(gTable);
 
+        jLTitle.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLTitle.setText("Titulo:");
 
-        jLStrength.setText("Proporção:");
+        jLDesc.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLDesc.setText("Descrição:");
 
-        nTStrength.setText("");
-
+        jLType.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLType.setText("Tipo:");
 
         jBAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/new.png"))); // NOI18N
@@ -188,23 +197,25 @@ public class EffectView extends br.com.urcontroler.main.view.View implements Tab
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLStrength)
+                            .addComponent(jLDesc)
                             .addComponent(jLTitle))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(gTTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(nTStrength, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLType)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(gCBType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(gTDesc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLType, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(gCBType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLDesc, jLTitle, jLType});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -213,25 +224,30 @@ public class EffectView extends br.com.urcontroler.main.view.View implements Tab
                     .addComponent(jLTitle)
                     .addComponent(gTTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLDesc)
+                    .addComponent(gTDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLStrength)
-                        .addComponent(nTStrength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLType)
                         .addComponent(gCBType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jBRemove)
                     .addComponent(jBAdd))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCBType, gTDesc});
+
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddActionPerformed
         try {
             add();
         } catch (Exception e) {
-            Logger.getLogger(EffectView.class.getName()).log(Level.SEVERE, null, e);
+            throwException(new ViewException(this, e));
         }
     }//GEN-LAST:event_jBAddActionPerformed
 
@@ -239,21 +255,21 @@ public class EffectView extends br.com.urcontroler.main.view.View implements Tab
         try {
             remove();
         } catch (Exception e) {
-            Logger.getLogger(EffectView.class.getName()).log(Level.SEVERE, null, e);
+            throwException(new ViewException(this, e));
         }
     }//GEN-LAST:event_jBRemoveActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.combobox.GComboBox gCBType;
+    private br.com.gmp.comps.textfield.GTextField gTDesc;
     private br.com.gmp.comps.textfield.GTextField gTTitle;
     private br.com.gmp.comps.table.GTable gTable;
     private javax.swing.JButton jBAdd;
     private javax.swing.JButton jBRemove;
-    private javax.swing.JLabel jLStrength;
+    private javax.swing.JLabel jLDesc;
     private javax.swing.JLabel jLTitle;
     private javax.swing.JLabel jLType;
     private javax.swing.JScrollPane jScrollPane1;
-    private br.com.gmp.comps.textfield.NumericTextField nTStrength;
     // End of variables declaration//GEN-END:variables
 
 }

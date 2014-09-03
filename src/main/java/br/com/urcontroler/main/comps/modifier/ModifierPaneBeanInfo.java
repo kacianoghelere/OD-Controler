@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package br.com.urcontroler.main.comps;
+package br.com.urcontroler.main.comps.modifier;
 
 import java.beans.*;
 
@@ -12,12 +12,12 @@ import java.beans.*;
  *
  * @author kaciano
  */
-public class RequirementPaneBeanInfo extends SimpleBeanInfo {
+public class ModifierPaneBeanInfo extends SimpleBeanInfo {
 
     // Bean descriptor//GEN-FIRST:BeanDescriptor
     /*lazy BeanDescriptor*/
     private static BeanDescriptor getBdescriptor(){
-        BeanDescriptor beanDescriptor = new BeanDescriptor  ( br.com.urcontroler.main.comps.RequirementPane.class , null ); // NOI18N//GEN-HEADEREND:BeanDescriptor
+        BeanDescriptor beanDescriptor = new BeanDescriptor  ( br.com.urcontroler.main.comps.modifier.ModifierPane.class , null ); // NOI18N//GEN-HEADEREND:BeanDescriptor
     // Here you can add code for customizing the BeanDescriptor.
 
         return beanDescriptor;     }//GEN-LAST:BeanDescriptor
@@ -89,24 +89,24 @@ public class RequirementPaneBeanInfo extends SimpleBeanInfo {
     private static final int PROPERTY_maximumSizeSet = 62;
     private static final int PROPERTY_minimumSize = 63;
     private static final int PROPERTY_minimumSizeSet = 64;
-    private static final int PROPERTY_mouseListeners = 65;
-    private static final int PROPERTY_mouseMotionListeners = 66;
-    private static final int PROPERTY_mousePosition = 67;
-    private static final int PROPERTY_mouseWheelListeners = 68;
-    private static final int PROPERTY_name = 69;
-    private static final int PROPERTY_nextFocusableComponent = 70;
-    private static final int PROPERTY_opaque = 71;
-    private static final int PROPERTY_optimizedDrawingEnabled = 72;
-    private static final int PROPERTY_paintingForPrint = 73;
-    private static final int PROPERTY_paintingTile = 74;
-    private static final int PROPERTY_parent = 75;
-    private static final int PROPERTY_peer = 76;
-    private static final int PROPERTY_preferredSize = 77;
-    private static final int PROPERTY_preferredSizeSet = 78;
-    private static final int PROPERTY_propertyChangeListeners = 79;
-    private static final int PROPERTY_registeredKeyStrokes = 80;
-    private static final int PROPERTY_requestFocusEnabled = 81;
-    private static final int PROPERTY_requirement = 82;
+    private static final int PROPERTY_modifier = 65;
+    private static final int PROPERTY_mouseListeners = 66;
+    private static final int PROPERTY_mouseMotionListeners = 67;
+    private static final int PROPERTY_mousePosition = 68;
+    private static final int PROPERTY_mouseWheelListeners = 69;
+    private static final int PROPERTY_name = 70;
+    private static final int PROPERTY_nextFocusableComponent = 71;
+    private static final int PROPERTY_opaque = 72;
+    private static final int PROPERTY_optimizedDrawingEnabled = 73;
+    private static final int PROPERTY_paintingForPrint = 74;
+    private static final int PROPERTY_paintingTile = 75;
+    private static final int PROPERTY_parent = 76;
+    private static final int PROPERTY_peer = 77;
+    private static final int PROPERTY_preferredSize = 78;
+    private static final int PROPERTY_preferredSizeSet = 79;
+    private static final int PROPERTY_propertyChangeListeners = 80;
+    private static final int PROPERTY_registeredKeyStrokes = 81;
+    private static final int PROPERTY_requestFocusEnabled = 82;
     private static final int PROPERTY_rootPane = 83;
     private static final int PROPERTY_showing = 84;
     private static final int PROPERTY_size = 85;
@@ -119,126 +119,129 @@ public class RequirementPaneBeanInfo extends SimpleBeanInfo {
     private static final int PROPERTY_UIClassID = 92;
     private static final int PROPERTY_valid = 93;
     private static final int PROPERTY_validateRoot = 94;
-    private static final int PROPERTY_verifyInputWhenFocusTarget = 95;
-    private static final int PROPERTY_vetoableChangeListeners = 96;
-    private static final int PROPERTY_visible = 97;
-    private static final int PROPERTY_visibleRect = 98;
-    private static final int PROPERTY_width = 99;
-    private static final int PROPERTY_x = 100;
-    private static final int PROPERTY_y = 101;
+    private static final int PROPERTY_values = 95;
+    private static final int PROPERTY_verifyInputWhenFocusTarget = 96;
+    private static final int PROPERTY_vetoableChangeListeners = 97;
+    private static final int PROPERTY_visible = 98;
+    private static final int PROPERTY_visibleRect = 99;
+    private static final int PROPERTY_width = 100;
+    private static final int PROPERTY_x = 101;
+    private static final int PROPERTY_y = 102;
 
     // Property array 
     /*lazy PropertyDescriptor*/
     private static PropertyDescriptor[] getPdescriptor(){
-        PropertyDescriptor[] properties = new PropertyDescriptor[102];
+        PropertyDescriptor[] properties = new PropertyDescriptor[103];
     
         try {
-            properties[PROPERTY_accessibleContext] = new PropertyDescriptor ( "accessibleContext", br.com.urcontroler.main.comps.RequirementPane.class, "getAccessibleContext", null ); // NOI18N
-            properties[PROPERTY_actionMap] = new PropertyDescriptor ( "actionMap", br.com.urcontroler.main.comps.RequirementPane.class, "getActionMap", "setActionMap" ); // NOI18N
-            properties[PROPERTY_alignmentX] = new PropertyDescriptor ( "alignmentX", br.com.urcontroler.main.comps.RequirementPane.class, "getAlignmentX", "setAlignmentX" ); // NOI18N
-            properties[PROPERTY_alignmentY] = new PropertyDescriptor ( "alignmentY", br.com.urcontroler.main.comps.RequirementPane.class, "getAlignmentY", "setAlignmentY" ); // NOI18N
-            properties[PROPERTY_ancestorListeners] = new PropertyDescriptor ( "ancestorListeners", br.com.urcontroler.main.comps.RequirementPane.class, "getAncestorListeners", null ); // NOI18N
-            properties[PROPERTY_autoscrolls] = new PropertyDescriptor ( "autoscrolls", br.com.urcontroler.main.comps.RequirementPane.class, "getAutoscrolls", "setAutoscrolls" ); // NOI18N
-            properties[PROPERTY_background] = new PropertyDescriptor ( "background", br.com.urcontroler.main.comps.RequirementPane.class, "getBackground", "setBackground" ); // NOI18N
+            properties[PROPERTY_accessibleContext] = new PropertyDescriptor ( "accessibleContext", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getAccessibleContext", null ); // NOI18N
+            properties[PROPERTY_actionMap] = new PropertyDescriptor ( "actionMap", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getActionMap", "setActionMap" ); // NOI18N
+            properties[PROPERTY_alignmentX] = new PropertyDescriptor ( "alignmentX", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getAlignmentX", "setAlignmentX" ); // NOI18N
+            properties[PROPERTY_alignmentY] = new PropertyDescriptor ( "alignmentY", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getAlignmentY", "setAlignmentY" ); // NOI18N
+            properties[PROPERTY_ancestorListeners] = new PropertyDescriptor ( "ancestorListeners", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getAncestorListeners", null ); // NOI18N
+            properties[PROPERTY_autoscrolls] = new PropertyDescriptor ( "autoscrolls", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getAutoscrolls", "setAutoscrolls" ); // NOI18N
+            properties[PROPERTY_background] = new PropertyDescriptor ( "background", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getBackground", "setBackground" ); // NOI18N
             properties[PROPERTY_background].setPreferred ( true );
-            properties[PROPERTY_backgroundSet] = new PropertyDescriptor ( "backgroundSet", br.com.urcontroler.main.comps.RequirementPane.class, "isBackgroundSet", null ); // NOI18N
-            properties[PROPERTY_baselineResizeBehavior] = new PropertyDescriptor ( "baselineResizeBehavior", br.com.urcontroler.main.comps.RequirementPane.class, "getBaselineResizeBehavior", null ); // NOI18N
-            properties[PROPERTY_border] = new PropertyDescriptor ( "border", br.com.urcontroler.main.comps.RequirementPane.class, "getBorder", "setBorder" ); // NOI18N
+            properties[PROPERTY_backgroundSet] = new PropertyDescriptor ( "backgroundSet", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isBackgroundSet", null ); // NOI18N
+            properties[PROPERTY_baselineResizeBehavior] = new PropertyDescriptor ( "baselineResizeBehavior", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getBaselineResizeBehavior", null ); // NOI18N
+            properties[PROPERTY_border] = new PropertyDescriptor ( "border", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getBorder", "setBorder" ); // NOI18N
             properties[PROPERTY_border].setPreferred ( true );
-            properties[PROPERTY_bounds] = new PropertyDescriptor ( "bounds", br.com.urcontroler.main.comps.RequirementPane.class, "getBounds", "setBounds" ); // NOI18N
-            properties[PROPERTY_colorModel] = new PropertyDescriptor ( "colorModel", br.com.urcontroler.main.comps.RequirementPane.class, "getColorModel", null ); // NOI18N
-            properties[PROPERTY_component] = new IndexedPropertyDescriptor ( "component", br.com.urcontroler.main.comps.RequirementPane.class, null, null, "getComponent", null ); // NOI18N
-            properties[PROPERTY_componentCount] = new PropertyDescriptor ( "componentCount", br.com.urcontroler.main.comps.RequirementPane.class, "getComponentCount", null ); // NOI18N
-            properties[PROPERTY_componentListeners] = new PropertyDescriptor ( "componentListeners", br.com.urcontroler.main.comps.RequirementPane.class, "getComponentListeners", null ); // NOI18N
-            properties[PROPERTY_componentOrientation] = new PropertyDescriptor ( "componentOrientation", br.com.urcontroler.main.comps.RequirementPane.class, "getComponentOrientation", "setComponentOrientation" ); // NOI18N
-            properties[PROPERTY_componentPopupMenu] = new PropertyDescriptor ( "componentPopupMenu", br.com.urcontroler.main.comps.RequirementPane.class, "getComponentPopupMenu", "setComponentPopupMenu" ); // NOI18N
-            properties[PROPERTY_components] = new PropertyDescriptor ( "components", br.com.urcontroler.main.comps.RequirementPane.class, "getComponents", null ); // NOI18N
-            properties[PROPERTY_containerListeners] = new PropertyDescriptor ( "containerListeners", br.com.urcontroler.main.comps.RequirementPane.class, "getContainerListeners", null ); // NOI18N
-            properties[PROPERTY_cursor] = new PropertyDescriptor ( "cursor", br.com.urcontroler.main.comps.RequirementPane.class, "getCursor", "setCursor" ); // NOI18N
-            properties[PROPERTY_cursorSet] = new PropertyDescriptor ( "cursorSet", br.com.urcontroler.main.comps.RequirementPane.class, "isCursorSet", null ); // NOI18N
-            properties[PROPERTY_debugGraphicsOptions] = new PropertyDescriptor ( "debugGraphicsOptions", br.com.urcontroler.main.comps.RequirementPane.class, "getDebugGraphicsOptions", "setDebugGraphicsOptions" ); // NOI18N
-            properties[PROPERTY_displayable] = new PropertyDescriptor ( "displayable", br.com.urcontroler.main.comps.RequirementPane.class, "isDisplayable", null ); // NOI18N
-            properties[PROPERTY_doubleBuffered] = new PropertyDescriptor ( "doubleBuffered", br.com.urcontroler.main.comps.RequirementPane.class, "isDoubleBuffered", "setDoubleBuffered" ); // NOI18N
-            properties[PROPERTY_dropTarget] = new PropertyDescriptor ( "dropTarget", br.com.urcontroler.main.comps.RequirementPane.class, "getDropTarget", "setDropTarget" ); // NOI18N
-            properties[PROPERTY_enabled] = new PropertyDescriptor ( "enabled", br.com.urcontroler.main.comps.RequirementPane.class, "isEnabled", "setEnabled" ); // NOI18N
+            properties[PROPERTY_bounds] = new PropertyDescriptor ( "bounds", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getBounds", "setBounds" ); // NOI18N
+            properties[PROPERTY_colorModel] = new PropertyDescriptor ( "colorModel", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getColorModel", null ); // NOI18N
+            properties[PROPERTY_component] = new IndexedPropertyDescriptor ( "component", br.com.urcontroler.main.comps.modifier.ModifierPane.class, null, null, "getComponent", null ); // NOI18N
+            properties[PROPERTY_componentCount] = new PropertyDescriptor ( "componentCount", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getComponentCount", null ); // NOI18N
+            properties[PROPERTY_componentListeners] = new PropertyDescriptor ( "componentListeners", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getComponentListeners", null ); // NOI18N
+            properties[PROPERTY_componentOrientation] = new PropertyDescriptor ( "componentOrientation", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getComponentOrientation", "setComponentOrientation" ); // NOI18N
+            properties[PROPERTY_componentPopupMenu] = new PropertyDescriptor ( "componentPopupMenu", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getComponentPopupMenu", "setComponentPopupMenu" ); // NOI18N
+            properties[PROPERTY_components] = new PropertyDescriptor ( "components", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getComponents", null ); // NOI18N
+            properties[PROPERTY_containerListeners] = new PropertyDescriptor ( "containerListeners", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getContainerListeners", null ); // NOI18N
+            properties[PROPERTY_cursor] = new PropertyDescriptor ( "cursor", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getCursor", "setCursor" ); // NOI18N
+            properties[PROPERTY_cursorSet] = new PropertyDescriptor ( "cursorSet", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isCursorSet", null ); // NOI18N
+            properties[PROPERTY_debugGraphicsOptions] = new PropertyDescriptor ( "debugGraphicsOptions", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getDebugGraphicsOptions", "setDebugGraphicsOptions" ); // NOI18N
+            properties[PROPERTY_displayable] = new PropertyDescriptor ( "displayable", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isDisplayable", null ); // NOI18N
+            properties[PROPERTY_doubleBuffered] = new PropertyDescriptor ( "doubleBuffered", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isDoubleBuffered", "setDoubleBuffered" ); // NOI18N
+            properties[PROPERTY_dropTarget] = new PropertyDescriptor ( "dropTarget", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getDropTarget", "setDropTarget" ); // NOI18N
+            properties[PROPERTY_enabled] = new PropertyDescriptor ( "enabled", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isEnabled", "setEnabled" ); // NOI18N
             properties[PROPERTY_enabled].setPreferred ( true );
-            properties[PROPERTY_focusable] = new PropertyDescriptor ( "focusable", br.com.urcontroler.main.comps.RequirementPane.class, "isFocusable", "setFocusable" ); // NOI18N
-            properties[PROPERTY_focusCycleRoot] = new PropertyDescriptor ( "focusCycleRoot", br.com.urcontroler.main.comps.RequirementPane.class, "isFocusCycleRoot", "setFocusCycleRoot" ); // NOI18N
-            properties[PROPERTY_focusCycleRootAncestor] = new PropertyDescriptor ( "focusCycleRootAncestor", br.com.urcontroler.main.comps.RequirementPane.class, "getFocusCycleRootAncestor", null ); // NOI18N
-            properties[PROPERTY_focusListeners] = new PropertyDescriptor ( "focusListeners", br.com.urcontroler.main.comps.RequirementPane.class, "getFocusListeners", null ); // NOI18N
-            properties[PROPERTY_focusOwner] = new PropertyDescriptor ( "focusOwner", br.com.urcontroler.main.comps.RequirementPane.class, "isFocusOwner", null ); // NOI18N
-            properties[PROPERTY_focusTraversable] = new PropertyDescriptor ( "focusTraversable", br.com.urcontroler.main.comps.RequirementPane.class, "isFocusTraversable", null ); // NOI18N
-            properties[PROPERTY_focusTraversalKeys] = new IndexedPropertyDescriptor ( "focusTraversalKeys", br.com.urcontroler.main.comps.RequirementPane.class, null, null, null, "setFocusTraversalKeys" ); // NOI18N
-            properties[PROPERTY_focusTraversalKeysEnabled] = new PropertyDescriptor ( "focusTraversalKeysEnabled", br.com.urcontroler.main.comps.RequirementPane.class, "getFocusTraversalKeysEnabled", "setFocusTraversalKeysEnabled" ); // NOI18N
-            properties[PROPERTY_focusTraversalPolicy] = new PropertyDescriptor ( "focusTraversalPolicy", br.com.urcontroler.main.comps.RequirementPane.class, "getFocusTraversalPolicy", "setFocusTraversalPolicy" ); // NOI18N
-            properties[PROPERTY_focusTraversalPolicyProvider] = new PropertyDescriptor ( "focusTraversalPolicyProvider", br.com.urcontroler.main.comps.RequirementPane.class, "isFocusTraversalPolicyProvider", "setFocusTraversalPolicyProvider" ); // NOI18N
-            properties[PROPERTY_focusTraversalPolicySet] = new PropertyDescriptor ( "focusTraversalPolicySet", br.com.urcontroler.main.comps.RequirementPane.class, "isFocusTraversalPolicySet", null ); // NOI18N
-            properties[PROPERTY_font] = new PropertyDescriptor ( "font", br.com.urcontroler.main.comps.RequirementPane.class, "getFont", "setFont" ); // NOI18N
-            properties[PROPERTY_fontSet] = new PropertyDescriptor ( "fontSet", br.com.urcontroler.main.comps.RequirementPane.class, "isFontSet", null ); // NOI18N
-            properties[PROPERTY_foreground] = new PropertyDescriptor ( "foreground", br.com.urcontroler.main.comps.RequirementPane.class, "getForeground", "setForeground" ); // NOI18N
+            properties[PROPERTY_focusable] = new PropertyDescriptor ( "focusable", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isFocusable", "setFocusable" ); // NOI18N
+            properties[PROPERTY_focusCycleRoot] = new PropertyDescriptor ( "focusCycleRoot", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isFocusCycleRoot", "setFocusCycleRoot" ); // NOI18N
+            properties[PROPERTY_focusCycleRootAncestor] = new PropertyDescriptor ( "focusCycleRootAncestor", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getFocusCycleRootAncestor", null ); // NOI18N
+            properties[PROPERTY_focusListeners] = new PropertyDescriptor ( "focusListeners", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getFocusListeners", null ); // NOI18N
+            properties[PROPERTY_focusOwner] = new PropertyDescriptor ( "focusOwner", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isFocusOwner", null ); // NOI18N
+            properties[PROPERTY_focusTraversable] = new PropertyDescriptor ( "focusTraversable", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isFocusTraversable", null ); // NOI18N
+            properties[PROPERTY_focusTraversalKeys] = new IndexedPropertyDescriptor ( "focusTraversalKeys", br.com.urcontroler.main.comps.modifier.ModifierPane.class, null, null, null, "setFocusTraversalKeys" ); // NOI18N
+            properties[PROPERTY_focusTraversalKeysEnabled] = new PropertyDescriptor ( "focusTraversalKeysEnabled", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getFocusTraversalKeysEnabled", "setFocusTraversalKeysEnabled" ); // NOI18N
+            properties[PROPERTY_focusTraversalPolicy] = new PropertyDescriptor ( "focusTraversalPolicy", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getFocusTraversalPolicy", "setFocusTraversalPolicy" ); // NOI18N
+            properties[PROPERTY_focusTraversalPolicyProvider] = new PropertyDescriptor ( "focusTraversalPolicyProvider", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isFocusTraversalPolicyProvider", "setFocusTraversalPolicyProvider" ); // NOI18N
+            properties[PROPERTY_focusTraversalPolicySet] = new PropertyDescriptor ( "focusTraversalPolicySet", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isFocusTraversalPolicySet", null ); // NOI18N
+            properties[PROPERTY_font] = new PropertyDescriptor ( "font", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getFont", "setFont" ); // NOI18N
+            properties[PROPERTY_fontSet] = new PropertyDescriptor ( "fontSet", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isFontSet", null ); // NOI18N
+            properties[PROPERTY_foreground] = new PropertyDescriptor ( "foreground", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getForeground", "setForeground" ); // NOI18N
             properties[PROPERTY_foreground].setPreferred ( true );
-            properties[PROPERTY_foregroundSet] = new PropertyDescriptor ( "foregroundSet", br.com.urcontroler.main.comps.RequirementPane.class, "isForegroundSet", null ); // NOI18N
-            properties[PROPERTY_graphics] = new PropertyDescriptor ( "graphics", br.com.urcontroler.main.comps.RequirementPane.class, "getGraphics", null ); // NOI18N
-            properties[PROPERTY_graphicsConfiguration] = new PropertyDescriptor ( "graphicsConfiguration", br.com.urcontroler.main.comps.RequirementPane.class, "getGraphicsConfiguration", null ); // NOI18N
-            properties[PROPERTY_height] = new PropertyDescriptor ( "height", br.com.urcontroler.main.comps.RequirementPane.class, "getHeight", null ); // NOI18N
-            properties[PROPERTY_hierarchyBoundsListeners] = new PropertyDescriptor ( "hierarchyBoundsListeners", br.com.urcontroler.main.comps.RequirementPane.class, "getHierarchyBoundsListeners", null ); // NOI18N
-            properties[PROPERTY_hierarchyListeners] = new PropertyDescriptor ( "hierarchyListeners", br.com.urcontroler.main.comps.RequirementPane.class, "getHierarchyListeners", null ); // NOI18N
-            properties[PROPERTY_ignoreRepaint] = new PropertyDescriptor ( "ignoreRepaint", br.com.urcontroler.main.comps.RequirementPane.class, "getIgnoreRepaint", "setIgnoreRepaint" ); // NOI18N
-            properties[PROPERTY_inheritsPopupMenu] = new PropertyDescriptor ( "inheritsPopupMenu", br.com.urcontroler.main.comps.RequirementPane.class, "getInheritsPopupMenu", "setInheritsPopupMenu" ); // NOI18N
-            properties[PROPERTY_inputContext] = new PropertyDescriptor ( "inputContext", br.com.urcontroler.main.comps.RequirementPane.class, "getInputContext", null ); // NOI18N
-            properties[PROPERTY_inputMap] = new PropertyDescriptor ( "inputMap", br.com.urcontroler.main.comps.RequirementPane.class, "getInputMap", null ); // NOI18N
-            properties[PROPERTY_inputMethodListeners] = new PropertyDescriptor ( "inputMethodListeners", br.com.urcontroler.main.comps.RequirementPane.class, "getInputMethodListeners", null ); // NOI18N
-            properties[PROPERTY_inputMethodRequests] = new PropertyDescriptor ( "inputMethodRequests", br.com.urcontroler.main.comps.RequirementPane.class, "getInputMethodRequests", null ); // NOI18N
-            properties[PROPERTY_inputVerifier] = new PropertyDescriptor ( "inputVerifier", br.com.urcontroler.main.comps.RequirementPane.class, "getInputVerifier", "setInputVerifier" ); // NOI18N
-            properties[PROPERTY_insets] = new PropertyDescriptor ( "insets", br.com.urcontroler.main.comps.RequirementPane.class, "getInsets", null ); // NOI18N
-            properties[PROPERTY_keyListeners] = new PropertyDescriptor ( "keyListeners", br.com.urcontroler.main.comps.RequirementPane.class, "getKeyListeners", null ); // NOI18N
-            properties[PROPERTY_layout] = new PropertyDescriptor ( "layout", br.com.urcontroler.main.comps.RequirementPane.class, "getLayout", "setLayout" ); // NOI18N
-            properties[PROPERTY_lightweight] = new PropertyDescriptor ( "lightweight", br.com.urcontroler.main.comps.RequirementPane.class, "isLightweight", null ); // NOI18N
-            properties[PROPERTY_locale] = new PropertyDescriptor ( "locale", br.com.urcontroler.main.comps.RequirementPane.class, "getLocale", "setLocale" ); // NOI18N
-            properties[PROPERTY_location] = new PropertyDescriptor ( "location", br.com.urcontroler.main.comps.RequirementPane.class, "getLocation", "setLocation" ); // NOI18N
-            properties[PROPERTY_locationOnScreen] = new PropertyDescriptor ( "locationOnScreen", br.com.urcontroler.main.comps.RequirementPane.class, "getLocationOnScreen", null ); // NOI18N
-            properties[PROPERTY_managingFocus] = new PropertyDescriptor ( "managingFocus", br.com.urcontroler.main.comps.RequirementPane.class, "isManagingFocus", null ); // NOI18N
-            properties[PROPERTY_maximumSize] = new PropertyDescriptor ( "maximumSize", br.com.urcontroler.main.comps.RequirementPane.class, "getMaximumSize", "setMaximumSize" ); // NOI18N
-            properties[PROPERTY_maximumSizeSet] = new PropertyDescriptor ( "maximumSizeSet", br.com.urcontroler.main.comps.RequirementPane.class, "isMaximumSizeSet", null ); // NOI18N
-            properties[PROPERTY_minimumSize] = new PropertyDescriptor ( "minimumSize", br.com.urcontroler.main.comps.RequirementPane.class, "getMinimumSize", "setMinimumSize" ); // NOI18N
-            properties[PROPERTY_minimumSizeSet] = new PropertyDescriptor ( "minimumSizeSet", br.com.urcontroler.main.comps.RequirementPane.class, "isMinimumSizeSet", null ); // NOI18N
-            properties[PROPERTY_mouseListeners] = new PropertyDescriptor ( "mouseListeners", br.com.urcontroler.main.comps.RequirementPane.class, "getMouseListeners", null ); // NOI18N
-            properties[PROPERTY_mouseMotionListeners] = new PropertyDescriptor ( "mouseMotionListeners", br.com.urcontroler.main.comps.RequirementPane.class, "getMouseMotionListeners", null ); // NOI18N
-            properties[PROPERTY_mousePosition] = new PropertyDescriptor ( "mousePosition", br.com.urcontroler.main.comps.RequirementPane.class, "getMousePosition", null ); // NOI18N
-            properties[PROPERTY_mouseWheelListeners] = new PropertyDescriptor ( "mouseWheelListeners", br.com.urcontroler.main.comps.RequirementPane.class, "getMouseWheelListeners", null ); // NOI18N
-            properties[PROPERTY_name] = new PropertyDescriptor ( "name", br.com.urcontroler.main.comps.RequirementPane.class, "getName", "setName" ); // NOI18N
-            properties[PROPERTY_nextFocusableComponent] = new PropertyDescriptor ( "nextFocusableComponent", br.com.urcontroler.main.comps.RequirementPane.class, "getNextFocusableComponent", "setNextFocusableComponent" ); // NOI18N
-            properties[PROPERTY_opaque] = new PropertyDescriptor ( "opaque", br.com.urcontroler.main.comps.RequirementPane.class, "isOpaque", "setOpaque" ); // NOI18N
-            properties[PROPERTY_optimizedDrawingEnabled] = new PropertyDescriptor ( "optimizedDrawingEnabled", br.com.urcontroler.main.comps.RequirementPane.class, "isOptimizedDrawingEnabled", null ); // NOI18N
-            properties[PROPERTY_paintingForPrint] = new PropertyDescriptor ( "paintingForPrint", br.com.urcontroler.main.comps.RequirementPane.class, "isPaintingForPrint", null ); // NOI18N
-            properties[PROPERTY_paintingTile] = new PropertyDescriptor ( "paintingTile", br.com.urcontroler.main.comps.RequirementPane.class, "isPaintingTile", null ); // NOI18N
-            properties[PROPERTY_parent] = new PropertyDescriptor ( "parent", br.com.urcontroler.main.comps.RequirementPane.class, "getParent", null ); // NOI18N
-            properties[PROPERTY_peer] = new PropertyDescriptor ( "peer", br.com.urcontroler.main.comps.RequirementPane.class, "getPeer", null ); // NOI18N
-            properties[PROPERTY_preferredSize] = new PropertyDescriptor ( "preferredSize", br.com.urcontroler.main.comps.RequirementPane.class, "getPreferredSize", "setPreferredSize" ); // NOI18N
-            properties[PROPERTY_preferredSizeSet] = new PropertyDescriptor ( "preferredSizeSet", br.com.urcontroler.main.comps.RequirementPane.class, "isPreferredSizeSet", null ); // NOI18N
-            properties[PROPERTY_propertyChangeListeners] = new PropertyDescriptor ( "propertyChangeListeners", br.com.urcontroler.main.comps.RequirementPane.class, "getPropertyChangeListeners", null ); // NOI18N
-            properties[PROPERTY_registeredKeyStrokes] = new PropertyDescriptor ( "registeredKeyStrokes", br.com.urcontroler.main.comps.RequirementPane.class, "getRegisteredKeyStrokes", null ); // NOI18N
-            properties[PROPERTY_requestFocusEnabled] = new PropertyDescriptor ( "requestFocusEnabled", br.com.urcontroler.main.comps.RequirementPane.class, "isRequestFocusEnabled", "setRequestFocusEnabled" ); // NOI18N
-            properties[PROPERTY_requirement] = new PropertyDescriptor ( "requirement", br.com.urcontroler.main.comps.RequirementPane.class, "getRequirement", "setRequirement" ); // NOI18N
-            properties[PROPERTY_rootPane] = new PropertyDescriptor ( "rootPane", br.com.urcontroler.main.comps.RequirementPane.class, "getRootPane", null ); // NOI18N
-            properties[PROPERTY_showing] = new PropertyDescriptor ( "showing", br.com.urcontroler.main.comps.RequirementPane.class, "isShowing", null ); // NOI18N
-            properties[PROPERTY_size] = new PropertyDescriptor ( "size", br.com.urcontroler.main.comps.RequirementPane.class, "getSize", "setSize" ); // NOI18N
-            properties[PROPERTY_toolkit] = new PropertyDescriptor ( "toolkit", br.com.urcontroler.main.comps.RequirementPane.class, "getToolkit", null ); // NOI18N
-            properties[PROPERTY_toolTipText] = new PropertyDescriptor ( "toolTipText", br.com.urcontroler.main.comps.RequirementPane.class, "getToolTipText", "setToolTipText" ); // NOI18N
-            properties[PROPERTY_topLevelAncestor] = new PropertyDescriptor ( "topLevelAncestor", br.com.urcontroler.main.comps.RequirementPane.class, "getTopLevelAncestor", null ); // NOI18N
-            properties[PROPERTY_transferHandler] = new PropertyDescriptor ( "transferHandler", br.com.urcontroler.main.comps.RequirementPane.class, "getTransferHandler", "setTransferHandler" ); // NOI18N
-            properties[PROPERTY_treeLock] = new PropertyDescriptor ( "treeLock", br.com.urcontroler.main.comps.RequirementPane.class, "getTreeLock", null ); // NOI18N
-            properties[PROPERTY_UI] = new PropertyDescriptor ( "UI", br.com.urcontroler.main.comps.RequirementPane.class, "getUI", "setUI" ); // NOI18N
-            properties[PROPERTY_UIClassID] = new PropertyDescriptor ( "UIClassID", br.com.urcontroler.main.comps.RequirementPane.class, "getUIClassID", null ); // NOI18N
-            properties[PROPERTY_valid] = new PropertyDescriptor ( "valid", br.com.urcontroler.main.comps.RequirementPane.class, "isValid", null ); // NOI18N
-            properties[PROPERTY_validateRoot] = new PropertyDescriptor ( "validateRoot", br.com.urcontroler.main.comps.RequirementPane.class, "isValidateRoot", null ); // NOI18N
-            properties[PROPERTY_verifyInputWhenFocusTarget] = new PropertyDescriptor ( "verifyInputWhenFocusTarget", br.com.urcontroler.main.comps.RequirementPane.class, "getVerifyInputWhenFocusTarget", "setVerifyInputWhenFocusTarget" ); // NOI18N
-            properties[PROPERTY_vetoableChangeListeners] = new PropertyDescriptor ( "vetoableChangeListeners", br.com.urcontroler.main.comps.RequirementPane.class, "getVetoableChangeListeners", null ); // NOI18N
-            properties[PROPERTY_visible] = new PropertyDescriptor ( "visible", br.com.urcontroler.main.comps.RequirementPane.class, "isVisible", "setVisible" ); // NOI18N
-            properties[PROPERTY_visibleRect] = new PropertyDescriptor ( "visibleRect", br.com.urcontroler.main.comps.RequirementPane.class, "getVisibleRect", null ); // NOI18N
-            properties[PROPERTY_width] = new PropertyDescriptor ( "width", br.com.urcontroler.main.comps.RequirementPane.class, "getWidth", null ); // NOI18N
-            properties[PROPERTY_x] = new PropertyDescriptor ( "x", br.com.urcontroler.main.comps.RequirementPane.class, "getX", null ); // NOI18N
-            properties[PROPERTY_y] = new PropertyDescriptor ( "y", br.com.urcontroler.main.comps.RequirementPane.class, "getY", null ); // NOI18N
+            properties[PROPERTY_foregroundSet] = new PropertyDescriptor ( "foregroundSet", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isForegroundSet", null ); // NOI18N
+            properties[PROPERTY_graphics] = new PropertyDescriptor ( "graphics", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getGraphics", null ); // NOI18N
+            properties[PROPERTY_graphicsConfiguration] = new PropertyDescriptor ( "graphicsConfiguration", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getGraphicsConfiguration", null ); // NOI18N
+            properties[PROPERTY_height] = new PropertyDescriptor ( "height", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getHeight", null ); // NOI18N
+            properties[PROPERTY_hierarchyBoundsListeners] = new PropertyDescriptor ( "hierarchyBoundsListeners", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getHierarchyBoundsListeners", null ); // NOI18N
+            properties[PROPERTY_hierarchyListeners] = new PropertyDescriptor ( "hierarchyListeners", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getHierarchyListeners", null ); // NOI18N
+            properties[PROPERTY_ignoreRepaint] = new PropertyDescriptor ( "ignoreRepaint", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getIgnoreRepaint", "setIgnoreRepaint" ); // NOI18N
+            properties[PROPERTY_inheritsPopupMenu] = new PropertyDescriptor ( "inheritsPopupMenu", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getInheritsPopupMenu", "setInheritsPopupMenu" ); // NOI18N
+            properties[PROPERTY_inputContext] = new PropertyDescriptor ( "inputContext", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getInputContext", null ); // NOI18N
+            properties[PROPERTY_inputMap] = new PropertyDescriptor ( "inputMap", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getInputMap", null ); // NOI18N
+            properties[PROPERTY_inputMethodListeners] = new PropertyDescriptor ( "inputMethodListeners", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getInputMethodListeners", null ); // NOI18N
+            properties[PROPERTY_inputMethodRequests] = new PropertyDescriptor ( "inputMethodRequests", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getInputMethodRequests", null ); // NOI18N
+            properties[PROPERTY_inputVerifier] = new PropertyDescriptor ( "inputVerifier", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getInputVerifier", "setInputVerifier" ); // NOI18N
+            properties[PROPERTY_insets] = new PropertyDescriptor ( "insets", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getInsets", null ); // NOI18N
+            properties[PROPERTY_keyListeners] = new PropertyDescriptor ( "keyListeners", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getKeyListeners", null ); // NOI18N
+            properties[PROPERTY_layout] = new PropertyDescriptor ( "layout", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getLayout", "setLayout" ); // NOI18N
+            properties[PROPERTY_lightweight] = new PropertyDescriptor ( "lightweight", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isLightweight", null ); // NOI18N
+            properties[PROPERTY_locale] = new PropertyDescriptor ( "locale", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getLocale", "setLocale" ); // NOI18N
+            properties[PROPERTY_location] = new PropertyDescriptor ( "location", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getLocation", "setLocation" ); // NOI18N
+            properties[PROPERTY_locationOnScreen] = new PropertyDescriptor ( "locationOnScreen", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getLocationOnScreen", null ); // NOI18N
+            properties[PROPERTY_managingFocus] = new PropertyDescriptor ( "managingFocus", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isManagingFocus", null ); // NOI18N
+            properties[PROPERTY_maximumSize] = new PropertyDescriptor ( "maximumSize", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getMaximumSize", "setMaximumSize" ); // NOI18N
+            properties[PROPERTY_maximumSizeSet] = new PropertyDescriptor ( "maximumSizeSet", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isMaximumSizeSet", null ); // NOI18N
+            properties[PROPERTY_minimumSize] = new PropertyDescriptor ( "minimumSize", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getMinimumSize", "setMinimumSize" ); // NOI18N
+            properties[PROPERTY_minimumSizeSet] = new PropertyDescriptor ( "minimumSizeSet", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isMinimumSizeSet", null ); // NOI18N
+            properties[PROPERTY_modifier] = new PropertyDescriptor ( "modifier", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getModifier", "setModifier" ); // NOI18N
+            properties[PROPERTY_mouseListeners] = new PropertyDescriptor ( "mouseListeners", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getMouseListeners", null ); // NOI18N
+            properties[PROPERTY_mouseMotionListeners] = new PropertyDescriptor ( "mouseMotionListeners", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getMouseMotionListeners", null ); // NOI18N
+            properties[PROPERTY_mousePosition] = new PropertyDescriptor ( "mousePosition", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getMousePosition", null ); // NOI18N
+            properties[PROPERTY_mouseWheelListeners] = new PropertyDescriptor ( "mouseWheelListeners", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getMouseWheelListeners", null ); // NOI18N
+            properties[PROPERTY_name] = new PropertyDescriptor ( "name", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getName", "setName" ); // NOI18N
+            properties[PROPERTY_nextFocusableComponent] = new PropertyDescriptor ( "nextFocusableComponent", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getNextFocusableComponent", "setNextFocusableComponent" ); // NOI18N
+            properties[PROPERTY_opaque] = new PropertyDescriptor ( "opaque", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isOpaque", "setOpaque" ); // NOI18N
+            properties[PROPERTY_optimizedDrawingEnabled] = new PropertyDescriptor ( "optimizedDrawingEnabled", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isOptimizedDrawingEnabled", null ); // NOI18N
+            properties[PROPERTY_paintingForPrint] = new PropertyDescriptor ( "paintingForPrint", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isPaintingForPrint", null ); // NOI18N
+            properties[PROPERTY_paintingTile] = new PropertyDescriptor ( "paintingTile", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isPaintingTile", null ); // NOI18N
+            properties[PROPERTY_parent] = new PropertyDescriptor ( "parent", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getParent", null ); // NOI18N
+            properties[PROPERTY_peer] = new PropertyDescriptor ( "peer", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getPeer", null ); // NOI18N
+            properties[PROPERTY_preferredSize] = new PropertyDescriptor ( "preferredSize", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getPreferredSize", "setPreferredSize" ); // NOI18N
+            properties[PROPERTY_preferredSizeSet] = new PropertyDescriptor ( "preferredSizeSet", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isPreferredSizeSet", null ); // NOI18N
+            properties[PROPERTY_propertyChangeListeners] = new PropertyDescriptor ( "propertyChangeListeners", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getPropertyChangeListeners", null ); // NOI18N
+            properties[PROPERTY_registeredKeyStrokes] = new PropertyDescriptor ( "registeredKeyStrokes", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getRegisteredKeyStrokes", null ); // NOI18N
+            properties[PROPERTY_requestFocusEnabled] = new PropertyDescriptor ( "requestFocusEnabled", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isRequestFocusEnabled", "setRequestFocusEnabled" ); // NOI18N
+            properties[PROPERTY_rootPane] = new PropertyDescriptor ( "rootPane", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getRootPane", null ); // NOI18N
+            properties[PROPERTY_showing] = new PropertyDescriptor ( "showing", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isShowing", null ); // NOI18N
+            properties[PROPERTY_size] = new PropertyDescriptor ( "size", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getSize", "setSize" ); // NOI18N
+            properties[PROPERTY_toolkit] = new PropertyDescriptor ( "toolkit", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getToolkit", null ); // NOI18N
+            properties[PROPERTY_toolTipText] = new PropertyDescriptor ( "toolTipText", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getToolTipText", "setToolTipText" ); // NOI18N
+            properties[PROPERTY_topLevelAncestor] = new PropertyDescriptor ( "topLevelAncestor", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getTopLevelAncestor", null ); // NOI18N
+            properties[PROPERTY_transferHandler] = new PropertyDescriptor ( "transferHandler", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getTransferHandler", "setTransferHandler" ); // NOI18N
+            properties[PROPERTY_treeLock] = new PropertyDescriptor ( "treeLock", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getTreeLock", null ); // NOI18N
+            properties[PROPERTY_UI] = new PropertyDescriptor ( "UI", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getUI", "setUI" ); // NOI18N
+            properties[PROPERTY_UIClassID] = new PropertyDescriptor ( "UIClassID", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getUIClassID", null ); // NOI18N
+            properties[PROPERTY_valid] = new PropertyDescriptor ( "valid", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isValid", null ); // NOI18N
+            properties[PROPERTY_validateRoot] = new PropertyDescriptor ( "validateRoot", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isValidateRoot", null ); // NOI18N
+            properties[PROPERTY_values] = new PropertyDescriptor ( "values", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getValues", "setValues" ); // NOI18N
+            properties[PROPERTY_values].setPreferred ( true );
+            properties[PROPERTY_verifyInputWhenFocusTarget] = new PropertyDescriptor ( "verifyInputWhenFocusTarget", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getVerifyInputWhenFocusTarget", "setVerifyInputWhenFocusTarget" ); // NOI18N
+            properties[PROPERTY_vetoableChangeListeners] = new PropertyDescriptor ( "vetoableChangeListeners", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getVetoableChangeListeners", null ); // NOI18N
+            properties[PROPERTY_visible] = new PropertyDescriptor ( "visible", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "isVisible", "setVisible" ); // NOI18N
+            properties[PROPERTY_visibleRect] = new PropertyDescriptor ( "visibleRect", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getVisibleRect", null ); // NOI18N
+            properties[PROPERTY_width] = new PropertyDescriptor ( "width", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getWidth", null ); // NOI18N
+            properties[PROPERTY_x] = new PropertyDescriptor ( "x", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getX", null ); // NOI18N
+            properties[PROPERTY_y] = new PropertyDescriptor ( "y", br.com.urcontroler.main.comps.modifier.ModifierPane.class, "getY", null ); // NOI18N
         }
         catch(IntrospectionException e) {
             e.printStackTrace();
@@ -268,19 +271,19 @@ public class RequirementPaneBeanInfo extends SimpleBeanInfo {
         EventSetDescriptor[] eventSets = new EventSetDescriptor[13];
     
         try {
-            eventSets[EVENT_ancestorListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.RequirementPane.class, "ancestorListener", javax.swing.event.AncestorListener.class, new String[] {"ancestorAdded", "ancestorRemoved", "ancestorMoved"}, "addAncestorListener", "removeAncestorListener" ); // NOI18N
-            eventSets[EVENT_componentListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.RequirementPane.class, "componentListener", java.awt.event.ComponentListener.class, new String[] {"componentResized", "componentMoved", "componentShown", "componentHidden"}, "addComponentListener", "removeComponentListener" ); // NOI18N
-            eventSets[EVENT_containerListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.RequirementPane.class, "containerListener", java.awt.event.ContainerListener.class, new String[] {"componentAdded", "componentRemoved"}, "addContainerListener", "removeContainerListener" ); // NOI18N
-            eventSets[EVENT_focusListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.RequirementPane.class, "focusListener", java.awt.event.FocusListener.class, new String[] {"focusGained", "focusLost"}, "addFocusListener", "removeFocusListener" ); // NOI18N
-            eventSets[EVENT_hierarchyBoundsListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.RequirementPane.class, "hierarchyBoundsListener", java.awt.event.HierarchyBoundsListener.class, new String[] {"ancestorMoved", "ancestorResized"}, "addHierarchyBoundsListener", "removeHierarchyBoundsListener" ); // NOI18N
-            eventSets[EVENT_hierarchyListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.RequirementPane.class, "hierarchyListener", java.awt.event.HierarchyListener.class, new String[] {"hierarchyChanged"}, "addHierarchyListener", "removeHierarchyListener" ); // NOI18N
-            eventSets[EVENT_inputMethodListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.RequirementPane.class, "inputMethodListener", java.awt.event.InputMethodListener.class, new String[] {"inputMethodTextChanged", "caretPositionChanged"}, "addInputMethodListener", "removeInputMethodListener" ); // NOI18N
-            eventSets[EVENT_keyListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.RequirementPane.class, "keyListener", java.awt.event.KeyListener.class, new String[] {"keyTyped", "keyPressed", "keyReleased"}, "addKeyListener", "removeKeyListener" ); // NOI18N
-            eventSets[EVENT_mouseListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.RequirementPane.class, "mouseListener", java.awt.event.MouseListener.class, new String[] {"mouseClicked", "mousePressed", "mouseReleased", "mouseEntered", "mouseExited"}, "addMouseListener", "removeMouseListener" ); // NOI18N
-            eventSets[EVENT_mouseMotionListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.RequirementPane.class, "mouseMotionListener", java.awt.event.MouseMotionListener.class, new String[] {"mouseDragged", "mouseMoved"}, "addMouseMotionListener", "removeMouseMotionListener" ); // NOI18N
-            eventSets[EVENT_mouseWheelListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.RequirementPane.class, "mouseWheelListener", java.awt.event.MouseWheelListener.class, new String[] {"mouseWheelMoved"}, "addMouseWheelListener", "removeMouseWheelListener" ); // NOI18N
-            eventSets[EVENT_propertyChangeListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.RequirementPane.class, "propertyChangeListener", java.beans.PropertyChangeListener.class, new String[] {"propertyChange"}, "addPropertyChangeListener", "removePropertyChangeListener" ); // NOI18N
-            eventSets[EVENT_vetoableChangeListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.RequirementPane.class, "vetoableChangeListener", java.beans.VetoableChangeListener.class, new String[] {"vetoableChange"}, "addVetoableChangeListener", "removeVetoableChangeListener" ); // NOI18N
+            eventSets[EVENT_ancestorListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.modifier.ModifierPane.class, "ancestorListener", javax.swing.event.AncestorListener.class, new String[] {"ancestorAdded", "ancestorRemoved", "ancestorMoved"}, "addAncestorListener", "removeAncestorListener" ); // NOI18N
+            eventSets[EVENT_componentListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.modifier.ModifierPane.class, "componentListener", java.awt.event.ComponentListener.class, new String[] {"componentResized", "componentMoved", "componentShown", "componentHidden"}, "addComponentListener", "removeComponentListener" ); // NOI18N
+            eventSets[EVENT_containerListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.modifier.ModifierPane.class, "containerListener", java.awt.event.ContainerListener.class, new String[] {"componentAdded", "componentRemoved"}, "addContainerListener", "removeContainerListener" ); // NOI18N
+            eventSets[EVENT_focusListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.modifier.ModifierPane.class, "focusListener", java.awt.event.FocusListener.class, new String[] {"focusGained", "focusLost"}, "addFocusListener", "removeFocusListener" ); // NOI18N
+            eventSets[EVENT_hierarchyBoundsListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.modifier.ModifierPane.class, "hierarchyBoundsListener", java.awt.event.HierarchyBoundsListener.class, new String[] {"ancestorMoved", "ancestorResized"}, "addHierarchyBoundsListener", "removeHierarchyBoundsListener" ); // NOI18N
+            eventSets[EVENT_hierarchyListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.modifier.ModifierPane.class, "hierarchyListener", java.awt.event.HierarchyListener.class, new String[] {"hierarchyChanged"}, "addHierarchyListener", "removeHierarchyListener" ); // NOI18N
+            eventSets[EVENT_inputMethodListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.modifier.ModifierPane.class, "inputMethodListener", java.awt.event.InputMethodListener.class, new String[] {"inputMethodTextChanged", "caretPositionChanged"}, "addInputMethodListener", "removeInputMethodListener" ); // NOI18N
+            eventSets[EVENT_keyListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.modifier.ModifierPane.class, "keyListener", java.awt.event.KeyListener.class, new String[] {"keyTyped", "keyPressed", "keyReleased"}, "addKeyListener", "removeKeyListener" ); // NOI18N
+            eventSets[EVENT_mouseListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.modifier.ModifierPane.class, "mouseListener", java.awt.event.MouseListener.class, new String[] {"mouseClicked", "mousePressed", "mouseReleased", "mouseEntered", "mouseExited"}, "addMouseListener", "removeMouseListener" ); // NOI18N
+            eventSets[EVENT_mouseMotionListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.modifier.ModifierPane.class, "mouseMotionListener", java.awt.event.MouseMotionListener.class, new String[] {"mouseDragged", "mouseMoved"}, "addMouseMotionListener", "removeMouseMotionListener" ); // NOI18N
+            eventSets[EVENT_mouseWheelListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.modifier.ModifierPane.class, "mouseWheelListener", java.awt.event.MouseWheelListener.class, new String[] {"mouseWheelMoved"}, "addMouseWheelListener", "removeMouseWheelListener" ); // NOI18N
+            eventSets[EVENT_propertyChangeListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.modifier.ModifierPane.class, "propertyChangeListener", java.beans.PropertyChangeListener.class, new String[] {"propertyChange"}, "addPropertyChangeListener", "removePropertyChangeListener" ); // NOI18N
+            eventSets[EVENT_vetoableChangeListener] = new EventSetDescriptor ( br.com.urcontroler.main.comps.modifier.ModifierPane.class, "vetoableChangeListener", java.beans.VetoableChangeListener.class, new String[] {"vetoableChange"}, "addVetoableChangeListener", "removeVetoableChangeListener" ); // NOI18N
         }
         catch(IntrospectionException e) {
             e.printStackTrace();

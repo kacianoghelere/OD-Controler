@@ -13,7 +13,6 @@ public class WisdomData implements AttrData {
 
     private AttrRange range;
     private int ajust;
-    private int[] additSpells = new int[9];
 
     /**
      * Cria nova instancia de WisData
@@ -38,12 +37,10 @@ public class WisdomData implements AttrData {
      *
      * @param range {@code AttrRange} Faixa de valores do atributo
      * @param ajust {@code int} Ajuste de proteção
-     * @param additSpells {@code int[]} Magias adicionais
      */
-    public WisdomData(AttrRange range, int ajust, int[] additSpells) {
+    public WisdomData(AttrRange range, int ajust) {
         this.range = range;
         this.ajust = ajust;
-        this.additSpells = additSpells;
     }
 
     /**
@@ -51,26 +48,10 @@ public class WisdomData implements AttrData {
      *
      * @param range {@code String} Faixa de valores do atributo
      * @param ajust {@code int} Ajuste de proteção
-     * @param additSpells {@code int[]} Magias adicionais
      */
-    public WisdomData(String range, int ajust, int[] additSpells) {
+    public WisdomData(String range, int ajust) {
         this.range = new AttrRange(range);
         this.ajust = ajust;
-        this.additSpells = additSpells;
-    }
-
-    /**
-     * Cria nova instancia de WisData
-     *
-     * @param init {@code int} Inicio da faixa
-     * @param end {@code int} Fim da faixa
-     * @param ajust {@code int} Ajuste de proteção
-     * @param additSpells {@code int[]} Magias adicionais
-     */
-    public WisdomData(int init, int end, int ajust, int[] additSpells) {
-        this.range = new AttrRange(init, end);
-        this.ajust = ajust;
-        this.additSpells = additSpells;
     }
 
     /**
@@ -110,21 +91,4 @@ public class WisdomData implements AttrData {
         this.ajust = ajust;
     }
 
-    /**
-     * Retorna as magias adicionais
-     *
-     * @return {@code int[]} Magias adicionais
-     */
-    public int[] getAdditSpells() {
-        return additSpells;
-    }
-
-    /**
-     * Modifica as magias adicionais
-     *
-     * @param additSpells {@code int[]} Magias adicionais
-     */
-    public void setAdditSpells(int[] additSpells) {
-        this.additSpells = additSpells;
-    }
 }

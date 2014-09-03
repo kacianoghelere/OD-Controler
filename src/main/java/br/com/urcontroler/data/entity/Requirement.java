@@ -3,7 +3,7 @@ package br.com.urcontroler.data.entity;
 /**
  * Classe para os requerimentos mínimos
  *
- * @author ka
+ * @author kaciano
  */
 public class Requirement {
 
@@ -85,7 +85,7 @@ public class Requirement {
     }
 
     /**
-     * Modifica
+     * Modifica requerimento minimo para constituição
      *
      * @param CON {@code int} Requerimento minimo para constituição
      */

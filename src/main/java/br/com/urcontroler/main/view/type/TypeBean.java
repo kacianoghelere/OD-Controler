@@ -1,18 +1,10 @@
 package br.com.urcontroler.main.view.type;
 
-import br.com.urcontroler.data.db.dao.ArmorTypeDAO;
-import br.com.urcontroler.data.db.dao.EffectTypeDAO;
-import br.com.urcontroler.data.db.dao.ElementTypeDAO;
-import br.com.urcontroler.data.db.dao.ExpertiseTypeDAO;
-import br.com.urcontroler.data.db.dao.ItemTypeDAO;
-import br.com.urcontroler.data.db.dao.MaterialTypeDAO;
-import br.com.urcontroler.data.db.dao.PerkTypeDAO;
-import br.com.urcontroler.data.db.dao.SpellTypeDAO;
+import br.com.urcontroler.data.db.dao.*;
 import br.com.urcontroler.data.entity.Type;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.view.bean.ViewBean;
 import br.com.urcontroler.main.view.exception.ViewException;
-import br.com.urcontroler.main.view.type.TypeView;
 import java.util.List;
 
 /**
@@ -33,6 +25,7 @@ public class TypeBean extends ViewBean<TypeView> {
     private final ElementTypeDAO elementDAO;
     private final ItemTypeDAO itemDAO;
     private final SpellTypeDAO spellDAO;
+    private final LanguageTypeDAO languageDAO;
 
     /**
      * Cria nova instancia de TermsBean
@@ -49,6 +42,7 @@ public class TypeBean extends ViewBean<TypeView> {
         this.elementDAO = new ElementTypeDAO();
         this.itemDAO = new ItemTypeDAO();
         this.spellDAO = new SpellTypeDAO();
+        this.languageDAO = new LanguageTypeDAO();
         try {
             load(null);
         } catch (Exception ex) {
@@ -66,6 +60,7 @@ public class TypeBean extends ViewBean<TypeView> {
         this.elementDAO.replaceAll(getView().getElementModel().getData());
         this.itemDAO.replaceAll(getView().getItemModel().getData());
         this.spellDAO.replaceAll(getView().getSpellModel().getData());
+        this.languageDAO.replaceAll(getView().getLangModel().getData());
     }
 
     @Override
@@ -78,6 +73,7 @@ public class TypeBean extends ViewBean<TypeView> {
         getView().getElementModel().setData(elementDAO.getList());
         getView().getItemModel().setData(itemDAO.getList());
         getView().getSpellModel().setData(spellDAO.getList());
+        getView().getLangModel().setData(languageDAO.getList());
     }
 
     /**

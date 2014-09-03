@@ -358,7 +358,7 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
         gCBKeyAttr = new br.com.gmp.comps.combobox.GComboBox();
         gCBAligment = new br.com.gmp.comps.combobox.GComboBox();
         jLAligment = new javax.swing.JLabel();
-        rPane = new br.com.urcontroler.main.comps.RequirementPane();
+        rPane = new br.com.urcontroler.main.comps.requirement.RequirementPane();
         jTBModifiers = new javax.swing.JTabbedPane();
         jPLevels = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -637,7 +637,7 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTBModifiers;
     private javax.swing.JTabbedPane jTPConfigs;
-    private br.com.urcontroler.main.comps.RequirementPane rPane;
+    private br.com.urcontroler.main.comps.requirement.RequirementPane rPane;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -11,6 +11,9 @@ import java.util.Objects;
  * Entidade para registro de efeitos
  *
  * @author kaciano
+ * @version 1.0
+ * @author kaciano
+ * @version 1.1
  */
 public class Effect implements Serializable {
 
@@ -22,8 +25,8 @@ public class Effect implements Serializable {
     @ColumnName(name = "Nome")
     private String title;
     @Editable
-    @ColumnName(name = "Proporção")
-    private Double strength;
+    @ColumnName(name = "Descrição")
+    private String description;
     @ColumnName(name = "Tipo")
     private EffectType type;
 
@@ -38,27 +41,38 @@ public class Effect implements Serializable {
      *
      * @param id {@code Long} Id do efeito
      * @param title {@code String} Titulo do efeito
-     * @param strength {@code Double} Força do efeito
-     */
-    public Effect(Long id, String title, Double strength) {
-        this.id = id;
-        this.title = title;
-        this.strength = strength;
-    }
-
-    /**
-     * Cria nova instancia de efeito
-     *
-     * @param id {@code Long} Id do efeito
-     * @param title {@code String} Titulo do efeito
-     * @param strength {@code Double} Força do efeito
+     * @param description {@code String} Descrição do efeito
      * @param type {@code EffectType} Tipo do efeito
      */
-    public Effect(Long id, String title, Double strength, EffectType type) {
+    public Effect(Long id, String title, String description, EffectType type) {
         this.id = id;
         this.title = title;
-        this.strength = strength;
+        this.description = description;
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return title;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Effect other = (Effect) obj;
+        return Objects.equals(this.id, other.id);
     }
 
     /**
@@ -100,19 +114,19 @@ public class Effect implements Serializable {
     /**
      * Retorna a força do efeito
      *
-     * @return {@code Double} Força do efeito
+     * @return {@code String} Descrição do efeito
      */
-    public Double getStrength() {
-        return strength;
+    public String getDescription() {
+        return description;
     }
 
     /**
      * Modifica a força do efeito
      *
-     * @param strength {@code Double} Força do efeito
+     * @param description {@code String} Descrição do efeito
      */
-    public void setStrength(Double strength) {
-        this.strength = strength;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     /**
@@ -131,30 +145,6 @@ public class Effect implements Serializable {
      */
     public void setType(EffectType type) {
         this.type = type;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + Objects.hashCode(this.id);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Effect other = (Effect) obj;
-        return Objects.equals(this.id, other.id);
-    }
-
-    @Override
-    public String toString() {
-        return title;
     }
 
 }

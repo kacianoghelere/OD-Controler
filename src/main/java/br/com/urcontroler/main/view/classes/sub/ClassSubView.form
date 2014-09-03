@@ -243,7 +243,7 @@
                 <Property name="text" type="java.lang.String" value="Alinhamento:"/>
               </Properties>
             </Component>
-            <Component class="br.com.urcontroler.main.comps.RequirementPane" name="rPane">
+            <Component class="br.com.urcontroler.main.comps.requirement.RequirementPane" name="rPane">
             </Component>
           </SubComponents>
         </Container>
