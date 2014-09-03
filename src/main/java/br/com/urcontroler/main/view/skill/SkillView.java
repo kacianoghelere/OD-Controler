@@ -61,9 +61,9 @@ public class SkillView extends View implements TableView, TableSource<Skill> {
         this.effectModel = new GComboBoxModel<>(new EffectDAO().getList());
         this.typeModel = new GComboBoxModel<>(SkillType.values());
         //----------------------------------------------------------------------
-        // Inicialização da estrutura
-        this.bean = new SkillBean(this);
+        // Inicialização da estrutura        
         this.initComponents();
+        this.bean = new SkillBean(this);
         decorator = new TableDecorator(gTable);
         //----------------------------------------------------------------------
         // Atribuição dos modelos
