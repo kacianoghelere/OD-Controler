@@ -94,6 +94,7 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
         this.gDLMagics.setSourceElements(spellModel);
         this.gDLWeapons.setSourceElements(weaponModel);
         this.gDLPerk.setSourceElements(perkModel);
+        this.gDLExpertise.setSourceElements(expertiseModel);
         this.setClass(classBase);
         this.setVisible(true);
     }

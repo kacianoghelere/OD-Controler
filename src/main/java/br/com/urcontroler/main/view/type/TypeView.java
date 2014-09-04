@@ -12,6 +12,7 @@ import br.com.urcontroler.data.entity.LanguageType;
 import br.com.urcontroler.data.entity.SpellType;
 import br.com.urcontroler.data.entity.MaterialType;
 import br.com.urcontroler.data.entity.PerkType;
+import br.com.urcontroler.data.entity.SkillType;
 import br.com.urcontroler.data.entity.Type;
 import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.view.View;
@@ -42,6 +43,7 @@ public class TypeView extends View<TypeBean> {
     private GListModel<ItemType> itemModel;
     private GListModel<SpellType> spellModel;
     private GListModel<LanguageType> languageModel;
+    private GListModel<SkillType> skillModel;
 
     /**
      * Cria nova instancia de TypeView
@@ -71,6 +73,7 @@ public class TypeView extends View<TypeBean> {
         this.itemModel = new GListModel<>();
         this.spellModel = new GListModel<>();
         this.languageModel = new GListModel<>();
+        this.skillModel = new GListModel<>();
         //----------------------------------------------------------------------
         // Inicialização do bean
         this.bean = new TypeBean(this);
@@ -85,6 +88,7 @@ public class TypeView extends View<TypeBean> {
         this.gLtItemTp.setModel(itemModel);
         this.gLtSpellTp.setModel(spellModel);
         this.gLtLangTp.setModel(languageModel);
+        this.gLtSkillTp.setModel(skillModel);
     }
 
     /**
@@ -216,6 +220,15 @@ public class TypeView extends View<TypeBean> {
         return languageModel;
     }
 
+    /**
+     * Retorna o modelo de lista dos SkillTypes
+     *
+     * @return {@code GListModel(SkillType)}
+     */
+    public GListModel<SkillType> getSkillModel() {
+        return skillModel;
+    }
+
     @Override
     public TypeBean getBean() {
         return bean;
@@ -265,6 +278,10 @@ public class TypeView extends View<TypeBean> {
         gTLangTp = new br.com.gmp.comps.textfield.GTextField();
         jSPPerk5 = new javax.swing.JScrollPane();
         gLtLangTp = new br.com.gmp.comps.list.GList();
+        jPSkillTp = new javax.swing.JPanel();
+        gTSkillTp = new br.com.gmp.comps.textfield.GTextField();
+        jSPPerk6 = new javax.swing.JScrollPane();
+        gLtSkillTp = new br.com.gmp.comps.list.GList();
 
         setClosable(true);
         setIconifiable(true);
@@ -711,6 +728,54 @@ public class TypeView extends View<TypeBean> {
 
         jTabbedPane.addTab("Idiomas", jPLanguageType);
 
+        jPSkillTp.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipos de Habilidades"));
+        jPSkillTp.setName("jPSkillTp"); // NOI18N
+
+        gTSkillTp.setPlaceholder("Tipos de Habilidades");
+        gTSkillTp.setMaximumSize(new java.awt.Dimension(150, 2147483647));
+        gTSkillTp.setMinimumSize(new java.awt.Dimension(150, 28));
+        gTSkillTp.setName("gTSkillTp"); // NOI18N
+        gTSkillTp.setPreferredSize(new java.awt.Dimension(150, 28));
+        gTSkillTp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gTSkillTpKeyReleased(evt);
+            }
+        });
+
+        jSPPerk6.setName("jSPPerk6"); // NOI18N
+
+        gLtSkillTp.setKeyDelete(true);
+        gLtSkillTp.setName("gLtSkillTp"); // NOI18N
+        gLtSkillTp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                gLtSkillTpKeyReleased(evt);
+            }
+        });
+        jSPPerk6.setViewportView(gLtSkillTp);
+
+        javax.swing.GroupLayout jPSkillTpLayout = new javax.swing.GroupLayout(jPSkillTp);
+        jPSkillTp.setLayout(jPSkillTpLayout);
+        jPSkillTpLayout.setHorizontalGroup(
+            jPSkillTpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPSkillTpLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPSkillTpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(gTSkillTp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSPPerk6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPSkillTpLayout.setVerticalGroup(
+            jPSkillTpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPSkillTpLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSPPerk6, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gTSkillTp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
+        );
+
+        jTabbedPane.addTab("Habilidades", jPSkillTp);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -813,6 +878,16 @@ public class TypeView extends View<TypeBean> {
         }
     }//GEN-LAST:event_gLtLangTpKeyReleased
 
+    private void gTSkillTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gTSkillTpKeyReleased
+        add(evt, gTSkillTp, new SkillType(), skillModel);
+    }//GEN-LAST:event_gTSkillTpKeyReleased
+
+    private void gLtSkillTpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gLtSkillTpKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
+            remove(gLtSkillTp, skillModel);
+        }
+    }//GEN-LAST:event_gLtSkillTpKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.list.GList gLtArmorTp;
     private br.com.gmp.comps.list.GList gLtEffectTp;
@@ -822,6 +897,7 @@ public class TypeView extends View<TypeBean> {
     private br.com.gmp.comps.list.GList gLtLangTp;
     private br.com.gmp.comps.list.GList gLtMaterials;
     private br.com.gmp.comps.list.GList gLtPerkTp;
+    private br.com.gmp.comps.list.GList gLtSkillTp;
     private br.com.gmp.comps.list.GList gLtSpellTp;
     private br.com.gmp.comps.textfield.GTextField gTArmorTp;
     private br.com.gmp.comps.textfield.GTextField gTEffectTp;
@@ -831,6 +907,7 @@ public class TypeView extends View<TypeBean> {
     private br.com.gmp.comps.textfield.GTextField gTLangTp;
     private br.com.gmp.comps.textfield.GTextField gTMaterial;
     private br.com.gmp.comps.textfield.GTextField gTPerkTp;
+    private br.com.gmp.comps.textfield.GTextField gTSkillTp;
     private br.com.gmp.comps.textfield.GTextField gTSpellTp;
     private javax.swing.JPanel jPArmorTypes;
     private javax.swing.JPanel jPEffects;
@@ -841,6 +918,7 @@ public class TypeView extends View<TypeBean> {
     private javax.swing.JPanel jPMagicType;
     private javax.swing.JPanel jPMaterials;
     private javax.swing.JPanel jPPerkTypes;
+    private javax.swing.JPanel jPSkillTp;
     private javax.swing.JScrollPane jSPArmorTp;
     private javax.swing.JScrollPane jSPEffect;
     private javax.swing.JScrollPane jSPExpertise;
@@ -850,6 +928,7 @@ public class TypeView extends View<TypeBean> {
     private javax.swing.JScrollPane jSPPerk3;
     private javax.swing.JScrollPane jSPPerk4;
     private javax.swing.JScrollPane jSPPerk5;
+    private javax.swing.JScrollPane jSPPerk6;
     private javax.swing.JTabbedPane jTabbedPane;
     // End of variables declaration//GEN-END:variables
 }

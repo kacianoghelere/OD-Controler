@@ -4,7 +4,6 @@ import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Id;
 import br.com.gmp.utils.annotations.Ignore;
-import br.com.urcontroler.data.enums.SkillType;
 import java.util.Objects;
 
 /**
@@ -13,7 +12,7 @@ import java.util.Objects;
  * @author kaciano
  * @version 1.0
  */
-public class Skill {
+public class Skill implements Comparable<Skill> {
 
     @Id
     @Ignore
@@ -168,6 +167,11 @@ public class Skill {
      */
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public int compareTo(Skill o) {
+        return this.id.compareTo(o.getId());
     }
 
 }

@@ -2,6 +2,7 @@ package br.com.urcontroler.main.view.effect;
 
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.gmp.comps.table.GTable;
+import br.com.gmp.comps.table.decorate.TableDecorator;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.gmp.utils.object.ObjectWrapper;
 import br.com.urcontroler.data.db.dao.EffectDAO;
@@ -15,6 +16,8 @@ import br.com.urcontroler.main.view.interfaces.BeanListener;
 import br.com.urcontroler.main.view.interfaces.TableView;
 import br.com.urcontroler.main.view.object.ViewParameter;
 import br.com.urcontroler.main.view.View;
+import br.com.urcontroler.main.view.annotation.ViewData;
+import br.com.urcontroler.main.view.enums.ViewType;
 import br.com.urcontroler.main.view.exception.ViewException;
 import java.util.List;
 import java.util.logging.Level;
@@ -28,12 +31,17 @@ import java.util.logging.Logger;
  * @author kaciano
  * @version 1.1
  */
+@ViewData(name = "Efeitos", type = ViewType.CRUD, path = {})
 public class EffectView extends View implements TableView, TableSource<Effect> {
 
     private EffectBean bean;
     private EffectModel model;
-    private TableUtil tableUtil;
+    private TableDecorator decorator;
     private GComboBoxModel<EffectType> typeModel;
+    private int count = 0;
+    private final int NAME = count++;
+    private final int DESCRIPTION = count++;
+    private final int TYPE = count++;
 
     /**
      * Cria nova instancia de EffectView
@@ -49,18 +57,22 @@ public class EffectView extends View implements TableView, TableSource<Effect> {
      * Método de inicialização
      */
     private void initialize() {
-        this.initComponents();
         this.setSize(550, 400);
         this.setControls(new ViewParameter(true, false, true, false));
-        this.tableUtil = new TableUtil(this);
+        this.initComponents();
+        this.decorator = new TableDecorator(gTable);
+        //----------------------------------------------------------------------
+        // Inicializações
         this.model = new EffectModel();
         this.typeModel = new GComboBoxModel<>();
-        //----------------------------------------------------------------------
         this.bean = new EffectBean(this);
         //----------------------------------------------------------------------
+        // 
         this.gTable.buildTable(this, 0, model);
-        //----------------------------------------------------------------------
         this.gCBType.setGModel(typeModel);
+        //----------------------------------------------------------------------
+        //
+        this.decorator.comboAt(TYPE, bean.getTypeDAO().getList());
     }
 
     @Override
@@ -81,14 +93,14 @@ public class EffectView extends View implements TableView, TableSource<Effect> {
                         .addValue("type", (EffectType) gCBType.getSelectedItem());
                 bean.add(new BeanEvent(vw));
             } catch (Exception ex) {
-                Logger.getLogger(EffectView.class.getName()).log(Level.SEVERE, null, ex);
+                throwException(new ViewException(this, ex));
             }
         }
     }
 
     @Override
-    public void remove() {
-        this.tableUtil.remove(null);
+    public void remove() throws Exception {
+        bean.remove(null);
     }
 
     @Override
@@ -148,7 +160,7 @@ public class EffectView extends View implements TableView, TableSource<Effect> {
         setMaximizable(true);
         setResizable(true);
         setTitle("Efeitos");
-        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/status/slice1390_@.png"))); // NOI18N
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Mixed/slice1400_@.png"))); // NOI18N
         setMinimumSize(new java.awt.Dimension(550, 400));
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Efeitos"));

@@ -170,6 +170,7 @@ public class MainScreenBean implements MainListener {
                 }
             }
             try {
+                view.setSize(view.getPreferredSize());
                 screen.getDesktop().add(view);
                 screen.getDesktop().setLayer(view,
                         JDesktopPane.FRAME_CONTENT_LAYER);

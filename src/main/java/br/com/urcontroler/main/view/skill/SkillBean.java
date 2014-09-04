@@ -1,10 +1,12 @@
 package br.com.urcontroler.main.view.skill;
 
 import br.com.gmp.utils.object.ObjectWrapper;
+import br.com.urcontroler.data.db.dao.EffectDAO;
 import br.com.urcontroler.data.db.dao.SkillDAO;
+import br.com.urcontroler.data.db.dao.SkillTypeDAO;
 import br.com.urcontroler.data.entity.Effect;
 import br.com.urcontroler.data.entity.Skill;
-import br.com.urcontroler.data.enums.SkillType;
+import br.com.urcontroler.data.entity.SkillType;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.util.TableUtil;
 import br.com.urcontroler.main.view.bean.ViewBean;
@@ -20,6 +22,8 @@ public class SkillBean extends ViewBean<SkillView> {
 
     private SkillDAO dao;
     private TableUtil tableUtil;
+    private EffectDAO effectDAO;
+    private SkillTypeDAO skillTypeDAO;
 
     /**
      * Cria nova instancia de SkillBean
@@ -30,6 +34,8 @@ public class SkillBean extends ViewBean<SkillView> {
         super(view);
         this.dao = new SkillDAO();
         this.tableUtil = new TableUtil(view);
+        this.effectDAO = new EffectDAO();
+        this.skillTypeDAO = new SkillTypeDAO();
         try {
             load(null);
         } catch (Exception ex) {
@@ -61,6 +67,24 @@ public class SkillBean extends ViewBean<SkillView> {
     @Override
     public void remove(BeanEvent evt) throws Exception {
         tableUtil.remove(evt);
+    }
+
+    /**
+     * Retorna o DAO dos efeitos
+     *
+     * @return {@code EffectDAO} DAO dos efeitos
+     */
+    public EffectDAO getEffectDAO() {
+        return effectDAO;
+    }
+
+    /**
+     * Retorna o DAO dos tipos de habilidades
+     *
+     * @return {@code EffectDAO} DAO dos tipos de habilidades
+     */
+    public SkillTypeDAO getSkillTypeDAO() {
+        return skillTypeDAO;
     }
 
     /**

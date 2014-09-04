@@ -26,6 +26,7 @@ public class TypeBean extends ViewBean<TypeView> {
     private final ItemTypeDAO itemDAO;
     private final SpellTypeDAO spellDAO;
     private final LanguageTypeDAO languageDAO;
+    private final SkillTypeDAO skillDAO;
 
     /**
      * Cria nova instancia de TermsBean
@@ -43,6 +44,7 @@ public class TypeBean extends ViewBean<TypeView> {
         this.itemDAO = new ItemTypeDAO();
         this.spellDAO = new SpellTypeDAO();
         this.languageDAO = new LanguageTypeDAO();
+        this.skillDAO = new SkillTypeDAO();
         try {
             load(null);
         } catch (Exception ex) {
@@ -61,6 +63,7 @@ public class TypeBean extends ViewBean<TypeView> {
         this.itemDAO.replaceAll(getView().getItemModel().getData());
         this.spellDAO.replaceAll(getView().getSpellModel().getData());
         this.languageDAO.replaceAll(getView().getLangModel().getData());
+        this.skillDAO.replaceAll(getView().getSkillModel().getData());
     }
 
     @Override
@@ -74,6 +77,7 @@ public class TypeBean extends ViewBean<TypeView> {
         getView().getItemModel().setData(itemDAO.getList());
         getView().getSpellModel().setData(spellDAO.getList());
         getView().getLangModel().setData(languageDAO.getList());
+        getView().getSkillModel().setData(skillDAO.getList());
     }
 
     /**

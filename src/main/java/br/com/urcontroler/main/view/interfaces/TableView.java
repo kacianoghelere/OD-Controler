@@ -27,8 +27,10 @@ public interface TableView {
 
     /**
      * Inicia edição de um item na tabela
+     *
+     * @throws java.lang.Exception Exceção lançada
      */
-    void edit();
+    void edit() throws Exception;
 
     /**
      * Retorna a tabela

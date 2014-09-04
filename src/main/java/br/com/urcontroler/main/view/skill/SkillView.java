@@ -5,19 +5,19 @@ import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.decorate.TableDecorator;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.gmp.utils.object.ObjectWrapper;
-import br.com.urcontroler.data.db.dao.EffectDAO;
 import br.com.urcontroler.data.db.dao.SkillDAO;
 import br.com.urcontroler.data.entity.Effect;
 import br.com.urcontroler.data.entity.Skill;
-import br.com.urcontroler.data.enums.SkillType;
+import br.com.urcontroler.data.entity.SkillType;
 import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.view.View;
+import br.com.urcontroler.main.view.annotation.ViewData;
+import br.com.urcontroler.main.view.enums.ViewType;
 import br.com.urcontroler.main.view.exception.ViewException;
 import br.com.urcontroler.main.view.interfaces.TableView;
 import br.com.urcontroler.main.view.object.ViewParameter;
 import br.com.urcontroler.main.view.skill.model.SkillModel;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -26,6 +26,7 @@ import java.util.List;
  * @author kaciano
  * @version 1.0
  */
+@ViewData(name = "Habilidades Singulares", type = ViewType.CRUD, path = {})
 public class SkillView extends View implements TableView, TableSource<Skill> {
 
     private SkillBean bean;
@@ -58,13 +59,15 @@ public class SkillView extends View implements TableView, TableSource<Skill> {
         //----------------------------------------------------------------------
         // Inicialização dos modelos
         this.model = new SkillModel();
-        this.effectModel = new GComboBoxModel<>(new EffectDAO().getList());
-        this.typeModel = new GComboBoxModel<>(SkillType.values());
+        this.effectModel = new GComboBoxModel<>();
+        this.typeModel = new GComboBoxModel<>();
         //----------------------------------------------------------------------
         // Inicialização da estrutura        
         this.initComponents();
         this.bean = new SkillBean(this);
-        decorator = new TableDecorator(gTable);
+        this.effectModel.setData(bean.getEffectDAO().getList());
+        this.typeModel.setData(bean.getSkillTypeDAO().getList());
+        this.decorator = new TableDecorator(gTable);
         //----------------------------------------------------------------------
         // Atribuição dos modelos
         this.gTable.buildTable(this, 0, model);
@@ -72,8 +75,8 @@ public class SkillView extends View implements TableView, TableSource<Skill> {
         this.gCBType.setGModel(typeModel);
         //----------------------------------------------------------------------
         // Atribuição dos editores
-        decorator.comboAt(EFFECT, new EffectDAO().getList());
-        decorator.comboAt(TYPE, Arrays.asList(SkillType.values()));
+        this.decorator.comboAt(EFFECT, bean.getEffectDAO().getList());
+        this.decorator.comboAt(TYPE, bean.getSkillTypeDAO().getList());
     }
 
     @Override

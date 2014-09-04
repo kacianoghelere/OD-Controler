@@ -1,14 +1,10 @@
-package br.com.urcontroler.main.view.spell;
+package br.com.urcontroler.main.view.race;
 
 import br.com.gmp.comps.table.GTable;
 import br.com.gmp.comps.table.decorate.TableDecorator;
 import br.com.gmp.comps.table.interfaces.TableSource;
-import br.com.urcontroler.data.db.dao.ElementTypeDAO;
-import br.com.urcontroler.data.db.dao.SpellDAO;
-import br.com.urcontroler.data.db.dao.SpellTypeDAO;
-import br.com.urcontroler.data.entity.Spell;
-import br.com.urcontroler.data.enums.SpellCategory;
-import br.com.urcontroler.data.enums.SpellClass;
+import br.com.urcontroler.data.db.dao.RaceDAO;
+import br.com.urcontroler.data.entity.Race;
 import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.view.View;
@@ -17,79 +13,63 @@ import br.com.urcontroler.main.view.enums.ViewType;
 import br.com.urcontroler.main.view.exception.ViewException;
 import br.com.urcontroler.main.view.interfaces.TableView;
 import br.com.urcontroler.main.view.object.ViewParameter;
-import br.com.urcontroler.main.view.spell.model.SpellModel;
-import br.com.urcontroler.main.view.spell.sub.SpellSubView;
-import java.util.Arrays;
+import br.com.urcontroler.main.view.race.model.RaceModel;
+import br.com.urcontroler.main.view.race.sub.RaceSubView;
 import java.util.List;
 
 /**
- * View para cadastro e controle de magias
+ * Tela de cadastro e controle de raças
  *
  * @author kaciano
  * @version 1.0
  */
-@ViewData(name = "Magias", type = ViewType.CRUD, path = {""})
-public class SpellView extends View<SpellBean> implements TableView, TableSource<Spell> {
+@ViewData(name = "Raças", type = ViewType.CRUD, path = {})
+public class RaceView extends View<RaceBean> implements TableView, TableSource<Race> {
 
-    private SpellBean bean;
-    private SpellModel model;
+    private RaceBean bean;
+    private RaceModel model;
     private TableDecorator decorator;
     private int count = 0;
-    private final int NAME = count++;
-    private final int TYPE = count++;
-    private final int CATEGORY = count++;
-    private final int CLASSIFICATION = count++;
-    private final int ELEMENT = count++;
-    private final int MAGIC_COST = count++;
-    private final int RANGE = count++;
-    private final int DURATION = count++;
 
     /**
-     * Cria nova instancia de SpellView
+     * Cria nova instancia de RaceView
      *
      * @param mainScreen {@code MainScreen} Tela principal
      */
-    public SpellView(MainScreen mainScreen) {
+    public RaceView(MainScreen mainScreen) {
         super(mainScreen);
-        this.initialize();
+        initialize();
     }
 
     /**
      * Método de inicialização
      */
     private void initialize() {
-        this.setControls(new ViewParameter(true, false, true, true));
-        this.setSize(662, 481);
+        this.setControls(new ViewParameter(true, false, false, false));
+        this.setSize(662, 484);
         this.initComponents();
-        this.decorator = new TableDecorator(gTable);
         //----------------------------------------------------------------------
         // Inicialização do modelo
-        this.model = new SpellModel();
+        this.model = new RaceModel();
         //----------------------------------------------------------------------
-        // Inicialização do bean        
-        this.bean = new SpellBean(this);
+        // Inicialização do bean  
+        this.bean = new RaceBean(this);
         //----------------------------------------------------------------------
         // Atribuição do modelo à tabela
         this.gTable.buildTable(this, 0, model);
         //----------------------------------------------------------------------
         // Atribuição dos editores à tabela
-        this.decorator.withNumber(MAGIC_COST);
-        this.decorator.comboAt(TYPE, new SpellTypeDAO().getList());
-        this.decorator.comboAt(CATEGORY, Arrays.asList(SpellCategory.values()));
-        this.decorator.comboAt(CLASSIFICATION, Arrays.asList(SpellClass.values()));
-        this.decorator.comboAt(ELEMENT, new ElementTypeDAO().getList());
+
     }
 
     @Override
     public void add() throws Exception {
-        SpellSubView subview = new SpellSubView(this, null);
+        RaceSubView subview = new RaceSubView(this, null);
         getMainScreen().getListener().insertView(subview);
-        if (subview.getSpell() != null) {
+        if (subview.getRace() != null) {
             try {
-                bean.add(new BeanEvent(this, subview.getSpell()));
+                bean.add(new BeanEvent(this, subview.getRace()));
             } catch (IllegalArgumentException | IllegalAccessException ex) {
-                throwException(new ViewException(this, ex));
-            } catch (Exception ex) {
                 throwException(new ViewException(this, ex));
             }
         }
@@ -101,54 +81,61 @@ public class SpellView extends View<SpellBean> implements TableView, TableSource
     }
 
     @Override
-    public void edit() {
-        try {
-            bean.edit(null);
-        } catch (Exception ex) {
-            throwException(new ViewException(this, ex));
-        }
+    public void edit() throws Exception {
+        bean.edit(null);
     }
 
     @Override
     public GTable getTable() {
-        return gTable;
+        return this.gTable;
     }
 
     @Override
-    public SpellModel getModel() {
+    public RaceModel getModel() {
         return model;
     }
 
     @Override
-    public List<Spell> getTableData() {
-        return new SpellDAO().getList();
+    public List<Race> getTableData() {
+        return new RaceDAO().getList();
     }
 
     @Override
-    public SpellBean getBean() {
+    public RaceBean getBean() {
         return bean;
     }
 
-    /**
-     * Dados gerados automaticamente
-     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        gTable = new br.com.gmp.comps.table.GTable();
         jToolBar1 = new javax.swing.JToolBar();
         jBAdd = new javax.swing.JButton();
         jBRemove = new javax.swing.JButton();
         jBEdit = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        gTable = new br.com.gmp.comps.table.GTable();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Magias");
-        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/RpgIcons/misc/slice1385_@.png"))); // NOI18N
+        setTitle("Raças");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Mixed/slice1405_@.png"))); // NOI18N
+        setMinimumSize(new java.awt.Dimension(662, 484));
+        setPreferredSize(new java.awt.Dimension(662, 484));
+
+        gTable.setKeyDelete(true);
+        gTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        gTable.setOpaque(false);
+        jScrollPane1.setViewportView(gTable);
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
@@ -192,18 +179,6 @@ public class SpellView extends View<SpellBean> implements TableView, TableSource
         });
         jToolBar1.add(jBEdit);
 
-        gTable.setKeyDelete(true);
-        gTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        gTable.setOpaque(false);
-        jScrollPane1.setViewportView(gTable);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -224,9 +199,13 @@ public class SpellView extends View<SpellBean> implements TableView, TableSource
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditActionPerformed
-        edit();
-    }//GEN-LAST:event_jBEditActionPerformed
+    private void jBAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddActionPerformed
+        try {
+            add();
+        } catch (Exception ex) {
+            throwException(new ViewException(this, ex));
+        }
+    }//GEN-LAST:event_jBAddActionPerformed
 
     private void jBRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoveActionPerformed
         try {
@@ -236,13 +215,13 @@ public class SpellView extends View<SpellBean> implements TableView, TableSource
         }
     }//GEN-LAST:event_jBRemoveActionPerformed
 
-    private void jBAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddActionPerformed
+    private void jBEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditActionPerformed
         try {
-            add();
+            edit();
         } catch (Exception ex) {
             throwException(new ViewException(this, ex));
         }
-    }//GEN-LAST:event_jBAddActionPerformed
+    }//GEN-LAST:event_jBEditActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.table.GTable gTable;

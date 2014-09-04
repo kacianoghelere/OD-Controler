@@ -3,10 +3,9 @@ package br.com.urcontroler.data.entity;
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
-import br.com.urcontroler.data.enums.Dice;
+import br.com.urcontroler.data.enums.*;
 import java.util.List;
 import java.util.Objects;
-import javax.swing.GroupLayout.Alignment;
 
 /**
  * Entidade das raças
@@ -26,6 +25,9 @@ public class Race {
     @ColumnName(name = "Tendencia")
     private Alignment tendecy;
     @Editable
+    @ColumnName(name = "Dado de Vida")
+    private Dice lifeDice;
+    @Editable
     @ColumnName(name = "Altura Min.")
     private double minHeight;
     @Editable
@@ -43,9 +45,6 @@ public class Race {
     @Editable
     @ColumnName(name = "Expec. Vida")
     private int maxAge;
-    @Editable
-    @ColumnName(name = "Dado de Vida")
-    private Dice lifeDice;
     @Ignore
     @ColumnName(name = "Modificadores")
     private Modifier modifier;
@@ -55,6 +54,9 @@ public class Race {
     @Ignore
     @ColumnName(name = "Habilidades Raciais")
     private List<Skill> skills;
+    @Ignore
+    @ColumnName(name = "Vatagens Raciais")
+    private List<Perk> perks;
     @Ignore
     @ColumnName(name = "Armaduras Permitidas")
     private List<ArmorType> allowedArmors;
@@ -84,13 +86,14 @@ public class Race {
      * @param modifier {@code Modifier} Modificadores da raça
      * @param languages {@code List(LanguageType)} Idiomas permitidos na raça
      * @param skills {@code List(Skill)} Habilidades singulares da raça
+     * @param perks {@code List(Perk)} Vantagens da raça
      * @param allowedArmors {@code List(ArmorType)} Armas permitidas na raça
      * @param allowedWeapons {@code List(WeaponType)} Armas permitidas na raça
      */
     public Race(Long id, String name, Alignment tendecy, double minHeight,
             double maxHeight, double minWeight, double maxWeight, int maturity,
             int maxAge, Dice lifeDice, Modifier modifier,
-            List<LanguageType> languages, List<Skill> skills,
+            List<LanguageType> languages, List<Skill> skills, List<Perk> perks,
             List<ArmorType> allowedArmors, List<WeaponType> allowedWeapons) {
         this.id = id;
         this.name = name;
@@ -105,6 +108,7 @@ public class Race {
         this.modifier = modifier;
         this.languages = languages;
         this.skills = skills;
+        this.perks = perks;
         this.allowedArmors = allowedArmors;
         this.allowedWeapons = allowedWeapons;
     }
@@ -365,6 +369,24 @@ public class Race {
      */
     public void setSkills(List<Skill> skills) {
         this.skills = skills;
+    }
+
+    /**
+     * Retorna as Vantagens singulares da raça
+     *
+     * @return {@code List(Perk)} Vantagens singulares da raça
+     */
+    public List<Perk> getPerks() {
+        return perks;
+    }
+
+    /**
+     * Modifica as Vantagens singulares da raça
+     *
+     * @param perks {@code List(Perk)} Vantagens singulares da raça
+     */
+    public void setPerks(List<Perk> perks) {
+        this.perks = perks;
     }
 
     /**
