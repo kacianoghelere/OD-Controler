@@ -4,6 +4,9 @@ import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Id;
 import br.com.gmp.utils.annotations.Ignore;
+import br.com.urcontroler.data.enums.SpellClass;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -27,11 +30,17 @@ public class ClassType {
     @Editable
     @ColumnName(name = "Proteção")
     private Integer protection;
+    @Ignore
+    @ColumnName(name = "Classificações Acessiveis")
+    private final Map<SpellClass, Integer> classAccess = new HashMap<>();
 
     /**
      * Cria nova instancia de ClassType
      */
     public ClassType() {
+        for (SpellClass spell : SpellClass.values()) {
+            this.classAccess.put(spell, 0);
+        }
     }
 
     /**
@@ -47,6 +56,9 @@ public class ClassType {
         this.name = name;
         this.magic = magic;
         this.protection = protection;
+        for (SpellClass spell : SpellClass.values()) {
+            this.classAccess.put(spell, 0);
+        }
     }
 
     @Override
@@ -143,6 +155,15 @@ public class ClassType {
      */
     public void setProtection(Integer protection) {
         this.protection = protection;
+    }
+
+    /**
+     * Retorna o mapa de acesso a magias
+     *
+     * @return {@code Map(SpellClass, Integer)}
+     */
+    public Map<SpellClass, Integer> getClassAccess() {
+        return classAccess;
     }
 
 }
