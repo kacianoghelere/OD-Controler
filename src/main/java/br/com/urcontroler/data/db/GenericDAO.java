@@ -1,7 +1,7 @@
 package br.com.urcontroler.data.db;
 
+import br.com.gmp.comps.data.DAO;
 import br.com.gmp.utils.annotations.Intercept;
-import br.com.urcontroler.data.db.interfaces.DAO;
 import br.com.gmp.utils.object.ObjectCopy;
 import br.com.gmp.utils.system.SystemProperties;
 import br.com.urcontroler.data.db.map.EntityMap;
