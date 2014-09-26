@@ -110,8 +110,11 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <mainClass>br.com.urcontroler.system.SystemManager</mainClass>      
-                            <classpathPrefix>dependency-jars/</classpathPrefix>                      
+                            <classpathPrefix>dependency-jars/</classpathPrefix>                 
                         </manifest>
+                        <manifestEntries>
+                            <SplashScreen-Image>splash.gif</SplashScreen-Image>
+                        </manifestEntries>                        
                     </archive>
                 </configuration>
             </plugin>        
