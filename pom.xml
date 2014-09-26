@@ -98,6 +98,9 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <arguments>
+                        <argument>-splash:src/main/resources/splash.gif</argument>
+                    </arguments>
                     <executable>java</executable>          
                 </configuration>
             </plugin>
