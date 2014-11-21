@@ -32,22 +32,22 @@ public class ViewBean<T> implements BeanListener<T> {
     }
 
     @Override
-    public void commit(BeanEvent evt) throws Exception {
+    public void onCommit(BeanEvent evt) throws Exception {
         System.out.println("Save not implemented yet.");
     }
 
     @Override
-    public void process(BeanEvent evt) throws Exception {
+    public void onProcess(BeanEvent evt) throws Exception {
         System.out.println("Process not implemented yet.");
     }
 
     @Override
-    public void clear(BeanEvent evt) throws Exception {
+    public void onClear(BeanEvent evt) throws Exception {
         new ComponentCleaner(true).clean((View) this.view);
     }
 
     @Override
-    public void load(BeanEvent evt) throws Exception {
+    public void onLoad(BeanEvent evt) throws Exception {
         System.out.println("Load not implemented yet.");
     }
 

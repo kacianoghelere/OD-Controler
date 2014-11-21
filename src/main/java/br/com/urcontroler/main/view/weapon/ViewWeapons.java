@@ -1,4 +1,4 @@
-package br.com.urcontroler.main.view.weapon.sub;
+package br.com.urcontroler.main.view.weapon;
 
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.urcontroler.data.db.dao.MaterialTypeDAO;
@@ -13,14 +13,11 @@ import br.com.urcontroler.data.enums.Dice;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.view.exception.ViewException;
 import br.com.urcontroler.main.view.sub.SubView;
-import br.com.urcontroler.main.view.weapon.WeaponView;
-import br.com.urcontroler.main.view.weapon.WeaponBean;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JMenuItem;
-import javax.swing.SwingUtilities;
 
 /**
  * SubView para controle de armas
@@ -28,7 +25,7 @@ import javax.swing.SwingUtilities;
  * @author kaciano
  * @version 1.0
  */
-public class WeaponSubView extends SubView {
+public class ViewWeapons extends SubView {
 
     private WeaponView view;
     private WeaponBean bean;
@@ -45,7 +42,7 @@ public class WeaponSubView extends SubView {
      * @param parent {@code WeaponView} Tela das armas
      * @param weapon {@code WeaponView} Arma
      */
-    public WeaponSubView(WeaponView parent, Weapon weapon) {
+    public ViewWeapons(WeaponView parent, Weapon weapon) {
         super(parent);
         this.view = parent;
         this.initialize(weapon);
@@ -325,6 +322,9 @@ public class WeaponSubView extends SubView {
         jBCancel = new javax.swing.JButton();
         jBAdd = new javax.swing.JButton();
         jBRandom = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        gLstWeapons = new br.com.gmp.comps.list.GList();
+        jBAdd1 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -525,33 +525,54 @@ public class WeaponSubView extends SubView {
             }
         });
 
+        jScrollPane2.setViewportView(gLstWeapons);
+
+        jBAdd1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/new.png"))); // NOI18N
+        jBAdd1.setText("Adicionar");
+        jBAdd1.setFocusable(false);
+        jBAdd1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBAdd1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAdd1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jBAdd1, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabs)
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTabs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(117, 117, 117)
                         .addComponent(jBAdd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBCancel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBRandom)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jBRandom)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTabs)
+                    .addComponent(jScrollPane2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBAdd)
                     .addComponent(jBCancel)
-                    .addComponent(jBRandom))
+                    .addComponent(jBRandom)
+                    .addComponent(jBAdd1))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -590,18 +611,24 @@ public class WeaponSubView extends SubView {
         }
     }//GEN-LAST:event_jBRandomActionPerformed
 
+    private void jBAdd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAdd1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBAdd1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.combobox.GComboBox gCBAlignment;
     private br.com.gmp.comps.combobox.GComboBox gCBDmgDice;
     private br.com.gmp.comps.combobox.GComboBox gCBMaterial;
     private br.com.gmp.comps.combobox.GComboBox gCBOrigin;
     private br.com.gmp.comps.combobox.GComboBox gCBType;
+    private br.com.gmp.comps.list.GList gLstWeapons;
     private br.com.gmp.comps.textfield.numeric.GNumericField gNDmgAmt;
     private br.com.gmp.comps.textfield.numeric.GNumericField gNPrice;
     private br.com.gmp.comps.textfield.numeric.GNumericField gNWeight;
     private br.com.gmp.comps.textarea.GTextArea gTADesc;
     private br.com.gmp.comps.textfield.GTextField gTName;
     private javax.swing.JButton jBAdd;
+    private javax.swing.JButton jBAdd1;
     private javax.swing.JButton jBCancel;
     private javax.swing.JButton jBRandom;
     private javax.swing.JLabel jLAlignment;
@@ -617,6 +644,7 @@ public class WeaponSubView extends SubView {
     private javax.swing.JPanel jPBasics;
     private javax.swing.JPanel jPDescription;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpnInitiative;
     private javax.swing.JSpinner jSpnRange;
     private javax.swing.JTabbedPane jTabs;

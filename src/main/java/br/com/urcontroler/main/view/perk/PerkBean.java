@@ -27,7 +27,7 @@ public class PerkBean extends ViewBean<PerkView> {
     }
 
     @Override
-    public void commit(BeanEvent evt) throws Exception {
+    public void onCommit(BeanEvent evt) throws Exception {
         this.dao.replaceAll(getView().getModel().getData());
     }
 

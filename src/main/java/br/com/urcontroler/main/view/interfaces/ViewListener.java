@@ -78,33 +78,33 @@ public interface ViewListener<T> {
      * Metodo padrão para salvar
      *
      * @see
-     * br.com.urcontroler.main.view.bean.ViewBean#commit(br.com.urcontroler.main.object.BeanEvent)
+     * br.com.urcontroler.main.view.bean.ViewBean#onCommit(br.com.urcontroler.main.object.BeanEvent)
      */
-    void commit();
+    void onCommit();
 
     /**
      * Metodo padrão para processar os dados
      *
      * @see
-     * br.com.urcontroler.main.view.bean.ViewBean#process(br.com.urcontroler.main.object.BeanEvent)
+     * br.com.urcontroler.main.view.bean.ViewBean#onProcess(br.com.urcontroler.main.object.BeanEvent)
      */
-    void process();
+    void onProcess();
 
     /**
      * Metodo padrão para limpar a tela
      *
      * @see
-     * br.com.urcontroler.main.view.bean.ViewBean#clear(br.com.urcontroler.main.object.BeanEvent)
+     * br.com.urcontroler.main.view.bean.ViewBean#onClear(br.com.urcontroler.main.object.BeanEvent)
      */
-    void clear();
+    void onClear();
 
     /**
      * Metodo padrão para carregar a tela
      *
      * @see
-     * br.com.urcontroler.main.view.bean.ViewBean#load(br.com.urcontroler.main.object.BeanEvent)
+     * br.com.urcontroler.main.view.bean.ViewBean#onLoad(br.com.urcontroler.main.object.BeanEvent)
      */
-    void load();
+    void onLoad();
 
     /**
      * Retorna o Bean da View

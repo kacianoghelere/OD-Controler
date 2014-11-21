@@ -46,14 +46,14 @@ public class TypeBean extends ViewBean<TypeView> {
         this.languageDAO = new LanguageTypeDAO();
         this.skillDAO = new SkillTypeDAO();
         try {
-            load(null);
+            onLoad(null);
         } catch (Exception ex) {
             getView().throwException(new ViewException(view, ex));
         }
     }
 
     @Override
-    public void commit(BeanEvent evt) throws Exception {
+    public void onCommit(BeanEvent evt) throws Exception {
         this.effectTypeDAO.replaceAll(getView().getEffectModel().getData());
         this.perkTypeDao.replaceAll(getView().getPerkModel().getData());
         this.expertiseDAO.replaceAll(getView().getExpertiseModel().getData());
@@ -67,7 +67,7 @@ public class TypeBean extends ViewBean<TypeView> {
     }
 
     @Override
-    public void load(BeanEvent evt) throws Exception {
+    public void onLoad(BeanEvent evt) throws Exception {
         getView().getEffectModel().setData(effectTypeDAO.getList());
         getView().getPerkModel().setData(perkTypeDao.getList());
         getView().getExpertiseModel().setData(expertiseDAO.getList());

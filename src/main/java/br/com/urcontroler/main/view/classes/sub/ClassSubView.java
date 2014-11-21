@@ -81,7 +81,7 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
         this.setSize(624, 476);
         this.initComponents();
         this.bean = view.getBean();
-        this.load();
+        this.onLoad();
         //----------------------------------------------------------------------
         // Atribuição dos modelos
         this.gTblLevels.buildTable(this, 0, levelModel);
@@ -100,7 +100,7 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
     }
 
     @Override
-    public void load() {
+    public void onLoad() {
         this.levelModel = new ClassLevelModel();
         this.typeModel = new GComboBoxModel<>(new ClassTypeDAO().getList());
         this.alignmentModel = new GComboBoxModel<>(Alignment.values());

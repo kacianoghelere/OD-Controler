@@ -27,28 +27,28 @@ public interface MainListener {
      *
      * @param evt {@code BeanEvent} Evento
      */
-    void commit(BeanEvent evt);
+    void onCommit(BeanEvent evt);
 
     /**
      * Metodo padrão para processar os dados
      *
      * @param evt {@code BeanEvent} Evento
      */
-    void process(BeanEvent evt);
+    void onProcess(BeanEvent evt);
 
     /**
      * Metodo padrão para limpar a tela
      *
      * @param evt {@code BeanEvent} Evento
      */
-    void clear(BeanEvent evt);
+    void onClear(BeanEvent evt);
 
     /**
      * Metodo padrão para carregar a tela
      *
      * @param evt {@code BeanEvent} Evento
      */
-    void load(BeanEvent evt);
+    void onLoad(BeanEvent evt);
 
     /**
      * Volta os dados do frame para o estado inicial

@@ -76,7 +76,7 @@ public class EffectView extends View implements TableView, TableSource<Effect> {
     }
 
     @Override
-    public void clear() {
+    public void onClear() {
         gTTitle.clear();
         gTDesc.clear();
         gCBType.setSelectedIndex(0);

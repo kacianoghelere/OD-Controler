@@ -33,7 +33,7 @@ public class MenuBean extends ViewBean<MenuView> {
         super(view);
         this.dao = new MenuDAO();
         try {
-            load(null);
+            onLoad(null);
         } catch (Exception ex) {
             getView().throwException(new ViewException(view, ex));
         }
@@ -41,19 +41,19 @@ public class MenuBean extends ViewBean<MenuView> {
     }
 
     @Override
-    public void commit(BeanEvent evt) throws Exception {
+    public void onCommit(BeanEvent evt) throws Exception {
         this.dao.replaceAll(getView().getModel().getData());
         getView().getMainScreen().reloadMenus();
     }
 
     @Override
-    public void load(BeanEvent evt) throws Exception {
+    public void onLoad(BeanEvent evt) throws Exception {
         getView().getIconModel().setData(getMenuIcons());
         getView().getParentModel().setData(getParentMenus());
     }
 
     @Override
-    public void process(BeanEvent evt) throws Exception {
+    public void onProcess(BeanEvent evt) throws Exception {
         buildPreview();
     }
 

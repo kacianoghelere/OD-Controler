@@ -134,7 +134,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     }
 
     @Override
-    public void commit() {
+    public void onCommit() {
         try {
             new Thread() {
                 @Override
@@ -142,7 +142,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
                     TimeCounter timeCounter = new TimeCounter();
                     getMainScreen().toggleProcess();
                     try {
-                        getBean().commit(new BeanEvent(View.this, null));
+                        getBean().onCommit(new BeanEvent(View.this, null));
                         showMessage("Dados salvos.", MainScreen.SUCCESS_MSG);
                         new ComponentCleaner(true).clean(View.this);
                     } catch (Exception ex) {
@@ -158,14 +158,14 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     }
 
     @Override
-    public void process() {
+    public void onProcess() {
         try {
             new Thread() {
                 @Override
                 public void run() {
                     getMainScreen().toggleProcess();
                     try {
-                        getBean().process(new BeanEvent(View.this, null));
+                        getBean().onProcess(new BeanEvent(View.this, null));
                         showMessage("Dados processados.", MainScreen.INFORMATIVE_MSG);
                     } catch (Exception ex) {
                         throwException(new ViewException(View.this, "Process error", ex));
@@ -179,14 +179,14 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     }
 
     @Override
-    public void clear() {
+    public void onClear() {
         try {
             new Thread() {
                 @Override
                 public void run() {
                     getMainScreen().toggleProcess();
                     try {
-                        getBean().clear(new BeanEvent(View.this, null));
+                        getBean().onClear(new BeanEvent(View.this, null));
                         //showMessage("Dados preenchidos removidos.", MainScreen.INFORMATIVE_MSG);
                     } catch (Exception ex) {
                         throwException(new ViewException(View.this, "Clear error", ex));
@@ -200,14 +200,14 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     }
 
     @Override
-    public void load() {
+    public void onLoad() {
         try {
             new Thread() {
                 @Override
                 public void run() {
                     getMainScreen().toggleProcess();
                     try {
-                        getBean().load(new BeanEvent(View.this, null));
+                        getBean().onLoad(new BeanEvent(View.this, null));
                         //showMessage("Dados carregados.", MainScreen.INFORMATIVE_MSG);
                     } catch (Exception ex) {
                         throwException(new ViewException(View.this, "Load error", ex));

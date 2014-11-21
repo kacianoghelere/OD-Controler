@@ -68,8 +68,8 @@ public class LogView extends View {
     }
 
     @Override
-    public void process() {
-        super.process();
+    public void onProcess() {
+        super.onProcess();
     }
 
     @Override

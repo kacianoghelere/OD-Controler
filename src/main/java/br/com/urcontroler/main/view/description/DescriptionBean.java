@@ -24,19 +24,19 @@ public class DescriptionBean extends ViewBean<DescriptionView> {
         super(view);
         this.dao = new MenuItemDAO();
         try {
-            load(null);
+            onLoad(null);
         } catch (Exception ex) {
             view.throwException(new ViewException(view, ex));
         }
     }
 
     @Override
-    public void commit(BeanEvent evt) throws Exception {
+    public void onCommit(BeanEvent evt) throws Exception {
         dao.replaceAll(getView().getListModel().getData());
     }
 
     @Override
-    public void load(BeanEvent evt) throws Exception {
+    public void onLoad(BeanEvent evt) throws Exception {
         getView().getListModel().setData(dao.getList());
     }
 

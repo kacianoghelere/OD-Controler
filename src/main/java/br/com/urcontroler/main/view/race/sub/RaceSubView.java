@@ -62,7 +62,7 @@ public class RaceSubView extends SubView {
     private void initialize(Race race) {
         this.bean = view.getBean();
         this.initComponents();
-        this.load();
+        this.onLoad();
         //----------------------------------------------------------------------
         //Atribuição dos modelos
         this.gCBTendency.setGModel(alignmentModel);
@@ -76,7 +76,7 @@ public class RaceSubView extends SubView {
     }
 
     @Override
-    public void load() {
+    public void onLoad() {
         this.alignmentModel = new GComboBoxModel<>(Alignment.values());
         this.diceModel = new GComboBoxModel<>(Dice.values());
         //----------------------------------------------------------------------

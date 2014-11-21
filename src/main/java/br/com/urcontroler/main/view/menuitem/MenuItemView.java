@@ -78,7 +78,7 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
                     .addValue("class", gTClass.getText())
                     .addValue("menu", (Menu) gCBMenu.getSelectedItem());
             bean.add(new BeanEvent(this, ow));
-            //super.clear();
+            //super.onClear();
         }
     }
 

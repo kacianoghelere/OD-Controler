@@ -55,7 +55,7 @@ public class DiceView extends View {
     }
 
     @Override
-    public void load() {
+    public void onLoad() {
         for (Component c : jPDices.getComponents()) {
             if (c instanceof JButton) {
                 JButton bt = (JButton) c;

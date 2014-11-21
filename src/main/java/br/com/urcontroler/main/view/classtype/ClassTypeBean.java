@@ -30,7 +30,7 @@ public class ClassTypeBean extends ViewBean<ClassTypeView> {
     }
 
     @Override
-    public void commit(BeanEvent evt) throws Exception {
+    public void onCommit(BeanEvent evt) throws Exception {
         dao.replaceAll(getView().getModel().getData());
     }
 

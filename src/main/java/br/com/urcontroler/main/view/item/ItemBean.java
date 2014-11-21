@@ -32,19 +32,19 @@ public class ItemBean extends ViewBean<ItemView> {
         this.dao = new ItemDAO();
         this.tableUtil = new TableUtil(view);
         try {
-            load(null);
+            onLoad(null);
         } catch (Exception ex) {
             Logger.getLogger(ItemBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
-    public void commit(BeanEvent evt) throws Exception {
+    public void onCommit(BeanEvent evt) throws Exception {
         dao.replaceAll(getView().getModel().getData());
     }
 
     @Override
-    public void load(BeanEvent evt) throws Exception {
+    public void onLoad(BeanEvent evt) throws Exception {
         getView().getModel().setData(dao.getList());
     }
 

@@ -169,22 +169,22 @@ public class MainScreen extends javax.swing.JFrame implements Main {
 
     @Override
     public void commit(ActionEvent evt) {
-        listener.commit(new BeanEvent(this, evt));
+        listener.onCommit(new BeanEvent(this, evt));
     }
 
     @Override
     public void process(ActionEvent evt) {
-        listener.process(new BeanEvent(this, evt));
+        listener.onProcess(new BeanEvent(this, evt));
     }
 
     @Override
     public void clear(ActionEvent evt) {
-        listener.clear(new BeanEvent(this, evt));
+        listener.onClear(new BeanEvent(this, evt));
     }
 
     @Override
     public void load(ActionEvent evt) {
-        listener.load(new BeanEvent(this, evt));
+        listener.onLoad(new BeanEvent(this, evt));
     }
 
     @Override

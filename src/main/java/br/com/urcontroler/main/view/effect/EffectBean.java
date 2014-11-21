@@ -35,7 +35,7 @@ public class EffectBean extends ViewBean<EffectView> {
     }
 
     @Override
-    public void commit(BeanEvent evt) throws Exception {
+    public void onCommit(BeanEvent evt) throws Exception {
         dao.replaceAll(getView().getModel().getData());
     }
 

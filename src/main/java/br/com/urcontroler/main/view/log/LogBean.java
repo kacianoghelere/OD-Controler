@@ -24,14 +24,14 @@ public class LogBean extends ViewBean<LogView> {
     public LogBean(LogView view) {
         super(view);
         try {
-            load(null);
+            onLoad(null);
         } catch (Exception ex) {
             view.throwException(new ViewException(view, ex));
         }
     }
 
     @Override
-    public void load(BeanEvent evt) throws Exception {
+    public void onLoad(BeanEvent evt) throws Exception {
 
     }
 

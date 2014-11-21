@@ -32,19 +32,19 @@ public class ExpertiseBean extends ViewBean<ExpertiseView> {
         this.dao = new ExpertiseDAO();
         this.typeDAO = new ExpertiseTypeDAO();
         try {
-            load(null);
+            onLoad(null);
         } catch (Exception ex) {
             LOGGER.log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
-    public void commit(BeanEvent evt) throws Exception {
+    public void onCommit(BeanEvent evt) throws Exception {
         dao.replaceAll(getView().getModel().getData());
     }
 
     @Override
-    public void load(BeanEvent evt) throws Exception {
+    public void onLoad(BeanEvent evt) throws Exception {
         getView().getAttrModel().setData(Attribute.values());
         getView().getTypeModel().setData(typeDAO.getList());
         getView().updateComponents();

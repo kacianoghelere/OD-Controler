@@ -48,13 +48,13 @@ public class ItemSubView extends SubView {
         setSize(463, 286);
         setControls(new ViewParameter(true, false, true, true));
         initComponents();
-        load();
+        onLoad();
         this.gCBType.setGModel(typeModel);
         setItem(item);
     }
 
     @Override
-    public void load() {
+    public void onLoad() {
         this.typeModel = new GComboBoxModel<>(new ItemTypeDAO().getList());
     }
 

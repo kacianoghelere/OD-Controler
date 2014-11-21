@@ -51,7 +51,7 @@ public class SpellSubView extends SubView {
         this.setSize(458, 380);
         this.bean = view.getBean();
         this.initComponents();
-        this.load();
+        this.onLoad();
         this.gCBType.setGModel(typeModel);
         this.gCBCategory.setGModel(categoryModel);
         this.gCBClass.setGModel(classModel);
@@ -61,7 +61,7 @@ public class SpellSubView extends SubView {
     }
 
     @Override
-    public void load() {
+    public void onLoad() {
         this.typeModel = new GComboBoxModel<>(new SpellTypeDAO().getList());
         this.classModel = new GComboBoxModel<>(SpellClass.values());
         this.categoryModel = new GComboBoxModel<>(SpellCategory.values());

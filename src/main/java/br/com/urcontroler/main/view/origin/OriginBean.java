@@ -30,7 +30,7 @@ public class OriginBean extends ViewBean<OriginView> {
     }
 
     @Override
-    public void commit(BeanEvent evt) throws Exception {
+    public void onCommit(BeanEvent evt) throws Exception {
         this.dao.replaceAll(getView().getModel().getData());
     }
 

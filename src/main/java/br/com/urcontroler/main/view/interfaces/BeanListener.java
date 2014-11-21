@@ -14,36 +14,36 @@ public interface BeanListener<T> {
      *
      * @param evt {@code BeanEvent} Evento
      * @throws java.lang.Exception Exceção
-     * @see br.com.urcontroler.main.view.View#commit()
+     * @see br.com.urcontroler.main.view.View#onCommit()
      */
-    void commit(BeanEvent evt) throws Exception;
+    void onCommit(BeanEvent evt) throws Exception;
 
     /**
      * Metodo padrão para processar os dados
      *
      * @param evt {@code BeanEvent} Evento
      * @throws java.lang.Exception Exceção
-     * @see br.com.urcontroler.main.view.View#process()
+     * @see br.com.urcontroler.main.view.View#onProcess()
      */
-    void process(BeanEvent evt) throws Exception;
+    void onProcess(BeanEvent evt) throws Exception;
 
     /**
      * Metodo padrão para limpar a tela
      *
      * @param evt {@code BeanEvent} Evento
      * @throws java.lang.Exception Exceção
-     * @see br.com.urcontroler.main.view.View#clear()
+     * @see br.com.urcontroler.main.view.View#onClear()
      */
-    void clear(BeanEvent evt) throws Exception;
+    void onClear(BeanEvent evt) throws Exception;
 
     /**
      * Metodo padrão para carregar a tela
      *
      * @param evt {@code BeanEvent} Evento
      * @throws java.lang.Exception Exceção
-     * @see br.com.urcontroler.main.view.View#load()
+     * @see br.com.urcontroler.main.view.View#onLoad()
      */
-    void load(BeanEvent evt) throws Exception;
+    void onLoad(BeanEvent evt) throws Exception;
 
     /**
      * Retorna a view do bean

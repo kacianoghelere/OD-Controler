@@ -38,19 +38,19 @@ public class ArmorBean extends ViewBean<ArmorView> {
         this.originDAO = new OriginDAO();
         this.tableUtil = new TableUtil(view);
         try {
-            load(null);
+            onLoad(null);
         } catch (Exception ex) {
             view.throwException(new ViewException(view, ex));
         }
     }
 
     @Override
-    public void commit(BeanEvent evt) throws Exception {
+    public void onCommit(BeanEvent evt) throws Exception {
         armorDAO.replaceAll(getView().getModel().getData());
     }
 
     @Override
-    public void load(BeanEvent evt) throws Exception {
+    public void onLoad(BeanEvent evt) throws Exception {
 
     }
 

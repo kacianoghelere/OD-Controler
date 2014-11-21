@@ -34,7 +34,7 @@ public class WeaponTypeBean extends ViewBean<WeaponTypeView> {
     }
 
     @Override
-    public void commit(BeanEvent evt) throws Exception {
+    public void onCommit(BeanEvent evt) throws Exception {
         dao.replaceAll(getView().getModel().getData());
     }
 

@@ -70,9 +70,9 @@ public class MainScreenBean implements MainListener {
 
     @Intercept
     @Override
-    public void commit(BeanEvent evt) {
+    public void onCommit(BeanEvent evt) {
         if (getCurrentView() != null && getCurrentView().canCommit()) {
-            getCurrentView().commit();
+            getCurrentView().onCommit();
         } else if (!getCurrentView().canCommit()) {
             screen.printTypedMsg("Esta View não pode salvar!", Main.WARNING_MSG);
         }
@@ -80,9 +80,9 @@ public class MainScreenBean implements MainListener {
 
     @Intercept
     @Override
-    public void process(BeanEvent evt) {
+    public void onProcess(BeanEvent evt) {
         if (getCurrentView() != null && getCurrentView().canProcces()) {
-            getCurrentView().process();
+            getCurrentView().onProcess();
         } else if (!getCurrentView().canProcces()) {
             screen.printTypedMsg("Esta View não pode processar!", Main.WARNING_MSG);
         }
@@ -90,9 +90,9 @@ public class MainScreenBean implements MainListener {
 
     @Intercept
     @Override
-    public void clear(BeanEvent evt) {
+    public void onClear(BeanEvent evt) {
         if (getCurrentView() != null && getCurrentView().canClear()) {
-            getCurrentView().clear();
+            getCurrentView().onClear();
         } else if (!getCurrentView().canClear()) {
             screen.printTypedMsg("Esta View não pode limpar!", Main.WARNING_MSG);
         }
@@ -100,9 +100,9 @@ public class MainScreenBean implements MainListener {
 
     @Intercept
     @Override
-    public void load(BeanEvent evt) {
+    public void onLoad(BeanEvent evt) {
         if (getCurrentView() != null && getCurrentView().canLoad()) {
-            getCurrentView().load();
+            getCurrentView().onLoad();
         } else if (!getCurrentView().canLoad()) {
             screen.printTypedMsg("Esta View não pode carregar!", Main.WARNING_MSG);
         }
