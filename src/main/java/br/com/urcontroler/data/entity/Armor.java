@@ -283,6 +283,6 @@ public class Armor implements Serializable {
 
     @Override
     public String toString() {
-        return this.name;
+        return this.id + " : " + this.name;
     }
 }

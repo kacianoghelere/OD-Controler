@@ -27,7 +27,7 @@ import javax.swing.SwingUtilities;
  * @author kaciano
  * @version 1.0
  */
-public class MenuView extends View implements TableSource<Menu>, TableView {
+public class MenuView extends View<MenuBean> implements TableSource<Menu>, TableView {
 
     private MenuBean bean;
     private MenuModel model;

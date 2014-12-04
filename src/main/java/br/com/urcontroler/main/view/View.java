@@ -15,6 +15,7 @@ import br.com.urcontroler.main.view.exception.ViewException;
 import br.com.urcontroler.main.view.interfaces.BeanListener;
 import br.com.urcontroler.main.view.interfaces.ViewListener;
 import br.com.urcontroler.main.view.object.ViewParameter;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -83,7 +84,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
         DescribeAction describe = new DescribeAction();
         getRootPane().getActionMap().put("describe", describe);
         getRootPane().getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0), "describe");
-        buildActions();        
+        buildActions();
     }
 
     /**
@@ -255,7 +256,18 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
      * Atualiza a estrutura dos componentes
      */
     public void updateComponents() {
-        SwingUtilities.updateComponentTreeUI(this);
+        updateComponent(this);
+    }
+
+    /**
+     * Atualiza a estrutura dos componentes
+     *
+     * @param c {@code Component} Componente à ser atualizada
+     */
+    public void updateComponent(Component c) {
+        c.repaint();
+        c.revalidate();
+        SwingUtilities.updateComponentTreeUI(c);
     }
 
     /**

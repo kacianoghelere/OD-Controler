@@ -7,7 +7,6 @@ import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.util.MenuBuilder;
 import br.com.urcontroler.main.view.bean.ViewBean;
 import br.com.urcontroler.main.view.exception.ViewException;
-import br.com.urcontroler.main.view.menu.MenuView;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
