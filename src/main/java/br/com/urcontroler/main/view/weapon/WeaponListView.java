@@ -25,7 +25,7 @@ import javax.swing.JMenuItem;
  * @author kaciano
  * @version 1.0
  */
-public class ViewWeapons extends SubView {
+public class WeaponListView extends SubView {
 
     private WeaponView view;
     private WeaponBean bean;
@@ -42,7 +42,7 @@ public class ViewWeapons extends SubView {
      * @param parent {@code WeaponView} Tela das armas
      * @param weapon {@code WeaponView} Arma
      */
-    public ViewWeapons(WeaponView parent, Weapon weapon) {
+    public WeaponListView(WeaponView parent, Weapon weapon) {
         super(parent);
         this.view = parent;
         this.initialize(weapon);
@@ -151,7 +151,7 @@ public class ViewWeapons extends SubView {
             Origin origin = this.originModel.getSelectedItem();
             this.gTName.setText(prefix.getName() + " "
                     + (prefix.getName().endsWith("a")
-                    ? origin.getVariation() : origin.getName())
+                            ? origin.getVariation() : origin.getName())
                     + " de " + material.getName());
         }
     }
@@ -161,18 +161,18 @@ public class ViewWeapons extends SubView {
      *
      * @throws Exception Exceção propagada
      */
-    private void randomize() throws Exception {        
+    private void randomize() throws Exception {
         Random rd = new Random();
         this.gCBAlignment.setSelectedIndex(rd.nextInt(alignmentModel.getSize()));
         this.gCBMaterial.setSelectedIndex(rd.nextInt(materialModel.getSize()));
         this.gCBOrigin.setSelectedIndex(rd.nextInt(originModel.getSize()));
         this.gCBType.setSelectedIndex(rd.nextInt(typeModel.getSize()));
-        this.gCBDmgDice.setSelectedIndex(rd.nextInt(diceModel.getSize()));        
+        this.gCBDmgDice.setSelectedIndex(rd.nextInt(diceModel.getSize()));
         this.gNPrice.setInt(rd.nextInt(80));
         this.gNWeight.setInt(rd.nextInt(10));
         this.jSpnInitiative.setValue(rd.nextInt(10));
         this.jSpnRange.setValue(rd.nextInt(80));
-        this.gNDmgAmt.setInt(rd.nextInt(10));        
+        this.gNDmgAmt.setInt(rd.nextInt(10));
         autoName();
         updateComponents();
     }
@@ -182,23 +182,23 @@ public class ViewWeapons extends SubView {
      */
     private void build() {
         if (weapon == null) {
-            this.weapon = new Weapon();
+            weapon = new Weapon();
         }
         if (weapon.getId() == null) {
-            this.weapon.setId(bean.getNextID());
+            weapon.setId(bean.getNextID());
         }
-        this.weapon.setName(gTName.getText());
-        this.weapon.setAlignment((Alignment) gCBAlignment.getSelectedItem());
-        this.weapon.setMaterial((MaterialType) gCBMaterial.getSelectedItem());
-        this.weapon.setOrigin((Origin) gCBOrigin.getSelectedItem());
-        this.weapon.setType((WeaponType) gCBType.getSelectedItem());
-        this.weapon.setDescription(gTADesc.getText());
-        this.weapon.setPrice(gNPrice.getInteger());
-        this.weapon.setWeight(gNWeight.getDouble());
-        this.weapon.setInitiative((Integer) jSpnInitiative.getValue());
-        this.weapon.setRange((Integer) jSpnRange.getValue());
-        this.weapon.setDmgAmount(gNDmgAmt.getInteger());
-        this.weapon.setDice(diceModel.getSelectedItem());
+        weapon.setName(gTName.getText());
+        weapon.setAlignment((Alignment) gCBAlignment.getSelectedItem());
+        weapon.setMaterial((MaterialType) gCBMaterial.getSelectedItem());
+        weapon.setOrigin((Origin) gCBOrigin.getSelectedItem());
+        weapon.setType((WeaponType) gCBType.getSelectedItem());
+        weapon.setDescription(gTADesc.getText());
+        weapon.setPrice(gNPrice.getInteger());
+        weapon.setWeight(gNWeight.getDouble());
+        weapon.setInitiative((Integer) jSpnInitiative.getValue());
+        weapon.setRange((Integer) jSpnRange.getValue());
+        weapon.setDmgAmount(gNDmgAmt.getInteger());
+        weapon.setDice(diceModel.getSelectedItem());
     }
 
     /**
@@ -604,7 +604,7 @@ public class ViewWeapons extends SubView {
     }//GEN-LAST:event_jBAddActionPerformed
 
     private void jBRandomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRandomActionPerformed
-        try {        
+        try {
             randomize();
         } catch (Exception ex) {
             throwException(new ViewException(view, ex));
