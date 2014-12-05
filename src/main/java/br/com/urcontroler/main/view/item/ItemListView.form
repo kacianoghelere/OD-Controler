@@ -28,73 +28,19 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPList" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jSPDesc" pref="322" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLName" linkSize="4" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLType" linkSize="4" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="gCBType" max="32767" attributes="0"/>
-                          <Component id="gTName" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLPrice" linkSize="4" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLWeight" linkSize="4" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jSpnWeight" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="gNPrice" alignment="0" min="-2" pref="88" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="jBApply" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel1" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jPanel1" max="32767" attributes="0"/>
                   <Component id="jPList" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="gTName" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLName" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="gCBType" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLType" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jSpnWeight" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLWeight" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLPrice" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="gNPrice" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jSPDesc" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jBApply" min="-2" max="-2" attributes="0"/>
-                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -102,66 +48,6 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JScrollPane" name="jSPDesc">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Descri&#xe7;&#xe3;o"/>
-          </Border>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="br.com.gmp.comps.textarea.GTextArea" name="gTADesc">
-          <Properties>
-            <Property name="columns" type="int" value="20"/>
-            <Property name="lineWrap" type="boolean" value="true"/>
-            <Property name="rows" type="int" value="5"/>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Component class="javax.swing.JLabel" name="jLType">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="Tipo:"/>
-      </Properties>
-    </Component>
-    <Component class="br.com.gmp.comps.combobox.GComboBox" name="gCBType">
-    </Component>
-    <Component class="br.com.gmp.comps.textfield.numeric.GNumericField" name="gNPrice">
-    </Component>
-    <Component class="javax.swing.JSpinner" name="jSpnWeight">
-      <Properties>
-        <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-          <SpinnerModel initial="0.0" numberType="java.lang.Double" stepSize="5.0" type="number"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="br.com.gmp.comps.textfield.GTextField" name="gTName">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLName">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="Nome:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLPrice">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="Pre&#xe7;o:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLWeight">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="Peso:"/>
-      </Properties>
-    </Component>
     <Container class="javax.swing.JPanel" name="jPList">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -181,7 +67,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <Component id="jScrollPane1" min="-2" pref="239" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" max="32767" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="jToolBar1" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
@@ -246,18 +132,160 @@
         </Container>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jBApply">
+    <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/ComponentIcons/button/switch/on.png"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Editar Itens"/>
+          </Border>
         </Property>
-        <Property name="text" type="java.lang.String" value="Aplicar"/>
-        <Property name="focusable" type="boolean" value="false"/>
-        <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBApplyActionPerformed"/>
-      </Events>
-    </Component>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jSPDesc" pref="251" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jBApply" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLPrice" linkSize="4" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jLWeight" linkSize="4" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jSpnWeight" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="gNPrice" alignment="0" min="-2" pref="88" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jLName" linkSize="4" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLType" linkSize="4" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="gCBType" max="32767" attributes="0"/>
+                              <Component id="gTName" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="gTName" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLName" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="gCBType" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLType" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jSpnWeight" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLWeight" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLPrice" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="gNPrice" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jSPDesc" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jBApply" min="-2" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="jBApply">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/ComponentIcons/button/switch/on.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Aplicar"/>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBApplyActionPerformed"/>
+          </Events>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jSPDesc">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="Descri&#xe7;&#xe3;o"/>
+              </Border>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="br.com.gmp.comps.textarea.GTextArea" name="gTADesc">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="lineWrap" type="boolean" value="true"/>
+                <Property name="rows" type="int" value="5"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="jLPrice">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="Pre&#xe7;o:"/>
+          </Properties>
+        </Component>
+        <Component class="br.com.gmp.comps.textfield.numeric.GNumericField" name="gNPrice">
+        </Component>
+        <Component class="javax.swing.JSpinner" name="jSpnWeight">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0.0" numberType="java.lang.Double" stepSize="5.0" type="number"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLWeight">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="Peso:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLType">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="Tipo:"/>
+          </Properties>
+        </Component>
+        <Component class="br.com.gmp.comps.combobox.GComboBox" name="gCBType">
+        </Component>
+        <Component class="br.com.gmp.comps.textfield.GTextField" name="gTName">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLName">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="Nome:"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

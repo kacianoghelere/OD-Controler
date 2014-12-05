@@ -19,6 +19,7 @@ public class ItemListBean extends ViewBean<ItemListView> {
     private ItemTypeDAO itemTypeDAO;
 
     /**
+     * Cria nova instancia de ItemListBean
      *
      * @param view {@code ItemListView} View da lista de itens
      */
