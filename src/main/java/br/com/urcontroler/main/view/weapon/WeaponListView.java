@@ -14,6 +14,7 @@ import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.view.View;
 import br.com.urcontroler.main.view.exception.ViewException;
 import br.com.urcontroler.main.view.interfaces.ListView;
+import br.com.urcontroler.main.view.object.ViewParameter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
@@ -54,6 +55,7 @@ public class WeaponListView extends View<WeaponListBean> implements ListView<Wea
      */
     private void initialize() {
         this.setSize(545, 465);
+        this.setControls(new ViewParameter(true, false, true, true));        
         this.initComponents();
         this.bean = new WeaponListBean(this);
         this.onLoad();
