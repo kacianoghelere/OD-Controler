@@ -32,24 +32,24 @@ public class Weapon {
     private String description;
     @Editable
     @ColumnName(name = "Iniciativa")
-    private Integer initiative;
+    private int initiative;
     @Editable
     @ColumnName(name = "Alcance")
-    private Integer range;
+    private int range;
     @Editable
     @ColumnName(name = "Qt. Dano")
-    private Integer dmgAmount;
+    private int dmgAmount;
     @Editable
     @ColumnName(name = "Dado")
     private Dice dice;
     @Ignore
     @Editable
     @ColumnName(name = "Peso")
-    private Double weight;
+    private double weight;
     @Ignore
     @Editable
     @ColumnName(name = "Preço")
-    private Integer price;
+    private int price;
     @Editable
     @ColumnName(name = "Tipo")
     private WeaponType type;
@@ -73,19 +73,19 @@ public class Weapon {
      * @param name {@code String} Nome da arma
      * @param origin {@code Origin} Origem da arma
      * @param description {@code String} Descrição da arma
-     * @param initiative {@code Integer} Classificação do tipo
-     * @param range {@code Double} Alcance da arma
-     * @param dmgAmount {@code Integer} Quantidade de dano da arma
+     * @param initiative {@code int} Classificação do tipo
+     * @param range {@code double} Alcance da arma
+     * @param dmgAmount {@code int} Quantidade de dano da arma
      * @param dice {@code Dice} Dado de dano da arma
-     * @param weight {@code Double} Peso da arma
-     * @param price {@code Integer} Preço da arma
+     * @param weight {@code double} Peso da arma
+     * @param price {@code int} Preço da arma
      * @param type {@code WeaponType} Tipo de arma
      * @param material {@code PrimeMaterial} Quantidade do material
      * @param alignment {@code Align} Alinhamento
      */
     public Weapon(Long id, String name, Origin origin, String description,
-            Integer initiative, Integer range, Integer dmgAmount, Dice dice, Double weight,
-            Integer price, WeaponType type, MaterialType material, Alignment alignment) {
+            int initiative, int range, int dmgAmount, Dice dice, double weight,
+            int price, WeaponType type, MaterialType material, Alignment alignment) {
         this.id = id;
         this.name = name;
         this.origin = origin;
@@ -102,7 +102,7 @@ public class Weapon {
 
     @Override
     public String toString() {
-        return name;
+        return id + " : " + name;
     }
 
     @Override
@@ -217,18 +217,18 @@ public class Weapon {
     /**
      * Retorna o dano da arma
      *
-     * @return {@code Integer} Dano da arma
+     * @return {@code int} Dano da arma
      */
-    public Integer getDmgAmount() {
+    public int getDmgAmount() {
         return dmgAmount;
     }
 
     /**
      * Modifica o dano da arma
      *
-     * @param dmgAmount {@code Integer} Dano da arma
+     * @param dmgAmount {@code int} Dano da arma
      */
-    public void setDmgAmount(Integer dmgAmount) {
+    public void setDmgAmount(int dmgAmount) {
         this.dmgAmount = dmgAmount;
     }
 
@@ -253,18 +253,18 @@ public class Weapon {
     /**
      * Retorna o preço da arma
      *
-     * @return {@code Integer} Preço da arma
+     * @return {@code int} Preço da arma
      */
-    public Integer getPrice() {
+    public int getPrice() {
         return price;
     }
 
     /**
      * Modifica o preço da arma
      *
-     * @param price {@code Integer} Preço da arma
+     * @param price {@code int} Preço da arma
      */
-    public void setPrice(Integer price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -289,54 +289,54 @@ public class Weapon {
     /**
      * Retorna a iniciativa da arma
      *
-     * @return {@code Integer} Iniciativa da arma
+     * @return {@code int} Iniciativa da arma
      */
-    public Integer getInitiative() {
+    public int getInitiative() {
         return initiative;
     }
 
     /**
      * Modifica a iniciativa da arma
      *
-     * @param initiative {@code Integer} Iniciativa da arma
+     * @param initiative {@code int} Iniciativa da arma
      */
-    public void setInitiative(Integer initiative) {
+    public void setInitiative(int initiative) {
         this.initiative = initiative;
     }
 
     /**
      * Retorna o peso da arma
      *
-     * @return {@code Double} Peso da arma
+     * @return {@code double} Peso da arma
      */
-    public Double getWeight() {
+    public double getWeight() {
         return weight;
     }
 
     /**
      * Modifica o peso da arma
      *
-     * @param weight {@code Double} Peso da arma
+     * @param weight {@code double} Peso da arma
      */
-    public void setWeight(Double weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
     /**
      * Retorna o alcance da arma
      *
-     * @return {@code Integer} Alcance da arma
+     * @return {@code int} Alcance da arma
      */
-    public Integer getRange() {
+    public int getRange() {
         return range;
     }
 
     /**
      * Modifica o alcance da arma
      *
-     * @param range {@code Integer} Alcance da arma
+     * @param range {@code int} Alcance da arma
      */
-    public void setRange(Integer range) {
+    public void setRange(int range) {
         this.range = range;
     }
 

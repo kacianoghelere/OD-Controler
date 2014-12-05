@@ -4,9 +4,6 @@ import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.gmp.comps.list.GList;
 import br.com.gmp.comps.model.GListModel;
 import br.com.gmp.utils.object.ObjectCopy;
-import br.com.urcontroler.data.db.dao.MaterialTypeDAO;
-import br.com.urcontroler.data.db.dao.OriginDAO;
-import br.com.urcontroler.data.db.dao.WeaponTypeDAO;
 import br.com.urcontroler.data.entity.MaterialType;
 import br.com.urcontroler.data.entity.Origin;
 import br.com.urcontroler.data.entity.Weapon;
@@ -21,7 +18,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JMenuItem;
 
@@ -61,6 +57,7 @@ public class WeaponListView extends View<WeaponListBean> implements ListView<Wea
         this.initComponents();
         this.bean = new WeaponListBean(this);
         this.onLoad();
+        this.gListWeapons.setModel(model);
         this.gCBType.setGModel(typeModel);
         this.gCBOrigin.setGModel(originModel);
         this.gCBMaterial.setGModel(materialModel);
@@ -211,6 +208,9 @@ public class WeaponListView extends View<WeaponListBean> implements ListView<Wea
     @Override
     public Weapon buildTemp() throws Exception {
         Weapon weapon = new Weapon();
+        weapon.setName("");
+        weapon.setId(bean.getNextID());
+        weapon.setDmgAmount(0);
         weapon.setPrice(0);
         weapon.setRange(0);
         weapon.setInitiative(0);
@@ -273,24 +273,34 @@ public class WeaponListView extends View<WeaponListBean> implements ListView<Wea
     /**
      * Modifica a arma da view
      *
-     * @param editingWeapon {@code Weapon} Arma da view
+     * @param weapon {@code Weapon} Arma da view
      */
-    public void setEditingWeapon(Weapon editingWeapon) {
+    public void setEditingWeapon(Weapon weapon) {
         try {
-            if (editingWeapon != null) {
-                this.editingWeapon = editingWeapon;
-                this.gTName.setText(editingWeapon.getName());
-                this.gCBAlignment.setSelectedItem(editingWeapon.getAlignment());
-                this.gCBMaterial.setSelectedItem(editingWeapon.getMaterial());
-                this.gCBOrigin.setSelectedItem(editingWeapon.getOrigin());
-                this.gCBType.setSelectedItem(editingWeapon.getType());
-                this.gTADesc.setText(editingWeapon.getDescription());
-                this.gNPrice.setInt(editingWeapon.getPrice());
-                this.gNWeight.setInt(editingWeapon.getWeight().intValue());
-                this.jSpnInitiative.setValue(editingWeapon.getInitiative());
-                this.jSpnRange.setValue(editingWeapon.getRange());
-                this.gNDmgAmt.setInt(editingWeapon.getDmgAmount());
-                this.gCBDmgDice.setSelectedItem(editingWeapon.getDice());
+            if (weapon != null) {
+                this.editingWeapon = weapon;
+                this.gTName.setText(weapon.getName());
+                if (weapon.getAlignment() != null) {
+                    this.gCBAlignment.setSelectedItem(weapon.getAlignment());
+                }
+                if (weapon.getMaterial() != null) {
+                    this.gCBMaterial.setSelectedItem(weapon.getMaterial());
+                }
+                if (weapon.getOrigin() != null) {
+                    this.gCBOrigin.setSelectedItem(weapon.getOrigin());
+                }
+                if (weapon.getType() != null) {
+                    this.gCBType.setSelectedItem(weapon.getType());
+                }
+                this.gTADesc.setText(weapon.getDescription());
+                this.gNPrice.setInt(weapon.getPrice());
+                this.gNWeight.setInt(new Double(weapon.getWeight()).intValue());
+                this.jSpnInitiative.setValue(weapon.getInitiative());
+                this.jSpnRange.setValue(weapon.getRange());
+                this.gNDmgAmt.setInt(weapon.getDmgAmount());
+                if (weapon.getDice() != null) {
+                    this.gCBDmgDice.setSelectedItem(weapon.getDice());
+                }
             }
         } catch (Exception e) {
             throwException(new ViewException(view, e));

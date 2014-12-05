@@ -66,7 +66,7 @@ public class ItemListBean extends ViewBean<ItemListView> {
      */
     public Long getNextID() {
         Long id = (long) 0;
-        if (getView().getModel().getData().isEmpty()) {
+        if (getView().getModel().getData() != null || getView().getModel().getData().isEmpty()) {
             return (id + 1);
         }
         for (Item item : getView().getModel().getData()) {

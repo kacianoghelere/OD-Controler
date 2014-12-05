@@ -229,7 +229,7 @@ public class WeaponSubView extends SubView {
                 this.gCBType.setSelectedItem(weapon.getType());
                 this.gTADesc.setText(weapon.getDescription());
                 this.gNPrice.setInt(weapon.getPrice());
-                this.gNWeight.setInt(weapon.getWeight().intValue());
+                this.gNWeight.setInt(new Double(weapon.getWeight()).intValue());
                 this.jSpnInitiative.setValue(weapon.getInitiative());
                 this.jSpnRange.setValue(weapon.getRange());
                 this.gNDmgAmt.setInt(weapon.getDmgAmount());

@@ -43,6 +43,7 @@ public class ItemListView extends View<ItemListBean> implements ListView<Item> {
         setControls(new ViewParameter(true, false, true, true));
         initComponents();
         this.bean = new ItemListBean(this);
+        this.gListItems.setModel(model);
         this.typeModel = new GComboBoxModel<>(bean.getItemTypeList());
         this.gCBType.setGModel(typeModel);
     }
@@ -141,16 +142,18 @@ public class ItemListView extends View<ItemListBean> implements ListView<Item> {
     /**
      * Modifica o Item à ser adicionado/editado
      *
-     * @param Item {@code Item} Item à ser adicionado/editado
+     * @param item {@code Item} Item à ser adicionado/editado
      */
-    public void setEditingItem(Item Item) {
-        if (Item != null) {
-            this.editingItem = Item;
-            gTName.setText(Item.getName());
-            gCBType.setSelectedItem(Item.getType());
-            gTADesc.setText(Item.getDescription());
-            jSpnWeight.setValue(Item.getWeight());
-            gNPrice.setInt(Item.getPrice());
+    public void setEditingItem(Item item) {
+        if (item != null) {
+            this.editingItem = item;
+            gTName.setText(item.getName());
+            if (item.getType() != null) {
+                gCBType.setSelectedItem(item.getType());
+            }
+            gTADesc.setText(item.getDescription());
+            jSpnWeight.setValue(item.getWeight());
+            gNPrice.setInt(item.getPrice());
         }
     }
 
@@ -201,6 +204,8 @@ public class ItemListView extends View<ItemListBean> implements ListView<Item> {
         gTName = new br.com.gmp.comps.textfield.GTextField();
         jLName = new javax.swing.JLabel();
 
+        setClosable(true);
+        setIconifiable(true);
         setTitle("Itens");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Mixed/slice1255_.png"))); // NOI18N
 

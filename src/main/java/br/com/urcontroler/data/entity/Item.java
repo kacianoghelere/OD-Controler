@@ -29,10 +29,10 @@ public class Item {
     private String description;
     @Editable
     @ColumnName(name = "Peso")
-    private Double weight;
+    private double weight;
     @Editable
     @ColumnName(name = "Preço")
-    private Integer price;
+    private int price;
 
     /**
      * Cria nova instância de Item
@@ -47,16 +47,21 @@ public class Item {
      * @param name {@code String} Nome do item
      * @param type {@code ItemType} Tipo do item
      * @param description {@code String} Descrição do item
-     * @param weight {@code Double} Peso do item
-     * @param price {@code Integer} Preço do item
+     * @param weight {@code double} Peso do item
+     * @param price {@code int} Preço do item
      */
-    public Item(Long id, String name, ItemType type, String description, Double weight, Integer price) {
+    public Item(Long id, String name, ItemType type, String description, double weight, int price) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.weight = weight;
         this.price = price;
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return id + " : " + name;
     }
 
     @Override
@@ -153,36 +158,36 @@ public class Item {
     /**
      * Retorna o Peso do item
      *
-     * @return {@code Double} Peso do item
+     * @return {@code double} Peso do item
      */
-    public Double getWeight() {
+    public double getWeight() {
         return weight;
     }
 
     /**
      * Modifica o Peso do item
      *
-     * @param weight {@code Double} Peso do item
+     * @param weight {@code double} Peso do item
      */
-    public void setWeight(Double weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
     /**
      * Retorna o Preço do item
      *
-     * @return {@code Integer} Preço do item
+     * @return {@code int} Preço do item
      */
-    public Integer getPrice() {
+    public int getPrice() {
         return price;
     }
 
     /**
      * Modifica o Preço do item
      *
-     * @param price {@code Integer} Preço do item
+     * @param price {@code int} Preço do item
      */
-    public void setPrice(Integer price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

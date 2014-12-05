@@ -91,7 +91,7 @@ public class WeaponListBean extends ViewBean<WeaponListView> {
      */
     public Long getNextID() {
         Long id = (long) 0;
-        if (getView().getModel().getData().isEmpty()) {
+        if (getView().getModel().getData() != null || getView().getModel().getData().isEmpty()) {
             return (id + 1);
         }
         for (Weapon weapon : getView().getModel().getData()) {
