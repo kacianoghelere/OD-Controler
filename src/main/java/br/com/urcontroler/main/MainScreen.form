@@ -79,9 +79,13 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMIDice">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+D"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/ComponentIcons/controlers/dice.gif"/>
                 </Property>
+                <Property name="mnemonic" type="int" value="68"/>
                 <Property name="text" type="java.lang.String" value="Jogar dados"/>
                 <Property name="name" type="java.lang.String" value="jMIDice" noResource="true"/>
               </Properties>
@@ -89,65 +93,88 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIDiceActionPerformed"/>
               </Events>
             </MenuItem>
-            <Menu class="javax.swing.JMenu" name="jMControls">
+            <Menu class="javax.swing.JMenu" name="jMSystem">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/ComponentIcons/window/frame.png"/>
+                  <Image iconType="3" name="/ComponentIcons/android/game.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Cadastros"/>
-                <Property name="name" type="java.lang.String" value="jMControls" noResource="true"/>
+                <Property name="text" type="java.lang.String" value="Sistema"/>
+                <Property name="name" type="java.lang.String" value="jMSystem" noResource="true"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMIMenus">
+                <Menu class="javax.swing.JMenu" name="jMControls">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/ComponentIcons/menubar/menubar.png"/>
+                      <Image iconType="3" name="/ComponentIcons/window/frame.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Menus"/>
-                    <Property name="name" type="java.lang.String" value="jMIMenus" noResource="true"/>
+                    <Property name="text" type="java.lang.String" value="Cadastros"/>
+                    <Property name="name" type="java.lang.String" value="jMControls" noResource="true"/>
+                  </Properties>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="jMIMenus">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/ComponentIcons/menubar/menubar.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Menus"/>
+                        <Property name="name" type="java.lang.String" value="jMIMenus" noResource="true"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIMenusActionPerformed"/>
+                      </Events>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="jMIViews">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/ComponentIcons/window/dialog.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Telas"/>
+                        <Property name="name" type="java.lang.String" value="jMIViews" noResource="true"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIViewsActionPerformed"/>
+                      </Events>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="jMIDescriptions">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/ComponentIcons/menubar/menubar/edit.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xf5;es"/>
+                        <Property name="name" type="java.lang.String" value="jMIDescriptions" noResource="true"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIDescriptionsActionPerformed"/>
+                      </Events>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
+                <MenuItem class="javax.swing.JMenuItem" name="jMILog">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/ComponentIcons/menubar/menubar/file.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Logs"/>
+                    <Property name="name" type="java.lang.String" value="jMILog" noResource="true"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIMenusActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMILogActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMIViews">
+                <MenuItem class="javax.swing.JMenuItem" name="jMIBackupRestore">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/ComponentIcons/window/dialog.png"/>
+                      <Image iconType="3" name="/ComponentIcons/controlers/saveall.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Telas"/>
-                    <Property name="name" type="java.lang.String" value="jMIViews" noResource="true"/>
+                    <Property name="text" type="java.lang.String" value="Gerar/Restaurar backup"/>
+                    <Property name="name" type="java.lang.String" value="jMIBackupRestore" noResource="true"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIViewsActionPerformed"/>
-                  </Events>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMIDescriptions">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/ComponentIcons/menubar/menubar/edit.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xf5;es"/>
-                    <Property name="name" type="java.lang.String" value="jMIDescriptions" noResource="true"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIDescriptionsActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIBackupRestoreActionPerformed"/>
                   </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>
-            <MenuItem class="javax.swing.JMenuItem" name="jMILog">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/ComponentIcons/menubar/menubar/file.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Logs"/>
-                <Property name="name" type="java.lang.String" value="jMILog" noResource="true"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMILogActionPerformed"/>
-              </Events>
-            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="root">

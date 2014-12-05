@@ -6,6 +6,7 @@ import br.com.gmp.utils.interceptors.InterceptorModule;
 import br.com.urcontroler.main.bean.MainScreenBean;
 import br.com.urcontroler.main.interfaces.Main;
 import br.com.urcontroler.main.interfaces.MainListener;
+import br.com.urcontroler.main.modal.BackupDialog;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.util.MenuBuilder;
 import br.com.urcontroler.main.view.description.DescriptionView;
@@ -398,6 +399,11 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         return root;
     }
 
+    private void openBackupModal() {
+        BackupDialog back = new BackupDialog(this);
+        back.setVisible(true);
+    }
+
     /**
      *
      */
@@ -426,11 +432,13 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         jMIRefresh = new javax.swing.JMenuItem();
         jMIClean = new javax.swing.JMenuItem();
         jMIDice = new javax.swing.JMenuItem();
+        jMSystem = new javax.swing.JMenu();
         jMControls = new javax.swing.JMenu();
         jMIMenus = new javax.swing.JMenuItem();
         jMIViews = new javax.swing.JMenuItem();
         jMIDescriptions = new javax.swing.JMenuItem();
         jMILog = new javax.swing.JMenuItem();
+        jMIBackupRestore = new javax.swing.JMenuItem();
         root = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -620,7 +628,9 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         jMIClean.setName("jMIClean"); // NOI18N
         jMOptions.add(jMIClean);
 
+        jMIDice.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
         jMIDice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/dice.gif"))); // NOI18N
+        jMIDice.setMnemonic('D');
         jMIDice.setText("Jogar dados");
         jMIDice.setName("jMIDice"); // NOI18N
         jMIDice.addActionListener(new java.awt.event.ActionListener() {
@@ -629,6 +639,10 @@ public class MainScreen extends javax.swing.JFrame implements Main {
             }
         });
         jMOptions.add(jMIDice);
+
+        jMSystem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/android/game.png"))); // NOI18N
+        jMSystem.setText("Sistema");
+        jMSystem.setName("jMSystem"); // NOI18N
 
         jMControls.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/window/frame.png"))); // NOI18N
         jMControls.setText("Cadastros");
@@ -664,7 +678,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         });
         jMControls.add(jMIDescriptions);
 
-        jMOptions.add(jMControls);
+        jMSystem.add(jMControls);
 
         jMILog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/menubar/menubar/file.png"))); // NOI18N
         jMILog.setText("Logs");
@@ -674,7 +688,19 @@ public class MainScreen extends javax.swing.JFrame implements Main {
                 jMILogActionPerformed(evt);
             }
         });
-        jMOptions.add(jMILog);
+        jMSystem.add(jMILog);
+
+        jMIBackupRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/saveall.png"))); // NOI18N
+        jMIBackupRestore.setText("Gerar/Restaurar backup");
+        jMIBackupRestore.setName("jMIBackupRestore"); // NOI18N
+        jMIBackupRestore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIBackupRestoreActionPerformed(evt);
+            }
+        });
+        jMSystem.add(jMIBackupRestore);
+
+        jMOptions.add(jMSystem);
 
         jMenuBar.add(jMOptions);
 
@@ -784,6 +810,10 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         listener.insertView(new DescriptionView(this));
     }//GEN-LAST:event_jMIDescriptionsActionPerformed
 
+    private void jMIBackupRestoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIBackupRestoreActionPerformed
+        openBackupModal();
+    }//GEN-LAST:event_jMIBackupRestoreActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
     private br.com.gmp.comps.textfield.GTextField gTView;
@@ -795,6 +825,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     private javax.swing.JButton jBRefresh;
     private javax.swing.JLabel jLMsgs;
     private javax.swing.JMenu jMControls;
+    private javax.swing.JMenuItem jMIBackupRestore;
     private javax.swing.JMenuItem jMIClean;
     private javax.swing.JMenuItem jMICommit;
     private javax.swing.JMenuItem jMIDescriptions;
@@ -805,6 +836,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     private javax.swing.JMenuItem jMIRefresh;
     private javax.swing.JMenuItem jMIViews;
     private javax.swing.JMenu jMOptions;
+    private javax.swing.JMenu jMSystem;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JProgressBar jPBLoader;
     private javax.swing.JToolBar.Separator jSeparator1;
