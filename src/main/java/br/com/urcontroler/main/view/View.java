@@ -1,6 +1,7 @@
 package br.com.urcontroler.main.view;
 
 import br.com.gmp.comps.cleaner.ComponentCleaner;
+import br.com.gmp.comps.interfaces.ValidableComponent;
 import br.com.gmp.utils.system.TimeCounter;
 import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.actions.ClearAction;
@@ -19,6 +20,8 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.logging.Level;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -294,6 +297,20 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     @Override
     public void showMessageBalloon(String text) {
         getMainScreen().showBalloon(text);
+    }
+
+    @Override
+    public boolean validate(ValidableComponent component, String errorMsg) {
+        return validate(component.validateComponent(), errorMsg);
+    }
+
+    @Override
+    public boolean validate(boolean condition, String errorMsg) {
+        if (!condition) {
+            LOGGER.log(Level.WARNING, errorMsg);
+            return false;
+        }
+        return true;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package br.com.urcontroler.main.view.interfaces;
 
+import br.com.gmp.comps.interfaces.ValidableComponent;
 import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.view.View;
 import java.util.logging.Logger;
@@ -144,4 +145,21 @@ public interface ViewListener<T> {
      */
     void showMessageBalloon(String text);
 
+    /**
+     * Valida o componente e imprime a mensagem de erro em caso de falha
+     *
+     * @param component {@code ValidableComponent} Componente a ser validado
+     * @param errorMsg {@code String} Mensagem de erro
+     * @return {@code boolean} Resultado logico da validacao
+     */
+    boolean validate(ValidableComponent component, String errorMsg);
+
+    /**
+     * Valida a condicao e imprime a mensagem de erro em caso de falha
+     *
+     * @param condition {@code boolean} Condicao logica
+     * @param errorMsg {@code String} Mensagem de erro
+     * @return {@code boolean} Resultado logico da validacao
+     */
+    boolean validate(boolean condition, String errorMsg);
 }
