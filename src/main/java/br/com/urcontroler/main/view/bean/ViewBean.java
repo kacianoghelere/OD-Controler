@@ -1,6 +1,8 @@
 package br.com.urcontroler.main.view.bean;
 
 import br.com.gmp.comps.cleaner.ComponentCleaner;
+import br.com.gmp.comps.data.GenericDAO;
+import br.com.urcontroler.data.db.dao.DaoBuilder;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.view.View;
 import br.com.urcontroler.main.view.interfaces.BeanListener;

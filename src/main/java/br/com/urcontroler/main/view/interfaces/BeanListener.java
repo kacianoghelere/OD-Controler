@@ -1,5 +1,6 @@
 package br.com.urcontroler.main.view.interfaces;
 
+import br.com.gmp.comps.data.GenericDAO;
 import br.com.urcontroler.main.object.BeanEvent;
 
 /**
@@ -51,4 +52,5 @@ public interface BeanListener<T> {
      * @return {@code T} View do bean
      */
     T getView();
+
 }
