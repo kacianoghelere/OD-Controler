@@ -2,12 +2,14 @@ package br.com.urcontroler.main.modal;
 
 import br.com.gmp.comps.data.GenericDAO;
 import br.com.gmp.comps.dialog.GDialog;
-import br.com.urcontroler.data.db.dao.DaoBuilder;
+import br.com.gmp.utils.date.DateUtil;
+import br.com.gmp.utils.zip.ZipUtil;
 import br.com.urcontroler.main.MainScreen;
 import java.io.File;
-import java.util.Arrays;
+import java.text.SimpleDateFormat;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import org.jfree.ui.ExtensionFileFilter;
-import org.jfree.ui.FilesystemFilter;
 
 /**
  * Modal de controle de cópias de segurança
@@ -34,30 +36,42 @@ public class BackupDialog extends GDialog {
      * Método de inicializacao
      */
     private void initialize() {
-        setSize(430, 245);
+        setSize(430, 280);
         initComponents();
-        this.path = mainScreen.getProperty("system.db.path");
-        jLDataLocation.setText(path);
-        gFFBackup.getFileChooser().setFileFilter(new ExtensionFileFilter("Backup Yap", "byap"));
-        gFFRestore.getFileChooser().setFileFilter(new ExtensionFileFilter("Backup Yap", "byap"));
+        this.path = GenericDAO.DIR;
+        this.gTDataPath.setText(path);
+        this.gFFBackup.getFileChooser().setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        this.gFFRestore.getFileChooser().setFileSelectionMode(JFileChooser.FILES_ONLY);
+        this.gFFRestore.getFileChooser()
+                .setFileFilter(new ExtensionFileFilter("Zip", "zip"));
     }
 
     /**
      * Gera o backup dos dados na pasta dos BDs
      */
     private void generate() {
-        File dir = new File(path);
-        File[] files = dir.listFiles(new FilesystemFilter("yap", "YAP"));
-        String backupPath = gFFBackup.getSelectedFile().getPath();
-        GenericDAO<File> dao = DaoBuilder.get(File.class, backupPath);
-        dao.replaceAll(Arrays.asList(files));
+        if (gFFBackup.getFileChooser().getSelectedFile() != null) {
+            File destFile = gFFBackup.getFileChooser().getSelectedFile();
+            String dest = destFile.getAbsolutePath();
+            String date = new SimpleDateFormat(DateUtil.TXTDATE).format(DateUtil.NOW);
+            String name = dest + File.separator + "bkp" + date + ".zip";
+            ZipUtil.zip(name, path);
+        } else {
+            JOptionPane.showConfirmDialog(this, "Nenhum diretório selecionado!");
+        }
     }
 
     /**
      * Restaura o backup dos dados na pasta dos BDs
      */
     private void restore() {
-
+        if (gFFRestore.getFileChooser().getSelectedFile() != null) {
+            File sourceFile = gFFRestore.getFileChooser().getSelectedFile();
+            String source = sourceFile.getAbsolutePath();
+            ZipUtil.unzip(source.endsWith(".zip") ? source : (source + ".zip"), path);
+        } else {
+            JOptionPane.showConfirmDialog(this, "Nenhum arquivo selecionado!");
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -74,8 +88,9 @@ public class BackupDialog extends GDialog {
         jLDataLocation = new javax.swing.JLabel();
         gTDataPath = new br.com.gmp.comps.textfield.GTextField();
 
-        setMaximumSize(new java.awt.Dimension(430, 245));
-        setMinimumSize(new java.awt.Dimension(430, 245));
+        setTitle("Guardar/Recuperar dados");
+        setMaximumSize(new java.awt.Dimension(430, 280));
+        setMinimumSize(new java.awt.Dimension(430, 280));
         setResizable(false);
 
         jPBackup.setBorder(javax.swing.BorderFactory.createTitledBorder("Criar copia de segurança"));
@@ -164,13 +179,13 @@ public class BackupDialog extends GDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLDataLocation)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gTDataPath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPBackup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPRestore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(47, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
