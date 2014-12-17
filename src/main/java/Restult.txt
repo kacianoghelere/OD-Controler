@@ -1,0 +1,381 @@
+
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/system
+	 SystemManager.java = 111 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/datatables
+	 AttrData.java = 19 linhas
+	 Attributes.java = 57 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/datatables/dexterity
+	 DexValues.java = 57 linhas
+	 DexData.java = 182 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/datatables/constitution
+	 ConstValues.java = 56 linhas
+	 ConstData.java = 146 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/datatables/intelligence
+	 IntelValues.java = 57 linhas
+	 IntelData.java = 113 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/datatables/cargo
+	 CargoData.java = 171 linhas
+	 CargoValues.java = 46 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/datatables/wisdom
+	 WisdomValues.java = 57 linhas
+	 WisdomData.java = 94 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/datatables/charisma
+	 CharData.java = 172 linhas
+	 CharValues.java = 56 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/datatables/strength
+	 StrengthData.java = 112 linhas
+	 StrengthValues.java = 45 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main
+	 MainScreen.java = 848 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/actions
+	 MessageAction.java = 33 linhas
+	 CommitAction.java = 27 linhas
+	 LoadAction.java = 28 linhas
+	 FrameAction.java = 63 linhas
+	 ClearAction.java = 27 linhas
+	 ProccessAction.java = 26 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/util
+	 TableUtil.java = 75 linhas
+	 DiceTool.java = 22 linhas
+	 Description.java = 314 linhas
+	 MenuBuilder.java = 302 linhas
+	 CircleUtil.java = 162 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/object
+	 BeanEvent.java = 90 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/bean
+	 MainScreenBean.java = 289 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/modal
+	 BackupDialog.java = 211 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/comps
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/comps/requirement
+	 RequirementPane.java = 254 linhas
+	 RequirementPaneBeanInfo.java = 902 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/comps/modifier
+	 ModifierPaneBeanInfo.java = 902 linhas
+	 ModifierPane.java = 253 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/interfaces
+	 MainListener.java = 130 linhas
+	 Main.java = 101 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view
+	 View.java = 431 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/renderers
+	 ArmorListRenderer.java = 22 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/item
+	 ItemBean.java = 97 linhas
+	 ItemListBean.java = 81 linhas
+	 ItemListView.java = 427 linhas
+	 ItemView.java = 250 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/item/sub
+	 ItemSubView.java = 299 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/item/model
+	 ItemModel.java = 14 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/spell
+	 SpellView.java = 255 linhas
+	 SpellBean.java = 103 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/spell/sub
+	 SpellSubView.java = 423 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/spell/model
+	 SpellModel.java = 13 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/expertise
+	 ExpertiseBean.java = 78 linhas
+	 ExpertiseView.java = 274 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/expertise/model
+	 ExpertiseModel.java = 14 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/perk
+	 PerkListBean.java = 81 linhas
+	 PerkListView.java = 421 linhas
+	 PerkBean.java = 66 linhas
+	 PerkView.java = 225 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/perk/sub
+	 PerkSubView.java = 234 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/perk/model
+	 PerkModel.java = 13 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/object
+	 ViewParameter.java = 117 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/type
+	 TypeView.java = 934 linhas
+	 TypeBean.java = 101 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/type/object
+	 TermsParameter.java = 60 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/enums
+	 ViewType.java = 19 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/classtype
+	 ClassTypeBean.java = 66 linhas
+	 ClassTypeView.java = 310 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/classtype/model
+	 ClassTypeModel.java = 14 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/armor
+	 ArmorListView.java = 639 linhas
+	 ArmorListBean.java = 109 linhas
+	 ArmorBean.java = 129 linhas
+	 ArmorView.java = 280 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/armor/sub
+	 ArmorSubView.java = 526 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/armor/model
+	 ArmorModel.java = 14 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/skill
+	 SkillBean.java = 104 linhas
+	 SkillView.java = 267 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/skill/model
+	 SkillModel.java = 14 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/dialog
+	 DescriptionDialog.java = 107 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/bean
+	 ViewBean.java = 111 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/menu
+	 MenuBean.java = 160 linhas
+	 MenuView.java = 345 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/menu/model
+	 MenuModel.java = 14 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/dice
+	 DiceView.java = 205 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/classes
+	 ClassBean.java = 101 linhas
+	 ClassView.java = 254 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/classes/sub
+	 ClassSubView.java = 644 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/classes/sub/model
+	 ClassLevelModel.java = 13 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/classes/model
+	 ClassModel.java = 14 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/weapontype
+	 WeaponTypeBean.java = 75 linhas
+	 WeaponTypeView.java = 359 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/weapontype/model
+	 WeaponTypeModel.java = 13 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/annotation
+	 ViewData.java = 39 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/sub
+	 SubView.java = 67 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/interfaces
+	 BeanListener.java = 56 linhas
+	 TableView.java = 48 linhas
+	 ViewListener.java = 165 linhas
+	 ListView.java = 57 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/log
+	 LogView.java = 225 linhas
+	 LogBean.java = 38 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/log/model
+	 FileNode.java = 129 linhas
+	 FileModel.java = 155 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/attribute
+	 AttributeView.java = 70 linhas
+	 AttributeBean.java = 23 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/race
+	 RaceBean.java = 94 linhas
+	 RaceView.java = 234 linhas
+	 RaceListBean.java = 129 linhas
+	 RaceListView.java = 737 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/race/sub
+	 RaceSubView.java = 580 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/race/model
+	 RaceModel.java = 14 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/origin
+	 OriginBean.java = 75 linhas
+	 OriginView.java = 249 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/origin/model
+	 OriginModel.java = 14 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/description
+	 DescriptionView.java = 316 linhas
+	 DescriptionBean.java = 43 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/description/model
+	 DescriptionObject.java = 210 linhas
+	 DescriptionModel.java = 12 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/effect
+	 EffectView.java = 287 linhas
+	 EffectBean.java = 81 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/effect/model
+	 EffectModel.java = 13 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/weapon
+	 WeaponListBean.java = 106 linhas
+	 WeaponView.java = 260 linhas
+	 WeaponListView.java = 732 linhas
+	 WeaponBean.java = 103 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/weapon/sub
+	 WeaponSubView.java = 624 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/weapon/model
+	 WeaponModel.java = 13 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/exception
+	 ViewException.java = 82 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/menuitem
+	 MenuItemBean.java = 121 linhas
+	 MenuItemView.java = 331 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/main/view/menuitem/model
+	 MenuItemModel.java = 13 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/data
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/data/db
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/data/db/map
+	 EntityMap.java = 48 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/data/db/dao
+	 PerkTypeDAO.java = 12 linhas
+	 ExpertiseDAO.java = 14 linhas
+	 WeaponDAO.java = 14 linhas
+	 MenuDAO.java = 14 linhas
+	 ItemDAO.java = 14 linhas
+	 ArmorDAO.java = 14 linhas
+	 PerkDAO.java = 13 linhas
+	 ItemTypeDAO.java = 14 linhas
+	 SpellTypeDAO.java = 14 linhas
+	 ClassBaseDao.java = 14 linhas
+	 SkillTypeDAO.java = 14 linhas
+	 ElementTypeDAO.java = 13 linhas
+	 EffectTypeDAO.java = 12 linhas
+	 ExpertiseTypeDAO.java = 12 linhas
+	 MaterialTypeDAO.java = 13 linhas
+	 MenuItemDAO.java = 14 linhas
+	 SpellDAO.java = 13 linhas
+	 ArmorTypeDAO.java = 13 linhas
+	 OriginDAO.java = 14 linhas
+	 RaceDAO.java = 14 linhas
+	 EffectDAO.java = 14 linhas
+	 WeaponSizeDAO.java = 14 linhas
+	 DaoBuilder.java = 51 linhas
+	 UseTypeDAO.java = 14 linhas
+	 LanguageTypeDAO.java = 14 linhas
+	 ClassTypeDAO.java = 14 linhas
+	 SkillDAO.java = 14 linhas
+	 WeaponTypeDAO.java = 14 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/data/enums
+	 Dice.java = 38 linhas
+	 DamageType.java = 60 linhas
+	 WeaponSize.java = 39 linhas
+	 Attribute.java = 65 linhas
+	 AttackType.java = 53 linhas
+	 Alignment.java = 78 linhas
+	 SpellCategory.java = 78 linhas
+	 Coin.java = 64 linhas
+	 SpellRange.java = 77 linhas
+	 Size.java = 63 linhas
+	 SpellClass.java = 125 linhas
+	 UseType.java = 60 linhas
+	 Attr.java = 24 linhas
+
+Path = /home/kaciano/NetBeansProjects/OD-Controler/src/main/java/br/com/urcontroler/data/entity
+	 PlayerChar.java = 299 linhas
+	 LanguageType.java = 103 linhas
+	 ExpertiseType.java = 108 linhas
+	 ItemType.java = 86 linhas
+	 Status.java = 144 linhas
+	 Race.java = 428 linhas
+	 Armor.java = 288 linhas
+	 PerkType.java = 105 linhas
+	 Type.java = 98 linhas
+	 ClassType.java = 169 linhas
+	 ClassLevel.java = 176 linhas
+	 ClassBase.java = 431 linhas
+	 Menu.java = 167 linhas
+	 MenuItem.java = 206 linhas
+	 Skill.java = 177 linhas
+	 AttrRange.java = 110 linhas
+	 SkillType.java = 106 linhas
+	 ArmorType.java = 105 linhas
+	 WeaponType.java = 226 linhas
+	 Modifier.java = 150 linhas
+	 EffectType.java = 105 linhas
+	 Origin.java = 142 linhas
+	 Expertise.java = 171 linhas
+	 Spell.java = 284 linhas
+	 Perk.java = 146 linhas
+	 MaterialType.java = 106 linhas
+	 Item.java = 194 linhas
+	 ElementType.java = 106 linhas
+	 SpellType.java = 106 linhas
+	 Requirement.java = 150 linhas
+	 Effect.java = 150 linhas
+	 PlayerCharInfo.java = 155 linhas
+	 ClassInfo.java = 11 linhas
+	 Treasure.java = 11 linhas
+	 Weapon.java = 360 linhas
+
+
+
+=============================================
+Sub-pastas do projeto = 84 pastas
+Classes do projeto = 205 classes
+Linhas de codigo do projeto = 30263 linhas

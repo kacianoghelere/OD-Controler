@@ -197,45 +197,57 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
             if (cl != null) {
                 this.classBase = cl;
                 this.gTName.setText(cl.getName());
-                this.gCBDice.setSelectedItem(classBase.getLifeDice());
-                this.gCBType.setSelectedItem(classBase.getType());
+                if (classBase.getLifeDice() != null) {
+                    gCBDice.setSelectedItem(classBase.getLifeDice());
+                }
+                if (classBase.getType() != null) {
+                    gCBType.setSelectedItem(classBase.getType());
+                }
                 this.gNBonusCA.setInt(classBase.getArmorBonus());
-                this.gCBKeyAttr.setSelectedItem(classBase.getKeyAttribute());
-                this.gCBAligment.setSelectedItem(classBase.getAlignment());
-                this.rPane.setRequirement(classBase.getRequirement());
-                this.levelModel.setData(classBase.getClassLevels());
-                this.gTADesc.setText(classBase.getDescription());
+                if (classBase.getKeyAttribute() != null) {
+                    gCBKeyAttr.setSelectedItem(classBase.getKeyAttribute());
+                }
+                if (classBase.getAlignment() != null) {
+                    gCBAligment.setSelectedItem(classBase.getAlignment());
+                }
+                if (classBase.getRequirement() != null) {
+                    rPane.setRequirement(classBase.getRequirement());
+                }
+                if (classBase.getClassLevels() != null) {
+                    levelModel.setData(classBase.getClassLevels());
+                }
+                gTADesc.setText(classBase.getDescription());
             }
             //------------------------------------------------------------------        
             // Organiza a lista de tipos de armaduras
             List<ArmorType> clArmor = (List<ArmorType>) (cl == null
                     ? new ArrayList<>() : cl.getAllowedArmors());
-            moveExistent(armors, clArmor, gDLArmors);
+            gDLArmors.moveExistent(armors, clArmor);
             //------------------------------------------------------------------            
             // Organiza a lista de tipos de armas
             List<WeaponType> clWeapons = (List<WeaponType>) (cl == null
                     ? new ArrayList<>() : cl.getAllowedWeapons());
-            moveExistent(weapons, clWeapons, gDLWeapons);
+            gDLWeapons.moveExistent(weapons, clWeapons);
             //------------------------------------------------------------------            
             // Organiza a lista de tipos de itens
             List<ItemType> clItems = (List<ItemType>) (cl == null
                     ? new ArrayList<>() : cl.getAllowedItems());
-            moveExistent(items, clItems, gDLItems);
+            gDLItems.moveExistent(items, clItems);
             //------------------------------------------------------------------            
             // Organiza a lista de tipos de magias
             List<SpellCategory> clMagic = (List<SpellCategory>) (cl == null
                     ? new ArrayList<>() : cl.getAllowedMagic());
-            moveExistent(magics, clMagic, gDLMagics);
+            gDLMagics.moveExistent(magics, clMagic);
             //------------------------------------------------------------------            
             // Organiza a lista de tipos de vantagens
             List<Perk> clPerks = (List<Perk>) (cl == null
                     ? new ArrayList<>() : cl.getPerks());
-            moveExistent(perks, clPerks, gDLPerk);
+            gDLPerk.moveExistent(perks, clPerks);
             //------------------------------------------------------------------            
             // Organiza a lista de tipos de vantagens
             List<Expertise> clExpertise = (List<Expertise>) (cl == null
                     ? new ArrayList<>() : cl.getAllowedExpertises());
-            moveExistent(expertises, clExpertise, gDLExpertise);
+            gDLExpertise.moveExistent(expertises, clExpertise);
             //------------------------------------------------------------------            
         } catch (Exception e) {
             throwException(new ViewException(view, e));
@@ -245,30 +257,33 @@ public class ClassSubView extends SubView implements TableSource<ClassLevel> {
     /**
      * Constroi os dados na classe
      *
+     * @return {@code ClassBase} Classe de personagem
      * @since 1.0
      */
-    private void build() {
-        if (this.classBase == null) {
-            this.classBase = new ClassBase();
+    private ClassBase build() {
+        ClassBase cl = this.classBase;
+        if (cl == null) {
+            cl = new ClassBase();
         }
-        if (this.classBase.getId() == null) {
-            this.classBase.setId(bean.getNextID());
+        if (cl.getId() == null) {
+            cl.setId(bean.getNextID());
         }
-        this.classBase.setName(gTName.getText());
-        this.classBase.setLifeDice(diceModel.getSelectedItem());
-        this.classBase.setType(typeModel.getSelectedItem());
-        this.classBase.setArmorBonus(gNBonusCA.getInteger());
-        this.classBase.setKeyAttribute(attrModel.getSelectedItem());
-        this.classBase.setAlignment(alignmentModel.getSelectedItem());
-        this.classBase.setRequirement(rPane.getRequirement());
-        this.classBase.setClassLevels(levelModel.getData());
-        this.classBase.setAllowedArmors(gDLArmors.getDestinationData().getList());
-        this.classBase.setAllowedWeapons(gDLWeapons.getDestinationData().getList());
-        this.classBase.setAllowedItems(gDLItems.getDestinationData().getList());
-        this.classBase.setAllowedMagic(gDLMagics.getDestinationData().getList());
-        this.classBase.setPerks(gDLPerk.getDestinationData().getList());
-        this.classBase.setAllowedExpertises(gDLExpertise.getDestinationData().getList());
-        this.classBase.setDescription(gTADesc.getText());
+        cl.setName(gTName.getText());
+        cl.setLifeDice(diceModel.getSelectedItem());
+        cl.setType(typeModel.getSelectedItem());
+        cl.setArmorBonus(gNBonusCA.getInteger());
+        cl.setKeyAttribute(attrModel.getSelectedItem());
+        cl.setAlignment(alignmentModel.getSelectedItem());
+        cl.setRequirement(rPane.getRequirement());
+        cl.setClassLevels(levelModel.getData());
+        cl.setAllowedArmors(gDLArmors.getDestinationData().getList());
+        cl.setAllowedWeapons(gDLWeapons.getDestinationData().getList());
+        cl.setAllowedItems(gDLItems.getDestinationData().getList());
+        cl.setAllowedMagic(gDLMagics.getDestinationData().getList());
+        cl.setPerks(gDLPerk.getDestinationData().getList());
+        cl.setAllowedExpertises(gDLExpertise.getDestinationData().getList());
+        cl.setDescription(gTADesc.getText());
+        return cl;
     }
 
     /**
