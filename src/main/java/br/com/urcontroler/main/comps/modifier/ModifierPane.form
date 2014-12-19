@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <NonVisualComponents>
+    <Component class="br.com.urcontroler.data.entity.Modifier" name="modifier">
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[340, 115]"/>
@@ -125,6 +129,9 @@
               <SpinnerModel initial="0" maximum="3" minimum="-3" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="value" source="modifier" sourcePath="${STR}" target="jSpnStr" targetPath="value" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JSpinner" name="jSpnDex">
           <Properties>
@@ -132,6 +139,9 @@
               <SpinnerModel initial="0" maximum="3" minimum="-3" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="value" source="modifier" sourcePath="${DES}" target="jSpnDex" targetPath="value" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLDex">
           <Properties>
@@ -145,6 +155,9 @@
               <SpinnerModel initial="0" maximum="3" minimum="-3" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="value" source="modifier" sourcePath="${CON}" target="jSpnCon" targetPath="value" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLCons">
           <Properties>
@@ -158,6 +171,9 @@
               <SpinnerModel initial="0" maximum="3" minimum="-3" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="value" source="modifier" sourcePath="${CHA}" target="jSpnCha" targetPath="value" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLChar">
           <Properties>
@@ -183,6 +199,9 @@
               <SpinnerModel initial="0" maximum="3" minimum="-3" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="value" source="modifier" sourcePath="${INT}" target="jSpnInt" targetPath="value" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JSpinner" name="jSpnWis">
           <Properties>
@@ -190,6 +209,9 @@
               <SpinnerModel initial="0" maximum="3" minimum="-3" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="value" source="modifier" sourcePath="${WIS}" target="jSpnWis" targetPath="value" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
       </SubComponents>
     </Container>

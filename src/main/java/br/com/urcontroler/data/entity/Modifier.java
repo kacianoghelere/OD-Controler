@@ -1,11 +1,13 @@
 package br.com.urcontroler.data.entity;
 
+import br.com.urcontroler.main.view.bind.BindObject;
+
 /**
  * Classe para os modificadores de atributos
  *
  * @author kaciano
  */
-public class Modifier {
+public class Modifier extends BindObject {
 
     private int STR;
     private int DES;

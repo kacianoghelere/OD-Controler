@@ -6,6 +6,7 @@ import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.annotations.Id;
 import br.com.urcontroler.data.enums.Alignment;
 import br.com.urcontroler.data.enums.Dice;
+import br.com.urcontroler.main.view.bind.BindObject;
 import java.util.Objects;
 
 /**
@@ -14,7 +15,7 @@ import java.util.Objects;
  * @author kaciano
  * @version 1.0
  */
-public class Weapon {
+public class Weapon extends BindObject {
 
     @Ignore
     @Id

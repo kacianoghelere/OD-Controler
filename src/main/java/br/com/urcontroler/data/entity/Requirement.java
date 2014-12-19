@@ -1,11 +1,13 @@
 package br.com.urcontroler.data.entity;
 
+import br.com.urcontroler.main.view.bind.BindObject;
+
 /**
  * Classe para os requerimentos mínimos
  *
  * @author kaciano
  */
-public class Requirement {
+public class Requirement extends BindObject {
 
     private int STR;
     private int DES;

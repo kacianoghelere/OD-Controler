@@ -9,13 +9,11 @@ import br.com.urcontroler.data.entity.Requirement;
  */
 public class RequirementPane extends javax.swing.JPanel {
 
-    private Requirement requirement;
-
     /**
      * Cria nova instancia de RequirementPane
      */
     public RequirementPane() {
-        this(null);
+        this(new Requirement());
     }
 
     /**
@@ -46,15 +44,6 @@ public class RequirementPane extends javax.swing.JPanel {
      * @return {@code Requirement} Requerimentos
      */
     public Requirement getRequirement() {
-        if (requirement == null) {
-            requirement = new Requirement();
-        }
-        requirement.setSTR((int) this.jSpnStr.getValue());
-        requirement.setDES((int) this.jSpnDex.getValue());
-        requirement.setCON((int) this.jSpnCon.getValue());
-        requirement.setINT((int) this.jSpnInt.getValue());
-        requirement.setWIS((int) this.jSpnWis.getValue());
-        requirement.setCHA((int) this.jSpnCha.getValue());
         return requirement;
     }
 
@@ -65,12 +54,6 @@ public class RequirementPane extends javax.swing.JPanel {
      */
     public void setRequirement(Requirement requirement) {
         this.requirement = requirement;
-        this.jSpnStr.setValue(requirement.getSTR());
-        this.jSpnDex.setValue(requirement.getDES());
-        this.jSpnCon.setValue(requirement.getCON());
-        this.jSpnInt.setValue(requirement.getINT());
-        this.jSpnWis.setValue(requirement.getWIS());
-        this.jSpnCha.setValue(requirement.getCHA());
     }
 
     /**
@@ -98,18 +81,20 @@ public class RequirementPane extends javax.swing.JPanel {
         if (split.length != 6) {
             return;
         }
-        this.jSpnStr.setValue(split[0]);
-        this.jSpnDex.setValue(split[1]);
-        this.jSpnCon.setValue(split[2]);
-        this.jSpnInt.setValue(split[3]);
-        this.jSpnWis.setValue(split[4]);
-        this.jSpnCha.setValue(split[5]);
+        this.requirement.setSTR(Integer.parseInt(split[0]));
+        this.requirement.setDES(Integer.parseInt(split[1]));
+        this.requirement.setCON(Integer.parseInt(split[2]));
+        this.requirement.setINT(Integer.parseInt(split[3]));
+        this.requirement.setWIS(Integer.parseInt(split[4]));
+        this.requirement.setCHA(Integer.parseInt(split[5]));
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
+        requirement = new br.com.urcontroler.data.entity.Requirement();
         jPanel1 = new javax.swing.JPanel();
         jLStr = new javax.swing.JLabel();
         jSpnStr = new javax.swing.JSpinner();
@@ -131,17 +116,29 @@ public class RequirementPane extends javax.swing.JPanel {
 
         jSpnStr.setModel(new javax.swing.SpinnerNumberModel(0, 0, 20, 1));
 
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, requirement, org.jdesktop.beansbinding.ELProperty.create("${STR}"), jSpnStr, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
         jSpnDex.setModel(new javax.swing.SpinnerNumberModel(0, 0, 20, 1));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, requirement, org.jdesktop.beansbinding.ELProperty.create("${DES}"), jSpnDex, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
 
         jLDex.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLDex.setText("Destreza:");
 
         jSpnCon.setModel(new javax.swing.SpinnerNumberModel(0, 0, 20, 1));
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, requirement, org.jdesktop.beansbinding.ELProperty.create("${CON}"), jSpnCon, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
         jLCons.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLCons.setText("Constituição:");
 
         jSpnCha.setModel(new javax.swing.SpinnerNumberModel(0, 0, 20, 1));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, requirement, org.jdesktop.beansbinding.ELProperty.create("${CHA}"), jSpnCha, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
 
         jLChar.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLChar.setText("Carisma:");
@@ -154,7 +151,13 @@ public class RequirementPane extends javax.swing.JPanel {
 
         jSpnInt.setModel(new javax.swing.SpinnerNumberModel(0, 0, 20, 1));
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, requirement, org.jdesktop.beansbinding.ELProperty.create("${INT}"), jSpnInt, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
         jSpnWis.setModel(new javax.swing.SpinnerNumberModel(0, 0, 20, 1));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, requirement, org.jdesktop.beansbinding.ELProperty.create("${WIS}"), jSpnWis, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -233,6 +236,8 @@ public class RequirementPane extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -250,5 +255,7 @@ public class RequirementPane extends javax.swing.JPanel {
     private javax.swing.JSpinner jSpnInt;
     private javax.swing.JSpinner jSpnStr;
     private javax.swing.JSpinner jSpnWis;
+    private br.com.urcontroler.data.entity.Requirement requirement;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

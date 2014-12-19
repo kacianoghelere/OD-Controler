@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <NonVisualComponents>
+    <Component class="br.com.urcontroler.data.entity.Requirement" name="requirement">
+    </Component>
+  </NonVisualComponents>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -127,6 +131,9 @@
               <SpinnerModel initial="0" maximum="20" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="value" source="requirement" sourcePath="${STR}" target="jSpnStr" targetPath="value" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JSpinner" name="jSpnDex">
           <Properties>
@@ -134,6 +141,9 @@
               <SpinnerModel initial="0" maximum="20" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="value" source="requirement" sourcePath="${DES}" target="jSpnDex" targetPath="value" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLDex">
           <Properties>
@@ -147,6 +157,9 @@
               <SpinnerModel initial="0" maximum="20" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="value" source="requirement" sourcePath="${CON}" target="jSpnCon" targetPath="value" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLCons">
           <Properties>
@@ -160,6 +173,9 @@
               <SpinnerModel initial="0" maximum="20" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="value" source="requirement" sourcePath="${CHA}" target="jSpnCha" targetPath="value" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLChar">
           <Properties>
@@ -185,6 +201,9 @@
               <SpinnerModel initial="0" maximum="20" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="value" source="requirement" sourcePath="${INT}" target="jSpnInt" targetPath="value" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JSpinner" name="jSpnWis">
           <Properties>
@@ -192,6 +211,9 @@
               <SpinnerModel initial="0" maximum="20" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="value" source="requirement" sourcePath="${WIS}" target="jSpnWis" targetPath="value" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
       </SubComponents>
     </Container>

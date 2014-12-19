@@ -9,13 +9,11 @@ import br.com.urcontroler.data.entity.Modifier;
  */
 public class ModifierPane extends javax.swing.JPanel {
 
-    private Modifier modifier;
-
     /**
      * Cria nova instancia de ModifierPane
      */
     public ModifierPane() {
-        this(null);
+        this(new Modifier());
     }
 
     /**
@@ -46,15 +44,6 @@ public class ModifierPane extends javax.swing.JPanel {
      * @return {@code Modifier} Modificadores
      */
     public Modifier getModifier() {
-        if (modifier == null) {
-            modifier = new Modifier();
-        }
-        modifier.setSTR((int) this.jSpnStr.getValue());
-        modifier.setDES((int) this.jSpnDex.getValue());
-        modifier.setCON((int) this.jSpnCon.getValue());
-        modifier.setINT((int) this.jSpnInt.getValue());
-        modifier.setWIS((int) this.jSpnWis.getValue());
-        modifier.setCHA((int) this.jSpnCha.getValue());
         return modifier;
     }
 
@@ -65,12 +54,6 @@ public class ModifierPane extends javax.swing.JPanel {
      */
     public void setModifier(Modifier modifier) {
         this.modifier = modifier;
-        this.jSpnStr.setValue(modifier.getSTR());
-        this.jSpnDex.setValue(modifier.getDES());
-        this.jSpnCon.setValue(modifier.getCON());
-        this.jSpnInt.setValue(modifier.getINT());
-        this.jSpnWis.setValue(modifier.getWIS());
-        this.jSpnCha.setValue(modifier.getCHA());
     }
 
     /**
@@ -98,18 +81,20 @@ public class ModifierPane extends javax.swing.JPanel {
         if (split.length != 6) {
             return;
         }
-        this.jSpnStr.setValue(split[0]);
-        this.jSpnDex.setValue(split[1]);
-        this.jSpnCon.setValue(split[2]);
-        this.jSpnInt.setValue(split[3]);
-        this.jSpnWis.setValue(split[4]);
-        this.jSpnCha.setValue(split[5]);
+        this.modifier.setSTR(Integer.parseInt(split[0]));
+        this.modifier.setDES(Integer.parseInt(split[1]));
+        this.modifier.setCON(Integer.parseInt(split[2]));
+        this.modifier.setINT(Integer.parseInt(split[3]));
+        this.modifier.setWIS(Integer.parseInt(split[4]));
+        this.modifier.setCHA(Integer.parseInt(split[5]));
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
+        modifier = new br.com.urcontroler.data.entity.Modifier();
         jPanel1 = new javax.swing.JPanel();
         jLStr = new javax.swing.JLabel();
         jSpnStr = new javax.swing.JSpinner();
@@ -131,17 +116,29 @@ public class ModifierPane extends javax.swing.JPanel {
 
         jSpnStr.setModel(new javax.swing.SpinnerNumberModel(0, -3, 3, 1));
 
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, modifier, org.jdesktop.beansbinding.ELProperty.create("${STR}"), jSpnStr, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
         jSpnDex.setModel(new javax.swing.SpinnerNumberModel(0, -3, 3, 1));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, modifier, org.jdesktop.beansbinding.ELProperty.create("${DES}"), jSpnDex, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
 
         jLDex.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLDex.setText("Destreza:");
 
         jSpnCon.setModel(new javax.swing.SpinnerNumberModel(0, -3, 3, 1));
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, modifier, org.jdesktop.beansbinding.ELProperty.create("${CON}"), jSpnCon, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
         jLCons.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLCons.setText("Constituição:");
 
         jSpnCha.setModel(new javax.swing.SpinnerNumberModel(0, -3, 3, 1));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, modifier, org.jdesktop.beansbinding.ELProperty.create("${CHA}"), jSpnCha, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
 
         jLChar.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLChar.setText("Carisma:");
@@ -154,7 +151,13 @@ public class ModifierPane extends javax.swing.JPanel {
 
         jSpnInt.setModel(new javax.swing.SpinnerNumberModel(0, -3, 3, 1));
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, modifier, org.jdesktop.beansbinding.ELProperty.create("${INT}"), jSpnInt, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
         jSpnWis.setModel(new javax.swing.SpinnerNumberModel(0, -3, 3, 1));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, modifier, org.jdesktop.beansbinding.ELProperty.create("${WIS}"), jSpnWis, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -233,6 +236,8 @@ public class ModifierPane extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -249,5 +254,7 @@ public class ModifierPane extends javax.swing.JPanel {
     private javax.swing.JSpinner jSpnInt;
     private javax.swing.JSpinner jSpnStr;
     private javax.swing.JSpinner jSpnWis;
+    private br.com.urcontroler.data.entity.Modifier modifier;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
