@@ -281,7 +281,6 @@ public class ItemSubView extends SubView {
         }
     }//GEN-LAST:event_jBAddActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.combobox.GComboBox gCBType;
     private br.com.gmp.comps.textfield.numeric.GNumericField gNPrice;

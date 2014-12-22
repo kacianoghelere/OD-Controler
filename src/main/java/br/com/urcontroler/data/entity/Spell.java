@@ -83,6 +83,11 @@ public class Spell {
     }
 
     @Override
+    public String toString() {
+        return id + " - " + name;
+    }
+
+    @Override
     public int hashCode() {
         int hash = 7;
         hash = 19 * hash + Objects.hashCode(this.id);

@@ -248,7 +248,6 @@ public class SkillView extends View implements TableView, TableSource<Skill> {
         }
     }//GEN-LAST:event_jBAddActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.combobox.GComboBox gCBEffect;
     private br.com.gmp.comps.combobox.GComboBox gCBType;

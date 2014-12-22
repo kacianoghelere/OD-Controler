@@ -9,7 +9,7 @@ package br.com.urcontroler.data.enums;
  * @version 1.1
  */
 public enum UseType {
-    
+
     /**
      * Tipo de uso para uma mão
      */

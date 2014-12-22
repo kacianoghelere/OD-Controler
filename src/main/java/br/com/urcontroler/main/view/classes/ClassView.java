@@ -241,7 +241,6 @@ public class ClassView extends View implements TableSource<ClassBase>, TableView
         edit();
     }//GEN-LAST:event_jBEditActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.table.GTable gTable;
     private javax.swing.JButton jBAdd;

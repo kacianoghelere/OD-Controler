@@ -237,7 +237,6 @@ public class ItemView extends View<ItemBean> implements TableView, TableSource<I
         edit();
     }//GEN-LAST:event_jBEditActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.table.GTable gTable;
     private javax.swing.JButton jBAdd;

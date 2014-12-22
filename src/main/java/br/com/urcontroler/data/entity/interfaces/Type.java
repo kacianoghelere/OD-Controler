@@ -1,4 +1,4 @@
-package br.com.urcontroler.data.entity;
+package br.com.urcontroler.data.entity.interfaces;
 
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;

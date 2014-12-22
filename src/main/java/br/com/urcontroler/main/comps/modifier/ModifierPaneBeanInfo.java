@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package br.com.urcontroler.main.comps.modifier;
 
 import java.beans.*;
@@ -21,7 +20,6 @@ public class ModifierPaneBeanInfo extends SimpleBeanInfo {
     // Here you can add code for customizing the BeanDescriptor.
 
         return beanDescriptor;     }//GEN-LAST:BeanDescriptor
-
 
     // Property identifiers//GEN-FIRST:Properties
     private static final int PROPERTY_accessibleContext = 0;
@@ -246,7 +244,7 @@ public class ModifierPaneBeanInfo extends SimpleBeanInfo {
         catch(IntrospectionException e) {
             e.printStackTrace();
         }//GEN-HEADEREND:Properties
-    // Here you can add code for customizing the properties array.
+        // Here you can add code for customizing the properties array.
 
         return properties;     }//GEN-LAST:Properties
 
@@ -288,7 +286,7 @@ public class ModifierPaneBeanInfo extends SimpleBeanInfo {
         catch(IntrospectionException e) {
             e.printStackTrace();
         }//GEN-HEADEREND:Events
-    // Here you can add code for customizing the event sets array.
+        // Here you can add code for customizing the event sets array.
 
         return eventSets;     }//GEN-LAST:Events
 
@@ -731,7 +729,7 @@ public class ModifierPaneBeanInfo extends SimpleBeanInfo {
             methods[METHOD_validate142].setDisplayName ( "" );
         }
         catch( Exception e) {}//GEN-HEADEREND:Methods
-    // Here you can add code for customizing the methods array.
+        // Here you can add code for customizing the methods array.
 
         return methods;     }//GEN-LAST:Methods
 
@@ -747,10 +745,8 @@ public class ModifierPaneBeanInfo extends SimpleBeanInfo {
     private static final int defaultPropertyIndex = -1;//GEN-BEGIN:Idx
     private static final int defaultEventIndex = -1;//GEN-END:Idx
 
-
 //GEN-FIRST:Superclass
     // Here you can add code for customizing the Superclass BeanInfo.
-
 //GEN-LAST:Superclass
     /**
      * Gets the bean's <code>BeanDescriptor</code>s.
@@ -898,5 +894,5 @@ public class ModifierPaneBeanInfo extends SimpleBeanInfo {
                 return null;
         }
     }
-    
+
 }

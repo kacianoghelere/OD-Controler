@@ -1,7 +1,7 @@
 package br.com.urcontroler.main.view.type;
 
 import br.com.urcontroler.data.db.dao.*;
-import br.com.urcontroler.data.entity.Type;
+import br.com.urcontroler.data.entity.interfaces.Type;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.view.bean.ViewBean;
 import br.com.urcontroler.main.view.exception.ViewException;

@@ -60,7 +60,7 @@ public class PerkSubView extends SubView {
                 this.perk = perk;
                 this.gTID.setLong(this.perk.getId());
                 this.gTTitle.setText(this.perk.getTitle());
-                this.gTADesc.setText(this.perk.getDescription());                
+                this.gTADesc.setText(this.perk.getDescription());
                 if (typeModel.contains(this.perk.getType())) {
                     this.gCBType.setSelectedItem(this.perk.getType());
                 }
@@ -86,7 +86,7 @@ public class PerkSubView extends SubView {
                 if (gCBType.validateComponent()) {
                     if (gTADesc.validateComponent()) {
                         perk.setId(gTID.getLong());
-                        perk.setTitle(gTTitle.getText());                        
+                        perk.setTitle(gTTitle.getText());
                         perk.setDescription(gTADesc.getText());
                         perk.setType(typeModel.getSelectedItem());
                         return perk;

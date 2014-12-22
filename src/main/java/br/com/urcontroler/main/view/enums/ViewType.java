@@ -13,7 +13,11 @@ public enum ViewType {
      */
     CRUD,
     /**
-     * TIpo de view informativa
+     * Tipo de view informativa
      */
-    INFO
+    INFO,
+    /**
+     * Tipo de view de listagem
+     */
+    LIST
 }

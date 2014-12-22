@@ -214,7 +214,6 @@ public class LogView extends View {
         }
     }//GEN-LAST:event_jXTreeTableValueChanged
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.dialog.GDialog gDialog;
     private br.com.gmp.comps.textarea.GTextArea gTextArea1;

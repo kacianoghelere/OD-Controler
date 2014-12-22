@@ -55,7 +55,7 @@ public class WeaponTypeBean extends ViewBean<WeaponTypeView> {
 
     @Override
     public void remove(BeanEvent evt) throws Exception {
-        tableUtil.remove(evt);        
+        tableUtil.remove(evt);
     }
 
     /**

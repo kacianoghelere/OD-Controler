@@ -13,7 +13,7 @@ import br.com.urcontroler.data.entity.SpellType;
 import br.com.urcontroler.data.entity.MaterialType;
 import br.com.urcontroler.data.entity.PerkType;
 import br.com.urcontroler.data.entity.SkillType;
-import br.com.urcontroler.data.entity.Type;
+import br.com.urcontroler.data.entity.interfaces.Type;
 import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.view.View;
 import br.com.urcontroler.main.view.annotation.ViewData;

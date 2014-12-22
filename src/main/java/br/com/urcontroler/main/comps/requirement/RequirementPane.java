@@ -240,7 +240,6 @@ public class RequirementPane extends javax.swing.JPanel {
         bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLChar;
     private javax.swing.JLabel jLCons;

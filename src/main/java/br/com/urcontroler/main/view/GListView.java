@@ -234,7 +234,6 @@ public class GListView extends View implements ListView<ListElement> {
         }
     }//GEN-LAST:event_jBApplyActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.list.GList gListWeapons;
     private javax.swing.JButton jBAdd;

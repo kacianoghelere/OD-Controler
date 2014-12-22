@@ -154,7 +154,7 @@ public class WeaponSubView extends SubView {
             Origin origin = this.originModel.getSelectedItem();
             this.gTName.setText(prefix.getName() + " "
                     + (prefix.getName().endsWith("a")
-                    ? origin.getVariation() : origin.getName())
+                            ? origin.getVariation() : origin.getName())
                     + " de " + material.getName());
         }
     }
@@ -164,18 +164,18 @@ public class WeaponSubView extends SubView {
      *
      * @throws Exception Exceção propagada
      */
-    private void randomize() throws Exception {        
+    private void randomize() throws Exception {
         Random rd = new Random();
         this.gCBAlignment.setSelectedIndex(rd.nextInt(alignmentModel.getSize()));
         this.gCBMaterial.setSelectedIndex(rd.nextInt(materialModel.getSize()));
         this.gCBOrigin.setSelectedIndex(rd.nextInt(originModel.getSize()));
         this.gCBType.setSelectedIndex(rd.nextInt(typeModel.getSize()));
-        this.gCBDmgDice.setSelectedIndex(rd.nextInt(diceModel.getSize()));        
+        this.gCBDmgDice.setSelectedIndex(rd.nextInt(diceModel.getSize()));
         this.gNPrice.setInt(rd.nextInt(80));
         this.gNWeight.setInt(rd.nextInt(10));
         this.jSpnInitiative.setValue(rd.nextInt(10));
         this.jSpnRange.setValue(rd.nextInt(80));
-        this.gNDmgAmt.setInt(rd.nextInt(10));        
+        this.gNDmgAmt.setInt(rd.nextInt(10));
         autoName();
         updateComponents();
     }
@@ -583,7 +583,7 @@ public class WeaponSubView extends SubView {
     }//GEN-LAST:event_jBAddActionPerformed
 
     private void jBRandomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRandomActionPerformed
-        try {        
+        try {
             randomize();
         } catch (Exception ex) {
             throwException(new ViewException(view, ex));

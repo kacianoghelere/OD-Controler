@@ -20,6 +20,7 @@ public class Requirement extends BindObject {
      * Cria nova instancia de Requires
      */
     public Requirement() {
+        this(0, 0, 0, 0, 0, 0);
     }
 
     /**

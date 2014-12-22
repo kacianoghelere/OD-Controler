@@ -1,5 +1,6 @@
 package br.com.urcontroler.data.entity;
 
+import br.com.urcontroler.data.entity.interfaces.Type;
 import br.com.urcontroler.data.enums.DamageType;
 import br.com.urcontroler.data.enums.UseType;
 import br.com.urcontroler.data.enums.AttackType;

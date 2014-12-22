@@ -1,4 +1,4 @@
-package br.com.urcontroler.data.entity;
+package br.com.urcontroler.data.entity.interfaces;
 
 /**
  * Interface para informações de classes

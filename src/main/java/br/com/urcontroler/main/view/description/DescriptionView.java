@@ -88,7 +88,7 @@ public class DescriptionView extends View {
                 .setClear(!gTClear.isEmpty() ? gTClear.getText() : "--")
                 .setLoad(!gTLoad.isEmpty() ? gTLoad.getText() : "--")
                 .setDescription(!gTADescription.isEmpty()
-                        ? gTADescription.getText() : "--")
+                                ? gTADescription.getText() : "--")
                 .apply();
         return desc;
     }
@@ -292,7 +292,6 @@ public class DescriptionView extends View {
             throwException(new ViewException(this, ex));
         }
     }//GEN-LAST:event_gListItemsValueChanged
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.list.GList gListItems;

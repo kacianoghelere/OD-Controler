@@ -32,7 +32,7 @@ public class ClassBase implements Serializable {
     private Dice lifeDice;
     @Editable
     @ColumnName(name = "CA Bônus")
-    private Integer armorBonus;
+    private int armorBonus;
     @ColumnName(name = "Atributo Chave")
     private Attribute keyAttribute;
     @ColumnName(name = "Tipo da classe")
@@ -79,7 +79,7 @@ public class ClassBase implements Serializable {
      * @param id {@code Long} ID da classe
      * @param name {@code String} Nome da classe
      * @param lifeDice {@code Dice} Dado de vida
-     * @param armorBonus {@code Integer} Bônus de armadura
+     * @param armorBonus {@code int} Bônus de armadura
      * @param keyAttribute {@code Attribute} Atributo chave
      * @param type {@code ClassType} Tipo da classe
      * @param alignment {@code Alignment} Alinhamento da classe
@@ -93,7 +93,7 @@ public class ClassBase implements Serializable {
      * @param allowedExpertises {@code List(Expertise)} Perícias exclusivas
      * @param perks {@code List(Perk)} Vantagens
      */
-    public ClassBase(Long id, String name, Dice lifeDice, Integer armorBonus,
+    public ClassBase(Long id, String name, Dice lifeDice, int armorBonus,
             Attribute keyAttribute, ClassType type, Alignment alignment, String description,
             Requirement requirement, List<ClassLevel> classLevels,
             List<ArmorType> allowedArmors, List<WeaponType> allowedWeapons,
@@ -137,7 +137,7 @@ public class ClassBase implements Serializable {
 
     @Override
     public String toString() {
-        return name;
+        return id + " - " + name;
     }
 
     /**
@@ -197,18 +197,18 @@ public class ClassBase implements Serializable {
     /**
      * Retorna o Bônus de armadura
      *
-     * @return {@code Integer} Bônus de armadura
+     * @return {@code int} Bônus de armadura
      */
-    public Integer getArmorBonus() {
+    public int getArmorBonus() {
         return armorBonus;
     }
 
     /**
      * Modifica o Bônus de armadura
      *
-     * @param armorBonus {@code Integer} Bônus de armadura
+     * @param armorBonus {@code int} Bônus de armadura
      */
-    public void setArmorBonus(Integer armorBonus) {
+    public void setArmorBonus(int armorBonus) {
         this.armorBonus = armorBonus;
     }
 

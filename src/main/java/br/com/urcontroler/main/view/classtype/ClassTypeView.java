@@ -292,7 +292,6 @@ public class ClassTypeView extends View implements TableView, TableSource<ClassT
         }
     }//GEN-LAST:event_jBRemoveActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox gCHMagic;
     private br.com.gmp.comps.textfield.numeric.GNumericField gNJPBase;

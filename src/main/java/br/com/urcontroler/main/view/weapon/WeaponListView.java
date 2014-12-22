@@ -55,7 +55,7 @@ public class WeaponListView extends View<WeaponListBean> implements ListView<Wea
      */
     private void initialize() {
         this.setSize(545, 465);
-        this.setControls(new ViewParameter(true, false, true, true));        
+        this.setControls(new ViewParameter(true, false, true, true));
         this.initComponents();
         this.bean = new WeaponListBean(this);
         this.onLoad();

@@ -1,5 +1,6 @@
 package br.com.urcontroler.data.entity;
 
+import br.com.urcontroler.data.entity.interfaces.Type;
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Id;
 import br.com.gmp.utils.annotations.Ignore;
