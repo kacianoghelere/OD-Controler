@@ -3,10 +3,12 @@ package br.com.urcontroler.main;
 import br.com.gmp.comps.baloontip.src.BalloonUtil;
 import br.com.gmp.utils.annotations.Intercept;
 import br.com.gmp.utils.interceptors.InterceptorModule;
+import br.com.gmp.utils.system.SystemProperties;
 import br.com.urcontroler.main.bean.MainScreenBean;
 import br.com.urcontroler.main.interfaces.Main;
 import br.com.urcontroler.main.interfaces.MainListener;
 import br.com.urcontroler.main.modal.BackupDialog;
+import br.com.urcontroler.main.modal.ImportAudioDialog;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.util.MenuBuilder;
 import br.com.urcontroler.main.view.description.DescriptionView;
@@ -15,6 +17,7 @@ import br.com.urcontroler.main.view.log.LogView;
 import br.com.urcontroler.main.view.menu.MenuView;
 import br.com.urcontroler.main.view.menuitem.MenuItemView;
 import br.com.urcontroler.main.view.object.ViewParameter;
+import br.com.urcontroler.main.view.player.PlayerView;
 import br.com.urcontroler.system.SystemManager;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -165,7 +168,22 @@ public class MainScreen extends javax.swing.JFrame implements Main {
      * @return {@code String} Valor da propriedade
      */
     public String getProperty(String key) {
-        return properties.getProperty(key);
+        return SystemManager.getProperty(key);
+    }
+
+    /**
+     * Retorna o caminho dos sons na chave indicada
+     *
+     * @param key {@code String} Chave da propriedade
+     * @return {@code String} Valor da propriedade
+     */
+    public String getSounds(String key) {
+        String property = SystemProperties.USER_HOME + SystemManager.getProperty(key);
+        File file = new File(property);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        return property;
     }
 
     @Override
@@ -399,8 +417,19 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         return root;
     }
 
+    /**
+     * Abre o modal de backup/restauracao
+     */
     private void openBackupModal() {
         BackupDialog back = new BackupDialog(this);
+        back.setVisible(true);
+    }
+
+    /**
+     * Abre o modal de importacao de audio
+     */
+    private void openImportAudioModal() {
+        ImportAudioDialog back = new ImportAudioDialog(this);
         back.setVisible(true);
     }
 
@@ -439,6 +468,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         jMIDescriptions = new javax.swing.JMenuItem();
         jMILog = new javax.swing.JMenuItem();
         jMIBackupRestore = new javax.swing.JMenuItem();
+        jMIImportAudio = new javax.swing.JMenuItem();
         root = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -700,6 +730,16 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         });
         jMSystem.add(jMIBackupRestore);
 
+        jMIImportAudio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/multimedia/pause.png"))); // NOI18N
+        jMIImportAudio.setText("Importar Audio");
+        jMIImportAudio.setName("jMIImportAudio"); // NOI18N
+        jMIImportAudio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIImportAudioActionPerformed(evt);
+            }
+        });
+        jMSystem.add(jMIImportAudio);
+
         jMOptions.add(jMSystem);
 
         jMenuBar.add(jMOptions);
@@ -799,7 +839,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     }//GEN-LAST:event_gTViewKeyReleased
 
     private void jBAudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAudioActionPerformed
-
+        listener.insertView(new PlayerView(this));
     }//GEN-LAST:event_jBAudioActionPerformed
 
     private void jMILogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMILogActionPerformed
@@ -813,6 +853,10 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     private void jMIBackupRestoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIBackupRestoreActionPerformed
         openBackupModal();
     }//GEN-LAST:event_jMIBackupRestoreActionPerformed
+
+    private void jMIImportAudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIImportAudioActionPerformed
+        openImportAudioModal();
+    }//GEN-LAST:event_jMIImportAudioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
@@ -830,6 +874,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     private javax.swing.JMenuItem jMICommit;
     private javax.swing.JMenuItem jMIDescriptions;
     private javax.swing.JMenuItem jMIDice;
+    private javax.swing.JMenuItem jMIImportAudio;
     private javax.swing.JMenuItem jMILog;
     private javax.swing.JMenuItem jMIMenus;
     private javax.swing.JMenuItem jMIProcess;

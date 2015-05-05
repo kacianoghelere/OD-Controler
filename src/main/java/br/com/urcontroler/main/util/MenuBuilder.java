@@ -138,7 +138,7 @@ public class MenuBuilder {
             sub = jmenu.getText().split("-")[0].trim();
             menuid = Long.parseLong(StringUtil.onlyNumbers(sub));
             if (menu.getParent().equals(menuid)) {
-                System.out.println("Inserindo em: " + jmenu.getText());
+                LOGGER.log(Level.INFO, "Inserindo em: {0}", jmenu.getText());
                 insertMenu(jmenu, menu);
                 break;
             } else {
