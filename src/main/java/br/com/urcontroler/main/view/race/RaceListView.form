@@ -120,7 +120,7 @@
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                                           <Component id="gCBTendency" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                                           <Component id="jLLifeDice" linkSize="6" min="-2" max="-2" attributes="0"/>
@@ -145,8 +145,7 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLName" linkSize="1" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="gTName" min="-2" pref="347" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <Component id="gTName" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -178,7 +177,7 @@
                               <Component id="gNLifeExpec" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTabbedPane3" pref="149" max="32767" attributes="0"/>
+                          <Component id="jTabbedPane3" pref="159" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -221,6 +220,7 @@
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="4"/>
                     <Property name="text" type="java.lang.String" value="Expec. Vida:"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Expectativa de Vida"/>
                   </Properties>
                 </Component>
                 <Component class="br.com.gmp.comps.textfield.numeric.GNumericField" name="gNLifeExpec">
@@ -247,12 +247,12 @@
                                       <Group type="102" attributes="0">
                                           <Component id="jLMinHeight" linkSize="4" pref="59" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                                          <Component id="jSpnMinHeight" pref="108" max="32767" attributes="0"/>
+                                          <Component id="jSpnMinHeight" pref="146" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLMinWeight" linkSize="4" min="-2" pref="58" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                                          <Component id="jSpnMinWeight" pref="108" max="32767" attributes="0"/>
+                                          <Component id="jSpnMinWeight" pref="146" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -260,7 +260,7 @@
                                       <Group type="102" attributes="0">
                                           <Component id="jLMaxHeight" linkSize="4" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                                          <Component id="jSpnMaxHeight" pref="111" max="32767" attributes="0"/>
+                                          <Component id="jSpnMaxHeight" pref="149" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Component id="jLMaxWeight" linkSize="4" min="-2" max="-2" attributes="0"/>
@@ -558,11 +558,6 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
             <Component class="br.com.gmp.comps.list.GList" name="gListRaces">
-              <Properties>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
-              </Properties>
               <Events>
                 <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="gListRacesValueChanged"/>
               </Events>

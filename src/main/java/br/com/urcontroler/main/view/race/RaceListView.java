@@ -384,6 +384,7 @@ public class RaceListView extends View<RaceListBean> implements ListView<Race> {
 
         jLLifeExpec.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLLifeExpec.setText("Expec. Vida:");
+        jLLifeExpec.setToolTipText("Expectativa de Vida");
 
         jSpnMaxWeight.setModel(new javax.swing.SpinnerNumberModel(20.0d, 20.0d, 200.0d, 1.0d));
         jSpnMaxWeight.setToolTipText("Variação de peso");
@@ -423,17 +424,17 @@ public class RaceListView extends View<RaceListBean> implements ListView<Race> {
                     .addGroup(jPInfoLayout.createSequentialGroup()
                         .addComponent(jLMinHeight, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpnMinHeight, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
+                        .addComponent(jSpnMinHeight, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
                     .addGroup(jPInfoLayout.createSequentialGroup()
                         .addComponent(jLMinWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpnMinWeight, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)))
+                        .addComponent(jSpnMinWeight, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPInfoLayout.createSequentialGroup()
                         .addComponent(jLMaxHeight)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpnMaxHeight, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
+                        .addComponent(jSpnMaxHeight, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
                     .addGroup(jPInfoLayout.createSequentialGroup()
                         .addComponent(jLMaxWeight)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -477,7 +478,7 @@ public class RaceListView extends View<RaceListBean> implements ListView<Race> {
                             .addComponent(jLTendency, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(jPBasicLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPBasicLayout.createSequentialGroup()
-                                .addGap(12, 12, 12)
+                                .addGap(4, 4, 4)
                                 .addComponent(gCBTendency, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(13, 13, 13)
                                 .addComponent(jLLifeDice)
@@ -498,8 +499,7 @@ public class RaceListView extends View<RaceListBean> implements ListView<Race> {
                             .addGroup(jPBasicLayout.createSequentialGroup()
                                 .addComponent(jLName)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(gTName, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(gTName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
 
@@ -527,7 +527,7 @@ public class RaceListView extends View<RaceListBean> implements ListView<Race> {
                     .addComponent(jLLifeExpec)
                     .addComponent(gNLifeExpec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                .addComponent(jTabbedPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -619,7 +619,6 @@ public class RaceListView extends View<RaceListBean> implements ListView<Race> {
         });
         jToolBar1.add(jBDelete);
 
-        gListRaces.setBorder(null);
         gListRaces.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 gListRacesValueChanged(evt);

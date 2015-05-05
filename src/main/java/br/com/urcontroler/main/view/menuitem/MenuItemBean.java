@@ -8,6 +8,7 @@ import br.com.urcontroler.data.entity.MenuItem;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.util.Description;
 import br.com.urcontroler.main.view.bean.ViewBean;
+import br.com.urcontroler.data.enums.ViewType;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -34,6 +35,7 @@ public class MenuItemBean extends ViewBean<MenuItemView> {
         dao = new MenuItemDAO();
         getView().getParentModel().setData(getParentMenus());
         getView().getIconModel().setData(getItemIcons());
+        getView().getTypeModel().setData(ViewType.values());
     }
 
     @Override
@@ -55,8 +57,9 @@ public class MenuItemBean extends ViewBean<MenuItemView> {
         Integer icon = (Integer) ow.getValue("icon");
         String itemClass = (String) ow.getValue("class");
         Long menu = ((Menu) ow.getValue("menu")).getId();
+        ViewType type = (ViewType) ow.getValue("type");
         MenuItem item = new MenuItem(getNextID(), menu, itemClass, title,
-                getIcons()[icon], new Description.Builder().apply());
+                getIcons()[icon], new Description.Builder().apply(), type);
         getView().getModel().add(item);
     }
 
@@ -65,7 +68,7 @@ public class MenuItemBean extends ViewBean<MenuItemView> {
      *
      * @return {@code ImageIcon[]} Array de iconess
      */
-    private ImageIcon[] getItemIcons() {
+    public ImageIcon[] getItemIcons() {
         List<ImageIcon> icons = new ArrayList<>();
         for (String icon : getIcons()) {
             icons.add(new ImageIcon(getClass().getResource(icon)));

@@ -13,6 +13,7 @@ import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.util.Description;
 import br.com.urcontroler.main.view.View;
+import br.com.urcontroler.data.enums.ViewType;
 import br.com.urcontroler.main.view.exception.ViewException;
 import br.com.urcontroler.main.view.interfaces.BeanListener;
 import br.com.urcontroler.main.view.interfaces.TableView;
@@ -33,6 +34,7 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
     private MenuItemModel model;
     private GComboBoxModel<Menu> parentModel;
     private GComboBoxModel<ImageIcon> iconModel;
+    private GComboBoxModel<ViewType> typeModel;
     private TableDecorator decorator;
     private int count = 0;
     private final int ID_COLUMN = count++;
@@ -40,6 +42,7 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
     private final int TITLE_COLUMN = count++;
     private final int CLASS_COLUMN = count++;
     private final int ICON_COLUMN = count++;
+    private final int TYPE_COLUMN = count++;
 
     /**
      * Cria nova instancia de MenuItemView
@@ -60,25 +63,37 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
         this.setSize(600, 420);
         this.parentModel = new GComboBoxModel();
         this.iconModel = new GComboBoxModel();
+        this.typeModel = new GComboBoxModel();
         this.model = new MenuItemModel();
         this.gTable.buildTable(this, 0, model);
         this.bean = new MenuItemBean(this);
         this.gCBIcon.setGModel(iconModel);
         this.gCBMenu.setGModel(parentModel);
+        this.gCBType.setGModel(typeModel);
         this.decorator = new TableDecorator(gTable).withIcon(ICON_COLUMN);
+        this.decorator.comboAt(TYPE_COLUMN, new GComboBoxModel(ViewType.values()));
+        this.gTable.setRowHeight(25);
+        this.gTable.getColumnModel().getColumn(ID_COLUMN).setMaxWidth(60);
+        this.gTable.getColumnModel().getColumn(MENU_COLUMN).setMaxWidth(60);
+        this.gTable.getColumnModel().getColumn(TITLE_COLUMN).setMaxWidth(130);
+        this.gTable.getColumnModel().getColumn(ICON_COLUMN).setMaxWidth(60);
+        this.gTable.getColumnModel().getColumn(TYPE_COLUMN).setMaxWidth(60);
     }
 
     @Override
     public void add() throws Exception {
-        if (gTTitle.validateComponent() && gCBIcon.validateComponent()
-                && gTClass.validateComponent() && gCBMenu.validateComponent()) {
+        if (gTTitle.validateComponent()
+                && gCBIcon.validateComponent()
+                && gTClass.validateComponent()
+                && gCBMenu.validateComponent()
+                && gCBType.validateComponent()) {
             ObjectWrapper ow = new ObjectWrapper(this)
                     .addValue("title", gTTitle.getText())
                     .addValue("icon", gCBIcon.getSelectedIndex())
                     .addValue("class", gTClass.getText())
-                    .addValue("menu", (Menu) gCBMenu.getSelectedItem());
+                    .addValue("menu", (Menu) gCBMenu.getSelectedItem())
+                    .addValue("type", (ViewType) gCBType.getSelectedItem());
             bean.add(new BeanEvent(this, ow));
-            //super.onClear();
         }
     }
 
@@ -149,6 +164,15 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
     }
 
     /**
+     * Retorna o modelo dos tipos
+     *
+     * @return {@code GComboBoxModel(ViewType)} Modelo dos tipos
+     */
+    public GComboBoxModel<ViewType> getTypeModel() {
+        return this.typeModel;
+    }
+
+    /**
      *
      */
     @SuppressWarnings("unchecked")
@@ -169,6 +193,8 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
         jBAdd = new javax.swing.JButton();
         gCBMenu = new br.com.gmp.comps.combobox.GComboBox();
         jLMenu = new javax.swing.JLabel();
+        gCBType = new br.com.gmp.comps.combobox.GComboBox();
+        jLType = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
         jMPreview = new javax.swing.JMenu();
 
@@ -212,6 +238,8 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
         jLMenu.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLMenu.setText("Menu:");
 
+        jLType.setText("Tipo:");
+
         javax.swing.GroupLayout jPBasicsLayout = new javax.swing.GroupLayout(jPBasics);
         jPBasics.setLayout(jPBasicsLayout);
         jPBasicsLayout.setHorizontalGroup(
@@ -230,13 +258,20 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
                         .addComponent(jBAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPBasicsLayout.createSequentialGroup()
-                        .addComponent(gTTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBasicsLayout.createSequentialGroup()
+                        .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(gTClass, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(gTTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLIcon)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(gCBIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(gTClass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPBasicsLayout.createSequentialGroup()
+                                .addComponent(jLIcon)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(gCBIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBasicsLayout.createSequentialGroup()
+                                .addComponent(jLType)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(gCBType, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
 
@@ -254,7 +289,10 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gTClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLClass))
+                    .addComponent(jLClass)
+                    .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLType)
+                        .addComponent(gCBType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBAdd)
@@ -262,7 +300,7 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
                     .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(gCBMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLMenu)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jPBasicsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {gCBIcon, gTTitle});
@@ -313,6 +351,7 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.combobox.GComboBox gCBIcon;
     private br.com.gmp.comps.combobox.GComboBox gCBMenu;
+    private br.com.gmp.comps.combobox.GComboBox gCBType;
     private br.com.gmp.comps.textfield.GTextField gTClass;
     private br.com.gmp.comps.textfield.GTextField gTTitle;
     private br.com.gmp.comps.table.GTable gTable;
@@ -322,6 +361,7 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
     private javax.swing.JLabel jLIcon;
     private javax.swing.JLabel jLMenu;
     private javax.swing.JLabel jLTitle;
+    private javax.swing.JLabel jLType;
     private javax.swing.JMenu jMPreview;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JPanel jPBasics;

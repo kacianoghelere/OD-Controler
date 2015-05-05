@@ -4,7 +4,9 @@ import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.object.StringUtil;
+import br.com.urcontroler.data.enums.ViewType;
 import br.com.urcontroler.main.util.Description;
+
 import java.util.Objects;
 
 /**
@@ -25,11 +27,15 @@ public class MenuItem implements Comparable<MenuItem> {
     @Editable
     @ColumnName(name = "Classe")
     private String viewClass;
+    @Editable
     @ColumnName(name = "Ícone")
     private String icon;
     @Ignore
     @ColumnName(name = "Descrição")
     private Description description;
+    @Editable
+    @ColumnName(name = "Tipo")
+    private ViewType type;
 
     /**
      * Cria nova instancia de Menu
@@ -54,6 +60,27 @@ public class MenuItem implements Comparable<MenuItem> {
         this.title = title;
         this.icon = icon;
         this.description = description;
+    }
+
+    /**
+     * Cria nova instancia de Menu
+     *
+     * @param id {@code Long} ID do MenuItem
+     * @param parent {@code Long} ID do MenuItem
+     * @param viewClass {@code String} Classe do MenuItem
+     * @param title {@code String} Titulo do MenuItem
+     * @param icon {@code String} Icone do MenuItem
+     * @param description {@code Description} Descrição do MenuItem
+     * @param type {@code ViewType} ViewType do MenuItem
+     */
+    public MenuItem(Long id, Long parent, String title, String viewClass, String icon, Description description, ViewType type) {
+        this.id = id;
+        this.menu = parent;
+        this.title = title;
+        this.viewClass = viewClass;
+        this.icon = icon;
+        this.description = description;
+        this.type = type;
     }
 
     @Override
@@ -196,6 +223,24 @@ public class MenuItem implements Comparable<MenuItem> {
      */
     public void setDescription(Description description) {
         this.description = description;
+    }
+
+    /**
+     * Retorna a ViewType do MenuItem
+     *
+     * @return {@code ViewType} ViewType do MenuItem
+     */
+    public ViewType getType() {
+        return type;
+    }
+
+    /**
+     * Modifica a ViewType do MenuItem
+     *
+     * @param type {@code ViewType} ViewType do MenuItem
+     */
+    public void setType(ViewType type) {
+        this.type = type;
     }
 
     @Override
