@@ -95,7 +95,13 @@ public class BackupDialog extends GDialog {
 
         jPBackup.setBorder(javax.swing.BorderFactory.createTitledBorder("Criar copia de segurança"));
 
+        gFFBackup.setMaximumSize(new java.awt.Dimension(178, 30));
+        gFFBackup.setMinimumSize(new java.awt.Dimension(178, 30));
+
         jBGenerate.setText("Gerar");
+        jBGenerate.setMaximumSize(new java.awt.Dimension(66, 25));
+        jBGenerate.setMinimumSize(new java.awt.Dimension(66, 25));
+        jBGenerate.setPreferredSize(new java.awt.Dimension(66, 25));
         jBGenerate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBGenerateActionPerformed(evt);
@@ -108,9 +114,9 @@ public class BackupDialog extends GDialog {
             jPBackupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPBackupLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(gFFBackup, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
+                .addComponent(gFFBackup, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBGenerate)
+                .addComponent(jBGenerate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPBackupLayout.setVerticalGroup(
@@ -125,6 +131,10 @@ public class BackupDialog extends GDialog {
 
         jPRestore.setBorder(javax.swing.BorderFactory.createTitledBorder("Restaurar copia de segurança"));
 
+        gFFRestore.setMaximumSize(new java.awt.Dimension(289, 30));
+        gFFRestore.setMinimumSize(new java.awt.Dimension(289, 30));
+        gFFRestore.setPreferredSize(new java.awt.Dimension(289, 30));
+
         jBRestore.setText("Restaurar");
         jBRestore.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,9 +148,9 @@ public class BackupDialog extends GDialog {
             jPRestoreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPRestoreLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(gFFRestore, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
+                .addComponent(gFFRestore, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBRestore, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBRestore, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPRestoreLayout.setVerticalGroup(

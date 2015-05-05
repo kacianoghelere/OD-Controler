@@ -3,7 +3,10 @@ package br.com.urcontroler.main.view.player;
 import br.com.gmp.comps.player.multi.GPlayerList;
 import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.view.View;
+import br.com.urcontroler.main.view.exception.ViewException;
 import br.com.urcontroler.main.view.object.ViewParameter;
+import java.io.IOException;
+import javazoom.jl.decoder.BitstreamException;
 
 /**
  * View de controle e gerenciamento de audio
@@ -29,7 +32,7 @@ public class PlayerView extends View {
      */
     private void initialize() {
         this.setControls(new ViewParameter(false, false, false, true));
-        this.setSize(595, 335);
+        this.setSize(640, 315);
         this.initComponents();
         this.bean = new PlayerBean(this);
         this.setVisible(true);
@@ -38,6 +41,20 @@ public class PlayerView extends View {
     @Override
     public PlayerBean getBean() {
         return bean;
+    }
+
+    /**
+     * Termina todas as reproduções ao fechar o frame
+     */
+    public void closePlayers() {
+        try {
+            this.gPlAmbience.execute("close");
+            this.gPlBackground.execute("close");
+            this.gPlEffects.execute("close");
+            this.gPlMusic.execute("close");
+        } catch (Exception ex) {
+            this.throwException(new ViewException(this, ex));
+        }
     }
 
     /**
@@ -92,6 +109,25 @@ public class PlayerView extends View {
         setTitle("Efeitos sonoros");
         setToolTipText("");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/multimedia/unpause.png"))); // NOI18N
+        setMaximumSize(new java.awt.Dimension(640, 315));
+        setMinimumSize(new java.awt.Dimension(640, 315));
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
@@ -111,15 +147,19 @@ public class PlayerView extends View {
         jPanel.setLayout(jPanelLayout);
         jPanelLayout.setHorizontalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
         );
         jPanelLayout.setVerticalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        closePlayers();
+    }//GEN-LAST:event_formInternalFrameClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.player.multi.GPlayerList gPlAmbience;
