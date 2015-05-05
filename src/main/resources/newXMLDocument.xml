@@ -1,0 +1,87 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.ichir.projects</groupId>
+    <artifactId>webstart-tutorial</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>Webstart JNLP Tutorial</name>
+    <description>Application description</description>
+    <url>http://mahichir.wordpress.com/</url>
+    <organization>
+        <name>M. ICHIR</name>
+        <url>http://mahichir.wordpress.com</url>
+    </organization>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>12.0</version>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>jnlp</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>webstart-maven-plugin</artifactId>
+                        <version>1.0-beta-3</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jnlp</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <codebase>http://localhost/jnlp/</codebase>
+                            <jnlp>
+                                <mainClass>com.ichir.projects.MainClass</mainClass>
+                            </jnlp>
+                            <pack200>true</pack200>
+                            <sign>
+                                <keystore>${project.basedir}/src/main/jnlp/ichir.jks</keystore>
+                                <keypass>mahieddine.ichir</keypass>
+                                <storepass>mahieddine.ichir</storepass>
+                                <alias>ichir</alias>
+                                <verify>false</verify>
+                            </sign>
+                            <verbose>true</verbose>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer
+                                    implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.ichir.projects.MainClass</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

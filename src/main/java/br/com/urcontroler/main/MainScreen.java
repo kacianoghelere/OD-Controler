@@ -3,6 +3,7 @@ package br.com.urcontroler.main;
 import br.com.gmp.comps.baloontip.src.BalloonUtil;
 import br.com.gmp.utils.annotations.Intercept;
 import br.com.gmp.utils.interceptors.InterceptorModule;
+import br.com.gmp.utils.system.SystemProperties;
 import br.com.urcontroler.main.bean.MainScreenBean;
 import br.com.urcontroler.main.interfaces.Main;
 import br.com.urcontroler.main.interfaces.MainListener;
@@ -15,6 +16,7 @@ import br.com.urcontroler.main.view.log.LogView;
 import br.com.urcontroler.main.view.menu.MenuView;
 import br.com.urcontroler.main.view.menuitem.MenuItemView;
 import br.com.urcontroler.main.view.object.ViewParameter;
+import br.com.urcontroler.main.view.player.PlayerView;
 import br.com.urcontroler.system.SystemManager;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -165,7 +167,22 @@ public class MainScreen extends javax.swing.JFrame implements Main {
      * @return {@code String} Valor da propriedade
      */
     public String getProperty(String key) {
-        return properties.getProperty(key);
+        return SystemManager.getProperty(key);
+    }
+
+    /**
+     * Retorna o caminho dos sons na chave indicada
+     *
+     * @param key {@code String} Chave da propriedade
+     * @return {@code String} Valor da propriedade
+     */
+    public String getSounds(String key) {
+        String property = SystemProperties.USER_HOME + SystemManager.getProperty(key);
+        File file = new File(property);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        return property;
     }
 
     @Override
@@ -799,7 +816,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     }//GEN-LAST:event_gTViewKeyReleased
 
     private void jBAudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAudioActionPerformed
-
+        listener.insertView(new PlayerView(this));
     }//GEN-LAST:event_jBAudioActionPerformed
 
     private void jMILogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMILogActionPerformed
