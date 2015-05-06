@@ -3,6 +3,8 @@ package br.com.urcontroler.main.modal;
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
 import br.com.gmp.comps.dialog.GDialog;
 import br.com.gmp.comps.list.dual.model.GDualListModel;
+import br.com.gmp.utils.audio.file.AudioConverter;
+import br.com.gmp.utils.audio.file.AudioFile;
 import br.com.gmp.utils.interact.WindowUtil;
 import br.com.urcontroler.main.MainScreen;
 import java.io.File;
@@ -59,8 +61,8 @@ public class ImportAudioDialog extends GDialog {
      */
     private void importAudio() throws IOException {
         if (this.gFFDir.getFileChooser().getSelectedFile() != null) {
-            GDualListModel<File> data = gDLImport.getDestinationData(File.class);
-            List<File> files = data.getList();
+            GDualListModel<AudioFile> data = gDLImport.getDestinationData(AudioFile.class);
+            List<AudioFile> files = data.getList();
 
             boolean ok = WindowUtil.confirmation(this, "Importar arquivos",
                     "Serão importados " + files.size() + " arquivos.\nDeseja continuar?",
@@ -69,8 +71,8 @@ public class ImportAudioDialog extends GDialog {
             File destination = new File(model.getSelectedItem().getPath());
 
             if (ok) {
-                for (File file : files) {
-                    FileUtils.copyFileToDirectory(file, destination);
+                for (AudioFile file : files) {
+                    FileUtils.copyFileToDirectory(file.getFile(), destination);
                 }
             }
         } else {
@@ -83,8 +85,13 @@ public class ImportAudioDialog extends GDialog {
      */
     private void openFiles() {
         if (gFFDir.getFileChooser().getSelectedFile() != null) {
-            File[] listFiles = gFFDir.getFileChooser().getSelectedFile().listFiles(new AudioFileFilter(false));
-            gDLImport.setSourceElements(listFiles);
+            try {
+                File[] listFiles = gFFDir.getFileChooser().getSelectedFile().listFiles(new AudioFileFilter(false));
+                List<AudioFile> convert = AudioConverter.convert(gFFDir.getFileChooser().getSelectedFile());
+                gDLImport.setSourceElements(convert.toArray(new AudioFile[]{}));
+            } catch (Exception ex) {
+                Logger.getLogger(ImportAudioDialog.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             JOptionPane.showMessageDialog(this, "Nenhum diretório selecionado!");
         }

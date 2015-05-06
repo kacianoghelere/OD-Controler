@@ -13,7 +13,7 @@ import javazoom.jl.decoder.BitstreamException;
  *
  * @author kaciano
  */
-public class PlayerView extends View {
+public class PlayerView extends View<PlayerBean> {
 
     private PlayerBean bean;
 
