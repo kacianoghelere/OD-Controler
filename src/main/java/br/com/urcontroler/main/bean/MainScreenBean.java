@@ -9,6 +9,7 @@ import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.interfaces.Main;
 import br.com.urcontroler.main.interfaces.MainListener;
 import br.com.urcontroler.main.object.BeanEvent;
+import br.com.urcontroler.main.util.AudioListBuilder;
 import br.com.urcontroler.main.util.Description;
 import br.com.urcontroler.main.view.View;
 import br.com.urcontroler.main.view.annotation.ViewData;
@@ -36,7 +37,7 @@ public class MainScreenBean implements MainListener {
     private Map<String, MenuItem> viewMap;
     private File dir;
     private File log;
-    private final ReflectionUtil reflect = new ReflectionUtil();
+    private final ReflectionUtil reflect = new ReflectionUtil();    
 
     /**
      * Cria nova instancia de MainScreenBean
@@ -259,6 +260,12 @@ public class MainScreenBean implements MainListener {
     @Intercept
     public void clearDesktop() {
         screen.getDesktop().removeAll();
+    }
+
+    @Intercept
+    @Override
+    public void buildAudioList() {
+        new Thread(AudioListBuilder.build(this.screen)).start();
     }
 
     /**

@@ -5,6 +5,7 @@ import br.com.gmp.comps.dialog.GDialog;
 import br.com.gmp.comps.list.dual.model.GDualListModel;
 import br.com.gmp.utils.audio.file.AudioConverter;
 import br.com.gmp.utils.audio.file.AudioFile;
+import br.com.gmp.utils.file.FileUtil;
 import br.com.gmp.utils.interact.WindowUtil;
 import br.com.urcontroler.main.MainScreen;
 import java.io.File;
@@ -71,8 +72,8 @@ public class ImportAudioDialog extends GDialog {
             File destination = new File(model.getSelectedItem().getPath());
 
             if (ok) {
-                for (AudioFile file : files) {
-                    FileUtils.copyFileToDirectory(file.getFile(), destination);
+                for (AudioFile file : files) {                    
+                    FileUtils.copyFileToDirectory(new File(file.getPath()), destination);
                 }
             }
         } else {
@@ -86,7 +87,6 @@ public class ImportAudioDialog extends GDialog {
     private void openFiles() {
         if (gFFDir.getFileChooser().getSelectedFile() != null) {
             try {
-                File[] listFiles = gFFDir.getFileChooser().getSelectedFile().listFiles(new AudioFileFilter(false));
                 List<AudioFile> convert = AudioConverter.convert(gFFDir.getFileChooser().getSelectedFile());
                 gDLImport.setSourceElements(convert.toArray(new AudioFile[]{}));
             } catch (Exception ex) {
@@ -114,7 +114,6 @@ public class ImportAudioDialog extends GDialog {
         setMaximumSize(new java.awt.Dimension(550, 370));
         setMinimumSize(new java.awt.Dimension(550, 370));
         setResizable(false);
-        setSize(new java.awt.Dimension(550, 370));
 
         jPBackup.setBorder(javax.swing.BorderFactory.createTitledBorder("Importação de arquivos de audio"));
 
@@ -152,7 +151,7 @@ public class ImportAudioDialog extends GDialog {
             .addGroup(jPBackupLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPBackupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(gDLImport, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
+                    .addComponent(gDLImport, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
                     .addGroup(jPBackupLayout.createSequentialGroup()
                         .addGroup(jPBackupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPBackupLayout.createSequentialGroup()
@@ -187,9 +186,10 @@ public class ImportAudioDialog extends GDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPBackup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPBackup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

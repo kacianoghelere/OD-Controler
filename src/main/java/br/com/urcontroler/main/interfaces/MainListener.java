@@ -127,4 +127,9 @@ public interface MainListener {
      * @param description {@code Description} Descrição da View
      */
     void insertInstance(ObjectInstance instance, Description description);
+
+    /**
+     * Reconstroi a lista de arquivos de audio
+     */
+    void buildAudioList();
 }

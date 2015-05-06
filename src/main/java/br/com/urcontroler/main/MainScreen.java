@@ -2,6 +2,7 @@ package br.com.urcontroler.main;
 
 import br.com.gmp.comps.baloontip.src.BalloonUtil;
 import br.com.gmp.utils.annotations.Intercept;
+import br.com.gmp.utils.file.FileUtil;
 import br.com.gmp.utils.interceptors.InterceptorModule;
 import br.com.gmp.utils.system.SystemProperties;
 import br.com.urcontroler.main.bean.MainScreenBean;
@@ -11,6 +12,7 @@ import br.com.urcontroler.main.modal.BackupDialog;
 import br.com.urcontroler.main.modal.ImportAudioDialog;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.util.MenuBuilder;
+import br.com.urcontroler.main.util.object.AudioList;
 import br.com.urcontroler.main.view.description.DescriptionView;
 import br.com.urcontroler.main.view.dice.DiceView;
 import br.com.urcontroler.main.view.log.LogView;
@@ -19,6 +21,8 @@ import br.com.urcontroler.main.view.menuitem.MenuItemView;
 import br.com.urcontroler.main.view.object.ViewParameter;
 import br.com.urcontroler.main.view.player.PlayerView;
 import br.com.urcontroler.system.SystemManager;
+import static br.com.urcontroler.system.SystemManager.LOGGER;
+import com.google.gson.Gson;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import java.awt.event.ActionEvent;
@@ -27,6 +31,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JDesktopPane;
@@ -74,6 +79,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         injector = Guice.createInjector(new InterceptorModule());
         listener = injector.getInstance(MainScreenBean.class);
         listener.setScreen(this);
+        loadAudioList();
         printTypedMsg("Aplicaçao iniciada", INFORMATIVE_MSG);
         loadMenus();
         printViews();
@@ -90,6 +96,25 @@ public class MainScreen extends javax.swing.JFrame implements Main {
             builder.build();
             printTypedMsg("Menus carregados", Main.INFORMATIVE_MSG);
         } catch (ClassNotFoundException | InstantiationException ex) {
+            LOGGER.log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Carrega a lista de arquivos de audio
+     */
+    private void loadAudioList() {
+        try {
+            File json = new File(SystemProperties.USER_HOME
+                    + SystemManager.getProperty("system.audio.list"));
+            if (!json.exists()) {
+                json.createNewFile();
+                LOGGER.log(Level.INFO, "Lista de arquivos de audio criada em {0}", json.getPath());
+            }
+            String jsonString = FileUtil.readString(json);
+            Gson gson = new Gson();
+            AudioList audioList = gson.fromJson(jsonString, AudioList.class);
+        } catch (IOException ex) {
             LOGGER.log(Level.SEVERE, null, ex);
         }
     }

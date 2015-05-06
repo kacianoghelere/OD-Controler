@@ -6,6 +6,8 @@ import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.view.bean.ViewBean;
 import br.com.urcontroler.system.SystemManager;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.util.List;
 import java.util.logging.Level;
 

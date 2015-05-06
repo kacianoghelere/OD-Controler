@@ -43,8 +43,8 @@ public class SystemManager {
         File dir = new File("logs");
         if (!dir.exists()) {
             dir.mkdir();
-            System.out.println("Diretório de logs criado em " + dir.getPath());
-        }
+            LOGGER.log(Level.INFO, "Diretorio de logs criado em {0}", dir.getPath());
+        }        
     }
 
     /**
