@@ -265,12 +265,12 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     /**
      * Atualiza a estrutura dos componentes
      *
-     * @param c {@code Component} Componente à ser atualizada
+     * @param component {@code Component} Componente à ser atualizada
      */
-    public void updateComponent(Component c) {
-        c.repaint();
-        c.revalidate();
-        SwingUtilities.updateComponentTreeUI(c);
+    public void updateComponent(Component component) {
+        component.repaint();
+        component.revalidate();
+        SwingUtilities.updateComponentTreeUI(component);
     }
 
     /**

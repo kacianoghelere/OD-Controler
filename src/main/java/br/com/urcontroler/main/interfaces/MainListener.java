@@ -129,7 +129,12 @@ public interface MainListener {
     void insertInstance(ObjectInstance instance, Description description);
 
     /**
-     * Reconstroi a lista de arquivos de audio
+     * Constroi a lista de arquivos de audio (Com thread embutida)
      */
     void buildAudioList();
+
+    /**
+     * Reconstroi a lista de arquivos de audio (Sem thread embutida)
+     */
+    void rebuildAudioList();
 }

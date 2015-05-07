@@ -268,6 +268,12 @@ public class MainScreenBean implements MainListener {
         new Thread(AudioListBuilder.build(this.screen)).start();
     }
 
+    @Intercept
+    @Override
+    public void rebuildAudioList() {
+        AudioListBuilder.build(this.screen);
+    }
+
     /**
      * Retorna a tela principal
      *

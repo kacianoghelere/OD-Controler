@@ -7,14 +7,14 @@ import br.com.urcontroler.main.view.bean.ViewBean;
  *
  * @author kaciano
  */
-public class ImportBean extends ViewBean<ImportView> {
+public class ImportAudioBean extends ViewBean<ImportAudioView> {
 
     /**
      * Cria nova instancia de ImportBean
      *
-     * @param view {@code ImportView} Tela de importações
+     * @param view {@code ImportAudioView} Tela de importações
      */
-    public ImportBean(ImportView view) {
+    public ImportAudioBean(ImportAudioView view) {
         super(view);
     }
 

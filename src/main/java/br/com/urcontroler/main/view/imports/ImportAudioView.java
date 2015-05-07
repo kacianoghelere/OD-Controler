@@ -7,12 +7,15 @@ import br.com.gmp.utils.audio.file.AudioFile;
 import br.com.gmp.utils.interact.WindowUtil;
 import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.view.View;
+import br.com.urcontroler.main.view.imports.model.ImportAudioModel;
+import br.com.urcontroler.main.view.imports.model.ImportAudioNode;
 import br.com.urcontroler.main.view.imports.object.AudioDir;
 import br.com.urcontroler.main.view.object.ViewParameter;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.apache.commons.io.FileUtils;
 
@@ -21,17 +24,19 @@ import org.apache.commons.io.FileUtils;
  *
  * @author kaciano
  */
-public class ImportView extends View<ImportBean> {
+public class ImportAudioView extends View<ImportAudioBean> {
 
-    private ImportBean bean;
+    private ImportAudioBean bean;
     private GComboBoxModel<AudioDir> audioTypeModel;
+    private ImportAudioModel model;
+    private AudioFile selected;
 
     /**
      * Cria nova instancia de ImportView
      *
      * @param mainScreen {@code MainScreen} Tela principal
      */
-    public ImportView(MainScreen mainScreen) {
+    public ImportAudioView(MainScreen mainScreen) {
         super(mainScreen);
         initialize();
     }
@@ -40,8 +45,8 @@ public class ImportView extends View<ImportBean> {
         this.setControls(new ViewParameter(false, false, false, false));
         this.setSize(640, 450);
         this.initComponents();
-        this.bean = new ImportBean(this);
-
+        this.bean = new ImportAudioBean(this);
+        this.loadModel();
         this.audioTypeModel = new GComboBoxModel<>();
         this.audioTypeModel.addElement(new AudioDir("Sons do Ambiente", getMainScreen().getSounds("system.audio.ambience")));
         this.audioTypeModel.addElement(new AudioDir("Sons de Fundo", getMainScreen().getSounds("system.audio.background")));
@@ -50,6 +55,21 @@ public class ImportView extends View<ImportBean> {
         this.gCBType.setGModel(audioTypeModel);
 
         this.setVisible(true);
+    }
+
+    /**
+     * Recarrega o modelo de dados
+     */
+    private void loadModel() {
+        try {
+            getMainScreen().getListener().buildAudioList();
+            Thread.sleep(1500l);
+            model = new ImportAudioModel(getMainScreen().readAudioList());
+            treeTable.setTreeTableModel(model);
+            updateComponent(treeTable);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ImportAudioView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -95,7 +115,7 @@ public class ImportView extends View<ImportBean> {
     }
 
     @Override
-    public ImportBean getBean() {
+    public ImportAudioBean getBean() {
         return this.bean;
     }
 
@@ -112,6 +132,10 @@ public class ImportView extends View<ImportBean> {
         jLImport = new javax.swing.JLabel();
         jBImport = new javax.swing.JButton();
         jBRebuild = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        treeTable = new org.jdesktop.swingx.JXTreeTable();
+        jBDelete = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -165,7 +189,7 @@ public class ImportView extends View<ImportBean> {
             .addGroup(jPBackupLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPBackupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(gDLImport, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
+                    .addComponent(gDLImport, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
                     .addGroup(jPBackupLayout.createSequentialGroup()
                         .addGroup(jPBackupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPBackupLayout.createSequentialGroup()
@@ -203,6 +227,47 @@ public class ImportView extends View<ImportBean> {
 
         jTabImports.addTab("Importação de Audio", jPBackup);
 
+        treeTable.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
+            public void valueChanged(javax.swing.event.TreeSelectionEvent evt) {
+                treeTableValueChanged(evt);
+            }
+        });
+        jScrollPane1.setViewportView(treeTable);
+
+        jBDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/off.png"))); // NOI18N
+        jBDelete.setText("Remover");
+        jBDelete.setToolTipText("Remover arquivo de audio");
+        jBDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBDeleteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jBDelete)
+                .addContainerGap(529, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(354, 354, 354)
+                .addComponent(jBDelete)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+                    .addGap(46, 46, 46)))
+        );
+
+        jTabImports.addTab("Arquivos de audio", jPanel1);
+
         getContentPane().add(jTabImports, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -218,16 +283,42 @@ public class ImportView extends View<ImportBean> {
         getMainScreen().getListener().buildAudioList();
     }//GEN-LAST:event_jBRebuildActionPerformed
 
+    private void treeTableValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_treeTableValueChanged
+        ImportAudioNode node = (ImportAudioNode) evt.getPath().getLastPathComponent();
+        if (node.getElement() instanceof AudioFile) {
+            this.selected = (AudioFile) node.getElement();
+        } else {
+            this.selected = null;
+        }
+    }//GEN-LAST:event_treeTableValueChanged
+
+    private void jBDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeleteActionPerformed
+        if (this.selected != null) {
+            if (WindowUtil.confirmation(this, "Remover arquivo de audio",
+                    "Deseja realmente remover o arquivo de audio?")) {
+                boolean deleted = FileUtils.deleteQuietly(new File(selected.getPath()));
+                if (deleted) {
+                    JOptionPane.showMessageDialog(this, "Arquivo removido!");
+                    this.loadModel();
+                }
+            }
+        }
+    }//GEN-LAST:event_jBDeleteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.combobox.GComboBox gCBType;
     private br.com.gmp.comps.list.dual.GDualList gDLImport;
     private br.com.gmp.comps.textfield.file.GFileField gFFDir;
+    private javax.swing.JButton jBDelete;
     private javax.swing.JButton jBImport;
     private javax.swing.JButton jBOpen;
     private javax.swing.JButton jBRebuild;
     private javax.swing.JLabel jLImport;
     private javax.swing.JPanel jPBackup;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabImports;
+    private org.jdesktop.swingx.JXTreeTable treeTable;
     // End of variables declaration//GEN-END:variables
 }

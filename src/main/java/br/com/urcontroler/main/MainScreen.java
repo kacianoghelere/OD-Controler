@@ -15,7 +15,7 @@ import br.com.urcontroler.main.util.MenuBuilder;
 import br.com.urcontroler.main.util.object.AudioList;
 import br.com.urcontroler.main.view.description.DescriptionView;
 import br.com.urcontroler.main.view.dice.DiceView;
-import br.com.urcontroler.main.view.imports.ImportView;
+import br.com.urcontroler.main.view.imports.ImportAudioView;
 import br.com.urcontroler.main.view.log.LogView;
 import br.com.urcontroler.main.view.menu.MenuView;
 import br.com.urcontroler.main.view.menuitem.MenuItemView;
@@ -109,8 +109,6 @@ public class MainScreen extends javax.swing.JFrame implements Main {
                 audioJson.createNewFile();
                 LOGGER.log(Level.INFO, "Lista de arquivos de audio criada em {0}", audioJson.getPath());
             }
-
-            readAudioList();
         } catch (IOException ex) {
             LOGGER.log(Level.SEVERE, null, ex);
         }
@@ -898,7 +896,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     }//GEN-LAST:event_jMIBackupRestoreActionPerformed
 
     private void jMIImportAudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIImportAudioActionPerformed
-        listener.insertView(new ImportView(this));
+        listener.insertView(new ImportAudioView(this));
     }//GEN-LAST:event_jMIImportAudioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
