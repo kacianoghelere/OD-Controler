@@ -52,7 +52,7 @@ public class DescriptionView extends View {
             editing = (MenuItem) gListItems.getSelectedValue();
             gTName.setText(editing.getDescription().getTitle());
             gTCommit.setText(editing.getDescription().getCommit());
-            gTProcces.setText(editing.getDescription().getProcces());
+            gTProcces.setText(editing.getDescription().getProcess());
             gTClear.setText(editing.getDescription().getClear());
             gTLoad.setText(editing.getDescription().getLoad());
             gTADescription.setText(editing.getDescription().getDescription());
@@ -84,7 +84,7 @@ public class DescriptionView extends View {
         Description desc = new Description.Builder()
                 .setTitle(!gTName.isEmpty() ? gTName.getText() : "--")
                 .setSave(!gTCommit.isEmpty() ? gTCommit.getText() : "--")
-                .setProcces(!gTProcces.isEmpty() ? gTProcces.getText() : "--")
+                .setProcess(!gTProcces.isEmpty() ? gTProcces.getText() : "--")
                 .setClear(!gTClear.isEmpty() ? gTClear.getText() : "--")
                 .setLoad(!gTLoad.isEmpty() ? gTLoad.getText() : "--")
                 .setDescription(!gTADescription.isEmpty()

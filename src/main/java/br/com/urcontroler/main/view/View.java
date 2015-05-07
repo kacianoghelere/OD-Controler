@@ -50,7 +50,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     private Description description;
     private Object parameter;
     private FrameAction saveAction;
-    private FrameAction proccesAction;
+    private FrameAction processAction;
     private FrameAction clearAction;
     private FrameAction loadAction;
 
@@ -108,8 +108,8 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     private void buildActions() {
         saveAction = new CommitAction(this);
         addKeyInput("commit", KeyEvent.VK_F2, saveAction);
-        proccesAction = new ProccessAction(this);
-        addKeyInput("proccess", KeyEvent.VK_F6, proccesAction);
+        processAction = new ProccessAction(this);
+        addKeyInput("proccess", KeyEvent.VK_F6, processAction);
         clearAction = new ClearAction(this);
         addKeyInput("clear", KeyEvent.VK_F4, clearAction);
         loadAction = new LoadAction(this);
@@ -324,12 +324,12 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     }
 
     @Override
-    public Boolean canProcces() {
+    public Boolean canProcess() {
         return canProcess;
     }
 
     @Override
-    public void setProcces(boolean process) {
+    public void setProcess(boolean process) {
         canProcess = process;
     }
 

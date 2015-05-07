@@ -22,13 +22,13 @@ public class ViewParameter {
      * Cria nova instancia de ViewParameter
      *
      * @param save {@code boolean} Pode salvar?
-     * @param procces {@code boolean} Pode processar?
+     * @param process {@code boolean} Pode processar?
      * @param clear {@code boolean} Pode limpar?
      * @param load {@code boolean} Pode carregar?
      */
-    public ViewParameter(boolean save, boolean procces, boolean clear, boolean load) {
+    public ViewParameter(boolean save, boolean process, boolean clear, boolean load) {
         this.canSave = save;
-        this.canProcess = procces;
+        this.canProcess = process;
         this.canClear = clear;
         this.canLoad = load;
     }
@@ -72,10 +72,10 @@ public class ViewParameter {
     /**
      * Modifica se pode processar
      *
-     * @param canProcces {@code boolean} Pode processar?
+     * @param canProcess {@code boolean} Pode processar?
      */
-    public void setProcess(Boolean canProcces) {
-        this.canProcess = canProcces;
+    public void setProcess(Boolean canProcess) {
+        this.canProcess = canProcess;
     }
 
     /**

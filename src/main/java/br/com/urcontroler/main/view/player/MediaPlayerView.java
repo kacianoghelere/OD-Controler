@@ -2,27 +2,26 @@ package br.com.urcontroler.main.view.player;
 
 import br.com.gmp.comps.player.multi.GPlayerList;
 import br.com.urcontroler.main.MainScreen;
+import br.com.urcontroler.main.util.Description;
 import br.com.urcontroler.main.view.View;
 import br.com.urcontroler.main.view.exception.ViewException;
 import br.com.urcontroler.main.view.object.ViewParameter;
-import java.io.IOException;
-import javazoom.jl.decoder.BitstreamException;
 
 /**
  * View de controle e gerenciamento de audio
  *
  * @author kaciano
  */
-public class PlayerView extends View<PlayerBean> {
+public class MediaPlayerView extends View<MediaPlayerBean> {
 
-    private PlayerBean bean;
+    private MediaPlayerBean bean;
 
     /**
      * Cria nova instancia de PlayerView
      *
      * @param mainScreen {@code MainScreen} Tela principal
      */
-    public PlayerView(MainScreen mainScreen) {
+    public MediaPlayerView(MainScreen mainScreen) {
         super(mainScreen);
         this.initialize();
     }
@@ -31,16 +30,29 @@ public class PlayerView extends View<PlayerBean> {
      * Método de inicialização
      */
     private void initialize() {
-        this.setControls(new ViewParameter(false, false, false, true));
+        this.setControls(new ViewParameter(false, true, false, true));
         this.setSize(640, 315);
         this.initComponents();
-        this.bean = new PlayerBean(this);
+        this.bean = new MediaPlayerBean(this);
         this.setVisible(true);
     }
 
     @Override
-    public PlayerBean getBean() {
-        return bean;
+    public MediaPlayerBean getBean() {
+        return this.bean;
+    }
+
+    /**
+     * Executa o arquivo de audio após o click da tabela
+     *
+     * @param evt {@code java.awt.event.MouseEvent} Evento do mouse
+     * @param player {@code GPlayerList} Reprodutor de audio
+     * @throws java.lang.Exception Exceção
+     */
+    public void executeClick(java.awt.event.MouseEvent evt, GPlayerList player) throws Exception {
+        if (evt.getClickCount() == 2) {
+            player.execute("play");
+        }
     }
 
     /**
@@ -55,6 +67,16 @@ public class PlayerView extends View<PlayerBean> {
         } catch (Exception ex) {
             this.throwException(new ViewException(this, ex));
         }
+    }
+
+    @Override
+    public Description getDescription() {
+        return new Description.Builder()
+                .setTitle("MediaPlayer")
+                .setLoad("Recarrega os arquivos de audio")
+                .setProcess("Reprocessa a lista de arquivos de audio")
+                .setDescription("Tela de reprodução de arquivos de audio")
+                .apply();
     }
 
     /**
@@ -98,7 +120,7 @@ public class PlayerView extends View<PlayerBean> {
     private void initComponents() {
 
         jPanel = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jTabPlayers = new javax.swing.JTabbedPane();
         gPlAmbience = new br.com.gmp.comps.player.multi.GPlayerList();
         gPlBackground = new br.com.gmp.comps.player.multi.GPlayerList();
         gPlMusic = new br.com.gmp.comps.player.multi.GPlayerList();
@@ -108,7 +130,7 @@ public class PlayerView extends View<PlayerBean> {
         setIconifiable(true);
         setTitle("Efeitos sonoros");
         setToolTipText("");
-        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/multimedia/unpause.png"))); // NOI18N
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/multimedia/music2.png"))); // NOI18N
         setMaximumSize(new java.awt.Dimension(640, 315));
         setMinimumSize(new java.awt.Dimension(640, 315));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
@@ -129,29 +151,49 @@ public class PlayerView extends View<PlayerBean> {
             }
         });
 
-        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabPlayers.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
         gPlAmbience.setBorder(javax.swing.BorderFactory.createTitledBorder("Ambiente"));
-        jTabbedPane1.addTab("Ambiente", gPlAmbience);
+        gPlAmbience.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gPlAmbienceMouseClicked(evt);
+            }
+        });
+        jTabPlayers.addTab("Ambiente", gPlAmbience);
 
         gPlBackground.setBorder(javax.swing.BorderFactory.createTitledBorder("Sons de fundo"));
-        jTabbedPane1.addTab("Sons de Fundo", gPlBackground);
+        gPlBackground.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gPlBackgroundMouseClicked(evt);
+            }
+        });
+        jTabPlayers.addTab("Sons de Fundo", gPlBackground);
 
         gPlMusic.setBorder(javax.swing.BorderFactory.createTitledBorder("Músicas"));
-        jTabbedPane1.addTab("Músicas", gPlMusic);
+        gPlMusic.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gPlMusicMouseClicked(evt);
+            }
+        });
+        jTabPlayers.addTab("Músicas", gPlMusic);
 
         gPlEffects.setBorder(javax.swing.BorderFactory.createTitledBorder("Efeitos"));
-        jTabbedPane1.addTab("Efeitos", gPlEffects);
+        gPlEffects.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gPlEffectsMouseClicked(evt);
+            }
+        });
+        jTabPlayers.addTab("Efeitos", gPlEffects);
 
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
         jPanel.setLayout(jPanelLayout);
         jPanelLayout.setHorizontalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
+            .addComponent(jTabPlayers, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
         );
         jPanelLayout.setVerticalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+            .addComponent(jTabPlayers, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel, java.awt.BorderLayout.CENTER);
@@ -161,12 +203,44 @@ public class PlayerView extends View<PlayerBean> {
         closePlayers();
     }//GEN-LAST:event_formInternalFrameClosing
 
+    private void gPlAmbienceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gPlAmbienceMouseClicked
+        try {
+            executeClick(evt, gPlAmbience);
+        } catch (Exception ex) {
+            throwException(new ViewException(this, ex));
+        }
+    }//GEN-LAST:event_gPlAmbienceMouseClicked
+
+    private void gPlBackgroundMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gPlBackgroundMouseClicked
+        try {
+            executeClick(evt, gPlBackground);
+        } catch (Exception ex) {
+            throwException(new ViewException(this, ex));
+        }
+    }//GEN-LAST:event_gPlBackgroundMouseClicked
+
+    private void gPlMusicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gPlMusicMouseClicked
+        try {
+            executeClick(evt, gPlMusic);
+        } catch (Exception ex) {
+            throwException(new ViewException(this, ex));
+        }
+    }//GEN-LAST:event_gPlMusicMouseClicked
+
+    private void gPlEffectsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gPlEffectsMouseClicked
+        try {
+            executeClick(evt, gPlEffects);
+        } catch (Exception ex) {
+            throwException(new ViewException(this, ex));
+        }
+    }//GEN-LAST:event_gPlEffectsMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.player.multi.GPlayerList gPlAmbience;
     private br.com.gmp.comps.player.multi.GPlayerList gPlBackground;
     private br.com.gmp.comps.player.multi.GPlayerList gPlEffects;
     private br.com.gmp.comps.player.multi.GPlayerList gPlMusic;
     private javax.swing.JPanel jPanel;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabPlayers;
     // End of variables declaration//GEN-END:variables
 }

@@ -32,6 +32,11 @@ public class WeaponTestView extends View {
     private GComboBoxModel<Alignment> alignmentModel;
     private GComboBoxModel<Dice> diceModel;
 
+    /**
+     * Cria nova instancia de WeaponTestView
+     *
+     * @param parent {@code MainScreen} Tela principal
+     */
     public WeaponTestView(MainScreen parent) {
         super(parent);
         this.initialize();

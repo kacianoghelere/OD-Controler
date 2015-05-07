@@ -31,7 +31,7 @@ public interface ViewListener<T> {
      *
      * @return {@code Boolean} Pode processar
      */
-    Boolean canProcces();
+    Boolean canProcess();
 
     /**
      * Retorna se a View pode limpar
@@ -59,7 +59,7 @@ public interface ViewListener<T> {
      *
      * @param process {@code Boolean} Pode processar
      */
-    void setProcces(boolean process);
+    void setProcess(boolean process);
 
     /**
      * Modifica a permissão para limpar

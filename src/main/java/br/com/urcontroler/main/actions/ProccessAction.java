@@ -16,7 +16,7 @@ public class ProccessAction extends FrameAction {
      * @param view {@code View} da ação
      */
     public ProccessAction(View view) {
-        super("proccess", view);
+        super("process", view);
     }
 
     @Override

@@ -113,6 +113,9 @@
                   <SubComponents>
                     <MenuItem class="javax.swing.JMenuItem" name="jMIMenus">
                       <Properties>
+                        <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                          <KeyStroke key="Ctrl+M"/>
+                        </Property>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/ComponentIcons/menubar/menubar.png"/>
                         </Property>
@@ -125,6 +128,9 @@
                     </MenuItem>
                     <MenuItem class="javax.swing.JMenuItem" name="jMIViews">
                       <Properties>
+                        <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                          <KeyStroke key="Ctrl+T"/>
+                        </Property>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/ComponentIcons/window/dialog.png"/>
                         </Property>
@@ -151,6 +157,9 @@
                 </Menu>
                 <MenuItem class="javax.swing.JMenuItem" name="jMILog">
                   <Properties>
+                    <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                      <KeyStroke key="Ctrl+L"/>
+                    </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/ComponentIcons/menubar/menubar/file.png"/>
                     </Property>
@@ -163,6 +172,9 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMIBackupRestore">
                   <Properties>
+                    <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                      <KeyStroke key="Ctrl+B"/>
+                    </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/ComponentIcons/controlers/saveall.png"/>
                     </Property>
@@ -175,8 +187,11 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMIImportAudio">
                   <Properties>
+                    <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                      <KeyStroke key="Ctrl+I"/>
+                    </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/ComponentIcons/multimedia/pause.png"/>
+                      <Image iconType="3" name="/ComponentIcons/multimedia/music1.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Importar Audio"/>
                     <Property name="name" type="java.lang.String" value="jMIImportAudio" noResource="true"/>
@@ -337,7 +352,7 @@
         <Component class="javax.swing.JButton" name="jBAudio">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/ComponentIcons/multimedia/unpause.png"/>
+              <Image iconType="3" name="/ComponentIcons/multimedia/music2.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Recurso de Audio"/>
             <Property name="focusable" type="boolean" value="false"/>

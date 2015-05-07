@@ -82,9 +82,9 @@ public class MainScreenBean implements MainListener {
     @Intercept
     @Override
     public void onProcess(BeanEvent evt) {
-        if (getCurrentView() != null && getCurrentView().canProcces()) {
+        if (getCurrentView() != null && getCurrentView().canProcess()) {
             getCurrentView().onProcess();
-        } else if (!getCurrentView().canProcces()) {
+        } else if (!getCurrentView().canProcess()) {
             screen.printTypedMsg("Esta View não pode processar!", Main.WARNING_MSG);
         }
     }
@@ -119,7 +119,7 @@ public class MainScreenBean implements MainListener {
         this.currentView = view;
         this.screen.setControls(new ViewParameter(
                 this.currentView.canCommit() != null ? currentView.canCommit() : false,
-                this.currentView.canProcces() != null ? currentView.canProcces() : false,
+                this.currentView.canProcess() != null ? currentView.canProcess() : false,
                 this.currentView.canClear() != null ? currentView.canClear() : false,
                 this.currentView.canLoad() != null ? currentView.canLoad() : false
         ));

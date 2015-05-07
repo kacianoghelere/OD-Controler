@@ -47,7 +47,7 @@ public class DescriptionObject {
             item.setDescription(new Description.Builder().apply());
         }
         this.commit = item.getDescription().getCommit();
-        this.procces = item.getDescription().getProcces();
+        this.procces = item.getDescription().getProcess();
         this.clear = item.getDescription().getClear();
         this.load = item.getDescription().getLoad();
         this.description = item.getDescription().getDescription();
@@ -62,7 +62,7 @@ public class DescriptionObject {
     public DescriptionObject(MenuItem item, Description description) {
         this.item = item;
         this.commit = description.getCommit();
-        this.procces = description.getProcces();
+        this.procces = description.getProcess();
         this.clear = description.getClear();
         this.load = description.getLoad();
         this.description = description.getDescription();

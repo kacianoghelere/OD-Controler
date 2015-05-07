@@ -10,7 +10,7 @@ public class Description {
     private String title;
     private String description;
     private String commit;
-    private String procces;
+    private String process;
     private String clear;
     private String load;
     private final String base = "<html>"
@@ -54,7 +54,7 @@ public class Description {
         this.title = "--";
         this.description = "--";
         this.commit = "--";
-        this.procces = "--";
+        this.process = "--";
         this.clear = "--";
         this.load = "--";
     }
@@ -65,15 +65,15 @@ public class Description {
      * @param title {@code String} Texto do titulo
      * @param description {@code String} Texto da descrição
      * @param commit {@code String} Texto da função de salvar
-     * @param procces {@code String} Texto da função de processar
+     * @param process {@code String} Texto da função de processar
      * @param clear {@code String} Texto da função de limpar
      * @param load {@code String} Texto da função de carregar
      */
-    private Description(String title, String description, String commit, String procces, String clear, String load) {
+    private Description(String title, String description, String commit, String process, String clear, String load) {
         this.title = title;
         this.description = description;
         this.commit = commit;
-        this.procces = procces;
+        this.process = process;
         this.clear = clear;
         this.load = load;
     }
@@ -84,7 +84,7 @@ public class Description {
      * @return {@code String} Descrição formatada da view
      */
     public String format() {
-        return String.format(base, title, description, commit, procces, clear, load);
+        return String.format(base, title, description, commit, process, clear, load);
     }
 
     /**
@@ -160,11 +160,11 @@ public class Description {
         /**
          * Modifica o Texto da função de processar
          *
-         * @param procces {@code String} Texto da função de processar
+         * @param process {@code String} Texto da função de processar
          * @return {@code Builder} Construtor de descrição
          */
-        public Builder setProcces(String procces) {
-            this.description.setProcces(procces);
+        public Builder setProcess(String process) {
+            this.description.setProcces(process);
             return this;
         }
 
@@ -256,8 +256,8 @@ public class Description {
      *
      * @return {@code String} Texto da função de processar
      */
-    public String getProcces() {
-        return procces;
+    public String getProcess() {
+        return process;
     }
 
     /**
@@ -267,7 +267,7 @@ public class Description {
      * @return {@code Description} Construtor de descrição
      */
     private Description setProcces(String procces) {
-        this.procces = procces;
+        this.process = procces;
         return this;
     }
 

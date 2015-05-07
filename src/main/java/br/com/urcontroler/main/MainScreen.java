@@ -15,13 +15,13 @@ import br.com.urcontroler.main.util.MenuBuilder;
 import br.com.urcontroler.main.util.object.AudioList;
 import br.com.urcontroler.main.view.description.DescriptionView;
 import br.com.urcontroler.main.view.dice.DiceView;
+import br.com.urcontroler.main.view.imports.ImportView;
 import br.com.urcontroler.main.view.log.LogView;
 import br.com.urcontroler.main.view.menu.MenuView;
 import br.com.urcontroler.main.view.menuitem.MenuItemView;
 import br.com.urcontroler.main.view.object.ViewParameter;
-import br.com.urcontroler.main.view.player.PlayerView;
+import br.com.urcontroler.main.view.player.MediaPlayerView;
 import br.com.urcontroler.system.SystemManager;
-import static br.com.urcontroler.system.SystemManager.LOGGER;
 import com.google.gson.Gson;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -31,7 +31,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JDesktopPane;
@@ -52,6 +51,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     private MainListener listener;
     private Injector injector;
     private Properties properties;
+    private final File audioJson = new File(SystemProperties.USER_HOME + SystemManager.getProperty("system.audio.list"));
 
     /**
      * Cria novo MainScreen
@@ -105,17 +105,30 @@ public class MainScreen extends javax.swing.JFrame implements Main {
      */
     private void loadAudioList() {
         try {
-            File json = new File(SystemProperties.USER_HOME
-                    + SystemManager.getProperty("system.audio.list"));
-            if (!json.exists()) {
-                json.createNewFile();
-                LOGGER.log(Level.INFO, "Lista de arquivos de audio criada em {0}", json.getPath());
+            if (!audioJson.exists()) {
+                audioJson.createNewFile();
+                LOGGER.log(Level.INFO, "Lista de arquivos de audio criada em {0}", audioJson.getPath());
             }
-            String jsonString = FileUtil.readString(json);
-            Gson gson = new Gson();
-            AudioList audioList = gson.fromJson(jsonString, AudioList.class);
+
+            readAudioList();
         } catch (IOException ex) {
             LOGGER.log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Carrega a lista de arquivos de audio
+     *
+     * @return {@code AudioList} Lista de arquivos de audio
+     */
+    public AudioList readAudioList() {
+        try {
+            String jsonString = FileUtil.readString(audioJson);
+            Gson gson = new Gson();
+            return gson.fromJson(jsonString, AudioList.class);
+        } catch (IOException ex) {
+            LOGGER.log(Level.SEVERE, null, ex);
+            return new AudioList();
         }
     }
 
@@ -568,7 +581,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         });
         jToolBar.add(jBDice);
 
-        jBAudio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/multimedia/unpause.png"))); // NOI18N
+        jBAudio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/multimedia/music2.png"))); // NOI18N
         jBAudio.setToolTipText("Recurso de Audio");
         jBAudio.setFocusable(false);
         jBAudio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -703,6 +716,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         jMControls.setText("Cadastros");
         jMControls.setName("jMControls"); // NOI18N
 
+        jMIMenus.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
         jMIMenus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/menubar/menubar.png"))); // NOI18N
         jMIMenus.setText("Menus");
         jMIMenus.setName("jMIMenus"); // NOI18N
@@ -713,6 +727,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         });
         jMControls.add(jMIMenus);
 
+        jMIViews.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
         jMIViews.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/window/dialog.png"))); // NOI18N
         jMIViews.setText("Telas");
         jMIViews.setName("jMIViews"); // NOI18N
@@ -735,6 +750,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
 
         jMSystem.add(jMControls);
 
+        jMILog.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
         jMILog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/menubar/menubar/file.png"))); // NOI18N
         jMILog.setText("Logs");
         jMILog.setName("jMILog"); // NOI18N
@@ -745,6 +761,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         });
         jMSystem.add(jMILog);
 
+        jMIBackupRestore.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
         jMIBackupRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/saveall.png"))); // NOI18N
         jMIBackupRestore.setText("Gerar/Restaurar backup");
         jMIBackupRestore.setName("jMIBackupRestore"); // NOI18N
@@ -755,7 +772,8 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         });
         jMSystem.add(jMIBackupRestore);
 
-        jMIImportAudio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/multimedia/pause.png"))); // NOI18N
+        jMIImportAudio.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
+        jMIImportAudio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/multimedia/music1.png"))); // NOI18N
         jMIImportAudio.setText("Importar Audio");
         jMIImportAudio.setName("jMIImportAudio"); // NOI18N
         jMIImportAudio.addActionListener(new java.awt.event.ActionListener() {
@@ -864,7 +882,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     }//GEN-LAST:event_gTViewKeyReleased
 
     private void jBAudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAudioActionPerformed
-        listener.insertView(new PlayerView(this));
+        listener.insertView(new MediaPlayerView(this));
     }//GEN-LAST:event_jBAudioActionPerformed
 
     private void jMILogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMILogActionPerformed
@@ -880,7 +898,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     }//GEN-LAST:event_jMIBackupRestoreActionPerformed
 
     private void jMIImportAudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIImportAudioActionPerformed
-        openImportAudioModal();
+        listener.insertView(new ImportView(this));
     }//GEN-LAST:event_jMIImportAudioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

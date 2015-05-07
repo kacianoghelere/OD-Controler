@@ -1,59 +1,55 @@
-package br.com.urcontroler.main.modal;
+package br.com.urcontroler.main.view.imports;
 
 import br.com.gmp.comps.combobox.model.GComboBoxModel;
-import br.com.gmp.comps.dialog.GDialog;
 import br.com.gmp.comps.list.dual.model.GDualListModel;
 import br.com.gmp.utils.audio.file.AudioConverter;
 import br.com.gmp.utils.audio.file.AudioFile;
 import br.com.gmp.utils.interact.WindowUtil;
 import br.com.urcontroler.main.MainScreen;
+import br.com.urcontroler.main.view.View;
 import br.com.urcontroler.main.view.imports.object.AudioDir;
+import br.com.urcontroler.main.view.object.ViewParameter;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.apache.commons.io.FileUtils;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import org.apache.commons.io.FileUtils;
 
 /**
- * Modal de importacao de arquivos de audio
+ * Tela de importacao de midias
  *
  * @author kaciano
  */
-public class ImportAudioDialog extends GDialog {
+public class ImportView extends View<ImportBean> {
 
-    private final MainScreen main;
+    private ImportBean bean;
     private GComboBoxModel<AudioDir> audioTypeModel;
-    private Logger LOGGER = Logger.getLogger(ImportAudioDialog.class.getName());
 
     /**
-     * Creates new form BackupDialog
+     * Cria nova instancia de ImportView
      *
-     * @param mainScreen {@code MainScreen} Janela principal
+     * @param mainScreen {@code MainScreen} Tela principal
      */
-    public ImportAudioDialog(MainScreen mainScreen) {
-        super(mainScreen, true);
-        this.main = mainScreen;
+    public ImportView(MainScreen mainScreen) {
+        super(mainScreen);
         initialize();
     }
 
-    /**
-     * Método de inicializacao
-     */
     private void initialize() {
-        setSize(550, 370);
-        initComponents();
+        this.setControls(new ViewParameter(false, false, false, false));
+        this.setSize(640, 450);
+        this.initComponents();
+        this.bean = new ImportBean(this);
 
         this.audioTypeModel = new GComboBoxModel<>();
-        this.audioTypeModel.addElement(new AudioDir("Sons do Ambiente", main.getSounds("system.audio.ambience")));
-        this.audioTypeModel.addElement(new AudioDir("Sons de Fundo", main.getSounds("system.audio.background")));
-        this.audioTypeModel.addElement(new AudioDir("Efeitos sonoros", main.getSounds("system.audio.effect")));
-        this.audioTypeModel.addElement(new AudioDir("Músicas", main.getSounds("system.audio.music")));
+        this.audioTypeModel.addElement(new AudioDir("Sons do Ambiente", getMainScreen().getSounds("system.audio.ambience")));
+        this.audioTypeModel.addElement(new AudioDir("Sons de Fundo", getMainScreen().getSounds("system.audio.background")));
+        this.audioTypeModel.addElement(new AudioDir("Efeitos sonoros", getMainScreen().getSounds("system.audio.effect")));
+        this.audioTypeModel.addElement(new AudioDir("Músicas", getMainScreen().getSounds("system.audio.music")));
         this.gCBType.setGModel(audioTypeModel);
 
-        this.gFFDir.getFileChooser().setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        this.setVisible(true);
     }
 
     /**
@@ -73,7 +69,7 @@ public class ImportAudioDialog extends GDialog {
                     }
                 }
 
-                this.main.getListener().buildAudioList();
+                getMainScreen().getListener().buildAudioList();
             } else {
                 JOptionPane.showMessageDialog(this, "Nenhum diretório selecionado!");
             }
@@ -98,11 +94,16 @@ public class ImportAudioDialog extends GDialog {
         }
     }
 
+    @Override
+    public ImportBean getBean() {
+        return this.bean;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jFileChooser = new javax.swing.JFileChooser();
+        jTabImports = new javax.swing.JTabbedPane();
         jPBackup = new javax.swing.JPanel();
         gFFDir = new br.com.gmp.comps.textfield.file.GFileField();
         jBOpen = new javax.swing.JButton();
@@ -110,13 +111,16 @@ public class ImportAudioDialog extends GDialog {
         gCBType = new br.com.gmp.comps.combobox.GComboBox();
         jLImport = new javax.swing.JLabel();
         jBImport = new javax.swing.JButton();
+        jBRebuild = new javax.swing.JButton();
 
-        setTitle("Importar arquivos de audio");
-        setMaximumSize(new java.awt.Dimension(550, 370));
-        setMinimumSize(new java.awt.Dimension(550, 370));
-        setResizable(false);
-
-        jPBackup.setBorder(javax.swing.BorderFactory.createTitledBorder("Importação de arquivos de audio"));
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("Importação de arquivos");
+        setToolTipText("Importação de arquivos de audio, imagens e etc.");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/painter/painter.png"))); // NOI18N
+        setMaximumSize(new java.awt.Dimension(640, 450));
+        setMinimumSize(new java.awt.Dimension(640, 450));
+        setPreferredSize(new java.awt.Dimension(640, 450));
 
         gFFDir.setToolTipText("Diretório dos arquivos");
         gFFDir.setMaximumSize(new java.awt.Dimension(178, 30));
@@ -145,6 +149,15 @@ public class ImportAudioDialog extends GDialog {
             }
         });
 
+        jBRebuild.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ComponentIcons/controlers/settings.png"))); // NOI18N
+        jBRebuild.setText("Reconstruir lista");
+        jBRebuild.setToolTipText("Reconstruir a lista de arquivos de audio");
+        jBRebuild.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRebuildActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPBackupLayout = new javax.swing.GroupLayout(jPBackup);
         jPBackup.setLayout(jPBackupLayout);
         jPBackupLayout.setHorizontalGroup(
@@ -152,7 +165,7 @@ public class ImportAudioDialog extends GDialog {
             .addGroup(jPBackupLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPBackupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(gDLImport, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
+                    .addComponent(gDLImport, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
                     .addGroup(jPBackupLayout.createSequentialGroup()
                         .addGroup(jPBackupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPBackupLayout.createSequentialGroup()
@@ -163,7 +176,10 @@ public class ImportAudioDialog extends GDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPBackupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jBOpen, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                            .addComponent(jBImport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jBImport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPBackupLayout.createSequentialGroup()
+                        .addComponent(jBRebuild)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPBackupLayout.setVerticalGroup(
@@ -179,26 +195,15 @@ public class ImportAudioDialog extends GDialog {
                     .addComponent(gFFDir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBOpen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(gDLImport, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(gDLImport, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBRebuild)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPBackup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPBackup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jTabImports.addTab("Importação de Audio", jPBackup);
+
+        getContentPane().add(jTabImports, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBOpenActionPerformed
@@ -209,14 +214,20 @@ public class ImportAudioDialog extends GDialog {
         importAudio();
     }//GEN-LAST:event_jBImportActionPerformed
 
+    private void jBRebuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRebuildActionPerformed
+        getMainScreen().getListener().buildAudioList();
+    }//GEN-LAST:event_jBRebuildActionPerformed
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.combobox.GComboBox gCBType;
     private br.com.gmp.comps.list.dual.GDualList gDLImport;
     private br.com.gmp.comps.textfield.file.GFileField gFFDir;
     private javax.swing.JButton jBImport;
     private javax.swing.JButton jBOpen;
-    private javax.swing.JFileChooser jFileChooser;
+    private javax.swing.JButton jBRebuild;
     private javax.swing.JLabel jLImport;
     private javax.swing.JPanel jPBackup;
+    private javax.swing.JTabbedPane jTabImports;
     // End of variables declaration//GEN-END:variables
 }
