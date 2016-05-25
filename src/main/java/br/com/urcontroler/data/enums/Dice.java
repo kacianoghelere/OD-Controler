@@ -3,7 +3,7 @@ package br.com.urcontroler.data.enums;
 /**
  * Enumerador dos tipos de dados
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public enum Dice {
 

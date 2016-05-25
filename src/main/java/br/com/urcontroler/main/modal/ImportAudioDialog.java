@@ -13,14 +13,14 @@ import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.apache.commons.io.FileUtils;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import org.apache.commons.io.FileUtils;
 
 /**
  * Modal de importacao de arquivos de audio
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class ImportAudioDialog extends GDialog {
 

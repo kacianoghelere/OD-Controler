@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 /**
  * Interface da tela principal
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public interface Main {
 

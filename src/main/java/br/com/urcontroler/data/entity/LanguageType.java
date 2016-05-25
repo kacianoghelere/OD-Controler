@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * Entidade de tipos de idiomas
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class LanguageType extends Type {

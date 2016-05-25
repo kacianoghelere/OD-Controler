@@ -11,7 +11,7 @@ import java.util.Objects;
 /**
  * Entidade das perícias
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class Expertise implements Serializable {

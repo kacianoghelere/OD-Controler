@@ -8,7 +8,7 @@ import br.com.urcontroler.main.view.exception.ViewException;
 /**
  * Bean de controle para a tela de descrições
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class DescriptionBean extends ViewBean<DescriptionView> {

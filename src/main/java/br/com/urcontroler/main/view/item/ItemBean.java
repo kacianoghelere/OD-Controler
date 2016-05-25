@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 /**
  * Bean de controle para tela de itens
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class ItemBean extends ViewBean<ItemView> {

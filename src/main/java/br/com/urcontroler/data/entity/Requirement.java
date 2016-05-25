@@ -5,7 +5,7 @@ import br.com.urcontroler.main.view.bind.BindObject;
 /**
  * Classe para os requerimentos mínimos
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class Requirement extends BindObject {
 

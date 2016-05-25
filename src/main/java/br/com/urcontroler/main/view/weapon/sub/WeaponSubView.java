@@ -20,12 +20,11 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JMenuItem;
-import javax.swing.SwingUtilities;
 
 /**
  * SubView para controle de armas
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class WeaponSubView extends SubView {
@@ -154,7 +153,7 @@ public class WeaponSubView extends SubView {
             Origin origin = this.originModel.getSelectedItem();
             this.gTName.setText(prefix.getName() + " "
                     + (prefix.getName().endsWith("a")
-                            ? origin.getVariation() : origin.getName())
+                    ? origin.getVariation() : origin.getName())
                     + " de " + material.getName());
         }
     }

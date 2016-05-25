@@ -6,7 +6,7 @@ import br.com.urcontroler.data.entity.Spell;
 /**
  * Modelo para tabela de magias
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class SpellModel extends GTableModel<Spell> {
 

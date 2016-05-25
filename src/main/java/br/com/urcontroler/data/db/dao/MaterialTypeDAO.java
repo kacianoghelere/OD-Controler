@@ -6,7 +6,7 @@ import br.com.urcontroler.data.entity.MaterialType;
 /**
  * DAO das matérias primas
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class MaterialTypeDAO extends GenericDAO<MaterialType> {
 

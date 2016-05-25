@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Bean de controle da lista de raças
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class RaceListBean extends ViewBean<RaceListView> {
 

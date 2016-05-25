@@ -35,7 +35,7 @@ import javax.swing.event.InternalFrameEvent;
 /**
  * View padrão para embasamento
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  * @param <T> Tipo do Bean
  */

@@ -3,7 +3,7 @@ package br.com.urcontroler.main.view.object;
 /**
  * Parametro para carregamento de views
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class ViewParameter {
 

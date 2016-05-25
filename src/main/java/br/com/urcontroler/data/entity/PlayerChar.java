@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * Entidade dos personagens de jogadores
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class PlayerChar {
 

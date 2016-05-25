@@ -5,7 +5,7 @@ import br.com.urcontroler.main.view.bean.ViewBean;
 /**
  * Bean da Tela de importações
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class ImportAudioBean extends ViewBean<ImportAudioView> {
 

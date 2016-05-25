@@ -16,7 +16,7 @@ import javax.swing.JButton;
 /**
  * Simulador de dados
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class DiceView extends View {
 

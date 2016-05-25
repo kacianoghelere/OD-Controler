@@ -6,7 +6,7 @@ import br.com.urcontroler.main.view.interfaces.BeanListener;
 /**
  * View genérica para views secundárias
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class SubView extends View {

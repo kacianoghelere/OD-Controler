@@ -8,7 +8,7 @@ import java.util.Objects;
 
 /**
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class PlayerCharInfo implements Serializable {
 

@@ -6,7 +6,7 @@ import br.com.urcontroler.main.view.View;
 /**
  * Tela para descrição de funções de Views
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class DescriptionDialog extends GDialog {
 

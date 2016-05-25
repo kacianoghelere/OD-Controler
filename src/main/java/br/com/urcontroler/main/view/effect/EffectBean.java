@@ -12,7 +12,7 @@ import br.com.urcontroler.main.view.bean.ViewBean;
 /**
  * Bean de controle para EffectView
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class EffectBean extends ViewBean<EffectView> {

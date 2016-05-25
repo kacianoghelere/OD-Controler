@@ -3,7 +3,7 @@ package br.com.urcontroler.data.entity.interfaces;
 /**
  * Interface para informações de classes
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public interface ClassInfo {
 

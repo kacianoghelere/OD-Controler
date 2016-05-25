@@ -3,7 +3,7 @@ package br.com.urcontroler.data.enums;
 /**
  * Enumerador de Alinhamentos/Tendencias
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public enum Alignment {
 

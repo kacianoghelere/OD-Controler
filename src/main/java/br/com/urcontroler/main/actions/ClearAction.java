@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 /**
  * Ação padrão para limpar os dados, tecla F4
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class ClearAction extends FrameAction {
 

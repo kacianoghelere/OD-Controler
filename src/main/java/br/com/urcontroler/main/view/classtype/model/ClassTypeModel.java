@@ -6,7 +6,7 @@ import br.com.urcontroler.data.entity.ClassType;
 /**
  * Modelo de tabela para ClassType
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class ClassTypeModel extends GTableModel<ClassType> {

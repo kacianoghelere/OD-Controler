@@ -18,7 +18,7 @@ import javax.swing.ImageIcon;
 /**
  * Bean de controle para tela de cadastro de itens de menu
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class MenuItemBean extends ViewBean<MenuItemView> {

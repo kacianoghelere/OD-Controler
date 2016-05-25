@@ -8,7 +8,7 @@ import br.com.urcontroler.main.util.Description;
 /**
  * Objeto de carregamento de descrições
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class DescriptionObject {
 

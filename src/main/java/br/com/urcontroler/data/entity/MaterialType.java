@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * Matérias primas
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class MaterialType extends Type {
 

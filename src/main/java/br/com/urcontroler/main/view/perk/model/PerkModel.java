@@ -6,7 +6,7 @@ import br.com.urcontroler.data.entity.Perk;
 /**
  * Modelo da tabela de Perks
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class PerkModel extends GTableModel<Perk> {
 

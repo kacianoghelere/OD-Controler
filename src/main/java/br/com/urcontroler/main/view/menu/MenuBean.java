@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
 /**
  * Bean de controle para a View de menus
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class MenuBean extends ViewBean<MenuView> {

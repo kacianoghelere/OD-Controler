@@ -3,7 +3,7 @@ package br.com.urcontroler.data.enums;
 /**
  * Enumerador para tipos de ataque
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public enum AttackType {

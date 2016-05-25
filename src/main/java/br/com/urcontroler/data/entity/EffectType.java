@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * Entidade dos tipos de Effects
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class EffectType extends Type {
 

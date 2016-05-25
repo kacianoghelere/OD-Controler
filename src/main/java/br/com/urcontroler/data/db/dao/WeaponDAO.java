@@ -6,7 +6,7 @@ import br.com.urcontroler.data.entity.Weapon;
 /**
  * DAO de controle para armas
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class WeaponDAO extends GenericDAO<Weapon> {

@@ -5,7 +5,7 @@ import br.com.urcontroler.data.entity.EffectType;
 
 /**
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class EffectTypeDAO extends GenericDAO<EffectType> {
 

@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * Entidade das habilidades singulares
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class Skill implements Comparable<Skill> {

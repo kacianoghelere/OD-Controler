@@ -19,9 +19,9 @@ import javax.swing.JMenuItem;
 /**
  * Subview para edição de armaduras.
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.1
  */
 public class ArmorSubView extends SubView {

@@ -5,7 +5,7 @@ import br.com.urcontroler.data.entity.Modifier;
 /**
  * Painel auxiliar para controle de modificadores
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class ModifierPane extends javax.swing.JPanel {
 

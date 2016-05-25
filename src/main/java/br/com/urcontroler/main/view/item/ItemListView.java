@@ -15,7 +15,7 @@ import java.util.logging.Level;
 /**
  * View de cadastro para itens
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class ItemListView extends View<ItemListBean> implements ListView<Item> {

@@ -10,9 +10,9 @@ import java.util.Objects;
 /**
  * Entidade para registro de efeitos
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.1
  */
 public class Effect implements Serializable {

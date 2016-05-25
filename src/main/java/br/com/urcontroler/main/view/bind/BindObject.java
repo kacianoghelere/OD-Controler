@@ -6,7 +6,7 @@ import java.beans.PropertyChangeSupport;
 /**
  * Objeto base para modelos de vinculacao de views
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class BindObject {
 

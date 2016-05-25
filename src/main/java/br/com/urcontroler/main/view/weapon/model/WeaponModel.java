@@ -6,7 +6,7 @@ import br.com.urcontroler.data.entity.Weapon;
 /**
  * Modelo de tabela para armas
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class WeaponModel extends GTableModel<Weapon> {
 

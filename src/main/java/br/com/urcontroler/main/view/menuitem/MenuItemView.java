@@ -25,7 +25,7 @@ import javax.swing.ImageIcon;
 /**
  * Tela de cadastro de itens de menu
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class MenuItemView extends View implements TableView, TableSource<MenuItem> {

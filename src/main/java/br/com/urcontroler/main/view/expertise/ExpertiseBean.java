@@ -14,7 +14,7 @@ import java.util.logging.Level;
 /**
  * Bean de controle para tela de perícias
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class ExpertiseBean extends ViewBean<ExpertiseView> {

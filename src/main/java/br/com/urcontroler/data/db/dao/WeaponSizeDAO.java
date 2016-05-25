@@ -6,7 +6,7 @@ import br.com.urcontroler.data.enums.Size;
 /**
  * DAO de controle dos tamanhos de armas
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class WeaponSizeDAO extends GenericDAO<Size> {

@@ -11,7 +11,7 @@ import br.com.urcontroler.main.view.exception.ViewException;
 /**
  * Bean de controle para view de classes
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class ClassBean extends ViewBean<ClassView> {

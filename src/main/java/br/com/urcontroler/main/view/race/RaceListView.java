@@ -26,7 +26,7 @@ import java.util.logging.Level;
 /**
  * SubView para controle de raças
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class RaceListView extends View<RaceListBean> implements ListView<Race> {

@@ -12,7 +12,7 @@ import java.util.Objects;
 /**
  * Enumerador de tipos de classes
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class ClassType {

@@ -17,7 +17,7 @@ import br.com.urcontroler.main.view.sub.SubView;
 /**
  * SubView para controle de magias
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class SpellSubView extends SubView {

@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * Tela de cadastro e controle de habilidades singulares
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 @ViewData(name = "Habilidades Singulares", type = ViewType.CRUD, path = {})

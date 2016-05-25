@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Objeto de listagem de arquivos de audio
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class AudioList {
 

@@ -6,7 +6,7 @@ import br.com.urcontroler.data.entity.Skill;
 /**
  * Modelo de tabelas para habilidades singulares
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class SkillModel extends GTableModel<Skill> {

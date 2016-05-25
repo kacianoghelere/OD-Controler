@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Bean de controle para a lista de perks
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class PerkListBean extends ViewBean<PerkListView> {
 

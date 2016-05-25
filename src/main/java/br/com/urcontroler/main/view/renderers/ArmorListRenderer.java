@@ -8,7 +8,7 @@ import javax.swing.ListCellRenderer;
 
 /**
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class ArmorListRenderer implements ListCellRenderer<Object> {
 

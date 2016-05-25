@@ -3,7 +3,7 @@ package br.com.urcontroler.data.enums;
 /**
  * Enumerador de constantes para os atributos
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public enum Attribute implements Attr {

@@ -7,7 +7,7 @@ import java.util.Arrays;
 /**
  * Utilitário para listar habilidades por circulo de magia (Utilizando MCRL)
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class CircleUtil {

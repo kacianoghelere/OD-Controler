@@ -10,7 +10,7 @@ import br.com.urcontroler.main.view.perk.sub.PerkSubView;
 /**
  * Bean de controle para a PerkView
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class PerkBean extends ViewBean<PerkView> {
 

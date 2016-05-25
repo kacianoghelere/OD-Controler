@@ -15,7 +15,7 @@ import java.util.logging.Level;
 
 /**
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class GListView extends View implements ListView<ListElement> {
 

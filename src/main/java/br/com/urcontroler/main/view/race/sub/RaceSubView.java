@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * SubView para controle de raças
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class RaceSubView extends SubView {

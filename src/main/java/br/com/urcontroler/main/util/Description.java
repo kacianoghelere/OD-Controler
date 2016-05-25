@@ -3,7 +3,7 @@ package br.com.urcontroler.main.util;
 /**
  * Classe utilitária para gerar descrições de telas
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class Description {
 

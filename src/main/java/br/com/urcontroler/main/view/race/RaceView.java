@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * Tela de cadastro e controle de raças
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 @ViewData(name = "Raças", type = ViewType.CRUD, path = {})

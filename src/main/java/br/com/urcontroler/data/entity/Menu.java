@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * Entidade para registro de menus
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class Menu implements Comparable<Menu> {

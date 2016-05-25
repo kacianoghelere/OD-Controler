@@ -11,7 +11,7 @@ import br.com.urcontroler.main.view.origin.OriginView;
 /**
  * Bean de controle para tela de origem de itens
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class OriginBean extends ViewBean<OriginView> {
 

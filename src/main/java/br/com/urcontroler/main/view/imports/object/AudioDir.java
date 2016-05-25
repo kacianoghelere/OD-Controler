@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  * Objeto de diretorio de audio
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class AudioDir {
 

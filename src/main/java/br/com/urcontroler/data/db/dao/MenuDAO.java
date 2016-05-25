@@ -6,7 +6,7 @@ import br.com.urcontroler.data.entity.Menu;
 /**
  * DAO para controle das entidades de Menu
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class MenuDAO extends GenericDAO<Menu> {

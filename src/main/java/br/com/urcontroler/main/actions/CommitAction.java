@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 /**
  * Ação padrão para salvar os dados, tecla F2
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class CommitAction extends FrameAction {
 

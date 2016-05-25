@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * View para cadastro e controle de armas
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 @ViewData(name = "Armas", type = ViewType.CRUD, path = {""})

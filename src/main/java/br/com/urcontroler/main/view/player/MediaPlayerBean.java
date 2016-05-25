@@ -8,7 +8,7 @@ import java.util.logging.Level;
 /**
  * Bean de controle para MediaPlayer
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class MediaPlayerBean extends ViewBean<MediaPlayerView> {
 

@@ -20,7 +20,7 @@ import javax.swing.JMenuItem;
 /**
  * SubView para controle de armas
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class WeaponTestView extends View {

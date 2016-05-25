@@ -5,7 +5,7 @@ import java.awt.Color;
 /**
  * Enumerador para classificações de magias
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public enum SpellClass {

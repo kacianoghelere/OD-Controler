@@ -12,7 +12,7 @@ import br.com.urcontroler.main.view.spell.sub.SpellSubView;
 /**
  * Bean de controle de SpellView
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class SpellBean extends ViewBean<SpellView> {
 

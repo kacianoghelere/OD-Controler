@@ -15,7 +15,7 @@ import java.util.logging.Level;
 /**
  * Janela para cadastro e edicao de perks
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class PerkListView extends View<PerkListBean> implements ListView<Perk> {

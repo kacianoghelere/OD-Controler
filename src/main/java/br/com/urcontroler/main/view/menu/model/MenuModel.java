@@ -6,7 +6,7 @@ import br.com.urcontroler.data.entity.Menu;
 /**
  * Modelo de tabela para tela de menus
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class MenuModel extends GTableModel<Menu> {

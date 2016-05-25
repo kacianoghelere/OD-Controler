@@ -15,7 +15,7 @@ import br.com.urcontroler.main.view.weapontype.WeaponTypeView;
 /**
  * Bean de controle para WeaponTypeView
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class WeaponTypeBean extends ViewBean<WeaponTypeView> {
 

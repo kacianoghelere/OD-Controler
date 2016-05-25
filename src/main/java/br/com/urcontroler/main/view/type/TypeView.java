@@ -25,9 +25,9 @@ import java.awt.event.KeyEvent;
 /**
  * Tela para cadastro de termos comuns
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.1
  */
 @ViewData(name = "Controle de tipos", type = ViewType.CRUD, path = {""})

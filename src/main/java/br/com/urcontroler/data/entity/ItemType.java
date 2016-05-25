@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * Entidade dos tipos de itens
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class ItemType extends Type {

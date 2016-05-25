@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Bean de controle para a lista de itens
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class ItemListBean extends ViewBean<ItemListView> {
 

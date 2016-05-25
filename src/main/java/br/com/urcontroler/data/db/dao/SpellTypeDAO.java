@@ -6,7 +6,7 @@ import br.com.urcontroler.data.entity.SpellType;
 /**
  * DAO de controle para os tipos de magias
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class SpellTypeDAO extends GenericDAO<SpellType> {

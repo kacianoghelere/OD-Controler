@@ -5,7 +5,7 @@ import br.com.gmp.utils.object.ObjectWrapper;
 /**
  * Evento de transporte de dados
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class BeanEvent {
 

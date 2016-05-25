@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * Tipo de armadura
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class ArmorType extends Type {
 

@@ -12,7 +12,7 @@ import java.util.Objects;
 /**
  * Entidade das armas
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class Weapon extends BindObject {

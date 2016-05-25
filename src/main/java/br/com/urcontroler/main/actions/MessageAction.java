@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 /**
  * Classe da mensagem de ação
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class MessageAction extends AbstractAction {
 

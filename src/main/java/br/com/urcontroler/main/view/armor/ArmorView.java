@@ -26,9 +26,9 @@ import java.util.List;
 /**
  * View para cadastro e controle de armaduras
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.1
  */
 @ViewData(name = "Armaduras", type = ViewType.CRUD, path = {""})

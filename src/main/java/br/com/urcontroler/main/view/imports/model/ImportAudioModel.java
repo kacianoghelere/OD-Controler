@@ -8,7 +8,7 @@ import org.jdesktop.swingx.treetable.AbstractTreeTableModel;
 /**
  * Modelo para treetables para listagem de arquivos de audio
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class ImportAudioModel extends AbstractTreeTableModel {
@@ -161,5 +161,5 @@ public class ImportAudioModel extends AbstractTreeTableModel {
     public Object getRoot() {
         return root;
     }
-    
+
 }

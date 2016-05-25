@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 /**
  * Ação padrão para processar os dados, tecla F6
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class ProccessAction extends FrameAction {
 

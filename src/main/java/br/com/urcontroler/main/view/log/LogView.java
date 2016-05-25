@@ -23,7 +23,7 @@ import org.jdesktop.swingx.JXTreeTable;
 /**
  * Tela para gerenciamento de logs
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class LogView extends View {
 

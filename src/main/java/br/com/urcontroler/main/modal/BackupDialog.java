@@ -14,7 +14,7 @@ import org.jfree.ui.ExtensionFileFilter;
 /**
  * Modal de controle de cópias de segurança
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class BackupDialog extends GDialog {
 

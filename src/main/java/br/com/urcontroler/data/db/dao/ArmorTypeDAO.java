@@ -6,7 +6,7 @@ import br.com.urcontroler.data.entity.ArmorType;
 /**
  * DAO dos tipos de armaduras
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class ArmorTypeDAO extends GenericDAO<ArmorType> {
 

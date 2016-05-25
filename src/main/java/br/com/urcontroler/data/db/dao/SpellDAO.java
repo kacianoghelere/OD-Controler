@@ -6,7 +6,7 @@ import br.com.urcontroler.data.entity.Spell;
 /**
  * DAO de controle para Spells
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class SpellDAO extends GenericDAO<Spell> {
 

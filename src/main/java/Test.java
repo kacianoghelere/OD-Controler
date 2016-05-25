@@ -11,10 +11,9 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class Test {
 
@@ -23,7 +22,7 @@ public class Test {
             AdvancedPlayer ap = new AdvancedPlayer(new FileInputStream("/home/kaciano/mp3/test.mp3"));
             ap.play();
 //            ap.
-            
+
         } catch (JavaLayerException | IOException ex) {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }

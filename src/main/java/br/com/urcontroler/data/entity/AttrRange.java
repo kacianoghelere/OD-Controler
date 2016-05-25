@@ -3,7 +3,7 @@ package br.com.urcontroler.data.entity;
 /**
  * Faixa de pontuação para atributos
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class AttrRange {

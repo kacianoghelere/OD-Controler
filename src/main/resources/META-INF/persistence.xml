@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="Ultimate-RPG-Controler-PU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>br.com.urcontroler.data.db.entity.BreedAttrModifier</class>
+    <class>br.com.urcontroler.data.db.entity.SpellClass</class>
+    <class>br.com.urcontroler.data.db.entity.Armor</class>
+    <class>br.com.urcontroler.data.db.entity.Skill</class>
+    <class>br.com.urcontroler.data.db.entity.Breed</class>
+    <class>br.com.urcontroler.data.db.entity.Occupation</class>
+    <class>br.com.urcontroler.data.db.entity.WeaponType</class>
+    <class>br.com.urcontroler.data.db.entity.Weapon</class>
+    <class>br.com.urcontroler.data.db.entity.OccupationLevel</class>
+    <class>br.com.urcontroler.data.db.entity.SkillType</class>
+    <class>br.com.urcontroler.data.db.entity.Origin</class>
+    <class>br.com.urcontroler.data.db.entity.EffectType</class>
+    <class>br.com.urcontroler.data.db.entity.ExpertiseType</class>
+    <class>br.com.urcontroler.data.db.entity.SpellType</class>
+    <class>br.com.urcontroler.data.db.entity.CampainJournal</class>
+    <class>br.com.urcontroler.data.db.entity.CharacterStatsAttr</class>
+    <class>br.com.urcontroler.data.db.entity.User</class>
+    <class>br.com.urcontroler.data.db.entity.CharacterJournal</class>
+    <class>br.com.urcontroler.data.db.entity.CampainMembers</class>
+    <class>br.com.urcontroler.data.db.entity.ArmorType</class>
+    <class>br.com.urcontroler.data.db.entity.MaterialType</class>
+    <class>br.com.urcontroler.data.db.entity.CharacterSheet</class>
+    <class>br.com.urcontroler.data.db.entity.Expertise</class>
+    <class>br.com.urcontroler.data.db.entity.LanguageType</class>
+    <class>br.com.urcontroler.data.db.entity.Dice</class>
+    <class>br.com.urcontroler.data.db.entity.Item</class>
+    <class>br.com.urcontroler.data.db.entity.OccupationRequirement</class>
+    <class>br.com.urcontroler.data.db.entity.Effect</class>
+    <class>br.com.urcontroler.data.db.entity.ElementType</class>
+    <class>br.com.urcontroler.data.db.entity.ItemType</class>
+    <class>br.com.urcontroler.data.db.entity.SpellCircle</class>
+    <class>br.com.urcontroler.data.db.entity.Spell</class>
+    <class>br.com.urcontroler.data.db.entity.Alignment</class>
+    <class>br.com.urcontroler.data.db.entity.StatsAttribute</class>
+    <class>br.com.urcontroler.data.db.entity.OccupationType</class>
+    <class>br.com.urcontroler.data.db.entity.PerkType</class>
+    <class>br.com.urcontroler.data.db.entity.Role</class>
+    <class>br.com.urcontroler.data.db.entity.Campain</class>
+    <class>br.com.urcontroler.data.db.entity.Perk</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ultimaterpgtools?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.password" value="d0v4hk11n"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+    </properties>
+  </persistence-unit>
+</persistence>

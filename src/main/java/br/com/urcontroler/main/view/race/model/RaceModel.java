@@ -6,7 +6,7 @@ import br.com.urcontroler.data.entity.Race;
 /**
  * Modelo de tabelas para raças
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class RaceModel extends GTableModel<Race> {

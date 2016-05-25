@@ -5,7 +5,7 @@ import br.com.gmp.comps.data.GenericDAO;
 /**
  * Construtor de DAO's genericos
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class DaoBuilder {

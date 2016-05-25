@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class ArmorListBean extends ViewBean<ArmorListView> {
 

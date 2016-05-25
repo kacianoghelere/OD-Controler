@@ -3,7 +3,7 @@ package br.com.urcontroler.main.view.enums;
 /**
  * Enumerador de tipos de views
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public enum ViewType {

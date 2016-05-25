@@ -34,7 +34,7 @@ import java.util.logging.Level;
 /**
  * View para edição de classes.
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 @ViewData(name = "Lista de classes",

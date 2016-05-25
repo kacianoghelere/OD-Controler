@@ -12,7 +12,7 @@ import br.com.urcontroler.main.view.weapon.sub.WeaponSubView;
 /**
  * Bean de controle de WeaponView
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class WeaponBean extends ViewBean<WeaponView> {
 

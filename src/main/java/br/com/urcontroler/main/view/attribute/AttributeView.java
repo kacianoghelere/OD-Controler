@@ -6,7 +6,7 @@ import br.com.urcontroler.main.view.View;
 /**
  * Tela para cadastro e controle de faixas de atributos
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class AttributeView extends View {

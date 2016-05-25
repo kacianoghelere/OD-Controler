@@ -24,7 +24,7 @@ import java.util.logging.Level;
 /**
  * Tela para cadastro e controle de perícias
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 @ViewData(name = "Perícias", type = ViewType.CRUD, path = {""})
 public class ExpertiseView extends View implements TableView, TableSource<Expertise> {

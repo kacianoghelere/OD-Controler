@@ -26,7 +26,7 @@ import java.util.logging.Logger;
 /**
  * Tela de cadastro e controle de tipos de classes
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 @ViewData(name = "Tipos de classes", type = ViewType.CRUD, path = {""})

@@ -5,7 +5,7 @@ import br.com.urcontroler.main.object.BeanEvent;
 
 /**
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @param <T> Tipo da View
  */
 public interface BeanListener<T> {

@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Bean de controle para a lista de magias
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class SpellListBean extends ViewBean<SpellListView> {
 

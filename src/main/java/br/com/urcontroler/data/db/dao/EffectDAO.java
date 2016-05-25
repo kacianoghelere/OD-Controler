@@ -6,7 +6,7 @@ import br.com.urcontroler.data.entity.Effect;
 /**
  * DAO para controle dos Effects
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class EffectDAO extends GenericDAO<Effect> {

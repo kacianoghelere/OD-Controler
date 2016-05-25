@@ -6,7 +6,7 @@ import br.com.urcontroler.data.entity.ElementType;
 /**
  * DAO para a entidade ElementType
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class ElementTypeDAO extends GenericDAO<ElementType> {
 

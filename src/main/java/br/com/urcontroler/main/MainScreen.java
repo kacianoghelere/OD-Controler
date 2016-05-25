@@ -39,9 +39,9 @@ import javax.swing.JMenu;
 /**
  * Tela principal
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.1
  */
 public class MainScreen extends javax.swing.JFrame implements Main {
@@ -76,9 +76,9 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         initComponents();
         setControls(new ViewParameter(false, false, false, false));
         //setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
-        injector = Guice.createInjector(new InterceptorModule());
-        listener = injector.getInstance(MainScreenBean.class);
-        listener.setScreen(this);
+        this.injector = Guice.createInjector(new InterceptorModule());
+        this.listener = this.injector.getInstance(MainScreenBean.class);
+        this.listener.setScreen(this);
         loadAudioList();
         printTypedMsg("Aplicaçao iniciada", INFORMATIVE_MSG);
         loadMenus();
@@ -90,9 +90,9 @@ public class MainScreen extends javax.swing.JFrame implements Main {
      */
     private void loadMenus() {
         try {
-            MenuBuilder builder = injector.getInstance(MenuBuilder.class);
+            MenuBuilder builder = this.injector.getInstance(MenuBuilder.class);
             builder.setMainScreen(this);
-            builder.setRoot(root);
+            builder.setRoot(this.root);
             builder.build();
             printTypedMsg("Menus carregados", Main.INFORMATIVE_MSG);
         } catch (ClassNotFoundException | InstantiationException ex) {
@@ -105,9 +105,9 @@ public class MainScreen extends javax.swing.JFrame implements Main {
      */
     private void loadAudioList() {
         try {
-            if (!audioJson.exists()) {
-                audioJson.createNewFile();
-                LOGGER.log(Level.INFO, "Lista de arquivos de audio criada em {0}", audioJson.getPath());
+            if (!this.audioJson.exists()) {
+                this.audioJson.createNewFile();
+                LOGGER.log(Level.INFO, "Lista de arquivos de audio criada em {0}", this.audioJson.getPath());
             }
         } catch (IOException ex) {
             LOGGER.log(Level.SEVERE, null, ex);
@@ -224,22 +224,22 @@ public class MainScreen extends javax.swing.JFrame implements Main {
 
     @Override
     public void commit(ActionEvent evt) {
-        listener.onCommit(new BeanEvent(this, evt));
+        this.listener.onCommit(new BeanEvent(this, evt));
     }
 
     @Override
     public void process(ActionEvent evt) {
-        listener.onProcess(new BeanEvent(this, evt));
+        this.listener.onProcess(new BeanEvent(this, evt));
     }
 
     @Override
     public void clear(ActionEvent evt) {
-        listener.onClear(new BeanEvent(this, evt));
+        this.listener.onClear(new BeanEvent(this, evt));
     }
 
     @Override
     public void load(ActionEvent evt) {
-        listener.onLoad(new BeanEvent(this, evt));
+        this.listener.onLoad(new BeanEvent(this, evt));
     }
 
     @Override
@@ -254,7 +254,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
      * @return {@code MainListener} Listener do frame principal
      */
     public MainListener getListener() {
-        return listener;
+        return this.listener;
     }
 
     /**
@@ -272,7 +272,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
      * @return {@code JDesktopPane}
      */
     public JDesktopPane getDesktop() {
-        return desktop;
+        return this.desktop;
     }
 
     /**
@@ -322,42 +322,25 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     }
 
     /**
-     * <html>
+     * Imprime o String com parametros no console
+     *
+     * @param string {@code String} String a ser impresso no console
+     */
+    private void printf(String string, Object... params) {
+        System.out.printf(string, params);
+    }
+
+    /**
      * Imprime uma mensagem na barra de mensagens <br><br>
-     * <table border="1">
-     * <thead>
-     * <tr>
-     * <th>Tipo de mensagem</th>
-     * <th>Variavel</th>
-     * </tr>
-     * </thead>
-     * <tbody>
-     * <tr>
-     * <td>Mensagem informativa</td>
-     * <td>MainScreen.QUESTION_ICON</td>
-     * </tr>
-     * <tr>
-     * <td>Mensagem de questionamento</td>
-     * <td>MainScreen.INFORMATIVE_ICON</td>
-     * </tr>
-     * <tr>
-     * <td>Mensagem de aviso</td>
-     * <td>MainScreen.WARNING_ICON</td>
-     * </tr>
-     * <tr>
-     * <td>Mensagem de erro</td>
-     * <td>MainScreen.ERROR_ICON</td>
-     * </tr>
-     * <tr>
-     * <td>Mensagem de sucesso</td>
-     * <td>MainScreen.SUCCESS_ICON</td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * Tipo de mensagem : Variavel<br>
+     * Mensagem informativa : MainScreen.QUESTION_ICON<br>
+     * Mensagem de questionamento : MainScreen.INFORMATIVE_ICON<br>
+     * Mensagem de aviso : MainScreen.WARNING_ICON<br>
+     * Mensagem de erro : MainScreen.ERROR_ICON<br>
+     * Mensagem de sucesso : MainScreen.SUCCESS_ICON
      *
      * @param text {@code String} Texto à ser impresso
      * @param icon {@code String} Icone de tipo para a mensagem
-     * </html>
      */
     private void printMsg(String text, String icon) {
         ImageIcon ic = new javax.swing.ImageIcon(getClass().getResource(icon));
@@ -371,42 +354,16 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     }
 
     /**
-     * <html>
      * Imprime uma mensagem na barra de mensagens<br><br>
-     * <table border="1">
-     * <thead>
-     * <tr>
-     * <th>Tipo de mensagem</th>
-     * <th>Mensagem</th>
-     * </tr>
-     * </thead>
-     * <tbody>
-     * <tr>
-     * <td>Mensagem informativa</td>
-     * <td>1</td>
-     * </tr>
-     * <tr>
-     * <td>Mensagem de questionamento</td>
-     * <td>2</td>
-     * </tr>
-     * <tr>
-     * <td>Mensagem de aviso</td>
-     * <td>3</td>
-     * </tr>
-     * <tr>
-     * <td>Mensagem de erro</td>
-     * <td>4</td>
-     * </tr>
-     * <tr>
-     * <td>Mensagem de sucesso</td>
-     * <td>5</td>
-     * </tr>
-     * </tbody>
-     * </table>
+     * Tipo de mensagem : Mensagem<br>
+     * Mensagem informativa : 1<br>
+     * Mensagem de questionamento : 2<br>
+     * Mensagem de aviso : 3<br>
+     * Mensagem de erro : 4<br>
+     * Mensagem de sucesso : 5
      *
      * @param text {@code String} Texto à ser impresso
      * @param type {@code int} Tipo da mensagem
-     * </html>
      */
     @Intercept
     public void printTypedMsg(String text, int type) {

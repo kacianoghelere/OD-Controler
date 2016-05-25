@@ -11,7 +11,7 @@ import br.com.urcontroler.main.view.object.ViewParameter;
 /**
  * Tela para edição de descrições de Views
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class DescriptionView extends View {
@@ -88,7 +88,7 @@ public class DescriptionView extends View {
                 .setClear(!gTClear.isEmpty() ? gTClear.getText() : "--")
                 .setLoad(!gTLoad.isEmpty() ? gTLoad.getText() : "--")
                 .setDescription(!gTADescription.isEmpty()
-                                ? gTADescription.getText() : "--")
+                        ? gTADescription.getText() : "--")
                 .apply();
         return desc;
     }

@@ -3,7 +3,7 @@ package br.com.urcontroler.data.enums;
 /**
  * Enum para resgistro dos tipos de views
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public enum ViewType {

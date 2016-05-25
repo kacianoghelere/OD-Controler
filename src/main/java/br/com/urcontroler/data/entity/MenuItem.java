@@ -12,7 +12,7 @@ import java.util.Objects;
 /**
  * Objeto para criação de atalhos das telas
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class MenuItem implements Comparable<MenuItem> {
 

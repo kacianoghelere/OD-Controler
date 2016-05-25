@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * Super classe dos tipos
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public abstract class Type implements Comparable<Type> {
 

@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 /**
  * Interface do tipo anotação para dados de telas
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 @Retention(RetentionPolicy.RUNTIME)

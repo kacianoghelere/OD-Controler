@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 /**
  * Ação padrão para carregar os dados, tecla F8
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class LoadAction extends FrameAction {
 

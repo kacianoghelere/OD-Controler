@@ -10,7 +10,7 @@ import br.com.urcontroler.main.view.object.ViewParameter;
 /**
  * View de controle e gerenciamento de audio
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class MediaPlayerView extends View<MediaPlayerBean> {
 

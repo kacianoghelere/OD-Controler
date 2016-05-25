@@ -26,9 +26,9 @@ import javax.swing.JMenuItem;
 /**
  * View para inclusão e edição de armaduras.
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.1
  */
 public class ArmorListView extends View<ArmorListBean> implements ListView<Armor> {

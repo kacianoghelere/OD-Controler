@@ -5,7 +5,7 @@ import br.com.gmp.comps.model.GTableModel;
 /**
  * Modelo de tabelas das descrições
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class DescriptionModel extends GTableModel<DescriptionObject> {
 

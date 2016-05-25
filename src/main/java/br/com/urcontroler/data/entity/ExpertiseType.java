@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * Entidade dos tipos de Perk
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class ExpertiseType extends Type {
 

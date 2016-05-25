@@ -6,7 +6,7 @@ import br.com.urcontroler.data.entity.Armor;
 /**
  * Modelo de tabela para armaduras
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class ArmorModel extends GTableModel<Armor> {

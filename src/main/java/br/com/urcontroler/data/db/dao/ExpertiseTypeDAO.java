@@ -6,7 +6,7 @@ import br.com.urcontroler.data.entity.ExpertiseType;
 /**
  * DAO de controle para tipos de perícias
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class ExpertiseTypeDAO extends GenericDAO<ExpertiseType> {
 }

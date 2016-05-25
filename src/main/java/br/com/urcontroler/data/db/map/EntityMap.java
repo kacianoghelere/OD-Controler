@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * Mapa de constantes para o banco de dados
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class EntityMap {
 

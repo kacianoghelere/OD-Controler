@@ -11,7 +11,7 @@ import java.util.Objects;
 /**
  * Entidade de armaduras
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class Armor implements Serializable {

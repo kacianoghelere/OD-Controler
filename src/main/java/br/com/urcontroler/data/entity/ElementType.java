@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * Entidade dos elementos
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class ElementType extends Type {

@@ -24,7 +24,7 @@ import javax.swing.SwingUtilities;
 /**
  * Classe utilitária para construção de menus e dos respectivos itens
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  * @see br.com.urcontroler.data.db.dao.MenuDAO
  * @see br.com.urcontroler.data.db.dao.MenuItemDAO

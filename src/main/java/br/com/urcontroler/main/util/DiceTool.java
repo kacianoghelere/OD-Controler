@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Utilitário para gerar resultados de dados
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class DiceTool {
 

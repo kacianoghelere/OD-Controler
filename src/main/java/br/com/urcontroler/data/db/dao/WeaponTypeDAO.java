@@ -6,7 +6,7 @@ import br.com.urcontroler.data.entity.WeaponType;
 /**
  * DAO de controle para tipos de armas
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class WeaponTypeDAO extends GenericDAO<WeaponType> {

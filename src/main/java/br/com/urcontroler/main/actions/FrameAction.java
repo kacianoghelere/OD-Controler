@@ -6,7 +6,7 @@ import javax.swing.AbstractAction;
 /**
  * Ação padrão dos Frames
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public abstract class FrameAction extends AbstractAction {
 

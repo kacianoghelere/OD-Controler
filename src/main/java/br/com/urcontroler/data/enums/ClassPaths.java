@@ -3,7 +3,7 @@ package br.com.urcontroler.data.enums;
 /**
  * Enumerador de caminho de classes
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public enum ClassPaths {
 

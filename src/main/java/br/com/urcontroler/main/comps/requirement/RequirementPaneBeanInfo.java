@@ -9,7 +9,7 @@ import java.beans.*;
 
 /**
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class RequirementPaneBeanInfo extends SimpleBeanInfo {
 

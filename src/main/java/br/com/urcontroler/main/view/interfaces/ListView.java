@@ -6,7 +6,7 @@ import br.com.gmp.comps.model.GListModel;
 /**
  * Interface padrão para views que contem dados em listas
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  * @param <T> Tipo de objetos carregados
  */

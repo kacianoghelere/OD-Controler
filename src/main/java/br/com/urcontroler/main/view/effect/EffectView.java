@@ -26,9 +26,9 @@ import java.util.logging.Logger;
 /**
  * View para cadastro de efeitos
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.1
  */
 @ViewData(name = "Efeitos", type = ViewType.CRUD, path = {})

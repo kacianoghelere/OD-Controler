@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Bean de controle para WeaponList
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class WeaponListBean extends ViewBean<WeaponListView> {
 

@@ -11,7 +11,7 @@ import org.jfree.ui.FilesystemFilter;
 /**
  * Bean de controle para tela de logs
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class LogBean extends ViewBean<LogView> {

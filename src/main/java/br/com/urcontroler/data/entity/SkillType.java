@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * Enumerador de tipos de habilidades singulares
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class SkillType extends Type {

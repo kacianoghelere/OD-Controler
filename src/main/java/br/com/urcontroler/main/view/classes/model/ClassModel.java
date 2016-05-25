@@ -6,7 +6,7 @@ import br.com.urcontroler.data.entity.ClassBase;
 /**
  * Modelo de tabela para ClassBase
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class ClassModel extends GTableModel<ClassBase> {

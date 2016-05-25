@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 /**
  * Tela de controle para origem de itens
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 @ViewData(name = "Origem de itens", type = ViewType.CRUD, path = {""})

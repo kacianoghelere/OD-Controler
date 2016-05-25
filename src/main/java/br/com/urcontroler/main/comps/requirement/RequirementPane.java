@@ -5,7 +5,7 @@ import br.com.urcontroler.data.entity.Requirement;
 /**
  * Painel auxiliar para controle de requerimentos
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class RequirementPane extends javax.swing.JPanel {
 

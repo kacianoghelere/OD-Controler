@@ -6,7 +6,7 @@ import br.com.urcontroler.main.view.bean.ViewBean;
 /**
  * Backbean para Tela de atributos
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class AttributeBean extends ViewBean<AttributeView> {

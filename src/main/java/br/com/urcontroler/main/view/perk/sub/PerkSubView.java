@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 /**
  * Janela auxiliar para cadastro de perks
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class PerkSubView extends SubView {

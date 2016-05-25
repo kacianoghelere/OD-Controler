@@ -3,7 +3,7 @@ package br.com.urcontroler.main.view.type.object;
 /**
  * Parametros para registro de termos
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class TermsParameter {
 

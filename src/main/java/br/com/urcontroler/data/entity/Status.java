@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * Entidade dos Status de personagens e inimigos
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class Status {

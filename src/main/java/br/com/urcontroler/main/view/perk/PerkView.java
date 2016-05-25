@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 /**
  * View de cadastro e manutenção de perks
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class PerkView extends View implements TableSource<Perk>, TableView {
 

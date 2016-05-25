@@ -36,9 +36,9 @@ import java.util.logging.Level;
 /**
  * Subview para edição de classes.
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.1
  */
 public class ClassSubView extends SubView implements TableSource<ClassLevel> {

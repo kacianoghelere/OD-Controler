@@ -11,7 +11,7 @@ import br.com.urcontroler.main.view.race.sub.RaceSubView;
 /**
  * Bean de controle para a tela das raças
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class RaceBean extends ViewBean<RaceView> {

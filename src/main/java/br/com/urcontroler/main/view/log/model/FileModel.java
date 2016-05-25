@@ -8,7 +8,7 @@ import org.jdesktop.swingx.treetable.AbstractTreeTableModel;
  * Modelo para treetables que reconstroi dinamicamente a estrutura de um
  * diretório
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class FileModel extends AbstractTreeTableModel {

@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Nó de arvore baseado em objetos do tipo File
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class FileNode {

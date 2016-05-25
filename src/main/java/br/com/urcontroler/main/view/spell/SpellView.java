@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * View para cadastro e controle de magias
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 @ViewData(name = "Magias", type = ViewType.CRUD, path = {""})

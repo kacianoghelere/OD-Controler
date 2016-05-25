@@ -3,7 +3,7 @@ package br.com.urcontroler.data.enums;
 /**
  * Enum de registro de dados de moedas
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public enum Coin {

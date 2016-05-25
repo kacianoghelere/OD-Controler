@@ -24,7 +24,7 @@ import javax.swing.SwingUtilities;
 /**
  * View para controle de menus
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class MenuView extends View<MenuBean> implements TableSource<Menu>, TableView {

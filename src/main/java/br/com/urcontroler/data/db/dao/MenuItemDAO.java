@@ -6,7 +6,7 @@ import br.com.urcontroler.data.entity.MenuItem;
 /**
  * DAO de controle para MenuViews
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class MenuItemDAO extends GenericDAO<MenuItem> {

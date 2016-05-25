@@ -11,13 +11,16 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import org.pushingpixels.substance.api.skin.SubstanceGraphiteGlassLookAndFeel;
 
 /**
  * Classe de inicialização da aplicação
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class SystemManager {
 
@@ -26,7 +29,9 @@ public class SystemManager {
      */
     public static final Logger LOGGER = Logger.getLogger(SystemManager.class.getName());
     private static final String prop = "/br/com/urcontroler/properties/od-properties.properties";
+    private static final String persistence = "Ultimate-RPG-Controler-PU";
     private final Injector injector;
+    private final EntityManagerFactory emf;
 
     /**
      * Cria nova instancia de SystemControl
@@ -39,12 +44,13 @@ public class SystemManager {
                 + "\nUsuário: " + SystemProperties.USER_NAME.toUpperCase()
                 + "\nPasta principal: " + SystemProperties.USER_HOME
                 + "\n-------------------------------------------------\n");
-        injector = Guice.createInjector(new InterceptorModule());
+        this.injector = Guice.createInjector(new InterceptorModule());
+        this.emf = Persistence.createEntityManagerFactory(persistence);
         File dir = new File("logs");
         if (!dir.exists()) {
             dir.mkdir();
             LOGGER.log(Level.INFO, "Diretorio de logs criado em {0}", dir.getPath());
-        }        
+        }
     }
 
     /**
@@ -58,6 +64,11 @@ public class SystemManager {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
+                try {
+                    UIManager.setLookAndFeel(new SubstanceGraphiteGlassLookAndFeel());
+                } catch (UnsupportedLookAndFeelException ex) {
+                    Logger.getLogger(SystemManager.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 MainScreen instance = injector.getInstance(MainScreen.class);
                 instance.setVisible(true);
             }
@@ -91,6 +102,15 @@ public class SystemManager {
             LOGGER.log(Level.SEVERE, prop, ex);
             return null;
         }
+    }
+
+    /**
+     * Retorna instancia de fabrica de gerenciador de entidades
+     *
+     * @return {@code EntityManagerFactory} Fabrica de gerenciador de entidades
+     */
+    public EntityManagerFactory getEmf() {
+        return this.emf;
     }
 
     /**

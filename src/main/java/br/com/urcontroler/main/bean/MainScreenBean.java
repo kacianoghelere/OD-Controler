@@ -28,7 +28,7 @@ import javax.swing.JInternalFrame;
 /**
  * Bean de controle da tela principal
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class MainScreenBean implements MainListener {
 
@@ -37,7 +37,7 @@ public class MainScreenBean implements MainListener {
     private Map<String, MenuItem> viewMap;
     private File dir;
     private File log;
-    private final ReflectionUtil reflect = new ReflectionUtil();    
+    private final ReflectionUtil reflect = new ReflectionUtil();
 
     /**
      * Cria nova instancia de MainScreenBean

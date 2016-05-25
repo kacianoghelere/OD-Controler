@@ -6,7 +6,7 @@ import br.com.gmp.comps.table.GTable;
 /**
  * Interface padrão para views que contem dados em tabelas
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public interface TableView {

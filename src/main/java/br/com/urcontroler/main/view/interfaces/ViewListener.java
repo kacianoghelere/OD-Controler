@@ -9,7 +9,7 @@ import javax.swing.JComponent;
 /**
  * Interface para Views
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @param <T> Tipo do Bean
  */
 public interface ViewListener<T> {

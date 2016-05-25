@@ -24,7 +24,7 @@ import java.util.logging.Logger;
 /**
  * View de controle para itens gerais
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 @ViewData(name = "Itens gerais", type = ViewType.CRUD, path = {""})

@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Bean de controle para lista de classes
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class ClassListBean extends ViewBean<ClassListView> {
 

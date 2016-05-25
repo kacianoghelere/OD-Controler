@@ -14,7 +14,7 @@ import java.util.Objects;
 /**
  * Tipo de arma
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class WeaponType extends Type {
 

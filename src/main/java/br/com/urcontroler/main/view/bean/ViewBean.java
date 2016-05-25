@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 /**
  * Bean padrão para implementação de ViewBeans
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  * @param <T> Tipo da View
  */

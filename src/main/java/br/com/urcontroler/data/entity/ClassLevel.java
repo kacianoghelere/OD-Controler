@@ -6,7 +6,7 @@ import br.com.gmp.utils.annotations.Editable;
 /**
  * Parametros da classe
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class ClassLevel {

@@ -22,7 +22,7 @@ import org.apache.commons.io.FileUtils;
 /**
  * Tela de importacao de midias
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class ImportAudioView extends View<ImportAudioBean> {
 
@@ -304,7 +304,6 @@ public class ImportAudioView extends View<ImportAudioBean> {
             }
         }
     }//GEN-LAST:event_jBDeleteActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.gmp.comps.combobox.GComboBox gCBType;

@@ -5,7 +5,7 @@ import br.com.urcontroler.main.view.bind.BindObject;
 /**
  * Classe para os modificadores de atributos
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class Modifier extends BindObject {
 

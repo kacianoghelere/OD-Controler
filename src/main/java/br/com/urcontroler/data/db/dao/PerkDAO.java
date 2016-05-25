@@ -6,7 +6,7 @@ import br.com.urcontroler.data.entity.Perk;
 /**
  * DAO de controle para a entidade Perk
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class PerkDAO extends GenericDAO<Perk> {
 

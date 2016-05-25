@@ -3,7 +3,7 @@ package br.com.urcontroler.data.enums;
 /**
  * Interface para padronização na criação de atributos
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public interface Attr {

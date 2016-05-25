@@ -25,7 +25,7 @@ import javax.swing.JMenuItem;
 /**
  * SubView para controle de armas
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class WeaponListView extends View<WeaponListBean> implements ListView<Weapon> {
@@ -153,7 +153,7 @@ public class WeaponListView extends View<WeaponListBean> implements ListView<Wea
             Origin origin = this.originModel.getSelectedItem();
             this.gTName.setText(prefix.getName() + " "
                     + (prefix.getName().endsWith("a")
-                            ? origin.getVariation() : origin.getName())
+                    ? origin.getVariation() : origin.getName())
                     + " de " + material.getName());
         }
     }

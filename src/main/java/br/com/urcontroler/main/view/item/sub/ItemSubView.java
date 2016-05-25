@@ -15,7 +15,7 @@ import br.com.urcontroler.main.view.sub.SubView;
 /**
  * Subview de cadastro para itens
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class ItemSubView extends SubView {

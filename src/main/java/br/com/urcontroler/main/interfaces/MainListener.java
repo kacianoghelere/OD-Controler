@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 /**
  * Interface do bean para a tela principal
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public interface MainListener {
 

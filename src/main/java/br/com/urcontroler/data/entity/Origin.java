@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * Entidade da origem dos itens
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class Origin {

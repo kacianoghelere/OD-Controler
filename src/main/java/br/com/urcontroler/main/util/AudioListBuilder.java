@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Construtor de lista de audio
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class AudioListBuilder implements Runnable {
 

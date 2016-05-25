@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * Entidade de controle para itens gerais
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class Item {

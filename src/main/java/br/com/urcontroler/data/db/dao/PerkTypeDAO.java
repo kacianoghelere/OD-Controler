@@ -5,7 +5,7 @@ import br.com.urcontroler.data.entity.PerkType;
 
 /**
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class PerkTypeDAO extends GenericDAO<PerkType> {
 

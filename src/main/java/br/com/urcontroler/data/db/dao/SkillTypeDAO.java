@@ -6,7 +6,7 @@ import br.com.urcontroler.data.entity.SkillType;
 /**
  * DAO de controle para os tipos de habilidades
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class SkillTypeDAO extends GenericDAO<SkillType> {

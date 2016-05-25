@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * View de controle para classes
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 @ViewData(name = "Classes", type = ViewType.CRUD, path = {""})

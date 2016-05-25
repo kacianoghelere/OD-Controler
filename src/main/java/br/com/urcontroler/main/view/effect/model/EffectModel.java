@@ -6,7 +6,7 @@ import br.com.urcontroler.data.entity.Effect;
 /**
  * Modelo de tabela para os efeitos
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class EffectModel extends GTableModel<Effect> {
 

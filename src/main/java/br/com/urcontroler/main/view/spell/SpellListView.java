@@ -20,7 +20,7 @@ import java.util.logging.Level;
 /**
  * View para controle de magias
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 @ViewData(name = "Lista de magias",

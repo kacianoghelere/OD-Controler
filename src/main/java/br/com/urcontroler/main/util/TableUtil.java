@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 /**
  * Classe utilitária para Views que usam tabelas
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  */
 public class TableUtil {
 

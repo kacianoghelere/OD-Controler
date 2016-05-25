@@ -5,9 +5,9 @@ import br.com.gmp.utils.annotations.ColumnName;
 /**
  * Enumerador de tamanhos
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.1
  */
 public enum Size {

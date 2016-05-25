@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * Entidade de vantagens
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
  */
 public class Perk {

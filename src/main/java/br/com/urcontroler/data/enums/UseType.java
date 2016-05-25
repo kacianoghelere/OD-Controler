@@ -3,9 +3,9 @@ package br.com.urcontroler.data.enums;
 /**
  * Modo de uso das armas
  *
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.0
- * @author kaciano
+ * @author Kaciano Ghelere
  * @version 1.1
  */
 public enum UseType {
