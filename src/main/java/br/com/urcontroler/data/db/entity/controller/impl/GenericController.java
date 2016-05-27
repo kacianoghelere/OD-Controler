@@ -3,6 +3,7 @@ package br.com.urcontroler.data.db.entity.controller.impl;
 import br.com.urcontroler.data.db.entity.controller.exceptions.IllegalOrphanException;
 import br.com.urcontroler.data.db.entity.controller.exceptions.NonexistentEntityException;
 import br.com.urcontroler.data.db.entity.controller.interfaces.IGenericController;
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -145,7 +146,7 @@ public class GenericController<T> implements IGenericController<T> {
     }
 
     @Override
-    public void destroy(T entity) throws IllegalOrphanException, NonexistentEntityException, Exception {
+    public void destroy(T entity) throws IllegalOrphanException, NonexistentEntityException, MySQLIntegrityConstraintViolationException, Exception {
         Long id = findId(entity);
         if (entity != null && id != null) {
             destroy(id);
@@ -153,7 +154,7 @@ public class GenericController<T> implements IGenericController<T> {
     }
 
     @Override
-    public void destroy(Long id) throws IllegalOrphanException, NonexistentEntityException, IllegalArgumentException, IllegalAccessException {
+    public void destroy(Long id) throws IllegalOrphanException, NonexistentEntityException, IllegalArgumentException, IllegalAccessException, MySQLIntegrityConstraintViolationException {
         if (preventDestruction(id)) {
             return;
         }

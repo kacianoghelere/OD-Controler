@@ -2,7 +2,10 @@ package br.com.urcontroler.system;
 
 import br.com.gmp.utils.annotations.Intercept;
 import br.com.gmp.utils.interceptors.InterceptorModule;
+import br.com.gmp.utils.reflection.ReflectionUtil;
 import br.com.gmp.utils.system.SystemProperties;
+import br.com.urcontroler.data.db.entity.controller.ControllerBuilder;
+import br.com.urcontroler.data.db.entity.controller.impl.GenericController;
 import br.com.urcontroler.main.MainScreen;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -105,12 +108,29 @@ public class SystemManager {
     }
 
     /**
-     * Retorna instancia de fabrica de gerenciador de entidades
+     * Retorna controlador genérico de instancia anonima
      *
-     * @return {@code EntityManagerFactory} Fabrica de gerenciador de entidades
+     * @param <T> Classe da entidade
+     * @param ctrl {@code Class(T)} Classe de entidade do controlador
+     * @return {@code GenericController(T)} Controlador de entidade do tipo T
      */
-    public EntityManagerFactory getEmf() {
-        return this.emf;
+    public <T extends Object> GenericController<T> getController(Class<T> ctrl) {
+        return ControllerBuilder.get(ctrl, this.emf);
+    }
+
+    /**
+     * Retorna controlador genérico de instancia anonima
+     *
+     * @param name {@code String} Nome do Controlador
+     * @return {@code Object} Controlador de entidade
+     * @throws ClassNotFoundException Exceção de classe não encontrada
+     * @throws InstantiationException Exceção de instanciamento mal sucedido
+     */
+    public Object getController(String name) throws ClassNotFoundException, InstantiationException {
+        Class<?> clName = Class.forName(name);
+        Class[] paramClasses = new Class[]{EntityManagerFactory.class};
+        Object[] params = new Object[]{this.emf};
+        return new ReflectionUtil().newInstance(clName, paramClasses, params);
     }
 
     /**

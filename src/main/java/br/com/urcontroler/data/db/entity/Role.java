@@ -8,6 +8,7 @@ package br.com.urcontroler.data.db.entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,6 +34,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Role.findByName", query = "SELECT r FROM Role r WHERE r.name = :name"),
     @NamedQuery(name = "Role.findByAdmin", query = "SELECT r FROM Role r WHERE r.admin = :admin")})
 public class Role implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRole")
+    private Collection<RoleAccess> roleAccessCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -118,6 +122,14 @@ public class Role implements Serializable {
     @Override
     public String toString() {
         return "br.com.urcontroler.data.db.entity.Role[ idrole=" + idrole + " ]";
+    }
+
+    public Collection<RoleAccess> getRoleAccessCollection() {
+        return roleAccessCollection;
+    }
+
+    public void setRoleAccessCollection(Collection<RoleAccess> roleAccessCollection) {
+        this.roleAccessCollection = roleAccessCollection;
     }
 
 }

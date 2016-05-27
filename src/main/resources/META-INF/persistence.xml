@@ -41,6 +41,9 @@
     <class>br.com.urcontroler.data.db.entity.Role</class>
     <class>br.com.urcontroler.data.db.entity.Campain</class>
     <class>br.com.urcontroler.data.db.entity.Perk</class>
+    <class>br.com.urcontroler.data.db.entity.RoleAccess</class>
+    <class>br.com.urcontroler.data.db.entity.MenuItem</class>
+    <class>br.com.urcontroler.data.db.entity.Menu</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ultimaterpgtools?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.password" value="d0v4hk11n"/>

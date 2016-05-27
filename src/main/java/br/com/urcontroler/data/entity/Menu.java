@@ -42,7 +42,7 @@ public class Menu implements Comparable<Menu> {
      */
     public Menu(Long id, String title, String icon) {
         this.id = id;
-        this.parent = (long) 0;
+        this.parent = 0l;
         this.title = title;
         this.icon = icon;
     }

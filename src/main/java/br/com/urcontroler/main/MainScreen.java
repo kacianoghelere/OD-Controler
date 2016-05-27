@@ -5,6 +5,7 @@ import br.com.gmp.utils.annotations.Intercept;
 import br.com.gmp.utils.file.FileUtil;
 import br.com.gmp.utils.interceptors.InterceptorModule;
 import br.com.gmp.utils.system.SystemProperties;
+import br.com.urcontroler.data.db.entity.controller.impl.GenericController;
 import br.com.urcontroler.main.bean.MainScreenBean;
 import br.com.urcontroler.main.interfaces.Main;
 import br.com.urcontroler.main.interfaces.MainListener;
@@ -52,6 +53,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     private Injector injector;
     private Properties properties;
     private final File audioJson = new File(SystemProperties.USER_HOME + SystemManager.getProperty("system.audio.list"));
+    private SystemManager manager;
 
     /**
      * Cria novo MainScreen
@@ -220,6 +222,38 @@ public class MainScreen extends javax.swing.JFrame implements Main {
             file.mkdirs();
         }
         return property;
+    }
+
+    /**
+     * Direciona instancia do Gerenciador de sistema
+     *
+     * @param manager {@code SystemManager} Instancia do Gerenciador do Sistema
+     */
+    public void setManager(SystemManager manager) {
+        this.manager = manager;
+    }
+
+    /**
+     * Retorna controlador genérico de instancia anonima
+     *
+     * @param <T> Classe da entidade
+     * @param ctrl {@code Class(T)} Classe de entidade do controlador
+     * @return {@code GenericController(T)} Controlador de entidade do tipo T
+     */
+    public <T extends Object> GenericController<T> getController(Class<T> ctrl) {
+        return this.manager.getController(ctrl);
+    }
+
+    /**
+     * Retorna controlador genérico de instancia anonima
+     *
+     * @param name {@code String} Nome do Controlador
+     * @return {@code Object} Controlador de entidade
+     * @throws ClassNotFoundException Exceção de classe não encontrada
+     * @throws InstantiationException Exceção de instanciamento mal sucedido
+     */
+    public Object getController(String name) throws ClassNotFoundException, InstantiationException {
+        return this.manager.getController(name);
     }
 
     @Override
