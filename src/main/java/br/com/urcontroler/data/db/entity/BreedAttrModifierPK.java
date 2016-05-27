@@ -1,27 +1,23 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Embeddable
 public class BreedAttrModifierPK implements Serializable {
 
     @Basic(optional = false)
-    @Column(name = "idbreed")
     private long idbreed;
     @Basic(optional = false)
-    @Column(name = "idattribute")
     private long idattribute;
 
     public BreedAttrModifierPK() {
@@ -74,7 +70,7 @@ public class BreedAttrModifierPK implements Serializable {
 
     @Override
     public String toString() {
-        return "BreedAttrModifierPK[ idbreed=" + idbreed + ", idattribute=" + idattribute + " ]";
+        return "br.com.urcontroler.data.db.entity.BreedAttrModifierPK[ idbreed=" + idbreed + ", idattribute=" + idattribute + " ]";
     }
-
+    
 }

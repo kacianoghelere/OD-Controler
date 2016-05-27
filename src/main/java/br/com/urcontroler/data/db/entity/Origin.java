@@ -1,15 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,16 +16,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "origin")
-@XmlRootElement
+@Table(catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Origin.findAll", query = "SELECT o FROM Origin o"),
     @NamedQuery(name = "Origin.findByIdorigin", query = "SELECT o FROM Origin o WHERE o.idorigin = :idorigin"),
@@ -40,21 +35,17 @@ public class Origin implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idorigin")
     private Long idorigin;
     @Basic(optional = false)
-    @Column(name = "name")
     private String name;
     @Basic(optional = false)
-    @Column(name = "variation")
     private String variation;
     @Basic(optional = false)
-    @Column(name = "bonus")
     private int bonus;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idorigin")
-    private Collection<Armor> armorCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "originIdorigin")
-    private Collection<Weapon> weaponCollection;
+    private List<Weapon> weaponList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idorigin")
+    private List<Armor> armorList;
 
     public Origin() {
     }
@@ -102,22 +93,20 @@ public class Origin implements Serializable {
         this.bonus = bonus;
     }
 
-    @XmlTransient
-    public Collection<Armor> getArmorCollection() {
-        return armorCollection;
+    public List<Weapon> getWeaponList() {
+        return weaponList;
     }
 
-    public void setArmorCollection(Collection<Armor> armorCollection) {
-        this.armorCollection = armorCollection;
+    public void setWeaponList(List<Weapon> weaponList) {
+        this.weaponList = weaponList;
     }
 
-    @XmlTransient
-    public Collection<Weapon> getWeaponCollection() {
-        return weaponCollection;
+    public List<Armor> getArmorList() {
+        return armorList;
     }
 
-    public void setWeaponCollection(Collection<Weapon> weaponCollection) {
-        this.weaponCollection = weaponCollection;
+    public void setArmorList(List<Armor> armorList) {
+        this.armorList = armorList;
     }
 
     @Override
@@ -144,5 +133,5 @@ public class Origin implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.Origin[ idorigin=" + idorigin + " ]";
     }
-
+    
 }

@@ -1,12 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,16 +17,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "stats_attribute")
-@XmlRootElement
+@Table(name = "stats_attribute", catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "StatsAttribute.findAll", query = "SELECT s FROM StatsAttribute s"),
     @NamedQuery(name = "StatsAttribute.findByIdstatsAttribute", query = "SELECT s FROM StatsAttribute s WHERE s.idstatsAttribute = :idstatsAttribute"),
@@ -42,21 +38,19 @@ public class StatsAttribute implements Serializable {
     @Column(name = "idstats_attribute")
     private Long idstatsAttribute;
     @Basic(optional = false)
-    @Column(name = "name")
     private String name;
     @Basic(optional = false)
-    @Column(name = "shortname")
     private String shortname;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "statsAttribute")
-    private Collection<BreedAttrModifier> breedAttrModifierCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "statsAttribute")
-    private Collection<OccupationRequirement> occupationRequirementCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idkeyAttribute")
-    private Collection<Occupation> occupationCollection;
+    private List<Occupation> occupationList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idattribute")
-    private Collection<Expertise> expertiseCollection;
+    private List<Expertise> expertiseList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "statsAttribute")
+    private List<OccupationRequirement> occupationRequirementList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "statsAttribute")
+    private List<BreedAttrModifier> breedAttrModifierList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idstatsAttribute")
-    private Collection<CharacterStatsAttr> characterStatsAttrCollection;
+    private List<CharacterStatsAttr> characterStatsAttrList;
 
     public StatsAttribute() {
     }
@@ -95,49 +89,44 @@ public class StatsAttribute implements Serializable {
         this.shortname = shortname;
     }
 
-    @XmlTransient
-    public Collection<BreedAttrModifier> getBreedAttrModifierCollection() {
-        return breedAttrModifierCollection;
+    public List<Occupation> getOccupationList() {
+        return occupationList;
     }
 
-    public void setBreedAttrModifierCollection(Collection<BreedAttrModifier> breedAttrModifierCollection) {
-        this.breedAttrModifierCollection = breedAttrModifierCollection;
+    public void setOccupationList(List<Occupation> occupationList) {
+        this.occupationList = occupationList;
     }
 
-    @XmlTransient
-    public Collection<OccupationRequirement> getOccupationRequirementCollection() {
-        return occupationRequirementCollection;
+    public List<Expertise> getExpertiseList() {
+        return expertiseList;
     }
 
-    public void setOccupationRequirementCollection(Collection<OccupationRequirement> occupationRequirementCollection) {
-        this.occupationRequirementCollection = occupationRequirementCollection;
+    public void setExpertiseList(List<Expertise> expertiseList) {
+        this.expertiseList = expertiseList;
     }
 
-    @XmlTransient
-    public Collection<Occupation> getOccupationCollection() {
-        return occupationCollection;
+    public List<OccupationRequirement> getOccupationRequirementList() {
+        return occupationRequirementList;
     }
 
-    public void setOccupationCollection(Collection<Occupation> occupationCollection) {
-        this.occupationCollection = occupationCollection;
+    public void setOccupationRequirementList(List<OccupationRequirement> occupationRequirementList) {
+        this.occupationRequirementList = occupationRequirementList;
     }
 
-    @XmlTransient
-    public Collection<Expertise> getExpertiseCollection() {
-        return expertiseCollection;
+    public List<BreedAttrModifier> getBreedAttrModifierList() {
+        return breedAttrModifierList;
     }
 
-    public void setExpertiseCollection(Collection<Expertise> expertiseCollection) {
-        this.expertiseCollection = expertiseCollection;
+    public void setBreedAttrModifierList(List<BreedAttrModifier> breedAttrModifierList) {
+        this.breedAttrModifierList = breedAttrModifierList;
     }
 
-    @XmlTransient
-    public Collection<CharacterStatsAttr> getCharacterStatsAttrCollection() {
-        return characterStatsAttrCollection;
+    public List<CharacterStatsAttr> getCharacterStatsAttrList() {
+        return characterStatsAttrList;
     }
 
-    public void setCharacterStatsAttrCollection(Collection<CharacterStatsAttr> characterStatsAttrCollection) {
-        this.characterStatsAttrCollection = characterStatsAttrCollection;
+    public void setCharacterStatsAttrList(List<CharacterStatsAttr> characterStatsAttrList) {
+        this.characterStatsAttrList = characterStatsAttrList;
     }
 
     @Override
@@ -164,5 +153,5 @@ public class StatsAttribute implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.StatsAttribute[ idstatsAttribute=" + idstatsAttribute + " ]";
     }
-
+    
 }

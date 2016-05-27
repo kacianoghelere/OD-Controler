@@ -1,12 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,16 +17,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "effect_type")
-@XmlRootElement
+@Table(name = "effect_type", catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "EffectType.findAll", query = "SELECT e FROM EffectType e"),
     @NamedQuery(name = "EffectType.findByIdeffectType", query = "SELECT e FROM EffectType e WHERE e.ideffectType = :ideffectType"),
@@ -41,10 +37,9 @@ public class EffectType implements Serializable {
     @Column(name = "ideffect_type")
     private Long ideffectType;
     @Basic(optional = false)
-    @Column(name = "name")
     private String name;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "ideffectType")
-    private Collection<Effect> effectCollection;
+    private List<Effect> effectList;
 
     public EffectType() {
     }
@@ -74,13 +69,12 @@ public class EffectType implements Serializable {
         this.name = name;
     }
 
-    @XmlTransient
-    public Collection<Effect> getEffectCollection() {
-        return effectCollection;
+    public List<Effect> getEffectList() {
+        return effectList;
     }
 
-    public void setEffectCollection(Collection<Effect> effectCollection) {
-        this.effectCollection = effectCollection;
+    public void setEffectList(List<Effect> effectList) {
+        this.effectList = effectList;
     }
 
     @Override
@@ -107,5 +101,5 @@ public class EffectType implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.EffectType[ ideffectType=" + ideffectType + " ]";
     }
-
+    
 }

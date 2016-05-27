@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
@@ -22,7 +21,7 @@ import javax.persistence.Table;
  * @author kaciano
  */
 @Entity
-@Table(name = "role_access")
+@Table(name = "role_access", catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "RoleAccess.findAll", query = "SELECT r FROM RoleAccess r"),
     @NamedQuery(name = "RoleAccess.findById", query = "SELECT r FROM RoleAccess r WHERE r.id = :id")})
@@ -85,12 +84,15 @@ public class RoleAccess implements Serializable {
             return false;
         }
         RoleAccess other = (RoleAccess) object;
-        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        return "RoleAccess[ " + idRole + " | " + idMenuItem + " ]";
+        return "br.com.urcontroler.data.db.entity.RoleAccess[ id=" + id + " ]";
     }
-
+    
 }

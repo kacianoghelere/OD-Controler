@@ -3,14 +3,15 @@ package br.com.urcontroler.main.view;
 import br.com.gmp.comps.cleaner.ComponentCleaner;
 import br.com.gmp.comps.interfaces.ValidableComponent;
 import br.com.gmp.utils.system.TimeCounter;
+import br.com.urcontroler.data.db.entity.controller.impl.AbstractEntityController;
 import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.actions.ClearAction;
+import br.com.urcontroler.main.actions.CommitAction;
 import br.com.urcontroler.main.actions.FrameAction;
 import br.com.urcontroler.main.actions.LoadAction;
 import br.com.urcontroler.main.actions.ProccessAction;
-import br.com.urcontroler.main.actions.CommitAction;
 import br.com.urcontroler.main.object.BeanEvent;
-import br.com.urcontroler.main.util.Description;
+import br.com.urcontroler.main.util.DescriptionObject;
 import br.com.urcontroler.main.view.dialog.DescriptionDialog;
 import br.com.urcontroler.main.view.exception.ViewException;
 import br.com.urcontroler.main.view.interfaces.BeanListener;
@@ -20,8 +21,6 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.logging.Level;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -47,7 +46,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     private Boolean canClear;
     private Boolean canLoad;
     private String alias = "";
-    private Description description;
+    private DescriptionObject description;
     private Object parameter;
     private FrameAction saveAction;
     private FrameAction processAction;
@@ -69,7 +68,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
      */
     private void initialize() {
         initComponents();
-        description = new Description.Builder("1", "2", "3", "4", "5", "6").apply();
+        description = new DescriptionObject.Builder("1", "2", "3", "4", "5", "6").apply();
         this.addInternalFrameListener(new InternalFrameAdapter() {
 
             @Override
@@ -274,6 +273,43 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
     }
 
     /**
+     * Retorna controlador genérico de instancia anonima
+     *
+     * @param <T> Classe da entidade
+     * @param c {@code Class(T)} Classe de entidade do controlador
+     * @return {@code GenericController(T)} Controlador de entidade do tipo T
+     */
+    public <T extends Object> AbstractEntityController<T> buildController(Class<T> c) {
+        return this.getMainScreen().getManager().buildController(c);
+    }
+
+    /**
+     * Retorna controlador genérico de instancia anonima
+     *
+     * @param name {@code String} Nome do Controlador
+     * @return {@code Object} Controlador de entidade
+     * @throws ClassNotFoundException Exceção de classe não encontrada
+     * @throws InstantiationException Exceção de instanciamento mal sucedido
+     */
+    public Object getController(String name)
+            throws ClassNotFoundException, InstantiationException {
+        return this.getMainScreen().getManager().getController(name);
+    }
+
+    /**
+     * Retorna controlador genérico de instancia anonima
+     *
+     * @param c {@code Class(?)} Classe do Controlador
+     * @return {@code Object} Controlador de entidade
+     * @throws ClassNotFoundException Exceção de classe não encontrada
+     * @throws InstantiationException Exceção de instanciamento mal sucedido
+     */
+    public Object getController(Class<?> c)
+            throws ClassNotFoundException, InstantiationException {
+        return this.getMainScreen().getManager().getController(c);
+    }
+
+    /**
      * Modifica o titulo da View aplicando a sigla juntamente ao titulo
      *
      * @param alias {@code String} Sigla da View
@@ -384,7 +420,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
      *
      * @return {@code Description} Descrição da tela
      */
-    public Description getDescription() {
+    public DescriptionObject getDescription() {
         return description;
     }
 
@@ -393,7 +429,7 @@ public abstract class View<T> extends JInternalFrame implements ViewListener<T> 
      *
      * @param description {@code Description} Descrição da tela
      */
-    public void setDescription(Description description) {
+    public void setDescription(DescriptionObject description) {
         this.description = description;
     }
 

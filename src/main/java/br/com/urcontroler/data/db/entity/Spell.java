@@ -1,12 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,16 +19,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "spell")
-@XmlRootElement
+@Table(catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Spell.findAll", query = "SELECT s FROM Spell s"),
     @NamedQuery(name = "Spell.findByIdspell", query = "SELECT s FROM Spell s WHERE s.idspell = :idspell"),
@@ -44,37 +40,32 @@ public class Spell implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idspell")
     private Long idspell;
     @Basic(optional = false)
-    @Column(name = "name")
     private String name;
     @Basic(optional = false)
     @Column(name = "magic_cost")
     private int magicCost;
     @Basic(optional = false)
-    @Column(name = "range")
     private String range;
     @Basic(optional = false)
-    @Column(name = "duration")
     private String duration;
     @Basic(optional = false)
-    @Column(name = "description")
     private String description;
-    @JoinColumn(name = "iduser", referencedColumnName = "iduser")
-    @ManyToOne(optional = false)
-    private User iduser;
-    @JoinColumn(name = "idspell_type", referencedColumnName = "idspell_type")
-    @ManyToOne(optional = false)
-    private SpellType idspellType;
-    @JoinColumn(name = "idspell_class", referencedColumnName = "idspell_class")
-    @ManyToOne(optional = false)
-    private SpellClass idspellClass;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idspell")
+    private List<SpellCircle> spellCircleList;
     @JoinColumn(name = "idelement_type", referencedColumnName = "idelement_type")
     @ManyToOne(optional = false)
     private ElementType idelementType;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idspell")
-    private Collection<SpellCircle> spellCircleCollection;
+    @JoinColumn(name = "idspell_class", referencedColumnName = "idspell_class")
+    @ManyToOne(optional = false)
+    private SpellClass idspellClass;
+    @JoinColumn(name = "idspell_type", referencedColumnName = "idspell_type")
+    @ManyToOne(optional = false)
+    private SpellType idspellType;
+    @JoinColumn(name = "iduser", referencedColumnName = "iduser")
+    @ManyToOne(optional = false)
+    private User iduser;
 
     public Spell() {
     }
@@ -140,28 +131,12 @@ public class Spell implements Serializable {
         this.description = description;
     }
 
-    public User getIduser() {
-        return iduser;
+    public List<SpellCircle> getSpellCircleList() {
+        return spellCircleList;
     }
 
-    public void setIduser(User iduser) {
-        this.iduser = iduser;
-    }
-
-    public SpellType getIdspellType() {
-        return idspellType;
-    }
-
-    public void setIdspellType(SpellType idspellType) {
-        this.idspellType = idspellType;
-    }
-
-    public SpellClass getIdspellClass() {
-        return idspellClass;
-    }
-
-    public void setIdspellClass(SpellClass idspellClass) {
-        this.idspellClass = idspellClass;
+    public void setSpellCircleList(List<SpellCircle> spellCircleList) {
+        this.spellCircleList = spellCircleList;
     }
 
     public ElementType getIdelementType() {
@@ -172,13 +147,28 @@ public class Spell implements Serializable {
         this.idelementType = idelementType;
     }
 
-    @XmlTransient
-    public Collection<SpellCircle> getSpellCircleCollection() {
-        return spellCircleCollection;
+    public SpellClass getIdspellClass() {
+        return idspellClass;
     }
 
-    public void setSpellCircleCollection(Collection<SpellCircle> spellCircleCollection) {
-        this.spellCircleCollection = spellCircleCollection;
+    public void setIdspellClass(SpellClass idspellClass) {
+        this.idspellClass = idspellClass;
+    }
+
+    public SpellType getIdspellType() {
+        return idspellType;
+    }
+
+    public void setIdspellType(SpellType idspellType) {
+        this.idspellType = idspellType;
+    }
+
+    public User getIduser() {
+        return iduser;
+    }
+
+    public void setIduser(User iduser) {
+        this.iduser = iduser;
     }
 
     @Override
@@ -205,5 +195,5 @@ public class Spell implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.Spell[ idspell=" + idspell + " ]";
     }
-
+    
 }

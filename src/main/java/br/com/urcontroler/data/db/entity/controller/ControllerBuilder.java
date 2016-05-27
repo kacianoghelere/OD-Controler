@@ -1,6 +1,6 @@
 package br.com.urcontroler.data.db.entity.controller;
 
-import br.com.urcontroler.data.db.entity.controller.impl.GenericController;
+import br.com.urcontroler.data.db.entity.controller.impl.AbstractEntityController;
 import javax.persistence.EntityManagerFactory;
 
 /**
@@ -21,8 +21,8 @@ public class ControllerBuilder {
      * entidades
      * @return {@code GenericController(T)} Nova instancia de GenericDAO
      */
-    public static <T extends Object> GenericController<T> get(Class<T> ctrlClass, EntityManagerFactory emf) {
-        return new GenericController<T>(ctrlClass, emf) {
+    public static <T extends Object> AbstractEntityController<T> get(Class<T> ctrlClass, EntityManagerFactory emf) {
+        return new AbstractEntityController<T>(ctrlClass, emf) {
         };
     }
 }

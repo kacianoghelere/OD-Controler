@@ -1,16 +1,18 @@
 package br.com.urcontroler.main.util;
 
+import br.com.urcontroler.data.db.entity.Description;
+
 /**
  * Classe utilitária para gerar descrições de telas
  *
  * @author Kaciano Ghelere
  */
-public class Description {
+public class DescriptionObject {
 
     private String title;
     private String description;
     private String commit;
-    private String process;
+    private String proccess;
     private String clear;
     private String load;
     private final String base = "<html>"
@@ -50,11 +52,11 @@ public class Description {
     /**
      * Cria nova instancia de Description
      */
-    private Description() {
+    private DescriptionObject() {
         this.title = "--";
         this.description = "--";
         this.commit = "--";
-        this.process = "--";
+        this.proccess = "--";
         this.clear = "--";
         this.load = "--";
     }
@@ -65,15 +67,15 @@ public class Description {
      * @param title {@code String} Texto do titulo
      * @param description {@code String} Texto da descrição
      * @param commit {@code String} Texto da função de salvar
-     * @param process {@code String} Texto da função de processar
+     * @param proccess {@code String} Texto da função de processar
      * @param clear {@code String} Texto da função de limpar
      * @param load {@code String} Texto da função de carregar
      */
-    private Description(String title, String description, String commit, String process, String clear, String load) {
+    private DescriptionObject(String title, String description, String commit, String proccess, String clear, String load) {
         this.title = title;
         this.description = description;
         this.commit = commit;
-        this.process = process;
+        this.proccess = proccess;
         this.clear = clear;
         this.load = load;
     }
@@ -84,7 +86,7 @@ public class Description {
      * @return {@code String} Descrição formatada da view
      */
     public String format() {
-        return String.format(base, title, description, commit, process, clear, load);
+        return String.format(base, title, description, commit, proccess, clear, load);
     }
 
     /**
@@ -92,13 +94,13 @@ public class Description {
      */
     public static class Builder {
 
-        private Description description;
+        private DescriptionObject description;
 
         /**
          * Cria nova instancia de builder
          */
         public Builder() {
-            this.description = new Description();
+            this.description = new DescriptionObject();
         }
 
         /**
@@ -112,7 +114,7 @@ public class Description {
          * @param load {@code String} Texto da função de carregar
          */
         public Builder(String title, String description, String save, String procces, String clear, String load) {
-            this.description = new Description(title, description, save, procces, clear, load);
+            this.description = new DescriptionObject(title, description, save, procces, clear, load);
         }
 
         /**
@@ -120,7 +122,7 @@ public class Description {
          *
          * @return {@code Description} Descrição construida
          */
-        public Description apply() {
+        public DescriptionObject apply() {
             return this.description;
         }
 
@@ -189,6 +191,22 @@ public class Description {
             this.description.setLoad(load);
             return this;
         }
+
+        /**
+         * Cria descrição a partir de texto
+         *
+         * @param desc {@code String } Texto da descrição
+         * @return {@code DescriptionObject} Objeto de descrição
+         */
+        public DescriptionObject fromBase(Description desc) {
+            return this.setTitle(desc.getTitle())
+                    .setDescription(desc.getDescription())
+                    .setSave(desc.getCommitAction())
+                    .setClear(desc.getClearAction())
+                    .setLoad(desc.getLoadAction())
+                    .setProcess(desc.getProcessAction())
+                    .apply();
+        }
     }
 
     /**
@@ -206,7 +224,7 @@ public class Description {
      * @param title {@code String} Texto do titulo
      * @return {@code Description} Construtor de descrição
      */
-    private Description setTitle(String title) {
+    private DescriptionObject setTitle(String title) {
         this.title = title;
         return this;
     }
@@ -226,7 +244,7 @@ public class Description {
      * @param description {@code String} Texto da descrição
      * @return {@code Description} Construtor de descrição
      */
-    private Description setDescription(String description) {
+    private DescriptionObject setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -246,7 +264,7 @@ public class Description {
      * @param save {@code String} Texto da função de salvar
      * @return {@code Description} Construtor de descrição
      */
-    private Description setSave(String save) {
+    private DescriptionObject setSave(String save) {
         this.commit = save;
         return this;
     }
@@ -256,8 +274,8 @@ public class Description {
      *
      * @return {@code String} Texto da função de processar
      */
-    public String getProcess() {
-        return process;
+    public String getProccess() {
+        return proccess;
     }
 
     /**
@@ -266,8 +284,8 @@ public class Description {
      * @param procces {@code String} Texto da função de processar
      * @return {@code Description} Construtor de descrição
      */
-    private Description setProcces(String procces) {
-        this.process = procces;
+    private DescriptionObject setProcces(String procces) {
+        this.proccess = procces;
         return this;
     }
 
@@ -286,7 +304,7 @@ public class Description {
      * @param clear {@code String} Texto da função de limpar
      * @return {@code Description} Construtor de descrição
      */
-    private Description setClear(String clear) {
+    private DescriptionObject setClear(String clear) {
         this.clear = clear;
         return this;
     }
@@ -306,7 +324,7 @@ public class Description {
      * @param load {@code String} Texto da função de carregar
      * @return {@code Description} Construtor de descrição
      */
-    private Description setLoad(String load) {
+    private DescriptionObject setLoad(String load) {
         this.load = load;
         return this;
     }

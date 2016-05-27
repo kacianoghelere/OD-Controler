@@ -1,12 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,16 +17,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "expertise_type")
-@XmlRootElement
+@Table(name = "expertise_type", catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "ExpertiseType.findAll", query = "SELECT e FROM ExpertiseType e"),
     @NamedQuery(name = "ExpertiseType.findByIdexpertiseType", query = "SELECT e FROM ExpertiseType e WHERE e.idexpertiseType = :idexpertiseType"),
@@ -41,10 +37,9 @@ public class ExpertiseType implements Serializable {
     @Column(name = "idexpertise_type")
     private Long idexpertiseType;
     @Basic(optional = false)
-    @Column(name = "name")
     private String name;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idexpertiseType")
-    private Collection<Expertise> expertiseCollection;
+    private List<Expertise> expertiseList;
 
     public ExpertiseType() {
     }
@@ -74,13 +69,12 @@ public class ExpertiseType implements Serializable {
         this.name = name;
     }
 
-    @XmlTransient
-    public Collection<Expertise> getExpertiseCollection() {
-        return expertiseCollection;
+    public List<Expertise> getExpertiseList() {
+        return expertiseList;
     }
 
-    public void setExpertiseCollection(Collection<Expertise> expertiseCollection) {
-        this.expertiseCollection = expertiseCollection;
+    public void setExpertiseList(List<Expertise> expertiseList) {
+        this.expertiseList = expertiseList;
     }
 
     @Override
@@ -107,5 +101,5 @@ public class ExpertiseType implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.ExpertiseType[ idexpertiseType=" + idexpertiseType + " ]";
     }
-
+    
 }

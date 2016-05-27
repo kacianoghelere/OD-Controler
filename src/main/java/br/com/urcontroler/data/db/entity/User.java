@@ -1,14 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,16 +22,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "user")
-@XmlRootElement
+@Table(catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
     @NamedQuery(name = "User.findByIduser", query = "SELECT u FROM User u WHERE u.iduser = :iduser"),
@@ -47,16 +44,12 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "iduser")
     private Long iduser;
     @Basic(optional = false)
-    @Column(name = "name")
     private String name;
     @Basic(optional = false)
-    @Column(name = "login")
     private String login;
     @Basic(optional = false)
-    @Column(name = "pass")
     private String pass;
     @Basic(optional = false)
     @Column(name = "inc_date")
@@ -65,35 +58,34 @@ public class User implements Serializable {
     @Column(name = "last_login")
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastLogin;
-    @Column(name = "email")
     private String email;
-    @OneToMany(cascade = {}, mappedBy = "iduser")
-    private Collection<Breed> breedCollection;
-    @OneToMany(cascade = {}, mappedBy = "iduser")
-    private Collection<Armor> armorCollection;
-    @OneToMany(cascade = {}, mappedBy = "iduser")
-    private Collection<Perk> perkCollection;
-    @OneToMany(cascade = {}, mappedBy = "iduser")
-    private Collection<Campain> campainCollection;
-    @OneToMany(cascade = {}, mappedBy = "iduser")
-    private Collection<Spell> spellCollection;
-    @OneToMany(cascade = {}, mappedBy = "iduser")
-    private Collection<Occupation> occupationCollection;
-    @OneToMany(cascade = {}, mappedBy = "iduser")
-    private Collection<Expertise> expertiseCollection;
-    @OneToMany(cascade = {}, mappedBy = "iduser")
-    private Collection<Effect> effectCollection;
-    @OneToMany(cascade = {}, mappedBy = "iduser")
-    private Collection<Skill> skillCollection;
-    @OneToMany(cascade = {}, mappedBy = "iduser")
-    private Collection<Item> itemCollection;
-    @OneToMany(cascade = {}, mappedBy = "iduser")
-    private Collection<Weapon> weaponCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "iduser")
+    private List<Occupation> occupationList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "iduser")
+    private List<Expertise> expertiseList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "iduser")
+    private List<CharacterSheet> characterSheetList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "iduser")
+    private List<Weapon> weaponList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "iduser")
+    private List<Skill> skillList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "iduser")
+    private List<Perk> perkList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "iduser")
+    private List<Spell> spellList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "iduser")
+    private List<Item> itemList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "iduser")
+    private List<Campain> campainList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "iduser")
+    private List<Breed> breedList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "iduser")
+    private List<Armor> armorList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "iduser")
+    private List<Effect> effectList;
     @JoinColumn(name = "idrole", referencedColumnName = "idrole")
     @ManyToOne(optional = false)
     private Role idrole;
-    @OneToMany(cascade = {}, mappedBy = "iduser")
-    private Collection<CharacterSheet> characterSheetCollection;
 
     public User() {
     }
@@ -166,103 +158,100 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    @XmlTransient
-    public Collection<Breed> getBreedCollection() {
-        return breedCollection;
+    public List<Occupation> getOccupationList() {
+        return occupationList;
     }
 
-    public void setBreedCollection(Collection<Breed> breedCollection) {
-        this.breedCollection = breedCollection;
+    public void setOccupationList(List<Occupation> occupationList) {
+        this.occupationList = occupationList;
     }
 
-    @XmlTransient
-    public Collection<Armor> getArmorCollection() {
-        return armorCollection;
+    public List<Expertise> getExpertiseList() {
+        return expertiseList;
     }
 
-    public void setArmorCollection(Collection<Armor> armorCollection) {
-        this.armorCollection = armorCollection;
+    public void setExpertiseList(List<Expertise> expertiseList) {
+        this.expertiseList = expertiseList;
     }
 
-    @XmlTransient
-    public Collection<Perk> getPerkCollection() {
-        return perkCollection;
+    public List<CharacterSheet> getCharacterSheetList() {
+        return characterSheetList;
     }
 
-    public void setPerkCollection(Collection<Perk> perkCollection) {
-        this.perkCollection = perkCollection;
+    public void setCharacterSheetList(List<CharacterSheet> characterSheetList) {
+        this.characterSheetList = characterSheetList;
     }
 
-    @XmlTransient
-    public Collection<Campain> getCampainCollection() {
-        return campainCollection;
+    public List<Weapon> getWeaponList() {
+        return weaponList;
     }
 
-    public void setCampainCollection(Collection<Campain> campainCollection) {
-        this.campainCollection = campainCollection;
+    public void setWeaponList(List<Weapon> weaponList) {
+        this.weaponList = weaponList;
     }
 
-    @XmlTransient
-    public Collection<Spell> getSpellCollection() {
-        return spellCollection;
+    public List<Skill> getSkillList() {
+        return skillList;
     }
 
-    public void setSpellCollection(Collection<Spell> spellCollection) {
-        this.spellCollection = spellCollection;
+    public void setSkillList(List<Skill> skillList) {
+        this.skillList = skillList;
     }
 
-    @XmlTransient
-    public Collection<Occupation> getOccupationCollection() {
-        return occupationCollection;
+    public List<Perk> getPerkList() {
+        return perkList;
     }
 
-    public void setOccupationCollection(Collection<Occupation> occupationCollection) {
-        this.occupationCollection = occupationCollection;
+    public void setPerkList(List<Perk> perkList) {
+        this.perkList = perkList;
     }
 
-    @XmlTransient
-    public Collection<Expertise> getExpertiseCollection() {
-        return expertiseCollection;
+    public List<Spell> getSpellList() {
+        return spellList;
     }
 
-    public void setExpertiseCollection(Collection<Expertise> expertiseCollection) {
-        this.expertiseCollection = expertiseCollection;
+    public void setSpellList(List<Spell> spellList) {
+        this.spellList = spellList;
     }
 
-    @XmlTransient
-    public Collection<Effect> getEffectCollection() {
-        return effectCollection;
+    public List<Item> getItemList() {
+        return itemList;
     }
 
-    public void setEffectCollection(Collection<Effect> effectCollection) {
-        this.effectCollection = effectCollection;
+    public void setItemList(List<Item> itemList) {
+        this.itemList = itemList;
     }
 
-    @XmlTransient
-    public Collection<Skill> getSkillCollection() {
-        return skillCollection;
+    public List<Campain> getCampainList() {
+        return campainList;
     }
 
-    public void setSkillCollection(Collection<Skill> skillCollection) {
-        this.skillCollection = skillCollection;
+    public void setCampainList(List<Campain> campainList) {
+        this.campainList = campainList;
     }
 
-    @XmlTransient
-    public Collection<Item> getItemCollection() {
-        return itemCollection;
+    public List<Breed> getBreedList() {
+        return breedList;
     }
 
-    public void setItemCollection(Collection<Item> itemCollection) {
-        this.itemCollection = itemCollection;
+    public void setBreedList(List<Breed> breedList) {
+        this.breedList = breedList;
     }
 
-    @XmlTransient
-    public Collection<Weapon> getWeaponCollection() {
-        return weaponCollection;
+    public List<Armor> getArmorList() {
+        return armorList;
     }
 
-    public void setWeaponCollection(Collection<Weapon> weaponCollection) {
-        this.weaponCollection = weaponCollection;
+    public void setArmorList(List<Armor> armorList) {
+        this.armorList = armorList;
+    }
+
+    public List<Effect> getEffectList() {
+        return effectList;
+    }
+
+    public void setEffectList(List<Effect> effectList) {
+        this.effectList = effectList;
     }
 
     public Role getIdrole() {
@@ -271,15 +260,6 @@ public class User implements Serializable {
 
     public void setIdrole(Role idrole) {
         this.idrole = idrole;
-    }
-
-    @XmlTransient
-    public Collection<CharacterSheet> getCharacterSheetCollection() {
-        return characterSheetCollection;
-    }
-
-    public void setCharacterSheetCollection(Collection<CharacterSheet> characterSheetCollection) {
-        this.characterSheetCollection = characterSheetCollection;
     }
 
     @Override
@@ -306,5 +286,5 @@ public class User implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.User[ iduser=" + iduser + " ]";
     }
-
+    
 }

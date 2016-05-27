@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
@@ -17,15 +16,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "spell_circle")
-@XmlRootElement
+@Table(name = "spell_circle", catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "SpellCircle.findAll", query = "SELECT s FROM SpellCircle s"),
     @NamedQuery(name = "SpellCircle.findByIdspellCircle", query = "SELECT s FROM SpellCircle s WHERE s.idspellCircle = :idspellCircle"),
@@ -39,14 +36,13 @@ public class SpellCircle implements Serializable {
     @Column(name = "idspell_circle")
     private Long idspellCircle;
     @Basic(optional = false)
-    @Column(name = "circle")
     private int circle;
-    @JoinColumn(name = "idspell_class", referencedColumnName = "idspell_class")
-    @ManyToOne(optional = false)
-    private SpellClass idspellClass;
     @JoinColumn(name = "idspell", referencedColumnName = "idspell")
     @ManyToOne(optional = false)
     private Spell idspell;
+    @JoinColumn(name = "idspell_class", referencedColumnName = "idspell_class")
+    @ManyToOne(optional = false)
+    private SpellClass idspellClass;
 
     public SpellCircle() {
     }
@@ -76,20 +72,20 @@ public class SpellCircle implements Serializable {
         this.circle = circle;
     }
 
-    public SpellClass getIdspellClass() {
-        return idspellClass;
-    }
-
-    public void setIdspellClass(SpellClass idspellClass) {
-        this.idspellClass = idspellClass;
-    }
-
     public Spell getIdspell() {
         return idspell;
     }
 
     public void setIdspell(Spell idspell) {
         this.idspell = idspell;
+    }
+
+    public SpellClass getIdspellClass() {
+        return idspellClass;
+    }
+
+    public void setIdspellClass(SpellClass idspellClass) {
+        this.idspellClass = idspellClass;
     }
 
     @Override
@@ -116,5 +112,5 @@ public class SpellCircle implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.SpellCircle[ idspellCircle=" + idspellCircle + " ]";
     }
-
+    
 }

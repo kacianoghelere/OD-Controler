@@ -1,13 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -15,15 +13,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "campain_members")
-@XmlRootElement
+@Table(name = "campain_members", catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "CampainMembers.findAll", query = "SELECT c FROM CampainMembers c"),
     @NamedQuery(name = "CampainMembers.findByIdcampain", query = "SELECT c FROM CampainMembers c WHERE c.campainMembersPK.idcampain = :idcampain"),
@@ -35,14 +31,13 @@ public class CampainMembers implements Serializable {
     @EmbeddedId
     protected CampainMembersPK campainMembersPK;
     @Basic(optional = false)
-    @Column(name = "idactive")
     private boolean idactive;
-    @JoinColumn(name = "idcharacter", referencedColumnName = "idcharacter", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private CharacterSheet characterSheet;
     @JoinColumn(name = "idcampain", referencedColumnName = "idcampain", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Campain campain;
+    @JoinColumn(name = "idcharacter", referencedColumnName = "idcharacter", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private CharacterSheet characterSheet;
 
     public CampainMembers() {
     }
@@ -76,20 +71,20 @@ public class CampainMembers implements Serializable {
         this.idactive = idactive;
     }
 
-    public CharacterSheet getCharacterSheet() {
-        return characterSheet;
-    }
-
-    public void setCharacterSheet(CharacterSheet characterSheet) {
-        this.characterSheet = characterSheet;
-    }
-
     public Campain getCampain() {
         return campain;
     }
 
     public void setCampain(Campain campain) {
         this.campain = campain;
+    }
+
+    public CharacterSheet getCharacterSheet() {
+        return characterSheet;
+    }
+
+    public void setCharacterSheet(CharacterSheet characterSheet) {
+        this.characterSheet = characterSheet;
     }
 
     @Override
@@ -116,5 +111,5 @@ public class CampainMembers implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.CampainMembers[ campainMembersPK=" + campainMembersPK + " ]";
     }
-
+    
 }

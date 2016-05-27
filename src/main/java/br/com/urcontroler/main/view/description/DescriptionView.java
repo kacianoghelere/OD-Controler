@@ -3,7 +3,7 @@ package br.com.urcontroler.main.view.description;
 import br.com.gmp.comps.model.GListModel;
 import br.com.urcontroler.data.entity.MenuItem;
 import br.com.urcontroler.main.MainScreen;
-import br.com.urcontroler.main.util.Description;
+import br.com.urcontroler.main.util.DescriptionObject;
 import br.com.urcontroler.main.view.View;
 import br.com.urcontroler.main.view.exception.ViewException;
 import br.com.urcontroler.main.view.object.ViewParameter;
@@ -52,7 +52,7 @@ public class DescriptionView extends View {
             editing = (MenuItem) gListItems.getSelectedValue();
             gTName.setText(editing.getDescription().getTitle());
             gTCommit.setText(editing.getDescription().getCommit());
-            gTProcces.setText(editing.getDescription().getProcess());
+            gTProcces.setText(editing.getDescription().getProccess());
             gTClear.setText(editing.getDescription().getClear());
             gTLoad.setText(editing.getDescription().getLoad());
             gTADescription.setText(editing.getDescription().getDescription());
@@ -80,8 +80,8 @@ public class DescriptionView extends View {
      *
      * @return {@code Description} Descrição da View
      */
-    private Description rebuild() {
-        Description desc = new Description.Builder()
+    private DescriptionObject rebuild() {
+        DescriptionObject desc = new DescriptionObject.Builder()
                 .setTitle(!gTName.isEmpty() ? gTName.getText() : "--")
                 .setSave(!gTCommit.isEmpty() ? gTCommit.getText() : "--")
                 .setProcess(!gTProcces.isEmpty() ? gTProcces.getText() : "--")
@@ -94,8 +94,8 @@ public class DescriptionView extends View {
     }
 
     @Override
-    public Description getDescription() {
-        return new Description.Builder()
+    public DescriptionObject getDescription() {
+        return new DescriptionObject.Builder()
                 .setTitle(getTitle())
                 .setDescription("Tela de controle e cadastro de descrições")
                 .setSave("Remove os itens antigos e salva os novos.")

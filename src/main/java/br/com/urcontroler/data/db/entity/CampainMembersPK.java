@@ -1,27 +1,23 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Embeddable
 public class CampainMembersPK implements Serializable {
 
     @Basic(optional = false)
-    @Column(name = "idcampain")
     private long idcampain;
     @Basic(optional = false)
-    @Column(name = "idcharacter")
     private long idcharacter;
 
     public CampainMembersPK() {
@@ -76,5 +72,5 @@ public class CampainMembersPK implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.CampainMembersPK[ idcampain=" + idcampain + ", idcharacter=" + idcharacter + " ]";
     }
-
+    
 }

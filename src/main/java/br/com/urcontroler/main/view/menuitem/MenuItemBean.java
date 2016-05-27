@@ -1,18 +1,19 @@
 package br.com.urcontroler.main.view.menuitem;
 
 import br.com.gmp.utils.object.ObjectWrapper;
-import br.com.urcontroler.data.db.dao.MenuDAO;
-import br.com.urcontroler.data.db.dao.MenuItemDAO;
-import br.com.urcontroler.data.entity.Menu;
-import br.com.urcontroler.data.entity.MenuItem;
-import br.com.urcontroler.main.object.BeanEvent;
-import br.com.urcontroler.main.util.Description;
-import br.com.urcontroler.main.view.bean.ViewBean;
+import br.com.urcontroler.data.db.entity.Menu;
+import br.com.urcontroler.data.db.entity.MenuItem;
+import br.com.urcontroler.data.db.entity.controller.MenuController;
+import br.com.urcontroler.data.db.entity.controller.MenuItemController;
 import br.com.urcontroler.data.enums.ViewType;
+import br.com.urcontroler.main.object.BeanEvent;
+import br.com.urcontroler.main.view.bean.ViewBean;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
@@ -23,7 +24,8 @@ import javax.swing.ImageIcon;
  */
 public class MenuItemBean extends ViewBean<MenuItemView> {
 
-    private final MenuItemDAO dao;
+    private MenuController menuController;
+    private MenuItemController controller;
 
     /**
      * Cria nova instancia de MenuItemBean
@@ -32,15 +34,29 @@ public class MenuItemBean extends ViewBean<MenuItemView> {
      */
     public MenuItemBean(MenuItemView view) {
         super(view);
-        dao = new MenuItemDAO();
+        try {
+            this.controller = (MenuItemController) view.getController(MenuItemController.class);
+            this.menuController = (MenuController) view.getController(MenuController.class);
+        } catch (ClassNotFoundException | InstantiationException ex) {
+            Logger.getLogger(MenuItemBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
         getView().getParentModel().setData(getParentMenus());
         getView().getIconModel().setData(getItemIcons());
         getView().getTypeModel().setData(ViewType.values());
     }
 
+    /**
+     * Retorna lista de entidades
+     *
+     * @return {@code List(MenuItem)} Lista de entidades
+     */
+    public List<MenuItem> getList() {
+        return this.controller.findEntities();
+    }
+
     @Override
     public void onCommit(BeanEvent evt) throws Exception {
-        dao.replaceAll(getView().getModel().getData());
+        controller.replaceAll(getView().getModel().getData());
         getView().getMainScreen().reloadMenus();
     }
 
@@ -56,10 +72,8 @@ public class MenuItemBean extends ViewBean<MenuItemView> {
         String title = (String) ow.getValue("title");
         Integer icon = (Integer) ow.getValue("icon");
         String itemClass = (String) ow.getValue("class");
-        Long menu = ((Menu) ow.getValue("menu")).getId();
-        ViewType type = (ViewType) ow.getValue("type");
-        MenuItem item = new MenuItem(getNextID(), menu, itemClass, title,
-                getIcons()[icon], new Description.Builder().apply(), type);
+        Menu menu = (Menu) ow.getValue("menu");
+        MenuItem item = new MenuItem(menu, itemClass, title, getIcons()[icon]);
         getView().getModel().add(item);
     }
 
@@ -101,24 +115,9 @@ public class MenuItemBean extends ViewBean<MenuItemView> {
     private List<Menu> getParentMenus() {
         List<Menu> parents = new ArrayList<>();
         parents.add(new Menu((long) 0, "Raiz", null));
-        for (Menu menu : new MenuDAO().getList()) {
+        for (Menu menu : menuController.findEntities()) {
             parents.add(menu);
         }
         return parents;
-    }
-
-    /**
-     * Retorna o próximo ID da lista
-     *
-     * @return {@code Long} Próximo ID
-     */
-    public Long getNextID() {
-        Long id = (long) 0;
-        for (MenuItem menu : getView().getModel().getData()) {
-            if (id < menu.getId()) {
-                id = menu.getId();
-            }
-        }
-        return (id + 1);
     }
 }

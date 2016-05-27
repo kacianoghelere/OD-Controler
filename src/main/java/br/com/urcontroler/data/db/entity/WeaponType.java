@@ -1,12 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,16 +18,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "weapon_type")
-@XmlRootElement
+@Table(name = "weapon_type", catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "WeaponType.findAll", query = "SELECT w FROM WeaponType w"),
     @NamedQuery(name = "WeaponType.findByIdweaponType", query = "SELECT w FROM WeaponType w WHERE w.idweaponType = :idweaponType"),
@@ -43,17 +39,15 @@ public class WeaponType implements Serializable {
     @Column(name = "idweapon_type")
     private Long idweaponType;
     @Basic(optional = false)
-    @Column(name = "name")
     private String name;
     @Basic(optional = false)
-    @Column(name = "ranged")
     private boolean ranged;
-    @ManyToMany(mappedBy = "weaponTypeCollection")
-    private Collection<Occupation> occupationCollection;
-    @ManyToMany(mappedBy = "weaponTypeCollection")
-    private Collection<Breed> breedCollection;
+    @ManyToMany(mappedBy = "weaponTypeList")
+    private List<Breed> breedList;
+    @ManyToMany(mappedBy = "weaponTypeList")
+    private List<Occupation> occupationList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idweaponType")
-    private Collection<Weapon> weaponCollection;
+    private List<Weapon> weaponList;
 
     public WeaponType() {
     }
@@ -92,31 +86,28 @@ public class WeaponType implements Serializable {
         this.ranged = ranged;
     }
 
-    @XmlTransient
-    public Collection<Occupation> getOccupationCollection() {
-        return occupationCollection;
+    public List<Breed> getBreedList() {
+        return breedList;
     }
 
-    public void setOccupationCollection(Collection<Occupation> occupationCollection) {
-        this.occupationCollection = occupationCollection;
+    public void setBreedList(List<Breed> breedList) {
+        this.breedList = breedList;
     }
 
-    @XmlTransient
-    public Collection<Breed> getBreedCollection() {
-        return breedCollection;
+    public List<Occupation> getOccupationList() {
+        return occupationList;
     }
 
-    public void setBreedCollection(Collection<Breed> breedCollection) {
-        this.breedCollection = breedCollection;
+    public void setOccupationList(List<Occupation> occupationList) {
+        this.occupationList = occupationList;
     }
 
-    @XmlTransient
-    public Collection<Weapon> getWeaponCollection() {
-        return weaponCollection;
+    public List<Weapon> getWeaponList() {
+        return weaponList;
     }
 
-    public void setWeaponCollection(Collection<Weapon> weaponCollection) {
-        this.weaponCollection = weaponCollection;
+    public void setWeaponList(List<Weapon> weaponList) {
+        this.weaponList = weaponList;
     }
 
     @Override
@@ -143,5 +134,5 @@ public class WeaponType implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.WeaponType[ idweaponType=" + idweaponType + " ]";
     }
-
+    
 }

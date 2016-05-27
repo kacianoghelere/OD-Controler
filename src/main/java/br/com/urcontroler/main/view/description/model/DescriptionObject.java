@@ -3,7 +3,6 @@ package br.com.urcontroler.main.view.description.model;
 import br.com.gmp.utils.annotations.ColumnName;
 import br.com.gmp.utils.annotations.Editable;
 import br.com.urcontroler.data.entity.MenuItem;
-import br.com.urcontroler.main.util.Description;
 
 /**
  * Objeto de carregamento de descrições
@@ -44,10 +43,10 @@ public class DescriptionObject {
     public DescriptionObject(MenuItem item) {
         this.item = item;
         if (item.getDescription() == null) {
-            item.setDescription(new Description.Builder().apply());
+            item.setDescription(new br.com.urcontroler.main.util.DescriptionObject.Builder().apply());
         }
         this.commit = item.getDescription().getCommit();
-        this.procces = item.getDescription().getProcess();
+        this.procces = item.getDescription().getProccess();
         this.clear = item.getDescription().getClear();
         this.load = item.getDescription().getLoad();
         this.description = item.getDescription().getDescription();
@@ -59,10 +58,10 @@ public class DescriptionObject {
      * @param item {@code MenuItem} Item de menu
      * @param description {@code Description} Objeto da descrição
      */
-    public DescriptionObject(MenuItem item, Description description) {
+    public DescriptionObject(MenuItem item, br.com.urcontroler.main.util.DescriptionObject description) {
         this.item = item;
         this.commit = description.getCommit();
-        this.procces = description.getProcess();
+        this.procces = description.getProccess();
         this.clear = description.getClear();
         this.load = description.getLoad();
         this.description = description.getDescription();
@@ -93,8 +92,8 @@ public class DescriptionObject {
      *
      * @return {@code Description} Descrição
      */
-    public Description build() {
-        return new Description.Builder(item.getTitle(),
+    public br.com.urcontroler.main.util.DescriptionObject build() {
+        return new br.com.urcontroler.main.util.DescriptionObject.Builder(item.getTitle(),
                 description, commit, procces, clear, load).apply();
     }
 

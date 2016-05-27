@@ -1,15 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,16 +21,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "character_sheet")
-@XmlRootElement
+@Table(name = "character_sheet", catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "CharacterSheet.findAll", query = "SELECT c FROM CharacterSheet c"),
     @NamedQuery(name = "CharacterSheet.findByIdcharacter", query = "SELECT c FROM CharacterSheet c WHERE c.idcharacter = :idcharacter"),
@@ -46,39 +41,33 @@ public class CharacterSheet implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idcharacter")
     private Long idcharacter;
-    @Column(name = "name")
     private String name;
-    @Column(name = "weight")
     private Long weight;
-    @Column(name = "height")
     private Long height;
-    @Column(name = "age")
     private Integer age;
     @Lob
-    @Column(name = "description")
     private String description;
     @JoinTable(name = "character_expertise", joinColumns = {
         @JoinColumn(name = "idcharacter", referencedColumnName = "idcharacter")}, inverseJoinColumns = {
         @JoinColumn(name = "expertise_idexpertise", referencedColumnName = "idexpertise")})
     @ManyToMany
-    private Collection<Expertise> expertiseCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "characterSheet")
-    private Collection<CampainMembers> campainMembersCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcharacter")
-    private Collection<CharacterJournal> characterJournalCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcharacter")
-    private Collection<CharacterStatsAttr> characterStatsAttrCollection;
-    @JoinColumn(name = "iduser", referencedColumnName = "iduser")
-    @ManyToOne(optional = false)
-    private User iduser;
-    @JoinColumn(name = "idoccupation", referencedColumnName = "idoccupation")
-    @ManyToOne(optional = false)
-    private Occupation idoccupation;
+    private List<Expertise> expertiseList;
     @JoinColumn(name = "idbreed", referencedColumnName = "idbreed")
     @ManyToOne(optional = false)
     private Breed idbreed;
+    @JoinColumn(name = "idoccupation", referencedColumnName = "idoccupation")
+    @ManyToOne(optional = false)
+    private Occupation idoccupation;
+    @JoinColumn(name = "iduser", referencedColumnName = "iduser")
+    @ManyToOne(optional = false)
+    private User iduser;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "characterSheet")
+    private List<CampainMembers> campainMembersList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcharacter")
+    private List<CharacterJournal> characterJournalList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcharacter")
+    private List<CharacterStatsAttr> characterStatsAttrList;
 
     public CharacterSheet() {
     }
@@ -135,48 +124,20 @@ public class CharacterSheet implements Serializable {
         this.description = description;
     }
 
-    @XmlTransient
-    public Collection<Expertise> getExpertiseCollection() {
-        return expertiseCollection;
+    public List<Expertise> getExpertiseList() {
+        return expertiseList;
     }
 
-    public void setExpertiseCollection(Collection<Expertise> expertiseCollection) {
-        this.expertiseCollection = expertiseCollection;
+    public void setExpertiseList(List<Expertise> expertiseList) {
+        this.expertiseList = expertiseList;
     }
 
-    @XmlTransient
-    public Collection<CampainMembers> getCampainMembersCollection() {
-        return campainMembersCollection;
+    public Breed getIdbreed() {
+        return idbreed;
     }
 
-    public void setCampainMembersCollection(Collection<CampainMembers> campainMembersCollection) {
-        this.campainMembersCollection = campainMembersCollection;
-    }
-
-    @XmlTransient
-    public Collection<CharacterJournal> getCharacterJournalCollection() {
-        return characterJournalCollection;
-    }
-
-    public void setCharacterJournalCollection(Collection<CharacterJournal> characterJournalCollection) {
-        this.characterJournalCollection = characterJournalCollection;
-    }
-
-    @XmlTransient
-    public Collection<CharacterStatsAttr> getCharacterStatsAttrCollection() {
-        return characterStatsAttrCollection;
-    }
-
-    public void setCharacterStatsAttrCollection(Collection<CharacterStatsAttr> characterStatsAttrCollection) {
-        this.characterStatsAttrCollection = characterStatsAttrCollection;
-    }
-
-    public User getIduser() {
-        return iduser;
-    }
-
-    public void setIduser(User iduser) {
-        this.iduser = iduser;
+    public void setIdbreed(Breed idbreed) {
+        this.idbreed = idbreed;
     }
 
     public Occupation getIdoccupation() {
@@ -187,12 +148,36 @@ public class CharacterSheet implements Serializable {
         this.idoccupation = idoccupation;
     }
 
-    public Breed getIdbreed() {
-        return idbreed;
+    public User getIduser() {
+        return iduser;
     }
 
-    public void setIdbreed(Breed idbreed) {
-        this.idbreed = idbreed;
+    public void setIduser(User iduser) {
+        this.iduser = iduser;
+    }
+
+    public List<CampainMembers> getCampainMembersList() {
+        return campainMembersList;
+    }
+
+    public void setCampainMembersList(List<CampainMembers> campainMembersList) {
+        this.campainMembersList = campainMembersList;
+    }
+
+    public List<CharacterJournal> getCharacterJournalList() {
+        return characterJournalList;
+    }
+
+    public void setCharacterJournalList(List<CharacterJournal> characterJournalList) {
+        this.characterJournalList = characterJournalList;
+    }
+
+    public List<CharacterStatsAttr> getCharacterStatsAttrList() {
+        return characterStatsAttrList;
+    }
+
+    public void setCharacterStatsAttrList(List<CharacterStatsAttr> characterStatsAttrList) {
+        this.characterStatsAttrList = characterStatsAttrList;
     }
 
     @Override
@@ -219,5 +204,5 @@ public class CharacterSheet implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.CharacterSheet[ idcharacter=" + idcharacter + " ]";
     }
-
+    
 }

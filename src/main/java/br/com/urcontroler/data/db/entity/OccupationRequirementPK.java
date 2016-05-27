@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
@@ -12,13 +11,12 @@ import javax.persistence.Embeddable;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Embeddable
 public class OccupationRequirementPK implements Serializable {
 
     @Basic(optional = false)
-    @Column(name = "idoccupation")
     private long idoccupation;
     @Basic(optional = false)
     @Column(name = "idstats_attribute")
@@ -76,5 +74,5 @@ public class OccupationRequirementPK implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.OccupationRequirementPK[ idoccupation=" + idoccupation + ", idstatsAttribute=" + idstatsAttribute + " ]";
     }
-
+    
 }

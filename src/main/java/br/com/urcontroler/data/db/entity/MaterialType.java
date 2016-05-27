@@ -1,12 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,16 +17,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "material_type")
-@XmlRootElement
+@Table(name = "material_type", catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "MaterialType.findAll", query = "SELECT m FROM MaterialType m"),
     @NamedQuery(name = "MaterialType.findByIdmaterialType", query = "SELECT m FROM MaterialType m WHERE m.idmaterialType = :idmaterialType"),
@@ -40,10 +36,9 @@ public class MaterialType implements Serializable {
     @Basic(optional = false)
     @Column(name = "idmaterial_type")
     private Long idmaterialType;
-    @Column(name = "name")
     private String name;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idmaterialType")
-    private Collection<Weapon> weaponCollection;
+    private List<Weapon> weaponList;
 
     public MaterialType() {
     }
@@ -68,13 +63,12 @@ public class MaterialType implements Serializable {
         this.name = name;
     }
 
-    @XmlTransient
-    public Collection<Weapon> getWeaponCollection() {
-        return weaponCollection;
+    public List<Weapon> getWeaponList() {
+        return weaponList;
     }
 
-    public void setWeaponCollection(Collection<Weapon> weaponCollection) {
-        this.weaponCollection = weaponCollection;
+    public void setWeaponList(List<Weapon> weaponList) {
+        this.weaponList = weaponList;
     }
 
     @Override
@@ -101,5 +95,5 @@ public class MaterialType implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.MaterialType[ idmaterialType=" + idmaterialType + " ]";
     }
-
+    
 }

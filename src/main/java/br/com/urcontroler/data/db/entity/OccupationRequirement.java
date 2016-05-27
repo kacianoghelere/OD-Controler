@@ -1,13 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -15,15 +13,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "occupation_requirement")
-@XmlRootElement
+@Table(name = "occupation_requirement", catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "OccupationRequirement.findAll", query = "SELECT o FROM OccupationRequirement o"),
     @NamedQuery(name = "OccupationRequirement.findByIdoccupation", query = "SELECT o FROM OccupationRequirement o WHERE o.occupationRequirementPK.idoccupation = :idoccupation"),
@@ -35,14 +31,13 @@ public class OccupationRequirement implements Serializable {
     @EmbeddedId
     protected OccupationRequirementPK occupationRequirementPK;
     @Basic(optional = false)
-    @Column(name = "value")
     private int value;
-    @JoinColumn(name = "idstats_attribute", referencedColumnName = "idstats_attribute", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private StatsAttribute statsAttribute;
     @JoinColumn(name = "idoccupation", referencedColumnName = "idoccupation", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Occupation occupation;
+    @JoinColumn(name = "idstats_attribute", referencedColumnName = "idstats_attribute", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private StatsAttribute statsAttribute;
 
     public OccupationRequirement() {
     }
@@ -76,20 +71,20 @@ public class OccupationRequirement implements Serializable {
         this.value = value;
     }
 
-    public StatsAttribute getStatsAttribute() {
-        return statsAttribute;
-    }
-
-    public void setStatsAttribute(StatsAttribute statsAttribute) {
-        this.statsAttribute = statsAttribute;
-    }
-
     public Occupation getOccupation() {
         return occupation;
     }
 
     public void setOccupation(Occupation occupation) {
         this.occupation = occupation;
+    }
+
+    public StatsAttribute getStatsAttribute() {
+        return statsAttribute;
+    }
+
+    public void setStatsAttribute(StatsAttribute statsAttribute) {
+        this.statsAttribute = statsAttribute;
     }
 
     @Override
@@ -116,5 +111,5 @@ public class OccupationRequirement implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.OccupationRequirement[ occupationRequirementPK=" + occupationRequirementPK + " ]";
     }
-
+    
 }

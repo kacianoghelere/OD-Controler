@@ -1,15 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,16 +18,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "effect")
-@XmlRootElement
+@Table(catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Effect.findAll", query = "SELECT e FROM Effect e"),
     @NamedQuery(name = "Effect.findByIdeffect", query = "SELECT e FROM Effect e WHERE e.ideffect = :ideffect"),
@@ -41,20 +36,17 @@ public class Effect implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "ideffect")
     private Long ideffect;
-    @Column(name = "name")
     private String name;
-    @Column(name = "description")
     private String description;
-    @JoinColumn(name = "iduser", referencedColumnName = "iduser")
-    @ManyToOne(optional = false)
-    private User iduser;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ideffect")
+    private List<Skill> skillList;
     @JoinColumn(name = "ideffect_type", referencedColumnName = "ideffect_type")
     @ManyToOne(optional = false)
     private EffectType ideffectType;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ideffect")
-    private Collection<Skill> skillCollection;
+    @JoinColumn(name = "iduser", referencedColumnName = "iduser")
+    @ManyToOne(optional = false)
+    private User iduser;
 
     public Effect() {
     }
@@ -87,12 +79,12 @@ public class Effect implements Serializable {
         this.description = description;
     }
 
-    public User getIduser() {
-        return iduser;
+    public List<Skill> getSkillList() {
+        return skillList;
     }
 
-    public void setIduser(User iduser) {
-        this.iduser = iduser;
+    public void setSkillList(List<Skill> skillList) {
+        this.skillList = skillList;
     }
 
     public EffectType getIdeffectType() {
@@ -103,13 +95,12 @@ public class Effect implements Serializable {
         this.ideffectType = ideffectType;
     }
 
-    @XmlTransient
-    public Collection<Skill> getSkillCollection() {
-        return skillCollection;
+    public User getIduser() {
+        return iduser;
     }
 
-    public void setSkillCollection(Collection<Skill> skillCollection) {
-        this.skillCollection = skillCollection;
+    public void setIduser(User iduser) {
+        this.iduser = iduser;
     }
 
     @Override
@@ -136,5 +127,5 @@ public class Effect implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.Effect[ ideffect=" + ideffect + " ]";
     }
-
+    
 }

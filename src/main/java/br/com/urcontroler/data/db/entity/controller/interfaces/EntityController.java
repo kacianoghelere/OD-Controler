@@ -11,7 +11,7 @@ import java.util.List;
  * @author Kaciano Ghelere Ghelere
  * @param <T> Entidade generica
  */
-public interface IGenericController<T> extends Serializable {
+public interface EntityController<T> extends Serializable {
 
     /**
      * Persiste dados da entidade
@@ -32,6 +32,16 @@ public interface IGenericController<T> extends Serializable {
     public T edit(T entity) throws IllegalOrphanException, NonexistentEntityException, Exception;
 
     /**
+     * Destrói todas as entidades e adiciona novas
+     *
+     * @param list {@code List(T)} Lista de Entidades
+     * @throws IllegalOrphanException Exceção de entidade relacionada
+     * @throws NonexistentEntityException Exceção de entidade inexistente
+     * @throws Exception Exceção genérica
+     */
+    public void replaceAll(List<T> list) throws IllegalOrphanException, NonexistentEntityException, Exception;
+
+    /**
      * Destrói entidade a partir do ID
      *
      * @param id {@code Long} ID da Entidade
@@ -50,6 +60,15 @@ public interface IGenericController<T> extends Serializable {
      * @throws Exception Exceção genérica
      */
     public void destroy(T entity) throws IllegalOrphanException, NonexistentEntityException, Exception;
+
+    /**
+     * Destrói todas as entidades
+     *
+     * @throws IllegalOrphanException Exceção de entidade relacionada
+     * @throws NonexistentEntityException Exceção de entidade inexistente
+     * @throws Exception Exceção genérica
+     */
+    public void destroyAll() throws IllegalOrphanException, NonexistentEntityException, Exception;
 
     /**
      * Busca entidade a partir do ID

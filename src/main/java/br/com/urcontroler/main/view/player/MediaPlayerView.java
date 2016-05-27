@@ -2,7 +2,7 @@ package br.com.urcontroler.main.view.player;
 
 import br.com.gmp.comps.player.multi.GPlayerList;
 import br.com.urcontroler.main.MainScreen;
-import br.com.urcontroler.main.util.Description;
+import br.com.urcontroler.main.util.DescriptionObject;
 import br.com.urcontroler.main.view.View;
 import br.com.urcontroler.main.view.exception.ViewException;
 import br.com.urcontroler.main.view.object.ViewParameter;
@@ -70,8 +70,8 @@ public class MediaPlayerView extends View<MediaPlayerBean> {
     }
 
     @Override
-    public Description getDescription() {
-        return new Description.Builder()
+    public DescriptionObject getDescription() {
+        return new DescriptionObject.Builder()
                 .setTitle("MediaPlayer")
                 .setLoad("Recarrega os arquivos de audio")
                 .setProcess("Reprocessa a lista de arquivos de audio")

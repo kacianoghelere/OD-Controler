@@ -6,16 +6,16 @@ import br.com.gmp.comps.table.decorate.TableDecorator;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.gmp.utils.interact.WindowUtil;
 import br.com.gmp.utils.object.ObjectWrapper;
-import br.com.urcontroler.data.db.dao.MenuDAO;
-import br.com.urcontroler.data.entity.Menu;
+import br.com.urcontroler.data.db.entity.Menu;
 import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.object.BeanEvent;
-import br.com.urcontroler.main.util.Description;
+import br.com.urcontroler.main.util.DescriptionObject;
 import br.com.urcontroler.main.view.View;
 import br.com.urcontroler.main.view.interfaces.TableView;
 import br.com.urcontroler.main.view.menu.model.MenuModel;
 import br.com.urcontroler.main.view.object.ViewParameter;
 import java.util.List;
+import java.util.Vector;
 import java.util.logging.Level;
 import javax.swing.ImageIcon;
 import javax.swing.JMenu;
@@ -33,12 +33,12 @@ public class MenuView extends View<MenuBean> implements TableSource<Menu>, Table
     private MenuModel model;
     private GComboBoxModel<Menu> parentModel;
     private GComboBoxModel<ImageIcon> iconModel;
+    private TableDecorator decorator;
     private int count = 0;
     private final int ID_COLUMN = count++;
     private final int PARENT_COLUMN = count++;
     private final int TITLE_COLUMN = count++;
     private final int ICON_COLUMN = count++;
-    private TableDecorator decorator;
 
     /**
      * Cria nova instancia de MenuView
@@ -71,14 +71,15 @@ public class MenuView extends View<MenuBean> implements TableSource<Menu>, Table
 
     @Override
     public List<Menu> getTableData() {
-        return new MenuDAO().getList();
+        System.out.println(this.bean.getList());
+        return new Vector<>();
     }
 
     @Override
     public void add() throws Exception {
         if (gTTitle.validateComponent() && gCBIcon.validateComponent()
                 && gCBParent.validateComponent()) {
-            Long parent = ((Menu) gCBParent.getSelectedItem()).getId();
+            Menu parent = ((Menu) gCBParent.getSelectedItem());
             int index = gCBIcon.getSelectedIndex();
             ObjectWrapper ow = new ObjectWrapper(parent)
                     .addValue("title", gTTitle.getText())
@@ -104,7 +105,6 @@ public class MenuView extends View<MenuBean> implements TableSource<Menu>, Table
 
     @Override
     public void edit() {
-
     }
 
     @Override
@@ -136,8 +136,8 @@ public class MenuView extends View<MenuBean> implements TableSource<Menu>, Table
     }
 
     @Override
-    public Description getDescription() {
-        return new Description.Builder()
+    public DescriptionObject getDescription() {
+        return new DescriptionObject.Builder()
                 .setTitle(getTitle())
                 .setDescription("Tela de controle e cadastro de menus")
                 .setSave("Remove os itens antigos e salva os novos.")

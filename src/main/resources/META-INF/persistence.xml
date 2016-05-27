@@ -44,6 +44,25 @@
     <class>br.com.urcontroler.data.db.entity.RoleAccess</class>
     <class>br.com.urcontroler.data.db.entity.MenuItem</class>
     <class>br.com.urcontroler.data.db.entity.Menu</class>
+    <class>br.com.urcontroler.data.db.entity.Menu_1</class>
+    <class>br.com.urcontroler.data.db.entity.Description</class>
+    <class>br.com.urcontroler.data.db.entity.Expertise_1</class>
+    <class>br.com.urcontroler.data.db.entity.Spell_1</class>
+    <class>br.com.urcontroler.data.db.entity.Campain_1</class>
+    <class>br.com.urcontroler.data.db.entity.Breed_1</class>
+    <class>br.com.urcontroler.data.db.entity.Weapon_1</class>
+    <class>br.com.urcontroler.data.db.entity.Skill_1</class>
+    <class>br.com.urcontroler.data.db.entity.Effect_1</class>
+    <class>br.com.urcontroler.data.db.entity.Description_1</class>
+    <class>br.com.urcontroler.data.db.entity.Occupation_1</class>
+    <class>br.com.urcontroler.data.db.entity.User_1</class>
+    <class>br.com.urcontroler.data.db.entity.Perk_1</class>
+    <class>br.com.urcontroler.data.db.entity.Alignment_1</class>
+    <class>br.com.urcontroler.data.db.entity.Dice_1</class>
+    <class>br.com.urcontroler.data.db.entity.Armor_1</class>
+    <class>br.com.urcontroler.data.db.entity.Origin_1</class>
+    <class>br.com.urcontroler.data.db.entity.Role_1</class>
+    <class>br.com.urcontroler.data.db.entity.Item_1</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ultimaterpgtools?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.password" value="d0v4hk11n"/>

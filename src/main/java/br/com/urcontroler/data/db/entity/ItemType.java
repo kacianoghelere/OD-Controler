@@ -1,12 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,16 +20,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "item_type")
-@XmlRootElement
+@Table(name = "item_type", catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "ItemType.findAll", query = "SELECT i FROM ItemType i"),
     @NamedQuery(name = "ItemType.findByIditemType", query = "SELECT i FROM ItemType i WHERE i.iditemType = :iditemType"),
@@ -44,15 +40,14 @@ public class ItemType implements Serializable {
     @Column(name = "iditem_type")
     private Long iditemType;
     @Basic(optional = false)
-    @Column(name = "name")
     private String name;
     @JoinTable(name = "occupation_allowed_item_type", joinColumns = {
         @JoinColumn(name = "iditem_type", referencedColumnName = "iditem_type")}, inverseJoinColumns = {
         @JoinColumn(name = "idoccupation", referencedColumnName = "idoccupation")})
     @ManyToMany
-    private Collection<Occupation> occupationCollection;
+    private List<Occupation> occupationList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "iditemType")
-    private Collection<Item> itemCollection;
+    private List<Item> itemList;
 
     public ItemType() {
     }
@@ -82,22 +77,20 @@ public class ItemType implements Serializable {
         this.name = name;
     }
 
-    @XmlTransient
-    public Collection<Occupation> getOccupationCollection() {
-        return occupationCollection;
+    public List<Occupation> getOccupationList() {
+        return occupationList;
     }
 
-    public void setOccupationCollection(Collection<Occupation> occupationCollection) {
-        this.occupationCollection = occupationCollection;
+    public void setOccupationList(List<Occupation> occupationList) {
+        this.occupationList = occupationList;
     }
 
-    @XmlTransient
-    public Collection<Item> getItemCollection() {
-        return itemCollection;
+    public List<Item> getItemList() {
+        return itemList;
     }
 
-    public void setItemCollection(Collection<Item> itemCollection) {
-        this.itemCollection = itemCollection;
+    public void setItemList(List<Item> itemList) {
+        this.itemList = itemList;
     }
 
     @Override
@@ -124,5 +117,5 @@ public class ItemType implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.ItemType[ iditemType=" + iditemType + " ]";
     }
-
+    
 }

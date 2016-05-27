@@ -1,15 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,16 +16,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "role")
-@XmlRootElement
+@Table(catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Role.findAll", query = "SELECT r FROM Role r"),
     @NamedQuery(name = "Role.findByIdrole", query = "SELECT r FROM Role r WHERE r.idrole = :idrole"),
@@ -35,23 +30,19 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Role.findByAdmin", query = "SELECT r FROM Role r WHERE r.admin = :admin")})
 public class Role implements Serializable {
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRole")
-    private Collection<RoleAccess> roleAccessCollection;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idrole")
     private Long idrole;
     @Basic(optional = false)
-    @Column(name = "name")
     private String name;
     @Basic(optional = false)
-    @Column(name = "admin")
     private boolean admin;
-    @OneToMany(cascade = {}, mappedBy = "idrole")
-    private Collection<User> userCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRole")
+    private List<RoleAccess> roleAccessList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idrole")
+    private List<User> userList;
 
     public Role() {
     }
@@ -90,13 +81,20 @@ public class Role implements Serializable {
         this.admin = admin;
     }
 
-    @XmlTransient
-    public Collection<User> getUserCollection() {
-        return userCollection;
+    public List<RoleAccess> getRoleAccessList() {
+        return roleAccessList;
     }
 
-    public void setUserCollection(Collection<User> userCollection) {
-        this.userCollection = userCollection;
+    public void setRoleAccessList(List<RoleAccess> roleAccessList) {
+        this.roleAccessList = roleAccessList;
+    }
+
+    public List<User> getUserList() {
+        return userList;
+    }
+
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
     }
 
     @Override
@@ -123,13 +121,5 @@ public class Role implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.Role[ idrole=" + idrole + " ]";
     }
-
-    public Collection<RoleAccess> getRoleAccessCollection() {
-        return roleAccessCollection;
-    }
-
-    public void setRoleAccessCollection(Collection<RoleAccess> roleAccessCollection) {
-        this.roleAccessCollection = roleAccessCollection;
-    }
-
+    
 }

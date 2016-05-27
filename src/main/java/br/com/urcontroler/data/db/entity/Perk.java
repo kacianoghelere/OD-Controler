@@ -1,15 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,16 +19,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "perk")
-@XmlRootElement
+@Table(catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Perk.findAll", query = "SELECT p FROM Perk p"),
     @NamedQuery(name = "Perk.findByIdperk", query = "SELECT p FROM Perk p WHERE p.idperk = :idperk"),
@@ -42,22 +37,19 @@ public class Perk implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idperk")
     private Long idperk;
-    @Column(name = "name")
     private String name;
-    @Column(name = "description")
     private String description;
-    @ManyToMany(mappedBy = "perkCollection")
-    private Collection<Breed> breedCollection;
-    @JoinColumn(name = "iduser", referencedColumnName = "iduser")
-    @ManyToOne(optional = false)
-    private User iduser;
+    @ManyToMany(mappedBy = "perkList")
+    private List<Breed> breedList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idperk")
+    private List<Occupation> occupationList;
     @JoinColumn(name = "idperk_type", referencedColumnName = "idperk_type")
     @ManyToOne(optional = false)
     private PerkType idperkType;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idperk")
-    private Collection<Occupation> occupationCollection;
+    @JoinColumn(name = "iduser", referencedColumnName = "iduser")
+    @ManyToOne(optional = false)
+    private User iduser;
 
     public Perk() {
     }
@@ -90,21 +82,20 @@ public class Perk implements Serializable {
         this.description = description;
     }
 
-    @XmlTransient
-    public Collection<Breed> getBreedCollection() {
-        return breedCollection;
+    public List<Breed> getBreedList() {
+        return breedList;
     }
 
-    public void setBreedCollection(Collection<Breed> breedCollection) {
-        this.breedCollection = breedCollection;
+    public void setBreedList(List<Breed> breedList) {
+        this.breedList = breedList;
     }
 
-    public User getIduser() {
-        return iduser;
+    public List<Occupation> getOccupationList() {
+        return occupationList;
     }
 
-    public void setIduser(User iduser) {
-        this.iduser = iduser;
+    public void setOccupationList(List<Occupation> occupationList) {
+        this.occupationList = occupationList;
     }
 
     public PerkType getIdperkType() {
@@ -115,13 +106,12 @@ public class Perk implements Serializable {
         this.idperkType = idperkType;
     }
 
-    @XmlTransient
-    public Collection<Occupation> getOccupationCollection() {
-        return occupationCollection;
+    public User getIduser() {
+        return iduser;
     }
 
-    public void setOccupationCollection(Collection<Occupation> occupationCollection) {
-        this.occupationCollection = occupationCollection;
+    public void setIduser(User iduser) {
+        this.iduser = iduser;
     }
 
     @Override
@@ -148,5 +138,5 @@ public class Perk implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.Perk[ idperk=" + idperk + " ]";
     }
-
+    
 }

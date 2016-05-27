@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
@@ -18,15 +17,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "occupation_level")
-@XmlRootElement
+@Table(name = "occupation_level", catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "OccupationLevel.findAll", query = "SELECT o FROM OccupationLevel o"),
     @NamedQuery(name = "OccupationLevel.findByIdoccupationLevel", query = "SELECT o FROM OccupationLevel o WHERE o.idoccupationLevel = :idoccupationLevel"),
@@ -43,7 +40,6 @@ public class OccupationLevel implements Serializable {
     @Basic(optional = false)
     @Column(name = "idoccupation_level")
     private Long idoccupationLevel;
-    @Column(name = "exp")
     private BigInteger exp;
     @Column(name = "life_amount")
     private Integer lifeAmount;
@@ -54,7 +50,6 @@ public class OccupationLevel implements Serializable {
     @Column(name = "attack_base")
     private int attackBase;
     @Basic(optional = false)
-    @Column(name = "protection")
     private int protection;
     @JoinColumn(name = "idoccupation", referencedColumnName = "idoccupation")
     @ManyToOne(optional = false)
@@ -154,5 +149,5 @@ public class OccupationLevel implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.OccupationLevel[ idoccupationLevel=" + idoccupationLevel + " ]";
     }
-
+    
 }

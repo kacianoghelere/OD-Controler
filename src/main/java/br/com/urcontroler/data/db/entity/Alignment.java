@@ -1,14 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,16 +16,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "alignment")
-@XmlRootElement
+@Table(catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Alignment.findAll", query = "SELECT a FROM Alignment a"),
     @NamedQuery(name = "Alignment.findByIdalignment", query = "SELECT a FROM Alignment a WHERE a.idalignment = :idalignment"),
@@ -37,21 +33,19 @@ public class Alignment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idalignment")
     private Long idalignment;
     @Basic(optional = false)
-    @Column(name = "name")
     private String name;
-    @OneToMany(cascade = {}, mappedBy = "idalignment")
-    private Collection<Breed> breedCollection;
-    @OneToMany(cascade = {}, mappedBy = "idalignment")
-    private Collection<Armor> armorCollection;
-    @OneToMany(cascade = {}, mappedBy = "idalignment")
-    private Collection<CharacterJournal> characterJournalCollection;
-    @OneToMany(cascade = {}, mappedBy = "idalignment")
-    private Collection<Occupation> occupationCollection;
-    @OneToMany(cascade = {}, mappedBy = "idalignment")
-    private Collection<Weapon> weaponCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idalignment")
+    private List<Occupation> occupationList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idalignment")
+    private List<Weapon> weaponList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idalignment")
+    private List<CharacterJournal> characterJournalList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idalignment")
+    private List<Breed> breedList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idalignment")
+    private List<Armor> armorList;
 
     public Alignment() {
     }
@@ -81,49 +75,44 @@ public class Alignment implements Serializable {
         this.name = name;
     }
 
-    @XmlTransient
-    public Collection<Breed> getBreedCollection() {
-        return breedCollection;
+    public List<Occupation> getOccupationList() {
+        return occupationList;
     }
 
-    public void setBreedCollection(Collection<Breed> breedCollection) {
-        this.breedCollection = breedCollection;
+    public void setOccupationList(List<Occupation> occupationList) {
+        this.occupationList = occupationList;
     }
 
-    @XmlTransient
-    public Collection<Armor> getArmorCollection() {
-        return armorCollection;
+    public List<Weapon> getWeaponList() {
+        return weaponList;
     }
 
-    public void setArmorCollection(Collection<Armor> armorCollection) {
-        this.armorCollection = armorCollection;
+    public void setWeaponList(List<Weapon> weaponList) {
+        this.weaponList = weaponList;
     }
 
-    @XmlTransient
-    public Collection<CharacterJournal> getCharacterJournalCollection() {
-        return characterJournalCollection;
+    public List<CharacterJournal> getCharacterJournalList() {
+        return characterJournalList;
     }
 
-    public void setCharacterJournalCollection(Collection<CharacterJournal> characterJournalCollection) {
-        this.characterJournalCollection = characterJournalCollection;
+    public void setCharacterJournalList(List<CharacterJournal> characterJournalList) {
+        this.characterJournalList = characterJournalList;
     }
 
-    @XmlTransient
-    public Collection<Occupation> getOccupationCollection() {
-        return occupationCollection;
+    public List<Breed> getBreedList() {
+        return breedList;
     }
 
-    public void setOccupationCollection(Collection<Occupation> occupationCollection) {
-        this.occupationCollection = occupationCollection;
+    public void setBreedList(List<Breed> breedList) {
+        this.breedList = breedList;
     }
 
-    @XmlTransient
-    public Collection<Weapon> getWeaponCollection() {
-        return weaponCollection;
+    public List<Armor> getArmorList() {
+        return armorList;
     }
 
-    public void setWeaponCollection(Collection<Weapon> weaponCollection) {
-        this.weaponCollection = weaponCollection;
+    public void setArmorList(List<Armor> armorList) {
+        this.armorList = armorList;
     }
 
     @Override
@@ -150,5 +139,5 @@ public class Alignment implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.Alignment[ idalignment=" + idalignment + " ]";
     }
-
+    
 }

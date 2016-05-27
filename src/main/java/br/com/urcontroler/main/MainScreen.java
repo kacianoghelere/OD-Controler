@@ -5,7 +5,6 @@ import br.com.gmp.utils.annotations.Intercept;
 import br.com.gmp.utils.file.FileUtil;
 import br.com.gmp.utils.interceptors.InterceptorModule;
 import br.com.gmp.utils.system.SystemProperties;
-import br.com.urcontroler.data.db.entity.controller.impl.GenericController;
 import br.com.urcontroler.main.bean.MainScreenBean;
 import br.com.urcontroler.main.interfaces.Main;
 import br.com.urcontroler.main.interfaces.MainListener;
@@ -59,21 +58,22 @@ public class MainScreen extends javax.swing.JFrame implements Main {
      * Cria novo MainScreen
      */
     public MainScreen() {
-        initialize();
+        System.out.println("Aguardando inicialização...");
     }
 
     /**
      * Metodo de inicialização
+     *
+     * @param manager {@code SystemManager} Gerenciador do sistema
      */
-    private void initialize() {
+    public void initialize(SystemManager manager) {
         try {
             properties = SystemManager.properties();
         } catch (IOException ex) {
             LOGGER.log(Level.SEVERE, null, ex);
         }
-        String name = getProperty("system.name");
-        String version = getProperty("system.version");
-        setTitle(name + " - Versão: " + version);
+        this.manager = manager;
+        setTitle(getProperty("system.name") + " - Versão: " + getProperty("system.version"));
         setIconImage(new ImageIcon(getClass().getResource(icon)).getImage());
         initComponents();
         setControls(new ViewParameter(false, false, false, false));
@@ -85,6 +85,8 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         printTypedMsg("Aplicaçao iniciada", INFORMATIVE_MSG);
         loadMenus();
         printViews();
+
+        this.setVisible(true);
     }
 
     /**
@@ -92,9 +94,9 @@ public class MainScreen extends javax.swing.JFrame implements Main {
      */
     private void loadMenus() {
         try {
-            MenuBuilder builder = this.injector.getInstance(MenuBuilder.class);
-            builder.setMainScreen(this);
-            builder.setRoot(this.root);
+//            MenuBuilder builder = this.injector.getInstance(MenuBuilder.class);
+            MenuBuilder builder = new MenuBuilder();
+            builder.initialize(this, root);
             builder.build();
             printTypedMsg("Menus carregados", Main.INFORMATIVE_MSG);
         } catch (ClassNotFoundException | InstantiationException ex) {
@@ -225,35 +227,21 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     }
 
     /**
+     * Retorna Gerenciador de sistema
+     *
+     * @return {@code SystemManager} Gerenciador de sistema
+     */
+    public SystemManager getManager() {
+        return this.manager;
+    }
+
+    /**
      * Direciona instancia do Gerenciador de sistema
      *
      * @param manager {@code SystemManager} Instancia do Gerenciador do Sistema
      */
     public void setManager(SystemManager manager) {
         this.manager = manager;
-    }
-
-    /**
-     * Retorna controlador genérico de instancia anonima
-     *
-     * @param <T> Classe da entidade
-     * @param ctrl {@code Class(T)} Classe de entidade do controlador
-     * @return {@code GenericController(T)} Controlador de entidade do tipo T
-     */
-    public <T extends Object> GenericController<T> getController(Class<T> ctrl) {
-        return this.manager.getController(ctrl);
-    }
-
-    /**
-     * Retorna controlador genérico de instancia anonima
-     *
-     * @param name {@code String} Nome do Controlador
-     * @return {@code Object} Controlador de entidade
-     * @throws ClassNotFoundException Exceção de classe não encontrada
-     * @throws InstantiationException Exceção de instanciamento mal sucedido
-     */
-    public Object getController(String name) throws ClassNotFoundException, InstantiationException {
-        return this.manager.getController(name);
     }
 
     @Override
@@ -278,8 +266,8 @@ public class MainScreen extends javax.swing.JFrame implements Main {
 
     @Override
     public void toggleProcess() {
-        jPBLoader.setString(!jPBLoader.getString().isEmpty() ? "" : "Aguarde...");
-        jPBLoader.setIndeterminate(!jPBLoader.isIndeterminate());
+        jPBLoad.setString(!jPBLoad.getString().isEmpty() ? "" : "Aguarde...");
+        jPBLoad.setIndeterminate(!jPBLoad.isIndeterminate());
     }
 
     /**
@@ -476,7 +464,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         jBAudio = new javax.swing.JButton();
         desktop = new javax.swing.JDesktopPane();
         jTBMsgs = new javax.swing.JToolBar();
-        jPBLoader = new javax.swing.JProgressBar();
+        jPBLoad = new javax.swing.JProgressBar();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         jLMsgs = new javax.swing.JLabel();
         jTBSearch = new javax.swing.JToolBar();
@@ -583,7 +571,6 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         });
         jToolBar.add(jBAudio);
 
-        desktop.setBackground(new java.awt.Color(204, 204, 204));
         desktop.setName("desktop"); // NOI18N
 
         javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
@@ -601,13 +588,13 @@ public class MainScreen extends javax.swing.JFrame implements Main {
         jTBMsgs.setRollover(true);
         jTBMsgs.setName("jTBMsgs"); // NOI18N
 
-        jPBLoader.setMaximumSize(new java.awt.Dimension(100, 20));
-        jPBLoader.setMinimumSize(new java.awt.Dimension(100, 20));
-        jPBLoader.setName("jPBLoader"); // NOI18N
-        jPBLoader.setPreferredSize(new java.awt.Dimension(100, 20));
-        jPBLoader.setString("");
-        jPBLoader.setStringPainted(true);
-        jTBMsgs.add(jPBLoader);
+        jPBLoad.setMaximumSize(new java.awt.Dimension(100, 20));
+        jPBLoad.setMinimumSize(new java.awt.Dimension(100, 20));
+        jPBLoad.setName("jPBLoad"); // NOI18N
+        jPBLoad.setPreferredSize(new java.awt.Dimension(100, 20));
+        jPBLoad.setString("");
+        jPBLoad.setStringPainted(true);
+        jTBMsgs.add(jPBLoad);
 
         jSeparator1.setName("jSeparator1"); // NOI18N
         jTBMsgs.add(jSeparator1);
@@ -915,7 +902,7 @@ public class MainScreen extends javax.swing.JFrame implements Main {
     private javax.swing.JMenu jMOptions;
     private javax.swing.JMenu jMSystem;
     private javax.swing.JMenuBar jMenuBar;
-    private javax.swing.JProgressBar jPBLoader;
+    private javax.swing.JProgressBar jPBLoad;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar jTBMsgs;
     private javax.swing.JToolBar jTBSearch;

@@ -1,7 +1,7 @@
 package br.com.urcontroler.main.view.menu.model;
 
 import br.com.gmp.comps.model.GTableModel;
-import br.com.urcontroler.data.entity.Menu;
+import br.com.urcontroler.data.db.entity.Menu;
 
 /**
  * Modelo de tabela para tela de menus

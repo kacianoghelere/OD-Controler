@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
@@ -17,15 +16,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "armor")
-@XmlRootElement
+@Table(catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Armor.findAll", query = "SELECT a FROM Armor a"),
     @NamedQuery(name = "Armor.findByIdarmor", query = "SELECT a FROM Armor a WHERE a.idarmor = :idarmor"),
@@ -40,11 +37,8 @@ public class Armor implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idarmor")
     private Long idarmor;
-    @Column(name = "name")
     private String name;
-    @Column(name = "description")
     private String description;
     @Basic(optional = false)
     @Column(name = "armor_class")
@@ -52,20 +46,19 @@ public class Armor implements Serializable {
     @Column(name = "mvnt_reduction")
     private Integer mvntReduction;
     @Basic(optional = false)
-    @Column(name = "price")
     private long price;
-    @JoinColumn(name = "iduser", referencedColumnName = "iduser")
-    @ManyToOne(optional = false)
-    private User iduser;
-    @JoinColumn(name = "idorigin", referencedColumnName = "idorigin")
-    @ManyToOne(optional = false)
-    private Origin idorigin;
-    @JoinColumn(name = "idarmor_type", referencedColumnName = "idarmor_type")
-    @ManyToOne(optional = false)
-    private ArmorType idarmorType;
     @JoinColumn(name = "idalignment", referencedColumnName = "idalignment")
     @ManyToOne(optional = false)
     private Alignment idalignment;
+    @JoinColumn(name = "idarmor_type", referencedColumnName = "idarmor_type")
+    @ManyToOne(optional = false)
+    private ArmorType idarmorType;
+    @JoinColumn(name = "idorigin", referencedColumnName = "idorigin")
+    @ManyToOne(optional = false)
+    private Origin idorigin;
+    @JoinColumn(name = "iduser", referencedColumnName = "iduser")
+    @ManyToOne(optional = false)
+    private User iduser;
 
     public Armor() {
     }
@@ -128,20 +121,12 @@ public class Armor implements Serializable {
         this.price = price;
     }
 
-    public User getIduser() {
-        return iduser;
+    public Alignment getIdalignment() {
+        return idalignment;
     }
 
-    public void setIduser(User iduser) {
-        this.iduser = iduser;
-    }
-
-    public Origin getIdorigin() {
-        return idorigin;
-    }
-
-    public void setIdorigin(Origin idorigin) {
-        this.idorigin = idorigin;
+    public void setIdalignment(Alignment idalignment) {
+        this.idalignment = idalignment;
     }
 
     public ArmorType getIdarmorType() {
@@ -152,12 +137,20 @@ public class Armor implements Serializable {
         this.idarmorType = idarmorType;
     }
 
-    public Alignment getIdalignment() {
-        return idalignment;
+    public Origin getIdorigin() {
+        return idorigin;
     }
 
-    public void setIdalignment(Alignment idalignment) {
-        this.idalignment = idalignment;
+    public void setIdorigin(Origin idorigin) {
+        this.idorigin = idorigin;
+    }
+
+    public User getIduser() {
+        return iduser;
+    }
+
+    public void setIduser(User iduser) {
+        this.iduser = iduser;
     }
 
     @Override
@@ -184,5 +177,5 @@ public class Armor implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.Armor[ idarmor=" + idarmor + " ]";
     }
-
+    
 }

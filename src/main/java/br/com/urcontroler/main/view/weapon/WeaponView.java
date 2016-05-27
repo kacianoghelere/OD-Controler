@@ -12,7 +12,7 @@ import br.com.urcontroler.data.enums.Alignment;
 import br.com.urcontroler.data.enums.Dice;
 import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.object.BeanEvent;
-import br.com.urcontroler.main.util.Description;
+import br.com.urcontroler.main.util.DescriptionObject;
 import br.com.urcontroler.main.view.View;
 import br.com.urcontroler.main.view.annotation.ViewData;
 import br.com.urcontroler.main.view.enums.ViewType;

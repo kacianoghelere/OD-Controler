@@ -1,15 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,16 +16,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "dice")
-@XmlRootElement
+@Table(catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Dice.findAll", query = "SELECT d FROM Dice d"),
     @NamedQuery(name = "Dice.findByIddice", query = "SELECT d FROM Dice d WHERE d.iddice = :iddice"),
@@ -38,17 +33,15 @@ public class Dice implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "iddice")
     private Long iddice;
     @Basic(optional = false)
-    @Column(name = "name")
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "iddice")
-    private Collection<Breed> breedCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idlifeDice")
-    private Collection<Occupation> occupationCollection;
+    private List<Occupation> occupationList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "iddice")
-    private Collection<Weapon> weaponCollection;
+    private List<Weapon> weaponList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "iddice")
+    private List<Breed> breedList;
 
     public Dice() {
     }
@@ -78,31 +71,28 @@ public class Dice implements Serializable {
         this.name = name;
     }
 
-    @XmlTransient
-    public Collection<Breed> getBreedCollection() {
-        return breedCollection;
+    public List<Occupation> getOccupationList() {
+        return occupationList;
     }
 
-    public void setBreedCollection(Collection<Breed> breedCollection) {
-        this.breedCollection = breedCollection;
+    public void setOccupationList(List<Occupation> occupationList) {
+        this.occupationList = occupationList;
     }
 
-    @XmlTransient
-    public Collection<Occupation> getOccupationCollection() {
-        return occupationCollection;
+    public List<Weapon> getWeaponList() {
+        return weaponList;
     }
 
-    public void setOccupationCollection(Collection<Occupation> occupationCollection) {
-        this.occupationCollection = occupationCollection;
+    public void setWeaponList(List<Weapon> weaponList) {
+        this.weaponList = weaponList;
     }
 
-    @XmlTransient
-    public Collection<Weapon> getWeaponCollection() {
-        return weaponCollection;
+    public List<Breed> getBreedList() {
+        return breedList;
     }
 
-    public void setWeaponCollection(Collection<Weapon> weaponCollection) {
-        this.weaponCollection = weaponCollection;
+    public void setBreedList(List<Breed> breedList) {
+        this.breedList = breedList;
     }
 
     @Override
@@ -129,5 +119,5 @@ public class Dice implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.Dice[ iddice=" + iddice + " ]";
     }
-
+    
 }

@@ -1,12 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,16 +15,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "skill_type")
-@XmlRootElement
+@Table(name = "skill_type", catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "SkillType.findAll", query = "SELECT s FROM SkillType s"),
     @NamedQuery(name = "SkillType.findByIdskillType", query = "SELECT s FROM SkillType s WHERE s.idskillType = :idskillType"),
@@ -38,10 +34,9 @@ public class SkillType implements Serializable {
     @Column(name = "idskill_type")
     private Long idskillType;
     @Basic(optional = false)
-    @Column(name = "name")
     private String name;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idskillType")
-    private Collection<Skill> skillCollection;
+    private List<Skill> skillList;
 
     public SkillType() {
     }
@@ -71,13 +66,12 @@ public class SkillType implements Serializable {
         this.name = name;
     }
 
-    @XmlTransient
-    public Collection<Skill> getSkillCollection() {
-        return skillCollection;
+    public List<Skill> getSkillList() {
+        return skillList;
     }
 
-    public void setSkillCollection(Collection<Skill> skillCollection) {
-        this.skillCollection = skillCollection;
+    public void setSkillList(List<Skill> skillList) {
+        this.skillList = skillList;
     }
 
     @Override
@@ -104,5 +98,5 @@ public class SkillType implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.SkillType[ idskillType=" + idskillType + " ]";
     }
-
+    
 }

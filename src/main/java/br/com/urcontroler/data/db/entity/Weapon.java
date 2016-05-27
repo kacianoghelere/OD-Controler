@@ -1,13 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,15 +15,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "weapon")
-@XmlRootElement
+@Table(catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Weapon.findAll", query = "SELECT w FROM Weapon w"),
     @NamedQuery(name = "Weapon.findByIdweapon", query = "SELECT w FROM Weapon w WHERE w.idweapon = :idweapon"),
@@ -42,45 +38,37 @@ public class Weapon implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idweapon")
     private Long idweapon;
-    @Column(name = "name")
     private String name;
-    @Column(name = "description")
     private String description;
     @Basic(optional = false)
-    @Column(name = "initiative")
     private int initiative;
     @Basic(optional = false)
-    @Column(name = "range")
     private int range;
     @Basic(optional = false)
-    @Column(name = "damage")
     private String damage;
     @Basic(optional = false)
-    @Column(name = "weight")
     private long weight;
     @Basic(optional = false)
-    @Column(name = "price")
     private long price;
-    @JoinColumn(name = "idweapon_type", referencedColumnName = "idweapon_type")
-    @ManyToOne(optional = false)
-    private WeaponType idweaponType;
-    @JoinColumn(name = "iduser", referencedColumnName = "iduser")
-    @ManyToOne(optional = false)
-    private User iduser;
-    @JoinColumn(name = "origin_idorigin", referencedColumnName = "idorigin")
-    @ManyToOne(optional = false)
-    private Origin originIdorigin;
-    @JoinColumn(name = "idmaterial_type", referencedColumnName = "idmaterial_type")
-    @ManyToOne(optional = false)
-    private MaterialType idmaterialType;
-    @JoinColumn(name = "iddice", referencedColumnName = "iddice")
-    @ManyToOne(optional = false)
-    private Dice iddice;
     @JoinColumn(name = "idalignment", referencedColumnName = "idalignment")
     @ManyToOne(optional = false)
     private Alignment idalignment;
+    @JoinColumn(name = "iddice", referencedColumnName = "iddice")
+    @ManyToOne(optional = false)
+    private Dice iddice;
+    @JoinColumn(name = "idmaterial_type", referencedColumnName = "idmaterial_type")
+    @ManyToOne(optional = false)
+    private MaterialType idmaterialType;
+    @JoinColumn(name = "origin_idorigin", referencedColumnName = "idorigin")
+    @ManyToOne(optional = false)
+    private Origin originIdorigin;
+    @JoinColumn(name = "iduser", referencedColumnName = "iduser")
+    @ManyToOne(optional = false)
+    private User iduser;
+    @JoinColumn(name = "idweapon_type", referencedColumnName = "idweapon_type")
+    @ManyToOne(optional = false)
+    private WeaponType idweaponType;
 
     public Weapon() {
     }
@@ -162,36 +150,12 @@ public class Weapon implements Serializable {
         this.price = price;
     }
 
-    public WeaponType getIdweaponType() {
-        return idweaponType;
+    public Alignment getIdalignment() {
+        return idalignment;
     }
 
-    public void setIdweaponType(WeaponType idweaponType) {
-        this.idweaponType = idweaponType;
-    }
-
-    public User getIduser() {
-        return iduser;
-    }
-
-    public void setIduser(User iduser) {
-        this.iduser = iduser;
-    }
-
-    public Origin getOriginIdorigin() {
-        return originIdorigin;
-    }
-
-    public void setOriginIdorigin(Origin originIdorigin) {
-        this.originIdorigin = originIdorigin;
-    }
-
-    public MaterialType getIdmaterialType() {
-        return idmaterialType;
-    }
-
-    public void setIdmaterialType(MaterialType idmaterialType) {
-        this.idmaterialType = idmaterialType;
+    public void setIdalignment(Alignment idalignment) {
+        this.idalignment = idalignment;
     }
 
     public Dice getIddice() {
@@ -202,12 +166,36 @@ public class Weapon implements Serializable {
         this.iddice = iddice;
     }
 
-    public Alignment getIdalignment() {
-        return idalignment;
+    public MaterialType getIdmaterialType() {
+        return idmaterialType;
     }
 
-    public void setIdalignment(Alignment idalignment) {
-        this.idalignment = idalignment;
+    public void setIdmaterialType(MaterialType idmaterialType) {
+        this.idmaterialType = idmaterialType;
+    }
+
+    public Origin getOriginIdorigin() {
+        return originIdorigin;
+    }
+
+    public void setOriginIdorigin(Origin originIdorigin) {
+        this.originIdorigin = originIdorigin;
+    }
+
+    public User getIduser() {
+        return iduser;
+    }
+
+    public void setIduser(User iduser) {
+        this.iduser = iduser;
+    }
+
+    public WeaponType getIdweaponType() {
+        return idweaponType;
+    }
+
+    public void setIdweaponType(WeaponType idweaponType) {
+        this.idweaponType = idweaponType;
     }
 
     @Override
@@ -234,5 +222,5 @@ public class Weapon implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.Weapon[ idweapon=" + idweapon + " ]";
     }
-
+    
 }

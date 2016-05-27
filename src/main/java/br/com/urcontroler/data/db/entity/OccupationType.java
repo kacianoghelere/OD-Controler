@@ -1,12 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,16 +17,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "occupation_type")
-@XmlRootElement
+@Table(name = "occupation_type", catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "OccupationType.findAll", query = "SELECT o FROM OccupationType o"),
     @NamedQuery(name = "OccupationType.findByIdoccupationType", query = "SELECT o FROM OccupationType o WHERE o.idoccupationType = :idoccupationType"),
@@ -43,16 +39,13 @@ public class OccupationType implements Serializable {
     @Column(name = "idoccupation_type")
     private Long idoccupationType;
     @Basic(optional = false)
-    @Column(name = "name")
     private String name;
     @Basic(optional = false)
-    @Column(name = "magic")
     private boolean magic;
     @Basic(optional = false)
-    @Column(name = "protection")
     private int protection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idoccupationType")
-    private Collection<Occupation> occupationCollection;
+    private List<Occupation> occupationList;
 
     public OccupationType() {
     }
@@ -100,13 +93,12 @@ public class OccupationType implements Serializable {
         this.protection = protection;
     }
 
-    @XmlTransient
-    public Collection<Occupation> getOccupationCollection() {
-        return occupationCollection;
+    public List<Occupation> getOccupationList() {
+        return occupationList;
     }
 
-    public void setOccupationCollection(Collection<Occupation> occupationCollection) {
-        this.occupationCollection = occupationCollection;
+    public void setOccupationList(List<Occupation> occupationList) {
+        this.occupationList = occupationList;
     }
 
     @Override
@@ -133,5 +125,5 @@ public class OccupationType implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.OccupationType[ idoccupationType=" + idoccupationType + " ]";
     }
-
+    
 }

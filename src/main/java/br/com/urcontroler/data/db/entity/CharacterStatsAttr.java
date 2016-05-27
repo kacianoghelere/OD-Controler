@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
@@ -17,15 +16,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "character_stats_attr")
-@XmlRootElement
+@Table(name = "character_stats_attr", catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "CharacterStatsAttr.findAll", query = "SELECT c FROM CharacterStatsAttr c"),
     @NamedQuery(name = "CharacterStatsAttr.findByIdcharacterAttributes", query = "SELECT c FROM CharacterStatsAttr c WHERE c.idcharacterAttributes = :idcharacterAttributes"),
@@ -40,17 +37,15 @@ public class CharacterStatsAttr implements Serializable {
     @Column(name = "idcharacter_attributes")
     private Long idcharacterAttributes;
     @Basic(optional = false)
-    @Column(name = "amount")
     private int amount;
     @Basic(optional = false)
-    @Column(name = "modifier")
     private int modifier;
-    @JoinColumn(name = "idcharacter", referencedColumnName = "idcharacter")
-    @ManyToOne(optional = false)
-    private CharacterSheet idcharacter;
     @JoinColumn(name = "idstats_attribute", referencedColumnName = "idstats_attribute")
     @ManyToOne(optional = false)
     private StatsAttribute idstatsAttribute;
+    @JoinColumn(name = "idcharacter", referencedColumnName = "idcharacter")
+    @ManyToOne(optional = false)
+    private CharacterSheet idcharacter;
 
     public CharacterStatsAttr() {
     }
@@ -89,20 +84,20 @@ public class CharacterStatsAttr implements Serializable {
         this.modifier = modifier;
     }
 
-    public CharacterSheet getIdcharacter() {
-        return idcharacter;
-    }
-
-    public void setIdcharacter(CharacterSheet idcharacter) {
-        this.idcharacter = idcharacter;
-    }
-
     public StatsAttribute getIdstatsAttribute() {
         return idstatsAttribute;
     }
 
     public void setIdstatsAttribute(StatsAttribute idstatsAttribute) {
         this.idstatsAttribute = idstatsAttribute;
+    }
+
+    public CharacterSheet getIdcharacter() {
+        return idcharacter;
+    }
+
+    public void setIdcharacter(CharacterSheet idcharacter) {
+        this.idcharacter = idcharacter;
     }
 
     @Override
@@ -129,5 +124,5 @@ public class CharacterStatsAttr implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.CharacterStatsAttr[ idcharacterAttributes=" + idcharacterAttributes + " ]";
     }
-
+    
 }

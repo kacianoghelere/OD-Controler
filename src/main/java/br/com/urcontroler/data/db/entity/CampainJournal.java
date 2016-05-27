@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
@@ -18,15 +17,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "campain_journal")
-@XmlRootElement
+@Table(name = "campain_journal", catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "CampainJournal.findAll", query = "SELECT c FROM CampainJournal c"),
     @NamedQuery(name = "CampainJournal.findByIdcampainJournal", query = "SELECT c FROM CampainJournal c WHERE c.idcampainJournal = :idcampainJournal"),
@@ -40,10 +37,8 @@ public class CampainJournal implements Serializable {
     @Basic(optional = false)
     @Column(name = "idcampain_journal")
     private Long idcampainJournal;
-    @Column(name = "description")
     private String description;
     @Basic(optional = false)
-    @Column(name = "idactive")
     private boolean idactive;
     @Basic(optional = false)
     @Column(name = "log_date")
@@ -130,5 +125,5 @@ public class CampainJournal implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.CampainJournal[ idcampainJournal=" + idcampainJournal + " ]";
     }
-
+    
 }

@@ -1,13 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,15 +15,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "item")
-@XmlRootElement
+@Table(catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Item.findAll", query = "SELECT i FROM Item i"),
     @NamedQuery(name = "Item.findByIditem", query = "SELECT i FROM Item i WHERE i.iditem = :iditem"),
@@ -39,22 +35,17 @@ public class Item implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "iditem")
     private Long iditem;
-    @Column(name = "name")
     private String name;
-    @Column(name = "description")
     private String description;
-    @Column(name = "weight")
     private Long weight;
-    @Column(name = "price")
     private Integer price;
-    @JoinColumn(name = "iduser", referencedColumnName = "iduser")
-    @ManyToOne(optional = false)
-    private User iduser;
     @JoinColumn(name = "iditem_type", referencedColumnName = "iditem_type")
     @ManyToOne(optional = false)
     private ItemType iditemType;
+    @JoinColumn(name = "iduser", referencedColumnName = "iduser")
+    @ManyToOne(optional = false)
+    private User iduser;
 
     public Item() {
     }
@@ -103,20 +94,20 @@ public class Item implements Serializable {
         this.price = price;
     }
 
-    public User getIduser() {
-        return iduser;
-    }
-
-    public void setIduser(User iduser) {
-        this.iduser = iduser;
-    }
-
     public ItemType getIditemType() {
         return iditemType;
     }
 
     public void setIditemType(ItemType iditemType) {
         this.iditemType = iditemType;
+    }
+
+    public User getIduser() {
+        return iduser;
+    }
+
+    public void setIduser(User iduser) {
+        this.iduser = iduser;
     }
 
     @Override
@@ -143,5 +134,5 @@ public class Item implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.Item[ iditem=" + iditem + " ]";
     }
-
+    
 }

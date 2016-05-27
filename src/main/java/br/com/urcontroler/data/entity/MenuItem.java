@@ -5,7 +5,7 @@ import br.com.gmp.utils.annotations.Editable;
 import br.com.gmp.utils.annotations.Ignore;
 import br.com.gmp.utils.object.StringUtil;
 import br.com.urcontroler.data.enums.ViewType;
-import br.com.urcontroler.main.util.Description;
+import br.com.urcontroler.main.util.DescriptionObject;
 
 import java.util.Objects;
 
@@ -32,7 +32,7 @@ public class MenuItem implements Comparable<MenuItem> {
     private String icon;
     @Ignore
     @ColumnName(name = "Descrição")
-    private Description description;
+    private DescriptionObject description;
     @Editable
     @ColumnName(name = "Tipo")
     private ViewType type;
@@ -53,7 +53,7 @@ public class MenuItem implements Comparable<MenuItem> {
      * @param icon {@code String} Icone do MenuItem
      * @param description {@code Description} Descrição do MenuItem
      */
-    public MenuItem(Long id, Long parent, String viewClass, String title, String icon, Description description) {
+    public MenuItem(Long id, Long parent, String viewClass, String title, String icon, DescriptionObject description) {
         this.id = id;
         this.menu = parent;
         this.viewClass = viewClass;
@@ -73,7 +73,7 @@ public class MenuItem implements Comparable<MenuItem> {
      * @param description {@code Description} Descrição do MenuItem
      * @param type {@code ViewType} ViewType do MenuItem
      */
-    public MenuItem(Long id, Long parent, String title, String viewClass, String icon, Description description, ViewType type) {
+    public MenuItem(Long id, Long parent, String title, String viewClass, String icon, DescriptionObject description, ViewType type) {
         this.id = id;
         this.menu = parent;
         this.title = title;
@@ -212,7 +212,7 @@ public class MenuItem implements Comparable<MenuItem> {
      *
      * @return {@code Description} Descrição do MenuItem
      */
-    public Description getDescription() {
+    public DescriptionObject getDescription() {
         return description;
     }
 
@@ -221,7 +221,7 @@ public class MenuItem implements Comparable<MenuItem> {
      *
      * @param description {@code Description} Descrição do MenuItem
      */
-    public void setDescription(Description description) {
+    public void setDescription(DescriptionObject description) {
         this.description = description;
     }
 

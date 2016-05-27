@@ -1,12 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,16 +19,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "language_type")
-@XmlRootElement
+@Table(name = "language_type", catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "LanguageType.findAll", query = "SELECT l FROM LanguageType l"),
     @NamedQuery(name = "LanguageType.findByIdlanguageType", query = "SELECT l FROM LanguageType l WHERE l.idlanguageType = :idlanguageType"),
@@ -43,15 +39,13 @@ public class LanguageType implements Serializable {
     @Column(name = "idlanguage_type")
     private Long idlanguageType;
     @Basic(optional = false)
-    @Column(name = "name")
     private String name;
     @Lob
-    @Column(name = "description")
     private String description;
-    @ManyToMany(mappedBy = "languageTypeCollection")
-    private Collection<Breed> breedCollection;
+    @ManyToMany(mappedBy = "languageTypeList")
+    private List<Breed> breedList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idnativeLanguage")
-    private Collection<Breed> breedCollection1;
+    private List<Breed> breedList1;
 
     public LanguageType() {
     }
@@ -89,22 +83,20 @@ public class LanguageType implements Serializable {
         this.description = description;
     }
 
-    @XmlTransient
-    public Collection<Breed> getBreedCollection() {
-        return breedCollection;
+    public List<Breed> getBreedList() {
+        return breedList;
     }
 
-    public void setBreedCollection(Collection<Breed> breedCollection) {
-        this.breedCollection = breedCollection;
+    public void setBreedList(List<Breed> breedList) {
+        this.breedList = breedList;
     }
 
-    @XmlTransient
-    public Collection<Breed> getBreedCollection1() {
-        return breedCollection1;
+    public List<Breed> getBreedList1() {
+        return breedList1;
     }
 
-    public void setBreedCollection1(Collection<Breed> breedCollection1) {
-        this.breedCollection1 = breedCollection1;
+    public void setBreedList1(List<Breed> breedList1) {
+        this.breedList1 = breedList1;
     }
 
     @Override
@@ -131,5 +123,5 @@ public class LanguageType implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.LanguageType[ idlanguageType=" + idlanguageType + " ]";
     }
-
+    
 }

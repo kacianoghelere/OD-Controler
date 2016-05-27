@@ -1,12 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,16 +21,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "breed")
-@XmlRootElement
+@Table(catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Breed.findAll", query = "SELECT b FROM Breed b"),
     @NamedQuery(name = "Breed.findByIdbreed", query = "SELECT b FROM Breed b WHERE b.idbreed = :idbreed"),
@@ -48,10 +44,8 @@ public class Breed implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idbreed")
     private Long idbreed;
     @Basic(optional = false)
-    @Column(name = "name")
     private String name;
     @Column(name = "min_height")
     private Long minHeight;
@@ -61,48 +55,47 @@ public class Breed implements Serializable {
     private Long minWeight;
     @Column(name = "max_weight")
     private Long maxWeight;
-    @Column(name = "maturity")
     private Integer maturity;
     @Column(name = "max_age")
     private Integer maxAge;
-    @ManyToMany(mappedBy = "breedCollection")
-    private Collection<ArmorType> armorTypeCollection;
-    @JoinTable(name = "breed_language", joinColumns = {
-        @JoinColumn(name = "idbreed", referencedColumnName = "idbreed")}, inverseJoinColumns = {
-        @JoinColumn(name = "idlanguage_type", referencedColumnName = "idlanguage_type")})
-    @ManyToMany
-    private Collection<LanguageType> languageTypeCollection;
     @JoinTable(name = "breed_perk", joinColumns = {
         @JoinColumn(name = "idrace", referencedColumnName = "idbreed")}, inverseJoinColumns = {
         @JoinColumn(name = "idperk", referencedColumnName = "idperk")})
     @ManyToMany
-    private Collection<Perk> perkCollection;
-    @JoinTable(name = "breed_skill", joinColumns = {
-        @JoinColumn(name = "idbreed", referencedColumnName = "idbreed")}, inverseJoinColumns = {
-        @JoinColumn(name = "idskill", referencedColumnName = "idskill")})
-    @ManyToMany
-    private Collection<Skill> skillCollection;
+    private List<Perk> perkList;
+    @ManyToMany(mappedBy = "breedList")
+    private List<ArmorType> armorTypeList;
     @JoinTable(name = "breed_allowed_weapon", joinColumns = {
         @JoinColumn(name = "idbreed", referencedColumnName = "idbreed")}, inverseJoinColumns = {
         @JoinColumn(name = "idweapon_type", referencedColumnName = "idweapon_type")})
     @ManyToMany
-    private Collection<WeaponType> weaponTypeCollection;
-    @JoinColumn(name = "iduser", referencedColumnName = "iduser")
-    @ManyToOne(optional = false)
-    private User iduser;
-    @JoinColumn(name = "idnative_language", referencedColumnName = "idlanguage_type")
-    @ManyToOne(optional = false)
-    private LanguageType idnativeLanguage;
-    @JoinColumn(name = "iddice", referencedColumnName = "iddice")
-    @ManyToOne(optional = false)
-    private Dice iddice;
+    private List<WeaponType> weaponTypeList;
+    @JoinTable(name = "breed_language", joinColumns = {
+        @JoinColumn(name = "idbreed", referencedColumnName = "idbreed")}, inverseJoinColumns = {
+        @JoinColumn(name = "idlanguage_type", referencedColumnName = "idlanguage_type")})
+    @ManyToMany
+    private List<LanguageType> languageTypeList;
+    @JoinTable(name = "breed_skill", joinColumns = {
+        @JoinColumn(name = "idbreed", referencedColumnName = "idbreed")}, inverseJoinColumns = {
+        @JoinColumn(name = "idskill", referencedColumnName = "idskill")})
+    @ManyToMany
+    private List<Skill> skillList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idbreed")
+    private List<CharacterSheet> characterSheetList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "breed")
+    private List<BreedAttrModifier> breedAttrModifierList;
     @JoinColumn(name = "idalignment", referencedColumnName = "idalignment")
     @ManyToOne(optional = false)
     private Alignment idalignment;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "breed")
-    private Collection<BreedAttrModifier> breedAttrModifierCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idbreed")
-    private Collection<CharacterSheet> characterSheetCollection;
+    @JoinColumn(name = "iddice", referencedColumnName = "iddice")
+    @ManyToOne(optional = false)
+    private Dice iddice;
+    @JoinColumn(name = "idnative_language", referencedColumnName = "idlanguage_type")
+    @ManyToOne(optional = false)
+    private LanguageType idnativeLanguage;
+    @JoinColumn(name = "iduser", referencedColumnName = "iduser")
+    @ManyToOne(optional = false)
+    private User iduser;
 
     public Breed() {
     }
@@ -180,73 +173,60 @@ public class Breed implements Serializable {
         this.maxAge = maxAge;
     }
 
-    @XmlTransient
-    public Collection<ArmorType> getArmorTypeCollection() {
-        return armorTypeCollection;
+    public List<Perk> getPerkList() {
+        return perkList;
     }
 
-    public void setArmorTypeCollection(Collection<ArmorType> armorTypeCollection) {
-        this.armorTypeCollection = armorTypeCollection;
+    public void setPerkList(List<Perk> perkList) {
+        this.perkList = perkList;
     }
 
-    @XmlTransient
-    public Collection<LanguageType> getLanguageTypeCollection() {
-        return languageTypeCollection;
+    public List<ArmorType> getArmorTypeList() {
+        return armorTypeList;
     }
 
-    public void setLanguageTypeCollection(Collection<LanguageType> languageTypeCollection) {
-        this.languageTypeCollection = languageTypeCollection;
+    public void setArmorTypeList(List<ArmorType> armorTypeList) {
+        this.armorTypeList = armorTypeList;
     }
 
-    @XmlTransient
-    public Collection<Perk> getPerkCollection() {
-        return perkCollection;
+    public List<WeaponType> getWeaponTypeList() {
+        return weaponTypeList;
     }
 
-    public void setPerkCollection(Collection<Perk> perkCollection) {
-        this.perkCollection = perkCollection;
+    public void setWeaponTypeList(List<WeaponType> weaponTypeList) {
+        this.weaponTypeList = weaponTypeList;
     }
 
-    @XmlTransient
-    public Collection<Skill> getSkillCollection() {
-        return skillCollection;
+    public List<LanguageType> getLanguageTypeList() {
+        return languageTypeList;
     }
 
-    public void setSkillCollection(Collection<Skill> skillCollection) {
-        this.skillCollection = skillCollection;
+    public void setLanguageTypeList(List<LanguageType> languageTypeList) {
+        this.languageTypeList = languageTypeList;
     }
 
-    @XmlTransient
-    public Collection<WeaponType> getWeaponTypeCollection() {
-        return weaponTypeCollection;
+    public List<Skill> getSkillList() {
+        return skillList;
     }
 
-    public void setWeaponTypeCollection(Collection<WeaponType> weaponTypeCollection) {
-        this.weaponTypeCollection = weaponTypeCollection;
+    public void setSkillList(List<Skill> skillList) {
+        this.skillList = skillList;
     }
 
-    public User getIduser() {
-        return iduser;
+    public List<CharacterSheet> getCharacterSheetList() {
+        return characterSheetList;
     }
 
-    public void setIduser(User iduser) {
-        this.iduser = iduser;
+    public void setCharacterSheetList(List<CharacterSheet> characterSheetList) {
+        this.characterSheetList = characterSheetList;
     }
 
-    public LanguageType getIdnativeLanguage() {
-        return idnativeLanguage;
+    public List<BreedAttrModifier> getBreedAttrModifierList() {
+        return breedAttrModifierList;
     }
 
-    public void setIdnativeLanguage(LanguageType idnativeLanguage) {
-        this.idnativeLanguage = idnativeLanguage;
-    }
-
-    public Dice getIddice() {
-        return iddice;
-    }
-
-    public void setIddice(Dice iddice) {
-        this.iddice = iddice;
+    public void setBreedAttrModifierList(List<BreedAttrModifier> breedAttrModifierList) {
+        this.breedAttrModifierList = breedAttrModifierList;
     }
 
     public Alignment getIdalignment() {
@@ -257,22 +237,28 @@ public class Breed implements Serializable {
         this.idalignment = idalignment;
     }
 
-    @XmlTransient
-    public Collection<BreedAttrModifier> getBreedAttrModifierCollection() {
-        return breedAttrModifierCollection;
+    public Dice getIddice() {
+        return iddice;
     }
 
-    public void setBreedAttrModifierCollection(Collection<BreedAttrModifier> breedAttrModifierCollection) {
-        this.breedAttrModifierCollection = breedAttrModifierCollection;
+    public void setIddice(Dice iddice) {
+        this.iddice = iddice;
     }
 
-    @XmlTransient
-    public Collection<CharacterSheet> getCharacterSheetCollection() {
-        return characterSheetCollection;
+    public LanguageType getIdnativeLanguage() {
+        return idnativeLanguage;
     }
 
-    public void setCharacterSheetCollection(Collection<CharacterSheet> characterSheetCollection) {
-        this.characterSheetCollection = characterSheetCollection;
+    public void setIdnativeLanguage(LanguageType idnativeLanguage) {
+        this.idnativeLanguage = idnativeLanguage;
+    }
+
+    public User getIduser() {
+        return iduser;
+    }
+
+    public void setIduser(User iduser) {
+        this.iduser = iduser;
     }
 
     @Override
@@ -299,5 +285,5 @@ public class Breed implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.Breed[ idbreed=" + idbreed + " ]";
     }
-
+    
 }

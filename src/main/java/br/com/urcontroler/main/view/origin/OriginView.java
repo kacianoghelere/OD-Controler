@@ -8,7 +8,7 @@ import br.com.urcontroler.data.db.dao.OriginDAO;
 import br.com.urcontroler.data.entity.Origin;
 import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.object.BeanEvent;
-import br.com.urcontroler.main.util.Description;
+import br.com.urcontroler.main.util.DescriptionObject;
 import br.com.urcontroler.main.view.View;
 import br.com.urcontroler.main.view.annotation.ViewData;
 import br.com.urcontroler.main.view.enums.ViewType;

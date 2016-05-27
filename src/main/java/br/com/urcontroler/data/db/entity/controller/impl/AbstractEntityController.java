@@ -2,7 +2,7 @@ package br.com.urcontroler.data.db.entity.controller.impl;
 
 import br.com.urcontroler.data.db.entity.controller.exceptions.IllegalOrphanException;
 import br.com.urcontroler.data.db.entity.controller.exceptions.NonexistentEntityException;
-import br.com.urcontroler.data.db.entity.controller.interfaces.IGenericController;
+import br.com.urcontroler.data.db.entity.controller.interfaces.EntityController;
 import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
@@ -12,6 +12,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.Id;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
@@ -20,7 +22,7 @@ import javax.persistence.criteria.Root;
  * @author Kaciano Ghelere Ghelere
  * @param <T> Entidade abstrata
  */
-public class GenericController<T> implements IGenericController<T> {
+public abstract class AbstractEntityController<T> implements EntityController<T> {
 
     private Class<T> objClass;
     private EntityManagerFactory emf = null;
@@ -31,7 +33,7 @@ public class GenericController<T> implements IGenericController<T> {
      * @param emf {@code EntityManagerFactory} Fabrica de gerenciador de
      * entidades
      */
-    public GenericController(EntityManagerFactory emf) {
+    public AbstractEntityController(EntityManagerFactory emf) {
         this.emf = emf;
         initialize();
     }
@@ -43,7 +45,7 @@ public class GenericController<T> implements IGenericController<T> {
      * @param emf {@code EntityManagerFactory} Fabrica de gerenciador de
      * entidades
      */
-    public GenericController(Class<T> objClass, EntityManagerFactory emf) {
+    public AbstractEntityController(Class<T> objClass, EntityManagerFactory emf) {
         this.objClass = objClass;
         this.emf = emf;
         initialize();
@@ -69,12 +71,12 @@ public class GenericController<T> implements IGenericController<T> {
     }
 
     @Override
-    public void create(T alignment) {
+    public void create(T entity) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(alignment);
+            em.persist(entity);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -146,6 +148,26 @@ public class GenericController<T> implements IGenericController<T> {
     }
 
     @Override
+    public void replaceAll(List<T> list) throws IllegalOrphanException, NonexistentEntityException, Exception {
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaDelete<T> delete = cb.createCriteriaDelete(objClass);
+            em.createQuery(delete).executeUpdate();
+            for (T entity : list) {
+                em.persist(entity);
+            }
+            em.getTransaction().commit();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
+
+    @Override
     public void destroy(T entity) throws IllegalOrphanException, NonexistentEntityException, MySQLIntegrityConstraintViolationException, Exception {
         Long id = findId(entity);
         if (entity != null && id != null) {
@@ -180,6 +202,23 @@ public class GenericController<T> implements IGenericController<T> {
     }
 
     @Override
+    public void destroyAll() throws IllegalOrphanException, NonexistentEntityException, Exception {
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaDelete<T> delete = cb.createCriteriaDelete(objClass);
+            em.createQuery(delete).executeUpdate();
+            em.getTransaction().commit();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
+
+    @Override
     public List<T> findEntities() {
         return findEntities(true, -1, -1);
     }
@@ -199,7 +238,9 @@ public class GenericController<T> implements IGenericController<T> {
                 q.setMaxResults(maxResults);
                 q.setFirstResult(firstResult);
             }
-            return q.getResultList();
+//            return new ArrayList<T>(q.getResultList());
+            List resultList = q.getResultList();
+            return resultList;
         } finally {
             em.close();
         }

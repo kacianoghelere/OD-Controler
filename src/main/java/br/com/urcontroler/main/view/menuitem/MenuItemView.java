@@ -6,16 +6,14 @@ import br.com.gmp.comps.table.decorate.TableDecorator;
 import br.com.gmp.comps.table.interfaces.TableSource;
 import br.com.gmp.utils.interact.WindowUtil;
 import br.com.gmp.utils.object.ObjectWrapper;
-import br.com.urcontroler.data.db.dao.MenuItemDAO;
-import br.com.urcontroler.data.entity.Menu;
-import br.com.urcontroler.data.entity.MenuItem;
+import br.com.urcontroler.data.db.entity.Menu;
+import br.com.urcontroler.data.db.entity.MenuItem;
+import br.com.urcontroler.data.enums.ViewType;
 import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.object.BeanEvent;
-import br.com.urcontroler.main.util.Description;
+import br.com.urcontroler.main.util.DescriptionObject;
 import br.com.urcontroler.main.view.View;
-import br.com.urcontroler.data.enums.ViewType;
 import br.com.urcontroler.main.view.exception.ViewException;
-import br.com.urcontroler.main.view.interfaces.BeanListener;
 import br.com.urcontroler.main.view.interfaces.TableView;
 import br.com.urcontroler.main.view.menuitem.model.MenuItemModel;
 import br.com.urcontroler.main.view.object.ViewParameter;
@@ -128,17 +126,17 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
 
     @Override
     public List<MenuItem> getTableData() {
-        return new MenuItemDAO().getList();
+        return bean.getList();
     }
 
     @Override
-    public BeanListener getBean() {
+    public MenuItemBean getBean() {
         return this.bean;
     }
 
     @Override
-    public Description getDescription() {
-        return new Description.Builder()
+    public DescriptionObject getDescription() {
+        return new DescriptionObject.Builder()
                 .setTitle(getTitle())
                 .setDescription("Tela de controle e cadastro de telas")
                 .setSave("Remove os itens antigos e salva os novos.")
@@ -287,12 +285,13 @@ public class MenuItemView extends View implements TableView, TableSource<MenuIte
                     .addComponent(jLIcon)
                     .addComponent(gCBIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(gTClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLClass)
+                .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLType)
-                        .addComponent(gCBType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(gCBType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(gTClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLClass)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPBasicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBAdd)

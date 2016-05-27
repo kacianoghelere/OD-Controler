@@ -1,12 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,16 +20,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "armor_type")
-@XmlRootElement
+@Table(name = "armor_type", catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "ArmorType.findAll", query = "SELECT a FROM ArmorType a"),
     @NamedQuery(name = "ArmorType.findByIdarmorType", query = "SELECT a FROM ArmorType a WHERE a.idarmorType = :idarmorType"),
@@ -44,20 +40,19 @@ public class ArmorType implements Serializable {
     @Column(name = "idarmor_type")
     private Long idarmorType;
     @Basic(optional = false)
-    @Column(name = "name")
     private String name;
     @JoinTable(name = "breed_allowed_armor", joinColumns = {
         @JoinColumn(name = "idarmor_type", referencedColumnName = "idarmor_type")}, inverseJoinColumns = {
         @JoinColumn(name = "idbreed", referencedColumnName = "idbreed")})
     @ManyToMany
-    private Collection<Breed> breedCollection;
+    private List<Breed> breedList;
     @JoinTable(name = "occupation_allowed_armor_type", joinColumns = {
         @JoinColumn(name = "idarmor_type", referencedColumnName = "idarmor_type")}, inverseJoinColumns = {
         @JoinColumn(name = "idoccupation", referencedColumnName = "idoccupation")})
     @ManyToMany
-    private Collection<Occupation> occupationCollection;
+    private List<Occupation> occupationList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idarmorType")
-    private Collection<Armor> armorCollection;
+    private List<Armor> armorList;
 
     public ArmorType() {
     }
@@ -87,31 +82,28 @@ public class ArmorType implements Serializable {
         this.name = name;
     }
 
-    @XmlTransient
-    public Collection<Breed> getBreedCollection() {
-        return breedCollection;
+    public List<Breed> getBreedList() {
+        return breedList;
     }
 
-    public void setBreedCollection(Collection<Breed> breedCollection) {
-        this.breedCollection = breedCollection;
+    public void setBreedList(List<Breed> breedList) {
+        this.breedList = breedList;
     }
 
-    @XmlTransient
-    public Collection<Occupation> getOccupationCollection() {
-        return occupationCollection;
+    public List<Occupation> getOccupationList() {
+        return occupationList;
     }
 
-    public void setOccupationCollection(Collection<Occupation> occupationCollection) {
-        this.occupationCollection = occupationCollection;
+    public void setOccupationList(List<Occupation> occupationList) {
+        this.occupationList = occupationList;
     }
 
-    @XmlTransient
-    public Collection<Armor> getArmorCollection() {
-        return armorCollection;
+    public List<Armor> getArmorList() {
+        return armorList;
     }
 
-    public void setArmorCollection(Collection<Armor> armorCollection) {
-        this.armorCollection = armorCollection;
+    public void setArmorList(List<Armor> armorList) {
+        this.armorList = armorList;
     }
 
     @Override
@@ -138,5 +130,5 @@ public class ArmorType implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.ArmorType[ idarmorType=" + idarmorType + " ]";
     }
-
+    
 }

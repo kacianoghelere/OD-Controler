@@ -4,13 +4,13 @@ import br.com.gmp.utils.annotations.Intercept;
 import br.com.gmp.utils.date.DateUtil;
 import br.com.gmp.utils.reflection.ObjectInstance;
 import br.com.gmp.utils.reflection.ReflectionUtil;
-import br.com.urcontroler.data.entity.MenuItem;
+import br.com.urcontroler.data.db.entity.MenuItem;
 import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.interfaces.Main;
 import br.com.urcontroler.main.interfaces.MainListener;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.util.AudioListBuilder;
-import br.com.urcontroler.main.util.Description;
+import br.com.urcontroler.main.util.DescriptionObject;
 import br.com.urcontroler.main.view.View;
 import br.com.urcontroler.main.view.annotation.ViewData;
 import br.com.urcontroler.main.view.object.ViewParameter;
@@ -193,11 +193,11 @@ public class MainScreenBean implements MainListener {
 
     @Intercept
     @Override
-    public void insertInstance(ObjectInstance instance, Description description) {
+    public void insertInstance(ObjectInstance instance, DescriptionObject description) {
         try {
             View newView = (View) reflect.newInstance(instance);
             newView.setDescription(description != null
-                    ? description : new Description.Builder().apply());
+                    ? description : new DescriptionObject.Builder().apply());
             if (instance.getCl().getClass().isAnnotationPresent(ViewData.class)) {
                 ViewData data = instance.getCl().getClass().getAnnotation(ViewData.class);
                 newView.setTitle(data.name());
@@ -296,7 +296,6 @@ public class MainScreenBean implements MainListener {
 
     @Override
     public Map<String, MenuItem> getViewMap() {
-        return viewMap;
+        return this.viewMap;
     }
-
 }

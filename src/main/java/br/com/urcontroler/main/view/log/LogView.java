@@ -5,7 +5,7 @@ import br.com.urcontroler.main.view.log.model.FileModel;
 import br.com.gmp.comps.GColors;
 import br.com.gmp.utils.file.FileUtil;
 import br.com.urcontroler.main.MainScreen;
-import br.com.urcontroler.main.util.Description;
+import br.com.urcontroler.main.util.DescriptionObject;
 import br.com.urcontroler.main.view.View;
 import br.com.urcontroler.main.view.exception.ViewException;
 import br.com.urcontroler.main.view.object.ViewParameter;

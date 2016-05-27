@@ -1,13 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,16 +21,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "campain")
-@XmlRootElement
+@Table(catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Campain.findAll", query = "SELECT c FROM Campain c"),
     @NamedQuery(name = "Campain.findByIdcampain", query = "SELECT c FROM Campain c WHERE c.idcampain = :idcampain"),
@@ -43,13 +39,10 @@ public class Campain implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "idcampain")
     private Long idcampain;
     @Basic(optional = false)
-    @Column(name = "title")
     private String title;
     @Lob
-    @Column(name = "description")
     private String description;
     @Basic(optional = false)
     @Column(name = "start_date")
@@ -59,12 +52,12 @@ public class Campain implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date conclusionDate;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "campain")
-    private Collection<CampainMembers> campainMembersCollection;
+    private List<CampainMembers> campainMembersList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcampain")
+    private List<CampainJournal> campainJournalList;
     @JoinColumn(name = "iduser", referencedColumnName = "iduser")
     @ManyToOne(optional = false)
     private User iduser;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcampain")
-    private Collection<CampainJournal> campainJournalCollection;
 
     public Campain() {
     }
@@ -119,13 +112,20 @@ public class Campain implements Serializable {
         this.conclusionDate = conclusionDate;
     }
 
-    @XmlTransient
-    public Collection<CampainMembers> getCampainMembersCollection() {
-        return campainMembersCollection;
+    public List<CampainMembers> getCampainMembersList() {
+        return campainMembersList;
     }
 
-    public void setCampainMembersCollection(Collection<CampainMembers> campainMembersCollection) {
-        this.campainMembersCollection = campainMembersCollection;
+    public void setCampainMembersList(List<CampainMembers> campainMembersList) {
+        this.campainMembersList = campainMembersList;
+    }
+
+    public List<CampainJournal> getCampainJournalList() {
+        return campainJournalList;
+    }
+
+    public void setCampainJournalList(List<CampainJournal> campainJournalList) {
+        this.campainJournalList = campainJournalList;
     }
 
     public User getIduser() {
@@ -134,15 +134,6 @@ public class Campain implements Serializable {
 
     public void setIduser(User iduser) {
         this.iduser = iduser;
-    }
-
-    @XmlTransient
-    public Collection<CampainJournal> getCampainJournalCollection() {
-        return campainJournalCollection;
-    }
-
-    public void setCampainJournalCollection(Collection<CampainJournal> campainJournalCollection) {
-        this.campainJournalCollection = campainJournalCollection;
     }
 
     @Override
@@ -159,12 +150,15 @@ public class Campain implements Serializable {
             return false;
         }
         Campain other = (Campain) object;
-        return !((this.idcampain == null && other.idcampain != null) || (this.idcampain != null && !this.idcampain.equals(other.idcampain)));
+        if ((this.idcampain == null && other.idcampain != null) || (this.idcampain != null && !this.idcampain.equals(other.idcampain))) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        return "Campain[ idcampain=" + idcampain + " ]";
+        return "br.com.urcontroler.data.db.entity.Campain[ idcampain=" + idcampain + " ]";
     }
-
+    
 }

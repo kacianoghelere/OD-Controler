@@ -1,8 +1,8 @@
 package br.com.urcontroler.main.view.menu;
 
 import br.com.gmp.utils.object.ObjectWrapper;
-import br.com.urcontroler.data.db.dao.MenuDAO;
-import br.com.urcontroler.data.entity.Menu;
+import br.com.urcontroler.data.db.entity.Menu;
+import br.com.urcontroler.data.db.entity.controller.MenuController;
 import br.com.urcontroler.main.object.BeanEvent;
 import br.com.urcontroler.main.util.MenuBuilder;
 import br.com.urcontroler.main.view.bean.ViewBean;
@@ -21,7 +21,7 @@ import javax.swing.ImageIcon;
  */
 public class MenuBean extends ViewBean<MenuView> {
 
-    private final MenuDAO dao;
+    private MenuController controller;
 
     /**
      * Cria nova instancia de MenuBean
@@ -30,18 +30,18 @@ public class MenuBean extends ViewBean<MenuView> {
      */
     public MenuBean(MenuView view) {
         super(view);
-        this.dao = new MenuDAO();
         try {
+            this.controller = (MenuController) getView().getController(MenuController.class);
             onLoad(null);
+            buildPreview();
         } catch (Exception ex) {
             getView().throwException(new ViewException(view, ex));
         }
-        buildPreview();
     }
 
     @Override
     public void onCommit(BeanEvent evt) throws Exception {
-        this.dao.replaceAll(getView().getModel().getData());
+        this.controller.replaceAll(getView().getModel().getData());
         getView().getMainScreen().reloadMenus();
     }
 
@@ -69,13 +69,22 @@ public class MenuBean extends ViewBean<MenuView> {
      *
      * @return {@code Menu} Menu gerado
      */
-    private Menu buildNew(String title, String icon, Long parent) {
+    private Menu buildNew(String title, String icon, Menu parent) {
         Menu menu = new Menu();
         menu.setId(getNextID());
         menu.setTitle(title);
         menu.setParent(parent);
         menu.setIcon(icon);
         return menu;
+    }
+
+    /**
+     * Retorna lista de entidades
+     *
+     * @return {@code List(Menu)} Lista de entidades
+     */
+    public List<Menu> getList() {
+        return this.controller.findEntities();
     }
 
     /**
@@ -90,7 +99,7 @@ public class MenuBean extends ViewBean<MenuView> {
         if (wrapper != null) {
             String title = (String) wrapper.getValue("title");
             String icon = getIcons()[(Integer) wrapper.getValue("index")];
-            Long parent = (Long) wrapper.getValue("parent");
+            Menu parent = (Menu) wrapper.getValue("parent");
             getView().getModel().add(buildNew(title, icon, parent));
             getView().getParentModel().setData(getParentMenus());
             buildPreview();
@@ -146,11 +155,11 @@ public class MenuBean extends ViewBean<MenuView> {
     /**
      * Retorna lista de menus superiores
      *
-     * @return {@code List(Menu)}
+     * @return {@code List(Menu)} Lista de menus superiores
      */
     private List<Menu> getParentMenus() {
         List<Menu> parents = new ArrayList<>();
-        parents.add(new Menu((long) 0, "Raiz", null));
+        parents.add(new Menu(0l, "Raiz", null));
         for (Menu menu : getView().getModel().getData()) {
             parents.add(menu);
         }

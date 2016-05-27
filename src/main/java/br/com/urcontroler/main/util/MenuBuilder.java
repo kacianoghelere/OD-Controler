@@ -2,16 +2,16 @@ package br.com.urcontroler.main.util;
 
 import br.com.gmp.utils.annotations.Intercept;
 import br.com.gmp.utils.object.StringUtil;
-import br.com.gmp.utils.reflection.ObjectInstance;
 import br.com.gmp.utils.reflection.ReflectionUtil;
-import br.com.urcontroler.data.db.dao.MenuDAO;
-import br.com.urcontroler.data.db.dao.MenuItemDAO;
-import br.com.urcontroler.data.entity.Menu;
-import br.com.urcontroler.data.entity.MenuItem;
+import br.com.urcontroler.data.db.entity.Menu;
+import br.com.urcontroler.data.db.entity.MenuItem;
+import br.com.urcontroler.data.db.entity.comparators.MenuComparator;
+import br.com.urcontroler.data.db.entity.comparators.MenuItemComparator;
+import br.com.urcontroler.data.db.entity.controller.MenuController;
+import br.com.urcontroler.data.db.entity.controller.MenuItemController;
 import br.com.urcontroler.main.MainScreen;
+import br.com.urcontroler.system.SystemManager;
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
@@ -26,17 +26,17 @@ import javax.swing.SwingUtilities;
  *
  * @author Kaciano Ghelere
  * @version 1.0
- * @see br.com.urcontroler.data.db.dao.MenuDAO
- * @see br.com.urcontroler.data.db.dao.MenuItemDAO
- * @see br.com.urcontroler.data.entity.Menu
- * @see br.com.urcontroler.data.entity.MenuItem
+ * @see br.com.urcontroler.data.db.entity.controller.MenuController
+ * @see br.com.urcontroler.data.db.entity.controller.MenuItemController
+ * @see br.com.urcontroler.data.db.entity.Menu
+ * @see br.com.urcontroler.data.db.entity.MenuItem
  */
 public class MenuBuilder {
 
     private MainScreen mainScreen;
     private JMenu root;
-    private final MenuDAO menuDAO;
-    private final MenuItemDAO viewDAO;
+    private MenuController menuController;
+    private MenuItemController viewController;
     private final ReflectionUtil reflect = new ReflectionUtil();
     private final Logger LOGGER = Logger.getLogger(MenuBuilder.class.getName());
 
@@ -44,21 +44,34 @@ public class MenuBuilder {
      * Cria nova instancia de MenuBuilder
      */
     public MenuBuilder() {
-        this.menuDAO = new MenuDAO();
-        this.viewDAO = new MenuItemDAO();
     }
 
     /**
      * Cria nova instancia de MenuBuilder
      *
-     * @param mainScreen {@code MainScreen} Tela principal
+     * @param main {@code MainScreen} Tela principal
      * @param root {@code JMenu} Menu raiz
      */
-    public MenuBuilder(MainScreen mainScreen, JMenu root) {
-        this.mainScreen = mainScreen;
+    public MenuBuilder(MainScreen main, JMenu root) {
+        initialize(main, root);
+    }
+
+    /**
+     * Cria nova instancia de MenuBuilder
+     *
+     * @param main {@code MainScreen} Tela principal
+     * @param root {@code JMenu} Menu raiz
+     */
+    public void initialize(MainScreen main, JMenu root) {
+        this.mainScreen = main;
         this.root = root;
-        this.menuDAO = new MenuDAO();
-        this.viewDAO = new MenuItemDAO();
+        try {
+            SystemManager mng = this.mainScreen.getManager();
+            this.menuController = (MenuController) mng.getController(MenuController.class);
+            this.viewController = (MenuItemController) mng.getController(MenuItemController.class);
+        } catch (ClassNotFoundException | InstantiationException ex) {
+            Logger.getLogger(MenuBuilder.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -69,8 +82,8 @@ public class MenuBuilder {
      */
     @Intercept
     public void build() throws ClassNotFoundException, InstantiationException {
-        List<Menu> menus = menuDAO.getList();
-        List<MenuItem> views = viewDAO.getList();
+        List<Menu> menus = this.menuController.findEntities();
+        List<MenuItem> views = this.viewController.findEntities();
         build(menus, views, true);
     }
 
@@ -88,8 +101,8 @@ public class MenuBuilder {
             throws ClassNotFoundException, InstantiationException {
         menus.removeAll(Collections.singleton(null));
         items.removeAll(Collections.singleton(null));
-        Collections.sort(menus);
-        Collections.sort(items);
+        Collections.sort(menus, new MenuComparator());
+        Collections.sort(items, new MenuItemComparator());
         buildMenu(menus);
         buildItems(items, execute);
         SwingUtilities.updateComponentTreeUI(mainScreen);
@@ -102,9 +115,9 @@ public class MenuBuilder {
      */
     public void buildMenu(List<Menu> menus) {
         root.removeAll();
-        Collections.sort(menus);
+        Collections.sort(menus, new MenuComparator());
         for (Menu menu : menus) {
-            if (menu.getParent() == 0) {
+            if (menu.getParent() == null) {
                 insertMenu(root, menu);
             } else {
                 recursiveMenus(root, menu);
@@ -157,9 +170,9 @@ public class MenuBuilder {
      */
     public void buildItems(List<MenuItem> items, boolean execute)
             throws ClassNotFoundException, InstantiationException {
-        Collections.sort(items);
+        Collections.sort(items, new MenuItemComparator());
         for (MenuItem item : items) {
-            if (((long) 0) == item.getMenu()) {
+            if (item.getMenu() == null || 0l == item.getMenu().getId()) {
                 insertItem(root, item, execute);
             } else {
                 recursiveItems(root, item, execute);
@@ -237,28 +250,30 @@ public class MenuBuilder {
     public JMenuItem generateItem(final MenuItem view, boolean execute)
             throws ClassNotFoundException, InstantiationException {
         JMenuItem item = new JMenuItem();
-        item.setText(view.getName());
+        item.setText(view.getTitle());
         item.setIcon(new ImageIcon(getClass().getResource(view.getIcon())));
         if (execute) {
             mainScreen.getListener().getViewMap()
-                    .put(view.getName().split("-")[0].trim(), view);
+                    .put(view.getTitle().split("-")[0].trim(), view);
             view.setViewClass(view.getViewClass().replaceAll(".java", ""));
-            item.addActionListener(new ActionListener() {
-
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    try {
-                        mainScreen.getListener().insertInstance(
-                                new ObjectInstance(
-                                        Class.forName(view.getViewClass()),
-                                        new Class[]{MainScreen.class},
-                                        new Object[]{mainScreen}),
-                                view.getDescription());
-                    } catch (ClassNotFoundException ex) {
-                        LOGGER.log(Level.SEVERE, null, ex);
-                    }
-                }
-            });
+//            item.addActionListener(new ActionListener() {
+//
+//                @Override
+//                public void actionPerformed(ActionEvent e) {
+//                    try {
+//                        DescriptionObject desc;
+//                        desc = new DescriptionObject.Builder().fromBase(view.getDescription());
+//                        mainScreen.getListener().insertInstance(
+//                                new ObjectInstance(
+//                                        Class.forName(view.getViewClass()),
+//                                        new Class[]{MainScreen.class},
+//                                        new Object[]{mainScreen}), desc);
+//                    } catch (ClassNotFoundException ex) {
+//                        LOGGER.log(Level.SEVERE, null, ex);
+//                    }
+//                }
+//            });
+            item.addActionListener(new MenuBuilderAction(mainScreen, view));
         }
         return item;
     }

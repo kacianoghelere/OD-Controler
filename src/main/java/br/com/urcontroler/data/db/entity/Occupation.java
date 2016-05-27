@@ -1,12 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,16 +19,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "occupation")
-@XmlRootElement
+@Table(catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Occupation.findAll", query = "SELECT o FROM Occupation o"),
     @NamedQuery(name = "Occupation.findByIdoccupation", query = "SELECT o FROM Occupation o WHERE o.idoccupation = :idoccupation"),
@@ -42,56 +38,52 @@ public class Occupation implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "idoccupation")
     private Long idoccupation;
-    @Column(name = "name")
     private String name;
     @Basic(optional = false)
     @Column(name = "armor_bonus")
     private int armorBonus;
-    @Column(name = "description")
     private String description;
     @Basic(optional = false)
-    @Column(name = "idrequirement")
     private long idrequirement;
-    @JoinTable(name = "occupation_allowed_weapon_type", joinColumns = {
-        @JoinColumn(name = "idoccupation", referencedColumnName = "idoccupation")}, inverseJoinColumns = {
-        @JoinColumn(name = "idweapon_type", referencedColumnName = "idweapon_type")})
-    @ManyToMany
-    private Collection<WeaponType> weaponTypeCollection;
     @JoinTable(name = "occupation_allowed_spell_category", joinColumns = {
         @JoinColumn(name = "idoccupation", referencedColumnName = "idoccupation")}, inverseJoinColumns = {
         @JoinColumn(name = "idspell_category", referencedColumnName = "idspell_class")})
     @ManyToMany
-    private Collection<SpellClass> spellClassCollection;
-    @ManyToMany(mappedBy = "occupationCollection")
-    private Collection<ItemType> itemTypeCollection;
-    @ManyToMany(mappedBy = "occupationCollection")
-    private Collection<ArmorType> armorTypeCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "occupation")
-    private Collection<OccupationRequirement> occupationRequirementCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idoccupation")
-    private Collection<OccupationLevel> occupationLevelCollection;
-    @JoinColumn(name = "iduser", referencedColumnName = "iduser")
-    @ManyToOne(optional = false)
-    private User iduser;
-    @JoinColumn(name = "idperk", referencedColumnName = "idperk")
-    @ManyToOne(optional = false)
-    private Perk idperk;
-    @JoinColumn(name = "idlife_dice", referencedColumnName = "iddice")
-    @ManyToOne(optional = false)
-    private Dice idlifeDice;
-    @JoinColumn(name = "idoccupation_type", referencedColumnName = "idoccupation_type")
-    @ManyToOne(optional = false)
-    private OccupationType idoccupationType;
-    @JoinColumn(name = "idkey_attribute", referencedColumnName = "idstats_attribute")
-    @ManyToOne(optional = false)
-    private StatsAttribute idkeyAttribute;
+    private List<SpellClass> spellClassList;
+    @ManyToMany(mappedBy = "occupationList")
+    private List<ItemType> itemTypeList;
+    @ManyToMany(mappedBy = "occupationList")
+    private List<ArmorType> armorTypeList;
+    @JoinTable(name = "occupation_allowed_weapon_type", joinColumns = {
+        @JoinColumn(name = "idoccupation", referencedColumnName = "idoccupation")}, inverseJoinColumns = {
+        @JoinColumn(name = "idweapon_type", referencedColumnName = "idweapon_type")})
+    @ManyToMany
+    private List<WeaponType> weaponTypeList;
     @JoinColumn(name = "idalignment", referencedColumnName = "idalignment")
     @ManyToOne(optional = false)
     private Alignment idalignment;
+    @JoinColumn(name = "idkey_attribute", referencedColumnName = "idstats_attribute")
+    @ManyToOne(optional = false)
+    private StatsAttribute idkeyAttribute;
+    @JoinColumn(name = "idoccupation_type", referencedColumnName = "idoccupation_type")
+    @ManyToOne(optional = false)
+    private OccupationType idoccupationType;
+    @JoinColumn(name = "idlife_dice", referencedColumnName = "iddice")
+    @ManyToOne(optional = false)
+    private Dice idlifeDice;
+    @JoinColumn(name = "idperk", referencedColumnName = "idperk")
+    @ManyToOne(optional = false)
+    private Perk idperk;
+    @JoinColumn(name = "iduser", referencedColumnName = "iduser")
+    @ManyToOne(optional = false)
+    private User iduser;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idoccupation")
-    private Collection<CharacterSheet> characterSheetCollection;
+    private List<CharacterSheet> characterSheetList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idoccupation")
+    private List<OccupationLevel> occupationLevelList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "occupation")
+    private List<OccupationRequirement> occupationRequirementList;
 
     public Occupation() {
     }
@@ -146,98 +138,36 @@ public class Occupation implements Serializable {
         this.idrequirement = idrequirement;
     }
 
-    @XmlTransient
-    public Collection<WeaponType> getWeaponTypeCollection() {
-        return weaponTypeCollection;
+    public List<SpellClass> getSpellClassList() {
+        return spellClassList;
     }
 
-    public void setWeaponTypeCollection(Collection<WeaponType> weaponTypeCollection) {
-        this.weaponTypeCollection = weaponTypeCollection;
+    public void setSpellClassList(List<SpellClass> spellClassList) {
+        this.spellClassList = spellClassList;
     }
 
-    @XmlTransient
-    public Collection<SpellClass> getSpellClassCollection() {
-        return spellClassCollection;
+    public List<ItemType> getItemTypeList() {
+        return itemTypeList;
     }
 
-    public void setSpellClassCollection(Collection<SpellClass> spellClassCollection) {
-        this.spellClassCollection = spellClassCollection;
+    public void setItemTypeList(List<ItemType> itemTypeList) {
+        this.itemTypeList = itemTypeList;
     }
 
-    @XmlTransient
-    public Collection<ItemType> getItemTypeCollection() {
-        return itemTypeCollection;
+    public List<ArmorType> getArmorTypeList() {
+        return armorTypeList;
     }
 
-    public void setItemTypeCollection(Collection<ItemType> itemTypeCollection) {
-        this.itemTypeCollection = itemTypeCollection;
+    public void setArmorTypeList(List<ArmorType> armorTypeList) {
+        this.armorTypeList = armorTypeList;
     }
 
-    @XmlTransient
-    public Collection<ArmorType> getArmorTypeCollection() {
-        return armorTypeCollection;
+    public List<WeaponType> getWeaponTypeList() {
+        return weaponTypeList;
     }
 
-    public void setArmorTypeCollection(Collection<ArmorType> armorTypeCollection) {
-        this.armorTypeCollection = armorTypeCollection;
-    }
-
-    @XmlTransient
-    public Collection<OccupationRequirement> getOccupationRequirementCollection() {
-        return occupationRequirementCollection;
-    }
-
-    public void setOccupationRequirementCollection(Collection<OccupationRequirement> occupationRequirementCollection) {
-        this.occupationRequirementCollection = occupationRequirementCollection;
-    }
-
-    @XmlTransient
-    public Collection<OccupationLevel> getOccupationLevelCollection() {
-        return occupationLevelCollection;
-    }
-
-    public void setOccupationLevelCollection(Collection<OccupationLevel> occupationLevelCollection) {
-        this.occupationLevelCollection = occupationLevelCollection;
-    }
-
-    public User getIduser() {
-        return iduser;
-    }
-
-    public void setIduser(User iduser) {
-        this.iduser = iduser;
-    }
-
-    public Perk getIdperk() {
-        return idperk;
-    }
-
-    public void setIdperk(Perk idperk) {
-        this.idperk = idperk;
-    }
-
-    public Dice getIdlifeDice() {
-        return idlifeDice;
-    }
-
-    public void setIdlifeDice(Dice idlifeDice) {
-        this.idlifeDice = idlifeDice;
-    }
-
-    public OccupationType getIdoccupationType() {
-        return idoccupationType;
-    }
-
-    public void setIdoccupationType(OccupationType idoccupationType) {
-        this.idoccupationType = idoccupationType;
-    }
-
-    public StatsAttribute getIdkeyAttribute() {
-        return idkeyAttribute;
-    }
-
-    public void setIdkeyAttribute(StatsAttribute idkeyAttribute) {
-        this.idkeyAttribute = idkeyAttribute;
+    public void setWeaponTypeList(List<WeaponType> weaponTypeList) {
+        this.weaponTypeList = weaponTypeList;
     }
 
     public Alignment getIdalignment() {
@@ -248,13 +178,68 @@ public class Occupation implements Serializable {
         this.idalignment = idalignment;
     }
 
-    @XmlTransient
-    public Collection<CharacterSheet> getCharacterSheetCollection() {
-        return characterSheetCollection;
+    public StatsAttribute getIdkeyAttribute() {
+        return idkeyAttribute;
     }
 
-    public void setCharacterSheetCollection(Collection<CharacterSheet> characterSheetCollection) {
-        this.characterSheetCollection = characterSheetCollection;
+    public void setIdkeyAttribute(StatsAttribute idkeyAttribute) {
+        this.idkeyAttribute = idkeyAttribute;
+    }
+
+    public OccupationType getIdoccupationType() {
+        return idoccupationType;
+    }
+
+    public void setIdoccupationType(OccupationType idoccupationType) {
+        this.idoccupationType = idoccupationType;
+    }
+
+    public Dice getIdlifeDice() {
+        return idlifeDice;
+    }
+
+    public void setIdlifeDice(Dice idlifeDice) {
+        this.idlifeDice = idlifeDice;
+    }
+
+    public Perk getIdperk() {
+        return idperk;
+    }
+
+    public void setIdperk(Perk idperk) {
+        this.idperk = idperk;
+    }
+
+    public User getIduser() {
+        return iduser;
+    }
+
+    public void setIduser(User iduser) {
+        this.iduser = iduser;
+    }
+
+    public List<CharacterSheet> getCharacterSheetList() {
+        return characterSheetList;
+    }
+
+    public void setCharacterSheetList(List<CharacterSheet> characterSheetList) {
+        this.characterSheetList = characterSheetList;
+    }
+
+    public List<OccupationLevel> getOccupationLevelList() {
+        return occupationLevelList;
+    }
+
+    public void setOccupationLevelList(List<OccupationLevel> occupationLevelList) {
+        this.occupationLevelList = occupationLevelList;
+    }
+
+    public List<OccupationRequirement> getOccupationRequirementList() {
+        return occupationRequirementList;
+    }
+
+    public void setOccupationRequirementList(List<OccupationRequirement> occupationRequirementList) {
+        this.occupationRequirementList = occupationRequirementList;
     }
 
     @Override
@@ -281,5 +266,5 @@ public class Occupation implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.Occupation[ idoccupation=" + idoccupation + " ]";
     }
-
+    
 }

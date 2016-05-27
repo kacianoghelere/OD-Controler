@@ -10,7 +10,7 @@ import br.com.urcontroler.data.entity.Expertise;
 import br.com.urcontroler.data.entity.ExpertiseType;
 import br.com.urcontroler.main.MainScreen;
 import br.com.urcontroler.main.object.BeanEvent;
-import br.com.urcontroler.main.util.Description;
+import br.com.urcontroler.main.util.DescriptionObject;
 import br.com.urcontroler.main.util.TableUtil;
 import br.com.urcontroler.main.view.View;
 import br.com.urcontroler.main.view.annotation.ViewData;

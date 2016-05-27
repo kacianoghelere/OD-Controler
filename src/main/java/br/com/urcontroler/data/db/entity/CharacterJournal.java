@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
@@ -20,15 +19,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "character_journal")
-@XmlRootElement
+@Table(name = "character_journal", catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "CharacterJournal.findAll", query = "SELECT c FROM CharacterJournal c"),
     @NamedQuery(name = "CharacterJournal.findByIdcharacterJournal", query = "SELECT c FROM CharacterJournal c WHERE c.idcharacterJournal = :idcharacterJournal"),
@@ -49,18 +46,17 @@ public class CharacterJournal implements Serializable {
     @Column(name = "current_exp")
     private Integer currentExp;
     @Basic(optional = false)
-    @Column(name = "idactive")
     private boolean idactive;
     @Basic(optional = false)
     @Column(name = "inc_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date incDate;
-    @JoinColumn(name = "idcharacter", referencedColumnName = "idcharacter")
-    @ManyToOne(optional = false)
-    private CharacterSheet idcharacter;
     @JoinColumn(name = "idalignment", referencedColumnName = "idalignment")
     @ManyToOne(optional = false)
     private Alignment idalignment;
+    @JoinColumn(name = "idcharacter", referencedColumnName = "idcharacter")
+    @ManyToOne(optional = false)
+    private CharacterSheet idcharacter;
 
     public CharacterJournal() {
     }
@@ -115,20 +111,20 @@ public class CharacterJournal implements Serializable {
         this.incDate = incDate;
     }
 
-    public CharacterSheet getIdcharacter() {
-        return idcharacter;
-    }
-
-    public void setIdcharacter(CharacterSheet idcharacter) {
-        this.idcharacter = idcharacter;
-    }
-
     public Alignment getIdalignment() {
         return idalignment;
     }
 
     public void setIdalignment(Alignment idalignment) {
         this.idalignment = idalignment;
+    }
+
+    public CharacterSheet getIdcharacter() {
+        return idcharacter;
+    }
+
+    public void setIdcharacter(CharacterSheet idcharacter) {
+        this.idcharacter = idcharacter;
     }
 
     @Override
@@ -155,5 +151,5 @@ public class CharacterJournal implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.CharacterJournal[ idcharacterJournal=" + idcharacterJournal + " ]";
     }
-
+    
 }

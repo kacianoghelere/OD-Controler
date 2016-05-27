@@ -1,12 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Este arquivo foi gerado com a graça do senhor
+ *  Altere com cuidado e lembre-se: "Com grandes poderes, vem grandes responsabilidades" - Moisés
  */
 package br.com.urcontroler.data.db.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,16 +17,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kaciano Ghelere
+ * @author kaciano
  */
 @Entity
-@Table(name = "spell_type")
-@XmlRootElement
+@Table(name = "spell_type", catalog = "ultimaterpgtools", schema = "")
 @NamedQueries({
     @NamedQuery(name = "SpellType.findAll", query = "SELECT s FROM SpellType s"),
     @NamedQuery(name = "SpellType.findByIdspellType", query = "SELECT s FROM SpellType s WHERE s.idspellType = :idspellType"),
@@ -41,10 +37,9 @@ public class SpellType implements Serializable {
     @Column(name = "idspell_type")
     private Long idspellType;
     @Basic(optional = false)
-    @Column(name = "name")
     private String name;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idspellType")
-    private Collection<Spell> spellCollection;
+    private List<Spell> spellList;
 
     public SpellType() {
     }
@@ -74,13 +69,12 @@ public class SpellType implements Serializable {
         this.name = name;
     }
 
-    @XmlTransient
-    public Collection<Spell> getSpellCollection() {
-        return spellCollection;
+    public List<Spell> getSpellList() {
+        return spellList;
     }
 
-    public void setSpellCollection(Collection<Spell> spellCollection) {
-        this.spellCollection = spellCollection;
+    public void setSpellList(List<Spell> spellList) {
+        this.spellList = spellList;
     }
 
     @Override
@@ -107,5 +101,5 @@ public class SpellType implements Serializable {
     public String toString() {
         return "br.com.urcontroler.data.db.entity.SpellType[ idspellType=" + idspellType + " ]";
     }
-
+    
 }
